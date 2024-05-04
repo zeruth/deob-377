@@ -1,0 +1,10 @@
+package unmapped;
+
+
+public class Class33 {
+
+	private boolean aBoolean203 = true;
+
+	public void method552( int arg0) {
+	}
+}
