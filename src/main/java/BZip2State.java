@@ -1,7 +1,7 @@
 
 
 
-public final class Class1 {
+public final class BZip2State {
 
 	public static int[] anIntArray4;
 
@@ -51,23 +51,23 @@ public final class Class1 {
 
 	public int anInt28;
 
-	private final int anInt1 = 4096;
+	private final int MTFA_SIZE = 4096;
 
-	private final int anInt2 = 16;
+	private final int MTFL_SIZE = 16;
 
-	private final int anInt3 = 258;
+	private final int BZ_MAX_ALPHA_SIZE = 258;
 
-	private final int anInt4 = 23;
+	private final int BZ_MAX_CODE_LEN = 23;
 
 	private final int anInt5 = 1;
 
-	private final int anInt6 = 6;
+	private final int BZ_N_GROUPS = 6;
 
-	private final int anInt7 = 50;
+	private final int BZ_G_SIZE = 50;
 
 	private final int anInt8 = 4;
 
-	private final int anInt9 = 18002;
+	private final int BZ_MAX_SELECTORS = (2 + (900000 / BZ_G_SIZE)); // 18002
 
 	public int[] anIntArray1 = new int[256];
 
@@ -81,21 +81,21 @@ public final class Class1 {
 
 	public byte[] aByteArray3 = new byte[256];
 
-	public byte[] aByteArray4 = new byte[4096];
+	public byte[] mtfa = new byte[MTFA_SIZE];
 
-	public int[] anIntArray5 = new int[16];
+	public int[] anIntArray5 = new int[MTFL_SIZE];
 
-	public byte[] aByteArray5 = new byte[18002];
+	public byte[] selector = new byte[BZ_MAX_SELECTORS];
 
-	public byte[] aByteArray6 = new byte[18002];
+	public byte[] selectorMtf = new byte[BZ_MAX_SELECTORS];
 
-	public byte[][] aByteArrayArray1 = new byte[6][258];
+	public byte[][] len = new byte[BZ_N_GROUPS][BZ_MAX_ALPHA_SIZE];
 
-	public int[][] anIntArrayArray1 = new int[6][258];
+	public int[][] limit = new int[BZ_N_GROUPS][BZ_MAX_ALPHA_SIZE];
 
-	public int[][] anIntArrayArray2 = new int[6][258];
+	public int[][] base = new int[BZ_N_GROUPS][BZ_MAX_ALPHA_SIZE];
 
-	public int[][] anIntArrayArray3 = new int[6][258];
+	public int[][] perm = new int[BZ_N_GROUPS][BZ_MAX_ALPHA_SIZE];
 
-	public int[] anIntArray6 = new int[6];
+	public int[] minLens = new int[BZ_N_GROUPS];
 }

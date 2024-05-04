@@ -1806,7 +1806,7 @@ public final class Class23 {
 		int local476;
 		if ((local313 - local329) * (local305 - local337) - (local321 - local337) * (local297 - local329) > 0) {
 			Class10_Sub1_Sub1_Sub4.aBoolean177 = false;
-			if (local313 < 0 || local329 < 0 || local297 < 0 || local313 > Class10_Sub1_Sub1.anInt680 || local329 > Class10_Sub1_Sub1.anInt680 || local297 > Class10_Sub1_Sub1.anInt680) {
+			if (local313 < 0 || local329 < 0 || local297 < 0 || local313 > Draw2D.anInt680 || local329 > Draw2D.anInt680 || local297 > Draw2D.anInt680) {
 				Class10_Sub1_Sub1_Sub4.aBoolean177 = true;
 			}
 			if (aBoolean94 && this.method234(anInt305, anInt306, local321, local337, local305, local313, local329, local297)) {
@@ -1830,7 +1830,7 @@ public final class Class23 {
 			return;
 		}
 		Class10_Sub1_Sub1_Sub4.aBoolean177 = false;
-		if (local281 < 0 || local297 < 0 || local329 < 0 || local281 > Class10_Sub1_Sub1.anInt680 || local297 > Class10_Sub1_Sub1.anInt680 || local329 > Class10_Sub1_Sub1.anInt680) {
+		if (local281 < 0 || local297 < 0 || local329 < 0 || local281 > Draw2D.anInt680 || local297 > Draw2D.anInt680 || local329 > Draw2D.anInt680) {
 			Class10_Sub1_Sub1_Sub4.aBoolean177 = true;
 		}
 		if (aBoolean94 && this.method234(anInt305, anInt306, local289, local305, local337, local281, local297, local329)) {
@@ -1890,7 +1890,7 @@ public final class Class23 {
 				int local170 = Class21.anIntArray74[local40];
 				if ((local150 - local154) * (local170 - local166) - (local162 - local166) * (local158 - local154) > 0) {
 					Class10_Sub1_Sub1_Sub4.aBoolean177 = false;
-					if (local150 < 0 || local154 < 0 || local158 < 0 || local150 > Class10_Sub1_Sub1.anInt680 || local154 > Class10_Sub1_Sub1.anInt680 || local158 > Class10_Sub1_Sub1.anInt680) {
+					if (local150 < 0 || local154 < 0 || local158 < 0 || local150 > Draw2D.anInt680 || local154 > Draw2D.anInt680 || local158 > Draw2D.anInt680) {
 						Class10_Sub1_Sub1_Sub4.aBoolean177 = true;
 					}
 					if (aBoolean94 && this.method234(anInt305, anInt306, local162, local166, local170, local150, local154, local158)) {

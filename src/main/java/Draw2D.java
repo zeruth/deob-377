@@ -4,7 +4,7 @@
 
 import sign.signlink;
 
-public class Class10_Sub1_Sub1 extends Class10_Sub1 {
+public class Draw2D extends Class10_Sub1 {
 
 	private static int anInt672;
 
@@ -34,7 +34,7 @@ public class Class10_Sub1_Sub1 extends Class10_Sub1 {
 
 	private static int anInt673 = -291;
 
-	public static void method494(int arg1, int arg2, int[] arg3) {
+	public static void bind(int arg1, int arg2, int[] arg3) {
 		anIntArray178 = arg3;
 		anInt674 = arg1;
 		anInt675 = arg2;
@@ -289,6 +289,6 @@ public class Class10_Sub1_Sub1 extends Class10_Sub1 {
 		}
 	}
 
-	protected Class10_Sub1_Sub1() {
+	protected Draw2D() {
 	}
 }

@@ -518,7 +518,7 @@ public final class Class14 {
 			local27 = Class38.method407(arg1).method402();
 		}
 		if (arg0 == 3) {
-			local27 = client.aClass10_Sub1_Sub2_Sub3_Sub2_1.method543();
+			local27 = Client.aClass10_Sub1_Sub2_Sub3_Sub2_1.method543();
 		}
 		if (arg0 == 4) {
 			local27 = local1.method109(this.anInt140, 50);

@@ -48,7 +48,7 @@ public final class signlink implements Runnable {
 
 	public static int anInt1066;
 
-	public static int anInt1059 = 32;
+	public static int storeId = 32;
 
 	public static RandomAccessFile aRandomAccessFile3 = null;
 
@@ -110,10 +110,10 @@ public final class signlink implements Runnable {
 
 	private static String findcachedir() {
 		String[] local58 = new String[] { "c:/windows/", "c:/winnt/", "d:/windows/", "d:/winnt/", "e:/windows/", "e:/winnt/", "f:/windows/", "f:/winnt/", "c:/", "~/", "/tmp/", "", "c:/rscache", "/rscache" };
-		if (anInt1059 < 32 || anInt1059 > 34) {
-			anInt1059 = 32;
+		if (storeId < 32 || storeId > 34) {
+			storeId = 32;
 		}
-		String local74 = ".file_store_" + anInt1059;
+		String local74 = ".file_store_" + storeId;
 		for ( int local76 = 0; local76 < local58.length; local76++) {
 			try {
 				String local81 = local58[local76];

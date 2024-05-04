@@ -4,7 +4,7 @@
 
 import sign.signlink;
 
-public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
+public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
 	private static int anInt684;
 
@@ -102,12 +102,12 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 	public static void method507( int arg0) {
 		try {
 			boolean local3 = false;
-			anIntArray183 = new int[Class10_Sub1_Sub1.anInt675];
-			for ( int local8 = 0; local8 < Class10_Sub1_Sub1.anInt675; local8++) {
-				anIntArray183[local8] = Class10_Sub1_Sub1.anInt674 * local8;
+			anIntArray183 = new int[Draw2D.anInt675];
+			for (int local8 = 0; local8 < Draw2D.anInt675; local8++) {
+				anIntArray183[local8] = Draw2D.anInt674 * local8;
 			}
-			anInt686 = Class10_Sub1_Sub1.anInt674 / 2;
-			anInt687 = Class10_Sub1_Sub1.anInt675 / 2;
+			anInt686 = Draw2D.anInt674 / 2;
+			anInt687 = Draw2D.anInt675 / 2;
 		} catch ( RuntimeException local30) {
 			signlink.reporterror("68180, " + arg0 + ", " + local30.toString());
 			throw new RuntimeException();
@@ -405,12 +405,12 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 			local59 = (arg6 - arg8 << 15) / (arg0 - arg2);
 		}
 		if (arg0 <= arg1 && arg0 <= arg2) {
-			if (arg0 < Class10_Sub1_Sub1.anInt677) {
-				if (arg1 > Class10_Sub1_Sub1.anInt677) {
-					arg1 = Class10_Sub1_Sub1.anInt677;
+			if (arg0 < Draw2D.anInt677) {
+				if (arg1 > Draw2D.anInt677) {
+					arg1 = Draw2D.anInt677;
 				}
-				if (arg2 > Class10_Sub1_Sub1.anInt677) {
-					arg2 = Class10_Sub1_Sub1.anInt677;
+				if (arg2 > Draw2D.anInt677) {
+					arg2 = Draw2D.anInt677;
 				}
 				if (arg1 < arg2) {
 					arg5 = arg3 <<= 0x10;
@@ -441,20 +441,20 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg2 < 0) {
 										return;
 									}
-									method518(Class10_Sub1_Sub1.anIntArray178, arg0, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
+									method518(Draw2D.anIntArray178, arg0, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
 									arg5 += local57;
 									arg4 += local30;
 									arg8 += local59;
 									arg7 += local32;
-									arg0 += Class10_Sub1_Sub1.anInt674;
+									arg0 += Draw2D.anInt674;
 								}
 							}
-							method518(Class10_Sub1_Sub1.anIntArray178, arg0, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
+							method518(Draw2D.anIntArray178, arg0, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
 							arg5 += local57;
 							arg3 += local3;
 							arg8 += local59;
 							arg6 += local5;
-							arg0 += Class10_Sub1_Sub1.anInt674;
+							arg0 += Draw2D.anInt674;
 						}
 					} else {
 						arg2 -= arg1;
@@ -468,20 +468,20 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg2 < 0) {
 										return;
 									}
-									method518(Class10_Sub1_Sub1.anIntArray178, arg0, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
+									method518(Draw2D.anIntArray178, arg0, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
 									arg5 += local57;
 									arg4 += local30;
 									arg8 += local59;
 									arg7 += local32;
-									arg0 += Class10_Sub1_Sub1.anInt674;
+									arg0 += Draw2D.anInt674;
 								}
 							}
-							method518(Class10_Sub1_Sub1.anIntArray178, arg0, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
+							method518(Draw2D.anIntArray178, arg0, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
 							arg5 += local57;
 							arg3 += local3;
 							arg8 += local59;
 							arg6 += local5;
-							arg0 += Class10_Sub1_Sub1.anInt674;
+							arg0 += Draw2D.anInt674;
 						}
 					}
 				} else {
@@ -513,20 +513,20 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg1 < 0) {
 										return;
 									}
-									method518(Class10_Sub1_Sub1.anIntArray178, arg0, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
+									method518(Draw2D.anIntArray178, arg0, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
 									arg5 += local30;
 									arg3 += local3;
 									arg8 += local32;
 									arg6 += local5;
-									arg0 += Class10_Sub1_Sub1.anInt674;
+									arg0 += Draw2D.anInt674;
 								}
 							}
-							method518(Class10_Sub1_Sub1.anIntArray178, arg0, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
+							method518(Draw2D.anIntArray178, arg0, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
 							arg4 += local57;
 							arg3 += local3;
 							arg7 += local59;
 							arg6 += local5;
-							arg0 += Class10_Sub1_Sub1.anInt674;
+							arg0 += Draw2D.anInt674;
 						}
 					} else {
 						arg1 -= arg2;
@@ -540,31 +540,31 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg1 < 0) {
 										return;
 									}
-									method518(Class10_Sub1_Sub1.anIntArray178, arg0, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
+									method518(Draw2D.anIntArray178, arg0, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
 									arg5 += local30;
 									arg3 += local3;
 									arg8 += local32;
 									arg6 += local5;
-									arg0 += Class10_Sub1_Sub1.anInt674;
+									arg0 += Draw2D.anInt674;
 								}
 							}
-							method518(Class10_Sub1_Sub1.anIntArray178, arg0, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
+							method518(Draw2D.anIntArray178, arg0, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
 							arg4 += local57;
 							arg3 += local3;
 							arg7 += local59;
 							arg6 += local5;
-							arg0 += Class10_Sub1_Sub1.anInt674;
+							arg0 += Draw2D.anInt674;
 						}
 					}
 				}
 			}
 		} else if (arg1 <= arg2) {
-			if (arg1 < Class10_Sub1_Sub1.anInt677) {
-				if (arg2 > Class10_Sub1_Sub1.anInt677) {
-					arg2 = Class10_Sub1_Sub1.anInt677;
+			if (arg1 < Draw2D.anInt677) {
+				if (arg2 > Draw2D.anInt677) {
+					arg2 = Draw2D.anInt677;
 				}
-				if (arg0 > Class10_Sub1_Sub1.anInt677) {
-					arg0 = Class10_Sub1_Sub1.anInt677;
+				if (arg0 > Draw2D.anInt677) {
+					arg0 = Draw2D.anInt677;
 				}
 				if (arg2 < arg0) {
 					arg3 = arg4 <<= 0x10;
@@ -595,20 +595,20 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg0 < 0) {
 										return;
 									}
-									method518(Class10_Sub1_Sub1.anIntArray178, arg1, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
+									method518(Draw2D.anIntArray178, arg1, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
 									arg3 += local3;
 									arg5 += local57;
 									arg6 += local5;
 									arg8 += local59;
-									arg1 += Class10_Sub1_Sub1.anInt674;
+									arg1 += Draw2D.anInt674;
 								}
 							}
-							method518(Class10_Sub1_Sub1.anIntArray178, arg1, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
+							method518(Draw2D.anIntArray178, arg1, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
 							arg3 += local3;
 							arg4 += local30;
 							arg6 += local5;
 							arg7 += local32;
-							arg1 += Class10_Sub1_Sub1.anInt674;
+							arg1 += Draw2D.anInt674;
 						}
 					} else {
 						arg0 -= arg2;
@@ -622,20 +622,20 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg0 < 0) {
 										return;
 									}
-									method518(Class10_Sub1_Sub1.anIntArray178, arg1, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
+									method518(Draw2D.anIntArray178, arg1, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
 									arg3 += local3;
 									arg5 += local57;
 									arg6 += local5;
 									arg8 += local59;
-									arg1 += Class10_Sub1_Sub1.anInt674;
+									arg1 += Draw2D.anInt674;
 								}
 							}
-							method518(Class10_Sub1_Sub1.anIntArray178, arg1, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
+							method518(Draw2D.anIntArray178, arg1, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
 							arg3 += local3;
 							arg4 += local30;
 							arg6 += local5;
 							arg7 += local32;
-							arg1 += Class10_Sub1_Sub1.anInt674;
+							arg1 += Draw2D.anInt674;
 						}
 					}
 				} else {
@@ -667,20 +667,20 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg2 < 0) {
 										return;
 									}
-									method518(Class10_Sub1_Sub1.anIntArray178, arg1, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
+									method518(Draw2D.anIntArray178, arg1, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
 									arg3 += local57;
 									arg4 += local30;
 									arg6 += local59;
 									arg7 += local32;
-									arg1 += Class10_Sub1_Sub1.anInt674;
+									arg1 += Draw2D.anInt674;
 								}
 							}
-							method518(Class10_Sub1_Sub1.anIntArray178, arg1, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
+							method518(Draw2D.anIntArray178, arg1, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
 							arg5 += local3;
 							arg4 += local30;
 							arg8 += local5;
 							arg7 += local32;
-							arg1 += Class10_Sub1_Sub1.anInt674;
+							arg1 += Draw2D.anInt674;
 						}
 					} else {
 						arg2 -= arg0;
@@ -694,30 +694,30 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg2 < 0) {
 										return;
 									}
-									method518(Class10_Sub1_Sub1.anIntArray178, arg1, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
+									method518(Draw2D.anIntArray178, arg1, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
 									arg3 += local57;
 									arg4 += local30;
 									arg6 += local59;
 									arg7 += local32;
-									arg1 += Class10_Sub1_Sub1.anInt674;
+									arg1 += Draw2D.anInt674;
 								}
 							}
-							method518(Class10_Sub1_Sub1.anIntArray178, arg1, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
+							method518(Draw2D.anIntArray178, arg1, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
 							arg5 += local3;
 							arg4 += local30;
 							arg8 += local5;
 							arg7 += local32;
-							arg1 += Class10_Sub1_Sub1.anInt674;
+							arg1 += Draw2D.anInt674;
 						}
 					}
 				}
 			}
-		} else if (arg2 < Class10_Sub1_Sub1.anInt677) {
-			if (arg0 > Class10_Sub1_Sub1.anInt677) {
-				arg0 = Class10_Sub1_Sub1.anInt677;
+		} else if (arg2 < Draw2D.anInt677) {
+			if (arg0 > Draw2D.anInt677) {
+				arg0 = Draw2D.anInt677;
 			}
-			if (arg1 > Class10_Sub1_Sub1.anInt677) {
-				arg1 = Class10_Sub1_Sub1.anInt677;
+			if (arg1 > Draw2D.anInt677) {
+				arg1 = Draw2D.anInt677;
 			}
 			if (arg0 < arg1) {
 				arg4 = arg5 <<= 0x10;
@@ -748,20 +748,20 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 								if (arg1 < 0) {
 									return;
 								}
-								method518(Class10_Sub1_Sub1.anIntArray178, arg2, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
+								method518(Draw2D.anIntArray178, arg2, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
 								arg4 += local30;
 								arg3 += local3;
 								arg7 += local32;
 								arg6 += local5;
-								arg2 += Class10_Sub1_Sub1.anInt674;
+								arg2 += Draw2D.anInt674;
 							}
 						}
-						method518(Class10_Sub1_Sub1.anIntArray178, arg2, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
+						method518(Draw2D.anIntArray178, arg2, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
 						arg4 += local30;
 						arg5 += local57;
 						arg7 += local32;
 						arg8 += local59;
-						arg2 += Class10_Sub1_Sub1.anInt674;
+						arg2 += Draw2D.anInt674;
 					}
 				} else {
 					arg1 -= arg0;
@@ -775,20 +775,20 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 								if (arg1 < 0) {
 									return;
 								}
-								method518(Class10_Sub1_Sub1.anIntArray178, arg2, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
+								method518(Draw2D.anIntArray178, arg2, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
 								arg4 += local30;
 								arg3 += local3;
 								arg7 += local32;
 								arg6 += local5;
-								arg2 += Class10_Sub1_Sub1.anInt674;
+								arg2 += Draw2D.anInt674;
 							}
 						}
-						method518(Class10_Sub1_Sub1.anIntArray178, arg2, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
+						method518(Draw2D.anIntArray178, arg2, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
 						arg4 += local30;
 						arg5 += local57;
 						arg7 += local32;
 						arg8 += local59;
-						arg2 += Class10_Sub1_Sub1.anInt674;
+						arg2 += Draw2D.anInt674;
 					}
 				}
 			} else {
@@ -820,20 +820,20 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 								if (arg0 < 0) {
 									return;
 								}
-								method518(Class10_Sub1_Sub1.anIntArray178, arg2, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
+								method518(Draw2D.anIntArray178, arg2, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
 								arg4 += local3;
 								arg5 += local57;
 								arg7 += local5;
 								arg8 += local59;
-								arg2 += Class10_Sub1_Sub1.anInt674;
+								arg2 += Draw2D.anInt674;
 							}
 						}
-						method518(Class10_Sub1_Sub1.anIntArray178, arg2, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
+						method518(Draw2D.anIntArray178, arg2, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
 						arg3 += local30;
 						arg5 += local57;
 						arg6 += local32;
 						arg8 += local59;
-						arg2 += Class10_Sub1_Sub1.anInt674;
+						arg2 += Draw2D.anInt674;
 					}
 				} else {
 					arg0 -= arg1;
@@ -847,20 +847,20 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 								if (arg0 < 0) {
 									return;
 								}
-								method518(Class10_Sub1_Sub1.anIntArray178, arg2, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
+								method518(Draw2D.anIntArray178, arg2, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
 								arg4 += local3;
 								arg5 += local57;
 								arg7 += local5;
 								arg8 += local59;
-								arg2 += Class10_Sub1_Sub1.anInt674;
+								arg2 += Draw2D.anInt674;
 							}
 						}
-						method518(Class10_Sub1_Sub1.anIntArray178, arg2, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
+						method518(Draw2D.anIntArray178, arg2, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
 						arg3 += local30;
 						arg5 += local57;
 						arg6 += local32;
 						arg8 += local59;
-						arg2 += Class10_Sub1_Sub1.anInt674;
+						arg2 += Draw2D.anInt674;
 					}
 				}
 			}
@@ -880,8 +880,8 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 				} else {
 					local18 = 0;
 				}
-				if (arg3 > Class10_Sub1_Sub1.anInt680) {
-					arg3 = Class10_Sub1_Sub1.anInt680;
+				if (arg3 > Draw2D.anInt680) {
+					arg3 = Draw2D.anInt680;
 				}
 				if (arg2 < 0) {
 					arg4 -= arg2 * local18;
@@ -962,8 +962,8 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 		} else if (arg2 < arg3) {
 			local18 = (arg5 - arg4) / (arg3 - arg2);
 			if (aBoolean177) {
-				if (arg3 > Class10_Sub1_Sub1.anInt680) {
-					arg3 = Class10_Sub1_Sub1.anInt680;
+				if (arg3 > Draw2D.anInt680) {
+					arg3 = Draw2D.anInt680;
 				}
 				if (arg2 < 0) {
 					arg4 -= arg2 * local18;
@@ -1009,12 +1009,12 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 			local33 = (arg3 - arg5 << 16) / (arg0 - arg2);
 		}
 		if (arg0 <= arg1 && arg0 <= arg2) {
-			if (arg0 < Class10_Sub1_Sub1.anInt677) {
-				if (arg1 > Class10_Sub1_Sub1.anInt677) {
-					arg1 = Class10_Sub1_Sub1.anInt677;
+			if (arg0 < Draw2D.anInt677) {
+				if (arg1 > Draw2D.anInt677) {
+					arg1 = Draw2D.anInt677;
 				}
-				if (arg2 > Class10_Sub1_Sub1.anInt677) {
-					arg2 = Class10_Sub1_Sub1.anInt677;
+				if (arg2 > Draw2D.anInt677) {
+					arg2 = Draw2D.anInt677;
 				}
 				if (arg1 < arg2) {
 					arg5 = arg3 <<= 0x10;
@@ -1040,16 +1040,16 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg2 < 0) {
 										return;
 									}
-									method520(Class10_Sub1_Sub1.anIntArray178, arg0, arg6, arg5 >> 16, arg4 >> 16);
+									method520(Draw2D.anIntArray178, arg0, arg6, arg5 >> 16, arg4 >> 16);
 									arg5 += local33;
 									arg4 += local18;
-									arg0 += Class10_Sub1_Sub1.anInt674;
+									arg0 += Draw2D.anInt674;
 								}
 							}
-							method520(Class10_Sub1_Sub1.anIntArray178, arg0, arg6, arg5 >> 16, arg3 >> 16);
+							method520(Draw2D.anIntArray178, arg0, arg6, arg5 >> 16, arg3 >> 16);
 							arg5 += local33;
 							arg3 += local3;
-							arg0 += Class10_Sub1_Sub1.anInt674;
+							arg0 += Draw2D.anInt674;
 						}
 					} else {
 						arg2 -= arg1;
@@ -1063,16 +1063,16 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg2 < 0) {
 										return;
 									}
-									method520(Class10_Sub1_Sub1.anIntArray178, arg0, arg6, arg4 >> 16, arg5 >> 16);
+									method520(Draw2D.anIntArray178, arg0, arg6, arg4 >> 16, arg5 >> 16);
 									arg5 += local33;
 									arg4 += local18;
-									arg0 += Class10_Sub1_Sub1.anInt674;
+									arg0 += Draw2D.anInt674;
 								}
 							}
-							method520(Class10_Sub1_Sub1.anIntArray178, arg0, arg6, arg3 >> 16, arg5 >> 16);
+							method520(Draw2D.anIntArray178, arg0, arg6, arg3 >> 16, arg5 >> 16);
 							arg5 += local33;
 							arg3 += local3;
-							arg0 += Class10_Sub1_Sub1.anInt674;
+							arg0 += Draw2D.anInt674;
 						}
 					}
 				} else {
@@ -1099,16 +1099,16 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg1 < 0) {
 										return;
 									}
-									method520(Class10_Sub1_Sub1.anIntArray178, arg0, arg6, arg5 >> 16, arg3 >> 16);
+									method520(Draw2D.anIntArray178, arg0, arg6, arg5 >> 16, arg3 >> 16);
 									arg5 += local18;
 									arg3 += local3;
-									arg0 += Class10_Sub1_Sub1.anInt674;
+									arg0 += Draw2D.anInt674;
 								}
 							}
-							method520(Class10_Sub1_Sub1.anIntArray178, arg0, arg6, arg4 >> 16, arg3 >> 16);
+							method520(Draw2D.anIntArray178, arg0, arg6, arg4 >> 16, arg3 >> 16);
 							arg4 += local33;
 							arg3 += local3;
-							arg0 += Class10_Sub1_Sub1.anInt674;
+							arg0 += Draw2D.anInt674;
 						}
 					} else {
 						arg1 -= arg2;
@@ -1122,27 +1122,27 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg1 < 0) {
 										return;
 									}
-									method520(Class10_Sub1_Sub1.anIntArray178, arg0, arg6, arg3 >> 16, arg5 >> 16);
+									method520(Draw2D.anIntArray178, arg0, arg6, arg3 >> 16, arg5 >> 16);
 									arg5 += local18;
 									arg3 += local3;
-									arg0 += Class10_Sub1_Sub1.anInt674;
+									arg0 += Draw2D.anInt674;
 								}
 							}
-							method520(Class10_Sub1_Sub1.anIntArray178, arg0, arg6, arg3 >> 16, arg4 >> 16);
+							method520(Draw2D.anIntArray178, arg0, arg6, arg3 >> 16, arg4 >> 16);
 							arg4 += local33;
 							arg3 += local3;
-							arg0 += Class10_Sub1_Sub1.anInt674;
+							arg0 += Draw2D.anInt674;
 						}
 					}
 				}
 			}
 		} else if (arg1 <= arg2) {
-			if (arg1 < Class10_Sub1_Sub1.anInt677) {
-				if (arg2 > Class10_Sub1_Sub1.anInt677) {
-					arg2 = Class10_Sub1_Sub1.anInt677;
+			if (arg1 < Draw2D.anInt677) {
+				if (arg2 > Draw2D.anInt677) {
+					arg2 = Draw2D.anInt677;
 				}
-				if (arg0 > Class10_Sub1_Sub1.anInt677) {
-					arg0 = Class10_Sub1_Sub1.anInt677;
+				if (arg0 > Draw2D.anInt677) {
+					arg0 = Draw2D.anInt677;
 				}
 				if (arg2 < arg0) {
 					arg3 = arg4 <<= 0x10;
@@ -1168,16 +1168,16 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg0 < 0) {
 										return;
 									}
-									method520(Class10_Sub1_Sub1.anIntArray178, arg1, arg6, arg3 >> 16, arg5 >> 16);
+									method520(Draw2D.anIntArray178, arg1, arg6, arg3 >> 16, arg5 >> 16);
 									arg3 += local3;
 									arg5 += local33;
-									arg1 += Class10_Sub1_Sub1.anInt674;
+									arg1 += Draw2D.anInt674;
 								}
 							}
-							method520(Class10_Sub1_Sub1.anIntArray178, arg1, arg6, arg3 >> 16, arg4 >> 16);
+							method520(Draw2D.anIntArray178, arg1, arg6, arg3 >> 16, arg4 >> 16);
 							arg3 += local3;
 							arg4 += local18;
-							arg1 += Class10_Sub1_Sub1.anInt674;
+							arg1 += Draw2D.anInt674;
 						}
 					} else {
 						arg0 -= arg2;
@@ -1191,16 +1191,16 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg0 < 0) {
 										return;
 									}
-									method520(Class10_Sub1_Sub1.anIntArray178, arg1, arg6, arg5 >> 16, arg3 >> 16);
+									method520(Draw2D.anIntArray178, arg1, arg6, arg5 >> 16, arg3 >> 16);
 									arg3 += local3;
 									arg5 += local33;
-									arg1 += Class10_Sub1_Sub1.anInt674;
+									arg1 += Draw2D.anInt674;
 								}
 							}
-							method520(Class10_Sub1_Sub1.anIntArray178, arg1, arg6, arg4 >> 16, arg3 >> 16);
+							method520(Draw2D.anIntArray178, arg1, arg6, arg4 >> 16, arg3 >> 16);
 							arg3 += local3;
 							arg4 += local18;
-							arg1 += Class10_Sub1_Sub1.anInt674;
+							arg1 += Draw2D.anInt674;
 						}
 					}
 				} else {
@@ -1227,16 +1227,16 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg2 < 0) {
 										return;
 									}
-									method520(Class10_Sub1_Sub1.anIntArray178, arg1, arg6, arg3 >> 16, arg4 >> 16);
+									method520(Draw2D.anIntArray178, arg1, arg6, arg3 >> 16, arg4 >> 16);
 									arg3 += local33;
 									arg4 += local18;
-									arg1 += Class10_Sub1_Sub1.anInt674;
+									arg1 += Draw2D.anInt674;
 								}
 							}
-							method520(Class10_Sub1_Sub1.anIntArray178, arg1, arg6, arg5 >> 16, arg4 >> 16);
+							method520(Draw2D.anIntArray178, arg1, arg6, arg5 >> 16, arg4 >> 16);
 							arg5 += local3;
 							arg4 += local18;
-							arg1 += Class10_Sub1_Sub1.anInt674;
+							arg1 += Draw2D.anInt674;
 						}
 					} else {
 						arg2 -= arg0;
@@ -1250,26 +1250,26 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg2 < 0) {
 										return;
 									}
-									method520(Class10_Sub1_Sub1.anIntArray178, arg1, arg6, arg4 >> 16, arg3 >> 16);
+									method520(Draw2D.anIntArray178, arg1, arg6, arg4 >> 16, arg3 >> 16);
 									arg3 += local33;
 									arg4 += local18;
-									arg1 += Class10_Sub1_Sub1.anInt674;
+									arg1 += Draw2D.anInt674;
 								}
 							}
-							method520(Class10_Sub1_Sub1.anIntArray178, arg1, arg6, arg4 >> 16, arg5 >> 16);
+							method520(Draw2D.anIntArray178, arg1, arg6, arg4 >> 16, arg5 >> 16);
 							arg5 += local3;
 							arg4 += local18;
-							arg1 += Class10_Sub1_Sub1.anInt674;
+							arg1 += Draw2D.anInt674;
 						}
 					}
 				}
 			}
-		} else if (arg2 < Class10_Sub1_Sub1.anInt677) {
-			if (arg0 > Class10_Sub1_Sub1.anInt677) {
-				arg0 = Class10_Sub1_Sub1.anInt677;
+		} else if (arg2 < Draw2D.anInt677) {
+			if (arg0 > Draw2D.anInt677) {
+				arg0 = Draw2D.anInt677;
 			}
-			if (arg1 > Class10_Sub1_Sub1.anInt677) {
-				arg1 = Class10_Sub1_Sub1.anInt677;
+			if (arg1 > Draw2D.anInt677) {
+				arg1 = Draw2D.anInt677;
 			}
 			if (arg0 < arg1) {
 				arg4 = arg5 <<= 0x10;
@@ -1295,16 +1295,16 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 								if (arg1 < 0) {
 									return;
 								}
-								method520(Class10_Sub1_Sub1.anIntArray178, arg2, arg6, arg4 >> 16, arg3 >> 16);
+								method520(Draw2D.anIntArray178, arg2, arg6, arg4 >> 16, arg3 >> 16);
 								arg4 += local18;
 								arg3 += local3;
-								arg2 += Class10_Sub1_Sub1.anInt674;
+								arg2 += Draw2D.anInt674;
 							}
 						}
-						method520(Class10_Sub1_Sub1.anIntArray178, arg2, arg6, arg4 >> 16, arg5 >> 16);
+						method520(Draw2D.anIntArray178, arg2, arg6, arg4 >> 16, arg5 >> 16);
 						arg4 += local18;
 						arg5 += local33;
-						arg2 += Class10_Sub1_Sub1.anInt674;
+						arg2 += Draw2D.anInt674;
 					}
 				} else {
 					arg1 -= arg0;
@@ -1318,16 +1318,16 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 								if (arg1 < 0) {
 									return;
 								}
-								method520(Class10_Sub1_Sub1.anIntArray178, arg2, arg6, arg3 >> 16, arg4 >> 16);
+								method520(Draw2D.anIntArray178, arg2, arg6, arg3 >> 16, arg4 >> 16);
 								arg4 += local18;
 								arg3 += local3;
-								arg2 += Class10_Sub1_Sub1.anInt674;
+								arg2 += Draw2D.anInt674;
 							}
 						}
-						method520(Class10_Sub1_Sub1.anIntArray178, arg2, arg6, arg5 >> 16, arg4 >> 16);
+						method520(Draw2D.anIntArray178, arg2, arg6, arg5 >> 16, arg4 >> 16);
 						arg4 += local18;
 						arg5 += local33;
-						arg2 += Class10_Sub1_Sub1.anInt674;
+						arg2 += Draw2D.anInt674;
 					}
 				}
 			} else {
@@ -1354,16 +1354,16 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 								if (arg0 < 0) {
 									return;
 								}
-								method520(Class10_Sub1_Sub1.anIntArray178, arg2, arg6, arg4 >> 16, arg5 >> 16);
+								method520(Draw2D.anIntArray178, arg2, arg6, arg4 >> 16, arg5 >> 16);
 								arg4 += local3;
 								arg5 += local33;
-								arg2 += Class10_Sub1_Sub1.anInt674;
+								arg2 += Draw2D.anInt674;
 							}
 						}
-						method520(Class10_Sub1_Sub1.anIntArray178, arg2, arg6, arg3 >> 16, arg5 >> 16);
+						method520(Draw2D.anIntArray178, arg2, arg6, arg3 >> 16, arg5 >> 16);
 						arg3 += local18;
 						arg5 += local33;
-						arg2 += Class10_Sub1_Sub1.anInt674;
+						arg2 += Draw2D.anInt674;
 					}
 				} else {
 					arg0 -= arg1;
@@ -1377,16 +1377,16 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 								if (arg0 < 0) {
 									return;
 								}
-								method520(Class10_Sub1_Sub1.anIntArray178, arg2, arg6, arg5 >> 16, arg4 >> 16);
+								method520(Draw2D.anIntArray178, arg2, arg6, arg5 >> 16, arg4 >> 16);
 								arg4 += local3;
 								arg5 += local33;
-								arg2 += Class10_Sub1_Sub1.anInt674;
+								arg2 += Draw2D.anInt674;
 							}
 						}
-						method520(Class10_Sub1_Sub1.anIntArray178, arg2, arg6, arg5 >> 16, arg3 >> 16);
+						method520(Draw2D.anIntArray178, arg2, arg6, arg5 >> 16, arg3 >> 16);
 						arg3 += local18;
 						arg5 += local33;
-						arg2 += Class10_Sub1_Sub1.anInt674;
+						arg2 += Draw2D.anInt674;
 					}
 				}
 			}
@@ -1395,8 +1395,8 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 
 	private static void method520( int[] arg0, int arg1, int arg2, int arg3, int arg4) {
 		if (aBoolean177) {
-			if (arg4 > Class10_Sub1_Sub1.anInt680) {
-				arg4 = Class10_Sub1_Sub1.anInt680;
+			if (arg4 > Draw2D.anInt680) {
+				arg4 = Draw2D.anInt680;
 			}
 			if (arg3 < 0) {
 				arg3 = 0;
@@ -1493,12 +1493,12 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 		}
 		int local298;
 		if (arg0 <= arg1 && arg0 <= arg2) {
-			if (arg0 < Class10_Sub1_Sub1.anInt677) {
-				if (arg1 > Class10_Sub1_Sub1.anInt677) {
-					arg1 = Class10_Sub1_Sub1.anInt677;
+			if (arg0 < Draw2D.anInt677) {
+				if (arg1 > Draw2D.anInt677) {
+					arg1 = Draw2D.anInt677;
 				}
-				if (arg2 > Class10_Sub1_Sub1.anInt677) {
-					arg2 = Class10_Sub1_Sub1.anInt677;
+				if (arg2 > Draw2D.anInt677) {
+					arg2 = Draw2D.anInt677;
 				}
 				if (arg1 < arg2) {
 					arg5 = arg3 <<= 0x10;
@@ -1533,23 +1533,23 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg2 < 0) {
 										return;
 									}
-									method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg0, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
+									method522(Draw2D.anIntArray178, local4, 0, 0, arg0, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
 									arg5 += local182;
 									arg4 += local155;
 									arg8 += local184;
 									arg7 += local157;
-									arg0 += Class10_Sub1_Sub1.anInt674;
+									arg0 += Draw2D.anInt674;
 									local46 += local66;
 									local76 += local96;
 									local106 += local126;
 								}
 							}
-							method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg0, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
+							method522(Draw2D.anIntArray178, local4, 0, 0, arg0, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
 							arg5 += local182;
 							arg3 += local128;
 							arg8 += local184;
 							arg6 += local130;
-							arg0 += Class10_Sub1_Sub1.anInt674;
+							arg0 += Draw2D.anInt674;
 							local46 += local66;
 							local76 += local96;
 							local106 += local126;
@@ -1566,23 +1566,23 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg2 < 0) {
 										return;
 									}
-									method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg0, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
+									method522(Draw2D.anIntArray178, local4, 0, 0, arg0, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
 									arg5 += local182;
 									arg4 += local155;
 									arg8 += local184;
 									arg7 += local157;
-									arg0 += Class10_Sub1_Sub1.anInt674;
+									arg0 += Draw2D.anInt674;
 									local46 += local66;
 									local76 += local96;
 									local106 += local126;
 								}
 							}
-							method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg0, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
+							method522(Draw2D.anIntArray178, local4, 0, 0, arg0, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
 							arg5 += local182;
 							arg3 += local128;
 							arg8 += local184;
 							arg6 += local130;
-							arg0 += Class10_Sub1_Sub1.anInt674;
+							arg0 += Draw2D.anInt674;
 							local46 += local66;
 							local76 += local96;
 							local106 += local126;
@@ -1621,23 +1621,23 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg1 < 0) {
 										return;
 									}
-									method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg0, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
+									method522(Draw2D.anIntArray178, local4, 0, 0, arg0, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
 									arg5 += local155;
 									arg3 += local128;
 									arg8 += local157;
 									arg6 += local130;
-									arg0 += Class10_Sub1_Sub1.anInt674;
+									arg0 += Draw2D.anInt674;
 									local46 += local66;
 									local76 += local96;
 									local106 += local126;
 								}
 							}
-							method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg0, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
+							method522(Draw2D.anIntArray178, local4, 0, 0, arg0, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
 							arg4 += local182;
 							arg3 += local128;
 							arg7 += local184;
 							arg6 += local130;
-							arg0 += Class10_Sub1_Sub1.anInt674;
+							arg0 += Draw2D.anInt674;
 							local46 += local66;
 							local76 += local96;
 							local106 += local126;
@@ -1654,23 +1654,23 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg1 < 0) {
 										return;
 									}
-									method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg0, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
+									method522(Draw2D.anIntArray178, local4, 0, 0, arg0, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
 									arg5 += local155;
 									arg3 += local128;
 									arg8 += local157;
 									arg6 += local130;
-									arg0 += Class10_Sub1_Sub1.anInt674;
+									arg0 += Draw2D.anInt674;
 									local46 += local66;
 									local76 += local96;
 									local106 += local126;
 								}
 							}
-							method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg0, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
+							method522(Draw2D.anIntArray178, local4, 0, 0, arg0, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
 							arg4 += local182;
 							arg3 += local128;
 							arg7 += local184;
 							arg6 += local130;
-							arg0 += Class10_Sub1_Sub1.anInt674;
+							arg0 += Draw2D.anInt674;
 							local46 += local66;
 							local76 += local96;
 							local106 += local126;
@@ -1679,12 +1679,12 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 				}
 			}
 		} else if (arg1 <= arg2) {
-			if (arg1 < Class10_Sub1_Sub1.anInt677) {
-				if (arg2 > Class10_Sub1_Sub1.anInt677) {
-					arg2 = Class10_Sub1_Sub1.anInt677;
+			if (arg1 < Draw2D.anInt677) {
+				if (arg2 > Draw2D.anInt677) {
+					arg2 = Draw2D.anInt677;
 				}
-				if (arg0 > Class10_Sub1_Sub1.anInt677) {
-					arg0 = Class10_Sub1_Sub1.anInt677;
+				if (arg0 > Draw2D.anInt677) {
+					arg0 = Draw2D.anInt677;
 				}
 				if (arg2 < arg0) {
 					arg3 = arg4 <<= 0x10;
@@ -1719,23 +1719,23 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg0 < 0) {
 										return;
 									}
-									method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg1, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
+									method522(Draw2D.anIntArray178, local4, 0, 0, arg1, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
 									arg3 += local128;
 									arg5 += local182;
 									arg6 += local130;
 									arg8 += local184;
-									arg1 += Class10_Sub1_Sub1.anInt674;
+									arg1 += Draw2D.anInt674;
 									local46 += local66;
 									local76 += local96;
 									local106 += local126;
 								}
 							}
-							method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg1, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
+							method522(Draw2D.anIntArray178, local4, 0, 0, arg1, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
 							arg3 += local128;
 							arg4 += local155;
 							arg6 += local130;
 							arg7 += local157;
-							arg1 += Class10_Sub1_Sub1.anInt674;
+							arg1 += Draw2D.anInt674;
 							local46 += local66;
 							local76 += local96;
 							local106 += local126;
@@ -1752,23 +1752,23 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg0 < 0) {
 										return;
 									}
-									method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg1, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
+									method522(Draw2D.anIntArray178, local4, 0, 0, arg1, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
 									arg3 += local128;
 									arg5 += local182;
 									arg6 += local130;
 									arg8 += local184;
-									arg1 += Class10_Sub1_Sub1.anInt674;
+									arg1 += Draw2D.anInt674;
 									local46 += local66;
 									local76 += local96;
 									local106 += local126;
 								}
 							}
-							method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg1, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
+							method522(Draw2D.anIntArray178, local4, 0, 0, arg1, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
 							arg3 += local128;
 							arg4 += local155;
 							arg6 += local130;
 							arg7 += local157;
-							arg1 += Class10_Sub1_Sub1.anInt674;
+							arg1 += Draw2D.anInt674;
 							local46 += local66;
 							local76 += local96;
 							local106 += local126;
@@ -1807,23 +1807,23 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg2 < 0) {
 										return;
 									}
-									method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg1, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
+									method522(Draw2D.anIntArray178, local4, 0, 0, arg1, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
 									arg3 += local182;
 									arg4 += local155;
 									arg6 += local184;
 									arg7 += local157;
-									arg1 += Class10_Sub1_Sub1.anInt674;
+									arg1 += Draw2D.anInt674;
 									local46 += local66;
 									local76 += local96;
 									local106 += local126;
 								}
 							}
-							method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg1, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
+							method522(Draw2D.anIntArray178, local4, 0, 0, arg1, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
 							arg5 += local128;
 							arg4 += local155;
 							arg8 += local130;
 							arg7 += local157;
-							arg1 += Class10_Sub1_Sub1.anInt674;
+							arg1 += Draw2D.anInt674;
 							local46 += local66;
 							local76 += local96;
 							local106 += local126;
@@ -1840,23 +1840,23 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 									if (arg2 < 0) {
 										return;
 									}
-									method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg1, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
+									method522(Draw2D.anIntArray178, local4, 0, 0, arg1, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
 									arg3 += local182;
 									arg4 += local155;
 									arg6 += local184;
 									arg7 += local157;
-									arg1 += Class10_Sub1_Sub1.anInt674;
+									arg1 += Draw2D.anInt674;
 									local46 += local66;
 									local76 += local96;
 									local106 += local126;
 								}
 							}
-							method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg1, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
+							method522(Draw2D.anIntArray178, local4, 0, 0, arg1, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
 							arg5 += local128;
 							arg4 += local155;
 							arg8 += local130;
 							arg7 += local157;
-							arg1 += Class10_Sub1_Sub1.anInt674;
+							arg1 += Draw2D.anInt674;
 							local46 += local66;
 							local76 += local96;
 							local106 += local126;
@@ -1864,12 +1864,12 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 					}
 				}
 			}
-		} else if (arg2 < Class10_Sub1_Sub1.anInt677) {
-			if (arg0 > Class10_Sub1_Sub1.anInt677) {
-				arg0 = Class10_Sub1_Sub1.anInt677;
+		} else if (arg2 < Draw2D.anInt677) {
+			if (arg0 > Draw2D.anInt677) {
+				arg0 = Draw2D.anInt677;
 			}
-			if (arg1 > Class10_Sub1_Sub1.anInt677) {
-				arg1 = Class10_Sub1_Sub1.anInt677;
+			if (arg1 > Draw2D.anInt677) {
+				arg1 = Draw2D.anInt677;
 			}
 			if (arg0 < arg1) {
 				arg4 = arg5 <<= 0x10;
@@ -1904,23 +1904,23 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 								if (arg1 < 0) {
 									return;
 								}
-								method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg2, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
+								method522(Draw2D.anIntArray178, local4, 0, 0, arg2, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
 								arg4 += local155;
 								arg3 += local128;
 								arg7 += local157;
 								arg6 += local130;
-								arg2 += Class10_Sub1_Sub1.anInt674;
+								arg2 += Draw2D.anInt674;
 								local46 += local66;
 								local76 += local96;
 								local106 += local126;
 							}
 						}
-						method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg2, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
+						method522(Draw2D.anIntArray178, local4, 0, 0, arg2, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
 						arg4 += local155;
 						arg5 += local182;
 						arg7 += local157;
 						arg8 += local184;
-						arg2 += Class10_Sub1_Sub1.anInt674;
+						arg2 += Draw2D.anInt674;
 						local46 += local66;
 						local76 += local96;
 						local106 += local126;
@@ -1937,23 +1937,23 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 								if (arg1 < 0) {
 									return;
 								}
-								method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg2, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
+								method522(Draw2D.anIntArray178, local4, 0, 0, arg2, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
 								arg4 += local155;
 								arg3 += local128;
 								arg7 += local157;
 								arg6 += local130;
-								arg2 += Class10_Sub1_Sub1.anInt674;
+								arg2 += Draw2D.anInt674;
 								local46 += local66;
 								local76 += local96;
 								local106 += local126;
 							}
 						}
-						method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg2, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
+						method522(Draw2D.anIntArray178, local4, 0, 0, arg2, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
 						arg4 += local155;
 						arg5 += local182;
 						arg7 += local157;
 						arg8 += local184;
-						arg2 += Class10_Sub1_Sub1.anInt674;
+						arg2 += Draw2D.anInt674;
 						local46 += local66;
 						local76 += local96;
 						local106 += local126;
@@ -1992,23 +1992,23 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 								if (arg0 < 0) {
 									return;
 								}
-								method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg2, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
+								method522(Draw2D.anIntArray178, local4, 0, 0, arg2, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
 								arg4 += local128;
 								arg5 += local182;
 								arg7 += local130;
 								arg8 += local184;
-								arg2 += Class10_Sub1_Sub1.anInt674;
+								arg2 += Draw2D.anInt674;
 								local46 += local66;
 								local76 += local96;
 								local106 += local126;
 							}
 						}
-						method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg2, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
+						method522(Draw2D.anIntArray178, local4, 0, 0, arg2, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
 						arg3 += local155;
 						arg5 += local182;
 						arg6 += local157;
 						arg8 += local184;
-						arg2 += Class10_Sub1_Sub1.anInt674;
+						arg2 += Draw2D.anInt674;
 						local46 += local66;
 						local76 += local96;
 						local106 += local126;
@@ -2025,23 +2025,23 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 								if (arg0 < 0) {
 									return;
 								}
-								method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg2, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
+								method522(Draw2D.anIntArray178, local4, 0, 0, arg2, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
 								arg4 += local128;
 								arg5 += local182;
 								arg7 += local130;
 								arg8 += local184;
-								arg2 += Class10_Sub1_Sub1.anInt674;
+								arg2 += Draw2D.anInt674;
 								local46 += local66;
 								local76 += local96;
 								local106 += local126;
 							}
 						}
-						method522(Class10_Sub1_Sub1.anIntArray178, local4, 0, 0, arg2, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
+						method522(Draw2D.anIntArray178, local4, 0, 0, arg2, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
 						arg3 += local155;
 						arg5 += local182;
 						arg6 += local157;
 						arg8 += local184;
-						arg2 += Class10_Sub1_Sub1.anInt674;
+						arg2 += Draw2D.anInt674;
 						local46 += local66;
 						local76 += local96;
 						local106 += local126;
@@ -2059,8 +2059,8 @@ public final class Class10_Sub1_Sub1_Sub4 extends Class10_Sub1_Sub1 {
 		int local40;
 		if (aBoolean177) {
 			local15 = (arg8 - arg7) / (arg6 - arg5);
-			if (arg6 > Class10_Sub1_Sub1.anInt680) {
-				arg6 = Class10_Sub1_Sub1.anInt680;
+			if (arg6 > Draw2D.anInt680) {
+				arg6 = Draw2D.anInt680;
 			}
 			if (arg5 < 0) {
 				arg7 -= arg5 * local15;

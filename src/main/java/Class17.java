@@ -194,16 +194,16 @@ public final class Class17 {
 			int local103 = Class10_Sub1_Sub1_Sub4.anInt686;
 			int local105 = Class10_Sub1_Sub1_Sub4.anInt687;
 			int[] local107 = Class10_Sub1_Sub1_Sub4.anIntArray183;
-			int[] local109 = Class10_Sub1_Sub1.anIntArray178;
-			int local111 = Class10_Sub1_Sub1.anInt674;
-			int local113 = Class10_Sub1_Sub1.anInt675;
-			int local115 = Class10_Sub1_Sub1.anInt678;
-			int local117 = Class10_Sub1_Sub1.anInt679;
-			int local119 = Class10_Sub1_Sub1.anInt676;
-			int local121 = Class10_Sub1_Sub1.anInt677;
+			int[] local109 = Draw2D.anIntArray178;
+			int local111 = Draw2D.anInt674;
+			int local113 = Draw2D.anInt675;
+			int local115 = Draw2D.anInt678;
+			int local117 = Draw2D.anInt679;
+			int local119 = Draw2D.anInt676;
+			int local121 = Draw2D.anInt677;
 			Class10_Sub1_Sub1_Sub4.aBoolean179 = false;
-			Class10_Sub1_Sub1.method494(32, 32, local9.anIntArray37);
-			Class10_Sub1_Sub1.method499(32, 0, 0, 32, 0);
+			Draw2D.bind(32, 32, local9.anIntArray37);
+			Draw2D.method499(32, 0, 0, 32, 0);
 			Class10_Sub1_Sub1_Sub4.method507(568);
 			int local141 = local30.anInt200;
 			if (arg0 == -1) {
@@ -268,8 +268,8 @@ public final class Class17 {
 			if (arg0 == 0) {
 				aClass34_4.method388(local9, (long) arg2);
 			}
-			Class10_Sub1_Sub1.method494(local111, local113, local109);
-			Class10_Sub1_Sub1.method496(local119, local115, local121, local117);
+			Draw2D.bind(local111, local113, local109);
+			Draw2D.method496(local119, local115, local121, local117);
 			Class10_Sub1_Sub1_Sub4.anInt686 = local103;
 			Class10_Sub1_Sub1_Sub4.anInt687 = local105;
 			Class10_Sub1_Sub1_Sub4.anIntArray183 = local107;

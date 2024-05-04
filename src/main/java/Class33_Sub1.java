@@ -57,7 +57,7 @@ public final class Class33_Sub1 extends Class33 implements Runnable {
 
 	private Class10_Sub1_Sub4 aClass10_Sub1_Sub4_1;
 
-	private client aClient5;
+	private Client aClient5;
 
 	private int anInt796;
 
@@ -527,7 +527,7 @@ public final class Class33_Sub1 extends Class33 implements Runnable {
 		}
 	}
 
-	public void method564( Class2 arg0, client arg1) {
+	public void method564( Class2 arg0, Client arg1) {
 		String[] local20 = new String[] { "model_version", "anim_version", "midi_version", "map_version" };
 		int local36;
 		int local56;
@@ -591,7 +591,7 @@ public final class Class33_Sub1 extends Class33 implements Runnable {
 		}
 		this.aClient5 = arg1;
 		this.aBoolean205 = true;
-		this.aClient5.method587(this, 2);
+		this.aClient5.startThread(this, 2);
 	}
 
 	public void method565() {
@@ -708,7 +708,7 @@ public final class Class33_Sub1 extends Class33 implements Runnable {
 							return;
 						}
 						this.aLong26 = local9;
-						this.aSocket2 = this.aClient5.method607(client.anInt869 + 43594);
+						this.aSocket2 = this.aClient5.method607(Client.portOffset + 43594);
 						this.anInputStream2 = this.aSocket2.getInputStream();
 						this.anOutputStream2 = this.aSocket2.getOutputStream();
 						this.anOutputStream2.write(15);

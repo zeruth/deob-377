@@ -18,9 +18,9 @@ public final class Class7 implements Runnable {
 
 	public int[] anIntArray12 = new int[500];
 
-	private client aClient1;
+	private Client aClient1;
 
-	public Class7( client arg0, byte arg1) {
+	public Class7(Client arg0, byte arg1) {
 		try {
 			this.aClient1 = arg0;
 		} catch ( RuntimeException local31) {

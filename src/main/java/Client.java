@@ -21,13 +21,13 @@ import java.util.zip.CRC32;
 
 import sign.signlink;
 
-public final class client extends Applet_Sub1 {
+public final class Client extends GameShell {
 
 	private static boolean aBoolean217;
 
 	private static int anInt858;
 
-	public static int anInt869;
+	public static int portOffset;
 
 	private static boolean aBoolean223;
 
@@ -65,9 +65,9 @@ public final class client extends Applet_Sub1 {
 
 	private static BigInteger aBigInteger1 = new BigInteger("7162900525229798032761816791230527296329313291232324290237849263501208207972894053929065636522363163621000728841182238772712427862772219676577293600221789");
 
-	private static int anInt868 = 10;
+	private static int nodeId = 10;
 
-	private static boolean aBoolean222 = true;
+	private static boolean members = true;
 
 	private static int[] anIntArray228 = new int[99];
 
@@ -175,23 +175,23 @@ public final class client extends Applet_Sub1 {
 
 	private int anInt862;
 
-	private Class19 aClass19_3;
+	private PixMap aClass19_3;
 
-	private Class19 aClass19_4;
+	private PixMap aClass19_4;
 
-	private Class19 aClass19_5;
+	private PixMap aClass19_5;
 
-	private Class19 aClass19_6;
+	private PixMap aClass19_6;
 
-	private Class19 aClass19_7;
+	private PixMap aClass19_7;
 
-	private Class19 aClass19_8;
+	private PixMap aClass19_8;
 
-	private Class19 aClass19_9;
+	private PixMap aClass19_9;
 
-	private Class19 aClass19_10;
+	private PixMap aClass19_10;
 
-	private Class19 aClass19_11;
+	private PixMap aClass19_11;
 
 	private int anInt863;
 
@@ -361,11 +361,11 @@ public final class client extends Applet_Sub1 {
 
 	private int anInt946;
 
-	private Class19 aClass19_12;
+	private PixMap aClass19_12;
 
-	private Class19 aClass19_13;
+	private PixMap aClass19_13;
 
-	private Class19 aClass19_14;
+	private PixMap aClass19_14;
 
 	private int anInt948;
 
@@ -417,13 +417,13 @@ public final class client extends Applet_Sub1 {
 
 	private int anInt970;
 
-	private Class19 aClass19_15;
+	private PixMap aClass19_15;
 
-	private Class19 aClass19_16;
+	private PixMap aClass19_16;
 
-	private Class19 aClass19_17;
+	private PixMap aClass19_17;
 
-	private Class19 aClass19_18;
+	private PixMap aClass19_18;
 
 	private Class23 aClass23_1;
 
@@ -463,23 +463,23 @@ public final class client extends Applet_Sub1 {
 
 	private int anInt986;
 
-	private Class19 aClass19_19;
+	private PixMap aClass19_19;
 
-	private Class19 aClass19_20;
+	private PixMap aClass19_20;
 
-	private Class19 aClass19_21;
+	private PixMap aClass19_21;
 
-	private Class19 aClass19_22;
+	private PixMap aClass19_22;
 
-	private Class19 aClass19_23;
+	private PixMap aClass19_23;
 
-	private Class19 aClass19_24;
+	private PixMap aClass19_24;
 
-	private Class19 aClass19_25;
+	private PixMap aClass19_25;
 
-	private Class19 aClass19_26;
+	private PixMap aClass19_26;
 
-	private Class19 aClass19_27;
+	private PixMap aClass19_27;
 
 	private int anInt987;
 
@@ -797,8 +797,6 @@ public final class client extends Applet_Sub1 {
 
 	private long[] aLongArray3 = new long[100];
 
-	private boolean aBoolean239 = false;
-
 	private int[] anIntArray246 = new int[1000];
 
 	private int[] anIntArray247 = new int[1000];
@@ -1031,28 +1029,28 @@ public final class client extends Applet_Sub1 {
 		try {
 			System.out.println("RS2 user client - release #" + 377);
 			if (arg0.length == 5) {
-				anInt868 = Integer.parseInt(arg0[0]);
-				anInt869 = Integer.parseInt(arg0[1]);
+				nodeId = Integer.parseInt(arg0[0]);
+				portOffset = Integer.parseInt(arg0[1]);
 				if (arg0[2].equals("lowmem")) {
-					method676();
+					setLowMemory();
 				} else if (arg0[2].equals("highmem")) {
-					method602();
+					setHighMemory();
 				} else {
 					System.out.println("Usage: node-id, port-offset, [lowmem/highmem], [free/members], storeid");
 					return;
 				}
 				if (arg0[3].equals("free")) {
-					aBoolean222 = false;
+					members = false;
 				} else if (arg0[3].equals("members")) {
-					aBoolean222 = true;
+					members = true;
 				} else {
 					System.out.println("Usage: node-id, port-offset, [lowmem/highmem], [free/members], storeid");
 					return;
 				}
-				signlink.anInt1059 = Integer.parseInt(arg0[4]);
+				signlink.storeId = Integer.parseInt(arg0[4]);
 				signlink.startpriv(InetAddress.getLocalHost());
-				client local87 = new client();
-				local87.method576(anInt910);
+				Client client = new Client();
+				client.initApplication(anInt910);
 			} else {
 				System.out.println("Usage: node-id, port-offset, [lowmem/highmem], [free/members], storeid");
 			}
@@ -1075,7 +1073,7 @@ public final class client extends Applet_Sub1 {
 		}
 	}
 
-	private static void method602() {
+	private static void setHighMemory() {
 		try {
 			Class23.aBoolean93 = false;
 			Class10_Sub1_Sub1_Sub4.aBoolean176 = false;
@@ -1116,7 +1114,7 @@ public final class client extends Applet_Sub1 {
 		}
 	}
 
-	private static void method676() {
+	private static void setLowMemory() {
 		try {
 			Class23.aBoolean93 = true;
 			Class10_Sub1_Sub1_Sub4.aBoolean176 = true;
@@ -1344,147 +1342,142 @@ public final class client extends Applet_Sub1 {
 	}
 
 	@Override
-	protected void method583( int arg0) {
-		try {
-			this.aClass10_Sub1_Sub2_Sub3_Sub2Array1 = null;
-			this.anIntArray229 = null;
-			this.anIntArray230 = null;
-			this.aClass10_Sub1_Sub3Array1 = null;
-			this.anIntArray269 = null;
-			this.aClass19_3 = null;
-			this.aClass19_4 = null;
-			this.aClass19_5 = null;
-			this.aClass19_6 = null;
-			this.aClass10_Sub1_Sub1_Sub3_1 = null;
-			this.aClass10_Sub1_Sub1_Sub3_2 = null;
-			this.aClass10_Sub1_Sub1_Sub3_3 = null;
-			this.aClass10_Sub1_Sub1_Sub3_4 = null;
-			this.aClass10_Sub1_Sub1_Sub3_5 = null;
-			this.aClass10_Sub1_Sub1_Sub3_9 = null;
-			this.aClass10_Sub1_Sub1_Sub3_10 = null;
-			this.aClass10_Sub1_Sub1_Sub3_11 = null;
-			this.aClass10_Sub1_Sub1_Sub3_12 = null;
-			this.aClass10_Sub1_Sub1_Sub3_13 = null;
-			this.aStringArray8 = null;
-			this.aLongArray4 = null;
-			this.anIntArray265 = null;
-			this.aClass19_12 = null;
-			this.aClass19_13 = null;
-			this.aClass19_14 = null;
-			this.anIntArray244 = null;
-			this.anIntArray216 = null;
-			this.aByteArrayArray5 = null;
-			this.aByteArrayArray6 = null;
-			this.anIntArray217 = null;
-			this.anIntArray218 = null;
-			this.aClass19_24 = null;
-			this.aClass19_25 = null;
-			this.aClass19_26 = null;
-			this.aClass19_27 = null;
-			this.anIntArrayArray22 = null;
-			this.anIntArrayArray25 = null;
-			this.anIntArray254 = null;
-			this.anIntArray255 = null;
-			this.aClass10_Sub1_Sub1_Sub1_12 = null;
-			this.aClass10_Sub1_Sub1_Sub1_13 = null;
-			this.aClass10_Sub1_Sub1_Sub1_14 = null;
-			this.aClass10_Sub1_Sub1_Sub1_15 = null;
-			this.aClass10_Sub1_Sub1_Sub1_16 = null;
-			if (this.aClass7_1 != null) {
-				this.aClass7_1.aBoolean12 = false;
-			}
-			this.aClass7_1 = null;
-			this.aClass10_Sub1_Sub1_Sub3_6 = null;
-			this.aClass10_Sub1_Sub1_Sub3_7 = null;
-			this.aClass10_Sub1_Sub1_Sub3_8 = null;
-			this.aClass19_7 = null;
-			this.aClass19_8 = null;
-			this.aClass19_9 = null;
-			this.aClass19_10 = null;
-			this.aClass19_11 = null;
-			this.anIntArrayArrayArray8 = null;
-			this.aByteArrayArrayArray8 = null;
-			this.aClass23_1 = null;
-			this.aClass47Array1 = null;
-			this.aClass10_Sub1_Sub1_Sub1_11 = null;
-			this.aClass19_22 = null;
-			this.aClass19_23 = null;
-			this.aClass19_19 = null;
-			this.aClass19_20 = null;
-			this.aClass19_21 = null;
-			this.aClass10_Sub1_Sub1_Sub1_10 = null;
-			this.aClass10_Sub1_Sub1_Sub1Array8 = null;
-			this.aClass10_Sub1_Sub1_Sub1Array10 = null;
-			this.aClass10_Sub1_Sub1_Sub1Array7 = null;
-			this.aClass10_Sub1_Sub1_Sub1Array5 = null;
-			this.aClass10_Sub1_Sub1_Sub1Array4 = null;
-			this.method625();
-			this.aClass10_Sub1_Sub3_7 = null;
-			this.aClass10_Sub1_Sub3_6 = null;
-			this.aClass10_Sub1_Sub3_9 = null;
-			this.aClass19_15 = null;
-			this.aClass19_16 = null;
-			this.aClass19_17 = null;
-			this.aClass19_18 = null;
-			this.aClass10_Sub1_Sub1_Sub3_16 = null;
-			this.aClass10_Sub1_Sub1_Sub3_17 = null;
-			this.aClass10_Sub1_Sub1_Sub3_18 = null;
-			try {
-				if (this.aClass18_1 != null) {
-					this.aClass18_1.method116();
-				}
-			} catch ( Exception local254) {
-			}
-			this.aClass18_1 = null;
-			this.anIntArray246 = null;
-			this.anIntArray247 = null;
-			this.aClass10_Sub1_Sub1_Sub1Array9 = null;
-			this.aClass10_Sub1_Sub2_Sub3_Sub1Array1 = null;
-			this.anIntArray256 = null;
-			this.aByteArray21 = null;
-			this.aClass10_Sub1_Sub3_8 = null;
-			this.aClass10_Sub1_Sub1_Sub3Array5 = null;
-			this.aClass10_Sub1_Sub1_Sub1Array6 = null;
-			this.anIntArrayArray23 = null;
-			this.aClass10_Sub1_Sub1_Sub3Array2 = null;
-			this.aClass6_12 = null;
-			this.aClass6_10 = null;
-			this.aClass10_Sub1_Sub1_Sub1_7 = null;
-			if (this.aClass33_Sub1_1 != null) {
-				this.aClass33_Sub1_1.method568();
-			}
-			this.aClass33_Sub1_1 = null;
-			this.anIntArray231 = null;
-			this.anIntArray232 = null;
-			this.anIntArray233 = null;
-			this.anIntArray234 = null;
-			this.aStringArray12 = null;
-			this.aClass6ArrayArrayArray1 = null;
-			boolean local330 = false;
-			this.aClass6_11 = null;
-			this.method716();
-			Class48.method533();
-			Class38.method401();
-			Class17.method114();
-			Class14.method94();
-			Class16.aClass16Array1 = null;
-			Class49.aClass49Array1 = null;
-			Class4.aClass4Array1 = null;
-			Class15.aClass15Array1 = null;
-			Class28.aClass28Array1 = null;
-			Class28.aClass34_5 = null;
-			Class44.aClass44Array1 = null;
-			super.aClass19_2 = null;
-			Class10_Sub1_Sub2_Sub3_Sub2.aClass34_9 = null;
-			Class10_Sub1_Sub1_Sub4.method506();
-			Class23.method189();
-			Class10_Sub1_Sub2_Sub4.method267();
-			Class22.method167();
-			System.gc();
-		} catch ( RuntimeException local374) {
-			signlink.reporterror("77909, " + arg0 + ", " + local374.toString());
-			throw new RuntimeException();
+	protected void unload() {
+		this.aClass10_Sub1_Sub2_Sub3_Sub2Array1 = null;
+		this.anIntArray229 = null;
+		this.anIntArray230 = null;
+		this.aClass10_Sub1_Sub3Array1 = null;
+		this.anIntArray269 = null;
+		this.aClass19_3 = null;
+		this.aClass19_4 = null;
+		this.aClass19_5 = null;
+		this.aClass19_6 = null;
+		this.aClass10_Sub1_Sub1_Sub3_1 = null;
+		this.aClass10_Sub1_Sub1_Sub3_2 = null;
+		this.aClass10_Sub1_Sub1_Sub3_3 = null;
+		this.aClass10_Sub1_Sub1_Sub3_4 = null;
+		this.aClass10_Sub1_Sub1_Sub3_5 = null;
+		this.aClass10_Sub1_Sub1_Sub3_9 = null;
+		this.aClass10_Sub1_Sub1_Sub3_10 = null;
+		this.aClass10_Sub1_Sub1_Sub3_11 = null;
+		this.aClass10_Sub1_Sub1_Sub3_12 = null;
+		this.aClass10_Sub1_Sub1_Sub3_13 = null;
+		this.aStringArray8 = null;
+		this.aLongArray4 = null;
+		this.anIntArray265 = null;
+		this.aClass19_12 = null;
+		this.aClass19_13 = null;
+		this.aClass19_14 = null;
+		this.anIntArray244 = null;
+		this.anIntArray216 = null;
+		this.aByteArrayArray5 = null;
+		this.aByteArrayArray6 = null;
+		this.anIntArray217 = null;
+		this.anIntArray218 = null;
+		this.aClass19_24 = null;
+		this.aClass19_25 = null;
+		this.aClass19_26 = null;
+		this.aClass19_27 = null;
+		this.anIntArrayArray22 = null;
+		this.anIntArrayArray25 = null;
+		this.anIntArray254 = null;
+		this.anIntArray255 = null;
+		this.aClass10_Sub1_Sub1_Sub1_12 = null;
+		this.aClass10_Sub1_Sub1_Sub1_13 = null;
+		this.aClass10_Sub1_Sub1_Sub1_14 = null;
+		this.aClass10_Sub1_Sub1_Sub1_15 = null;
+		this.aClass10_Sub1_Sub1_Sub1_16 = null;
+		if (this.aClass7_1 != null) {
+			this.aClass7_1.aBoolean12 = false;
 		}
+		this.aClass7_1 = null;
+		this.aClass10_Sub1_Sub1_Sub3_6 = null;
+		this.aClass10_Sub1_Sub1_Sub3_7 = null;
+		this.aClass10_Sub1_Sub1_Sub3_8 = null;
+		this.aClass19_7 = null;
+		this.aClass19_8 = null;
+		this.aClass19_9 = null;
+		this.aClass19_10 = null;
+		this.aClass19_11 = null;
+		this.anIntArrayArrayArray8 = null;
+		this.aByteArrayArrayArray8 = null;
+		this.aClass23_1 = null;
+		this.aClass47Array1 = null;
+		this.aClass10_Sub1_Sub1_Sub1_11 = null;
+		this.aClass19_22 = null;
+		this.aClass19_23 = null;
+		this.aClass19_19 = null;
+		this.aClass19_20 = null;
+		this.aClass19_21 = null;
+		this.aClass10_Sub1_Sub1_Sub1_10 = null;
+		this.aClass10_Sub1_Sub1_Sub1Array8 = null;
+		this.aClass10_Sub1_Sub1_Sub1Array10 = null;
+		this.aClass10_Sub1_Sub1_Sub1Array7 = null;
+		this.aClass10_Sub1_Sub1_Sub1Array5 = null;
+		this.aClass10_Sub1_Sub1_Sub1Array4 = null;
+		this.method625();
+		this.aClass10_Sub1_Sub3_7 = null;
+		this.aClass10_Sub1_Sub3_6 = null;
+		this.aClass10_Sub1_Sub3_9 = null;
+		this.aClass19_15 = null;
+		this.aClass19_16 = null;
+		this.aClass19_17 = null;
+		this.aClass19_18 = null;
+		this.aClass10_Sub1_Sub1_Sub3_16 = null;
+		this.aClass10_Sub1_Sub1_Sub3_17 = null;
+		this.aClass10_Sub1_Sub1_Sub3_18 = null;
+		try {
+			if (this.aClass18_1 != null) {
+				this.aClass18_1.method116();
+			}
+		} catch ( Exception local254) {
+		}
+		this.aClass18_1 = null;
+		this.anIntArray246 = null;
+		this.anIntArray247 = null;
+		this.aClass10_Sub1_Sub1_Sub1Array9 = null;
+		this.aClass10_Sub1_Sub2_Sub3_Sub1Array1 = null;
+		this.anIntArray256 = null;
+		this.aByteArray21 = null;
+		this.aClass10_Sub1_Sub3_8 = null;
+		this.aClass10_Sub1_Sub1_Sub3Array5 = null;
+		this.aClass10_Sub1_Sub1_Sub1Array6 = null;
+		this.anIntArrayArray23 = null;
+		this.aClass10_Sub1_Sub1_Sub3Array2 = null;
+		this.aClass6_12 = null;
+		this.aClass6_10 = null;
+		this.aClass10_Sub1_Sub1_Sub1_7 = null;
+		if (this.aClass33_Sub1_1 != null) {
+			this.aClass33_Sub1_1.method568();
+		}
+		this.aClass33_Sub1_1 = null;
+		this.anIntArray231 = null;
+		this.anIntArray232 = null;
+		this.anIntArray233 = null;
+		this.anIntArray234 = null;
+		this.aStringArray12 = null;
+		this.aClass6ArrayArrayArray1 = null;
+		boolean local330 = false;
+		this.aClass6_11 = null;
+		this.method716();
+		Class48.method533();
+		Class38.method401();
+		Class17.method114();
+		Class14.method94();
+		Class16.aClass16Array1 = null;
+		Class49.aClass49Array1 = null;
+		Class4.aClass4Array1 = null;
+		Class15.aClass15Array1 = null;
+		Class28.aClass28Array1 = null;
+		Class28.aClass34_5 = null;
+		Class44.aClass44Array1 = null;
+		super.gameSurface = null;
+		Class10_Sub1_Sub2_Sub3_Sub2.aClass34_9 = null;
+		Class10_Sub1_Sub1_Sub4.method506();
+		Class23.method189();
+		Class10_Sub1_Sub2_Sub4.method267();
+		Class22.method167();
+		System.gc();
 	}
 
 	private void method596() {
@@ -3073,7 +3066,7 @@ public final class client extends Applet_Sub1 {
 					while (!local1928) {
 						local1928 = true;
 						for (local1041 = 0; local1041 < this.anInt838 - 1; local1041++) {
-							if (this.anIntArray265[local1041] != anInt868 && this.anIntArray265[local1041 + 1] == anInt868 || this.anIntArray265[local1041] == 0 && this.anIntArray265[local1041 + 1] != 0) {
+							if (this.anIntArray265[local1041] != nodeId && this.anIntArray265[local1041 + 1] == nodeId || this.anIntArray265[local1041] == 0 && this.anIntArray265[local1041 + 1] != 0) {
 								local1967 = this.anIntArray265[local1041];
 								this.anIntArray265[local1041] = this.anIntArray265[local1041 + 1];
 								this.anIntArray265[local1041 + 1] = local1967;
@@ -4023,7 +4016,7 @@ public final class client extends Applet_Sub1 {
 	private String method612() {
 		try {
 			if (signlink.mainapp == null) {
-				return super.aFrame_Sub1_2 == null ? super.getDocumentBase().getHost().toLowerCase() : "runescape.com";
+				return super.frame == null ? super.getDocumentBase().getHost().toLowerCase() : "runescape.com";
 			} else {
 				return signlink.mainapp.getDocumentBase().getHost().toLowerCase();
 			}
@@ -4746,10 +4739,10 @@ public final class client extends Applet_Sub1 {
 			this.aClass10_Sub1_Sub1_Sub1_3 = new Class10_Sub1_Sub1_Sub1(128, 265);
 			this.aClass10_Sub1_Sub1_Sub1_4 = new Class10_Sub1_Sub1_Sub1(128, 265);
 			for ( int local62 = 0; local62 < 33920; local62++) {
-				this.aClass10_Sub1_Sub1_Sub1_3.anIntArray37[local62] = this.aClass19_22.anIntArray56[local62];
+				this.aClass10_Sub1_Sub1_Sub1_3.anIntArray37[local62] = this.aClass19_22.pixels[local62];
 			}
 			for ( int local80 = 0; local80 < 33920; local80++) {
-				this.aClass10_Sub1_Sub1_Sub1_4.anIntArray37[local80] = this.aClass19_23.anIntArray56[local80];
+				this.aClass10_Sub1_Sub1_Sub1_4.anIntArray37[local80] = this.aClass19_23.pixels[local80];
 			}
 			this.anIntArray272 = new int[256];
 			for ( int local102 = 0; local102 < 64; local102++) {
@@ -4796,11 +4789,11 @@ public final class client extends Applet_Sub1 {
 			this.method658(null);
 			this.anIntArray249 = new int[32768];
 			this.anIntArray250 = new int[32768];
-			this.method588(10, "Connecting to fileserver");
+			this.drawProgress(10, "Connecting to fileserver");
 			if (!this.aBoolean257) {
 				this.aBoolean266 = true;
 				this.aBoolean257 = true;
-				this.method587(this, 2);
+				this.startThread(this, 2);
 			}
 		} catch ( RuntimeException local356) {
 			signlink.reporterror("73326, " + false + ", " + local356.toString());
@@ -4977,21 +4970,21 @@ public final class client extends Applet_Sub1 {
 		try {
 			this.aClass10_Sub1_Sub1_Sub3_14.method440(arg4, arg1);
 			this.aClass10_Sub1_Sub1_Sub3_15.method440(arg4 + arg2 - 16, arg1);
-			Class10_Sub1_Sub1.method499(arg2 - 32, arg4 + 16, this.anInt871, 16, arg1);
+			Draw2D.method499(arg2 - 32, arg4 + 16, this.anInt871, 16, arg1);
 			int local35 = (arg2 - 32) * arg2 / arg3;
 			if (local35 < 8) {
 				local35 = 8;
 			}
 			int local52 = (arg2 - local35 - 32) * arg0 / (arg3 - arg2);
-			Class10_Sub1_Sub1.method499(local35, arg4 + local52 + 16, this.anInt937, 16, arg1);
-			Class10_Sub1_Sub1.method504(arg1, this.anInt961, local35, arg4 + local52 + 16);
-			Class10_Sub1_Sub1.method504(arg1 + 1, this.anInt961, local35, arg4 + local52 + 16);
-			Class10_Sub1_Sub1.method502(arg1, this.anInt961, arg4 + local52 + 16, 16);
-			Class10_Sub1_Sub1.method502(arg1, this.anInt961, arg4 + local52 + 17, 16);
-			Class10_Sub1_Sub1.method504(arg1 + 15, this.anInt1032, local35, arg4 + local52 + 16);
-			Class10_Sub1_Sub1.method504(arg1 + 14, this.anInt1032, local35 - 1, arg4 + 17 + local52);
-			Class10_Sub1_Sub1.method502(arg1, this.anInt1032, arg4 + local52 + local35 + 15, 16);
-			Class10_Sub1_Sub1.method502(arg1 + 1, this.anInt1032, arg4 + local52 + local35 + 14, 15);
+			Draw2D.method499(local35, arg4 + local52 + 16, this.anInt937, 16, arg1);
+			Draw2D.method504(arg1, this.anInt961, local35, arg4 + local52 + 16);
+			Draw2D.method504(arg1 + 1, this.anInt961, local35, arg4 + local52 + 16);
+			Draw2D.method502(arg1, this.anInt961, arg4 + local52 + 16, 16);
+			Draw2D.method502(arg1, this.anInt961, arg4 + local52 + 17, 16);
+			Draw2D.method504(arg1 + 15, this.anInt1032, local35, arg4 + local52 + 16);
+			Draw2D.method504(arg1 + 14, this.anInt1032, local35 - 1, arg4 + 17 + local52);
+			Draw2D.method502(arg1, this.anInt1032, arg4 + local52 + local35 + 15, 16);
+			Draw2D.method502(arg1 + 1, this.anInt1032, arg4 + local52 + local35 + 14, 15);
 		} catch ( RuntimeException local173) {
 			signlink.reporterror("30245, " + true + ", " + arg0 + ", " + arg1 + ", " + arg2 + ", " + arg3 + ", " + arg4 + ", " + local173.toString());
 			throw new RuntimeException();
@@ -5214,7 +5207,7 @@ public final class client extends Applet_Sub1 {
 			local35 = 0;
 			while (local3 == null) {
 				String local62 = "Unknown error";
-				this.method588(arg2, "Requesting " + arg4);
+				this.drawProgress(arg2, "Requesting " + arg4);
 				int local77;
 				try {
 					local77 = 0;
@@ -5243,7 +5236,7 @@ public final class client extends Applet_Sub1 {
 						local112 += local146;
 						int local175 = local112 * 100 / local110;
 						if (local175 != local77) {
-							this.method588(arg2, "Loading " + arg4 + " - " + local175 + "%");
+							this.drawProgress(arg2, "Loading " + arg4 + " - " + local175 + "%");
 						}
 						local77 = local175;
 					}
@@ -5292,10 +5285,10 @@ public final class client extends Applet_Sub1 {
 				if (local3 == null) {
 					for (local77 = local5; local77 > 0; local77--) {
 						if (local35 >= 3) {
-							this.method588(arg2, "Game updated - please reload page");
+							this.drawProgress(arg2, "Game updated - please reload page");
 							local77 = 10;
 						} else {
-							this.method588(arg2, local62 + " - Retrying in " + local77);
+							this.drawProgress(arg2, local62 + " - Retrying in " + local77);
 						}
 						try {
 							Thread.sleep(1000L);
@@ -5573,7 +5566,7 @@ public final class client extends Applet_Sub1 {
 	private void method639() {
 		try {
 			if (this.aClass19_19 == null) {
-				super.aClass19_2 = null;
+				super.gameSurface = null;
 				this.aClass19_18 = null;
 				this.aClass19_16 = null;
 				this.aClass19_15 = null;
@@ -5581,24 +5574,24 @@ public final class client extends Applet_Sub1 {
 				this.aClass19_12 = null;
 				this.aClass19_13 = null;
 				this.aClass19_14 = null;
-				this.aClass19_22 = new Class19(265, (byte) -12, this.method586(), 128);
-				Class10_Sub1_Sub1.method497();
-				this.aClass19_23 = new Class19(265, (byte) -12, this.method586(), 128);
-				Class10_Sub1_Sub1.method497();
-				this.aClass19_19 = new Class19(171, (byte) -12, this.method586(), 509);
-				Class10_Sub1_Sub1.method497();
-				this.aClass19_20 = new Class19(132, (byte) -12, this.method586(), 360);
-				Class10_Sub1_Sub1.method497();
-				this.aClass19_21 = new Class19(200, (byte) -12, this.method586(), 360);
-				Class10_Sub1_Sub1.method497();
-				this.aClass19_24 = new Class19(238, (byte) -12, this.method586(), 202);
-				Class10_Sub1_Sub1.method497();
-				this.aClass19_25 = new Class19(238, (byte) -12, this.method586(), 203);
-				Class10_Sub1_Sub1.method497();
-				this.aClass19_26 = new Class19(94, (byte) -12, this.method586(), 74);
-				Class10_Sub1_Sub1.method497();
-				this.aClass19_27 = new Class19(94, (byte) -12, this.method586(), 75);
-				Class10_Sub1_Sub1.method497();
+				this.aClass19_22 = new PixMap(this.getBaseComponent(), 128, 265);
+				Draw2D.method497();
+				this.aClass19_23 = new PixMap(this.getBaseComponent(), 128, 265);
+				Draw2D.method497();
+				this.aClass19_19 = new PixMap(this.getBaseComponent(), 509, 171);
+				Draw2D.method497();
+				this.aClass19_20 = new PixMap(this.getBaseComponent(), 360, 132);
+				Draw2D.method497();
+				this.aClass19_21 = new PixMap(this.getBaseComponent(), 360, 200);
+				Draw2D.method497();
+				this.aClass19_24 = new PixMap(this.getBaseComponent(), 202, 238);
+				Draw2D.method497();
+				this.aClass19_25 = new PixMap(this.getBaseComponent(), 203, 238);
+				Draw2D.method497();
+				this.aClass19_26 = new PixMap(this.getBaseComponent(), 74, 94);
+				Draw2D.method497();
+				this.aClass19_27 = new PixMap(this.getBaseComponent(), 75, 94);
+				Draw2D.method497();
 				if (this.aClass2_2 != null) {
 					this.method714(aBoolean250);
 					this.method627();
@@ -5612,8 +5605,8 @@ public final class client extends Applet_Sub1 {
 	}
 
 	@Override
-	protected void method581() {
-		this.method588(20, "Starting up");
+	protected void load() {
+		this.drawProgress(20, "Starting up");
 		if (signlink.sunjava) {
 			super.anInt810 = 5;
 		}
@@ -5692,7 +5685,7 @@ public final class client extends Applet_Sub1 {
 			}
 			this.aClass10_Sub1_Sub1_Sub1_11 = new Class10_Sub1_Sub1_Sub1(512, 512);
 			Class2 local323 = this.method636(this.anIntArray212[5], "versionlist", 60, 5, "update list");
-			this.method588(60, "Connecting to update server");
+			this.drawProgress(60, "Connecting to update server");
 			this.aClass33_Sub1_1 = new Class33_Sub1();
 			this.aClass33_Sub1_1.method564(local323, this);
 			Class22.method165(this.aClass33_Sub1_1.method572(553));
@@ -5713,7 +5706,7 @@ public final class client extends Applet_Sub1 {
 					}
 				}
 			}
-			this.method588(65, "Requesting animations");
+			this.drawProgress(65, "Requesting animations");
 			int local398 = this.aClass33_Sub1_1.method569(1);
 			for ( int local400 = 0; local400 < local398; local400++) {
 				this.aClass33_Sub1_1.method558(1, local400);
@@ -5722,7 +5715,7 @@ public final class client extends Applet_Sub1 {
 			while (this.aClass33_Sub1_1.method562() > 0) {
 				local419 = local398 - this.aClass33_Sub1_1.method562();
 				if (local419 > 0) {
-					this.method588(65, "Loading animations - " + local419 * 100 / local398 + "%");
+					this.drawProgress(65, "Loading animations - " + local419 * 100 / local398 + "%");
 				}
 				this.method652();
 				try {
@@ -5734,7 +5727,7 @@ public final class client extends Applet_Sub1 {
 					return;
 				}
 			}
-			this.method588(70, "Requesting models");
+			this.drawProgress(70, "Requesting models");
 			local398 = this.aClass33_Sub1_1.method569(0);
 			int local479;
 			for (local419 = 0; local419 < local398; local419++) {
@@ -5747,7 +5740,7 @@ public final class client extends Applet_Sub1 {
 			while (this.aClass33_Sub1_1.method562() > 0) {
 				local479 = local398 - this.aClass33_Sub1_1.method562();
 				if (local479 > 0) {
-					this.method588(70, "Loading models - " + local479 * 100 / local398 + "%");
+					this.drawProgress(70, "Loading models - " + local479 * 100 / local398 + "%");
 				}
 				this.method652();
 				try {
@@ -5756,7 +5749,7 @@ public final class client extends Applet_Sub1 {
 				}
 			}
 			if (this.aClass24Array1[0] != null) {
-				this.method588(75, "Requesting maps");
+				this.drawProgress(75, "Requesting maps");
 				this.aClass33_Sub1_1.method558(3, this.aClass33_Sub1_1.method573(47, 48, 0));
 				this.aClass33_Sub1_1.method558(3, this.aClass33_Sub1_1.method573(47, 48, 1));
 				this.aClass33_Sub1_1.method558(3, this.aClass33_Sub1_1.method573(48, 48, 0));
@@ -5773,7 +5766,7 @@ public final class client extends Applet_Sub1 {
 				while (this.aClass33_Sub1_1.method562() > 0) {
 					local479 = local398 - this.aClass33_Sub1_1.method562();
 					if (local479 > 0) {
-						this.method588(75, "Loading maps - " + local479 * 100 / local398 + "%");
+						this.drawProgress(75, "Loading maps - " + local479 * 100 / local398 + "%");
 					}
 					this.method652();
 					try {
@@ -5809,7 +5802,7 @@ public final class client extends Applet_Sub1 {
 					this.aClass33_Sub1_1.method556(0, local738, local479);
 				}
 			}
-			this.aClass33_Sub1_1.method561(aBoolean222);
+			this.aClass33_Sub1_1.method561(members);
 			if (!aBoolean223) {
 				local398 = this.aClass33_Sub1_1.method569(2);
 				for (local736 = 1; local736 < local398; local736++) {
@@ -5826,7 +5819,7 @@ public final class client extends Applet_Sub1 {
 					this.aClass33_Sub1_1.method556(0, (byte) 1, local736);
 				}
 			}
-			this.method588(80, "Unpacking media");
+			this.drawProgress(80, "Unpacking media");
 			this.aClass10_Sub1_Sub1_Sub3_16 = new Class10_Sub1_Sub1_Sub3(local227, "invback", 0);
 			this.aClass10_Sub1_Sub1_Sub3_18 = new Class10_Sub1_Sub1_Sub3(local227, "chatback", 0);
 			this.aClass10_Sub1_Sub1_Sub3_17 = new Class10_Sub1_Sub1_Sub3(local227, "mapback", 0);
@@ -5893,31 +5886,31 @@ public final class client extends Applet_Sub1 {
 				this.aClass10_Sub1_Sub1_Sub3Array4[local1294] = new Class10_Sub1_Sub1_Sub3(local227, "mod_icons", local1294);
 			}
 			Class10_Sub1_Sub1_Sub1 local1317 = new Class10_Sub1_Sub1_Sub1(local227, "backleft1", 0);
-			this.aClass19_3 = new Class19(local1317.anInt105, (byte) -12, this.method586(), local1317.anInt104);
+			this.aClass19_3 = new PixMap(this.getBaseComponent(), local1317.anInt104, local1317.anInt105);
 			local1317.method76(0, 0);
 			Class10_Sub1_Sub1_Sub1 local1342 = new Class10_Sub1_Sub1_Sub1(local227, "backleft2", 0);
-			this.aClass19_4 = new Class19(local1342.anInt105, (byte) -12, this.method586(), local1342.anInt104);
+			this.aClass19_4 = new PixMap(this.getBaseComponent(), local1342.anInt104, local1342.anInt105);
 			local1342.method76(0, 0);
 			Class10_Sub1_Sub1_Sub1 local1367 = new Class10_Sub1_Sub1_Sub1(local227, "backright1", 0);
-			this.aClass19_5 = new Class19(local1367.anInt105, (byte) -12, this.method586(), local1367.anInt104);
+			this.aClass19_5 = new PixMap(this.getBaseComponent(), local1367.anInt104, local1367.anInt105);
 			local1367.method76(0, 0);
 			Class10_Sub1_Sub1_Sub1 local1392 = new Class10_Sub1_Sub1_Sub1(local227, "backright2", 0);
-			this.aClass19_6 = new Class19(local1392.anInt105, (byte) -12, this.method586(), local1392.anInt104);
+			this.aClass19_6 = new PixMap(this.getBaseComponent(), local1392.anInt104, local1392.anInt105);
 			local1392.method76(0, 0);
 			Class10_Sub1_Sub1_Sub1 local1417 = new Class10_Sub1_Sub1_Sub1(local227, "backtop1", 0);
-			this.aClass19_7 = new Class19(local1417.anInt105, (byte) -12, this.method586(), local1417.anInt104);
+			this.aClass19_7 = new PixMap(this.getBaseComponent(), local1417.anInt104, local1417.anInt105);
 			local1417.method76(0, 0);
 			Class10_Sub1_Sub1_Sub1 local1442 = new Class10_Sub1_Sub1_Sub1(local227, "backvmid1", 0);
-			this.aClass19_8 = new Class19(local1442.anInt105, (byte) -12, this.method586(), local1442.anInt104);
+			this.aClass19_8 = new PixMap(this.getBaseComponent(), local1442.anInt104, local1442.anInt105);
 			local1442.method76(0, 0);
 			Class10_Sub1_Sub1_Sub1 local1467 = new Class10_Sub1_Sub1_Sub1(local227, "backvmid2", 0);
-			this.aClass19_9 = new Class19(local1467.anInt105, (byte) -12, this.method586(), local1467.anInt104);
+			this.aClass19_9 = new PixMap(this.getBaseComponent(), local1467.anInt104, local1467.anInt105);
 			local1467.method76(0, 0);
 			Class10_Sub1_Sub1_Sub1 local1492 = new Class10_Sub1_Sub1_Sub1(local227, "backvmid3", 0);
-			this.aClass19_10 = new Class19(local1492.anInt105, (byte) -12, this.method586(), local1492.anInt104);
+			this.aClass19_10 = new PixMap(this.getBaseComponent(), local1492.anInt104, local1492.anInt105);
 			local1492.method76(0, 0);
 			Class10_Sub1_Sub1_Sub1 local1517 = new Class10_Sub1_Sub1_Sub1(local227, "backhmid2", 0);
-			this.aClass19_11 = new Class19(local1517.anInt105, (byte) -12, this.method586(), local1517.anInt104);
+			this.aClass19_11 = new PixMap(this.getBaseComponent(), local1517.anInt104, local1517.anInt105);
 			local1517.method76(0, 0);
 			int local1542 = (int) (Math.random() * 21.0D) - 10;
 			int local1549 = (int) (Math.random() * 21.0D) - 10;
@@ -5931,11 +5924,11 @@ public final class client extends Applet_Sub1 {
 					this.aClass10_Sub1_Sub1_Sub3Array5[local1565].method439(local1556 + local1563, local1549 + local1563, local1542 + local1563);
 				}
 			}
-			this.method588(83, "Unpacking textures");
+			this.drawProgress(83, "Unpacking textures");
 			Class10_Sub1_Sub1_Sub4.method511(local239);
 			Class10_Sub1_Sub1_Sub4.method515(0.8D, (byte) 6);
 			Class10_Sub1_Sub1_Sub4.method510();
-			this.method588(86, "Unpacking config");
+			this.drawProgress(86, "Unpacking config");
 			Class15.method96(local203);
 			Class48.method526(local203);
 			Class16.method99(local203);
@@ -5945,17 +5938,17 @@ public final class client extends Applet_Sub1 {
 			Class28.method350(local203);
 			Class44.method414(local203);
 			Class50.method574(local203);
-			Class17.aBoolean49 = aBoolean222;
+			Class17.aBoolean49 = members;
 			if (!aBoolean223) {
-				this.method588(90, "Unpacking sounds");
+				this.drawProgress(90, "Unpacking sounds");
 				byte[] local1668 = local263.method2("sounds.dat", null);
 				Class10_Sub1_Sub3 local1674 = new Class10_Sub1_Sub3(true, local1668);
 				Class39.method408(local1674);
 			}
-			this.method588(95, "Unpacking interfaces");
+			this.drawProgress(95, "Unpacking interfaces");
 			Class10_Sub1_Sub1_Sub2[] local1705 = new Class10_Sub1_Sub1_Sub2[] { this.aClass10_Sub1_Sub1_Sub2_2, this.aClass10_Sub1_Sub1_Sub2_3, this.aClass10_Sub1_Sub1_Sub2_4, this.aClass10_Sub1_Sub1_Sub2_5 };
 			Class14.method91(local1705, local215, local227);
-			this.method588(100, "Preparing game engine");
+			this.drawProgress(100, "Preparing game engine");
 			int local1721;
 			int local1723;
 			int local1725;
@@ -6010,7 +6003,7 @@ public final class client extends Applet_Sub1 {
 			Class23.method226(local1874);
 			Class46.method442(local251);
 			this.aClass7_1 = new Class7(this, (byte) -116);
-			this.method587(this.aClass7_1, 10);
+			this.startThread(this.aClass7_1, 10);
 			Class10_Sub1_Sub2_Sub5.aClient2 = this;
 			Class48.aClient4 = this;
 			Class38.aClient3 = this;
@@ -6614,26 +6607,26 @@ public final class client extends Applet_Sub1 {
 
 	private void method649() {
 		try {
-			if (this.anInt926 == -1 || this.anInt933 != 2 && super.aClass19_2 == null) {
+			if (this.anInt926 == -1 || this.anInt933 != 2 && super.gameSurface == null) {
 				if (this.aBoolean236) {
 					this.method697();
 					this.aBoolean236 = false;
-					this.aClass19_3.method131(4, 0, super.aGraphics2, this.aBoolean239);
-					this.aClass19_4.method131(357, 0, super.aGraphics2, this.aBoolean239);
-					this.aClass19_5.method131(4, 722, super.aGraphics2, this.aBoolean239);
-					this.aClass19_6.method131(205, 743, super.aGraphics2, this.aBoolean239);
-					this.aClass19_7.method131(0, 0, super.aGraphics2, this.aBoolean239);
-					this.aClass19_8.method131(4, 516, super.aGraphics2, this.aBoolean239);
-					this.aClass19_9.method131(205, 516, super.aGraphics2, this.aBoolean239);
-					this.aClass19_10.method131(357, 496, super.aGraphics2, this.aBoolean239);
-					this.aClass19_11.method131(338, 0, super.aGraphics2, this.aBoolean239);
+					this.aClass19_3.method131(4, 0, super.graphics);
+					this.aClass19_4.method131(357, 0, super.graphics);
+					this.aClass19_5.method131(4, 722, super.graphics);
+					this.aClass19_6.method131(205, 743, super.graphics);
+					this.aClass19_7.method131(0, 0, super.graphics);
+					this.aClass19_8.method131(4, 516, super.graphics);
+					this.aClass19_9.method131(205, 516, super.graphics);
+					this.aClass19_10.method131(357, 496, super.graphics);
+					this.aClass19_11.method131(338, 0, super.graphics);
 					this.aBoolean248 = true;
 					this.aBoolean255 = true;
 					this.aBoolean225 = true;
 					this.aBoolean253 = true;
 					if (this.anInt933 != 2) {
-						this.aClass19_17.method131(4, 4, super.aGraphics2, this.aBoolean239);
-						this.aClass19_16.method131(4, 550, super.aGraphics2, this.aBoolean239);
+						this.aClass19_17.method131(4, 4, super.graphics);
+						this.aClass19_16.method131(4, 550, super.graphics);
 					}
 					anInt1007++;
 					if (anInt1007 > 85) {
@@ -6724,7 +6717,7 @@ public final class client extends Applet_Sub1 {
 				}
 				if (this.anInt933 == 2) {
 					this.method662(503);
-					this.aClass19_16.method131(4, 550, super.aGraphics2, this.aBoolean239);
+					this.aClass19_16.method131(4, 550, super.graphics);
 				}
 				if (this.anInt988 != -1) {
 					this.aBoolean225 = true;
@@ -6784,7 +6777,7 @@ public final class client extends Applet_Sub1 {
 							this.aClass10_Sub1_Sub1_Sub3Array2[6].method440(13, 208);
 						}
 					}
-					this.aClass19_14.method131(160, 516, super.aGraphics2, this.aBoolean239);
+					this.aClass19_14.method131(160, 516, super.graphics);
 					this.aClass19_13.method130();
 					this.aClass10_Sub1_Sub1_Sub3_7.method440(0, 0);
 					if (this.anInt941 == -1) {
@@ -6830,7 +6823,7 @@ public final class client extends Applet_Sub1 {
 							this.aClass10_Sub1_Sub1_Sub3Array2[12].method440(2, 226);
 						}
 					}
-					this.aClass19_13.method131(466, 496, super.aGraphics2, this.aBoolean239);
+					this.aClass19_13.method131(466, 496, super.graphics);
 					this.aClass19_17.method130();
 					Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray238;
 				}
@@ -6872,7 +6865,7 @@ public final class client extends Applet_Sub1 {
 						this.aClass10_Sub1_Sub1_Sub2_3.method149(true, this.anInt928, 16711680, 41, 324, "Off");
 					}
 					this.aClass10_Sub1_Sub1_Sub2_3.method149(true, this.anInt928, 16777215, 33, 458, "Report abuse");
-					this.aClass19_12.method131(453, 0, super.aGraphics2, this.aBoolean239);
+					this.aClass19_12.method131(453, 0, super.graphics);
 					this.aClass19_17.method130();
 					Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray238;
 				}
@@ -6885,9 +6878,9 @@ public final class client extends Applet_Sub1 {
 					}
 					this.anInt878 = 0;
 					this.method722(this.anInt964);
-					super.aClass19_2.method130();
+					super.gameSurface.method130();
 					Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray239;
-					Class10_Sub1_Sub1.method497();
+					Draw2D.method497();
 					this.aBoolean236 = true;
 					Class14 local59 = Class14.method87(this.anInt926);
 					if (local59.anInt123 == 512 && local59.anInt121 == 334 && local59.anInt120 == 0) {
@@ -6910,7 +6903,7 @@ public final class client extends Applet_Sub1 {
 						this.method609();
 					}
 				}
-				super.aClass19_2.method131(0, 0, super.aGraphics2, this.aBoolean239);
+				super.gameSurface.method131(0, 0, super.graphics);
 			}
 		} catch ( RuntimeException local1328) {
 			signlink.reporterror("29795, " + 7 + ", " + local1328.toString());
@@ -6990,21 +6983,21 @@ public final class client extends Applet_Sub1 {
 
 	@Override
 	public void init() {
-		anInt868 = Integer.parseInt(this.getParameter("nodeid"));
-		anInt869 = Integer.parseInt(this.getParameter("portoff"));
+		nodeId = Integer.parseInt(this.getParameter("nodeid"));
+		portOffset = Integer.parseInt(this.getParameter("portoff"));
 		String local15 = this.getParameter("lowmem");
 		if (local15 != null && local15.equals("1")) {
-			method676();
+			setLowMemory();
 		} else {
-			method602();
+			setHighMemory();
 		}
 		String local31 = this.getParameter("free");
 		if (local31 != null && local31.equals("1")) {
-			aBoolean222 = false;
+			members = false;
 		} else {
-			aBoolean222 = true;
+			members = true;
 		}
-		this.method577();
+		this.initApplet();
 	}
 
 	private void method651() {
@@ -7094,7 +7087,7 @@ public final class client extends Applet_Sub1 {
 				this.aString22 = "Connecting to server...";
 				this.method706(true);
 			}
-			this.aClass18_1 = new Class18((byte) 2, this.method607(anInt869 + 43594), this);
+			this.aClass18_1 = new Class18((byte) 2, this.method607(portOffset + 43594), this);
 			long local30 = Class26.method248(arg0);
 			int local37 = (int) (local30 >> 16 & 0x1FL);
 			this.aClass10_Sub1_Sub3_7.anInt428 = 0;
@@ -7640,14 +7633,14 @@ public final class client extends Applet_Sub1 {
 						this.aString18 = this.aString20;
 					}
 					local125 = this.aClass10_Sub1_Sub1_Sub2_3;
-					Class10_Sub1_Sub1.method496(0, 0, 77, 463);
+					Draw2D.method496(0, 0, 77, 463);
 					for (local133 = 0; local133 < this.anInt840; local133++) {
 						local144 = local133 * 14 + 18 - this.anInt841;
 						if (local144 > 0 && local144 < 110) {
 							local125.method148(239, 452, local144, 0, this.aStringArray9[local133]);
 						}
 					}
-					Class10_Sub1_Sub1.method495();
+					Draw2D.method495();
 					if (this.anInt840 > 5) {
 						this.method631(this.anInt841, 463, 77, this.anInt840 * 14 + 7, 0);
 					}
@@ -7657,7 +7650,7 @@ public final class client extends Applet_Sub1 {
 						this.aClass10_Sub1_Sub1_Sub2_4.method148(239, 452, 40, 0, "No matching objects found, please shorten search");
 					}
 					local125.method148(239, 452, 90, 0, this.aString20 + "*");
-					Class10_Sub1_Sub1.method502(0, 0, 77, 479);
+					Draw2D.method502(0, 0, 77, 479);
 				} else if (this.aString26 != null) {
 					this.aClass10_Sub1_Sub1_Sub2_4.method148(239, 452, 40, 0, this.aString26);
 					this.aClass10_Sub1_Sub1_Sub2_4.method148(239, 452, 60, 128, "Click to continue");
@@ -7666,7 +7659,7 @@ public final class client extends Applet_Sub1 {
 				} else if (this.anInt985 == -1) {
 					local125 = this.aClass10_Sub1_Sub1_Sub2_3;
 					local133 = 0;
-					Class10_Sub1_Sub1.method496(0, 0, 77, 463);
+					Draw2D.method496(0, 0, 77, 463);
 					for (local144 = 0; local144 < 100; local144++) {
 						if (this.aStringArray14[local144] != null) {
 							int local309 = this.anIntArray270[local144];
@@ -7750,7 +7743,7 @@ public final class client extends Applet_Sub1 {
 							}
 						}
 					}
-					Class10_Sub1_Sub1.method495();
+					Draw2D.method495();
 					this.anInt947 = local133 * 14 + 7;
 					if (this.anInt947 < 78) {
 						this.anInt947 = 78;
@@ -7764,7 +7757,7 @@ public final class client extends Applet_Sub1 {
 					}
 					local125.method152(4, 0, 90, local765 + ":");
 					local125.method152(local125.method150(local765 + ": ") + 6, 255, 90, this.aString29 + "*");
-					Class10_Sub1_Sub1.method502(0, 0, 77, 479);
+					Draw2D.method502(0, 0, 77, 479);
 				} else {
 					this.method717(0, 0, Class14.method87(this.anInt985), 0);
 				}
@@ -7772,7 +7765,7 @@ public final class client extends Applet_Sub1 {
 			if (this.aBoolean237 && this.anInt1039 == 2) {
 				this.method703();
 			}
-			this.aClass19_18.method131(357, 17, super.aGraphics2, this.aBoolean239);
+			this.aClass19_18.method131(357, 17, super.graphics);
 			this.aClass19_17.method130();
 			Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray238;
 		} catch ( RuntimeException local852) {
@@ -7822,7 +7815,7 @@ public final class client extends Applet_Sub1 {
 			int local19 = 0;
 			while (this.anIntArray212[8] == 0) {
 				String local23 = "Unknown problem";
-				this.method588(20, "Connecting to web server");
+				this.drawProgress(20, "Connecting to web server");
 				try {
 					DataInputStream local45 = this.method606("crc" + (int) (Math.random() * 9.9999999E7D) + "-" + 377);
 					Class10_Sub1_Sub3 local52 = new Class10_Sub1_Sub3(true, new byte[40]);
@@ -7857,10 +7850,10 @@ public final class client extends Applet_Sub1 {
 					local19++;
 					for ( int local144 = local3; local144 > 0; local144--) {
 						if (local19 >= 10) {
-							this.method588(10, "Game updated - please reload page");
+							this.drawProgress(10, "Game updated - please reload page");
 							local144 = 10;
 						} else {
-							this.method588(10, local23 + " - Will retry in " + local144 + " secs.");
+							this.drawProgress(10, local23 + " - Will retry in " + local144 + " secs.");
 						}
 						try {
 							Thread.sleep(1000L);
@@ -7887,7 +7880,7 @@ public final class client extends Applet_Sub1 {
 			int local20;
 			if (this.anInt923 == 2) {
 				byte[] local13 = this.aClass10_Sub1_Sub1_Sub3_17.aByteArray16;
-				int[] local15 = Class10_Sub1_Sub1.anIntArray178;
+				int[] local15 = Draw2D.anIntArray178;
 				local18 = local13.length;
 				for (local20 = 0; local20 < local18; local20++) {
 					if (local13[local20] == 0) {
@@ -7989,7 +7982,7 @@ public final class client extends Applet_Sub1 {
 					local18 = this.anInt956 * 4 + 2 - aClass10_Sub1_Sub2_Sub3_Sub2_1.anInt740 / 32;
 					this.method705(local18, this.aClass10_Sub1_Sub1_Sub1_5, local74);
 				}
-				Class10_Sub1_Sub1.method499(3, 78, 16777215, 3, 97);
+				Draw2D.method499(3, 78, 16777215, 3, 97);
 				this.aClass19_17.method130();
 				Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray238;
 			}
@@ -8005,8 +7998,8 @@ public final class client extends Applet_Sub1 {
 			return signlink.mainapp.getCodeBase();
 		}
 		try {
-			if (super.aFrame_Sub1_2 != null) {
-				return new URL("http://127.0.0.1:" + (anInt869 + 80));
+			if (super.frame != null) {
+				return new URL("http://127.0.0.1:" + (portOffset + 80));
 			}
 		} catch ( Exception local21) {
 		}
@@ -8108,7 +8101,7 @@ public final class client extends Applet_Sub1 {
 	}
 
 	@Override
-	protected void method582() {
+	protected void update() {
 		try {
 			if (!this.aBoolean232 && !this.aBoolean264 && !this.aBoolean240) {
 				anInt1050++;
@@ -8385,7 +8378,7 @@ public final class client extends Applet_Sub1 {
 			} catch ( Exception local647) {
 			}
 			Class48.aClass34_8.method389();
-			if (super.aFrame_Sub1_2 != null) {
+			if (super.frame != null) {
 				this.aClass10_Sub1_Sub3_7.method300(78);
 				this.aClass10_Sub1_Sub3_7.method305(1057001181);
 			}
@@ -8587,7 +8580,7 @@ public final class client extends Applet_Sub1 {
 				}
 			}
 			for (local8 = 0; local8 < 33920; local8++) {
-				this.aClass19_22.anIntArray56[local8] = this.aClass10_Sub1_Sub1_Sub1_3.anIntArray37[local8];
+				this.aClass19_22.pixels[local8] = this.aClass10_Sub1_Sub1_Sub1_3.anIntArray37[local8];
 			}
 			int local181 = 0;
 			int local183 = 1152;
@@ -8613,16 +8606,16 @@ public final class client extends Applet_Sub1 {
 						local224 = local220;
 						local228 = 256 - local220;
 						local220 = this.anIntArray271[local220];
-						local239 = this.aClass19_22.anIntArray56[local183];
-						this.aClass19_22.anIntArray56[local183++] = ((local220 & 0xFF00FF) * local224 + (local239 & 0xFF00FF) * local228 & 0xFF00FF00) + ((local220 & 0xFF00) * local224 + (local239 & 0xFF00) * local228 & 0xFF0000) >> 8;
+						local239 = this.aClass19_22.pixels[local183];
+						this.aClass19_22.pixels[local183++] = ((local220 & 0xFF00FF) * local224 + (local239 & 0xFF00FF) * local228 & 0xFF00FF00) + ((local220 & 0xFF00) * local224 + (local239 & 0xFF00) * local228 & 0xFF0000) >> 8;
 					}
 				}
 				local183 += local202;
 			}
-			this.aClass19_22.method131(0, 0, super.aGraphics2, this.aBoolean239);
+			this.aClass19_22.method131(0, 0, super.graphics);
 			boolean local304 = true;
 			for (local198 = 0; local198 < 33920; local198++) {
-				this.aClass19_23.anIntArray56[local198] = this.aClass10_Sub1_Sub1_Sub1_4.anIntArray37[local198];
+				this.aClass19_23.pixels[local198] = this.aClass10_Sub1_Sub1_Sub1_4.anIntArray37[local198];
 			}
 			local181 = 0;
 			local183 = 1176;
@@ -8638,14 +8631,14 @@ public final class client extends Applet_Sub1 {
 						local239 = local228;
 						int local367 = 256 - local228;
 						local228 = this.anIntArray271[local228];
-						int local378 = this.aClass19_23.anIntArray56[local183];
-						this.aClass19_23.anIntArray56[local183++] = ((local228 & 0xFF00FF) * local239 + (local378 & 0xFF00FF) * local367 & 0xFF00FF00) + ((local228 & 0xFF00) * local239 + (local378 & 0xFF00) * local367 & 0xFF0000) >> 8;
+						int local378 = this.aClass19_23.pixels[local183];
+						this.aClass19_23.pixels[local183++] = ((local228 & 0xFF00FF) * local239 + (local378 & 0xFF00FF) * local367 & 0xFF00FF00) + ((local228 & 0xFF00) * local239 + (local378 & 0xFF00) * local367 & 0xFF0000) >> 8;
 					}
 				}
 				local181 += 128 - local220;
 				local183 += 128 - local220 - local212;
 			}
-			this.aClass19_23.method131(0, 637, super.aGraphics2, this.aBoolean239);
+			this.aClass19_23.method131(0, 637, super.graphics);
 		} catch ( RuntimeException local451) {
 			signlink.reporterror("77236, " + arg0 + ", " + local451.toString());
 			throw new RuntimeException();
@@ -8749,12 +8742,12 @@ public final class client extends Applet_Sub1 {
 						if (this.anIntArray265[local14] == 0) {
 							arg1.aString2 = "@red@Offline";
 						} else if (this.anIntArray265[local14] < 200) {
-							if (this.anIntArray265[local14] == anInt868) {
+							if (this.anIntArray265[local14] == nodeId) {
 								arg1.aString2 = "@gre@World" + (this.anIntArray265[local14] - 9);
 							} else {
 								arg1.aString2 = "@yel@World" + (this.anIntArray265[local14] - 9);
 							}
-						} else if (this.anIntArray265[local14] == anInt868) {
+						} else if (this.anIntArray265[local14] == nodeId) {
 							arg1.aString2 = "@gre@Classic" + (this.anIntArray265[local14] - 219);
 						} else {
 							arg1.aString2 = "@yel@Classic" + (this.anIntArray265[local14] - 219);
@@ -8918,7 +8911,7 @@ public final class client extends Applet_Sub1 {
 						}
 					}
 					if (local14 == 665) {
-						if (this.anInt891 > 2 && !aBoolean222) {
+						if (this.anInt891 > 2 && !members) {
 							arg1.aString2 = "This is a non-members\\nworld. To enjoy your\\nmembers benefits we\\nrecommend you play on a\\nmembers world instead.";
 						} else if (this.anInt891 > 2) {
 							arg1.aString2 = "\\n\\nYou have @gre@" + this.anInt891 + "@yel@ days of\\nmember credit remaining.";
@@ -8929,7 +8922,7 @@ public final class client extends Applet_Sub1 {
 						}
 					}
 					if (local14 == 667) {
-						if (this.anInt891 > 2 && !aBoolean222) {
+						if (this.anInt891 > 2 && !members) {
 							arg1.aString2 = "To switch to a members-only world:\\n1) Logout and return to the world selection page.\\n2) Choose one of the members world with a gold star next to it's name.\\n\\nIf you prefer you can continue to use this world,\\nbut members only features will be unavailable here.";
 						} else if (this.anInt891 > 0) {
 							arg1.aString2 = "To extend or cancel a subscription:\\n1) Logout and return to the frontpage of this website.\\n2)Choose the relevant option from the 'membership' section.\\n\\nNote: If you are a credit card subscriber a top-up payment will\\nautomatically be taken when 3 days credit remain.\\n(unless you cancel your subscription, which can be done at any time.)";
@@ -9235,13 +9228,13 @@ public final class client extends Applet_Sub1 {
 			if (aBoolean217) {
 				byte local142 = 20;
 				int local144 = 16776960;
-				if (super.anInt811 < 30 && aBoolean223) {
+				if (super.fps < 30 && aBoolean223) {
 					local144 = 16711680;
 				}
-				if (super.anInt811 < 20 && !aBoolean223) {
+				if (super.fps < 20 && !aBoolean223) {
 					local144 = 16711680;
 				}
-				this.aClass10_Sub1_Sub1_Sub2_3.method147("Fps:" + super.anInt811, local144, 20);
+				this.aClass10_Sub1_Sub1_Sub2_3.method147("Fps:" + super.fps, local144, 20);
 				local176 = local142 + 15;
 				Runtime local178 = Runtime.getRuntime();
 				int local187 = (int) ((local178.totalMemory() - local178.freeMemory()) / 1024L);
@@ -9631,7 +9624,7 @@ public final class client extends Applet_Sub1 {
 			if (this.aByte48 == 1) {
 				boolean local9 = false;
 			} else {
-				this.method581();
+				this.load();
 			}
 			if (this.anInt993 < 310) {
 				anInt887++;
@@ -9749,12 +9742,12 @@ public final class client extends Applet_Sub1 {
 	}
 
 	@Override
-	public void method587( Runnable arg0, int arg1) {
+	public void startThread(Runnable arg0, int arg1) {
 		if (arg1 > 10) {
 			arg1 = 10;
 		}
 		if (signlink.mainapp == null) {
-			super.method587(arg0, arg1);
+			super.startThread(arg0, arg1);
 		} else {
 			signlink.startthread(arg0, arg1);
 		}
@@ -10716,8 +10709,8 @@ public final class client extends Applet_Sub1 {
 							if (local70 > 30) {
 								local70 = 30;
 							}
-							Class10_Sub1_Sub1.method499(5, this.anInt873 - 3, 65280, local70, this.anInt872 - 15);
-							Class10_Sub1_Sub1.method499(5, this.anInt873 - 3, 16711680, 30 - local70, this.anInt872 - 15 + local70);
+							Draw2D.method499(5, this.anInt873 - 3, 65280, local70, this.anInt872 - 15);
+							Draw2D.method499(5, this.anInt873 - 3, 16711680, 30 - local70, this.anInt872 - 15 + local70);
 						}
 					}
 					for (local70 = 0; local70 < 4; local70++) {
@@ -10826,10 +10819,10 @@ public final class client extends Applet_Sub1 {
 					if (this.anIntArray226[local610] == 4) {
 						local819 = this.aClass10_Sub1_Sub1_Sub2_4.method151(local739);
 						local1116 = (150 - this.anIntArray227[local610]) * (local819 + 100) / 150;
-						Class10_Sub1_Sub1.method496(0, this.anInt872 - 50, 334, this.anInt872 + 50);
+						Draw2D.method496(0, this.anInt872 - 50, 334, this.anInt872 + 50);
 						this.aClass10_Sub1_Sub1_Sub2_4.method152(this.anInt872 + 50 - local1116, 0, this.anInt873 + 1, local739);
 						this.aClass10_Sub1_Sub1_Sub2_4.method152(this.anInt872 + 50 - local1116, local744, this.anInt873, local739);
-						Class10_Sub1_Sub1.method495();
+						Draw2D.method495();
 					}
 					if (this.anIntArray226[local610] == 5) {
 						local819 = 150 - this.anIntArray227[local610];
@@ -10839,10 +10832,10 @@ public final class client extends Applet_Sub1 {
 						} else if (local819 > 125) {
 							local1116 = local819 - 125;
 						}
-						Class10_Sub1_Sub1.method496(this.anInt873 - this.aClass10_Sub1_Sub1_Sub2_4.anInt230 - 1, 0, this.anInt873 + 5, 512);
+						Draw2D.method496(this.anInt873 - this.aClass10_Sub1_Sub1_Sub2_4.anInt230 - 1, 0, this.anInt873 + 5, 512);
 						this.aClass10_Sub1_Sub1_Sub2_4.method148(this.anInt872, 452, this.anInt873 + local1116 + 1, 0, local739);
 						this.aClass10_Sub1_Sub1_Sub2_4.method148(this.anInt872, 452, this.anInt873 + local1116, local744, local739);
-						Class10_Sub1_Sub1.method495();
+						Draw2D.method495();
 					}
 				} else {
 					this.aClass10_Sub1_Sub1_Sub2_4.method148(this.anInt872, 452, this.anInt873 + 1, 0, local739);
@@ -10859,7 +10852,7 @@ public final class client extends Applet_Sub1 {
 		try {
 			if (this.aClass19_18 == null) {
 				this.method716();
-				super.aClass19_2 = null;
+				super.gameSurface = null;
 				this.aClass19_19 = null;
 				this.aClass19_20 = null;
 				this.aClass19_21 = null;
@@ -10869,16 +10862,16 @@ public final class client extends Applet_Sub1 {
 				this.aClass19_25 = null;
 				this.aClass19_26 = null;
 				this.aClass19_27 = null;
-				this.aClass19_18 = new Class19(96, (byte) -12, this.method586(), 479);
-				this.aClass19_16 = new Class19(156, (byte) -12, this.method586(), 172);
-				Class10_Sub1_Sub1.method497();
+				this.aClass19_18 = new PixMap(this.getBaseComponent(), 479, 96);
+				this.aClass19_16 = new PixMap(this.getBaseComponent(), 172, 156);
+				Draw2D.method497();
 				this.aClass10_Sub1_Sub1_Sub3_17.method440(0, 0);
-				this.aClass19_15 = new Class19(261, (byte) -12, this.method586(), 190);
-				this.aClass19_17 = new Class19(334, (byte) -12, this.method586(), 512);
-				Class10_Sub1_Sub1.method497();
-				this.aClass19_12 = new Class19(50, (byte) -12, this.method586(), 496);
-				this.aClass19_13 = new Class19(37, (byte) -12, this.method586(), 269);
-				this.aClass19_14 = new Class19(45, (byte) -12, this.method586(), 249);
+				this.aClass19_15 = new PixMap(this.getBaseComponent(), 190, 261);
+				this.aClass19_17 = new PixMap(this.getBaseComponent(), 512, 334);
+				Draw2D.method497();
+				this.aClass19_12 = new PixMap(this.getBaseComponent(), 496, 50);
+				this.aClass19_13 = new PixMap(this.getBaseComponent(), 269, 37);
+				this.aClass19_14 = new PixMap(this.getBaseComponent(), 249, 45);
 				this.aBoolean236 = true;
 				this.aClass19_17.method130();
 				Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray238;
@@ -10891,7 +10884,7 @@ public final class client extends Applet_Sub1 {
 
 	private void method698( int arg0) {
 		try {
-			Graphics local4 = this.method586().getGraphics();
+			Graphics local4 = this.getBaseComponent().getGraphics();
 			local4.setColor(Color.black);
 			boolean local11 = false;
 			local4.fillRect(0, 0, 765, 503);
@@ -10997,13 +10990,13 @@ public final class client extends Applet_Sub1 {
 					this.aClass10_Sub1_Sub1_Sub2_3.method148(257, 452, local16, 0, arg0);
 					this.aClass10_Sub1_Sub1_Sub2_3.method148(256, 452, local16 - 1, 16777215, arg0);
 				}
-				this.aClass19_17.method131(4, 4, super.aGraphics2, this.aBoolean239);
-			} else if (super.aClass19_2 != null) {
-				super.aClass19_2.method130();
+				this.aClass19_17.method131(4, 4, super.graphics);
+			} else if (super.gameSurface != null) {
+				super.gameSurface.method130();
 				Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray239;
 				local16 = 251;
-				Class10_Sub1_Sub1.method499(50, 221, 0, 300, 233);
-				Class10_Sub1_Sub1.method500(221, 50, 16777215, 233, 300);
+				Draw2D.method499(50, 221, 0, 300, 233);
+				Draw2D.method500(221, 50, 16777215, 233, 300);
 				if (arg0 != null) {
 					local16 -= 7;
 				}
@@ -11014,7 +11007,7 @@ public final class client extends Applet_Sub1 {
 					this.aClass10_Sub1_Sub1_Sub2_3.method148(383, 452, local16, 0, arg0);
 					this.aClass10_Sub1_Sub1_Sub2_3.method148(382, 452, local16 - 1, 16777215, arg0);
 				}
-				super.aClass19_2.method131(0, 0, super.aGraphics2, this.aBoolean239);
+				super.gameSurface.method131(0, 0, super.graphics);
 			}
 		} catch ( RuntimeException local171) {
 			signlink.reporterror("61884, " + -332 + ", " + arg0 + ", " + arg1 + ", " + local171.toString());
@@ -11056,7 +11049,7 @@ public final class client extends Applet_Sub1 {
 	}
 
 	@Override
-	protected void method584() {
+	protected void draw() {
 		try {
 			if (this.aBoolean232 || this.aBoolean264 || this.aBoolean240) {
 				this.method698(281);
@@ -11081,9 +11074,9 @@ public final class client extends Applet_Sub1 {
 			int local11 = this.anInt1041;
 			int local14 = this.anInt1042;
 			int local17 = this.anInt1043;
-			Class10_Sub1_Sub1.method499(local17, local11, 6116423, local14, local8);
-			Class10_Sub1_Sub1.method499(16, local11 + 1, 0, local14 - 2, local8 + 1);
-			Class10_Sub1_Sub1.method500(local11 + 18, local17 - 19, 0, local8 + 1, local14 - 2);
+			Draw2D.method499(local17, local11, 6116423, local14, local8);
+			Draw2D.method499(16, local11 + 1, 0, local14 - 2, local8 + 1);
+			Draw2D.method500(local11 + 18, local17 - 19, 0, local8 + 1, local14 - 2);
 			this.aClass10_Sub1_Sub1_Sub2_4.method152(local8 + 3, 6116423, local11 + 14, "Choose Option");
 			int local69 = super.anInt816;
 			int local72 = super.anInt817;
@@ -11145,7 +11138,7 @@ public final class client extends Applet_Sub1 {
 					if (local33 == 4) {
 						local83 = Class14.method87(local22[local26++]);
 						local88 = local22[local26++];
-						if (local88 >= 0 && local88 < Class17.anInt179 && (!Class17.method104(local88).aBoolean54 || aBoolean222)) {
+						if (local88 >= 0 && local88 < Class17.anInt179 && (!Class17.method104(local88).aBoolean54 || members)) {
 							for (local101 = 0; local101 < local83.anIntArray44.length; local101++) {
 								if (local83.anIntArray44[local101] == local88 + 1) {
 									local35 += local83.anIntArray40[local101];
@@ -11176,7 +11169,7 @@ public final class client extends Applet_Sub1 {
 					if (local33 == 10) {
 						local83 = Class14.method87(local22[local26++]);
 						local88 = local22[local26++] + 1;
-						if (local88 >= 0 && local88 < Class17.anInt179 && (!Class17.method104(local88).aBoolean54 || aBoolean222)) {
+						if (local88 >= 0 && local88 < Class17.anInt179 && (!Class17.method104(local88).aBoolean54 || members)) {
 							for (local101 = 0; local101 < local83.anIntArray44.length; local101++) {
 								if (local83.anIntArray44[local101] == local88) {
 									local35 = 999999999;
@@ -11327,15 +11320,15 @@ public final class client extends Applet_Sub1 {
 				this.aClass10_Sub1_Sub1_Sub3_20.method440(130, 107);
 				this.aClass10_Sub1_Sub1_Sub2_4.method149(true, this.anInt928, 16777215, 155, 180, "Cancel");
 			}
-			this.aClass19_21.method131(171, 202, super.aGraphics2, this.aBoolean239);
+			this.aClass19_21.method131(171, 202, super.graphics);
 			if (this.aBoolean236) {
 				this.aBoolean236 = false;
-				this.aClass19_19.method131(0, 128, super.aGraphics2, this.aBoolean239);
-				this.aClass19_20.method131(371, 202, super.aGraphics2, this.aBoolean239);
-				this.aClass19_24.method131(265, 0, super.aGraphics2, this.aBoolean239);
-				this.aClass19_25.method131(265, 562, super.aGraphics2, this.aBoolean239);
-				this.aClass19_26.method131(171, 128, super.aGraphics2, this.aBoolean239);
-				this.aClass19_27.method131(171, 562, super.aGraphics2, this.aBoolean239);
+				this.aClass19_19.method131(0, 128, super.graphics);
+				this.aClass19_20.method131(371, 202, super.graphics);
+				this.aClass19_24.method131(265, 0, super.graphics);
+				this.aClass19_25.method131(265, 562, super.graphics);
+				this.aClass19_26.method131(171, 128, super.graphics);
+				this.aClass19_27.method131(171, 562, super.graphics);
 			}
 		} catch ( RuntimeException local523) {
 			signlink.reporterror("86033, " + -50 + ", " + arg0 + ", " + local523.toString());
@@ -11685,7 +11678,7 @@ public final class client extends Applet_Sub1 {
 			if (this.aBoolean237 && this.anInt1039 == 1) {
 				this.method703();
 			}
-			this.aClass19_15.method131(205, 553, super.aGraphics2, this.aBoolean239);
+			this.aClass19_15.method131(205, 553, super.graphics);
 			this.aClass19_17.method130();
 			Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray238;
 		} catch ( RuntimeException local77) {
@@ -11758,10 +11751,10 @@ public final class client extends Applet_Sub1 {
 	}
 
 	@Override
-	protected Component method586() {
+	protected Component getBaseComponent() {
 		try {
 			if (signlink.mainapp == null) {
-				return super.aFrame_Sub1_2 == null ? this : super.aFrame_Sub1_2;
+				return super.frame == null ? this : super.frame;
 			} else {
 				return signlink.mainapp;
 			}
@@ -11772,34 +11765,34 @@ public final class client extends Applet_Sub1 {
 	}
 
 	@Override
-	protected void method588( int arg0, String arg1) {
+	protected void drawProgress(int arg0, String arg1) {
 		try {
 			this.anInt1048 = arg0;
 			this.aString25 = arg1;
 			this.method639();
 			if (this.aClass2_2 == null) {
-				super.method588(arg0, arg1);
+				super.drawProgress(arg0, arg1);
 			} else {
 				this.aClass19_21.method130();
 				this.aClass10_Sub1_Sub1_Sub2_4.method148(180, 452, 54, 16777215, "RuneScape is loading - please wait...");
-				Class10_Sub1_Sub1.method500(62, 34, 9179409, 28, 304);
-				Class10_Sub1_Sub1.method500(63, 32, 0, 29, 302);
-				Class10_Sub1_Sub1.method499(30, 64, 9179409, arg0 * 3, 30);
-				Class10_Sub1_Sub1.method499(30, 64, 0, 300 - arg0 * 3, arg0 * 3 + 30);
+				Draw2D.method500(62, 34, 9179409, 28, 304);
+				Draw2D.method500(63, 32, 0, 29, 302);
+				Draw2D.method499(30, 64, 9179409, arg0 * 3, 30);
+				Draw2D.method499(30, 64, 0, 300 - arg0 * 3, arg0 * 3 + 30);
 				this.aClass10_Sub1_Sub1_Sub2_4.method148(180, 452, 85, 16777215, arg1);
-				this.aClass19_21.method131(171, 202, super.aGraphics2, this.aBoolean239);
+				this.aClass19_21.method131(171, 202, super.graphics);
 				if (this.aBoolean236) {
 					this.aBoolean236 = false;
 					if (!this.aBoolean257) {
-						this.aClass19_22.method131(0, 0, super.aGraphics2, this.aBoolean239);
-						this.aClass19_23.method131(0, 637, super.aGraphics2, this.aBoolean239);
+						this.aClass19_22.method131(0, 0, super.graphics);
+						this.aClass19_23.method131(0, 637, super.graphics);
 					}
-					this.aClass19_19.method131(0, 128, super.aGraphics2, this.aBoolean239);
-					this.aClass19_20.method131(371, 202, super.aGraphics2, this.aBoolean239);
-					this.aClass19_24.method131(265, 0, super.aGraphics2, this.aBoolean239);
-					this.aClass19_25.method131(265, 562, super.aGraphics2, this.aBoolean239);
-					this.aClass19_26.method131(171, 128, super.aGraphics2, this.aBoolean239);
-					this.aClass19_27.method131(171, 562, super.aGraphics2, this.aBoolean239);
+					this.aClass19_19.method131(0, 128, super.graphics);
+					this.aClass19_20.method131(371, 202, super.graphics);
+					this.aClass19_24.method131(265, 0, super.graphics);
+					this.aClass19_25.method131(265, 562, super.graphics);
+					this.aClass19_26.method131(171, 128, super.graphics);
+					this.aClass19_27.method131(171, 562, super.graphics);
 				}
 			}
 		} catch ( RuntimeException local229) {
@@ -11937,11 +11930,11 @@ public final class client extends Applet_Sub1 {
 	private void method717( int arg0, int arg1, Class14 arg2, int arg3) {
 		try {
 			if (arg2.anInt120 == 0 && arg2.anIntArray43 != null && (!arg2.aBoolean33 || this.anInt1037 == arg2.anInt111 || this.anInt1028 == arg2.anInt111 || this.anInt946 == arg2.anInt111)) {
-				int local29 = Class10_Sub1_Sub1.anInt678;
-				int local31 = Class10_Sub1_Sub1.anInt676;
-				int local33 = Class10_Sub1_Sub1.anInt679;
-				int local35 = Class10_Sub1_Sub1.anInt677;
-				Class10_Sub1_Sub1.method496(arg0, arg1, arg0 + arg2.anInt121, arg1 + arg2.anInt123);
+				int local29 = Draw2D.anInt678;
+				int local31 = Draw2D.anInt676;
+				int local33 = Draw2D.anInt679;
+				int local35 = Draw2D.anInt677;
+				Draw2D.method496(arg0, arg1, arg0 + arg2.anInt121, arg1 + arg2.anInt123);
 				int local51 = arg2.anIntArray43.length;
 				for ( int local59 = 0; local59 < local51; local59++) {
 					int local68 = arg2.anIntArray41[local59] + arg1;
@@ -11986,7 +11979,7 @@ public final class client extends Applet_Sub1 {
 										local213 = 0;
 										local215 = 0;
 										local222 = local83.anIntArray44[local163] - 1;
-										if (local180 > Class10_Sub1_Sub1.anInt678 - 32 && local180 < Class10_Sub1_Sub1.anInt679 && local189 > Class10_Sub1_Sub1.anInt676 - 32 && local189 < Class10_Sub1_Sub1.anInt677 || this.anInt950 != 0 && this.anInt949 == local163) {
+										if (local180 > Draw2D.anInt678 - 32 && local180 < Draw2D.anInt679 && local189 > Draw2D.anInt676 - 32 && local189 < Draw2D.anInt677 || this.anInt950 != 0 && this.anInt949 == local163) {
 											local247 = 0;
 											if (this.anInt965 == 1 && this.anInt966 == local163 && this.anInt967 == local83.anInt111) {
 												local247 = 16777215;
@@ -12008,8 +12001,8 @@ public final class client extends Applet_Sub1 {
 														local215 = 0;
 													}
 													local271.method80(local180 + local213, local189 + local215);
-													if (local189 + local215 < Class10_Sub1_Sub1.anInt676 && arg2.anInt118 > 0) {
-														local350 = this.anInt878 * (Class10_Sub1_Sub1.anInt676 - local189 - local215) / 3;
+													if (local189 + local215 < Draw2D.anInt676 && arg2.anInt118 > 0) {
+														local350 = this.anInt878 * (Draw2D.anInt676 - local189 - local215) / 3;
 														if (local350 > this.anInt878 * 10) {
 															local350 = this.anInt878 * 10;
 														}
@@ -12019,8 +12012,8 @@ public final class client extends Applet_Sub1 {
 														arg2.anInt118 -= local350;
 														this.anInt952 += local350;
 													}
-													if (local189 + local215 + 32 > Class10_Sub1_Sub1.anInt677 && arg2.anInt118 < arg2.anInt147 - arg2.anInt121) {
-														local350 = this.anInt878 * (local189 + local215 + 32 - Class10_Sub1_Sub1.anInt677) / 3;
+													if (local189 + local215 + 32 > Draw2D.anInt677 && arg2.anInt118 < arg2.anInt147 - arg2.anInt121) {
+														local350 = this.anInt878 * (local189 + local215 + 32 - Draw2D.anInt677) / 3;
 														if (local350 > this.anInt878 * 10) {
 															local350 = this.anInt878 * 10;
 														}
@@ -12069,14 +12062,14 @@ public final class client extends Applet_Sub1 {
 							}
 							if (local83.aByte9 == 0) {
 								if (local83.aBoolean36) {
-									Class10_Sub1_Sub1.method499(local83.anInt121, local93, local163, local83.anInt123, local88);
+									Draw2D.method499(local83.anInt121, local93, local163, local83.anInt123, local88);
 								} else {
-									Class10_Sub1_Sub1.method500(local93, local83.anInt121, local163, local88, local83.anInt123);
+									Draw2D.method500(local93, local83.anInt121, local163, local88, local83.anInt123);
 								}
 							} else if (local83.aBoolean36) {
-								Class10_Sub1_Sub1.method498(local163, local93, local83.anInt123, local83.anInt121, 256 - (local83.aByte9 & 0xFF), local88);
+								Draw2D.method498(local163, local93, local83.anInt123, local83.anInt121, 256 - (local83.aByte9 & 0xFF), local88);
 							} else {
-								Class10_Sub1_Sub1.method501(local88, local83.anInt123, local163, local83.anInt121, local93, 256 - (local83.aByte9 & 0xFF));
+								Draw2D.method501(local88, local83.anInt123, local163, local83.anInt121, local93, 256 - (local83.aByte9 & 0xFF));
 							}
 						} else {
 							Class10_Sub1_Sub1_Sub2 local682;
@@ -12106,7 +12099,7 @@ public final class client extends Applet_Sub1 {
 									local685 = "Please wait...";
 									local165 = local83.anInt122;
 								}
-								if (Class10_Sub1_Sub1.anInt674 == 479) {
+								if (Draw2D.anInt674 == 479) {
 									if (local165 == 16776960) {
 										local165 = 255;
 									}
@@ -12256,8 +12249,8 @@ public final class client extends Applet_Sub1 {
 									if (local215 + local165 > arg0 + arg2.anInt121) {
 										local215 = arg0 + arg2.anInt121 - local165;
 									}
-									Class10_Sub1_Sub1.method499(local165, local215, 16777120, local163, local213);
-									Class10_Sub1_Sub1.method500(local215, local165, 0, local213, local163);
+									Draw2D.method499(local165, local215, 16777120, local163, local213);
+									Draw2D.method500(local215, local165, 0, local213, local163);
 									local1294 = local83.aString2;
 									local222 = local215 + local1291.anInt230 + 2;
 									while (local1294.length() > 0) {
@@ -12277,7 +12270,7 @@ public final class client extends Applet_Sub1 {
 						}
 					}
 				}
-				Class10_Sub1_Sub1.method496(local31, local29, local35, local33);
+				Draw2D.method496(local31, local29, local35, local33);
 			}
 		} catch ( RuntimeException local1479) {
 			signlink.reporterror("31048, " + arg0 + ", " + arg1 + ", " + arg2 + ", " + arg3 + ", " + 8 + ", " + local1479.toString());
@@ -12421,7 +12414,7 @@ public final class client extends Applet_Sub1 {
 
 	private void method722( int arg0) {
 		try {
-			if (super.aClass19_2 == null) {
+			if (super.gameSurface == null) {
 				this.method716();
 				this.aClass19_19 = null;
 				this.aClass19_20 = null;
@@ -12442,7 +12435,7 @@ public final class client extends Applet_Sub1 {
 				this.aClass19_12 = null;
 				this.aClass19_13 = null;
 				this.aClass19_14 = null;
-				super.aClass19_2 = new Class19(503, (byte) -12, this.method586(), 765);
+				super.gameSurface = new PixMap(this.getBaseComponent(), 765, 503);
 				this.aBoolean236 = true;
 			}
 		} catch ( RuntimeException local75) {
@@ -12473,14 +12466,14 @@ public final class client extends Applet_Sub1 {
 			int local20;
 			int local27;
 			if (this.anInt998 == 0) {
-				local20 = super.anInt812 / 2 - 80;
-				local27 = super.anInt813 / 2 + 20;
+				local20 = super.screenWidth / 2 - 80;
+				local27 = super.screenHeight / 2 + 20;
 				local27 += 20;
 				if (super.anInt821 == 1 && super.anInt822 >= local20 - 75 && super.anInt822 <= local20 + 75 && super.anInt823 >= local27 - 20 && super.anInt823 <= local27 + 20) {
 					this.anInt998 = 3;
 					this.anInt886 = 0;
 				}
-				local20 = super.anInt812 / 2 + 80;
+				local20 = super.screenWidth / 2 + 80;
 				if (super.anInt821 == 1 && super.anInt822 >= local20 - 75 && super.anInt822 <= local20 + 75 && super.anInt823 >= local27 - 20 && super.anInt823 <= local27 + 20) {
 					this.aString21 = "";
 					this.aString22 = "Enter your username & password.";
@@ -12488,7 +12481,7 @@ public final class client extends Applet_Sub1 {
 					this.anInt886 = 0;
 				}
 			} else if (this.anInt998 == 2) {
-				local20 = super.anInt813 / 2 - 40;
+				local20 = super.screenHeight / 2 - 40;
 				local20 += 30;
 				local20 += 25;
 				if (super.anInt821 == 1 && super.anInt823 >= local20 - 15 && super.anInt823 < local20) {
@@ -12499,8 +12492,8 @@ public final class client extends Applet_Sub1 {
 					this.anInt886 = 1;
 				}
 				local20 += 15;
-				local27 = super.anInt812 / 2 - 80;
-				int local173 = super.anInt813 / 2 + 50;
+				local27 = super.screenWidth / 2 - 80;
+				int local173 = super.screenHeight / 2 + 50;
 				int local174 = local173 + 20;
 				if (super.anInt821 == 1 && super.anInt822 >= local27 - 75 && super.anInt822 <= local27 + 75 && super.anInt823 >= local174 - 20 && super.anInt823 <= local174 + 20) {
 					this.anInt833 = 0;
@@ -12509,7 +12502,7 @@ public final class client extends Applet_Sub1 {
 						return;
 					}
 				}
-				local27 = super.anInt812 / 2 + 80;
+				local27 = super.screenWidth / 2 + 80;
 				if (super.anInt821 == 1 && super.anInt822 >= local27 - 75 && super.anInt822 <= local27 + 75 && super.anInt823 >= local174 - 20 && super.anInt823 <= local174 + 20) {
 					this.anInt998 = 0;
 					this.aString27 = "";
@@ -12558,8 +12551,8 @@ public final class client extends Applet_Sub1 {
 					}
 				}
 			} else if (this.anInt998 == 3) {
-				local20 = super.anInt812 / 2;
-				local27 = super.anInt813 / 2 + 50;
+				local20 = super.screenWidth / 2;
+				local27 = super.screenHeight / 2 + 50;
 				int local428 = local27 + 20;
 				if (super.anInt821 == 1 && super.anInt822 >= local20 - 75 && super.anInt822 <= local20 + 75 && super.anInt823 >= local428 - 20 && super.anInt823 <= local428 + 20) {
 					this.anInt998 = 0;
@@ -12780,14 +12773,14 @@ public final class client extends Applet_Sub1 {
 			Class10_Sub1_Sub2_Sub4.anInt419 = 0;
 			Class10_Sub1_Sub2_Sub4.anInt417 = super.anInt816 - 4;
 			Class10_Sub1_Sub2_Sub4.anInt418 = super.anInt817 - 4;
-			Class10_Sub1_Sub1.method497();
+			Draw2D.method497();
 			this.aClass23_1.method229(this.anInt990, local35, this.anInt991, this.anInt992, this.anInt994, this.anInt993);
 			this.aClass23_1.method204(this.anInt859);
 			this.method696();
 			this.method702();
 			this.method640(local184);
 			this.method684();
-			this.aClass19_17.method131(4, 4, super.aGraphics2, this.aBoolean239);
+			this.aClass19_17.method131(4, 4, super.graphics);
 			this.anInt990 = local74;
 			this.anInt991 = local118;
 			this.anInt992 = local121;

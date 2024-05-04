@@ -5,10 +5,10 @@
 
 public final class Class31 {
 
-	private static Class1 aClass1_1 = new Class1();
+	private static BZip2State aClass1_1 = new BZip2State();
 
 	public static int method363( byte[] arg0, int arg1, byte[] arg2, int arg3, int arg4) {
-		Class1 local3 = aClass1_1;
+		BZip2State local3 = aClass1_1;
 		synchronized (aClass1_1) {
 			aClass1_1.aByteArray1 = arg2;
 			aClass1_1.anInt10 = arg4;
@@ -28,12 +28,12 @@ public final class Class31 {
 		}
 	}
 
-	private static void method364( Class1 arg0) {
+	private static void method364( BZip2State arg0) {
 		byte local4 = arg0.aByte1;
 		int local7 = arg0.anInt18;
 		int local10 = arg0.anInt26;
 		int local13 = arg0.anInt25;
-		int[] local15 = Class1.anIntArray4;
+		int[] local15 = BZip2State.anIntArray4;
 		int local18 = arg0.anInt24;
 		byte[] local21 = arg0.aByteArray2;
 		int local24 = arg0.anInt14;
@@ -137,17 +137,17 @@ public final class Class31 {
 		arg0.anInt18 = local7;
 		arg0.anInt26 = local10;
 		arg0.anInt25 = local13;
-		Class1.anIntArray4 = local15;
+		BZip2State.anIntArray4 = local15;
 		arg0.anInt24 = local18;
 		arg0.aByteArray2 = local21;
 		arg0.anInt14 = local24;
 		arg0.anInt15 = local27;
 	}
 
-	private static void method365( Class1 arg0) {
+	private static void method365( BZip2State arg0) {
 		arg0.anInt21 = 1;
-		if (Class1.anIntArray4 == null) {
-			Class1.anIntArray4 = new int[arg0.anInt21 * 100000];
+		if (BZip2State.anIntArray4 == null) {
+			BZip2State.anIntArray4 = new int[arg0.anInt21 * 100000];
 		}
 		boolean local60 = true;
 		while (true) {
@@ -214,7 +214,7 @@ public final class Class31 {
 					while (true) {
 						local64 = method367(arg0);
 						if (local64 == 0) {
-							arg0.aByteArray6[local164] = (byte) local212;
+							arg0.selectorMtf[local164] = (byte) local212;
 							break;
 						}
 						local212++;
@@ -226,14 +226,14 @@ public final class Class31 {
 					local279[local281] = local281++;
 				}
 				for (local164 = 0; local164 < local252; local164++) {
-					local281 = arg0.aByteArray6[local164];
+					local281 = arg0.selectorMtf[local164];
 					byte local308 = local279[local281];
 					while (local281 > 0) {
 						local279[local281] = local279[local281 - 1];
 						local281--;
 					}
 					local279[0] = local308;
-					arg0.aByteArray5[local164] = local308;
+					arg0.selector[local164] = local308;
 				}
 				int local340;
 				for (local340 = 0; local340 < local248; local340++) {
@@ -242,7 +242,7 @@ public final class Class31 {
 						while (true) {
 							local64 = method367(arg0);
 							if (local64 == 0) {
-								arg0.aByteArrayArray1[local340][local164] = (byte) local346;
+								arg0.len[local340][local164] = (byte) local346;
 								break;
 							}
 							local64 = method367(arg0);
@@ -258,15 +258,15 @@ public final class Class31 {
 					byte local388 = 32;
 					byte local390 = 0;
 					for (local164 = 0; local164 < local244; local164++) {
-						if (arg0.aByteArrayArray1[local340][local164] > local390) {
-							local390 = arg0.aByteArrayArray1[local340][local164];
+						if (arg0.len[local340][local164] > local390) {
+							local390 = arg0.len[local340][local164];
 						}
-						if (arg0.aByteArrayArray1[local340][local164] < local388) {
-							local388 = arg0.aByteArrayArray1[local340][local164];
+						if (arg0.len[local340][local164] < local388) {
+							local388 = arg0.len[local340][local164];
 						}
 					}
-					method370(arg0.anIntArrayArray1[local340], arg0.anIntArrayArray2[local340], arg0.anIntArrayArray3[local340], arg0.aByteArrayArray1[local340], local388, local390, local244);
-					arg0.anIntArray6[local340] = local388;
+					method370(arg0.limit[local340], arg0.base[local340], arg0.perm[local340], arg0.len[local340], local388, local390, local244);
+					arg0.minLens[local340] = local388;
 				}
 				int local462 = arg0.anInt27 + 1;
 				int local467 = arg0.anInt21 * 100000;
@@ -277,7 +277,7 @@ public final class Class31 {
 				int local486 = 4095;
 				for ( int local488 = 15; local488 >= 0; local488--) {
 					for ( int local492 = 15; local492 >= 0; local492--) {
-						arg0.aByteArray4[local486] = (byte) (local488 * 16 + local492);
+						arg0.mtfa[local486] = (byte) (local488 * 16 + local492);
 						local486--;
 					}
 					arg0.anIntArray5[local488] = local486 + 1;
@@ -285,11 +285,11 @@ public final class Class31 {
 				int local520 = 0;
 				int local523 = local469 + 1;
 				byte local525 = 50;
-				byte local530 = arg0.aByteArray5[0];
-				int local535 = arg0.anIntArray6[local530];
-				int[] local540 = arg0.anIntArrayArray1[local530];
-				int[] local545 = arg0.anIntArrayArray3[local530];
-				int[] local550 = arg0.anIntArrayArray2[local530];
+				byte local530 = arg0.selector[0];
+				int local535 = arg0.minLens[local530];
+				int[] local540 = arg0.limit[local530];
+				int[] local545 = arg0.perm[local530];
+				int[] local550 = arg0.base[local530];
 				int local551 = local525 - 1;
 				int local553 = local535;
 				int local557;
@@ -314,11 +314,11 @@ public final class Class31 {
 								if (local551 == 0) {
 									local523++;
 									local551 = 50;
-									local530 = arg0.aByteArray5[local523];
-									local535 = arg0.anIntArray6[local530];
-									local540 = arg0.anIntArrayArray1[local530];
-									local545 = arg0.anIntArrayArray3[local530];
-									local550 = arg0.anIntArrayArray2[local530];
+									local530 = arg0.selector[local523];
+									local535 = arg0.minLens[local530];
+									local540 = arg0.limit[local530];
+									local545 = arg0.perm[local530];
+									local550 = arg0.base[local530];
 								}
 								local551--;
 								local553 = local535;
@@ -329,10 +329,10 @@ public final class Class31 {
 								local582 = local545[local557 - local550[local553]];
 							} while (local582 == 0 || local582 == 1);
 							local592++;
-							local64 = arg0.aByteArray3[arg0.aByteArray4[arg0.anIntArray5[0]] & 0xFF];
+							local64 = arg0.aByteArray3[arg0.mtfa[arg0.anIntArray5[0]] & 0xFF];
 							arg0.anIntArray1[local64 & 0xFF] += local592;
 							while (local592 > 0) {
-								Class1.anIntArray4[local520] = local64 & 0xFF;
+								BZip2State.anIntArray4[local520] = local64 & 0xFF;
 								local520++;
 								local592--;
 							}
@@ -341,42 +341,42 @@ public final class Class31 {
 							int local732;
 							if (local724 < 16) {
 								local732 = arg0.anIntArray5[0];
-								local64 = arg0.aByteArray4[local732 + local724];
+								local64 = arg0.mtfa[local732 + local724];
 								while (local724 > 3) {
 									int local745 = local732 + local724;
-									arg0.aByteArray4[local745] = arg0.aByteArray4[local745 - 1];
-									arg0.aByteArray4[local745 - 1] = arg0.aByteArray4[local745 - 2];
-									arg0.aByteArray4[local745 - 2] = arg0.aByteArray4[local745 - 3];
-									arg0.aByteArray4[local745 - 3] = arg0.aByteArray4[local745 - 4];
+									arg0.mtfa[local745] = arg0.mtfa[local745 - 1];
+									arg0.mtfa[local745 - 1] = arg0.mtfa[local745 - 2];
+									arg0.mtfa[local745 - 2] = arg0.mtfa[local745 - 3];
+									arg0.mtfa[local745 - 3] = arg0.mtfa[local745 - 4];
 									local724 -= 4;
 								}
 								while (local724 > 0) {
-									arg0.aByteArray4[local732 + local724] = arg0.aByteArray4[local732 + local724 - 1];
+									arg0.mtfa[local732 + local724] = arg0.mtfa[local732 + local724 - 1];
 									local724--;
 								}
-								arg0.aByteArray4[local732] = local64;
+								arg0.mtfa[local732] = local64;
 							} else {
 								int local825 = local724 / 16;
 								int local829 = local724 % 16;
 								local732 = arg0.anIntArray5[local825] + local829;
-								local64 = arg0.aByteArray4[local732];
+								local64 = arg0.mtfa[local732];
 								while (local732 > arg0.anIntArray5[local825]) {
-									arg0.aByteArray4[local732] = arg0.aByteArray4[local732 - 1];
+									arg0.mtfa[local732] = arg0.mtfa[local732 - 1];
 									local732--;
 								}
 								int local865 = arg0.anIntArray5[local825]++;
 								while (local825 > 0) {
 									local865 = arg0.anIntArray5[local825]--;
-									arg0.aByteArray4[arg0.anIntArray5[local825]] = arg0.aByteArray4[arg0.anIntArray5[local825 - 1] + 16 - 1];
+									arg0.mtfa[arg0.anIntArray5[local825]] = arg0.mtfa[arg0.anIntArray5[local825 - 1] + 16 - 1];
 									local825--;
 								}
 								local865 = arg0.anIntArray5[0]--;
-								arg0.aByteArray4[arg0.anIntArray5[0]] = local64;
+								arg0.mtfa[arg0.anIntArray5[0]] = local64;
 								if (arg0.anIntArray5[0] == 0) {
 									int local924 = 4095;
 									for ( int local926 = 15; local926 >= 0; local926--) {
 										for ( int local930 = 15; local930 >= 0; local930--) {
-											arg0.aByteArray4[local924] = arg0.aByteArray4[arg0.anIntArray5[local926] + local930];
+											arg0.mtfa[local924] = arg0.mtfa[arg0.anIntArray5[local926] + local930];
 											local924--;
 										}
 										arg0.anIntArray5[local926] = local924 + 1;
@@ -384,16 +384,16 @@ public final class Class31 {
 								}
 							}
 							arg0.anIntArray1[arg0.aByteArray3[local64 & 0xFF] & 0xFF]++;
-							Class1.anIntArray4[local520] = arg0.aByteArray3[local64 & 0xFF] & 0xFF;
+							BZip2State.anIntArray4[local520] = arg0.aByteArray3[local64 & 0xFF] & 0xFF;
 							local520++;
 							if (local551 == 0) {
 								local523++;
 								local551 = 50;
-								local530 = arg0.aByteArray5[local523];
-								local535 = arg0.anIntArray6[local530];
-								local540 = arg0.anIntArrayArray1[local530];
-								local545 = arg0.anIntArrayArray3[local530];
-								local550 = arg0.anIntArrayArray2[local530];
+								local530 = arg0.selector[local523];
+								local535 = arg0.minLens[local530];
+								local540 = arg0.limit[local530];
+								local545 = arg0.perm[local530];
+								local550 = arg0.base[local530];
 							}
 							local551--;
 							local553 = local535;
@@ -414,13 +414,13 @@ public final class Class31 {
 						arg0.anIntArray2[local164] += arg0.anIntArray2[local164 - 1];
 					}
 					for (local164 = 0; local164 < local520; local164++) {
-						local64 = (byte) (Class1.anIntArray4[local164] & 0xFF);
-						Class1.anIntArray4[arg0.anIntArray2[local64 & 0xFF]] |= local164 << 8;
+						local64 = (byte) (BZip2State.anIntArray4[local164] & 0xFF);
+						BZip2State.anIntArray4[arg0.anIntArray2[local64 & 0xFF]] |= local164 << 8;
 						arg0.anIntArray2[local64 & 0xFF]++;
 					}
-					arg0.anInt24 = Class1.anIntArray4[arg0.anInt23] >> 8;
+					arg0.anInt24 = BZip2State.anIntArray4[arg0.anInt23] >> 8;
 					arg0.anInt26 = 0;
-					arg0.anInt24 = Class1.anIntArray4[arg0.anInt24];
+					arg0.anInt24 = BZip2State.anIntArray4[arg0.anInt24];
 					arg0.anInt25 = (byte) (arg0.anInt24 & 0xFF);
 					arg0.anInt24 >>= 0x8;
 					arg0.anInt26++;
@@ -438,15 +438,15 @@ public final class Class31 {
 		}
 	}
 
-	private static byte method366( Class1 arg0) {
+	private static byte method366( BZip2State arg0) {
 		return (byte) method368(8, arg0);
 	}
 
-	private static byte method367( Class1 arg0) {
+	private static byte method367( BZip2State arg0) {
 		return (byte) method368(1, arg0);
 	}
 
-	private static int method368( int arg0, Class1 arg1) {
+	private static int method368( int arg0, BZip2State arg1) {
 		while (arg1.anInt20 < arg0) {
 			arg1.anInt19 = arg1.anInt19 << 8 | arg1.aByteArray1[arg1.anInt10] & 0xFF;
 			arg1.anInt20 += 8;
@@ -462,7 +462,7 @@ public final class Class31 {
 		return local17;
 	}
 
-	private static void method369( Class1 arg0) {
+	private static void method369( BZip2State arg0) {
 		arg0.anInt27 = 0;
 		for ( int local4 = 0; local4 < 256; local4++) {
 			if (arg0.aBooleanArray1[local4]) {

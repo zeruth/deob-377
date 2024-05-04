@@ -6,7 +6,7 @@ import sign.signlink;
 
 public final class Class38 {
 
-	public static client aClient3;
+	public static Client aClient3;
 
 	private static int anInt578;
 
@@ -297,7 +297,7 @@ public final class Class38 {
 				int local32 = local29.anInt800;
 				int local35 = local29.anInt801;
 				int local38 = local29.anInt802;
-				int local44 = client.anIntArray262[local38 - local35];
+				int local44 = Client.anIntArray262[local38 - local35];
 				local20 = aClient3.anIntArray244[local32] >> local35 & local44;
 			} else if (this.anInt582 != -1) {
 				local20 = aClient3.anIntArray244[this.anInt582];
@@ -375,7 +375,7 @@ public final class Class38 {
 				int local18 = local15.anInt800;
 				int local21 = local15.anInt801;
 				int local24 = local15.anInt802;
-				int local30 = client.anIntArray262[local24 - local21];
+				int local30 = Client.anIntArray262[local24 - local21];
 				local6 = aClient3.anIntArray244[local18] >> local21 & local30;
 			} else if (this.anInt582 != -1) {
 				local6 = aClient3.anIntArray244[this.anInt582];

@@ -9,7 +9,7 @@ import java.awt.image.PixelGrabber;
 
 import sign.signlink;
 
-public final class Class10_Sub1_Sub1_Sub1 extends Class10_Sub1_Sub1 {
+public final class Class10_Sub1_Sub1_Sub1 extends Draw2D {
 
 	private int anInt98 = -235;
 
@@ -118,7 +118,7 @@ public final class Class10_Sub1_Sub1_Sub1 extends Class10_Sub1_Sub1 {
 
 	public void method73() {
 		try {
-			Class10_Sub1_Sub1.method494(this.anInt104, this.anInt105, this.anIntArray37);
+			Draw2D.bind(this.anInt104, this.anInt105, this.anIntArray37);
 		} catch ( RuntimeException local13) {
 			signlink.reporterror("36129, " + false + ", " + local13.toString());
 			throw new RuntimeException();
@@ -186,40 +186,40 @@ public final class Class10_Sub1_Sub1_Sub1 extends Class10_Sub1_Sub1 {
 		try {
 			arg1 += this.anInt106;
 			arg0 += this.anInt107;
-			int local15 = arg1 + arg0 * Class10_Sub1_Sub1.anInt674;
+			int local15 = arg1 + arg0 * Draw2D.anInt674;
 			int local17 = 0;
 			int local20 = this.anInt105;
 			int local23 = this.anInt104;
-			int local27 = Class10_Sub1_Sub1.anInt674 - local23;
+			int local27 = Draw2D.anInt674 - local23;
 			int local29 = 0;
 			int local36;
-			if (arg0 < Class10_Sub1_Sub1.anInt676) {
-				local36 = Class10_Sub1_Sub1.anInt676 - arg0;
+			if (arg0 < Draw2D.anInt676) {
+				local36 = Draw2D.anInt676 - arg0;
 				local20 -= local36;
-				arg0 = Class10_Sub1_Sub1.anInt676;
+				arg0 = Draw2D.anInt676;
 				local17 = local36 * local23 + 0;
-				local15 += local36 * Class10_Sub1_Sub1.anInt674;
+				local15 += local36 * Draw2D.anInt674;
 			}
-			if (arg0 + local20 > Class10_Sub1_Sub1.anInt677) {
-				local20 -= arg0 + local20 - Class10_Sub1_Sub1.anInt677;
+			if (arg0 + local20 > Draw2D.anInt677) {
+				local20 -= arg0 + local20 - Draw2D.anInt677;
 			}
-			if (arg1 < Class10_Sub1_Sub1.anInt678) {
-				local36 = Class10_Sub1_Sub1.anInt678 - arg1;
+			if (arg1 < Draw2D.anInt678) {
+				local36 = Draw2D.anInt678 - arg1;
 				local23 -= local36;
-				arg1 = Class10_Sub1_Sub1.anInt678;
+				arg1 = Draw2D.anInt678;
 				local17 += local36;
 				local15 += local36;
 				local29 = local36 + 0;
 				local27 += local36;
 			}
-			if (arg1 + local23 > Class10_Sub1_Sub1.anInt679) {
-				local36 = arg1 + local23 - Class10_Sub1_Sub1.anInt679;
+			if (arg1 + local23 > Draw2D.anInt679) {
+				local36 = arg1 + local23 - Draw2D.anInt679;
 				local23 -= local36;
 				local29 += local36;
 				local27 += local36;
 			}
 			if (local23 > 0 && local20 > 0) {
-				this.method77(local23, local27, local20, this.anIntArray37, local17, local29, local15, Class10_Sub1_Sub1.anIntArray178);
+				this.method77(local23, local27, local20, this.anIntArray37, local17, local29, local15, Draw2D.anIntArray178);
 			}
 		} catch ( RuntimeException local148) {
 			signlink.reporterror("71094, " + arg0 + ", " + -192 + ", " + arg1 + ", " + local148.toString());
@@ -254,40 +254,40 @@ public final class Class10_Sub1_Sub1_Sub1 extends Class10_Sub1_Sub1 {
 		try {
 			arg1 += this.anInt106;
 			arg0 += this.anInt107;
-			int local18 = arg1 + arg0 * Class10_Sub1_Sub1.anInt674;
+			int local18 = arg1 + arg0 * Draw2D.anInt674;
 			int local20 = 0;
 			int local23 = this.anInt105;
 			int local26 = this.anInt104;
-			int local30 = Class10_Sub1_Sub1.anInt674 - local26;
+			int local30 = Draw2D.anInt674 - local26;
 			int local32 = 0;
 			int local39;
-			if (arg0 < Class10_Sub1_Sub1.anInt676) {
-				local39 = Class10_Sub1_Sub1.anInt676 - arg0;
+			if (arg0 < Draw2D.anInt676) {
+				local39 = Draw2D.anInt676 - arg0;
 				local23 -= local39;
-				arg0 = Class10_Sub1_Sub1.anInt676;
+				arg0 = Draw2D.anInt676;
 				local20 = local39 * local26 + 0;
-				local18 += local39 * Class10_Sub1_Sub1.anInt674;
+				local18 += local39 * Draw2D.anInt674;
 			}
-			if (arg0 + local23 > Class10_Sub1_Sub1.anInt677) {
-				local23 -= arg0 + local23 - Class10_Sub1_Sub1.anInt677;
+			if (arg0 + local23 > Draw2D.anInt677) {
+				local23 -= arg0 + local23 - Draw2D.anInt677;
 			}
-			if (arg1 < Class10_Sub1_Sub1.anInt678) {
-				local39 = Class10_Sub1_Sub1.anInt678 - arg1;
+			if (arg1 < Draw2D.anInt678) {
+				local39 = Draw2D.anInt678 - arg1;
 				local26 -= local39;
-				arg1 = Class10_Sub1_Sub1.anInt678;
+				arg1 = Draw2D.anInt678;
 				local20 += local39;
 				local18 += local39;
 				local32 = local39 + 0;
 				local30 += local39;
 			}
-			if (arg1 + local26 > Class10_Sub1_Sub1.anInt679) {
-				local39 = arg1 + local26 - Class10_Sub1_Sub1.anInt679;
+			if (arg1 + local26 > Draw2D.anInt679) {
+				local39 = arg1 + local26 - Draw2D.anInt679;
 				local26 -= local39;
 				local32 += local39;
 				local30 += local39;
 			}
 			if (local26 > 0 && local23 > 0) {
-				this.method79(Class10_Sub1_Sub1.anIntArray178, this.anIntArray37, local20, local18, local26, local23, local30, local32);
+				this.method79(Draw2D.anIntArray178, this.anIntArray37, local20, local18, local26, local23, local30, local32);
 			}
 		} catch ( RuntimeException local141) {
 			signlink.reporterror("82148, " + arg0 + ", " + arg1 + ", " + -488 + ", " + local141.toString());
@@ -343,40 +343,40 @@ public final class Class10_Sub1_Sub1_Sub1 extends Class10_Sub1_Sub1 {
 		try {
 			arg0 += this.anInt106;
 			arg1 += this.anInt107;
-			int local15 = arg0 + arg1 * Class10_Sub1_Sub1.anInt674;
+			int local15 = arg0 + arg1 * Draw2D.anInt674;
 			int local17 = 0;
 			int local23 = this.anInt105;
 			int local26 = this.anInt104;
-			int local30 = Class10_Sub1_Sub1.anInt674 - local26;
+			int local30 = Draw2D.anInt674 - local26;
 			int local32 = 0;
 			int local39;
-			if (arg1 < Class10_Sub1_Sub1.anInt676) {
-				local39 = Class10_Sub1_Sub1.anInt676 - arg1;
+			if (arg1 < Draw2D.anInt676) {
+				local39 = Draw2D.anInt676 - arg1;
 				local23 -= local39;
-				arg1 = Class10_Sub1_Sub1.anInt676;
+				arg1 = Draw2D.anInt676;
 				local17 = local39 * local26 + 0;
-				local15 += local39 * Class10_Sub1_Sub1.anInt674;
+				local15 += local39 * Draw2D.anInt674;
 			}
-			if (arg1 + local23 > Class10_Sub1_Sub1.anInt677) {
-				local23 -= arg1 + local23 - Class10_Sub1_Sub1.anInt677;
+			if (arg1 + local23 > Draw2D.anInt677) {
+				local23 -= arg1 + local23 - Draw2D.anInt677;
 			}
-			if (arg0 < Class10_Sub1_Sub1.anInt678) {
-				local39 = Class10_Sub1_Sub1.anInt678 - arg0;
+			if (arg0 < Draw2D.anInt678) {
+				local39 = Draw2D.anInt678 - arg0;
 				local26 -= local39;
-				arg0 = Class10_Sub1_Sub1.anInt678;
+				arg0 = Draw2D.anInt678;
 				local17 += local39;
 				local15 += local39;
 				local32 = local39 + 0;
 				local30 += local39;
 			}
-			if (arg0 + local26 > Class10_Sub1_Sub1.anInt679) {
-				local39 = arg0 + local26 - Class10_Sub1_Sub1.anInt679;
+			if (arg0 + local26 > Draw2D.anInt679) {
+				local39 = arg0 + local26 - Draw2D.anInt679;
 				local26 -= local39;
 				local32 += local39;
 				local30 += local39;
 			}
 			if (local26 > 0 && local23 > 0) {
-				this.method81(local26, local32, 0, local30, local17, this.anInt100, local15, local23, Class10_Sub1_Sub1.anIntArray178, this.anIntArray37);
+				this.method81(local26, local32, 0, local30, local17, this.anInt100, local15, local23, Draw2D.anIntArray178, this.anIntArray37);
 			}
 		} catch ( RuntimeException local144) {
 			signlink.reporterror("57053, " + 0 + ", " + arg0 + ", " + arg1 + ", " + 128 + ", " + local144.toString());
@@ -420,20 +420,20 @@ public final class Class10_Sub1_Sub1_Sub1 extends Class10_Sub1_Sub1 {
 				int local45 = local33 * arg8 >> 8;
 				int local57 = (arg3 << 16) + local15 * local39 + local10 * local45;
 				int local69 = (arg10 << 16) + (local15 * local45 - local10 * local39);
-				int local75 = arg6 + arg0 * Class10_Sub1_Sub1.anInt674;
+				int local75 = arg6 + arg0 * Draw2D.anInt674;
 				for ( int local77 = 0; local77 < arg2; local77++) {
 					int local83 = arg9[local77];
 					int local87 = local75 + local83;
 					int local93 = local57 + local45 * local83;
 					int local99 = local69 - local39 * local83;
 					for ( int local104 = -arg5[local77]; local104 < 0; local104++) {
-						Class10_Sub1_Sub1.anIntArray178[local87++] = this.anIntArray37[(local93 >> 16) + (local99 >> 16) * this.anInt104];
+						Draw2D.anIntArray178[local87++] = this.anIntArray37[(local93 >> 16) + (local99 >> 16) * this.anInt104];
 						local93 += local45;
 						local99 -= local39;
 					}
 					local57 += local39;
 					local69 += local45;
-					local75 += Class10_Sub1_Sub1.anInt674;
+					local75 += Draw2D.anInt674;
 				}
 			} catch ( Exception local152) {
 			}
@@ -453,7 +453,7 @@ public final class Class10_Sub1_Sub1_Sub1 extends Class10_Sub1_Sub1 {
 					int local39 = local27 * 256 >> 8;
 					int local51 = local33 * -10 + local39 * -10 + 983040;
 					int local63 = local39 * -10 + 983040 - local33 * -10;
-					int local69 = arg0 + arg3 * Class10_Sub1_Sub1.anInt674;
+					int local69 = arg0 + arg3 * Draw2D.anInt674;
 					for ( int local71 = 0; local71 < 20; local71++) {
 						int local75 = local69;
 						int local77 = local51;
@@ -463,14 +463,14 @@ public final class Class10_Sub1_Sub1_Sub1 extends Class10_Sub1_Sub1 {
 							if (local98 == 0) {
 								local75++;
 							} else {
-								Class10_Sub1_Sub1.anIntArray178[local75++] = local98;
+								Draw2D.anIntArray178[local75++] = local98;
 							}
 							local77 += local39;
 							local79 -= local33;
 						}
 						local51 += local33;
 						local63 += local39;
-						local69 += Class10_Sub1_Sub1.anInt674;
+						local69 += Draw2D.anInt674;
 					}
 				} catch ( Exception local137) {
 				}
@@ -485,40 +485,40 @@ public final class Class10_Sub1_Sub1_Sub1 extends Class10_Sub1_Sub1 {
 		try {
 			arg2 += this.anInt106;
 			arg1 += this.anInt107;
-			int local19 = arg2 + arg1 * Class10_Sub1_Sub1.anInt674;
+			int local19 = arg2 + arg1 * Draw2D.anInt674;
 			int local21 = 0;
 			int local24 = this.anInt105;
 			int local27 = this.anInt104;
-			int local31 = Class10_Sub1_Sub1.anInt674 - local27;
+			int local31 = Draw2D.anInt674 - local27;
 			int local33 = 0;
 			int local40;
-			if (arg1 < Class10_Sub1_Sub1.anInt676) {
-				local40 = Class10_Sub1_Sub1.anInt676 - arg1;
+			if (arg1 < Draw2D.anInt676) {
+				local40 = Draw2D.anInt676 - arg1;
 				local24 -= local40;
-				arg1 = Class10_Sub1_Sub1.anInt676;
+				arg1 = Draw2D.anInt676;
 				local21 = local40 * local27 + 0;
-				local19 += local40 * Class10_Sub1_Sub1.anInt674;
+				local19 += local40 * Draw2D.anInt674;
 			}
-			if (arg1 + local24 > Class10_Sub1_Sub1.anInt677) {
-				local24 -= arg1 + local24 - Class10_Sub1_Sub1.anInt677;
+			if (arg1 + local24 > Draw2D.anInt677) {
+				local24 -= arg1 + local24 - Draw2D.anInt677;
 			}
-			if (arg2 < Class10_Sub1_Sub1.anInt678) {
-				local40 = Class10_Sub1_Sub1.anInt678 - arg2;
+			if (arg2 < Draw2D.anInt678) {
+				local40 = Draw2D.anInt678 - arg2;
 				local27 -= local40;
-				arg2 = Class10_Sub1_Sub1.anInt678;
+				arg2 = Draw2D.anInt678;
 				local21 += local40;
 				local19 += local40;
 				local33 = local40 + 0;
 				local31 += local40;
 			}
-			if (arg2 + local27 > Class10_Sub1_Sub1.anInt679) {
-				local40 = arg2 + local27 - Class10_Sub1_Sub1.anInt679;
+			if (arg2 + local27 > Draw2D.anInt679) {
+				local40 = arg2 + local27 - Draw2D.anInt679;
 				local27 -= local40;
 				local33 += local40;
 				local31 += local40;
 			}
 			if (local27 > 0 && local24 > 0) {
-				this.method85(local19, local31, this.anIntArray37, local27, Class10_Sub1_Sub1.anIntArray178, arg0.aByteArray16, local24, local21, 0, local33);
+				this.method85(local19, local31, this.anIntArray37, local27, Draw2D.anIntArray178, arg0.aByteArray16, local24, local21, 0, local33);
 			}
 		} catch ( RuntimeException local145) {
 			signlink.reporterror("61194, " + arg0 + ", " + arg1 + ", " + -49993 + ", " + arg2 + ", " + local145.toString());

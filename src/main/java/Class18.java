@@ -24,7 +24,7 @@ public final class Class18 implements Runnable {
 
 	private boolean aBoolean57 = false;
 
-	private Applet_Sub1 anApplet_Sub1_1;
+	private GameShell anApplet_Sub1_1;
 
 	private Socket aSocket1;
 
@@ -34,7 +34,7 @@ public final class Class18 implements Runnable {
 
 	private OutputStream anOutputStream1;
 
-	public Class18( byte arg0, Socket arg1, Applet_Sub1 arg2) throws IOException {
+	public Class18( byte arg0, Socket arg1, GameShell arg2) throws IOException {
 		try {
 			this.anApplet_Sub1_1 = arg2;
 			this.aSocket1 = arg1;
@@ -117,7 +117,7 @@ public final class Class18 implements Runnable {
 					}
 					if (!this.aBoolean56) {
 						this.aBoolean56 = true;
-						this.anApplet_Sub1_1.method587(this, 3);
+						this.anApplet_Sub1_1.startThread(this, 3);
 					}
 					this.notify();
 				}

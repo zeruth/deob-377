@@ -105,9 +105,9 @@ public final class Class10_Sub1_Sub2_Sub3_Sub2 extends Class10_Sub1_Sub2_Sub3 {
 				Class10_Sub1_Sub2_Sub4 local129 = new Class10_Sub1_Sub2_Sub4(local68, local66, (byte) -89);
 				for ( int local137 = 0; local137 < 5; local137++) {
 					if (this.anIntArray199[local137] != 0) {
-						local129.method285(client.anIntArrayArray24[local137][0], client.anIntArrayArray24[local137][this.anIntArray199[local137]]);
+						local129.method285(Client.anIntArrayArray24[local137][0], Client.anIntArrayArray24[local137][this.anIntArray199[local137]]);
 						if (local137 == 1) {
-							local129.method285(client.anIntArray266[0], client.anIntArray266[this.anIntArray199[local137]]);
+							local129.method285(Client.anIntArray266[0], Client.anIntArray266[this.anIntArray199[local137]]);
 						}
 					}
 				}
@@ -212,9 +212,9 @@ public final class Class10_Sub1_Sub2_Sub3_Sub2 extends Class10_Sub1_Sub2_Sub3 {
 				local156 = new Class10_Sub1_Sub2_Sub4(local162, local239, (byte) -89);
 				for (local250 = 0; local250 < 5; local250++) {
 					if (this.anIntArray199[local250] != 0) {
-						local156.method285(client.anIntArrayArray24[local250][0], client.anIntArrayArray24[local250][this.anIntArray199[local250]]);
+						local156.method285(Client.anIntArrayArray24[local250][0], Client.anIntArrayArray24[local250][this.anIntArray199[local250]]);
 						if (local250 == 1) {
-							local156.method285(client.anIntArray266[0], client.anIntArray266[this.anIntArray199[local250]]);
+							local156.method285(Client.anIntArray266[0], Client.anIntArray266[this.anIntArray199[local250]]);
 						}
 					}
 				}
@@ -287,10 +287,10 @@ public final class Class10_Sub1_Sub2_Sub3_Sub2 extends Class10_Sub1_Sub2_Sub3 {
 				}
 			}
 			if (this.aClass10_Sub1_Sub2_Sub4_2 != null) {
-				if (client.anInt1050 >= this.anInt772) {
+				if (Client.anInt1050 >= this.anInt772) {
 					this.aClass10_Sub1_Sub2_Sub4_2 = null;
 				}
-				if (client.anInt1050 >= this.anInt771 && client.anInt1050 < this.anInt772) {
+				if (Client.anInt1050 >= this.anInt771 && Client.anInt1050 < this.anInt772) {
 					Class10_Sub1_Sub2_Sub4 local154 = this.aClass10_Sub1_Sub2_Sub4_2;
 					local154.method284(this.anInt762 - super.anInt739, this.anInt764 - super.anInt740, this.anInt763 - this.anInt766);
 					if (super.anInt717 == 512) {
@@ -363,7 +363,7 @@ public final class Class10_Sub1_Sub2_Sub3_Sub2 extends Class10_Sub1_Sub2_Sub3 {
 			}
 			for (local29 = 0; local29 < 5; local29++) {
 				local41 = arg0.method311();
-				if (local41 < 0 || local41 >= client.anIntArrayArray24[local29].length) {
+				if (local41 < 0 || local41 >= Client.anIntArrayArray24[local29].length) {
 					local41 = 0;
 				}
 				this.anIntArray199[local29] = local41;

@@ -10,7 +10,7 @@ public final class Class48 {
 
 	private static Class10_Sub1_Sub3 aClass10_Sub1_Sub3_5;
 
-	public static client aClient4;
+	public static Client aClient4;
 
 	public static boolean aBoolean183;
 
@@ -167,7 +167,7 @@ public final class Class48 {
 				int local18 = local15.anInt800;
 				int local21 = local15.anInt801;
 				int local24 = local15.anInt802;
-				int local30 = client.anIntArray262[local24 - local21];
+				int local30 = Client.anIntArray262[local24 - local21];
 				local6 = aClient4.anIntArray244[local18] >> local21 & local30;
 			} else if (this.anInt701 != -1) {
 				local6 = aClient4.anIntArray244[this.anInt701];

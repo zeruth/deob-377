@@ -6,7 +6,7 @@ import sign.signlink;
 
 public final class Class10_Sub1_Sub2_Sub5 extends Class10_Sub1_Sub2 {
 
-	public static client aClient2;
+	public static Client aClient2;
 
 	private int anInt471;
 
@@ -52,7 +52,7 @@ public final class Class10_Sub1_Sub2_Sub5 extends Class10_Sub1_Sub2 {
 			if (arg0 != -1) {
 				this.aClass15_2 = Class15.aClass15Array1[arg0];
 				this.anInt473 = 0;
-				this.anInt472 = client.anInt1050 - 1;
+				this.anInt472 = Client.anInt1050 - 1;
 				if (arg7 && this.aClass15_2.anInt153 != -1) {
 					this.anInt473 = (int) (Math.random() * (double) this.aClass15_2.anInt152);
 					this.anInt472 -= (int) (Math.random() * (double) this.aClass15_2.method97(this.anInt473));
@@ -76,7 +76,7 @@ public final class Class10_Sub1_Sub2_Sub5 extends Class10_Sub1_Sub2 {
 				int local18 = local15.anInt800;
 				int local21 = local15.anInt801;
 				int local24 = local15.anInt802;
-				int local30 = client.anIntArray262[local24 - local21];
+				int local30 = Client.anIntArray262[local24 - local21];
 				local1 = aClient2.anIntArray244[local18] >> local21 & local30;
 			} else if (this.anInt470 != -1) {
 				local1 = aClient2.anIntArray244[this.anInt470];
@@ -96,7 +96,7 @@ public final class Class10_Sub1_Sub2_Sub5 extends Class10_Sub1_Sub2 {
 			}
 			int local14 = -1;
 			if (this.aClass15_2 != null) {
-				int local22 = client.anInt1050 - this.anInt472;
+				int local22 = Client.anInt1050 - this.anInt472;
 				if (local22 > 100 && this.aClass15_2.anInt153 > 0) {
 					local22 = 100;
 				}
@@ -113,7 +113,7 @@ public final class Class10_Sub1_Sub2_Sub5 extends Class10_Sub1_Sub2 {
 					} while (this.anInt473 >= 0 && this.anInt473 < this.aClass15_2.anInt152);
 					this.aClass15_2 = null;
 				}
-				this.anInt472 = client.anInt1050 - local22;
+				this.anInt472 = Client.anInt1050 - local22;
 				if (this.aClass15_2 != null) {
 					local14 = this.aClass15_2.anIntArray47[this.anInt473];
 				}

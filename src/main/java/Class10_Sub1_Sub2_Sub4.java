@@ -1578,22 +1578,22 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 		}
 		int local49 = arg7 * arg3 + arg5 * arg4 >> 16;
 		int local56 = local49 - this.anInt409 << 9;
-		if (local56 / local32 >= Class10_Sub1_Sub1.anInt681) {
+		if (local56 / local32 >= Draw2D.anInt681) {
 			return;
 		}
 		int local69 = local49 + this.anInt409 << 9;
-		if (local69 / local32 <= -Class10_Sub1_Sub1.anInt681) {
+		if (local69 / local32 <= -Draw2D.anInt681) {
 			return;
 		}
 		int local86 = arg6 * arg2 - local11 * arg1 >> 16;
 		int local93 = this.anInt409 * arg1 >> 16;
 		int local99 = local86 + local93 << 9;
-		if (local99 / local32 <= -Class10_Sub1_Sub1.anInt682) {
+		if (local99 / local32 <= -Draw2D.anInt682) {
 			return;
 		}
 		int local115 = local93 + (super.anInt713 * arg2 >> 16);
 		int local121 = local86 - local115 << 9;
-		if (local121 / local32 >= Class10_Sub1_Sub1.anInt682) {
+		if (local121 / local32 >= Draw2D.anInt682) {
 			return;
 		}
 		int local136 = local28 + (super.anInt713 * arg1 >> 16);
@@ -1710,7 +1710,7 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 					}
 					if ((local46 - local50) * (anIntArray132[local42] - anIntArray132[local37]) - (anIntArray132[local32] - anIntArray132[local37]) * (local54 - local50) > 0) {
 						aBooleanArray6[local16] = false;
-						if (local46 >= 0 && local50 >= 0 && local54 >= 0 && local46 <= Class10_Sub1_Sub1.anInt680 && local50 <= Class10_Sub1_Sub1.anInt680 && local54 <= Class10_Sub1_Sub1.anInt680) {
+						if (local46 >= 0 && local50 >= 0 && local54 >= 0 && local46 <= Draw2D.anInt680 && local50 <= Draw2D.anInt680 && local54 <= Draw2D.anInt680) {
 							aBooleanArray5[local16] = false;
 						} else {
 							aBooleanArray5[local16] = true;
@@ -1989,7 +1989,7 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 		int local696;
 		int local701;
 		if (local7 == 3) {
-			if (local63 < 0 || local67 < 0 || local72 < 0 || local63 > Class10_Sub1_Sub1.anInt680 || local67 > Class10_Sub1_Sub1.anInt680 || local72 > Class10_Sub1_Sub1.anInt680) {
+			if (local63 < 0 || local67 < 0 || local72 < 0 || local63 > Draw2D.anInt680 || local67 > Draw2D.anInt680 || local72 > Draw2D.anInt680) {
 				Class10_Sub1_Sub1_Sub4.aBoolean177 = true;
 			}
 			if (this.anIntArray122 == null) {
@@ -2018,7 +2018,7 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 		if (local7 != 4) {
 			return;
 		}
-		if (local63 < 0 || local67 < 0 || local72 < 0 || local63 > Class10_Sub1_Sub1.anInt680 || local67 > Class10_Sub1_Sub1.anInt680 || local72 > Class10_Sub1_Sub1.anInt680 || anIntArray142[3] < 0 || anIntArray142[3] > Class10_Sub1_Sub1.anInt680) {
+		if (local63 < 0 || local67 < 0 || local72 < 0 || local63 > Draw2D.anInt680 || local67 > Draw2D.anInt680 || local72 > Draw2D.anInt680 || anIntArray142[3] < 0 || anIntArray142[3] > Draw2D.anInt680) {
 			Class10_Sub1_Sub1_Sub4.aBoolean177 = true;
 		}
 		if (this.anIntArray122 == null) {
