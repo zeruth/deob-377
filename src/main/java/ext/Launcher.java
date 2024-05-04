@@ -30,7 +30,7 @@ public class Launcher implements AppletStub {
         frame.setSize(gameSize);
         gamePanel.setSize(gameSize);
         gamePanel.setBackground(Color.BLACK);
-        Applet client = (Applet) ClassLoader.getSystemClassLoader().loadClass("Client").newInstance();
+        Applet client = (Applet) ClassLoader.getSystemClassLoader().loadClass("unmapped.Client").newInstance();
         client.setStub(INSTANCE);
         gamePanel.add(client, BorderLayout.CENTER);
         frame.add(gamePanel);
