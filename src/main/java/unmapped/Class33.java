@@ -1,10 +1,8 @@
 package unmapped;
 
-
 public class Class33 {
+   private boolean aBoolean203 = true;
 
-	private boolean aBoolean203 = true;
-
-	public void method552( int arg0) {
-	}
+   public void method552(int var1) {
+   }
 }

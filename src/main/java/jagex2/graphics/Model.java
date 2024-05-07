@@ -1,2069 +1,2118 @@
 package jagex2.graphics;
 
-
 import jagex2.dash3d.entity.Entity;
 import jagex2.io.Packet;
-import sign.signlink;
-import unmapped.*;
+import unmapped.Class10_Sub1_Sub1_Sub4;
+import unmapped.Class22;
+import unmapped.Class27;
+import unmapped.Class33;
+import unmapped.Class41;
+import unmapped.Class42;
 
 public final class Model extends Entity {
-
-	private static int anInt401;
-
-	private static Class27[] renderables;
-
-	private static Class33 aClass33_1;
-
-	private static int anInt414;
-
-	private static int anInt415;
-
-	private static int anInt416;
-
-	public static boolean aBoolean107;
-
-	public static int anInt417;
-
-	public static int anInt418;
-
-	public static int anInt419;
-
-	public static Model aClass10_Sub1_Sub2_Sub4_1 = new Model(852);
-
-	private static int[] anIntArray109 = new int[2000];
-
-	private static int[] anIntArray110 = new int[2000];
-
-	private static int[] anIntArray111 = new int[2000];
-
-	private static int[] anIntArray112 = new int[2000];
-
-	private static boolean[] aBooleanArray5 = new boolean[4096];
-
-	private static boolean[] aBooleanArray6 = new boolean[4096];
-
-	private static int[] anIntArray131 = new int[4096];
-
-	private static int[] anIntArray132 = new int[4096];
-
-	private static int[] anIntArray133 = new int[4096];
-
-	private static int[] anIntArray134 = new int[4096];
-
-	private static int[] anIntArray135 = new int[4096];
-
-	private static int[] anIntArray136 = new int[4096];
-
-	private static int[] anIntArray137 = new int[1500];
-
-	private static int[][] anIntArrayArray12 = new int[1500][512];
-
-	private static int[] anIntArray138 = new int[12];
-
-	private static int[][] anIntArrayArray13 = new int[12][2000];
-
-	private static int[] anIntArray139 = new int[2000];
-
-	private static int[] anIntArray140 = new int[2000];
-
-	private static int[] anIntArray141 = new int[12];
-
-	private static int[] anIntArray142 = new int[10];
-
-	private static int[] anIntArray143 = new int[10];
-
-	private static int[] anIntArray144 = new int[10];
-
-	public static int[] anIntArray145 = new int[1000];
-
-	public static int[] anIntArray146 = Class10_Sub1_Sub1_Sub4.anIntArray181;
-
-	public static int[] anIntArray147 = Class10_Sub1_Sub1_Sub4.anIntArray182;
-
-	private static int[] anIntArray148 = Class10_Sub1_Sub1_Sub4.anIntArray186;
-
-	private static int[] anIntArray149 = Class10_Sub1_Sub1_Sub4.anIntArray180;
-
-	public int anInt402;
-
-	public int[] anIntArray113;
-
-	public int[] anIntArray114;
-
-	public int[] anIntArray115;
-
-	public int anInt403;
-
-	public int[] anIntArray116;
-
-	public int[] anIntArray117;
-
-	public int[] anIntArray118;
-
-	private int[] anIntArray119;
-
-	private int[] anIntArray120;
-
-	private int[] anIntArray121;
-
-	public int[] anIntArray122;
-
-	private int[] anIntArray123;
-
-	private int[] anIntArray124;
-
-	public int[] anIntArray125;
-
-	private int anInt404;
-
-	private int anInt405;
-
-	private int[] anIntArray126;
-
-	private int[] anIntArray127;
-
-	private int[] anIntArray128;
-
-	private int anInt406;
-
-	public int anInt407;
-
-	public int anInt408;
-
-	public int anInt409;
-
-	public int anInt410;
-
-	private int anInt411;
-
-	private int anInt412;
-
-	public int anInt413;
-
-	private int[] anIntArray129;
-
-	private int[] anIntArray130;
-
-	public int[][] anIntArrayArray10;
-
-	public int[][] anIntArrayArray11;
-
-	public Class41[] aClass41Array6;
-
-	private int anInt398 = 932;
-
-	private int anInt399 = 426;
-
-	private boolean aBoolean103 = false;
-
-	private boolean aBoolean104 = true;
-
-	private int anInt400 = -252;
-
-	private boolean aBoolean105 = false;
-
-	public boolean aBoolean106 = false;
-
-	public static void method267() {
-		try {
-			renderables = null;
-			aBooleanArray5 = null;
-			aBooleanArray6 = null;
-			anIntArray131 = null;
-			anIntArray132 = null;
-			anIntArray133 = null;
-			anIntArray134 = null;
-			anIntArray135 = null;
-			anIntArray136 = null;
-			anIntArray137 = null;
-			anIntArrayArray12 = null;
-			anIntArray138 = null;
-			anIntArrayArray13 = null;
-			anIntArray139 = null;
-			anIntArray140 = null;
-			anIntArray141 = null;
-			anIntArray146 = null;
-			anIntArray147 = null;
-			anIntArray148 = null;
-			anIntArray149 = null;
-		} catch ( RuntimeException local44) {
-			signlink.reporterror("67131, " + false + ", " + local44.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public static void method268( int arg0, Class33 arg1) {
-		renderables = new Class27[arg0];
-		aClass33_1 = arg1;
-	}
-
-	public static void method269( byte[] arg0, int arg1) {
-		try {
-			if (arg0 == null) {
-				Class27 local15 = renderables[arg1] = new Class27();
-				local15.anInt330 = 0;
-				local15.anInt331 = 0;
-				local15.anInt332 = 0;
-			} else {
-				Packet local31 = new Packet(arg0);
-				local31.pos = arg0.length - 18;
-				Class27 local45 = renderables[arg1] = new Class27();
-				local45.aByteArray11 = arg0;
-				local45.anInt330 = local31.g2();
-				local45.anInt331 = local31.g2();
-				local45.anInt332 = local31.g1();
-				int local63 = local31.g1();
-				int local66 = local31.g1();
-				int local69 = local31.g1();
-				int local72 = local31.g1();
-				int local75 = local31.g1();
-				int local78 = local31.g2();
-				int local81 = local31.g2();
-				int local84 = local31.g2();
-				int local87 = local31.g2();
-				local45.anInt333 = 0;
-				int local97 = local45.anInt330 + 0;
-				local45.anInt339 = local97;
-				local97 += local45.anInt331;
-				local45.anInt342 = local97;
-				if (local66 == 255) {
-					local97 += local45.anInt331;
-				} else {
-					local45.anInt342 = -local66 - 1;
-				}
-				local45.anInt344 = local97;
-				if (local72 == 1) {
-					local97 += local45.anInt331;
-				} else {
-					local45.anInt344 = -1;
-				}
-				local45.anInt341 = local97;
-				if (local63 == 1) {
-					local97 += local45.anInt331;
-				} else {
-					local45.anInt341 = -1;
-				}
-				local45.anInt337 = local97;
-				if (local75 == 1) {
-					local97 += local45.anInt330;
-				} else {
-					local45.anInt337 = -1;
-				}
-				local45.anInt343 = local97;
-				if (local69 == 1) {
-					local97 += local45.anInt331;
-				} else {
-					local45.anInt343 = -1;
-				}
-				local45.anInt338 = local97;
-				local97 += local87;
-				local45.anInt340 = local97;
-				local97 += local45.anInt331 * 2;
-				local45.anInt345 = local97;
-				local97 += local45.anInt332 * 6;
-				local45.anInt334 = local97;
-				local97 += local78;
-				local45.anInt335 = local97;
-				local97 += local81;
-				local45.anInt336 = local97;
-			}
-		} catch ( RuntimeException local238) {
-			signlink.reporterror("83766, " + arg0 + ", " + arg1 + ", " + 7 + ", " + local238.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public static void method270( int arg0) {
-		try {
-			renderables[arg0] = null;
-		} catch ( RuntimeException local9) {
-			signlink.reporterror("15750, " + arg0 + ", " + 1 + ", " + local9.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public static Model createModel(int arg0) {
-		if (renderables == null) {
-			return null;
-		}
-		Class27 local7 = renderables[arg0];
-		if (local7 == null) {
-			aClass33_1.method552(arg0);
-			return null;
-		} else {
-			return new Model(arg0, -478);
-		}
-	}
-
-	public static boolean method272( int arg0) {
-		if (renderables == null) {
-			return false;
-		}
-		Class27 local7 = renderables[arg0];
-		if (local7 == null) {
-			aClass33_1.method552(arg0);
-			return false;
-		} else {
-			return true;
-		}
-	}
-
-	private static int method291( int arg0, int arg1, int arg2) {
-		if ((arg2 & 0x2) == 2) {
-			if (arg1 < 0) {
-				arg1 = 0;
-			} else if (arg1 > 127) {
-				arg1 = 127;
-			}
-			return 127 - arg1;
-		}
-		arg1 = arg1 * (arg0 & 0x7F) >> 7;
-		if (arg1 < 2) {
-			arg1 = 2;
-		} else if (arg1 > 126) {
-			arg1 = 126;
-		}
-		return (arg0 & 0xFF80) + arg1;
-	}
-
-	private Model(int arg0) {
-	}
-
-	private Model(int arg0, int arg1) {
-		try {
-			anInt401++;
-			Class27 local32 = renderables[arg0];
-			this.anInt402 = local32.anInt330;
-			this.anInt403 = local32.anInt331;
-			this.anInt405 = local32.anInt332;
-			this.anIntArray113 = new int[this.anInt402];
-			this.anIntArray114 = new int[this.anInt402];
-			this.anIntArray115 = new int[this.anInt402];
-			this.anIntArray116 = new int[this.anInt403];
-			this.anIntArray117 = new int[this.anInt403];
-			this.anIntArray118 = new int[this.anInt403];
-			this.anIntArray126 = new int[this.anInt405];
-			this.anIntArray127 = new int[this.anInt405];
-			this.anIntArray128 = new int[this.anInt405];
-			if (local32.anInt337 >= 0) {
-				this.anIntArray129 = new int[this.anInt402];
-			}
-			if (local32.anInt341 >= 0) {
-				this.anIntArray122 = new int[this.anInt403];
-			}
-			if (local32.anInt342 >= 0) {
-				this.anIntArray123 = new int[this.anInt403];
-			} else {
-				this.anInt404 = -local32.anInt342 - 1;
-			}
-			if (local32.anInt343 >= 0) {
-				this.anIntArray124 = new int[this.anInt403];
-			}
-			if (local32.anInt344 >= 0) {
-				this.anIntArray130 = new int[this.anInt403];
-			}
-			this.anIntArray125 = new int[this.anInt403];
-			Packet local150 = new Packet(local32.aByteArray11);
-			local150.pos = local32.anInt333;
-			Packet local161 = new Packet(local32.aByteArray11);
-			local161.pos = local32.anInt334;
-			Packet local172 = new Packet(local32.aByteArray11);
-			local172.pos = local32.anInt335;
-			Packet local193 = new Packet(local32.aByteArray11);
-			local193.pos = local32.anInt336;
-			Packet local204 = new Packet(local32.aByteArray11);
-			local204.pos = local32.anInt337;
-			int local210 = 0;
-			int local212 = 0;
-			int local214 = 0;
-			int local221;
-			int local223;
-			int local232;
-			int local241;
-			for ( int local216 = 0; local216 < this.anInt402; local216++) {
-				local221 = local150.g1();
-				local223 = 0;
-				if ((local221 & 0x1) != 0) {
-					local223 = local161.gsmart();
-				}
-				local232 = 0;
-				if ((local221 & 0x2) != 0) {
-					local232 = local172.gsmart();
-				}
-				local241 = 0;
-				if ((local221 & 0x4) != 0) {
-					local241 = local193.gsmart();
-				}
-				this.anIntArray113[local216] = local210 + local223;
-				this.anIntArray114[local216] = local212 + local232;
-				this.anIntArray115[local216] = local214 + local241;
-				local210 = this.anIntArray113[local216];
-				local212 = this.anIntArray114[local216];
-				local214 = this.anIntArray115[local216];
-				if (this.anIntArray129 != null) {
-					this.anIntArray129[local216] = local204.g1();
-				}
-			}
-			local150.pos = local32.anInt340;
-			local161.pos = local32.anInt341;
-			local172.pos = local32.anInt342;
-			local193.pos = local32.anInt343;
-			local204.pos = local32.anInt344;
-			for (local221 = 0; local221 < this.anInt403; local221++) {
-				this.anIntArray125[local221] = local150.g2();
-				if (this.anIntArray122 != null) {
-					this.anIntArray122[local221] = local161.g1();
-				}
-				if (this.anIntArray123 != null) {
-					this.anIntArray123[local221] = local172.g1();
-				}
-				if (this.anIntArray124 != null) {
-					this.anIntArray124[local221] = local193.g1();
-				}
-				if (this.anIntArray130 != null) {
-					this.anIntArray130[local221] = local204.g1();
-				}
-			}
-			local150.pos = local32.anInt338;
-			local161.pos = local32.anInt339;
-			local223 = 0;
-			local232 = 0;
-			local241 = 0;
-			int local385 = 0;
-			int local392;
-			for ( int local387 = 0; local387 < this.anInt403; local387++) {
-				local392 = local161.g1();
-				if (local392 == 1) {
-					local223 = local150.gsmart() + local385;
-					local232 = local150.gsmart() + local223;
-					local241 = local150.gsmart() + local232;
-					local385 = local241;
-					this.anIntArray116[local387] = local223;
-					this.anIntArray117[local387] = local232;
-					this.anIntArray118[local387] = local241;
-				}
-				if (local392 == 2) {
-					local223 = local223;
-					local232 = local241;
-					local241 = local150.gsmart() + local385;
-					local385 = local241;
-					this.anIntArray116[local387] = local223;
-					this.anIntArray117[local387] = local232;
-					this.anIntArray118[local387] = local241;
-				}
-				if (local392 == 3) {
-					local223 = local241;
-					local232 = local232;
-					local241 = local150.gsmart() + local385;
-					local385 = local241;
-					this.anIntArray116[local387] = local223;
-					this.anIntArray117[local387] = local232;
-					this.anIntArray118[local387] = local241;
-				}
-				if (local392 == 4) {
-					int local494 = local223;
-					local223 = local232;
-					local232 = local494;
-					local241 = local150.gsmart() + local385;
-					local385 = local241;
-					this.anIntArray116[local387] = local223;
-					this.anIntArray117[local387] = local494;
-					this.anIntArray118[local387] = local241;
-				}
-			}
-			local150.pos = local32.anInt345;
-			for (local392 = 0; local392 < this.anInt405; local392++) {
-				this.anIntArray126[local392] = local150.g2();
-				this.anIntArray127[local392] = local150.g2();
-				this.anIntArray128[local392] = local150.g2();
-			}
-		} catch ( RuntimeException local558) {
-			signlink.reporterror("50904, " + arg0 + ", " + arg1 + ", " + local558.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public Model(int arg0, Model[] arg1) {
-
-		anInt401++;
-		boolean local30 = false;
-		boolean local32 = false;
-		boolean local34 = false;
-		boolean local36 = false;
-		this.anInt402 = 0;
-		this.anInt403 = 0;
-		this.anInt405 = 0;
-		this.anInt404 = -1;
-		for ( int local50 = 0; local50 < arg0; local50++) {
-			Model local56 = arg1[local50];
-			if (local56 != null) {
-				this.anInt402 += local56.anInt402;
-				this.anInt403 += local56.anInt403;
-				this.anInt405 += local56.anInt405;
-				local30 |= local56.anIntArray122 != null;
-				if (local56.anIntArray123 == null) {
-					if (this.anInt404 == -1) {
-						this.anInt404 = local56.anInt404;
-					}
-					if (this.anInt404 != local56.anInt404) {
-						local32 = true;
-					}
-				} else {
-					local32 = true;
-				}
-				local34 |= local56.anIntArray124 != null;
-				local36 |= local56.anIntArray130 != null;
-			}
-		}
-		this.anIntArray113 = new int[this.anInt402];
-		this.anIntArray114 = new int[this.anInt402];
-		this.anIntArray115 = new int[this.anInt402];
-		this.anIntArray129 = new int[this.anInt402];
-		this.anIntArray116 = new int[this.anInt403];
-		this.anIntArray117 = new int[this.anInt403];
-		this.anIntArray118 = new int[this.anInt403];
-		this.anIntArray126 = new int[this.anInt405];
-		this.anIntArray127 = new int[this.anInt405];
-		this.anIntArray128 = new int[this.anInt405];
-		if (local30) {
-			this.anIntArray122 = new int[this.anInt403];
-		}
-		if (local32) {
-			this.anIntArray123 = new int[this.anInt403];
-		}
-		if (local34) {
-			this.anIntArray124 = new int[this.anInt403];
-		}
-		if (local36) {
-			this.anIntArray130 = new int[this.anInt403];
-		}
-		this.anIntArray125 = new int[this.anInt403];
-		this.anInt402 = 0;
-		this.anInt403 = 0;
-		this.anInt405 = 0;
-		int local233 = 0;
-		for ( int local235 = 0; local235 < arg0; local235++) {
-			Model local241 = arg1[local235];
-			if (local241 != null) {
-				int local265;
-				for ( int local245 = 0; local245 < local241.anInt403; local245++) {
-					if (local30) {
-						if (local241.anIntArray122 == null) {
-							this.anIntArray122[this.anInt403] = 0;
-						} else {
-							local265 = local241.anIntArray122[local245];
-							if ((local265 & 0x2) == 2) {
-								local265 += local233 << 2;
-							}
-							this.anIntArray122[this.anInt403] = local265;
-						}
-					}
-					if (local32) {
-						if (local241.anIntArray123 == null) {
-							this.anIntArray123[this.anInt403] = local241.anInt404;
-						} else {
-							this.anIntArray123[this.anInt403] = local241.anIntArray123[local245];
-						}
-					}
-					if (local34) {
-						if (local241.anIntArray124 == null) {
-							this.anIntArray124[this.anInt403] = 0;
-						} else {
-							this.anIntArray124[this.anInt403] = local241.anIntArray124[local245];
-						}
-					}
-					if (local36 && local241.anIntArray130 != null) {
-						this.anIntArray130[this.anInt403] = local241.anIntArray130[local245];
-					}
-					this.anIntArray125[this.anInt403] = local241.anIntArray125[local245];
-					this.anIntArray116[this.anInt403] = this.method274(local241, local241.anIntArray116[local245]);
-					this.anIntArray117[this.anInt403] = this.method274(local241, local241.anIntArray117[local245]);
-					this.anIntArray118[this.anInt403] = this.method274(local241, local241.anIntArray118[local245]);
-					this.anInt403++;
-				}
-				for (local265 = 0; local265 < local241.anInt405; local265++) {
-					this.anIntArray126[this.anInt405] = this.method274(local241, local241.anIntArray126[local265]);
-					this.anIntArray127[this.anInt405] = this.method274(local241, local241.anIntArray127[local265]);
-					this.anIntArray128[this.anInt405] = this.method274(local241, local241.anIntArray128[local265]);
-					this.anInt405++;
-				}
-				local233 += local241.anInt405;
-			}
-		}
-	}
-
-	public Model(int arg0, boolean arg1, int arg2, Model[] arg3) {
-		try {
-			anInt401++;
-			boolean local30 = false;
-			boolean local32 = false;
-			boolean local34 = false;
-			boolean local36 = false;
-			this.anInt402 = 0;
-			this.anInt403 = 0;
-			this.anInt405 = 0;
-			this.anInt404 = -1;
-			for ( int local50 = 0; local50 < arg0; local50++) {
-				Model local56 = arg3[local50];
-				if (local56 != null) {
-					this.anInt402 += local56.anInt402;
-					this.anInt403 += local56.anInt403;
-					this.anInt405 += local56.anInt405;
-					local30 |= local56.anIntArray122 != null;
-					if (local56.anIntArray123 == null) {
-						if (this.anInt404 == -1) {
-							this.anInt404 = local56.anInt404;
-						}
-						if (this.anInt404 != local56.anInt404) {
-							local32 = true;
-						}
-					} else {
-						local32 = true;
-					}
-					local34 |= local56.anIntArray124 != null;
-					local36 |= local56.anIntArray125 != null;
-				}
-			}
-			this.anIntArray113 = new int[this.anInt402];
-			this.anIntArray114 = new int[this.anInt402];
-			this.anIntArray115 = new int[this.anInt402];
-			this.anIntArray116 = new int[this.anInt403];
-			this.anIntArray117 = new int[this.anInt403];
-			this.anIntArray118 = new int[this.anInt403];
-			this.anIntArray119 = new int[this.anInt403];
-			this.anIntArray120 = new int[this.anInt403];
-			this.anIntArray121 = new int[this.anInt403];
-			this.anIntArray126 = new int[this.anInt405];
-			this.anIntArray127 = new int[this.anInt405];
-			this.anIntArray128 = new int[this.anInt405];
-			if (local30) {
-				this.anIntArray122 = new int[this.anInt403];
-			}
-			if (local32) {
-				this.anIntArray123 = new int[this.anInt403];
-			}
-			if (local34) {
-				this.anIntArray124 = new int[this.anInt403];
-			}
-			if (local36) {
-				this.anIntArray125 = new int[this.anInt403];
-			}
-			this.anInt402 = 0;
-			this.anInt403 = 0;
-			this.anInt405 = 0;
-			int local237 = 0;
-			for ( int local239 = 0; local239 < arg0; local239++) {
-				Model local245 = arg3[local239];
-				if (local245 != null) {
-					int local250 = this.anInt402;
-					for ( int local252 = 0; local252 < local245.anInt402; local252++) {
-						this.anIntArray113[this.anInt402] = local245.anIntArray113[local252];
-						this.anIntArray114[this.anInt402] = local245.anIntArray114[local252];
-						this.anIntArray115[this.anInt402] = local245.anIntArray115[local252];
-						this.anInt402++;
-					}
-					int local374;
-					for ( int local294 = 0; local294 < local245.anInt403; local294++) {
-						this.anIntArray116[this.anInt403] = local245.anIntArray116[local294] + local250;
-						this.anIntArray117[this.anInt403] = local245.anIntArray117[local294] + local250;
-						this.anIntArray118[this.anInt403] = local245.anIntArray118[local294] + local250;
-						this.anIntArray119[this.anInt403] = local245.anIntArray119[local294];
-						this.anIntArray120[this.anInt403] = local245.anIntArray120[local294];
-						this.anIntArray121[this.anInt403] = local245.anIntArray121[local294];
-						if (local30) {
-							if (local245.anIntArray122 == null) {
-								this.anIntArray122[this.anInt403] = 0;
-							} else {
-								local374 = local245.anIntArray122[local294];
-								if ((local374 & 0x2) == 2) {
-									local374 += local237 << 2;
-								}
-								this.anIntArray122[this.anInt403] = local374;
-							}
-						}
-						if (local32) {
-							if (local245.anIntArray123 == null) {
-								this.anIntArray123[this.anInt403] = local245.anInt404;
-							} else {
-								this.anIntArray123[this.anInt403] = local245.anIntArray123[local294];
-							}
-						}
-						if (local34) {
-							if (local245.anIntArray124 == null) {
-								this.anIntArray124[this.anInt403] = 0;
-							} else {
-								this.anIntArray124[this.anInt403] = local245.anIntArray124[local294];
-							}
-						}
-						if (local36 && local245.anIntArray125 != null) {
-							this.anIntArray125[this.anInt403] = local245.anIntArray125[local294];
-						}
-						this.anInt403++;
-					}
-					for (local374 = 0; local374 < local245.anInt405; local374++) {
-						this.anIntArray126[this.anInt405] = local245.anIntArray126[local374] + local250;
-						this.anIntArray127[this.anInt405] = local245.anIntArray127[local374] + local250;
-						this.anIntArray128[this.anInt405] = local245.anIntArray128[local374] + local250;
-						this.anInt405++;
-					}
-					local237 += local245.anInt405;
-				}
-			}
-			this.method275(this.anInt398);
-		} catch ( RuntimeException local524) {
-			signlink.reporterror("92423, " + arg0 + ", " + arg1 + ", " + arg2 + ", " + arg3 + ", " + local524.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public Model(boolean arg0, boolean arg1, boolean arg2, Model arg3, boolean arg4) {
-		try {
-			anInt401++;
-			this.anInt402 = arg3.anInt402;
-			this.anInt403 = arg3.anInt403;
-			this.anInt405 = arg3.anInt405;
-			int local78;
-			if (arg0) {
-				this.anIntArray113 = arg3.anIntArray113;
-				this.anIntArray114 = arg3.anIntArray114;
-				this.anIntArray115 = arg3.anIntArray115;
-			} else {
-				this.anIntArray113 = new int[this.anInt402];
-				this.anIntArray114 = new int[this.anInt402];
-				this.anIntArray115 = new int[this.anInt402];
-				for (local78 = 0; local78 < this.anInt402; local78++) {
-					this.anIntArray113[local78] = arg3.anIntArray113[local78];
-					this.anIntArray114[local78] = arg3.anIntArray114[local78];
-					this.anIntArray115[local78] = arg3.anIntArray115[local78];
-				}
-			}
-			if (arg2) {
-				this.anIntArray125 = arg3.anIntArray125;
-			} else {
-				this.anIntArray125 = new int[this.anInt403];
-				for (local78 = 0; local78 < this.anInt403; local78++) {
-					this.anIntArray125[local78] = arg3.anIntArray125[local78];
-				}
-			}
-			if (arg4) {
-				this.anIntArray124 = arg3.anIntArray124;
-			} else {
-				this.anIntArray124 = new int[this.anInt403];
-				if (arg3.anIntArray124 == null) {
-					for (local78 = 0; local78 < this.anInt403; local78++) {
-						this.anIntArray124[local78] = 0;
-					}
-				} else {
-					for (local78 = 0; local78 < this.anInt403; local78++) {
-						this.anIntArray124[local78] = arg3.anIntArray124[local78];
-					}
-				}
-			}
-			this.anIntArray129 = arg3.anIntArray129;
-			this.anIntArray130 = arg3.anIntArray130;
-			this.anIntArray122 = arg3.anIntArray122;
-			this.anIntArray116 = arg3.anIntArray116;
-			this.anIntArray117 = arg3.anIntArray117;
-			this.anIntArray118 = arg3.anIntArray118;
-			this.anIntArray123 = arg3.anIntArray123;
-			this.anInt404 = arg3.anInt404;
-			this.anIntArray126 = arg3.anIntArray126;
-			this.anIntArray127 = arg3.anIntArray127;
-			this.anIntArray128 = arg3.anIntArray128;
-		} catch ( RuntimeException local233) {
-			signlink.reporterror("1103, " + arg0 + ", " + arg1 + ", " + arg2 + ", " + arg3 + ", " + arg4 + ", " + local233.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public Model(boolean arg0, boolean arg1, int arg2, Model arg3) {
-		try {
-			anInt401++;
-			this.anInt402 = arg3.anInt402;
-			this.anInt403 = arg3.anInt403;
-			this.anInt405 = arg3.anInt405;
-			int local49;
-			if (arg0) {
-				this.anIntArray114 = new int[this.anInt402];
-				for (local49 = 0; local49 < this.anInt402; local49++) {
-					this.anIntArray114[local49] = arg3.anIntArray114[local49];
-				}
-			} else {
-				this.anIntArray114 = arg3.anIntArray114;
-			}
-			if (arg1) {
-				this.anIntArray119 = new int[this.anInt403];
-				this.anIntArray120 = new int[this.anInt403];
-				this.anIntArray121 = new int[this.anInt403];
-				for (local49 = 0; local49 < this.anInt403; local49++) {
-					this.anIntArray119[local49] = arg3.anIntArray119[local49];
-					this.anIntArray120[local49] = arg3.anIntArray120[local49];
-					this.anIntArray121[local49] = arg3.anIntArray121[local49];
-				}
-				this.anIntArray122 = new int[this.anInt403];
-				int local129;
-				if (arg3.anIntArray122 == null) {
-					for (local129 = 0; local129 < this.anInt403; local129++) {
-						this.anIntArray122[local129] = 0;
-					}
-				} else {
-					for (local129 = 0; local129 < this.anInt403; local129++) {
-						this.anIntArray122[local129] = arg3.anIntArray122[local129];
-					}
-				}
-				super.aClass41Array10 = new Class41[this.anInt402];
-				for (local129 = 0; local129 < this.anInt402; local129++) {
-					Class41 local177 = super.aClass41Array10[local129] = new Class41();
-					Class41 local182 = arg3.aClass41Array10[local129];
-					local177.anInt607 = local182.anInt607;
-					local177.anInt608 = local182.anInt608;
-					local177.anInt609 = local182.anInt609;
-					local177.anInt610 = local182.anInt610;
-				}
-				this.aClass41Array6 = arg3.aClass41Array6;
-			} else {
-				this.anIntArray119 = arg3.anIntArray119;
-				this.anIntArray120 = arg3.anIntArray120;
-				this.anIntArray121 = arg3.anIntArray121;
-				this.anIntArray122 = arg3.anIntArray122;
-			}
-			this.anIntArray113 = arg3.anIntArray113;
-			this.anIntArray115 = arg3.anIntArray115;
-			this.anIntArray125 = arg3.anIntArray125;
-			this.anIntArray124 = arg3.anIntArray124;
-			this.anIntArray123 = arg3.anIntArray123;
-			this.anInt404 = arg3.anInt404;
-			this.anIntArray116 = arg3.anIntArray116;
-			this.anIntArray117 = arg3.anIntArray117;
-			this.anIntArray118 = arg3.anIntArray118;
-			this.anIntArray126 = arg3.anIntArray126;
-			this.anIntArray127 = arg3.anIntArray127;
-			this.anIntArray128 = arg3.anIntArray128;
-			super.anInt713 = arg3.anInt713;
-			this.anInt410 = arg3.anInt410;
-			this.anInt409 = arg3.anInt409;
-			this.anInt412 = arg3.anInt412;
-			this.anInt411 = arg3.anInt411;
-			this.anInt407 = arg3.anInt407;
-			this.anInt408 = arg3.anInt408;
-			this.anInt406 = arg3.anInt406;
-		} catch ( RuntimeException local317) {
-			signlink.reporterror("18542, " + arg0 + ", " + arg1 + ", " + arg2 + ", " + arg3 + ", " + local317.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public void method273( boolean arg0, Model arg1) {
-		try {
-			this.anInt402 = arg1.anInt402;
-			this.anInt403 = arg1.anInt403;
-			this.anInt405 = arg1.anInt405;
-			if (anIntArray109.length < this.anInt402) {
-				anIntArray109 = new int[this.anInt402 + 100];
-				anIntArray110 = new int[this.anInt402 + 100];
-				anIntArray111 = new int[this.anInt402 + 100];
-			}
-			this.anIntArray113 = anIntArray109;
-			this.anIntArray114 = anIntArray110;
-			this.anIntArray115 = anIntArray111;
-			for ( int local51 = 0; local51 < this.anInt402; local51++) {
-				this.anIntArray113[local51] = arg1.anIntArray113[local51];
-				this.anIntArray114[local51] = arg1.anIntArray114[local51];
-				this.anIntArray115[local51] = arg1.anIntArray115[local51];
-			}
-			if (arg0) {
-				this.anIntArray124 = arg1.anIntArray124;
-			} else {
-				if (anIntArray112.length < this.anInt403) {
-					anIntArray112 = new int[this.anInt403 + 100];
-				}
-				this.anIntArray124 = anIntArray112;
-				int local109;
-				if (arg1.anIntArray124 == null) {
-					for (local109 = 0; local109 < this.anInt403; local109++) {
-						this.anIntArray124[local109] = 0;
-					}
-				} else {
-					for (local109 = 0; local109 < this.anInt403; local109++) {
-						this.anIntArray124[local109] = arg1.anIntArray124[local109];
-					}
-				}
-			}
-			this.anIntArray122 = arg1.anIntArray122;
-			this.anIntArray125 = arg1.anIntArray125;
-			this.anIntArray123 = arg1.anIntArray123;
-			this.anInt404 = arg1.anInt404;
-			this.anIntArrayArray11 = arg1.anIntArrayArray11;
-			this.anIntArrayArray10 = arg1.anIntArrayArray10;
-			this.anIntArray116 = arg1.anIntArray116;
-			this.anIntArray117 = arg1.anIntArray117;
-			this.anIntArray118 = arg1.anIntArray118;
-			this.anIntArray119 = arg1.anIntArray119;
-			this.anIntArray120 = arg1.anIntArray120;
-			this.anIntArray121 = arg1.anIntArray121;
-			this.anIntArray126 = arg1.anIntArray126;
-			this.anIntArray127 = arg1.anIntArray127;
-			this.anIntArray128 = arg1.anIntArray128;
-		} catch ( RuntimeException local201) {
-			signlink.reporterror("37164, " + arg0 + ", " + arg1 + ", " + 1244 + ", " + local201.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	private int method274(Model arg0, int arg1) {
-		int local3 = -1;
-		int local8 = arg0.anIntArray113[arg1];
-		int local13 = arg0.anIntArray114[arg1];
-		int local18 = arg0.anIntArray115[arg1];
-		for ( int local20 = 0; local20 < this.anInt402; local20++) {
-			if (local8 == this.anIntArray113[local20] && local13 == this.anIntArray114[local20] && local18 == this.anIntArray115[local20]) {
-				local3 = local20;
-				break;
-			}
-		}
-		if (local3 == -1) {
-			this.anIntArray113[this.anInt402] = local8;
-			this.anIntArray114[this.anInt402] = local13;
-			this.anIntArray115[this.anInt402] = local18;
-			if (arg0.anIntArray129 != null) {
-				this.anIntArray129[this.anInt402] = arg0.anIntArray129[arg1];
-			}
-			local3 = this.anInt402++;
-		}
-		return local3;
-	}
-
-	public void method275( int arg0) {
-		try {
-			super.anInt713 = 0;
-			this.anInt409 = 0;
-			this.anInt410 = 0;
-			for ( int local10 = 0; local10 < this.anInt402; local10++) {
-				int local17 = this.anIntArray113[local10];
-				int local22 = this.anIntArray114[local10];
-				int local27 = this.anIntArray115[local10];
-				if (-local22 > super.anInt713) {
-					super.anInt713 = -local22;
-				}
-				if (local22 > this.anInt410) {
-					this.anInt410 = local22;
-				}
-				int local51 = local17 * local17 + local27 * local27;
-				if (local51 > this.anInt409) {
-					this.anInt409 = local51;
-				}
-			}
-			this.anInt409 = (int) (Math.sqrt((double) this.anInt409) + 0.99D);
-			this.anInt412 = (int) (Math.sqrt((double) (this.anInt409 * this.anInt409 + super.anInt713 * super.anInt713)) + 0.99D);
-			int local94 = 64 / arg0;
-			this.anInt411 = this.anInt412 + (int) (Math.sqrt((double) (this.anInt409 * this.anInt409 + this.anInt410 * this.anInt410)) + 0.99D);
-		} catch ( RuntimeException local117) {
-			signlink.reporterror("67878, " + arg0 + ", " + local117.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public void method276() {
-		try {
-			super.anInt713 = 0;
-			this.anInt410 = 0;
-			for ( int local11 = 0; local11 < this.anInt402; local11++) {
-				int local18 = this.anIntArray114[local11];
-				if (-local18 > super.anInt713) {
-					super.anInt713 = -local18;
-				}
-				if (local18 > this.anInt410) {
-					this.anInt410 = local18;
-				}
-			}
-			this.anInt412 = (int) (Math.sqrt((double) (this.anInt409 * this.anInt409 + super.anInt713 * super.anInt713)) + 0.99D);
-			this.anInt411 = this.anInt412 + (int) (Math.sqrt((double) (this.anInt409 * this.anInt409 + this.anInt410 * this.anInt410)) + 0.99D);
-		} catch ( RuntimeException local80) {
-			signlink.reporterror("90514, " + 6 + ", " + local80.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	private void method277() {
-		try {
-			super.anInt713 = 0;
-			this.anInt409 = 0;
-			this.anInt410 = 0;
-			int local10 = 32767;
-			int local12 = -32767;
-			int local14 = -32767;
-			int local16 = 32767;
-			for ( int local18 = 0; local18 < this.anInt402; local18++) {
-				int local25 = this.anIntArray113[local18];
-				int local30 = this.anIntArray114[local18];
-				int local35 = this.anIntArray115[local18];
-				if (local25 < local10) {
-					local10 = local25;
-				}
-				if (local25 > local12) {
-					local12 = local25;
-				}
-				if (local35 < local16) {
-					local16 = local35;
-				}
-				if (local35 > local14) {
-					local14 = local35;
-				}
-				if (-local30 > super.anInt713) {
-					super.anInt713 = -local30;
-				}
-				if (local30 > this.anInt410) {
-					this.anInt410 = local30;
-				}
-				int local79 = local25 * local25 + local35 * local35;
-				if (local79 > this.anInt409) {
-					this.anInt409 = local79;
-				}
-			}
-			this.anInt409 = (int) Math.sqrt((double) this.anInt409);
-			this.anInt412 = (int) Math.sqrt((double) (this.anInt409 * this.anInt409 + super.anInt713 * super.anInt713));
-			this.anInt411 = this.anInt412 + (int) Math.sqrt((double) (this.anInt409 * this.anInt409 + this.anInt410 * this.anInt410));
-			this.anInt407 = (local10 << 16) + (local12 & 0xFFFF);
-			this.anInt408 = (local14 << 16) + (local16 & 0xFFFF);
-		} catch ( RuntimeException local158) {
-			signlink.reporterror("15788, " + 426 + ", " + local158.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public void method278() {
-		try {
-			int[] local11;
-			int local13;
-			int local26;
-			int local15;
-			int local22;
-			int local67;
-			int local74;
-			if (this.anIntArray129 != null) {
-				local11 = new int[256];
-				local13 = 0;
-				for (local15 = 0; local15 < this.anInt402; local15++) {
-					local22 = this.anIntArray129[local15];
-					local26 = local11[local22]++;
-					if (local22 > local13) {
-						local13 = local22;
-					}
-				}
-				this.anIntArrayArray10 = new int[local13 + 1][];
-				for (local22 = 0; local22 <= local13; local22++) {
-					this.anIntArrayArray10[local22] = new int[local11[local22]];
-					local11[local22] = 0;
-				}
-				local67 = 0;
-				while (local67 < this.anInt402) {
-					local74 = this.anIntArray129[local67];
-					this.anIntArrayArray10[local74][local11[local74]++] = local67++;
-				}
-				this.anIntArray129 = null;
-			}
-			if (this.anIntArray130 != null) {
-				local11 = new int[256];
-				local13 = 0;
-				for (local15 = 0; local15 < this.anInt403; local15++) {
-					local22 = this.anIntArray130[local15];
-					local26 = local11[local22]++;
-					if (local22 > local13) {
-						local13 = local22;
-					}
-				}
-				this.anIntArrayArray11 = new int[local13 + 1][];
-				for (local22 = 0; local22 <= local13; local22++) {
-					this.anIntArrayArray11[local22] = new int[local11[local22]];
-					local11[local22] = 0;
-				}
-				local67 = 0;
-				while (local67 < this.anInt403) {
-					local74 = this.anIntArray130[local67];
-					this.anIntArrayArray11[local74][local11[local74]++] = local67++;
-				}
-				this.anIntArray130 = null;
-			}
-		} catch ( RuntimeException local189) {
-			signlink.reporterror("88800, " + 7 + ", " + local189.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public void method279( int arg0, byte arg1) {
-		try {
-			if (this.anIntArrayArray10 != null && arg0 != -1) {
-				Class22 local12 = Class22.method168(arg0);
-				if (local12 != null) {
-					Class42 local18 = local12.aClass42_1;
-					boolean local23 = false;
-					anInt414 = 0;
-					anInt415 = 0;
-					anInt416 = 0;
-					for ( int local34 = 0; local34 < local12.anInt239; local34++) {
-						int local41 = local12.anIntArray81[local34];
-						this.method281(local18.anIntArray172[local41], local18.anIntArrayArray15[local41], local12.anIntArray82[local34], local12.anIntArray83[local34], local12.anIntArray84[local34]);
-					}
-				}
-			}
-		} catch ( RuntimeException local70) {
-			signlink.reporterror("76974, " + arg0 + ", " + arg1 + ", " + local70.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public void method280( int arg0, int arg1, int[] arg2) {
-		try {
-			if (arg1 != -1) {
-				if (arg2 == null || arg0 == -1) {
-					this.method279(arg1, (byte) 6);
-				} else {
-					Class22 local18 = Class22.method168(arg1);
-					if (local18 != null) {
-						Class22 local24 = Class22.method168(arg0);
-						if (local24 == null) {
-							this.method279(arg1, (byte) 6);
-						} else {
-							Class42 local34 = local18.aClass42_1;
-							anInt414 = 0;
-							anInt415 = 0;
-							anInt416 = 0;
-							byte local52 = 0;
-							int local55 = local52 + 1;
-							int local57 = arg2[0];
-							int local66;
-							for ( int local59 = 0; local59 < local18.anInt239; local59++) {
-								local66 = local18.anIntArray81[local59];
-								while (local66 > local57) {
-									local57 = arg2[local55++];
-								}
-								if (local66 != local57 || local34.anIntArray172[local66] == 0) {
-									this.method281(local34.anIntArray172[local66], local34.anIntArrayArray15[local66], local18.anIntArray82[local59], local18.anIntArray83[local59], local18.anIntArray84[local59]);
-								}
-							}
-							anInt414 = 0;
-							anInt415 = 0;
-							anInt416 = 0;
-							local52 = 0;
-							local55 = local52 + 1;
-							local57 = arg2[0];
-							for (local66 = 0; local66 < local24.anInt239; local66++) {
-								int local133 = local24.anIntArray81[local66];
-								while (local133 > local57) {
-									local57 = arg2[local55++];
-								}
-								if (local133 == local57 || local34.anIntArray172[local133] == 0) {
-									this.method281(local34.anIntArray172[local133], local34.anIntArrayArray15[local133], local24.anIntArray82[local66], local24.anIntArray83[local66], local24.anIntArray84[local66]);
-								}
-							}
-						}
-					}
-				}
-			}
-		} catch ( RuntimeException local180) {
-			signlink.reporterror("72004, " + arg0 + ", " + 0 + ", " + arg1 + ", " + arg2 + ", " + local180.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	private void method281( int arg0, int[] arg1, int arg2, int arg3, int arg4) {
-		int local4 = arg1.length;
-		int local8;
-		int local16;
-		int local34;
-		int local40;
-		if (arg0 == 0) {
-			local8 = 0;
-			anInt414 = 0;
-			anInt415 = 0;
-			anInt416 = 0;
-			for (local16 = 0; local16 < local4; local16++) {
-				int local22 = arg1[local16];
-				if (local22 < this.anIntArrayArray10.length) {
-					int[] local32 = this.anIntArrayArray10[local22];
-					for (local34 = 0; local34 < local32.length; local34++) {
-						local40 = local32[local34];
-						anInt414 += this.anIntArray113[local40];
-						anInt415 += this.anIntArray114[local40];
-						anInt416 += this.anIntArray115[local40];
-						local8++;
-					}
-				}
-			}
-			if (local8 > 0) {
-				anInt414 = anInt414 / local8 + arg2;
-				anInt415 = anInt415 / local8 + arg3;
-				anInt416 = anInt416 / local8 + arg4;
-			} else {
-				anInt414 = arg2;
-				anInt415 = arg3;
-				anInt416 = arg4;
-			}
-			return;
-		}
-		int[] local120;
-		int local122;
-		if (arg0 == 1) {
-			for (local8 = 0; local8 < local4; local8++) {
-				local16 = arg1[local8];
-				if (local16 < this.anIntArrayArray10.length) {
-					local120 = this.anIntArrayArray10[local16];
-					for (local122 = 0; local122 < local120.length; local122++) {
-						local34 = local120[local122];
-						this.anIntArray113[local34] += arg2;
-						this.anIntArray114[local34] += arg3;
-						this.anIntArray115[local34] += arg4;
-					}
-				}
-			}
-		} else if (arg0 == 2) {
-			for (local8 = 0; local8 < local4; local8++) {
-				local16 = arg1[local8];
-				if (local16 < this.anIntArrayArray10.length) {
-					local120 = this.anIntArrayArray10[local16];
-					for (local122 = 0; local122 < local120.length; local122++) {
-						local34 = local120[local122];
-						this.anIntArray113[local34] -= anInt414;
-						this.anIntArray114[local34] -= anInt415;
-						this.anIntArray115[local34] -= anInt416;
-						local40 = (arg2 & 0xFF) * 8;
-						int local227 = (arg3 & 0xFF) * 8;
-						int local233 = (arg4 & 0xFF) * 8;
-						int local239;
-						int local243;
-						int local259;
-						if (local233 != 0) {
-							local239 = anIntArray146[local233];
-							local243 = anIntArray147[local233];
-							local259 = this.anIntArray114[local34] * local239 + this.anIntArray113[local34] * local243 >> 16;
-							this.anIntArray114[local34] = this.anIntArray114[local34] * local243 - this.anIntArray113[local34] * local239 >> 16;
-							this.anIntArray113[local34] = local259;
-						}
-						if (local40 != 0) {
-							local239 = anIntArray146[local40];
-							local243 = anIntArray147[local40];
-							local259 = this.anIntArray114[local34] * local243 - this.anIntArray115[local34] * local239 >> 16;
-							this.anIntArray115[local34] = this.anIntArray114[local34] * local239 + this.anIntArray115[local34] * local243 >> 16;
-							this.anIntArray114[local34] = local259;
-						}
-						if (local227 != 0) {
-							local239 = anIntArray146[local227];
-							local243 = anIntArray147[local227];
-							local259 = this.anIntArray115[local34] * local239 + this.anIntArray113[local34] * local243 >> 16;
-							this.anIntArray115[local34] = this.anIntArray115[local34] * local243 - this.anIntArray113[local34] * local239 >> 16;
-							this.anIntArray113[local34] = local259;
-						}
-						this.anIntArray113[local34] += anInt414;
-						this.anIntArray114[local34] += anInt415;
-						this.anIntArray115[local34] += anInt416;
-					}
-				}
-			}
-		} else if (arg0 == 3) {
-			for (local8 = 0; local8 < local4; local8++) {
-				local16 = arg1[local8];
-				if (local16 < this.anIntArrayArray10.length) {
-					local120 = this.anIntArrayArray10[local16];
-					for (local122 = 0; local122 < local120.length; local122++) {
-						local34 = local120[local122];
-						this.anIntArray113[local34] -= anInt414;
-						this.anIntArray114[local34] -= anInt415;
-						this.anIntArray115[local34] -= anInt416;
-						this.anIntArray113[local34] = this.anIntArray113[local34] * arg2 / 128;
-						this.anIntArray114[local34] = this.anIntArray114[local34] * arg3 / 128;
-						this.anIntArray115[local34] = this.anIntArray115[local34] * arg4 / 128;
-						this.anIntArray113[local34] += anInt414;
-						this.anIntArray114[local34] += anInt415;
-						this.anIntArray115[local34] += anInt416;
-					}
-				}
-			}
-		} else if (arg0 == 5 && (this.anIntArrayArray11 != null && this.anIntArray124 != null)) {
-			for (local8 = 0; local8 < local4; local8++) {
-				local16 = arg1[local8];
-				if (local16 < this.anIntArrayArray11.length) {
-					local120 = this.anIntArrayArray11[local16];
-					for (local122 = 0; local122 < local120.length; local122++) {
-						local34 = local120[local122];
-						this.anIntArray124[local34] += arg2 * 8;
-						if (this.anIntArray124[local34] < 0) {
-							this.anIntArray124[local34] = 0;
-						}
-						if (this.anIntArray124[local34] > 255) {
-							this.anIntArray124[local34] = 255;
-						}
-					}
-				}
-			}
-		}
-	}
-
-	public void method282() {
-		try {
-			for ( int local4 = 0; local4 < this.anInt402; local4++) {
-				int local11 = this.anIntArray113[local4];
-				this.anIntArray113[local4] = this.anIntArray115[local4];
-				this.anIntArray115[local4] = -local11;
-			}
-		} catch ( RuntimeException local32) {
-			signlink.reporterror("76482, " + true + ", " + local32.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public void method283( int arg0, int arg1) {
-		try {
-			int local3 = anIntArray146[arg0];
-			int local7 = anIntArray147[arg0];
-			for ( int local9 = 0; local9 < this.anInt402; local9++) {
-				int local27 = this.anIntArray114[local9] * local7 - this.anIntArray115[local9] * local3 >> 16;
-				this.anIntArray115[local9] = this.anIntArray114[local9] * local3 + this.anIntArray115[local9] * local7 >> 16;
-				this.anIntArray114[local9] = local27;
-			}
-			boolean local60 = false;
-		} catch ( RuntimeException local62) {
-			signlink.reporterror("91366, " + arg0 + ", " + arg1 + ", " + local62.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public void method284( int arg0, int arg1, int arg2) {
-		try {
-			for ( int local6 = 0; local6 < this.anInt402; local6++) {
-				this.anIntArray113[local6] += arg0;
-				this.anIntArray114[local6] += arg2;
-				this.anIntArray115[local6] += arg1;
-			}
-		} catch ( RuntimeException local39) {
-			signlink.reporterror("30486, " + arg0 + ", " + arg1 + ", " + false + ", " + arg2 + ", " + local39.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public void recolor(int arg0, int arg1) {
-		for ( int local1 = 0; local1 < this.anInt403; local1++) {
-			if (this.anIntArray125[local1] == arg0) {
-				this.anIntArray125[local1] = arg1;
-			}
-		}
-	}
-
-	public void method286() {
-		try {
-			for ( int local12 = 0; local12 < this.anInt402; local12++) {
-				this.anIntArray115[local12] = -this.anIntArray115[local12];
-			}
-			for ( int local30 = 0; local30 < this.anInt403; local30++) {
-				int local37 = this.anIntArray116[local30];
-				this.anIntArray116[local30] = this.anIntArray118[local30];
-				this.anIntArray118[local30] = local37;
-			}
-		} catch ( RuntimeException local57) {
-			signlink.reporterror("8589, " + 0 + ", " + local57.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public void method287( int arg0, int arg1, int arg2) {
-		try {
-			for ( int local1 = 0; local1 < this.anInt402; local1++) {
-				this.anIntArray113[local1] = this.anIntArray113[local1] * arg2 / 128;
-				this.anIntArray114[local1] = this.anIntArray114[local1] * arg0 / 128;
-				this.anIntArray115[local1] = this.anIntArray115[local1] * arg1 / 128;
-			}
-		} catch ( RuntimeException local52) {
-			signlink.reporterror("26889, " + arg0 + ", " + arg1 + ", " + 9 + ", " + arg2 + ", " + local52.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public void method288( int arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
-		int local16 = (int) Math.sqrt((double) (arg2 * arg2 + arg3 * arg3 + arg4 * arg4));
-		int local22 = arg1 * local16 >> 8;
-		if (this.anIntArray119 == null) {
-			this.anIntArray119 = new int[this.anInt403];
-			this.anIntArray120 = new int[this.anInt403];
-			this.anIntArray121 = new int[this.anInt403];
-		}
-		int local50;
-		if (super.aClass41Array10 == null) {
-			super.aClass41Array10 = new Class41[this.anInt402];
-			for (local50 = 0; local50 < this.anInt402; local50++) {
-				super.aClass41Array10[local50] = new Class41();
-			}
-		}
-		int local73;
-		for (local50 = 0; local50 < this.anInt403; local50++) {
-			local73 = this.anIntArray116[local50];
-			int local78 = this.anIntArray117[local50];
-			int local83 = this.anIntArray118[local50];
-			int local93 = this.anIntArray113[local78] - this.anIntArray113[local73];
-			int local103 = this.anIntArray114[local78] - this.anIntArray114[local73];
-			int local113 = this.anIntArray115[local78] - this.anIntArray115[local73];
-			int local123 = this.anIntArray113[local83] - this.anIntArray113[local73];
-			int local133 = this.anIntArray114[local83] - this.anIntArray114[local73];
-			int local143 = this.anIntArray115[local83] - this.anIntArray115[local73];
-			int local151 = local103 * local143 - local133 * local113;
-			int local159 = local113 * local123 - local143 * local93;
-			int local167;
-			for (local167 = local93 * local133 - local123 * local103; local151 > 8192 || local159 > 8192 || local167 > 8192 || local151 < -8192 || local159 < -8192 || local167 < -8192; local167 >>= 0x1) {
-				local151 >>= 0x1;
-				local159 >>= 0x1;
-			}
-			int local214 = (int) Math.sqrt((double) (local151 * local151 + local159 * local159 + local167 * local167));
-			if (local214 <= 0) {
-				local214 = 1;
-			}
-			local151 = local151 * 256 / local214;
-			local159 = local159 * 256 / local214;
-			local167 = local167 * 256 / local214;
-			if (this.anIntArray122 == null || (this.anIntArray122[local50] & 0x1) == 0) {
-				Class41 local251 = super.aClass41Array10[local73];
-				local251.anInt607 += local151;
-				local251.anInt608 += local159;
-				local251.anInt609 += local167;
-				local251.anInt610++;
-				Class41 local280 = super.aClass41Array10[local78];
-				local280.anInt607 += local151;
-				local280.anInt608 += local159;
-				local280.anInt609 += local167;
-				local280.anInt610++;
-				Class41 local309 = super.aClass41Array10[local83];
-				local309.anInt607 += local151;
-				local309.anInt608 += local159;
-				local309.anInt609 += local167;
-				local309.anInt610++;
-			} else {
-				int local355 = arg0 + (arg2 * local151 + arg3 * local159 + arg4 * local167) / (local22 + local22 / 2);
-				this.anIntArray119[local50] = method291(this.anIntArray125[local50], local355, this.anIntArray122[local50]);
-			}
-		}
-		if (arg5) {
-			this.method290(arg0, local22, arg2, arg3, arg4);
-		} else {
-			this.aClass41Array6 = new Class41[this.anInt402];
-			for (local73 = 0; local73 < this.anInt402; local73++) {
-				Class41 local399 = super.aClass41Array10[local73];
-				Class41 local408 = this.aClass41Array6[local73] = new Class41();
-				local408.anInt607 = local399.anInt607;
-				local408.anInt608 = local399.anInt608;
-				local408.anInt609 = local399.anInt609;
-				local408.anInt610 = local399.anInt610;
-			}
-			this.anInt406 = (arg0 << 16) + (local22 & 0xFFFF);
-		}
-		if (arg5) {
-			this.method275(this.anInt398);
-		} else {
-			this.method277();
-		}
-	}
-
-	public void method289() {
-		try {
-			int local4 = this.anInt406 >> 16;
-			int local11 = this.anInt406 << 16 >> 16;
-			this.method290(local4, local11, -50, -10, -50);
-		} catch ( RuntimeException local29) {
-			signlink.reporterror("52189, " + -10 + ", " + -50 + ", " + 0 + ", " + -50 + ", " + local29.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	private void method290( int arg0, int arg1, int arg2, int arg3, int arg4) {
-		int local10;
-		for ( int local3 = 0; local3 < this.anInt403; local3++) {
-			local10 = this.anIntArray116[local3];
-			int local15 = this.anIntArray117[local3];
-			int local20 = this.anIntArray118[local3];
-			Class41 local33;
-			int local55;
-			int local28;
-			if (this.anIntArray122 == null) {
-				local28 = this.anIntArray125[local3];
-				local33 = super.aClass41Array10[local10];
-				local55 = arg0 + (arg2 * local33.anInt607 + arg3 * local33.anInt608 + arg4 * local33.anInt609) / (arg1 * local33.anInt610);
-				this.anIntArray119[local3] = method291(local28, local55, 0);
-				Class41 local68 = super.aClass41Array10[local15];
-				int local90 = arg0 + (arg2 * local68.anInt607 + arg3 * local68.anInt608 + arg4 * local68.anInt609) / (arg1 * local68.anInt610);
-				this.anIntArray120[local3] = method291(local28, local90, 0);
-				Class41 local103 = super.aClass41Array10[local20];
-				int local125 = arg0 + (arg2 * local103.anInt607 + arg3 * local103.anInt608 + arg4 * local103.anInt609) / (arg1 * local103.anInt610);
-				this.anIntArray121[local3] = method291(local28, local125, 0);
-			} else if ((this.anIntArray122[local3] & 0x1) == 0) {
-				local28 = this.anIntArray125[local3];
-				int local152 = this.anIntArray122[local3];
-				local33 = super.aClass41Array10[local10];
-				local55 = arg0 + (arg2 * local33.anInt607 + arg3 * local33.anInt608 + arg4 * local33.anInt609) / (arg1 * local33.anInt610);
-				this.anIntArray119[local3] = method291(local28, local55, local152);
-				local33 = super.aClass41Array10[local15];
-				local55 = arg0 + (arg2 * local33.anInt607 + arg3 * local33.anInt608 + arg4 * local33.anInt609) / (arg1 * local33.anInt610);
-				this.anIntArray120[local3] = method291(local28, local55, local152);
-				local33 = super.aClass41Array10[local20];
-				local55 = arg0 + (arg2 * local33.anInt607 + arg3 * local33.anInt608 + arg4 * local33.anInt609) / (arg1 * local33.anInt610);
-				this.anIntArray121[local3] = method291(local28, local55, local152);
-			}
-		}
-		super.aClass41Array10 = null;
-		this.aClass41Array6 = null;
-		this.anIntArray129 = null;
-		this.anIntArray130 = null;
-		if (this.anIntArray122 != null) {
-			for (local10 = 0; local10 < this.anInt403; local10++) {
-				if ((this.anIntArray122[local10] & 0x2) == 2) {
-					return;
-				}
-			}
-		}
-		this.anIntArray125 = null;
-	}
-
-	public void method292( int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-		int local1 = Class10_Sub1_Sub1_Sub4.anInt686;
-		int local3 = Class10_Sub1_Sub1_Sub4.anInt687;
-		int local7 = anIntArray146[0];
-		int local11 = anIntArray147[0];
-		int local15 = anIntArray146[arg0];
-		int local19 = anIntArray147[arg0];
-		int local23 = anIntArray146[arg1];
-		int local27 = anIntArray147[arg1];
-		int local31 = anIntArray146[arg2];
-		int local35 = anIntArray147[arg2];
-		int local45 = arg4 * local31 + arg5 * local35 >> 16;
-		for ( int local47 = 0; local47 < this.anInt402; local47++) {
-			int local54 = this.anIntArray113[local47];
-			int local59 = this.anIntArray114[local47];
-			int local64 = this.anIntArray115[local47];
-			int local76;
-			if (arg1 != 0) {
-				local76 = local59 * local23 + local54 * local27 >> 16;
-				local59 = local59 * local27 - local54 * local23 >> 16;
-				local54 = local76;
-			}
-			if (arg0 != 0) {
-				local76 = local64 * local15 + local54 * local19 >> 16;
-				local64 = local64 * local19 - local54 * local15 >> 16;
-				local54 = local76;
-			}
-			local54 += arg3;
-			local59 += arg4;
-			local64 += arg5;
-			local76 = local59 * local35 - local64 * local31 >> 16;
-			local64 = local59 * local31 + local64 * local35 >> 16;
-			anIntArray133[local47] = local64 - local45;
-			anIntArray131[local47] = local1 + (local54 << 9) / local64;
-			anIntArray132[local47] = local3 + (local76 << 9) / local64;
-			if (this.anInt405 > 0) {
-				anIntArray134[local47] = local54;
-				anIntArray135[local47] = local76;
-				anIntArray136[local47] = local64;
-			}
-		}
-		try {
-			this.method293(false, false, 0);
-		} catch ( Exception local223) {
-		}
-	}
-
-	@Override
-	public void method536( int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
-		int local11 = arg7 * arg4 - arg5 * arg3 >> 16;
-		int local21 = arg6 * arg1 + local11 * arg2 >> 16;
-		int local28 = this.anInt409 * arg2 >> 16;
-		int local32 = local21 + local28;
-		if (local32 <= 50 || local21 >= 3500) {
-			return;
-		}
-		int local49 = arg7 * arg3 + arg5 * arg4 >> 16;
-		int local56 = local49 - this.anInt409 << 9;
-		if (local56 / local32 >= Draw2D.centerX2d) {
-			return;
-		}
-		int local69 = local49 + this.anInt409 << 9;
-		if (local69 / local32 <= -Draw2D.centerX2d) {
-			return;
-		}
-		int local86 = arg6 * arg2 - local11 * arg1 >> 16;
-		int local93 = this.anInt409 * arg1 >> 16;
-		int local99 = local86 + local93 << 9;
-		if (local99 / local32 <= -Draw2D.anInt682) {
-			return;
-		}
-		int local115 = local93 + (super.anInt713 * arg2 >> 16);
-		int local121 = local86 - local115 << 9;
-		if (local121 / local32 >= Draw2D.anInt682) {
-			return;
-		}
-		int local136 = local28 + (super.anInt713 * arg1 >> 16);
-		boolean local138 = false;
-		if (local21 - local136 <= 50) {
-			local138 = true;
-		}
-		boolean local147 = false;
-		int local155;
-		int local204;
-		int local208;
-		if (arg8 > 0 && aBoolean107) {
-			local155 = local21 - local28;
-			if (local155 <= 50) {
-				local155 = 50;
-			}
-			if (local49 > 0) {
-				local56 /= local32;
-				local69 /= local155;
-			} else {
-				local69 /= local32;
-				local56 /= local155;
-			}
-			if (local86 > 0) {
-				local121 /= local32;
-				local99 /= local155;
-			} else {
-				local99 /= local32;
-				local121 /= local155;
-			}
-			local204 = anInt417 - Class10_Sub1_Sub1_Sub4.anInt686;
-			local208 = anInt418 - Class10_Sub1_Sub1_Sub4.anInt687;
-			if (local204 > local56 && local204 < local69 && local208 > local121 && local208 < local99) {
-				if (this.aBoolean106) {
-					anIntArray145[anInt419++] = arg8;
-				} else {
-					local147 = true;
-				}
-			}
-		}
-		local155 = Class10_Sub1_Sub1_Sub4.anInt686;
-		local204 = Class10_Sub1_Sub1_Sub4.anInt687;
-		local208 = 0;
-		int local243 = 0;
-		if (arg0 != 0) {
-			local208 = anIntArray146[arg0];
-			local243 = anIntArray147[arg0];
-		}
-		for ( int local255 = 0; local255 < this.anInt402; local255++) {
-			int local262 = this.anIntArray113[local255];
-			int local267 = this.anIntArray114[local255];
-			int local272 = this.anIntArray115[local255];
-			int local284;
-			if (arg0 != 0) {
-				local284 = local272 * local208 + local262 * local243 >> 16;
-				local272 = local272 * local243 - local262 * local208 >> 16;
-				local262 = local284;
-			}
-			local262 += arg5;
-			local267 += arg6;
-			local272 += arg7;
-			local284 = local272 * arg3 + local262 * arg4 >> 16;
-			local272 = local272 * arg4 - local262 * arg3 >> 16;
-			local262 = local284;
-			local284 = local267 * arg2 - local272 * arg1 >> 16;
-			local272 = local267 * arg1 + local272 * arg2 >> 16;
-			anIntArray133[local255] = local272 - local21;
-			if (local272 >= 50) {
-				anIntArray131[local255] = local155 + (local262 << 9) / local272;
-				anIntArray132[local255] = local204 + (local284 << 9) / local272;
-			} else {
-				anIntArray131[local255] = -5000;
-				local138 = true;
-			}
-			if (local138 || this.anInt405 > 0) {
-				anIntArray134[local255] = local262;
-				anIntArray135[local255] = local284;
-				anIntArray136[local255] = local272;
-			}
-		}
-		try {
-			this.method293(local138, local147, arg8);
-		} catch ( Exception local418) {
-		}
-	}
-
-	private void method293( boolean arg0, boolean arg1, int arg2) {
-		for ( int local3 = 0; local3 < this.anInt411; local3++) {
-			anIntArray137[local3] = 0;
-		}
-		int local32;
-		int local37;
-		int local42;
-		int local46;
-		int local50;
-		int local54;
-		int local86;
-		for ( int local16 = 0; local16 < this.anInt403; local16++) {
-			if (this.anIntArray122 == null || this.anIntArray122[local16] != -1) {
-				local32 = this.anIntArray116[local16];
-				local37 = this.anIntArray117[local16];
-				local42 = this.anIntArray118[local16];
-				local46 = anIntArray131[local32];
-				local50 = anIntArray131[local37];
-				local54 = anIntArray131[local42];
-				if (arg0 && (local46 == -5000 || local50 == -5000 || local54 == -5000)) {
-					aBooleanArray6[local16] = true;
-					local86 = (anIntArray133[local32] + anIntArray133[local37] + anIntArray133[local42]) / 3 + this.anInt412;
-					anIntArrayArray12[local86][anIntArray137[local86]++] = local16;
-				} else {
-					if (arg1 && this.method296(anInt417, anInt418, anIntArray132[local32], anIntArray132[local37], anIntArray132[local42], local46, local50, local54)) {
-						anIntArray145[anInt419++] = arg2;
-						arg1 = false;
-					}
-					if ((local46 - local50) * (anIntArray132[local42] - anIntArray132[local37]) - (anIntArray132[local32] - anIntArray132[local37]) * (local54 - local50) > 0) {
-						aBooleanArray6[local16] = false;
-						if (local46 >= 0 && local50 >= 0 && local54 >= 0 && local46 <= Draw2D.boundX && local50 <= Draw2D.boundX && local54 <= Draw2D.boundX) {
-							aBooleanArray5[local16] = false;
-						} else {
-							aBooleanArray5[local16] = true;
-						}
-						local86 = (anIntArray133[local32] + anIntArray133[local37] + anIntArray133[local42]) / 3 + this.anInt412;
-						anIntArrayArray12[local86][anIntArray137[local86]++] = local16;
-					}
-				}
-			}
-		}
-		if (this.anIntArray123 == null) {
-			for (local32 = this.anInt411 - 1; local32 >= 0; local32--) {
-				local37 = anIntArray137[local32];
-				if (local37 > 0) {
-					int[] local238 = anIntArrayArray12[local32];
-					for (local46 = 0; local46 < local37; local46++) {
-						this.method294(local238[local46]);
-					}
-				}
-			}
-			return;
-		}
-		for (local32 = 0; local32 < 12; local32++) {
-			anIntArray138[local32] = 0;
-			anIntArray141[local32] = 0;
-		}
-		int local310;
-		for (local37 = this.anInt411 - 1; local37 >= 0; local37--) {
-			local42 = anIntArray137[local37];
-			if (local42 > 0) {
-				int[] local288 = anIntArrayArray12[local37];
-				for (local50 = 0; local50 < local42; local50++) {
-					local54 = local288[local50];
-					local86 = this.anIntArray123[local54];
-					local310 = anIntArray138[local86]++;
-					anIntArrayArray13[local86][local310] = local54;
-					if (local86 < 10) {
-						anIntArray141[local86] += local37;
-					} else if (local86 == 10) {
-						anIntArray139[local310] = local37;
-					} else {
-						anIntArray140[local310] = local37;
-					}
-				}
-			}
-		}
-		local42 = 0;
-		if (anIntArray138[1] > 0 || anIntArray138[2] > 0) {
-			local42 = (anIntArray141[1] + anIntArray141[2]) / (anIntArray138[1] + anIntArray138[2]);
-		}
-		local46 = 0;
-		if (anIntArray138[3] > 0 || anIntArray138[4] > 0) {
-			local46 = (anIntArray141[3] + anIntArray141[4]) / (anIntArray138[3] + anIntArray138[4]);
-		}
-		local50 = 0;
-		if (anIntArray138[6] > 0 || anIntArray138[8] > 0) {
-			local50 = (anIntArray141[6] + anIntArray141[8]) / (anIntArray138[6] + anIntArray138[8]);
-		}
-		local86 = 0;
-		local310 = anIntArray138[10];
-		int[] local436 = anIntArrayArray13[10];
-		int[] local438 = anIntArray139;
-		if (local310 == 0) {
-			local86 = 0;
-			local310 = anIntArray138[11];
-			local436 = anIntArrayArray13[11];
-			local438 = anIntArray140;
-		}
-		if (local310 > 0) {
-			local54 = local438[0];
-		} else {
-			local54 = -1000;
-		}
-		for ( int local466 = 0; local466 < 10; local466++) {
-			while (local466 == 0 && local54 > local42) {
-				this.method294(local436[local86++]);
-				if (local86 == local310 && local436 != anIntArrayArray13[11]) {
-					local86 = 0;
-					local310 = anIntArray138[11];
-					local436 = anIntArrayArray13[11];
-					local438 = anIntArray140;
-				}
-				if (local86 < local310) {
-					local54 = local438[local86];
-				} else {
-					local54 = -1000;
-				}
-			}
-			while (local466 == 3 && local54 > local46) {
-				this.method294(local436[local86++]);
-				if (local86 == local310 && local436 != anIntArrayArray13[11]) {
-					local86 = 0;
-					local310 = anIntArray138[11];
-					local436 = anIntArrayArray13[11];
-					local438 = anIntArray140;
-				}
-				if (local86 < local310) {
-					local54 = local438[local86];
-				} else {
-					local54 = -1000;
-				}
-			}
-			while (local466 == 5 && local54 > local50) {
-				this.method294(local436[local86++]);
-				if (local86 == local310 && local436 != anIntArrayArray13[11]) {
-					local86 = 0;
-					local310 = anIntArray138[11];
-					local436 = anIntArrayArray13[11];
-					local438 = anIntArray140;
-				}
-				if (local86 < local310) {
-					local54 = local438[local86];
-				} else {
-					local54 = -1000;
-				}
-			}
-			int local604 = anIntArray138[local466];
-			int[] local608 = anIntArrayArray13[local466];
-			for ( int local610 = 0; local610 < local604; local610++) {
-				this.method294(local608[local610]);
-			}
-		}
-		while (local54 != -1000) {
-			this.method294(local436[local86++]);
-			if (local86 == local310 && local436 != anIntArrayArray13[11]) {
-				local86 = 0;
-				local436 = anIntArrayArray13[11];
-				local310 = anIntArray138[11];
-				local438 = anIntArray140;
-			}
-			if (local86 < local310) {
-				local54 = local438[local86];
-			} else {
-				local54 = -1000;
-			}
-		}
-	}
-
-	private void method294( int arg0) {
-		if (aBooleanArray6[arg0]) {
-			this.method295(arg0);
-			return;
-		}
-		int local14 = this.anIntArray116[arg0];
-		int local19 = this.anIntArray117[arg0];
-		int local24 = this.anIntArray118[arg0];
-		Class10_Sub1_Sub1_Sub4.aBoolean177 = aBooleanArray5[arg0];
-		if (this.anIntArray124 == null) {
-			Class10_Sub1_Sub1_Sub4.anInt685 = 0;
-		} else {
-			Class10_Sub1_Sub1_Sub4.anInt685 = this.anIntArray124[arg0];
-		}
-		int local45;
-		if (this.anIntArray122 == null) {
-			local45 = 0;
-		} else {
-			local45 = this.anIntArray122[arg0] & 0x3;
-		}
-		if (local45 == 0) {
-			Class10_Sub1_Sub1_Sub4.method517(anIntArray132[local14], anIntArray132[local19], anIntArray132[local24], anIntArray131[local14], anIntArray131[local19], anIntArray131[local24], this.anIntArray119[arg0], this.anIntArray120[arg0], this.anIntArray121[arg0]);
-		} else if (local45 == 1) {
-			Class10_Sub1_Sub1_Sub4.method519(anIntArray132[local14], anIntArray132[local19], anIntArray132[local24], anIntArray131[local14], anIntArray131[local19], anIntArray131[local24], anIntArray148[this.anIntArray119[arg0]]);
-		} else {
-			int local127;
-			int local132;
-			int local137;
-			int local142;
-			if (local45 == 2) {
-				local127 = this.anIntArray122[arg0] >> 2;
-				local132 = this.anIntArray126[local127];
-				local137 = this.anIntArray127[local127];
-				local142 = this.anIntArray128[local127];
-				Class10_Sub1_Sub1_Sub4.method521(anIntArray132[local14], anIntArray132[local19], anIntArray132[local24], anIntArray131[local14], anIntArray131[local19], anIntArray131[local24], this.anIntArray119[arg0], this.anIntArray120[arg0], this.anIntArray121[arg0], anIntArray134[local132], anIntArray134[local137], anIntArray134[local142], anIntArray135[local132], anIntArray135[local137], anIntArray135[local142], anIntArray136[local132], anIntArray136[local137], anIntArray136[local142], this.anIntArray125[arg0]);
-			} else if (local45 == 3) {
-				local127 = this.anIntArray122[arg0] >> 2;
-				local132 = this.anIntArray126[local127];
-				local137 = this.anIntArray127[local127];
-				local142 = this.anIntArray128[local127];
-				Class10_Sub1_Sub1_Sub4.method521(anIntArray132[local14], anIntArray132[local19], anIntArray132[local24], anIntArray131[local14], anIntArray131[local19], anIntArray131[local24], this.anIntArray119[arg0], this.anIntArray119[arg0], this.anIntArray119[arg0], anIntArray134[local132], anIntArray134[local137], anIntArray134[local142], anIntArray135[local132], anIntArray135[local137], anIntArray135[local142], anIntArray136[local132], anIntArray136[local137], anIntArray136[local142], this.anIntArray125[arg0]);
-			}
-		}
-	}
-
-	private void method295( int arg0) {
-		int local3 = Class10_Sub1_Sub1_Sub4.anInt686;
-		int local5 = Class10_Sub1_Sub1_Sub4.anInt687;
-		int local7 = 0;
-		int local12 = this.anIntArray116[arg0];
-		int local17 = this.anIntArray117[arg0];
-		int local22 = this.anIntArray118[arg0];
-		int local26 = anIntArray136[local12];
-		int local30 = anIntArray136[local17];
-		int local34 = anIntArray136[local22];
-		int local63;
-		int local67;
-		int local72;
-		int local85;
-		if (local26 >= 50) {
-			anIntArray142[0] = anIntArray131[local12];
-			anIntArray143[0] = anIntArray132[local12];
-			local7++;
-			anIntArray144[0] = this.anIntArray119[arg0];
-		} else {
-			local63 = anIntArray134[local12];
-			local67 = anIntArray135[local12];
-			local72 = this.anIntArray119[arg0];
-			if (local34 >= 50) {
-				local85 = (50 - local26) * anIntArray149[local34 - local26];
-				anIntArray142[0] = local3 + (local63 + ((anIntArray134[local22] - local63) * local85 >> 16) << 9) / 50;
-				anIntArray143[0] = local5 + (local67 + ((anIntArray135[local22] - local67) * local85 >> 16) << 9) / 50;
-				local7++;
-				anIntArray144[0] = local72 + ((this.anIntArray121[arg0] - local72) * local85 >> 16);
-			}
-			if (local30 >= 50) {
-				local85 = (50 - local26) * anIntArray149[local30 - local26];
-				anIntArray142[local7] = local3 + (local63 + ((anIntArray134[local17] - local63) * local85 >> 16) << 9) / 50;
-				anIntArray143[local7] = local5 + (local67 + ((anIntArray135[local17] - local67) * local85 >> 16) << 9) / 50;
-				anIntArray144[local7++] = local72 + ((this.anIntArray120[arg0] - local72) * local85 >> 16);
-			}
-		}
-		if (local30 >= 50) {
-			anIntArray142[local7] = anIntArray131[local17];
-			anIntArray143[local7] = anIntArray132[local17];
-			anIntArray144[local7++] = this.anIntArray120[arg0];
-		} else {
-			local63 = anIntArray134[local17];
-			local67 = anIntArray135[local17];
-			local72 = this.anIntArray120[arg0];
-			if (local26 >= 50) {
-				local85 = (50 - local30) * anIntArray149[local26 - local30];
-				anIntArray142[local7] = local3 + (local63 + ((anIntArray134[local12] - local63) * local85 >> 16) << 9) / 50;
-				anIntArray143[local7] = local5 + (local67 + ((anIntArray135[local12] - local67) * local85 >> 16) << 9) / 50;
-				anIntArray144[local7++] = local72 + ((this.anIntArray119[arg0] - local72) * local85 >> 16);
-			}
-			if (local34 >= 50) {
-				local85 = (50 - local30) * anIntArray149[local34 - local30];
-				anIntArray142[local7] = local3 + (local63 + ((anIntArray134[local22] - local63) * local85 >> 16) << 9) / 50;
-				anIntArray143[local7] = local5 + (local67 + ((anIntArray135[local22] - local67) * local85 >> 16) << 9) / 50;
-				anIntArray144[local7++] = local72 + ((this.anIntArray121[arg0] - local72) * local85 >> 16);
-			}
-		}
-		if (local34 >= 50) {
-			anIntArray142[local7] = anIntArray131[local22];
-			anIntArray143[local7] = anIntArray132[local22];
-			anIntArray144[local7++] = this.anIntArray121[arg0];
-		} else {
-			local63 = anIntArray134[local22];
-			local67 = anIntArray135[local22];
-			local72 = this.anIntArray121[arg0];
-			if (local30 >= 50) {
-				local85 = (50 - local34) * anIntArray149[local30 - local34];
-				anIntArray142[local7] = local3 + (local63 + ((anIntArray134[local17] - local63) * local85 >> 16) << 9) / 50;
-				anIntArray143[local7] = local5 + (local67 + ((anIntArray135[local17] - local67) * local85 >> 16) << 9) / 50;
-				anIntArray144[local7++] = local72 + ((this.anIntArray120[arg0] - local72) * local85 >> 16);
-			}
-			if (local26 >= 50) {
-				local85 = (50 - local34) * anIntArray149[local26 - local34];
-				anIntArray142[local7] = local3 + (local63 + ((anIntArray134[local12] - local63) * local85 >> 16) << 9) / 50;
-				anIntArray143[local7] = local5 + (local67 + ((anIntArray135[local12] - local67) * local85 >> 16) << 9) / 50;
-				anIntArray144[local7++] = local72 + ((this.anIntArray119[arg0] - local72) * local85 >> 16);
-			}
-		}
-		local63 = anIntArray142[0];
-		local67 = anIntArray142[1];
-		local72 = anIntArray142[2];
-		local85 = anIntArray143[0];
-		int local582 = anIntArray143[1];
-		int local586 = anIntArray143[2];
-		if ((local63 - local67) * (local586 - local582) - (local85 - local582) * (local72 - local67) <= 0) {
-			return;
-		}
-		Class10_Sub1_Sub1_Sub4.aBoolean177 = false;
-		int local629;
-		int local686;
-		int local691;
-		int local696;
-		int local701;
-		if (local7 == 3) {
-			if (local63 < 0 || local67 < 0 || local72 < 0 || local63 > Draw2D.boundX || local67 > Draw2D.boundX || local72 > Draw2D.boundX) {
-				Class10_Sub1_Sub1_Sub4.aBoolean177 = true;
-			}
-			if (this.anIntArray122 == null) {
-				local629 = 0;
-			} else {
-				local629 = this.anIntArray122[arg0] & 0x3;
-			}
-			if (local629 == 0) {
-				Class10_Sub1_Sub1_Sub4.method517(local85, local582, local586, local63, local67, local72, anIntArray144[0], anIntArray144[1], anIntArray144[2]);
-			} else if (local629 == 1) {
-				Class10_Sub1_Sub1_Sub4.method519(local85, local582, local586, local63, local67, local72, anIntArray148[this.anIntArray119[arg0]]);
-			} else if (local629 == 2) {
-				local686 = this.anIntArray122[arg0] >> 2;
-				local691 = this.anIntArray126[local686];
-				local696 = this.anIntArray127[local686];
-				local701 = this.anIntArray128[local686];
-				Class10_Sub1_Sub1_Sub4.method521(local85, local582, local586, local63, local67, local72, anIntArray144[0], anIntArray144[1], anIntArray144[2], anIntArray134[local691], anIntArray134[local696], anIntArray134[local701], anIntArray135[local691], anIntArray135[local696], anIntArray135[local701], anIntArray136[local691], anIntArray136[local696], anIntArray136[local701], this.anIntArray125[arg0]);
-			} else if (local629 == 3) {
-				local686 = this.anIntArray122[arg0] >> 2;
-				local691 = this.anIntArray126[local686];
-				local696 = this.anIntArray127[local686];
-				local701 = this.anIntArray128[local686];
-				Class10_Sub1_Sub1_Sub4.method521(local85, local582, local586, local63, local67, local72, this.anIntArray119[arg0], this.anIntArray119[arg0], this.anIntArray119[arg0], anIntArray134[local691], anIntArray134[local696], anIntArray134[local701], anIntArray135[local691], anIntArray135[local696], anIntArray135[local701], anIntArray136[local691], anIntArray136[local696], anIntArray136[local701], this.anIntArray125[arg0]);
-			}
-		}
-		if (local7 != 4) {
-			return;
-		}
-		if (local63 < 0 || local67 < 0 || local72 < 0 || local63 > Draw2D.boundX || local67 > Draw2D.boundX || local72 > Draw2D.boundX || anIntArray142[3] < 0 || anIntArray142[3] > Draw2D.boundX) {
-			Class10_Sub1_Sub1_Sub4.aBoolean177 = true;
-		}
-		if (this.anIntArray122 == null) {
-			local629 = 0;
-		} else {
-			local629 = this.anIntArray122[arg0] & 0x3;
-		}
-		if (local629 == 0) {
-			Class10_Sub1_Sub1_Sub4.method517(local85, local582, local586, local63, local67, local72, anIntArray144[0], anIntArray144[1], anIntArray144[2]);
-			Class10_Sub1_Sub1_Sub4.method517(local85, local586, anIntArray143[3], local63, local72, anIntArray142[3], anIntArray144[0], anIntArray144[2], anIntArray144[3]);
-			return;
-		}
-		if (local629 == 1) {
-			local686 = anIntArray148[this.anIntArray119[arg0]];
-			Class10_Sub1_Sub1_Sub4.method519(local85, local582, local586, local63, local67, local72, local686);
-			Class10_Sub1_Sub1_Sub4.method519(local85, local586, anIntArray143[3], local63, local72, anIntArray142[3], local686);
-			return;
-		}
-		if (local629 == 2) {
-			local686 = this.anIntArray122[arg0] >> 2;
-			local691 = this.anIntArray126[local686];
-			local696 = this.anIntArray127[local686];
-			local701 = this.anIntArray128[local686];
-			Class10_Sub1_Sub1_Sub4.method521(local85, local582, local586, local63, local67, local72, anIntArray144[0], anIntArray144[1], anIntArray144[2], anIntArray134[local691], anIntArray134[local696], anIntArray134[local701], anIntArray135[local691], anIntArray135[local696], anIntArray135[local701], anIntArray136[local691], anIntArray136[local696], anIntArray136[local701], this.anIntArray125[arg0]);
-			Class10_Sub1_Sub1_Sub4.method521(local85, local586, anIntArray143[3], local63, local72, anIntArray142[3], anIntArray144[0], anIntArray144[2], anIntArray144[3], anIntArray134[local691], anIntArray134[local696], anIntArray134[local701], anIntArray135[local691], anIntArray135[local696], anIntArray135[local701], anIntArray136[local691], anIntArray136[local696], anIntArray136[local701], this.anIntArray125[arg0]);
-			return;
-		}
-		if (local629 != 3) {
-			return;
-		}
-		local686 = this.anIntArray122[arg0] >> 2;
-		local691 = this.anIntArray126[local686];
-		local696 = this.anIntArray127[local686];
-		local701 = this.anIntArray128[local686];
-		Class10_Sub1_Sub1_Sub4.method521(local85, local582, local586, local63, local67, local72, this.anIntArray119[arg0], this.anIntArray119[arg0], this.anIntArray119[arg0], anIntArray134[local691], anIntArray134[local696], anIntArray134[local701], anIntArray135[local691], anIntArray135[local696], anIntArray135[local701], anIntArray136[local691], anIntArray136[local696], anIntArray136[local701], this.anIntArray125[arg0]);
-		Class10_Sub1_Sub1_Sub4.method521(local85, local586, anIntArray143[3], local63, local72, anIntArray142[3], this.anIntArray119[arg0], this.anIntArray119[arg0], this.anIntArray119[arg0], anIntArray134[local691], anIntArray134[local696], anIntArray134[local701], anIntArray135[local691], anIntArray135[local696], anIntArray135[local701], anIntArray136[local691], anIntArray136[local696], anIntArray136[local701], this.anIntArray125[arg0]);
-	}
-
-	private boolean method296( int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
-		if (arg1 < arg2 && arg1 < arg3 && arg1 < arg4) {
-			return false;
-		} else if (arg1 > arg2 && arg1 > arg3 && arg1 > arg4) {
-			return false;
-		} else if (arg0 < arg5 && arg0 < arg6 && arg0 < arg7) {
-			return false;
-		} else {
-			return arg0 <= arg5 || arg0 <= arg6 || arg0 <= arg7;
-		}
-	}
+   private static boolean[] aBooleanArray6 = new boolean[4096];
+   private static Class27[] renderables;
+   public static int[] anIntArray146;
+   private static int anInt414;
+   public static Model aClass10_Sub1_Sub2_Sub4_1 = new Model(852);
+   private static int[] anIntArray137 = new int[1500];
+   public static int anInt419;
+   public static int[] anIntArray147;
+   private static int anInt415;
+   private static int[] anIntArray109 = new int[2000];
+   public static int[] anIntArray145 = new int[1000];
+   private static Class33 aClass33_1;
+   private static int anInt416;
+   private static int[] anIntArray110 = new int[2000];
+   private static int[] anIntArray138 = new int[12];
+   private static int[] anIntArray111 = new int[2000];
+   private static int[] anIntArray136 = new int[4096];
+   private static boolean[] aBooleanArray5 = new boolean[4096];
+   private static int[] anIntArray141 = new int[12];
+   private static int[] anIntArray112 = new int[2000];
+   private static int[][] anIntArrayArray12 = new int[1500][512];
+   private static int[] anIntArray131 = new int[4096];
+   private static int[] anIntArray142 = new int[10];
+   private static int[] anIntArray134 = new int[4096];
+   private static int anInt401;
+   private static int[] anIntArray135 = new int[4096];
+   private static int[] anIntArray132 = new int[4096];
+   private static int[] anIntArray143 = new int[10];
+   private static int[] anIntArray133 = new int[4096];
+   private static int[] anIntArray149;
+   public static int anInt417;
+   private static int[][] anIntArrayArray13 = new int[12][2000];
+   private static int[] anIntArray144 = new int[10];
+   public static int anInt418;
+   private static int[] anIntArray139 = new int[2000];
+   private static int[] anIntArray140 = new int[2000];
+   private static int[] anIntArray148;
+   public static boolean aBoolean107;
+   private int anInt411;
+   private int anInt406;
+   public int[][] anIntArrayArray10;
+   private int[] anIntArray129;
+   public int[] anIntArray113;
+   public int anInt402;
+   public int anInt403;
+   private int anInt398 = 932;
+   public int anInt410;
+   public int anInt409;
+   public int[] anIntArray116;
+   private int[] anIntArray130;
+   public int[] anIntArray125;
+   public int[] anIntArray114;
+   public int[] anIntArray115;
+   private int[] anIntArray119;
+   private int anInt399 = 426;
+   public Class41[] aClass41Array6;
+   public int[] anIntArray117;
+   private int[] anIntArray123;
+   public int[] anIntArray122;
+   public int[][] anIntArrayArray11;
+   public int anInt407;
+   private boolean aBoolean103 = false;
+   public int[] anIntArray118;
+   private int anInt405;
+   private int[] anIntArray124;
+   public int anInt408;
+   private boolean aBoolean104 = true;
+   public boolean aBoolean106 = false;
+   private int[] anIntArray120;
+   private int anInt400 = -252;
+   private boolean aBoolean105 = false;
+   private int[] anIntArray121;
+   private int anInt412;
+   private int[] anIntArray126;
+   private int[] anIntArray127;
+   private int anInt404;
+   private int[] anIntArray128;
+   public int anInt413;
+
+   static {
+      anIntArray146 = Class10_Sub1_Sub1_Sub4.anIntArray181;
+      anIntArray147 = Class10_Sub1_Sub1_Sub4.anIntArray182;
+      anIntArray148 = Class10_Sub1_Sub1_Sub4.anIntArray186;
+      anIntArray149 = Class10_Sub1_Sub1_Sub4.anIntArray180;
+   }
+
+   private Model(int var1) {
+   }
+
+   public Model(int var1, Model[] var2) {
+      ++anInt401;
+      boolean var3 = false;
+      boolean var4 = false;
+      boolean var5 = false;
+      boolean var6 = false;
+      this.anInt402 = 0;
+      this.anInt403 = 0;
+      this.anInt405 = 0;
+      this.anInt404 = -1;
+
+      int var7;
+      for(var7 = 0; var7 < var1; ++var7) {
+         Model var8 = var2[var7];
+         if (var8 != null) {
+            this.anInt402 += var8.anInt402;
+            this.anInt403 += var8.anInt403;
+            this.anInt405 += var8.anInt405;
+            var3 |= var8.anIntArray122 != null;
+            if (var8.anIntArray123 == null) {
+               if (this.anInt404 == -1) {
+                  this.anInt404 = var8.anInt404;
+               }
+
+               if (this.anInt404 != var8.anInt404) {
+                  var4 = true;
+               }
+            } else {
+               var4 = true;
+            }
+
+            var5 |= var8.anIntArray124 != null;
+            var6 |= var8.anIntArray130 != null;
+         }
+      }
+
+      this.anIntArray113 = new int[this.anInt402];
+      this.anIntArray114 = new int[this.anInt402];
+      this.anIntArray115 = new int[this.anInt402];
+      this.anIntArray129 = new int[this.anInt402];
+      this.anIntArray116 = new int[this.anInt403];
+      this.anIntArray117 = new int[this.anInt403];
+      this.anIntArray118 = new int[this.anInt403];
+      this.anIntArray126 = new int[this.anInt405];
+      this.anIntArray127 = new int[this.anInt405];
+      this.anIntArray128 = new int[this.anInt405];
+      if (var3) {
+         this.anIntArray122 = new int[this.anInt403];
+      }
+
+      if (var4) {
+         this.anIntArray123 = new int[this.anInt403];
+      }
+
+      if (var5) {
+         this.anIntArray124 = new int[this.anInt403];
+      }
+
+      if (var6) {
+         this.anIntArray130 = new int[this.anInt403];
+      }
+
+      this.anIntArray125 = new int[this.anInt403];
+      this.anInt402 = 0;
+      this.anInt403 = 0;
+      this.anInt405 = 0;
+      var7 = 0;
+
+      for(int var12 = 0; var12 < var1; ++var12) {
+         Model var9 = var2[var12];
+         if (var9 != null) {
+            int var10;
+            for(int var11 = 0; var11 < var9.anInt403; ++var11) {
+               if (var3) {
+                  if (var9.anIntArray122 == null) {
+                     this.anIntArray122[this.anInt403] = 0;
+                  } else {
+                     var10 = var9.anIntArray122[var11];
+                     if ((var10 & 2) == 2) {
+                        var10 += var7 << 2;
+                     }
+
+                     this.anIntArray122[this.anInt403] = var10;
+                  }
+               }
+
+               if (var4) {
+                  if (var9.anIntArray123 == null) {
+                     this.anIntArray123[this.anInt403] = var9.anInt404;
+                  } else {
+                     this.anIntArray123[this.anInt403] = var9.anIntArray123[var11];
+                  }
+               }
+
+               if (var5) {
+                  if (var9.anIntArray124 == null) {
+                     this.anIntArray124[this.anInt403] = 0;
+                  } else {
+                     this.anIntArray124[this.anInt403] = var9.anIntArray124[var11];
+                  }
+               }
+
+               if (var6 && var9.anIntArray130 != null) {
+                  this.anIntArray130[this.anInt403] = var9.anIntArray130[var11];
+               }
+
+               this.anIntArray125[this.anInt403] = var9.anIntArray125[var11];
+               this.anIntArray116[this.anInt403] = this.method274(var9, var9.anIntArray116[var11]);
+               this.anIntArray117[this.anInt403] = this.method274(var9, var9.anIntArray117[var11]);
+               this.anIntArray118[this.anInt403] = this.method274(var9, var9.anIntArray118[var11]);
+               ++this.anInt403;
+            }
+
+            for(var10 = 0; var10 < var9.anInt405; ++var10) {
+               this.anIntArray126[this.anInt405] = this.method274(var9, var9.anIntArray126[var10]);
+               this.anIntArray127[this.anInt405] = this.method274(var9, var9.anIntArray127[var10]);
+               this.anIntArray128[this.anInt405] = this.method274(var9, var9.anIntArray128[var10]);
+               ++this.anInt405;
+            }
+
+            var7 += var9.anInt405;
+         }
+      }
+
+   }
+
+   private Model(int var1, int var2) {
+      ++anInt401;
+      Class27 var3 = renderables[var1];
+      this.anInt402 = var3.anInt330;
+      this.anInt403 = var3.anInt331;
+      this.anInt405 = var3.anInt332;
+      this.anIntArray113 = new int[this.anInt402];
+      this.anIntArray114 = new int[this.anInt402];
+      this.anIntArray115 = new int[this.anInt402];
+      this.anIntArray116 = new int[this.anInt403];
+      this.anIntArray117 = new int[this.anInt403];
+      this.anIntArray118 = new int[this.anInt403];
+      this.anIntArray126 = new int[this.anInt405];
+      this.anIntArray127 = new int[this.anInt405];
+      this.anIntArray128 = new int[this.anInt405];
+      if (var3.anInt337 >= 0) {
+         this.anIntArray129 = new int[this.anInt402];
+      }
+
+      if (var3.anInt341 >= 0) {
+         this.anIntArray122 = new int[this.anInt403];
+      }
+
+      if (var3.anInt342 >= 0) {
+         this.anIntArray123 = new int[this.anInt403];
+      } else {
+         this.anInt404 = -var3.anInt342 - 1;
+      }
+
+      if (var3.anInt343 >= 0) {
+         this.anIntArray124 = new int[this.anInt403];
+      }
+
+      if (var3.anInt344 >= 0) {
+         this.anIntArray130 = new int[this.anInt403];
+      }
+
+      this.anIntArray125 = new int[this.anInt403];
+      Packet var4 = new Packet(var3.aByteArray11);
+      var4.pos = var3.anInt333;
+      Packet var5 = new Packet(var3.aByteArray11);
+      var5.pos = var3.anInt334;
+      Packet var6 = new Packet(var3.aByteArray11);
+      var6.pos = var3.anInt335;
+      Packet var7 = new Packet(var3.aByteArray11);
+      var7.pos = var3.anInt336;
+      Packet var8 = new Packet(var3.aByteArray11);
+      var8.pos = var3.anInt337;
+      int var9 = 0;
+      int var10 = 0;
+      int var11 = 0;
+
+      int var12;
+      int var13;
+      int var14;
+      int var15;
+      int var16;
+      for(var16 = 0; var16 < this.anInt402; ++var16) {
+         var12 = var4.g1();
+         var13 = 0;
+         if ((var12 & 1) != 0) {
+            var13 = var5.gsmart();
+         }
+
+         var14 = 0;
+         if ((var12 & 2) != 0) {
+            var14 = var6.gsmart();
+         }
+
+         var15 = 0;
+         if ((var12 & 4) != 0) {
+            var15 = var7.gsmart();
+         }
+
+         this.anIntArray113[var16] = var9 + var13;
+         this.anIntArray114[var16] = var10 + var14;
+         this.anIntArray115[var16] = var11 + var15;
+         var9 = this.anIntArray113[var16];
+         var10 = this.anIntArray114[var16];
+         var11 = this.anIntArray115[var16];
+         if (this.anIntArray129 != null) {
+            this.anIntArray129[var16] = var8.g1();
+         }
+      }
+
+      var4.pos = var3.anInt340;
+      var5.pos = var3.anInt341;
+      var6.pos = var3.anInt342;
+      var7.pos = var3.anInt343;
+      var8.pos = var3.anInt344;
+
+      for(var12 = 0; var12 < this.anInt403; ++var12) {
+         this.anIntArray125[var12] = var4.g2();
+         if (this.anIntArray122 != null) {
+            this.anIntArray122[var12] = var5.g1();
+         }
+
+         if (this.anIntArray123 != null) {
+            this.anIntArray123[var12] = var6.g1();
+         }
+
+         if (this.anIntArray124 != null) {
+            this.anIntArray124[var12] = var7.g1();
+         }
+
+         if (this.anIntArray130 != null) {
+            this.anIntArray130[var12] = var8.g1();
+         }
+      }
+
+      var4.pos = var3.anInt338;
+      var5.pos = var3.anInt339;
+      var13 = 0;
+      var14 = 0;
+      var15 = 0;
+      var16 = 0;
+
+      int var17;
+      for(int var18 = 0; var18 < this.anInt403; ++var18) {
+         var17 = var5.g1();
+         if (var17 == 1) {
+            var13 = var4.gsmart() + var16;
+            var14 = var4.gsmart() + var13;
+            var15 = var4.gsmart() + var14;
+            var16 = var15;
+            this.anIntArray116[var18] = var13;
+            this.anIntArray117[var18] = var14;
+            this.anIntArray118[var18] = var15;
+         }
+
+         if (var17 == 2) {
+            var13 = var13;
+            var14 = var15;
+            var15 = var4.gsmart() + var16;
+            var16 = var15;
+            this.anIntArray116[var18] = var13;
+            this.anIntArray117[var18] = var14;
+            this.anIntArray118[var18] = var15;
+         }
+
+         if (var17 == 3) {
+            var13 = var15;
+            var14 = var14;
+            var15 = var4.gsmart() + var16;
+            var16 = var15;
+            this.anIntArray116[var18] = var13;
+            this.anIntArray117[var18] = var14;
+            this.anIntArray118[var18] = var15;
+         }
+
+         if (var17 == 4) {
+            int var19 = var13;
+            var13 = var14;
+            var14 = var19;
+            var15 = var4.gsmart() + var16;
+            var16 = var15;
+            this.anIntArray116[var18] = var13;
+            this.anIntArray117[var18] = var19;
+            this.anIntArray118[var18] = var15;
+         }
+      }
+
+      var4.pos = var3.anInt345;
+
+      for(var17 = 0; var17 < this.anInt405; ++var17) {
+         this.anIntArray126[var17] = var4.g2();
+         this.anIntArray127[var17] = var4.g2();
+         this.anIntArray128[var17] = var4.g2();
+      }
+
+   }
+
+   public Model(boolean var1, boolean var2, int var3, Model var4) {
+      ++anInt401;
+      this.anInt402 = var4.anInt402;
+      this.anInt403 = var4.anInt403;
+      this.anInt405 = var4.anInt405;
+      int var5;
+      if (var1) {
+         this.anIntArray114 = new int[this.anInt402];
+
+         for(var5 = 0; var5 < this.anInt402; ++var5) {
+            this.anIntArray114[var5] = var4.anIntArray114[var5];
+         }
+      } else {
+         this.anIntArray114 = var4.anIntArray114;
+      }
+
+      if (var2) {
+         this.anIntArray119 = new int[this.anInt403];
+         this.anIntArray120 = new int[this.anInt403];
+         this.anIntArray121 = new int[this.anInt403];
+
+         for(var5 = 0; var5 < this.anInt403; ++var5) {
+            this.anIntArray119[var5] = var4.anIntArray119[var5];
+            this.anIntArray120[var5] = var4.anIntArray120[var5];
+            this.anIntArray121[var5] = var4.anIntArray121[var5];
+         }
+
+         this.anIntArray122 = new int[this.anInt403];
+         int var6;
+         if (var4.anIntArray122 == null) {
+            for(var6 = 0; var6 < this.anInt403; ++var6) {
+               this.anIntArray122[var6] = 0;
+            }
+         } else {
+            for(var6 = 0; var6 < this.anInt403; ++var6) {
+               this.anIntArray122[var6] = var4.anIntArray122[var6];
+            }
+         }
+
+         super.aClass41Array10 = new Class41[this.anInt402];
+
+         for(var6 = 0; var6 < this.anInt402; ++var6) {
+            Class41 var7 = super.aClass41Array10[var6] = new Class41();
+            Class41 var8 = var4.aClass41Array10[var6];
+            var7.anInt607 = var8.anInt607;
+            var7.anInt608 = var8.anInt608;
+            var7.anInt609 = var8.anInt609;
+            var7.anInt610 = var8.anInt610;
+         }
+
+         this.aClass41Array6 = var4.aClass41Array6;
+      } else {
+         this.anIntArray119 = var4.anIntArray119;
+         this.anIntArray120 = var4.anIntArray120;
+         this.anIntArray121 = var4.anIntArray121;
+         this.anIntArray122 = var4.anIntArray122;
+      }
+
+      this.anIntArray113 = var4.anIntArray113;
+      this.anIntArray115 = var4.anIntArray115;
+      this.anIntArray125 = var4.anIntArray125;
+      this.anIntArray124 = var4.anIntArray124;
+      this.anIntArray123 = var4.anIntArray123;
+      this.anInt404 = var4.anInt404;
+      this.anIntArray116 = var4.anIntArray116;
+      this.anIntArray117 = var4.anIntArray117;
+      this.anIntArray118 = var4.anIntArray118;
+      this.anIntArray126 = var4.anIntArray126;
+      this.anIntArray127 = var4.anIntArray127;
+      this.anIntArray128 = var4.anIntArray128;
+      super.anInt713 = var4.anInt713;
+      this.anInt410 = var4.anInt410;
+      this.anInt409 = var4.anInt409;
+      this.anInt412 = var4.anInt412;
+      this.anInt411 = var4.anInt411;
+      this.anInt407 = var4.anInt407;
+      this.anInt408 = var4.anInt408;
+      this.anInt406 = var4.anInt406;
+   }
+
+   public Model(boolean var1, boolean var2, boolean var3, Model var4, boolean var5) {
+      ++anInt401;
+      this.anInt402 = var4.anInt402;
+      this.anInt403 = var4.anInt403;
+      this.anInt405 = var4.anInt405;
+      int var6;
+      if (var1) {
+         this.anIntArray113 = var4.anIntArray113;
+         this.anIntArray114 = var4.anIntArray114;
+         this.anIntArray115 = var4.anIntArray115;
+      } else {
+         this.anIntArray113 = new int[this.anInt402];
+         this.anIntArray114 = new int[this.anInt402];
+         this.anIntArray115 = new int[this.anInt402];
+
+         for(var6 = 0; var6 < this.anInt402; ++var6) {
+            this.anIntArray113[var6] = var4.anIntArray113[var6];
+            this.anIntArray114[var6] = var4.anIntArray114[var6];
+            this.anIntArray115[var6] = var4.anIntArray115[var6];
+         }
+      }
+
+      if (var3) {
+         this.anIntArray125 = var4.anIntArray125;
+      } else {
+         this.anIntArray125 = new int[this.anInt403];
+
+         for(var6 = 0; var6 < this.anInt403; ++var6) {
+            this.anIntArray125[var6] = var4.anIntArray125[var6];
+         }
+      }
+
+      if (var5) {
+         this.anIntArray124 = var4.anIntArray124;
+      } else {
+         this.anIntArray124 = new int[this.anInt403];
+         if (var4.anIntArray124 == null) {
+            for(var6 = 0; var6 < this.anInt403; ++var6) {
+               this.anIntArray124[var6] = 0;
+            }
+         } else {
+            for(var6 = 0; var6 < this.anInt403; ++var6) {
+               this.anIntArray124[var6] = var4.anIntArray124[var6];
+            }
+         }
+      }
+
+      this.anIntArray129 = var4.anIntArray129;
+      this.anIntArray130 = var4.anIntArray130;
+      this.anIntArray122 = var4.anIntArray122;
+      this.anIntArray116 = var4.anIntArray116;
+      this.anIntArray117 = var4.anIntArray117;
+      this.anIntArray118 = var4.anIntArray118;
+      this.anIntArray123 = var4.anIntArray123;
+      this.anInt404 = var4.anInt404;
+      this.anIntArray126 = var4.anIntArray126;
+      this.anIntArray127 = var4.anIntArray127;
+      this.anIntArray128 = var4.anIntArray128;
+   }
+
+   public Model(int var1, boolean var2, int var3, Model[] var4) {
+      ++anInt401;
+      boolean var5 = false;
+      boolean var6 = false;
+      boolean var7 = false;
+      boolean var8 = false;
+      this.anInt402 = 0;
+      this.anInt403 = 0;
+      this.anInt405 = 0;
+      this.anInt404 = -1;
+
+      int var9;
+      for(var9 = 0; var9 < var1; ++var9) {
+         Model var10 = var4[var9];
+         if (var10 != null) {
+            this.anInt402 += var10.anInt402;
+            this.anInt403 += var10.anInt403;
+            this.anInt405 += var10.anInt405;
+            var5 |= var10.anIntArray122 != null;
+            if (var10.anIntArray123 == null) {
+               if (this.anInt404 == -1) {
+                  this.anInt404 = var10.anInt404;
+               }
+
+               if (this.anInt404 != var10.anInt404) {
+                  var6 = true;
+               }
+            } else {
+               var6 = true;
+            }
+
+            var7 |= var10.anIntArray124 != null;
+            var8 |= var10.anIntArray125 != null;
+         }
+      }
+
+      this.anIntArray113 = new int[this.anInt402];
+      this.anIntArray114 = new int[this.anInt402];
+      this.anIntArray115 = new int[this.anInt402];
+      this.anIntArray116 = new int[this.anInt403];
+      this.anIntArray117 = new int[this.anInt403];
+      this.anIntArray118 = new int[this.anInt403];
+      this.anIntArray119 = new int[this.anInt403];
+      this.anIntArray120 = new int[this.anInt403];
+      this.anIntArray121 = new int[this.anInt403];
+      this.anIntArray126 = new int[this.anInt405];
+      this.anIntArray127 = new int[this.anInt405];
+      this.anIntArray128 = new int[this.anInt405];
+      if (var5) {
+         this.anIntArray122 = new int[this.anInt403];
+      }
+
+      if (var6) {
+         this.anIntArray123 = new int[this.anInt403];
+      }
+
+      if (var7) {
+         this.anIntArray124 = new int[this.anInt403];
+      }
+
+      if (var8) {
+         this.anIntArray125 = new int[this.anInt403];
+      }
+
+      this.anInt402 = 0;
+      this.anInt403 = 0;
+      this.anInt405 = 0;
+      var9 = 0;
+
+      for(int var15 = 0; var15 < var1; ++var15) {
+         Model var11 = var4[var15];
+         if (var11 != null) {
+            int var12 = this.anInt402;
+
+            int var13;
+            for(var13 = 0; var13 < var11.anInt402; ++var13) {
+               this.anIntArray113[this.anInt402] = var11.anIntArray113[var13];
+               this.anIntArray114[this.anInt402] = var11.anIntArray114[var13];
+               this.anIntArray115[this.anInt402] = var11.anIntArray115[var13];
+               ++this.anInt402;
+            }
+
+            for(int var14 = 0; var14 < var11.anInt403; ++var14) {
+               this.anIntArray116[this.anInt403] = var11.anIntArray116[var14] + var12;
+               this.anIntArray117[this.anInt403] = var11.anIntArray117[var14] + var12;
+               this.anIntArray118[this.anInt403] = var11.anIntArray118[var14] + var12;
+               this.anIntArray119[this.anInt403] = var11.anIntArray119[var14];
+               this.anIntArray120[this.anInt403] = var11.anIntArray120[var14];
+               this.anIntArray121[this.anInt403] = var11.anIntArray121[var14];
+               if (var5) {
+                  if (var11.anIntArray122 == null) {
+                     this.anIntArray122[this.anInt403] = 0;
+                  } else {
+                     var13 = var11.anIntArray122[var14];
+                     if ((var13 & 2) == 2) {
+                        var13 += var9 << 2;
+                     }
+
+                     this.anIntArray122[this.anInt403] = var13;
+                  }
+               }
+
+               if (var6) {
+                  if (var11.anIntArray123 == null) {
+                     this.anIntArray123[this.anInt403] = var11.anInt404;
+                  } else {
+                     this.anIntArray123[this.anInt403] = var11.anIntArray123[var14];
+                  }
+               }
+
+               if (var7) {
+                  if (var11.anIntArray124 == null) {
+                     this.anIntArray124[this.anInt403] = 0;
+                  } else {
+                     this.anIntArray124[this.anInt403] = var11.anIntArray124[var14];
+                  }
+               }
+
+               if (var8 && var11.anIntArray125 != null) {
+                  this.anIntArray125[this.anInt403] = var11.anIntArray125[var14];
+               }
+
+               ++this.anInt403;
+            }
+
+            for(var13 = 0; var13 < var11.anInt405; ++var13) {
+               this.anIntArray126[this.anInt405] = var11.anIntArray126[var13] + var12;
+               this.anIntArray127[this.anInt405] = var11.anIntArray127[var13] + var12;
+               this.anIntArray128[this.anInt405] = var11.anIntArray128[var13] + var12;
+               ++this.anInt405;
+            }
+
+            var9 += var11.anInt405;
+         }
+      }
+
+      this.method275(this.anInt398);
+   }
+
+   private void method290(int var1, int var2, int var3, int var4, int var5) {
+      int var6;
+      for(int var7 = 0; var7 < this.anInt403; ++var7) {
+         var6 = this.anIntArray116[var7];
+         int var8 = this.anIntArray117[var7];
+         int var9 = this.anIntArray118[var7];
+         Class41 var10;
+         int var11;
+         int var12;
+         if (this.anIntArray122 == null) {
+            var12 = this.anIntArray125[var7];
+            var10 = super.aClass41Array10[var6];
+            var11 = var1 + (var3 * var10.anInt607 + var4 * var10.anInt608 + var5 * var10.anInt609) / (var2 * var10.anInt610);
+            this.anIntArray119[var7] = method291(var12, var11, 0);
+            Class41 var13 = super.aClass41Array10[var8];
+            int var14 = var1 + (var3 * var13.anInt607 + var4 * var13.anInt608 + var5 * var13.anInt609) / (var2 * var13.anInt610);
+            this.anIntArray120[var7] = method291(var12, var14, 0);
+            Class41 var15 = super.aClass41Array10[var9];
+            int var16 = var1 + (var3 * var15.anInt607 + var4 * var15.anInt608 + var5 * var15.anInt609) / (var2 * var15.anInt610);
+            this.anIntArray121[var7] = method291(var12, var16, 0);
+         } else if ((this.anIntArray122[var7] & 1) == 0) {
+            var12 = this.anIntArray125[var7];
+            int var17 = this.anIntArray122[var7];
+            var10 = super.aClass41Array10[var6];
+            var11 = var1 + (var3 * var10.anInt607 + var4 * var10.anInt608 + var5 * var10.anInt609) / (var2 * var10.anInt610);
+            this.anIntArray119[var7] = method291(var12, var11, var17);
+            var10 = super.aClass41Array10[var8];
+            var11 = var1 + (var3 * var10.anInt607 + var4 * var10.anInt608 + var5 * var10.anInt609) / (var2 * var10.anInt610);
+            this.anIntArray120[var7] = method291(var12, var11, var17);
+            var10 = super.aClass41Array10[var9];
+            var11 = var1 + (var3 * var10.anInt607 + var4 * var10.anInt608 + var5 * var10.anInt609) / (var2 * var10.anInt610);
+            this.anIntArray121[var7] = method291(var12, var11, var17);
+         }
+      }
+
+      super.aClass41Array10 = null;
+      this.aClass41Array6 = null;
+      this.anIntArray129 = null;
+      this.anIntArray130 = null;
+      if (this.anIntArray122 != null) {
+         for(var6 = 0; var6 < this.anInt403; ++var6) {
+            if ((this.anIntArray122[var6] & 2) == 2) {
+               return;
+            }
+         }
+      }
+
+      this.anIntArray125 = null;
+   }
+
+   public void method279(int var1, byte var2) {
+      if (this.anIntArrayArray10 != null && var1 != -1) {
+         Class22 var3 = Class22.method168(var1);
+         if (var3 != null) {
+            Class42 var4 = var3.aClass42_1;
+            boolean var5 = false;
+            anInt414 = 0;
+            anInt415 = 0;
+            anInt416 = 0;
+
+            for(int var6 = 0; var6 < var3.anInt239; ++var6) {
+               int var7 = var3.anIntArray81[var6];
+               this.method281(var4.anIntArray172[var7], var4.anIntArrayArray15[var7], var3.anIntArray82[var6], var3.anIntArray83[var6], var3.anIntArray84[var6]);
+            }
+         }
+      }
+
+   }
+
+   private void method295(int var1) {
+      int var2 = Class10_Sub1_Sub1_Sub4.anInt686;
+      int var3 = Class10_Sub1_Sub1_Sub4.anInt687;
+      int var4 = 0;
+      int var5 = this.anIntArray116[var1];
+      int var6 = this.anIntArray117[var1];
+      int var7 = this.anIntArray118[var1];
+      int var8 = anIntArray136[var5];
+      int var9 = anIntArray136[var6];
+      int var10 = anIntArray136[var7];
+      int var11;
+      int var12;
+      int var13;
+      int var14;
+      if (var8 >= 50) {
+         anIntArray142[0] = anIntArray131[var5];
+         anIntArray143[0] = anIntArray132[var5];
+         ++var4;
+         anIntArray144[0] = this.anIntArray119[var1];
+      } else {
+         var11 = anIntArray134[var5];
+         var12 = anIntArray135[var5];
+         var13 = this.anIntArray119[var1];
+         if (var10 >= 50) {
+            var14 = (50 - var8) * anIntArray149[var10 - var8];
+            anIntArray142[0] = var2 + (var11 + ((anIntArray134[var7] - var11) * var14 >> 16) << 9) / 50;
+            anIntArray143[0] = var3 + (var12 + ((anIntArray135[var7] - var12) * var14 >> 16) << 9) / 50;
+            ++var4;
+            anIntArray144[0] = var13 + ((this.anIntArray121[var1] - var13) * var14 >> 16);
+         }
+
+         if (var9 >= 50) {
+            var14 = (50 - var8) * anIntArray149[var9 - var8];
+            anIntArray142[var4] = var2 + (var11 + ((anIntArray134[var6] - var11) * var14 >> 16) << 9) / 50;
+            anIntArray143[var4] = var3 + (var12 + ((anIntArray135[var6] - var12) * var14 >> 16) << 9) / 50;
+            anIntArray144[var4++] = var13 + ((this.anIntArray120[var1] - var13) * var14 >> 16);
+         }
+      }
+
+      if (var9 >= 50) {
+         anIntArray142[var4] = anIntArray131[var6];
+         anIntArray143[var4] = anIntArray132[var6];
+         anIntArray144[var4++] = this.anIntArray120[var1];
+      } else {
+         var11 = anIntArray134[var6];
+         var12 = anIntArray135[var6];
+         var13 = this.anIntArray120[var1];
+         if (var8 >= 50) {
+            var14 = (50 - var9) * anIntArray149[var8 - var9];
+            anIntArray142[var4] = var2 + (var11 + ((anIntArray134[var5] - var11) * var14 >> 16) << 9) / 50;
+            anIntArray143[var4] = var3 + (var12 + ((anIntArray135[var5] - var12) * var14 >> 16) << 9) / 50;
+            anIntArray144[var4++] = var13 + ((this.anIntArray119[var1] - var13) * var14 >> 16);
+         }
+
+         if (var10 >= 50) {
+            var14 = (50 - var9) * anIntArray149[var10 - var9];
+            anIntArray142[var4] = var2 + (var11 + ((anIntArray134[var7] - var11) * var14 >> 16) << 9) / 50;
+            anIntArray143[var4] = var3 + (var12 + ((anIntArray135[var7] - var12) * var14 >> 16) << 9) / 50;
+            anIntArray144[var4++] = var13 + ((this.anIntArray121[var1] - var13) * var14 >> 16);
+         }
+      }
+
+      if (var10 >= 50) {
+         anIntArray142[var4] = anIntArray131[var7];
+         anIntArray143[var4] = anIntArray132[var7];
+         anIntArray144[var4++] = this.anIntArray121[var1];
+      } else {
+         var11 = anIntArray134[var7];
+         var12 = anIntArray135[var7];
+         var13 = this.anIntArray121[var1];
+         if (var9 >= 50) {
+            var14 = (50 - var10) * anIntArray149[var9 - var10];
+            anIntArray142[var4] = var2 + (var11 + ((anIntArray134[var6] - var11) * var14 >> 16) << 9) / 50;
+            anIntArray143[var4] = var3 + (var12 + ((anIntArray135[var6] - var12) * var14 >> 16) << 9) / 50;
+            anIntArray144[var4++] = var13 + ((this.anIntArray120[var1] - var13) * var14 >> 16);
+         }
+
+         if (var8 >= 50) {
+            var14 = (50 - var10) * anIntArray149[var8 - var10];
+            anIntArray142[var4] = var2 + (var11 + ((anIntArray134[var5] - var11) * var14 >> 16) << 9) / 50;
+            anIntArray143[var4] = var3 + (var12 + ((anIntArray135[var5] - var12) * var14 >> 16) << 9) / 50;
+            anIntArray144[var4++] = var13 + ((this.anIntArray119[var1] - var13) * var14 >> 16);
+         }
+      }
+
+      var11 = anIntArray142[0];
+      var12 = anIntArray142[1];
+      var13 = anIntArray142[2];
+      var14 = anIntArray143[0];
+      int var15 = anIntArray143[1];
+      int var16 = anIntArray143[2];
+      if ((var11 - var12) * (var16 - var15) - (var14 - var15) * (var13 - var12) > 0) {
+         Class10_Sub1_Sub1_Sub4.aBoolean177 = false;
+         int var17;
+         int var18;
+         int var19;
+         int var20;
+         int var21;
+         if (var4 == 3) {
+            if (var11 < 0 || var12 < 0 || var13 < 0 || var11 > Draw2D.boundX || var12 > Draw2D.boundX || var13 > Draw2D.boundX) {
+               Class10_Sub1_Sub1_Sub4.aBoolean177 = true;
+            }
+
+            if (this.anIntArray122 == null) {
+               var17 = 0;
+            } else {
+               var17 = this.anIntArray122[var1] & 3;
+            }
+
+            if (var17 == 0) {
+               Class10_Sub1_Sub1_Sub4.method517(var14, var15, var16, var11, var12, var13, anIntArray144[0], anIntArray144[1], anIntArray144[2]);
+            } else if (var17 == 1) {
+               Class10_Sub1_Sub1_Sub4.method519(var14, var15, var16, var11, var12, var13, anIntArray148[this.anIntArray119[var1]]);
+            } else if (var17 == 2) {
+               var18 = this.anIntArray122[var1] >> 2;
+               var19 = this.anIntArray126[var18];
+               var20 = this.anIntArray127[var18];
+               var21 = this.anIntArray128[var18];
+               Class10_Sub1_Sub1_Sub4.method521(var14, var15, var16, var11, var12, var13, anIntArray144[0], anIntArray144[1], anIntArray144[2], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
+            } else if (var17 == 3) {
+               var18 = this.anIntArray122[var1] >> 2;
+               var19 = this.anIntArray126[var18];
+               var20 = this.anIntArray127[var18];
+               var21 = this.anIntArray128[var18];
+               Class10_Sub1_Sub1_Sub4.method521(var14, var15, var16, var11, var12, var13, this.anIntArray119[var1], this.anIntArray119[var1], this.anIntArray119[var1], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
+            }
+         }
+
+         if (var4 == 4) {
+            if (var11 < 0 || var12 < 0 || var13 < 0 || var11 > Draw2D.boundX || var12 > Draw2D.boundX || var13 > Draw2D.boundX || anIntArray142[3] < 0 || anIntArray142[3] > Draw2D.boundX) {
+               Class10_Sub1_Sub1_Sub4.aBoolean177 = true;
+            }
+
+            if (this.anIntArray122 == null) {
+               var17 = 0;
+            } else {
+               var17 = this.anIntArray122[var1] & 3;
+            }
+
+            if (var17 == 0) {
+               Class10_Sub1_Sub1_Sub4.method517(var14, var15, var16, var11, var12, var13, anIntArray144[0], anIntArray144[1], anIntArray144[2]);
+               Class10_Sub1_Sub1_Sub4.method517(var14, var16, anIntArray143[3], var11, var13, anIntArray142[3], anIntArray144[0], anIntArray144[2], anIntArray144[3]);
+            } else if (var17 == 1) {
+               var18 = anIntArray148[this.anIntArray119[var1]];
+               Class10_Sub1_Sub1_Sub4.method519(var14, var15, var16, var11, var12, var13, var18);
+               Class10_Sub1_Sub1_Sub4.method519(var14, var16, anIntArray143[3], var11, var13, anIntArray142[3], var18);
+            } else if (var17 == 2) {
+               var18 = this.anIntArray122[var1] >> 2;
+               var19 = this.anIntArray126[var18];
+               var20 = this.anIntArray127[var18];
+               var21 = this.anIntArray128[var18];
+               Class10_Sub1_Sub1_Sub4.method521(var14, var15, var16, var11, var12, var13, anIntArray144[0], anIntArray144[1], anIntArray144[2], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
+               Class10_Sub1_Sub1_Sub4.method521(var14, var16, anIntArray143[3], var11, var13, anIntArray142[3], anIntArray144[0], anIntArray144[2], anIntArray144[3], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
+            } else if (var17 == 3) {
+               var18 = this.anIntArray122[var1] >> 2;
+               var19 = this.anIntArray126[var18];
+               var20 = this.anIntArray127[var18];
+               var21 = this.anIntArray128[var18];
+               Class10_Sub1_Sub1_Sub4.method521(var14, var15, var16, var11, var12, var13, this.anIntArray119[var1], this.anIntArray119[var1], this.anIntArray119[var1], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
+               Class10_Sub1_Sub1_Sub4.method521(var14, var16, anIntArray143[3], var11, var13, anIntArray142[3], this.anIntArray119[var1], this.anIntArray119[var1], this.anIntArray119[var1], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
+            }
+         }
+      }
+   }
+
+   public void recolor(int var1, int var2) {
+      for(int var3 = 0; var3 < this.anInt403; ++var3) {
+         if (this.anIntArray125[var3] == var1) {
+            this.anIntArray125[var3] = var2;
+         }
+      }
+
+   }
+
+   public void method278() {
+      int[] var1;
+      int var2;
+      int var10003;
+      int var4;
+      int var5;
+      int var6;
+      int var7;
+      if (this.anIntArray129 != null) {
+         var1 = new int[256];
+         var2 = 0;
+
+         for(var4 = 0; var4 < this.anInt402; ++var4) {
+            var5 = this.anIntArray129[var4];
+            var10003 = var1[var5]++;
+            if (var5 > var2) {
+               var2 = var5;
+            }
+         }
+
+         this.anIntArrayArray10 = new int[var2 + 1][];
+
+         for(var5 = 0; var5 <= var2; ++var5) {
+            this.anIntArrayArray10[var5] = new int[var1[var5]];
+            var1[var5] = 0;
+         }
+
+         for(var6 = 0; var6 < this.anInt402; this.anIntArrayArray10[var7][var1[var7]++] = var6++) {
+            var7 = this.anIntArray129[var6];
+         }
+
+         this.anIntArray129 = null;
+      }
+
+      if (this.anIntArray130 != null) {
+         var1 = new int[256];
+         var2 = 0;
+
+         for(var4 = 0; var4 < this.anInt403; ++var4) {
+            var5 = this.anIntArray130[var4];
+            var10003 = var1[var5]++;
+            if (var5 > var2) {
+               var2 = var5;
+            }
+         }
+
+         this.anIntArrayArray11 = new int[var2 + 1][];
+
+         for(var5 = 0; var5 <= var2; ++var5) {
+            this.anIntArrayArray11[var5] = new int[var1[var5]];
+            var1[var5] = 0;
+         }
+
+         for(var6 = 0; var6 < this.anInt403; this.anIntArrayArray11[var7][var1[var7]++] = var6++) {
+            var7 = this.anIntArray130[var6];
+         }
+
+         this.anIntArray130 = null;
+      }
+
+   }
+
+   public void method273(boolean var1, Model var2) {
+      this.anInt402 = var2.anInt402;
+      this.anInt403 = var2.anInt403;
+      this.anInt405 = var2.anInt405;
+      if (anIntArray109.length < this.anInt402) {
+         anIntArray109 = new int[this.anInt402 + 100];
+         anIntArray110 = new int[this.anInt402 + 100];
+         anIntArray111 = new int[this.anInt402 + 100];
+      }
+
+      this.anIntArray113 = anIntArray109;
+      this.anIntArray114 = anIntArray110;
+      this.anIntArray115 = anIntArray111;
+
+      int var3;
+      for(var3 = 0; var3 < this.anInt402; ++var3) {
+         this.anIntArray113[var3] = var2.anIntArray113[var3];
+         this.anIntArray114[var3] = var2.anIntArray114[var3];
+         this.anIntArray115[var3] = var2.anIntArray115[var3];
+      }
+
+      if (var1) {
+         this.anIntArray124 = var2.anIntArray124;
+      } else {
+         if (anIntArray112.length < this.anInt403) {
+            anIntArray112 = new int[this.anInt403 + 100];
+         }
+
+         this.anIntArray124 = anIntArray112;
+         if (var2.anIntArray124 == null) {
+            for(var3 = 0; var3 < this.anInt403; ++var3) {
+               this.anIntArray124[var3] = 0;
+            }
+         } else {
+            for(var3 = 0; var3 < this.anInt403; ++var3) {
+               this.anIntArray124[var3] = var2.anIntArray124[var3];
+            }
+         }
+      }
+
+      this.anIntArray122 = var2.anIntArray122;
+      this.anIntArray125 = var2.anIntArray125;
+      this.anIntArray123 = var2.anIntArray123;
+      this.anInt404 = var2.anInt404;
+      this.anIntArrayArray11 = var2.anIntArrayArray11;
+      this.anIntArrayArray10 = var2.anIntArrayArray10;
+      this.anIntArray116 = var2.anIntArray116;
+      this.anIntArray117 = var2.anIntArray117;
+      this.anIntArray118 = var2.anIntArray118;
+      this.anIntArray119 = var2.anIntArray119;
+      this.anIntArray120 = var2.anIntArray120;
+      this.anIntArray121 = var2.anIntArray121;
+      this.anIntArray126 = var2.anIntArray126;
+      this.anIntArray127 = var2.anIntArray127;
+      this.anIntArray128 = var2.anIntArray128;
+   }
+
+   public void method536(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9) {
+      int var10 = var8 * var5 - var6 * var4 >> 16;
+      int var11 = var7 * var2 + var10 * var3 >> 16;
+      int var12 = this.anInt409 * var3 >> 16;
+      int var13 = var11 + var12;
+      if (var13 > 50 && var11 < 3500) {
+         int var14 = var8 * var4 + var6 * var5 >> 16;
+         int var15 = var14 - this.anInt409 << 9;
+         if (var15 / var13 < Draw2D.centerX2d) {
+            int var16 = var14 + this.anInt409 << 9;
+            if (var16 / var13 > -Draw2D.centerX2d) {
+               int var17 = var7 * var3 - var10 * var2 >> 16;
+               int var18 = this.anInt409 * var2 >> 16;
+               int var19 = var17 + var18 << 9;
+               if (var19 / var13 > -Draw2D.anInt682) {
+                  int var20 = var18 + (super.anInt713 * var3 >> 16);
+                  int var21 = var17 - var20 << 9;
+                  if (var21 / var13 < Draw2D.anInt682) {
+                     int var22 = var12 + (super.anInt713 * var2 >> 16);
+                     boolean var23 = false;
+                     if (var11 - var22 <= 50) {
+                        var23 = true;
+                     }
+
+                     boolean var24 = false;
+                     int var25;
+                     int var26;
+                     int var27;
+                     if (var9 > 0 && aBoolean107) {
+                        var25 = var11 - var12;
+                        if (var25 <= 50) {
+                           var25 = 50;
+                        }
+
+                        if (var14 > 0) {
+                           var15 /= var13;
+                           var16 /= var25;
+                        } else {
+                           var16 /= var13;
+                           var15 /= var25;
+                        }
+
+                        if (var17 > 0) {
+                           var21 /= var13;
+                           var19 /= var25;
+                        } else {
+                           var19 /= var13;
+                           var21 /= var25;
+                        }
+
+                        var26 = anInt417 - Class10_Sub1_Sub1_Sub4.anInt686;
+                        var27 = anInt418 - Class10_Sub1_Sub1_Sub4.anInt687;
+                        if (var26 > var15 && var26 < var16 && var27 > var21 && var27 < var19) {
+                           if (this.aBoolean106) {
+                              anIntArray145[anInt419++] = var9;
+                           } else {
+                              var24 = true;
+                           }
+                        }
+                     }
+
+                     var25 = Class10_Sub1_Sub1_Sub4.anInt686;
+                     var26 = Class10_Sub1_Sub1_Sub4.anInt687;
+                     var27 = 0;
+                     int var28 = 0;
+                     if (var1 != 0) {
+                        var27 = anIntArray146[var1];
+                        var28 = anIntArray147[var1];
+                     }
+
+                     for(int var29 = 0; var29 < this.anInt402; ++var29) {
+                        int var30 = this.anIntArray113[var29];
+                        int var31 = this.anIntArray114[var29];
+                        int var32 = this.anIntArray115[var29];
+                        int var33;
+                        if (var1 != 0) {
+                           var33 = var32 * var27 + var30 * var28 >> 16;
+                           var32 = var32 * var28 - var30 * var27 >> 16;
+                           var30 = var33;
+                        }
+
+                        var30 += var6;
+                        var31 += var7;
+                        var32 += var8;
+                        var33 = var32 * var4 + var30 * var5 >> 16;
+                        var32 = var32 * var5 - var30 * var4 >> 16;
+                        var30 = var33;
+                        var33 = var31 * var3 - var32 * var2 >> 16;
+                        var32 = var31 * var2 + var32 * var3 >> 16;
+                        anIntArray133[var29] = var32 - var11;
+                        if (var32 >= 50) {
+                           anIntArray131[var29] = var25 + (var30 << 9) / var32;
+                           anIntArray132[var29] = var26 + (var33 << 9) / var32;
+                        } else {
+                           anIntArray131[var29] = -5000;
+                           var23 = true;
+                        }
+
+                        if (var23 || this.anInt405 > 0) {
+                           anIntArray134[var29] = var30;
+                           anIntArray135[var29] = var33;
+                           anIntArray136[var29] = var32;
+                        }
+                     }
+
+                     try {
+                        this.method293(var23, var24, var9);
+                     } catch (Exception var35) {
+                     }
+
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   public void method287(int var1, int var2, int var3) {
+      for(int var4 = 0; var4 < this.anInt402; ++var4) {
+         this.anIntArray113[var4] = this.anIntArray113[var4] * var3 / 128;
+         this.anIntArray114[var4] = this.anIntArray114[var4] * var1 / 128;
+         this.anIntArray115[var4] = this.anIntArray115[var4] * var2 / 128;
+      }
+
+   }
+
+   public void method284(int var1, int var2, int var3) {
+      for(int var4 = 0; var4 < this.anInt402; ++var4) {
+         int[] var10000 = this.anIntArray113;
+         var10000[var4] += var1;
+         var10000 = this.anIntArray114;
+         var10000[var4] += var3;
+         var10000 = this.anIntArray115;
+         var10000[var4] += var2;
+      }
+
+   }
+
+   private void method294(int var1) {
+      if (aBooleanArray6[var1]) {
+         this.method295(var1);
+      } else {
+         int var2 = this.anIntArray116[var1];
+         int var3 = this.anIntArray117[var1];
+         int var4 = this.anIntArray118[var1];
+         Class10_Sub1_Sub1_Sub4.aBoolean177 = aBooleanArray5[var1];
+         if (this.anIntArray124 == null) {
+            Class10_Sub1_Sub1_Sub4.anInt685 = 0;
+         } else {
+            Class10_Sub1_Sub1_Sub4.anInt685 = this.anIntArray124[var1];
+         }
+
+         int var5;
+         if (this.anIntArray122 == null) {
+            var5 = 0;
+         } else {
+            var5 = this.anIntArray122[var1] & 3;
+         }
+
+         if (var5 == 0) {
+            Class10_Sub1_Sub1_Sub4.method517(anIntArray132[var2], anIntArray132[var3], anIntArray132[var4], anIntArray131[var2], anIntArray131[var3], anIntArray131[var4], this.anIntArray119[var1], this.anIntArray120[var1], this.anIntArray121[var1]);
+         } else if (var5 == 1) {
+            Class10_Sub1_Sub1_Sub4.method519(anIntArray132[var2], anIntArray132[var3], anIntArray132[var4], anIntArray131[var2], anIntArray131[var3], anIntArray131[var4], anIntArray148[this.anIntArray119[var1]]);
+         } else {
+            int var6;
+            int var7;
+            int var8;
+            int var9;
+            if (var5 == 2) {
+               var6 = this.anIntArray122[var1] >> 2;
+               var7 = this.anIntArray126[var6];
+               var8 = this.anIntArray127[var6];
+               var9 = this.anIntArray128[var6];
+               Class10_Sub1_Sub1_Sub4.method521(anIntArray132[var2], anIntArray132[var3], anIntArray132[var4], anIntArray131[var2], anIntArray131[var3], anIntArray131[var4], this.anIntArray119[var1], this.anIntArray120[var1], this.anIntArray121[var1], anIntArray134[var7], anIntArray134[var8], anIntArray134[var9], anIntArray135[var7], anIntArray135[var8], anIntArray135[var9], anIntArray136[var7], anIntArray136[var8], anIntArray136[var9], this.anIntArray125[var1]);
+            } else if (var5 == 3) {
+               var6 = this.anIntArray122[var1] >> 2;
+               var7 = this.anIntArray126[var6];
+               var8 = this.anIntArray127[var6];
+               var9 = this.anIntArray128[var6];
+               Class10_Sub1_Sub1_Sub4.method521(anIntArray132[var2], anIntArray132[var3], anIntArray132[var4], anIntArray131[var2], anIntArray131[var3], anIntArray131[var4], this.anIntArray119[var1], this.anIntArray119[var1], this.anIntArray119[var1], anIntArray134[var7], anIntArray134[var8], anIntArray134[var9], anIntArray135[var7], anIntArray135[var8], anIntArray135[var9], anIntArray136[var7], anIntArray136[var8], anIntArray136[var9], this.anIntArray125[var1]);
+            }
+         }
+
+      }
+   }
+
+   public void method280(int var1, int var2, int[] var3) {
+      if (var2 != -1) {
+         if (var3 != null && var1 != -1) {
+            Class22 var4 = Class22.method168(var2);
+            if (var4 != null) {
+               Class22 var5 = Class22.method168(var1);
+               if (var5 == null) {
+                  this.method279(var2, (byte)6);
+               } else {
+                  Class42 var6 = var4.aClass42_1;
+                  anInt414 = 0;
+                  anInt415 = 0;
+                  anInt416 = 0;
+                  byte var7 = 0;
+                  int var8 = var7 + 1;
+                  int var9 = var3[0];
+
+                  int var10;
+                  int var11;
+                  for(var11 = 0; var11 < var4.anInt239; ++var11) {
+                     for(var10 = var4.anIntArray81[var11]; var10 > var9; var9 = var3[var8++]) {
+                     }
+
+                     if (var10 != var9 || var6.anIntArray172[var10] == 0) {
+                        this.method281(var6.anIntArray172[var10], var6.anIntArrayArray15[var10], var4.anIntArray82[var11], var4.anIntArray83[var11], var4.anIntArray84[var11]);
+                     }
+                  }
+
+                  anInt414 = 0;
+                  anInt415 = 0;
+                  anInt416 = 0;
+                  var7 = 0;
+                  var8 = var7 + 1;
+                  var9 = var3[0];
+
+                  for(var10 = 0; var10 < var5.anInt239; ++var10) {
+                     for(var11 = var5.anIntArray81[var10]; var11 > var9; var9 = var3[var8++]) {
+                     }
+
+                     if (var11 == var9 || var6.anIntArray172[var11] == 0) {
+                        this.method281(var6.anIntArray172[var11], var6.anIntArrayArray15[var11], var5.anIntArray82[var10], var5.anIntArray83[var10], var5.anIntArray84[var10]);
+                     }
+                  }
+               }
+            }
+         } else {
+            this.method279(var2, (byte)6);
+         }
+      }
+
+   }
+
+   public void method276() {
+      super.anInt713 = 0;
+      this.anInt410 = 0;
+
+      for(int var1 = 0; var1 < this.anInt402; ++var1) {
+         int var2 = this.anIntArray114[var1];
+         if (-var2 > super.anInt713) {
+            super.anInt713 = -var2;
+         }
+
+         if (var2 > this.anInt410) {
+            this.anInt410 = var2;
+         }
+      }
+
+      this.anInt412 = (int)(Math.sqrt((double)(this.anInt409 * this.anInt409 + super.anInt713 * super.anInt713)) + 0.99);
+      this.anInt411 = this.anInt412 + (int)(Math.sqrt((double)(this.anInt409 * this.anInt409 + this.anInt410 * this.anInt410)) + 0.99);
+   }
+
+   private void method293(boolean var1, boolean var2, int var3) {
+      int var4;
+      for(var4 = 0; var4 < this.anInt411; ++var4) {
+         anIntArray137[var4] = 0;
+      }
+
+      int var5;
+      int var6;
+      int var7;
+      int var8;
+      int var9;
+      int var10;
+      int var11;
+      for(var11 = 0; var11 < this.anInt403; ++var11) {
+         if (this.anIntArray122 == null || this.anIntArray122[var11] != -1) {
+            var4 = this.anIntArray116[var11];
+            var5 = this.anIntArray117[var11];
+            var6 = this.anIntArray118[var11];
+            var7 = anIntArray131[var4];
+            var8 = anIntArray131[var5];
+            var9 = anIntArray131[var6];
+            if (!var1 || var7 != -5000 && var8 != -5000 && var9 != -5000) {
+               if (var2 && this.method296(anInt417, anInt418, anIntArray132[var4], anIntArray132[var5], anIntArray132[var6], var7, var8, var9)) {
+                  anIntArray145[anInt419++] = var3;
+                  var2 = false;
+               }
+
+               if ((var7 - var8) * (anIntArray132[var6] - anIntArray132[var5]) - (anIntArray132[var4] - anIntArray132[var5]) * (var9 - var8) > 0) {
+                  aBooleanArray6[var11] = false;
+                  if (var7 >= 0 && var8 >= 0 && var9 >= 0 && var7 <= Draw2D.boundX && var8 <= Draw2D.boundX && var9 <= Draw2D.boundX) {
+                     aBooleanArray5[var11] = false;
+                  } else {
+                     aBooleanArray5[var11] = true;
+                  }
+
+                  var10 = (anIntArray133[var4] + anIntArray133[var5] + anIntArray133[var6]) / 3 + this.anInt412;
+                  anIntArrayArray12[var10][anIntArray137[var10]++] = var11;
+               }
+            } else {
+               aBooleanArray6[var11] = true;
+               var10 = (anIntArray133[var4] + anIntArray133[var5] + anIntArray133[var6]) / 3 + this.anInt412;
+               anIntArrayArray12[var10][anIntArray137[var10]++] = var11;
+            }
+         }
+      }
+
+      if (this.anIntArray123 == null) {
+         for(var4 = this.anInt411 - 1; var4 >= 0; --var4) {
+            var5 = anIntArray137[var4];
+            if (var5 > 0) {
+               int[] var18 = anIntArrayArray12[var4];
+
+               for(var7 = 0; var7 < var5; ++var7) {
+                  this.method294(var18[var7]);
+               }
+            }
+         }
+
+      } else {
+         for(var4 = 0; var4 < 12; ++var4) {
+            anIntArray138[var4] = 0;
+            anIntArray141[var4] = 0;
+         }
+
+         int[] var12;
+         for(var5 = this.anInt411 - 1; var5 >= 0; --var5) {
+            var6 = anIntArray137[var5];
+            if (var6 > 0) {
+               var12 = anIntArrayArray12[var5];
+
+               for(var8 = 0; var8 < var6; ++var8) {
+                  var9 = var12[var8];
+                  var10 = this.anIntArray123[var9];
+                  var11 = anIntArray138[var10]++;
+                  anIntArrayArray13[var10][var11] = var9;
+                  if (var10 < 10) {
+                     int[] var10000 = anIntArray141;
+                     var10000[var10] += var5;
+                  } else if (var10 == 10) {
+                     anIntArray139[var11] = var5;
+                  } else {
+                     anIntArray140[var11] = var5;
+                  }
+               }
+            }
+         }
+
+         var6 = 0;
+         if (anIntArray138[1] > 0 || anIntArray138[2] > 0) {
+            var6 = (anIntArray141[1] + anIntArray141[2]) / (anIntArray138[1] + anIntArray138[2]);
+         }
+
+         var7 = 0;
+         if (anIntArray138[3] > 0 || anIntArray138[4] > 0) {
+            var7 = (anIntArray141[3] + anIntArray141[4]) / (anIntArray138[3] + anIntArray138[4]);
+         }
+
+         var8 = 0;
+         if (anIntArray138[6] > 0 || anIntArray138[8] > 0) {
+            var8 = (anIntArray141[6] + anIntArray141[8]) / (anIntArray138[6] + anIntArray138[8]);
+         }
+
+         var10 = 0;
+         var11 = anIntArray138[10];
+         var12 = anIntArrayArray13[10];
+         int[] var13 = anIntArray139;
+         if (var11 == 0) {
+            var10 = 0;
+            var11 = anIntArray138[11];
+            var12 = anIntArrayArray13[11];
+            var13 = anIntArray140;
+         }
+
+         if (var11 > 0) {
+            var9 = var13[0];
+         } else {
+            var9 = -1000;
+         }
+
+         for(int var14 = 0; var14 < 10; ++var14) {
+            while(var14 == 0 && var9 > var6) {
+               this.method294(var12[var10++]);
+               if (var10 == var11 && var12 != anIntArrayArray13[11]) {
+                  var10 = 0;
+                  var11 = anIntArray138[11];
+                  var12 = anIntArrayArray13[11];
+                  var13 = anIntArray140;
+               }
+
+               if (var10 < var11) {
+                  var9 = var13[var10];
+               } else {
+                  var9 = -1000;
+               }
+            }
+
+            while(var14 == 3 && var9 > var7) {
+               this.method294(var12[var10++]);
+               if (var10 == var11 && var12 != anIntArrayArray13[11]) {
+                  var10 = 0;
+                  var11 = anIntArray138[11];
+                  var12 = anIntArrayArray13[11];
+                  var13 = anIntArray140;
+               }
+
+               if (var10 < var11) {
+                  var9 = var13[var10];
+               } else {
+                  var9 = -1000;
+               }
+            }
+
+            while(var14 == 5 && var9 > var8) {
+               this.method294(var12[var10++]);
+               if (var10 == var11 && var12 != anIntArrayArray13[11]) {
+                  var10 = 0;
+                  var11 = anIntArray138[11];
+                  var12 = anIntArrayArray13[11];
+                  var13 = anIntArray140;
+               }
+
+               if (var10 < var11) {
+                  var9 = var13[var10];
+               } else {
+                  var9 = -1000;
+               }
+            }
+
+            int var15 = anIntArray138[var14];
+            int[] var16 = anIntArrayArray13[var14];
+
+            for(int var17 = 0; var17 < var15; ++var17) {
+               this.method294(var16[var17]);
+            }
+         }
+
+         while(var9 != -1000) {
+            this.method294(var12[var10++]);
+            if (var10 == var11 && var12 != anIntArrayArray13[11]) {
+               var10 = 0;
+               var12 = anIntArrayArray13[11];
+               var11 = anIntArray138[11];
+               var13 = anIntArray140;
+            }
+
+            if (var10 < var11) {
+               var9 = var13[var10];
+            } else {
+               var9 = -1000;
+            }
+         }
+
+      }
+   }
+
+   private void method277() {
+      super.anInt713 = 0;
+      this.anInt409 = 0;
+      this.anInt410 = 0;
+      int var1 = 32767;
+      int var2 = -32767;
+      int var3 = -32767;
+      int var4 = 32767;
+
+      for(int var5 = 0; var5 < this.anInt402; ++var5) {
+         int var6 = this.anIntArray113[var5];
+         int var7 = this.anIntArray114[var5];
+         int var8 = this.anIntArray115[var5];
+         if (var6 < var1) {
+            var1 = var6;
+         }
+
+         if (var6 > var2) {
+            var2 = var6;
+         }
+
+         if (var8 < var4) {
+            var4 = var8;
+         }
+
+         if (var8 > var3) {
+            var3 = var8;
+         }
+
+         if (-var7 > super.anInt713) {
+            super.anInt713 = -var7;
+         }
+
+         if (var7 > this.anInt410) {
+            this.anInt410 = var7;
+         }
+
+         int var9 = var6 * var6 + var8 * var8;
+         if (var9 > this.anInt409) {
+            this.anInt409 = var9;
+         }
+      }
+
+      this.anInt409 = (int)Math.sqrt((double)this.anInt409);
+      this.anInt412 = (int)Math.sqrt((double)(this.anInt409 * this.anInt409 + super.anInt713 * super.anInt713));
+      this.anInt411 = this.anInt412 + (int)Math.sqrt((double)(this.anInt409 * this.anInt409 + this.anInt410 * this.anInt410));
+      this.anInt407 = (var1 << 16) + (var2 & 65535);
+      this.anInt408 = (var3 << 16) + (var4 & 65535);
+   }
+
+   public void method288(int var1, int var2, int var3, int var4, int var5, boolean var6) {
+      int var7 = (int)Math.sqrt((double)(var3 * var3 + var4 * var4 + var5 * var5));
+      int var8 = var2 * var7 >> 8;
+      if (this.anIntArray119 == null) {
+         this.anIntArray119 = new int[this.anInt403];
+         this.anIntArray120 = new int[this.anInt403];
+         this.anIntArray121 = new int[this.anInt403];
+      }
+
+      int var9;
+      if (super.aClass41Array10 == null) {
+         super.aClass41Array10 = new Class41[this.anInt402];
+
+         for(var9 = 0; var9 < this.anInt402; ++var9) {
+            super.aClass41Array10[var9] = new Class41();
+         }
+      }
+
+      int var10;
+      for(var9 = 0; var9 < this.anInt403; ++var9) {
+         var10 = this.anIntArray116[var9];
+         int var11 = this.anIntArray117[var9];
+         int var12 = this.anIntArray118[var9];
+         int var13 = this.anIntArray113[var11] - this.anIntArray113[var10];
+         int var14 = this.anIntArray114[var11] - this.anIntArray114[var10];
+         int var15 = this.anIntArray115[var11] - this.anIntArray115[var10];
+         int var16 = this.anIntArray113[var12] - this.anIntArray113[var10];
+         int var17 = this.anIntArray114[var12] - this.anIntArray114[var10];
+         int var18 = this.anIntArray115[var12] - this.anIntArray115[var10];
+         int var19 = var14 * var18 - var17 * var15;
+         int var20 = var15 * var16 - var18 * var13;
+
+         int var21;
+         for(var21 = var13 * var17 - var16 * var14; var19 > 8192 || var20 > 8192 || var21 > 8192 || var19 < -8192 || var20 < -8192 || var21 < -8192; var21 >>= 1) {
+            var19 >>= 1;
+            var20 >>= 1;
+         }
+
+         int var22 = (int)Math.sqrt((double)(var19 * var19 + var20 * var20 + var21 * var21));
+         if (var22 <= 0) {
+            var22 = 1;
+         }
+
+         var19 = var19 * 256 / var22;
+         var20 = var20 * 256 / var22;
+         var21 = var21 * 256 / var22;
+         if (this.anIntArray122 != null && (this.anIntArray122[var9] & 1) != 0) {
+            int var23 = var1 + (var3 * var19 + var4 * var20 + var5 * var21) / (var8 + var8 / 2);
+            this.anIntArray119[var9] = method291(this.anIntArray125[var9], var23, this.anIntArray122[var9]);
+         } else {
+            Class41 var26 = super.aClass41Array10[var10];
+            var26.anInt607 += var19;
+            var26.anInt608 += var20;
+            var26.anInt609 += var21;
+            ++var26.anInt610;
+            Class41 var24 = super.aClass41Array10[var11];
+            var24.anInt607 += var19;
+            var24.anInt608 += var20;
+            var24.anInt609 += var21;
+            ++var24.anInt610;
+            Class41 var25 = super.aClass41Array10[var12];
+            var25.anInt607 += var19;
+            var25.anInt608 += var20;
+            var25.anInt609 += var21;
+            ++var25.anInt610;
+         }
+      }
+
+      if (var6) {
+         this.method290(var1, var8, var3, var4, var5);
+      } else {
+         this.aClass41Array6 = new Class41[this.anInt402];
+
+         for(var10 = 0; var10 < this.anInt402; ++var10) {
+            Class41 var27 = super.aClass41Array10[var10];
+            Class41 var28 = this.aClass41Array6[var10] = new Class41();
+            var28.anInt607 = var27.anInt607;
+            var28.anInt608 = var27.anInt608;
+            var28.anInt609 = var27.anInt609;
+            var28.anInt610 = var27.anInt610;
+         }
+
+         this.anInt406 = (var1 << 16) + (var8 & 65535);
+      }
+
+      if (var6) {
+         this.method275(this.anInt398);
+      } else {
+         this.method277();
+      }
+
+   }
+
+   public void method275(int var1) {
+      super.anInt713 = 0;
+      this.anInt409 = 0;
+      this.anInt410 = 0;
+
+      int var2;
+      for(var2 = 0; var2 < this.anInt402; ++var2) {
+         int var3 = this.anIntArray113[var2];
+         int var4 = this.anIntArray114[var2];
+         int var5 = this.anIntArray115[var2];
+         if (-var4 > super.anInt713) {
+            super.anInt713 = -var4;
+         }
+
+         if (var4 > this.anInt410) {
+            this.anInt410 = var4;
+         }
+
+         int var6 = var3 * var3 + var5 * var5;
+         if (var6 > this.anInt409) {
+            this.anInt409 = var6;
+         }
+      }
+
+      this.anInt409 = (int)(Math.sqrt((double)this.anInt409) + 0.99);
+      this.anInt412 = (int)(Math.sqrt((double)(this.anInt409 * this.anInt409 + super.anInt713 * super.anInt713)) + 0.99);
+      var2 = 64 / var1;
+      this.anInt411 = this.anInt412 + (int)(Math.sqrt((double)(this.anInt409 * this.anInt409 + this.anInt410 * this.anInt410)) + 0.99);
+   }
+
+   public void method289() {
+      int var1 = this.anInt406 >> 16;
+      int var2 = this.anInt406 << 16 >> 16;
+      this.method290(var1, var2, -50, -10, -50);
+   }
+
+   private void method281(int var1, int[] var2, int var3, int var4, int var5) {
+      int var6 = var2.length;
+      int var7;
+      int var8;
+      int var9;
+      int var10;
+      if (var1 == 0) {
+         var7 = 0;
+         anInt414 = 0;
+         anInt415 = 0;
+         anInt416 = 0;
+
+         for(var8 = 0; var8 < var6; ++var8) {
+            int var11 = var2[var8];
+            if (var11 < this.anIntArrayArray10.length) {
+               int[] var12 = this.anIntArrayArray10[var11];
+
+               for(var9 = 0; var9 < var12.length; ++var9) {
+                  var10 = var12[var9];
+                  anInt414 += this.anIntArray113[var10];
+                  anInt415 += this.anIntArray114[var10];
+                  anInt416 += this.anIntArray115[var10];
+                  ++var7;
+               }
+            }
+         }
+
+         if (var7 > 0) {
+            anInt414 = anInt414 / var7 + var3;
+            anInt415 = anInt415 / var7 + var4;
+            anInt416 = anInt416 / var7 + var5;
+         } else {
+            anInt414 = var3;
+            anInt415 = var4;
+            anInt416 = var5;
+         }
+
+      } else {
+         int[] var10000;
+         int[] var18;
+         int var19;
+         if (var1 == 1) {
+            for(var7 = 0; var7 < var6; ++var7) {
+               var8 = var2[var7];
+               if (var8 < this.anIntArrayArray10.length) {
+                  var18 = this.anIntArrayArray10[var8];
+
+                  for(var19 = 0; var19 < var18.length; ++var19) {
+                     var9 = var18[var19];
+                     var10000 = this.anIntArray113;
+                     var10000[var9] += var3;
+                     var10000 = this.anIntArray114;
+                     var10000[var9] += var4;
+                     var10000 = this.anIntArray115;
+                     var10000[var9] += var5;
+                  }
+               }
+            }
+         } else if (var1 == 2) {
+            for(var7 = 0; var7 < var6; ++var7) {
+               var8 = var2[var7];
+               if (var8 < this.anIntArrayArray10.length) {
+                  var18 = this.anIntArrayArray10[var8];
+
+                  for(var19 = 0; var19 < var18.length; ++var19) {
+                     var9 = var18[var19];
+                     var10000 = this.anIntArray113;
+                     var10000[var9] -= anInt414;
+                     var10000 = this.anIntArray114;
+                     var10000[var9] -= anInt415;
+                     var10000 = this.anIntArray115;
+                     var10000[var9] -= anInt416;
+                     var10 = (var3 & 255) * 8;
+                     int var13 = (var4 & 255) * 8;
+                     int var14 = (var5 & 255) * 8;
+                     int var15;
+                     int var16;
+                     int var17;
+                     if (var14 != 0) {
+                        var15 = anIntArray146[var14];
+                        var16 = anIntArray147[var14];
+                        var17 = this.anIntArray114[var9] * var15 + this.anIntArray113[var9] * var16 >> 16;
+                        this.anIntArray114[var9] = this.anIntArray114[var9] * var16 - this.anIntArray113[var9] * var15 >> 16;
+                        this.anIntArray113[var9] = var17;
+                     }
+
+                     if (var10 != 0) {
+                        var15 = anIntArray146[var10];
+                        var16 = anIntArray147[var10];
+                        var17 = this.anIntArray114[var9] * var16 - this.anIntArray115[var9] * var15 >> 16;
+                        this.anIntArray115[var9] = this.anIntArray114[var9] * var15 + this.anIntArray115[var9] * var16 >> 16;
+                        this.anIntArray114[var9] = var17;
+                     }
+
+                     if (var13 != 0) {
+                        var15 = anIntArray146[var13];
+                        var16 = anIntArray147[var13];
+                        var17 = this.anIntArray115[var9] * var15 + this.anIntArray113[var9] * var16 >> 16;
+                        this.anIntArray115[var9] = this.anIntArray115[var9] * var16 - this.anIntArray113[var9] * var15 >> 16;
+                        this.anIntArray113[var9] = var17;
+                     }
+
+                     var10000 = this.anIntArray113;
+                     var10000[var9] += anInt414;
+                     var10000 = this.anIntArray114;
+                     var10000[var9] += anInt415;
+                     var10000 = this.anIntArray115;
+                     var10000[var9] += anInt416;
+                  }
+               }
+            }
+         } else if (var1 == 3) {
+            for(var7 = 0; var7 < var6; ++var7) {
+               var8 = var2[var7];
+               if (var8 < this.anIntArrayArray10.length) {
+                  var18 = this.anIntArrayArray10[var8];
+
+                  for(var19 = 0; var19 < var18.length; ++var19) {
+                     var9 = var18[var19];
+                     var10000 = this.anIntArray113;
+                     var10000[var9] -= anInt414;
+                     var10000 = this.anIntArray114;
+                     var10000[var9] -= anInt415;
+                     var10000 = this.anIntArray115;
+                     var10000[var9] -= anInt416;
+                     this.anIntArray113[var9] = this.anIntArray113[var9] * var3 / 128;
+                     this.anIntArray114[var9] = this.anIntArray114[var9] * var4 / 128;
+                     this.anIntArray115[var9] = this.anIntArray115[var9] * var5 / 128;
+                     var10000 = this.anIntArray113;
+                     var10000[var9] += anInt414;
+                     var10000 = this.anIntArray114;
+                     var10000[var9] += anInt415;
+                     var10000 = this.anIntArray115;
+                     var10000[var9] += anInt416;
+                  }
+               }
+            }
+         } else if (var1 == 5 && this.anIntArrayArray11 != null && this.anIntArray124 != null) {
+            for(var7 = 0; var7 < var6; ++var7) {
+               var8 = var2[var7];
+               if (var8 < this.anIntArrayArray11.length) {
+                  var18 = this.anIntArrayArray11[var8];
+
+                  for(var19 = 0; var19 < var18.length; ++var19) {
+                     var9 = var18[var19];
+                     var10000 = this.anIntArray124;
+                     var10000[var9] += var3 * 8;
+                     if (this.anIntArray124[var9] < 0) {
+                        this.anIntArray124[var9] = 0;
+                     }
+
+                     if (this.anIntArray124[var9] > 255) {
+                        this.anIntArray124[var9] = 255;
+                     }
+                  }
+               }
+            }
+         }
+
+      }
+   }
+
+   public void method283(int var1, int var2) {
+      int var3 = anIntArray146[var1];
+      int var4 = anIntArray147[var1];
+
+      for(int var5 = 0; var5 < this.anInt402; ++var5) {
+         int var6 = this.anIntArray114[var5] * var4 - this.anIntArray115[var5] * var3 >> 16;
+         this.anIntArray115[var5] = this.anIntArray114[var5] * var3 + this.anIntArray115[var5] * var4 >> 16;
+         this.anIntArray114[var5] = var6;
+      }
+
+      boolean var7 = false;
+   }
+
+   public void method286() {
+      int var1;
+      for(var1 = 0; var1 < this.anInt402; ++var1) {
+         this.anIntArray115[var1] = -this.anIntArray115[var1];
+      }
+
+      for(var1 = 0; var1 < this.anInt403; ++var1) {
+         int var2 = this.anIntArray116[var1];
+         this.anIntArray116[var1] = this.anIntArray118[var1];
+         this.anIntArray118[var1] = var2;
+      }
+
+   }
+
+   private boolean method296(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
+      if (var2 < var3 && var2 < var4 && var2 < var5) {
+         return false;
+      } else if (var2 > var3 && var2 > var4 && var2 > var5) {
+         return false;
+      } else if (var1 < var6 && var1 < var7 && var1 < var8) {
+         return false;
+      } else {
+         return var1 <= var6 || var1 <= var7 || var1 <= var8;
+      }
+   }
+
+   public void method282() {
+      for(int var1 = 0; var1 < this.anInt402; ++var1) {
+         int var2 = this.anIntArray113[var1];
+         this.anIntArray113[var1] = this.anIntArray115[var1];
+         this.anIntArray115[var1] = -var2;
+      }
+
+   }
+
+   public void method292(int var1, int var2, int var3, int var4, int var5, int var6) {
+      int var7 = Class10_Sub1_Sub1_Sub4.anInt686;
+      int var8 = Class10_Sub1_Sub1_Sub4.anInt687;
+      int var9 = anIntArray146[0];
+      int var10 = anIntArray147[0];
+      int var11 = anIntArray146[var1];
+      int var12 = anIntArray147[var1];
+      int var13 = anIntArray146[var2];
+      int var14 = anIntArray147[var2];
+      int var15 = anIntArray146[var3];
+      int var16 = anIntArray147[var3];
+      int var17 = var5 * var15 + var6 * var16 >> 16;
+
+      for(int var18 = 0; var18 < this.anInt402; ++var18) {
+         int var19 = this.anIntArray113[var18];
+         int var20 = this.anIntArray114[var18];
+         int var21 = this.anIntArray115[var18];
+         int var22;
+         if (var2 != 0) {
+            var22 = var20 * var13 + var19 * var14 >> 16;
+            var20 = var20 * var14 - var19 * var13 >> 16;
+            var19 = var22;
+         }
+
+         if (var1 != 0) {
+            var22 = var21 * var11 + var19 * var12 >> 16;
+            var21 = var21 * var12 - var19 * var11 >> 16;
+            var19 = var22;
+         }
+
+         var19 += var4;
+         var20 += var5;
+         var21 += var6;
+         var22 = var20 * var16 - var21 * var15 >> 16;
+         var21 = var20 * var15 + var21 * var16 >> 16;
+         anIntArray133[var18] = var21 - var17;
+         anIntArray131[var18] = var7 + (var19 << 9) / var21;
+         anIntArray132[var18] = var8 + (var22 << 9) / var21;
+         if (this.anInt405 > 0) {
+            anIntArray134[var18] = var19;
+            anIntArray135[var18] = var22;
+            anIntArray136[var18] = var21;
+         }
+      }
+
+      try {
+         this.method293(false, false, 0);
+      } catch (Exception var24) {
+      }
+
+   }
+
+   private int method274(Model var1, int var2) {
+      int var3 = -1;
+      int var4 = var1.anIntArray113[var2];
+      int var5 = var1.anIntArray114[var2];
+      int var6 = var1.anIntArray115[var2];
+
+      for(int var7 = 0; var7 < this.anInt402; ++var7) {
+         if (var4 == this.anIntArray113[var7] && var5 == this.anIntArray114[var7] && var6 == this.anIntArray115[var7]) {
+            var3 = var7;
+            break;
+         }
+      }
+
+      if (var3 == -1) {
+         this.anIntArray113[this.anInt402] = var4;
+         this.anIntArray114[this.anInt402] = var5;
+         this.anIntArray115[this.anInt402] = var6;
+         if (var1.anIntArray129 != null) {
+            this.anIntArray129[this.anInt402] = var1.anIntArray129[var2];
+         }
+
+         var3 = this.anInt402++;
+      }
+
+      return var3;
+   }
+
+   public static Model createModel(int var0) {
+      if (renderables == null) {
+         return null;
+      } else {
+         Class27 var1 = renderables[var0];
+         if (var1 == null) {
+            aClass33_1.method552(var0);
+            return null;
+         } else {
+            return new Model(var0, -478);
+         }
+      }
+   }
+
+   public static boolean method272(int var0) {
+      if (renderables == null) {
+         return false;
+      } else {
+         Class27 var1 = renderables[var0];
+         if (var1 == null) {
+            aClass33_1.method552(var0);
+            return false;
+         } else {
+            return true;
+         }
+      }
+   }
+
+   public static void method269(byte[] var0, int var1) {
+      if (var0 == null) {
+         Class27 var2 = renderables[var1] = new Class27();
+         var2.anInt330 = 0;
+         var2.anInt331 = 0;
+         var2.anInt332 = 0;
+      } else {
+         Packet var14 = new Packet(var0);
+         var14.pos = var0.length - 18;
+         Class27 var3 = renderables[var1] = new Class27();
+         var3.aByteArray11 = var0;
+         var3.anInt330 = var14.g2();
+         var3.anInt331 = var14.g2();
+         var3.anInt332 = var14.g1();
+         int var4 = var14.g1();
+         int var5 = var14.g1();
+         int var6 = var14.g1();
+         int var7 = var14.g1();
+         int var8 = var14.g1();
+         int var9 = var14.g2();
+         int var10 = var14.g2();
+         int var11 = var14.g2();
+         int var12 = var14.g2();
+         var3.anInt333 = 0;
+         int var13 = var3.anInt330 + 0;
+         var3.anInt339 = var13;
+         var13 += var3.anInt331;
+         var3.anInt342 = var13;
+         if (var5 == 255) {
+            var13 += var3.anInt331;
+         } else {
+            var3.anInt342 = -var5 - 1;
+         }
+
+         var3.anInt344 = var13;
+         if (var7 == 1) {
+            var13 += var3.anInt331;
+         } else {
+            var3.anInt344 = -1;
+         }
+
+         var3.anInt341 = var13;
+         if (var4 == 1) {
+            var13 += var3.anInt331;
+         } else {
+            var3.anInt341 = -1;
+         }
+
+         var3.anInt337 = var13;
+         if (var8 == 1) {
+            var13 += var3.anInt330;
+         } else {
+            var3.anInt337 = -1;
+         }
+
+         var3.anInt343 = var13;
+         if (var6 == 1) {
+            var13 += var3.anInt331;
+         } else {
+            var3.anInt343 = -1;
+         }
+
+         var3.anInt338 = var13;
+         var13 += var12;
+         var3.anInt340 = var13;
+         var13 += var3.anInt331 * 2;
+         var3.anInt345 = var13;
+         var13 += var3.anInt332 * 6;
+         var3.anInt334 = var13;
+         var13 += var9;
+         var3.anInt335 = var13;
+         var13 += var10;
+         var3.anInt336 = var13;
+      }
+
+   }
+
+   public static void method270(int var0) {
+      renderables[var0] = null;
+   }
+
+   private static int method291(int var0, int var1, int var2) {
+      if ((var2 & 2) == 2) {
+         if (var1 < 0) {
+            var1 = 0;
+         } else if (var1 > 127) {
+            var1 = 127;
+         }
+
+         return 127 - var1;
+      } else {
+         var1 = var1 * (var0 & 127) >> 7;
+         if (var1 < 2) {
+            var1 = 2;
+         } else if (var1 > 126) {
+            var1 = 126;
+         }
+
+         return (var0 & 65408) + var1;
+      }
+   }
+
+   public static void method268(int var0, Class33 var1) {
+      renderables = new Class27[var0];
+      aClass33_1 = var1;
+   }
+
+   public static void method267() {
+      renderables = null;
+      aBooleanArray5 = null;
+      aBooleanArray6 = null;
+      anIntArray131 = null;
+      anIntArray132 = null;
+      anIntArray133 = null;
+      anIntArray134 = null;
+      anIntArray135 = null;
+      anIntArray136 = null;
+      anIntArray137 = null;
+      anIntArrayArray12 = null;
+      anIntArray138 = null;
+      anIntArrayArray13 = null;
+      anIntArray139 = null;
+      anIntArray140 = null;
+      anIntArray141 = null;
+      anIntArray146 = null;
+      anIntArray147 = null;
+      anIntArray148 = null;
+      anIntArray149 = null;
+   }
 }

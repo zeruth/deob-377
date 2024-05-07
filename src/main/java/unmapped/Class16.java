@@ -1,214 +1,204 @@
 package unmapped;
 
-
 import jagex2.io.JagFile;
 import jagex2.io.Packet;
-import sign.signlink;
 
 public final class Class16 {
+   private static byte aByte11 = 6;
+   public static Class16[] aClass16Array1;
+   private static int anInt164;
+   private boolean aBoolean46 = true;
+   public int anInt166 = -1;
+   private boolean aBoolean47 = false;
+   public int anInt165;
+   public boolean aBoolean48 = true;
+   public int anInt167;
+   private String aString6;
+   public int anInt168;
+   public int anInt169;
+   public int anInt170;
+   public int anInt171;
+   public int anInt172;
 
-	private static int anInt164;
+   private Class16() {
+   }
 
-	public static Class16[] aClass16Array1;
+   private void method101(int var1) {
+      if (var1 == 16711935) {
+         var1 = 0;
+      }
 
-	private static byte aByte11 = 6;
+      double var2 = (double)(var1 >> 16 & 255) / 256.0;
+      double var4 = (double)(var1 >> 8 & 255) / 256.0;
+      double var6 = (double)(var1 & 255) / 256.0;
+      double var8 = var2;
+      if (var4 < var2) {
+         var8 = var4;
+      }
 
-	private int anInt163;
+      if (var6 < var8) {
+         var8 = var6;
+      }
 
-	private String aString6;
+      double var10 = var2;
+      if (var4 > var2) {
+         var10 = var4;
+      }
 
-	public int anInt165;
+      if (var6 > var10) {
+         var10 = var6;
+      }
 
-	public int anInt167;
+      double var12 = 0.0;
+      double var14 = 0.0;
+      double var16 = (var8 + var10) / 2.0;
+      if (var8 != var10) {
+         if (var16 < 0.5) {
+            var14 = (var10 - var8) / (var10 + var8);
+         }
 
-	public int anInt168;
+         if (var16 >= 0.5) {
+            var14 = (var10 - var8) / (2.0 - var10 - var8);
+         }
 
-	public int anInt169;
+         if (var2 == var10) {
+            var12 = (var4 - var6) / (var10 - var8);
+         } else if (var4 == var10) {
+            var12 = (var6 - var2) / (var10 - var8) + 2.0;
+         } else if (var6 == var10) {
+            var12 = (var2 - var4) / (var10 - var8) + 4.0;
+         }
+      }
 
-	public int anInt170;
+      var12 /= 6.0;
+      this.anInt167 = (int)(var12 * 256.0);
+      this.anInt168 = (int)(var14 * 256.0);
+      this.anInt169 = (int)(var16 * 256.0);
+      if (this.anInt168 < 0) {
+         this.anInt168 = 0;
+      } else if (this.anInt168 > 255) {
+         this.anInt168 = 255;
+      }
 
-	public int anInt171;
+      if (this.anInt169 < 0) {
+         this.anInt169 = 0;
+      } else if (this.anInt169 > 255) {
+         this.anInt169 = 255;
+      }
 
-	public int anInt172;
+      if (var16 > 0.5) {
+         this.anInt171 = (int)((1.0 - var16) * var14 * 512.0);
+      } else {
+         this.anInt171 = (int)(var16 * var14 * 512.0);
+      }
 
-	private boolean aBoolean46 = true;
+      if (this.anInt171 < 1) {
+         this.anInt171 = 1;
+      }
 
-	public int anInt166 = -1;
+      this.anInt170 = (int)(var12 * (double)this.anInt171);
+      int var18 = this.anInt167 + (int)(Math.random() * 16.0) - 8;
+      if (var18 < 0) {
+         var18 = 0;
+      } else if (var18 > 255) {
+         var18 = 255;
+      }
 
-	private boolean aBoolean47 = false;
+      int var19 = this.anInt168 + (int)(Math.random() * 48.0) - 24;
+      if (var19 < 0) {
+         var19 = 0;
+      } else if (var19 > 255) {
+         var19 = 255;
+      }
 
-	public boolean aBoolean48 = true;
+      int var20 = this.anInt169 + (int)(Math.random() * 48.0) - 24;
+      if (var20 < 0) {
+         var20 = 0;
+      } else if (var20 > 255) {
+         var20 = 255;
+      }
 
-	public static void method99( JagFile arg0) {
-		try {
-			Packet local12 = new Packet(arg0.read("flo.dat", null));
-			anInt164 = local12.g2();
-			if (aClass16Array1 == null) {
-				aClass16Array1 = new Class16[anInt164];
-			}
-			for ( int local22 = 0; local22 < anInt164; local22++) {
-				if (aClass16Array1[local22] == null) {
-					aClass16Array1[local22] = new Class16();
-				}
-				aClass16Array1[local22].method100(aByte11, local12);
-			}
-		} catch ( RuntimeException local46) {
-			signlink.reporterror("59130, " + arg0 + ", " + 36135 + ", " + local46.toString());
-			throw new RuntimeException();
-		}
-	}
+      this.anInt172 = this.method102(var18, var19, var20);
+   }
 
-	private Class16() {
-	}
+   private int method102(int var1, int var2, int var3) {
+      if (var3 > 179) {
+         var2 /= 2;
+      }
 
-	private void method100( byte arg0, Packet arg1) {
-		try {
-			int local10;
-			if (arg0 == 6) {
-				boolean local6 = false;
-			} else {
-				for (local10 = 1; local10 > 0; local10++) {
-				}
-			}
-			while (true) {
-				local10 = arg1.g1();
-				if (local10 == 0) {
-					return;
-				}
-				if (local10 == 1) {
-					this.anInt165 = arg1.g3();
-					this.method101(this.anInt165);
-				} else if (local10 == 2) {
-					this.anInt166 = arg1.g1();
-				} else if (local10 == 3) {
-					this.aBoolean47 = true;
-				} else if (local10 == 5) {
-					this.aBoolean48 = false;
-				} else if (local10 == 6) {
-					this.aString6 = arg1.gjstr();
-				} else if (local10 == 7) {
-					int local75 = this.anInt167;
-					int local78 = this.anInt168;
-					int local81 = this.anInt169;
-					int local84 = this.anInt170;
-					int local87 = arg1.g3();
-					this.method101(local87);
-					this.anInt167 = local75;
-					this.anInt168 = local78;
-					this.anInt169 = local81;
-					this.anInt170 = local84;
-					this.anInt171 = local84;
-				} else {
-					System.out.println("Error unrecognised config code: " + local10);
-				}
-			}
-		} catch ( RuntimeException local119) {
-			signlink.reporterror("32485, " + arg0 + ", " + arg1 + ", " + local119.toString());
-			throw new RuntimeException();
-		}
-	}
+      if (var3 > 192) {
+         var2 /= 2;
+      }
 
-	private void method101( int arg0) {
-		try {
-			if (arg0 == 16711935) {
-				arg0 = 0;
-			}
-			double local15 = (double) (arg0 >> 16 & 0xFF) / 256.0D;
-			double local24 = (double) (arg0 >> 8 & 0xFF) / 256.0D;
-			double local31 = (double) (arg0 & 0xFF) / 256.0D;
-			double local33 = local15;
-			if (local24 < local15) {
-				local33 = local24;
-			}
-			if (local31 < local33) {
-				local33 = local31;
-			}
-			double local47 = local15;
-			if (local24 > local15) {
-				local47 = local24;
-			}
-			if (local31 > local47) {
-				local47 = local31;
-			}
-			double local61 = 0.0D;
-			double local63 = 0.0D;
-			double local69 = (local33 + local47) / 2.0D;
-			if (local33 != local47) {
-				if (local69 < 0.5D) {
-					local63 = (local47 - local33) / (local47 + local33);
-				}
-				if (local69 >= 0.5D) {
-					local63 = (local47 - local33) / (2.0D - local47 - local33);
-				}
-				if (local15 == local47) {
-					local61 = (local24 - local31) / (local47 - local33);
-				} else if (local24 == local47) {
-					local61 = (local31 - local15) / (local47 - local33) + 2.0D;
-				} else if (local31 == local47) {
-					local61 = (local15 - local24) / (local47 - local33) + 4.0D;
-				}
-			}
-			local61 /= 6.0D;
-			this.anInt167 = (int) (local61 * 256.0D);
-			this.anInt168 = (int) (local63 * 256.0D);
-			this.anInt169 = (int) (local69 * 256.0D);
-			if (this.anInt168 < 0) {
-				this.anInt168 = 0;
-			} else if (this.anInt168 > 255) {
-				this.anInt168 = 255;
-			}
-			if (this.anInt169 < 0) {
-				this.anInt169 = 0;
-			} else if (this.anInt169 > 255) {
-				this.anInt169 = 255;
-			}
-			if (local69 > 0.5D) {
-				this.anInt171 = (int) ((1.0D - local69) * local63 * 512.0D);
-			} else {
-				this.anInt171 = (int) (local69 * local63 * 512.0D);
-			}
-			if (this.anInt171 < 1) {
-				this.anInt171 = 1;
-			}
-			this.anInt170 = (int) (local61 * (double) this.anInt171);
-			int local249 = this.anInt167 + (int) (Math.random() * 16.0D) - 8;
-			if (local249 < 0) {
-				local249 = 0;
-			} else if (local249 > 255) {
-				local249 = 255;
-			}
-			int local270 = this.anInt168 + (int) (Math.random() * 48.0D) - 24;
-			if (local270 < 0) {
-				local270 = 0;
-			} else if (local270 > 255) {
-				local270 = 255;
-			}
-			int local291 = this.anInt169 + (int) (Math.random() * 48.0D) - 24;
-			if (local291 < 0) {
-				local291 = 0;
-			} else if (local291 > 255) {
-				local291 = 255;
-			}
-			this.anInt172 = this.method102(local249, local270, local291);
-		} catch ( RuntimeException local311) {
-			signlink.reporterror("17646, " + true + ", " + arg0 + ", " + local311.toString());
-			throw new RuntimeException();
-		}
-	}
+      if (var3 > 217) {
+         var2 /= 2;
+      }
 
-	private int method102( int arg0, int arg1, int arg2) {
-		if (arg2 > 179) {
-			arg1 /= 2;
-		}
-		if (arg2 > 192) {
-			arg1 /= 2;
-		}
-		if (arg2 > 217) {
-			arg1 /= 2;
-		}
-		if (arg2 > 243) {
-			arg1 /= 2;
-		}
-		return (arg0 / 4 << 10) + (arg1 / 32 << 7) + arg2 / 2;
-	}
+      if (var3 > 243) {
+         var2 /= 2;
+      }
+
+      return (var1 / 4 << 10) + (var2 / 32 << 7) + var3 / 2;
+   }
+
+   private void method100(byte var1, Packet var2) {
+      int var3;
+      if (var1 == 6) {
+         boolean var4 = false;
+      } else {
+         for(var3 = 1; var3 > 0; ++var3) {
+         }
+      }
+
+      while(true) {
+         var3 = var2.g1();
+         if (var3 == 0) {
+            return;
+         }
+
+         if (var3 == 1) {
+            this.anInt165 = var2.g3();
+            this.method101(this.anInt165);
+         } else if (var3 == 2) {
+            this.anInt166 = var2.g1();
+         } else if (var3 == 3) {
+            this.aBoolean47 = true;
+         } else if (var3 == 5) {
+            this.aBoolean48 = false;
+         } else if (var3 == 6) {
+            this.aString6 = var2.gjstr();
+         } else if (var3 == 7) {
+            int var9 = this.anInt167;
+            int var5 = this.anInt168;
+            int var6 = this.anInt169;
+            int var7 = this.anInt170;
+            int var8 = var2.g3();
+            this.method101(var8);
+            this.anInt167 = var9;
+            this.anInt168 = var5;
+            this.anInt169 = var6;
+            this.anInt170 = var7;
+            this.anInt171 = var7;
+         } else {
+            System.out.println("Error unrecognised config code: " + var3);
+         }
+      }
+   }
+
+   public static void method99(JagFile var0) {
+      Packet var1 = new Packet(var0.read("flo.dat", (byte[])null));
+      anInt164 = var1.g2();
+      if (aClass16Array1 == null) {
+         aClass16Array1 = new Class16[anInt164];
+      }
+
+      for(int var2 = 0; var2 < anInt164; ++var2) {
+         if (aClass16Array1[var2] == null) {
+            aClass16Array1[var2] = new Class16();
+         }
+
+         aClass16Array1[var2].method100(aByte11, var1);
+      }
+
+   }
 }

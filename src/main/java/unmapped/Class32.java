@@ -1,115 +1,107 @@
 package unmapped;
 
-
 import jagex2.io.Packet;
-import sign.signlink;
 
 public final class Class32 {
+   private static int anInt484 = 20411;
+   private static char[] aCharArray3 = new char[100];
+   private static Packet aClass10_Sub1_Sub3_2 = new Packet(new byte[100]);
+   private static char[] aCharArray4 = new char[]{' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w', 'c', 'y', 'f', 'g', 'p', 'b', 'v', 'k', 'x', 'j', 'q', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '!', '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '£', '$', '%', '"', '[', ']'};
 
-	private static int anInt484 = 20411;
+   public static void method372(String var0, Packet var1) {
+      if (var0.length() > 80) {
+         var0 = var0.substring(0, 80);
+      }
 
-	private static char[] aCharArray3 = new char[100];
+      var0 = var0.toLowerCase();
+      int var2 = -1;
 
-	private static Packet aClass10_Sub1_Sub3_2 = new Packet(new byte[100]);
+      for(int var3 = 0; var3 < var0.length(); ++var3) {
+         char var4 = var0.charAt(var3);
+         int var5 = 0;
 
-	private static char[] aCharArray4 = new char[] { ' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w', 'c', 'y', 'f', 'g', 'p', 'b', 'v', 'k', 'x', 'j', 'q', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '!', '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '£', '$', '%', '"', '[', ']' };
+         for(int var6 = 0; var6 < aCharArray4.length; ++var6) {
+            if (var4 == aCharArray4[var6]) {
+               var5 = var6;
+               break;
+            }
+         }
 
-	public static String method371(Packet arg0, int arg1) {
-		try {
-			int local3 = 0;
-			int local5 = -1;
-			int local18;
-			for ( int local7 = 0; local7 < arg1; local7++) {
-				int local12 = arg0.g1();
-				local18 = local12 >> 4 & 0xF;
-				if (local5 != -1) {
-					aCharArray3[local3++] = aCharArray4[(local5 << 4) + local18 - 195];
-					local5 = -1;
-				} else if (local18 < 13) {
-					aCharArray3[local3++] = aCharArray4[local18];
-				} else {
-					local5 = local18;
-				}
-				local18 = local12 & 0xF;
-				if (local5 != -1) {
-					aCharArray3[local3++] = aCharArray4[(local5 << 4) + local18 - 195];
-					local5 = -1;
-				} else if (local18 < 13) {
-					aCharArray3[local3++] = aCharArray4[local18];
-				} else {
-					local5 = local18;
-				}
-			}
-			boolean local96 = true;
-			for (local18 = 0; local18 < local3; local18++) {
-				char local104 = aCharArray3[local18];
-				if (local96 && local104 >= 'a' && local104 <= 'z') {
-					aCharArray3[local18] = (char) (aCharArray3[local18] - 32);
-					local96 = false;
-				}
-				if (local104 == '.' || local104 == '!' || local104 == '?') {
-					local96 = true;
-				}
-			}
-			return new String(aCharArray3, 0, local3);
-		} catch ( RuntimeException local149) {
-			signlink.reporterror("56026, " + 0 + ", " + arg0 + ", " + arg1 + ", " + local149.toString());
-			throw new RuntimeException();
-		}
-	}
+         if (var5 > 12) {
+            var5 += 195;
+         }
 
-	public static void method372( String arg0, Packet arg1) {
-		try {
-			if (arg0.length() > 80) {
-				arg0 = arg0.substring(0, 80);
-			}
-			arg0 = arg0.toLowerCase();
-			int local24 = -1;
-			for ( int local26 = 0; local26 < arg0.length(); local26++) {
-				char local32 = arg0.charAt(local26);
-				int local34 = 0;
-				for ( int local36 = 0; local36 < aCharArray4.length; local36++) {
-					if (local32 == aCharArray4[local36]) {
-						local34 = local36;
-						break;
-					}
-				}
-				if (local34 > 12) {
-					local34 += 195;
-				}
-				if (local24 == -1) {
-					if (local34 < 13) {
-						local24 = local34;
-					} else {
-						arg1.p1(local34);
-					}
-				} else if (local34 < 13) {
-					arg1.p1((local24 << 4) + local34);
-					local24 = -1;
-				} else {
-					arg1.p1((local24 << 4) + (local34 >> 4));
-					local24 = local34 & 0xF;
-				}
-			}
-			if (local24 != -1) {
-				arg1.p1(local24 << 4);
-			}
-		} catch ( RuntimeException local113) {
-			signlink.reporterror("76466, " + arg0 + ", " + 569 + ", " + arg1 + ", " + local113.toString());
-			throw new RuntimeException();
-		}
-	}
+         if (var2 == -1) {
+            if (var5 < 13) {
+               var2 = var5;
+            } else {
+               var1.p1(var5);
+            }
+         } else if (var5 < 13) {
+            var1.p1((var2 << 4) + var5);
+            var2 = -1;
+         } else {
+            var1.p1((var2 << 4) + (var5 >> 4));
+            var2 = var5 & 15;
+         }
+      }
 
-	public static String method373( String arg0) {
-		try {
-			aClass10_Sub1_Sub3_2.pos = 0;
-			method372(arg0, aClass10_Sub1_Sub3_2);
-			int local9 = aClass10_Sub1_Sub3_2.pos;
-			aClass10_Sub1_Sub3_2.pos = 0;
-			return method371(aClass10_Sub1_Sub3_2, local9);
-		} catch ( RuntimeException local29) {
-			signlink.reporterror("80320, " + 0 + ", " + arg0 + ", " + local29.toString());
-			throw new RuntimeException();
-		}
-	}
+      if (var2 != -1) {
+         var1.p1(var2 << 4);
+      }
+
+   }
+
+   public static String method373(String var0) {
+      aClass10_Sub1_Sub3_2.pos = 0;
+      method372(var0, aClass10_Sub1_Sub3_2);
+      int var1 = aClass10_Sub1_Sub3_2.pos;
+      aClass10_Sub1_Sub3_2.pos = 0;
+      return method371(aClass10_Sub1_Sub3_2, var1);
+   }
+
+   public static String method371(Packet var0, int var1) {
+      int var2 = 0;
+      int var3 = -1;
+
+      int var4;
+      for(int var5 = 0; var5 < var1; ++var5) {
+         int var6 = var0.g1();
+         var4 = var6 >> 4 & 15;
+         if (var3 != -1) {
+            aCharArray3[var2++] = aCharArray4[(var3 << 4) + var4 - 195];
+            var3 = -1;
+         } else if (var4 < 13) {
+            aCharArray3[var2++] = aCharArray4[var4];
+         } else {
+            var3 = var4;
+         }
+
+         var4 = var6 & 15;
+         if (var3 != -1) {
+            aCharArray3[var2++] = aCharArray4[(var3 << 4) + var4 - 195];
+            var3 = -1;
+         } else if (var4 < 13) {
+            aCharArray3[var2++] = aCharArray4[var4];
+         } else {
+            var3 = var4;
+         }
+      }
+
+      boolean var7 = true;
+
+      for(var4 = 0; var4 < var2; ++var4) {
+         char var8 = aCharArray3[var4];
+         if (var7 && var8 >= 'a' && var8 <= 'z') {
+            aCharArray3[var4] = (char)(aCharArray3[var4] - ' ');
+            var7 = false;
+         }
+
+         if (var8 == '.' || var8 == '!' || var8 == '?') {
+            var7 = true;
+         }
+      }
+
+      return new String(aCharArray3, 0, var2);
+   }
 }

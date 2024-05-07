@@ -1,2456 +1,2648 @@
 package unmapped;
 
-
 import jagex2.graphics.Draw2D;
 import jagex2.io.JagFile;
-import sign.signlink;
 
 public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
+   private static int anInt683 = -20714;
+   public static int anInt686;
+   public static int anInt687;
+   public static boolean aBoolean176 = true;
+   public static int anInt685;
+   public static boolean aBoolean179 = true;
+   public static int[] anIntArray183;
+   public static int[] anIntArray185;
+   private static int[] anIntArray179 = new int[512];
+   public static int[] anIntArray180 = new int[2048];
+   private static int[][] anIntArrayArray17;
+   public static Class10_Sub1_Sub1_Sub3[] aClass10_Sub1_Sub1_Sub3Array1;
+   public static int[] anIntArray181 = new int[2048];
+   private static int[][] anIntArrayArray18;
+   public static boolean aBoolean177;
+   public static int[] anIntArray182 = new int[2048];
+   private static int anInt689;
+   private static boolean[] aBooleanArray9;
+   private static int[] anIntArray184;
+   private static int[][] anIntArrayArray19;
+   public static int[] anIntArray186;
+   public static int anInt690;
+   private static boolean aBoolean178;
+   private static int anInt688;
 
-	private static int anInt684;
+   static {
+      int var0;
+      for(var0 = 1; var0 < 512; ++var0) {
+         anIntArray179[var0] = 32768 / var0;
+      }
 
-	private static boolean aBoolean175;
+      for(var0 = 1; var0 < 2048; ++var0) {
+         anIntArray180[var0] = 65536 / var0;
+      }
 
-	public static boolean aBoolean177;
+      for(var0 = 0; var0 < 2048; ++var0) {
+         anIntArray181[var0] = (int)(Math.sin((double)var0 * 0.0030679615) * 65536.0);
+         anIntArray182[var0] = (int)(Math.cos((double)var0 * 0.0030679615) * 65536.0);
+      }
 
-	private static boolean aBoolean178;
+      aClass10_Sub1_Sub1_Sub3Array1 = new Class10_Sub1_Sub1_Sub3[50];
+      aBooleanArray9 = new boolean[50];
+      anIntArray184 = new int[50];
+      anIntArrayArray18 = new int[50][];
+      anIntArray185 = new int[50];
+      anIntArray186 = new int[65536];
+      anIntArrayArray19 = new int[50][];
+   }
 
-	public static int anInt685;
+   public static void method509() {
+      anIntArrayArray17 = null;
 
-	public static int anInt686;
+      for(int var0 = 0; var0 < 50; ++var0) {
+         anIntArrayArray18[var0] = null;
+      }
 
-	public static int anInt687;
+   }
 
-	public static int[] anIntArray183;
+   public static void method515(double var0, byte var2) {
+      double var3 = var0 + Math.random() * 0.03 - 0.015;
+      int var5 = 0;
 
-	private static int anInt688;
+      int var6;
+      for(var6 = 0; var6 < 512; ++var6) {
+         double var7 = (double)(var6 / 8) / 64.0 + 0.0078125;
+         double var9 = (double)(var6 & 7) / 8.0 + 0.0625;
 
-	private static int anInt689;
+         for(int var11 = 0; var11 < 128; ++var11) {
+            double var12 = (double)var11 / 128.0;
+            double var14 = var12;
+            double var16 = var12;
+            double var18 = var12;
+            if (var9 != 0.0) {
+               double var20;
+               if (var12 < 0.5) {
+                  var20 = var12 * (var9 + 1.0);
+               } else {
+                  var20 = var12 + var9 - var12 * var9;
+               }
 
-	private static int[][] anIntArrayArray17;
+               double var22 = var12 * 2.0 - var20;
+               double var24 = var7 + 0.3333333333333333;
+               if (var24 > 1.0) {
+                  --var24;
+               }
 
-	public static int anInt690;
+               double var26 = var7 - 0.3333333333333333;
+               if (var26 < 0.0) {
+                  ++var26;
+               }
 
-	private static int anInt683 = -20714;
+               if (var24 * 6.0 < 1.0) {
+                  var14 = var22 + (var20 - var22) * 6.0 * var24;
+               } else if (var24 * 2.0 < 1.0) {
+                  var14 = var20;
+               } else if (var24 * 3.0 < 2.0) {
+                  var14 = var22 + (var20 - var22) * (0.6666666666666666 - var24) * 6.0;
+               } else {
+                  var14 = var22;
+               }
 
-	public static boolean aBoolean176 = true;
+               if (var7 * 6.0 < 1.0) {
+                  var16 = var22 + (var20 - var22) * 6.0 * var7;
+               } else if (var7 * 2.0 < 1.0) {
+                  var16 = var20;
+               } else if (var7 * 3.0 < 2.0) {
+                  var16 = var22 + (var20 - var22) * (0.6666666666666666 - var7) * 6.0;
+               } else {
+                  var16 = var22;
+               }
 
-	public static boolean aBoolean179 = true;
+               if (var26 * 6.0 < 1.0) {
+                  var18 = var22 + (var20 - var22) * 6.0 * var26;
+               } else if (var26 * 2.0 < 1.0) {
+                  var18 = var20;
+               } else if (var26 * 3.0 < 2.0) {
+                  var18 = var22 + (var20 - var22) * (0.6666666666666666 - var26) * 6.0;
+               } else {
+                  var18 = var22;
+               }
+            }
 
-	private static int[] anIntArray179 = new int[512];
+            int var28 = (int)(var14 * 256.0);
+            int var21 = (int)(var16 * 256.0);
+            int var29 = (int)(var18 * 256.0);
+            int var23 = (var28 << 16) + (var21 << 8) + var29;
+            var23 = method516(var23, var3);
+            if (var23 == 0) {
+               var23 = 1;
+            }
 
-	public static int[] anIntArray180 = new int[2048];
+            anIntArray186[var5++] = var23;
+         }
+      }
 
-	public static int[] anIntArray181 = new int[2048];
+      for(var6 = 0; var6 < 50; ++var6) {
+         if (aClass10_Sub1_Sub1_Sub3Array1[var6] != null) {
+            int[] var30 = aClass10_Sub1_Sub1_Sub3Array1[var6].anIntArray175;
+            anIntArrayArray19[var6] = new int[var30.length];
 
-	public static int[] anIntArray182 = new int[2048];
+            for(int var8 = 0; var8 < var30.length; ++var8) {
+               anIntArrayArray19[var6][var8] = method516(var30[var8], var3);
+               if ((anIntArrayArray19[var6][var8] & 16316671) == 0 && var8 != 0) {
+                  anIntArrayArray19[var6][var8] = 1;
+               }
+            }
+         }
+      }
 
-	public static Class10_Sub1_Sub1_Sub3[] aClass10_Sub1_Sub1_Sub3Array1;
+      boolean var32 = false;
 
-	private static boolean[] aBooleanArray9;
+      for(int var31 = 0; var31 < 50; ++var31) {
+         method513(var31);
+      }
 
-	private static int[] anIntArray184;
+   }
 
-	private static int[][] anIntArrayArray18;
+   public static void method510() {
+      if (anIntArrayArray17 == null) {
+         anInt689 = 20;
+         if (aBoolean176) {
+            anIntArrayArray17 = new int[anInt689][16384];
+         } else {
+            anIntArrayArray17 = new int[anInt689][65536];
+         }
 
-	public static int[] anIntArray185;
+         for(int var0 = 0; var0 < 50; ++var0) {
+            anIntArrayArray18[var0] = null;
+         }
+      }
 
-	public static int[] anIntArray186;
+   }
 
-	private static int[][] anIntArrayArray19;
+   public static void method513(int var0) {
+      if (anIntArrayArray18[var0] != null) {
+         anIntArrayArray17[anInt689++] = anIntArrayArray18[var0];
+         anIntArrayArray18[var0] = null;
+      }
 
-	static {
-		for ( int local19 = 1; local19 < 512; local19++) {
-			anIntArray179[local19] = 32768 / local19;
-		}
-		for ( int local32 = 1; local32 < 2048; local32++) {
-			anIntArray180[local32] = 65536 / local32;
-		}
-		for ( int local45 = 0; local45 < 2048; local45++) {
-			anIntArray181[local45] = (int) (Math.sin((double) local45 * 0.0030679615D) * 65536.0D);
-			anIntArray182[local45] = (int) (Math.cos((double) local45 * 0.0030679615D) * 65536.0D);
-		}
-		aClass10_Sub1_Sub1_Sub3Array1 = new Class10_Sub1_Sub1_Sub3[50];
-		aBooleanArray9 = new boolean[50];
-		anIntArray184 = new int[50];
-		anIntArrayArray18 = new int[50][];
-		anIntArray185 = new int[50];
-		anIntArray186 = new int[65536];
-		anIntArrayArray19 = new int[50][];
-	}
+   }
 
-	public static void method506() {
-		try {
-			anIntArray179 = null;
-			anIntArray179 = null;
-			anIntArray181 = null;
-			anIntArray182 = null;
-			anIntArray183 = null;
-			aClass10_Sub1_Sub1_Sub3Array1 = null;
-			aBooleanArray9 = null;
-			anIntArray184 = null;
-			anIntArrayArray17 = null;
-			anIntArrayArray18 = null;
-			anIntArray185 = null;
-			anIntArray186 = null;
-			anIntArrayArray19 = null;
-		} catch ( RuntimeException local36) {
-			signlink.reporterror("43108, " + false + ", " + local36.toString());
-			throw new RuntimeException();
-		}
-	}
+   private static int method516(int var0, double var1) {
+      double var3 = (double)(var0 >> 16) / 256.0;
+      double var5 = (double)(var0 >> 8 & 255) / 256.0;
+      double var7 = (double)(var0 & 255) / 256.0;
+      double var9 = Math.pow(var3, var1);
+      double var11 = Math.pow(var5, var1);
+      double var13 = Math.pow(var7, var1);
+      int var15 = (int)(var9 * 256.0);
+      int var16 = (int)(var11 * 256.0);
+      int var17 = (int)(var13 * 256.0);
+      return (var15 << 16) + (var16 << 8) + var17;
+   }
 
-	public static void method507( int arg0) {
-		try {
-			boolean local3 = false;
-			anIntArray183 = new int[Draw2D.height2d];
-			for (int local8 = 0; local8 < Draw2D.height2d; local8++) {
-				anIntArray183[local8] = Draw2D.width2d * local8;
-			}
-			anInt686 = Draw2D.width2d / 2;
-			anInt687 = Draw2D.height2d / 2;
-		} catch ( RuntimeException local30) {
-			signlink.reporterror("68180, " + arg0 + ", " + local30.toString());
-			throw new RuntimeException();
-		}
-	}
+   public static void method519(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+      int var7 = 0;
+      if (var1 != var0) {
+         var7 = (var4 - var3 << 16) / (var1 - var0);
+      }
 
-	public static void method508( int arg0, int arg1) {
-		try {
-			anIntArray183 = new int[arg0];
-			for ( int local13 = 0; local13 < arg0; local13++) {
-				anIntArray183[local13] = arg1 * local13;
-			}
-			anInt686 = arg1 / 2;
-			anInt687 = arg0 / 2;
-		} catch ( RuntimeException local35) {
-			signlink.reporterror("86601, " + arg0 + ", " + 7 + ", " + arg1 + ", " + local35.toString());
-			throw new RuntimeException();
-		}
-	}
+      int var8 = 0;
+      if (var2 != var1) {
+         var8 = (var5 - var4 << 16) / (var2 - var1);
+      }
 
-	public static void method509() {
-		try {
-			anIntArrayArray17 = null;
-			for ( int local7 = 0; local7 < 50; local7++) {
-				anIntArrayArray18[local7] = null;
-			}
-		} catch ( RuntimeException local19) {
-			signlink.reporterror("16214, " + 71 + ", " + local19.toString());
-			throw new RuntimeException();
-		}
-	}
+      int var9 = 0;
+      if (var2 != var0) {
+         var9 = (var3 - var5 << 16) / (var0 - var2);
+      }
 
-	public static void method510() {
-		try {
-			if (anIntArrayArray17 == null) {
-				anInt689 = 20;
-				if (aBoolean176) {
-					anIntArrayArray17 = new int[anInt689][16384];
-				} else {
-					anIntArrayArray17 = new int[anInt689][65536];
-				}
-				for ( int local29 = 0; local29 < 50; local29++) {
-					anIntArrayArray18[local29] = null;
-				}
-			}
-		} catch ( RuntimeException local41) {
-			signlink.reporterror("52969, " + 7 + ", " + 20 + ", " + local41.toString());
-			throw new RuntimeException();
-		}
-	}
+      if (var0 <= var1 && var0 <= var2) {
+         if (var0 < Draw2D.bottom) {
+            if (var1 > Draw2D.bottom) {
+               var1 = Draw2D.bottom;
+            }
 
-	public static void method511( JagFile arg0) {
-		try {
-			anInt688 = 0;
-			for ( int local15 = 0; local15 < 50; local15++) {
-				try {
-					aClass10_Sub1_Sub1_Sub3Array1[local15] = new Class10_Sub1_Sub1_Sub3(arg0, String.valueOf(local15), 0);
-					if (aBoolean176 && aClass10_Sub1_Sub1_Sub3Array1[local15].anInt656 == 128) {
-						aClass10_Sub1_Sub1_Sub3Array1[local15].method435();
-					} else {
-						aClass10_Sub1_Sub1_Sub3Array1[local15].method436();
-					}
-					anInt688++;
-				} catch ( Exception local53) {
-				}
-			}
-		} catch ( RuntimeException local60) {
-			signlink.reporterror("4300, " + arg0 + ", " + -17551 + ", " + local60.toString());
-			throw new RuntimeException();
-		}
-	}
+            if (var2 > Draw2D.bottom) {
+               var2 = Draw2D.bottom;
+            }
 
-	public static int method512( int arg0) {
-		try {
-			if (anIntArray184[arg0] != 0) {
-				return anIntArray184[arg0];
-			}
-			int local9 = 0;
-			int local11 = 0;
-			int local13 = 0;
-			int local18 = anIntArrayArray19[arg0].length;
-			for ( int local20 = 0; local20 < local18; local20++) {
-				local9 += anIntArrayArray19[arg0][local20] >> 16 & 0xFF;
-				local11 += anIntArrayArray19[arg0][local20] >> 8 & 0xFF;
-				local13 += anIntArrayArray19[arg0][local20] & 0xFF;
-			}
-			int local80 = (local9 / local18 << 16) + (local11 / local18 << 8) + local13 / local18;
-			local80 = method516(local80, 1.4D);
-			if (local80 == 0) {
-				local80 = 1;
-			}
-			anIntArray184[arg0] = local80;
-			return local80;
-		} catch ( RuntimeException local95) {
-			signlink.reporterror("67386, " + arg0 + ", " + 0 + ", " + local95.toString());
-			throw new RuntimeException();
-		}
-	}
+            if (var1 < var2) {
+               var5 = var3 <<= 16;
+               if (var0 < 0) {
+                  var5 -= var9 * var0;
+                  var3 -= var7 * var0;
+                  var0 = 0;
+               }
 
-	public static void method513( int arg0) {
-		try {
-			if (anIntArrayArray18[arg0] != null) {
-				anIntArrayArray17[anInt689++] = anIntArrayArray18[arg0];
-				anIntArrayArray18[arg0] = null;
-			}
-		} catch ( RuntimeException local25) {
-			signlink.reporterror("90763, " + arg0 + ", " + 9 + ", " + local25.toString());
-			throw new RuntimeException();
-		}
-	}
+               var4 <<= 16;
+               if (var1 < 0) {
+                  var4 -= var8 * var1;
+                  var1 = 0;
+               }
 
-	private static int[] method514( int arg0) {
-		anIntArray185[arg0] = anInt690++;
-		if (anIntArrayArray18[arg0] != null) {
-			return anIntArrayArray18[arg0];
-		}
-		int[] local27;
-		int local39;
-		if (anInt689 > 0) {
-			local27 = anIntArrayArray17[--anInt689];
-			anIntArrayArray17[anInt689] = null;
-		} else {
-			int local35 = 0;
-			int local37 = -1;
-			for (local39 = 0; local39 < anInt688; local39++) {
-				if (anIntArrayArray18[local39] != null && (anIntArray185[local39] < local35 || local37 == -1)) {
-					local35 = anIntArray185[local39];
-					local37 = local39;
-				}
-			}
-			local27 = anIntArrayArray18[local37];
-			anIntArrayArray18[local37] = null;
-		}
-		anIntArrayArray18[arg0] = local27;
-		Class10_Sub1_Sub1_Sub3 local79 = aClass10_Sub1_Sub1_Sub3Array1[arg0];
-		int[] local83 = anIntArrayArray19[arg0];
-		int local106;
-		if (aBoolean176) {
-			aBooleanArray9[arg0] = false;
-			for (local39 = 0; local39 < 4096; local39++) {
-				local106 = local27[local39] = local83[local79.aByteArray16[local39]] & 0xF8F8FF;
-				if (local106 == 0) {
-					aBooleanArray9[arg0] = true;
-				}
-				local27[local39 + 4096] = local106 - (local106 >>> 3) & 0xF8F8FF;
-				local27[local39 + 8192] = local106 - (local106 >>> 2) & 0xF8F8FF;
-				local27[local39 + 12288] = local106 - (local106 >>> 2) - (local106 >>> 3) & 0xF8F8FF;
-			}
-		} else {
-			if (local79.anInt652 == 64) {
-				for (local39 = 0; local39 < 128; local39++) {
-					for (local106 = 0; local106 < 128; local106++) {
-						local27[local106 + (local39 << 7)] = local83[local79.aByteArray16[(local106 >> 1) + (local39 >> 1 << 6)]];
-					}
-				}
-			} else {
-				for (local39 = 0; local39 < 16384; local39++) {
-					local27[local39] = local83[local79.aByteArray16[local39]];
-				}
-			}
-			aBooleanArray9[arg0] = false;
-			for (local39 = 0; local39 < 16384; local39++) {
-				local27[local39] &= 0xF8F8FF;
-				local106 = local27[local39];
-				if (local106 == 0) {
-					aBooleanArray9[arg0] = true;
-				}
-				local27[local39 + 16384] = local106 - (local106 >>> 3) & 0xF8F8FF;
-				local27[local39 + 32768] = local106 - (local106 >>> 2) & 0xF8F8FF;
-				local27[local39 + 49152] = local106 - (local106 >>> 2) - (local106 >>> 3) & 0xF8F8FF;
-			}
-		}
-		return local27;
-	}
+               if (var0 != var1 && var9 < var7 || var0 == var1 && var9 > var8) {
+                  var2 -= var1;
+                  var1 -= var0;
+                  var0 = anIntArray183[var0];
 
-	public static void method515( double arg0, byte arg1) {
-		try {
-			double local9 = arg0 + Math.random() * 0.03D - 0.015D;
-			int local11 = 0;
-			for ( int local13 = 0; local13 < 512; local13++) {
-				double local24 = (double) (local13 / 8) / 64.0D + 0.0078125D;
-				double local33 = (double) (local13 & 0x7) / 8.0D + 0.0625D;
-				for ( int local35 = 0; local35 < 128; local35++) {
-					double local42 = (double) local35 / 128.0D;
-					double local44 = local42;
-					double local46 = local42;
-					double local48 = local42;
-					if (local33 != 0.0D) {
-						double local62;
-						if (local42 < 0.5D) {
-							local62 = local42 * (local33 + 1.0D);
-						} else {
-							local62 = local42 + local33 - local42 * local33;
-						}
-						double local78 = local42 * 2.0D - local62;
-						double local82 = local24 + 0.3333333333333333D;
-						if (local82 > 1.0D) {
-							local82--;
-						}
-						double local96 = local24 - 0.3333333333333333D;
-						if (local96 < 0.0D) {
-							local96++;
-						}
-						if (local82 * 6.0D < 1.0D) {
-							local44 = local78 + (local62 - local78) * 6.0D * local82;
-						} else if (local82 * 2.0D < 1.0D) {
-							local44 = local62;
-						} else if (local82 * 3.0D < 2.0D) {
-							local44 = local78 + (local62 - local78) * (0.6666666666666666D - local82) * 6.0D;
-						} else {
-							local44 = local78;
-						}
-						if (local24 * 6.0D < 1.0D) {
-							local46 = local78 + (local62 - local78) * 6.0D * local24;
-						} else if (local24 * 2.0D < 1.0D) {
-							local46 = local62;
-						} else if (local24 * 3.0D < 2.0D) {
-							local46 = local78 + (local62 - local78) * (0.6666666666666666D - local24) * 6.0D;
-						} else {
-							local46 = local78;
-						}
-						if (local96 * 6.0D < 1.0D) {
-							local48 = local78 + (local62 - local78) * 6.0D * local96;
-						} else if (local96 * 2.0D < 1.0D) {
-							local48 = local62;
-						} else if (local96 * 3.0D < 2.0D) {
-							local48 = local78 + (local62 - local78) * (0.6666666666666666D - local96) * 6.0D;
-						} else {
-							local48 = local78;
-						}
-					}
-					int local259 = (int) (local44 * 256.0D);
-					int local264 = (int) (local46 * 256.0D);
-					int local269 = (int) (local48 * 256.0D);
-					int local279 = (local259 << 16) + (local264 << 8) + local269;
-					local279 = method516(local279, local9);
-					if (local279 == 0) {
-						local279 = 1;
-					}
-					anIntArray186[local11++] = local279;
-				}
-			}
-			for ( int local302 = 0; local302 < 50; local302++) {
-				if (aClass10_Sub1_Sub1_Sub3Array1[local302] != null) {
-					int[] local313 = aClass10_Sub1_Sub1_Sub3Array1[local302].anIntArray175;
-					anIntArrayArray19[local302] = new int[local313.length];
-					for ( int local321 = 0; local321 < local313.length; local321++) {
-						anIntArrayArray19[local302][local321] = method516(local313[local321], local9);
-						if ((anIntArrayArray19[local302][local321] & 0xF8F8FF) == 0 && local321 != 0) {
-							anIntArrayArray19[local302][local321] = 1;
-						}
-					}
-				}
-			}
-			boolean local363 = false;
-			for ( int local368 = 0; local368 < 50; local368++) {
-				method513(local368);
-			}
-		} catch ( RuntimeException local379) {
-			signlink.reporterror("30963, " + arg0 + ", " + arg1 + ", " + local379.toString());
-			throw new RuntimeException();
-		}
-	}
+                  while(true) {
+                     --var1;
+                     if (var1 < 0) {
+                        while(true) {
+                           --var2;
+                           if (var2 < 0) {
+                              return;
+                           }
 
-	private static int method516( int arg0, double arg1) {
-		double local6 = (double) (arg0 >> 16) / 256.0D;
-		double local15 = (double) (arg0 >> 8 & 0xFF) / 256.0D;
-		double local22 = (double) (arg0 & 0xFF) / 256.0D;
-		double local26 = Math.pow(local6, arg1);
-		double local30 = Math.pow(local15, arg1);
-		double local34 = Math.pow(local22, arg1);
-		int local39 = (int) (local26 * 256.0D);
-		int local44 = (int) (local30 * 256.0D);
-		int local49 = (int) (local34 * 256.0D);
-		return (local39 << 16) + (local44 << 8) + local49;
-	}
+                           method520(Draw2D.data, var0, var6, var5 >> 16, var4 >> 16);
+                           var5 += var9;
+                           var4 += var8;
+                           var0 += Draw2D.width2d;
+                        }
+                     }
 
-	public static void method517( int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
-		int local3 = 0;
-		int local5 = 0;
-		if (arg1 != arg0) {
-			local3 = (arg4 - arg3 << 16) / (arg1 - arg0);
-			local5 = (arg7 - arg6 << 15) / (arg1 - arg0);
-		}
-		int local30 = 0;
-		int local32 = 0;
-		if (arg2 != arg1) {
-			local30 = (arg5 - arg4 << 16) / (arg2 - arg1);
-			local32 = (arg8 - arg7 << 15) / (arg2 - arg1);
-		}
-		int local57 = 0;
-		int local59 = 0;
-		if (arg2 != arg0) {
-			local57 = (arg3 - arg5 << 16) / (arg0 - arg2);
-			local59 = (arg6 - arg8 << 15) / (arg0 - arg2);
-		}
-		if (arg0 <= arg1 && arg0 <= arg2) {
-			if (arg0 < Draw2D.bottom) {
-				if (arg1 > Draw2D.bottom) {
-					arg1 = Draw2D.bottom;
-				}
-				if (arg2 > Draw2D.bottom) {
-					arg2 = Draw2D.bottom;
-				}
-				if (arg1 < arg2) {
-					arg5 = arg3 <<= 0x10;
-					arg8 = arg6 <<= 0xF;
-					if (arg0 < 0) {
-						arg5 -= local57 * arg0;
-						arg3 -= local3 * arg0;
-						arg8 -= local59 * arg0;
-						arg6 -= local5 * arg0;
-						arg0 = 0;
-					}
-					arg4 <<= 0x10;
-					arg7 <<= 0xF;
-					if (arg1 < 0) {
-						arg4 -= local30 * arg1;
-						arg7 -= local32 * arg1;
-						arg1 = 0;
-					}
-					if (arg0 != arg1 && local57 < local3 || arg0 == arg1 && local57 > local30) {
-						arg2 -= arg1;
-						arg1 -= arg0;
-						arg0 = anIntArray183[arg0];
-						while (true) {
-							arg1--;
-							if (arg1 < 0) {
-								while (true) {
-									arg2--;
-									if (arg2 < 0) {
-										return;
-									}
-									method518(Draw2D.data, arg0, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
-									arg5 += local57;
-									arg4 += local30;
-									arg8 += local59;
-									arg7 += local32;
-									arg0 += Draw2D.width2d;
-								}
-							}
-							method518(Draw2D.data, arg0, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
-							arg5 += local57;
-							arg3 += local3;
-							arg8 += local59;
-							arg6 += local5;
-							arg0 += Draw2D.width2d;
-						}
-					} else {
-						arg2 -= arg1;
-						arg1 -= arg0;
-						arg0 = anIntArray183[arg0];
-						while (true) {
-							arg1--;
-							if (arg1 < 0) {
-								while (true) {
-									arg2--;
-									if (arg2 < 0) {
-										return;
-									}
-									method518(Draw2D.data, arg0, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
-									arg5 += local57;
-									arg4 += local30;
-									arg8 += local59;
-									arg7 += local32;
-									arg0 += Draw2D.width2d;
-								}
-							}
-							method518(Draw2D.data, arg0, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
-							arg5 += local57;
-							arg3 += local3;
-							arg8 += local59;
-							arg6 += local5;
-							arg0 += Draw2D.width2d;
-						}
-					}
-				} else {
-					arg4 = arg3 <<= 0x10;
-					arg7 = arg6 <<= 0xF;
-					if (arg0 < 0) {
-						arg4 -= local57 * arg0;
-						arg3 -= local3 * arg0;
-						arg7 -= local59 * arg0;
-						arg6 -= local5 * arg0;
-						arg0 = 0;
-					}
-					arg5 <<= 0x10;
-					arg8 <<= 0xF;
-					if (arg2 < 0) {
-						arg5 -= local30 * arg2;
-						arg8 -= local32 * arg2;
-						arg2 = 0;
-					}
-					if (arg0 != arg2 && local57 < local3 || arg0 == arg2 && local30 > local3) {
-						arg1 -= arg2;
-						arg2 -= arg0;
-						arg0 = anIntArray183[arg0];
-						while (true) {
-							arg2--;
-							if (arg2 < 0) {
-								while (true) {
-									arg1--;
-									if (arg1 < 0) {
-										return;
-									}
-									method518(Draw2D.data, arg0, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
-									arg5 += local30;
-									arg3 += local3;
-									arg8 += local32;
-									arg6 += local5;
-									arg0 += Draw2D.width2d;
-								}
-							}
-							method518(Draw2D.data, arg0, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
-							arg4 += local57;
-							arg3 += local3;
-							arg7 += local59;
-							arg6 += local5;
-							arg0 += Draw2D.width2d;
-						}
-					} else {
-						arg1 -= arg2;
-						arg2 -= arg0;
-						arg0 = anIntArray183[arg0];
-						while (true) {
-							arg2--;
-							if (arg2 < 0) {
-								while (true) {
-									arg1--;
-									if (arg1 < 0) {
-										return;
-									}
-									method518(Draw2D.data, arg0, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
-									arg5 += local30;
-									arg3 += local3;
-									arg8 += local32;
-									arg6 += local5;
-									arg0 += Draw2D.width2d;
-								}
-							}
-							method518(Draw2D.data, arg0, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
-							arg4 += local57;
-							arg3 += local3;
-							arg7 += local59;
-							arg6 += local5;
-							arg0 += Draw2D.width2d;
-						}
-					}
-				}
-			}
-		} else if (arg1 <= arg2) {
-			if (arg1 < Draw2D.bottom) {
-				if (arg2 > Draw2D.bottom) {
-					arg2 = Draw2D.bottom;
-				}
-				if (arg0 > Draw2D.bottom) {
-					arg0 = Draw2D.bottom;
-				}
-				if (arg2 < arg0) {
-					arg3 = arg4 <<= 0x10;
-					arg6 = arg7 <<= 0xF;
-					if (arg1 < 0) {
-						arg3 -= local3 * arg1;
-						arg4 -= local30 * arg1;
-						arg6 -= local5 * arg1;
-						arg7 -= local32 * arg1;
-						arg1 = 0;
-					}
-					arg5 <<= 0x10;
-					arg8 <<= 0xF;
-					if (arg2 < 0) {
-						arg5 -= local57 * arg2;
-						arg8 -= local59 * arg2;
-						arg2 = 0;
-					}
-					if (arg1 != arg2 && local3 < local30 || arg1 == arg2 && local3 > local57) {
-						arg0 -= arg2;
-						arg2 -= arg1;
-						arg1 = anIntArray183[arg1];
-						while (true) {
-							arg2--;
-							if (arg2 < 0) {
-								while (true) {
-									arg0--;
-									if (arg0 < 0) {
-										return;
-									}
-									method518(Draw2D.data, arg1, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
-									arg3 += local3;
-									arg5 += local57;
-									arg6 += local5;
-									arg8 += local59;
-									arg1 += Draw2D.width2d;
-								}
-							}
-							method518(Draw2D.data, arg1, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
-							arg3 += local3;
-							arg4 += local30;
-							arg6 += local5;
-							arg7 += local32;
-							arg1 += Draw2D.width2d;
-						}
-					} else {
-						arg0 -= arg2;
-						arg2 -= arg1;
-						arg1 = anIntArray183[arg1];
-						while (true) {
-							arg2--;
-							if (arg2 < 0) {
-								while (true) {
-									arg0--;
-									if (arg0 < 0) {
-										return;
-									}
-									method518(Draw2D.data, arg1, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
-									arg3 += local3;
-									arg5 += local57;
-									arg6 += local5;
-									arg8 += local59;
-									arg1 += Draw2D.width2d;
-								}
-							}
-							method518(Draw2D.data, arg1, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
-							arg3 += local3;
-							arg4 += local30;
-							arg6 += local5;
-							arg7 += local32;
-							arg1 += Draw2D.width2d;
-						}
-					}
-				} else {
-					arg5 = arg4 <<= 0x10;
-					arg8 = arg7 <<= 0xF;
-					if (arg1 < 0) {
-						arg5 -= local3 * arg1;
-						arg4 -= local30 * arg1;
-						arg8 -= local5 * arg1;
-						arg7 -= local32 * arg1;
-						arg1 = 0;
-					}
-					arg3 <<= 0x10;
-					arg6 <<= 0xF;
-					if (arg0 < 0) {
-						arg3 -= local57 * arg0;
-						arg6 -= local59 * arg0;
-						arg0 = 0;
-					}
-					if (local3 < local30) {
-						arg2 -= arg0;
-						arg0 -= arg1;
-						arg1 = anIntArray183[arg1];
-						while (true) {
-							arg0--;
-							if (arg0 < 0) {
-								while (true) {
-									arg2--;
-									if (arg2 < 0) {
-										return;
-									}
-									method518(Draw2D.data, arg1, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
-									arg3 += local57;
-									arg4 += local30;
-									arg6 += local59;
-									arg7 += local32;
-									arg1 += Draw2D.width2d;
-								}
-							}
-							method518(Draw2D.data, arg1, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
-							arg5 += local3;
-							arg4 += local30;
-							arg8 += local5;
-							arg7 += local32;
-							arg1 += Draw2D.width2d;
-						}
-					} else {
-						arg2 -= arg0;
-						arg0 -= arg1;
-						arg1 = anIntArray183[arg1];
-						while (true) {
-							arg0--;
-							if (arg0 < 0) {
-								while (true) {
-									arg2--;
-									if (arg2 < 0) {
-										return;
-									}
-									method518(Draw2D.data, arg1, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
-									arg3 += local57;
-									arg4 += local30;
-									arg6 += local59;
-									arg7 += local32;
-									arg1 += Draw2D.width2d;
-								}
-							}
-							method518(Draw2D.data, arg1, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
-							arg5 += local3;
-							arg4 += local30;
-							arg8 += local5;
-							arg7 += local32;
-							arg1 += Draw2D.width2d;
-						}
-					}
-				}
-			}
-		} else if (arg2 < Draw2D.bottom) {
-			if (arg0 > Draw2D.bottom) {
-				arg0 = Draw2D.bottom;
-			}
-			if (arg1 > Draw2D.bottom) {
-				arg1 = Draw2D.bottom;
-			}
-			if (arg0 < arg1) {
-				arg4 = arg5 <<= 0x10;
-				arg7 = arg8 <<= 0xF;
-				if (arg2 < 0) {
-					arg4 -= local30 * arg2;
-					arg5 -= local57 * arg2;
-					arg7 -= local32 * arg2;
-					arg8 -= local59 * arg2;
-					arg2 = 0;
-				}
-				arg3 <<= 0x10;
-				arg6 <<= 0xF;
-				if (arg0 < 0) {
-					arg3 -= local3 * arg0;
-					arg6 -= local5 * arg0;
-					arg0 = 0;
-				}
-				if (local30 < local57) {
-					arg1 -= arg0;
-					arg0 -= arg2;
-					arg2 = anIntArray183[arg2];
-					while (true) {
-						arg0--;
-						if (arg0 < 0) {
-							while (true) {
-								arg1--;
-								if (arg1 < 0) {
-									return;
-								}
-								method518(Draw2D.data, arg2, arg4 >> 16, arg3 >> 16, arg7 >> 7, arg6 >> 7);
-								arg4 += local30;
-								arg3 += local3;
-								arg7 += local32;
-								arg6 += local5;
-								arg2 += Draw2D.width2d;
-							}
-						}
-						method518(Draw2D.data, arg2, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
-						arg4 += local30;
-						arg5 += local57;
-						arg7 += local32;
-						arg8 += local59;
-						arg2 += Draw2D.width2d;
-					}
-				} else {
-					arg1 -= arg0;
-					arg0 -= arg2;
-					arg2 = anIntArray183[arg2];
-					while (true) {
-						arg0--;
-						if (arg0 < 0) {
-							while (true) {
-								arg1--;
-								if (arg1 < 0) {
-									return;
-								}
-								method518(Draw2D.data, arg2, arg3 >> 16, arg4 >> 16, arg6 >> 7, arg7 >> 7);
-								arg4 += local30;
-								arg3 += local3;
-								arg7 += local32;
-								arg6 += local5;
-								arg2 += Draw2D.width2d;
-							}
-						}
-						method518(Draw2D.data, arg2, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
-						arg4 += local30;
-						arg5 += local57;
-						arg7 += local32;
-						arg8 += local59;
-						arg2 += Draw2D.width2d;
-					}
-				}
-			} else {
-				arg3 = arg5 <<= 0x10;
-				arg6 = arg8 <<= 0xF;
-				if (arg2 < 0) {
-					arg3 -= local30 * arg2;
-					arg5 -= local57 * arg2;
-					arg6 -= local32 * arg2;
-					arg8 -= local59 * arg2;
-					arg2 = 0;
-				}
-				arg4 <<= 0x10;
-				arg7 <<= 0xF;
-				if (arg1 < 0) {
-					arg4 -= local3 * arg1;
-					arg7 -= local5 * arg1;
-					arg1 = 0;
-				}
-				if (local30 < local57) {
-					arg0 -= arg1;
-					arg1 -= arg2;
-					arg2 = anIntArray183[arg2];
-					while (true) {
-						arg1--;
-						if (arg1 < 0) {
-							while (true) {
-								arg0--;
-								if (arg0 < 0) {
-									return;
-								}
-								method518(Draw2D.data, arg2, arg4 >> 16, arg5 >> 16, arg7 >> 7, arg8 >> 7);
-								arg4 += local3;
-								arg5 += local57;
-								arg7 += local5;
-								arg8 += local59;
-								arg2 += Draw2D.width2d;
-							}
-						}
-						method518(Draw2D.data, arg2, arg3 >> 16, arg5 >> 16, arg6 >> 7, arg8 >> 7);
-						arg3 += local30;
-						arg5 += local57;
-						arg6 += local32;
-						arg8 += local59;
-						arg2 += Draw2D.width2d;
-					}
-				} else {
-					arg0 -= arg1;
-					arg1 -= arg2;
-					arg2 = anIntArray183[arg2];
-					while (true) {
-						arg1--;
-						if (arg1 < 0) {
-							while (true) {
-								arg0--;
-								if (arg0 < 0) {
-									return;
-								}
-								method518(Draw2D.data, arg2, arg5 >> 16, arg4 >> 16, arg8 >> 7, arg7 >> 7);
-								arg4 += local3;
-								arg5 += local57;
-								arg7 += local5;
-								arg8 += local59;
-								arg2 += Draw2D.width2d;
-							}
-						}
-						method518(Draw2D.data, arg2, arg5 >> 16, arg3 >> 16, arg8 >> 7, arg6 >> 7);
-						arg3 += local30;
-						arg5 += local57;
-						arg6 += local32;
-						arg8 += local59;
-						arg2 += Draw2D.width2d;
-					}
-				}
-			}
-		}
-	}
+                     method520(Draw2D.data, var0, var6, var5 >> 16, var3 >> 16);
+                     var5 += var9;
+                     var3 += var7;
+                     var0 += Draw2D.width2d;
+                  }
+               }
 
-	private static void method518( int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-		int local18;
-		int local149;
-		int local153;
-		int local51;
-		int local97;
-		if (aBoolean179) {
-			if (aBoolean177) {
-				if (arg3 - arg2 > 3) {
-					local18 = (arg5 - arg4) / (arg3 - arg2);
-				} else {
-					local18 = 0;
-				}
-				if (arg3 > Draw2D.boundX) {
-					arg3 = Draw2D.boundX;
-				}
-				if (arg2 < 0) {
-					arg4 -= arg2 * local18;
-					arg2 = 0;
-				}
-				if (arg2 >= arg3) {
-					return;
-				}
-				arg1 += arg2;
-				local51 = arg3 - arg2 >> 2;
-				local18 <<= 0x2;
-			} else if (arg2 < arg3) {
-				arg1 += arg2;
-				local51 = arg3 - arg2 >> 2;
-				if (local51 > 0) {
-					local18 = (arg5 - arg4) * anIntArray179[local51] >> 15;
-				} else {
-					local18 = 0;
-				}
-			} else {
-				return;
-			}
-			int local104;
-			if (anInt685 == 0) {
-				while (true) {
-					local51--;
-					if (local51 < 0) {
-						local51 = arg3 - arg2 & 0x3;
-						if (local51 > 0) {
-							local97 = anIntArray186[arg4 >> 8];
-							do {
-								arg0[arg1++] = local97;
-								local51--;
-							} while (local51 > 0);
-							return;
-						}
-						break;
-					}
-					local97 = anIntArray186[arg4 >> 8];
-					arg4 += local18;
-					local104 = arg1 + 1;
-					arg0[arg1] = local97;
-					int local109 = local104 + 1;
-					arg0[local104] = local97;
-					int local114 = local109 + 1;
-					arg0[local109] = local97;
-					arg1 = local114 + 1;
-					arg0[local114] = local97;
-				}
-			} else {
-				local149 = anInt685;
-				local153 = 256 - anInt685;
-				while (true) {
-					local51--;
-					if (local51 < 0) {
-						local51 = arg3 - arg2 & 0x3;
-						if (local51 > 0) {
-							local97 = anIntArray186[arg4 >> 8];
-							local97 = ((local97 & 0xFF00FF) * local153 >> 8 & 0xFF00FF) + ((local97 & 0xFF00) * local153 >> 8 & 0xFF00);
-							do {
-								arg0[arg1++] = local97 + ((arg0[arg1] & 0xFF00FF) * local149 >> 8 & 0xFF00FF) + ((arg0[arg1] & 0xFF00) * local149 >> 8 & 0xFF00);
-								local51--;
-							} while (local51 > 0);
-						}
-						break;
-					}
-					local97 = anIntArray186[arg4 >> 8];
-					arg4 += local18;
-					local97 = ((local97 & 0xFF00FF) * local153 >> 8 & 0xFF00FF) + ((local97 & 0xFF00) * local153 >> 8 & 0xFF00);
-					local104 = arg1 + 1;
-					arg0[arg1] = local97 + ((arg0[local104] & 0xFF00FF) * local149 >> 8 & 0xFF00FF) + ((arg0[local104] & 0xFF00) * local149 >> 8 & 0xFF00);
-					arg0[local104++] = local97 + ((arg0[local104] & 0xFF00FF) * local149 >> 8 & 0xFF00FF) + ((arg0[local104] & 0xFF00) * local149 >> 8 & 0xFF00);
-					arg0[local104++] = local97 + ((arg0[local104] & 0xFF00FF) * local149 >> 8 & 0xFF00FF) + ((arg0[local104] & 0xFF00) * local149 >> 8 & 0xFF00);
-					arg1 = local104 + 1;
-					arg0[local104] = local97 + ((arg0[arg1] & 0xFF00FF) * local149 >> 8 & 0xFF00FF) + ((arg0[arg1] & 0xFF00) * local149 >> 8 & 0xFF00);
-				}
-			}
-		} else if (arg2 < arg3) {
-			local18 = (arg5 - arg4) / (arg3 - arg2);
-			if (aBoolean177) {
-				if (arg3 > Draw2D.boundX) {
-					arg3 = Draw2D.boundX;
-				}
-				if (arg2 < 0) {
-					arg4 -= arg2 * local18;
-					arg2 = 0;
-				}
-				if (arg2 >= arg3) {
-					return;
-				}
-			}
-			int local408 = arg1 + arg2;
-			local51 = arg3 - arg2;
-			if (anInt685 == 0) {
-				do {
-					arg0[local408++] = anIntArray186[arg4 >> 8];
-					arg4 += local18;
-					local51--;
-				} while (local51 > 0);
-			} else {
-				local149 = anInt685;
-				local153 = 256 - anInt685;
-				do {
-					local97 = anIntArray186[arg4 >> 8];
-					arg4 += local18;
-					int local467 = ((local97 & 0xFF00FF) * local153 >> 8 & 0xFF00FF) + ((local97 & 0xFF00) * local153 >> 8 & 0xFF00);
-					arg0[local408++] = local467 + ((arg0[local408] & 0xFF00FF) * local149 >> 8 & 0xFF00FF) + ((arg0[local408] & 0xFF00) * local149 >> 8 & 0xFF00);
-					local51--;
-				} while (local51 > 0);
-			}
-		}
-	}
+               var2 -= var1;
+               var1 -= var0;
+               var0 = anIntArray183[var0];
 
-	public static void method519( int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
-		int local3 = 0;
-		if (arg1 != arg0) {
-			local3 = (arg4 - arg3 << 16) / (arg1 - arg0);
-		}
-		int local18 = 0;
-		if (arg2 != arg1) {
-			local18 = (arg5 - arg4 << 16) / (arg2 - arg1);
-		}
-		int local33 = 0;
-		if (arg2 != arg0) {
-			local33 = (arg3 - arg5 << 16) / (arg0 - arg2);
-		}
-		if (arg0 <= arg1 && arg0 <= arg2) {
-			if (arg0 < Draw2D.bottom) {
-				if (arg1 > Draw2D.bottom) {
-					arg1 = Draw2D.bottom;
-				}
-				if (arg2 > Draw2D.bottom) {
-					arg2 = Draw2D.bottom;
-				}
-				if (arg1 < arg2) {
-					arg5 = arg3 <<= 0x10;
-					if (arg0 < 0) {
-						arg5 -= local33 * arg0;
-						arg3 -= local3 * arg0;
-						arg0 = 0;
-					}
-					arg4 <<= 0x10;
-					if (arg1 < 0) {
-						arg4 -= local18 * arg1;
-						arg1 = 0;
-					}
-					if (arg0 != arg1 && local33 < local3 || arg0 == arg1 && local33 > local18) {
-						arg2 -= arg1;
-						arg1 -= arg0;
-						arg0 = anIntArray183[arg0];
-						while (true) {
-							arg1--;
-							if (arg1 < 0) {
-								while (true) {
-									arg2--;
-									if (arg2 < 0) {
-										return;
-									}
-									method520(Draw2D.data, arg0, arg6, arg5 >> 16, arg4 >> 16);
-									arg5 += local33;
-									arg4 += local18;
-									arg0 += Draw2D.width2d;
-								}
-							}
-							method520(Draw2D.data, arg0, arg6, arg5 >> 16, arg3 >> 16);
-							arg5 += local33;
-							arg3 += local3;
-							arg0 += Draw2D.width2d;
-						}
-					} else {
-						arg2 -= arg1;
-						arg1 -= arg0;
-						arg0 = anIntArray183[arg0];
-						while (true) {
-							arg1--;
-							if (arg1 < 0) {
-								while (true) {
-									arg2--;
-									if (arg2 < 0) {
-										return;
-									}
-									method520(Draw2D.data, arg0, arg6, arg4 >> 16, arg5 >> 16);
-									arg5 += local33;
-									arg4 += local18;
-									arg0 += Draw2D.width2d;
-								}
-							}
-							method520(Draw2D.data, arg0, arg6, arg3 >> 16, arg5 >> 16);
-							arg5 += local33;
-							arg3 += local3;
-							arg0 += Draw2D.width2d;
-						}
-					}
-				} else {
-					arg4 = arg3 <<= 0x10;
-					if (arg0 < 0) {
-						arg4 -= local33 * arg0;
-						arg3 -= local3 * arg0;
-						arg0 = 0;
-					}
-					arg5 <<= 0x10;
-					if (arg2 < 0) {
-						arg5 -= local18 * arg2;
-						arg2 = 0;
-					}
-					if (arg0 != arg2 && local33 < local3 || arg0 == arg2 && local18 > local3) {
-						arg1 -= arg2;
-						arg2 -= arg0;
-						arg0 = anIntArray183[arg0];
-						while (true) {
-							arg2--;
-							if (arg2 < 0) {
-								while (true) {
-									arg1--;
-									if (arg1 < 0) {
-										return;
-									}
-									method520(Draw2D.data, arg0, arg6, arg5 >> 16, arg3 >> 16);
-									arg5 += local18;
-									arg3 += local3;
-									arg0 += Draw2D.width2d;
-								}
-							}
-							method520(Draw2D.data, arg0, arg6, arg4 >> 16, arg3 >> 16);
-							arg4 += local33;
-							arg3 += local3;
-							arg0 += Draw2D.width2d;
-						}
-					} else {
-						arg1 -= arg2;
-						arg2 -= arg0;
-						arg0 = anIntArray183[arg0];
-						while (true) {
-							arg2--;
-							if (arg2 < 0) {
-								while (true) {
-									arg1--;
-									if (arg1 < 0) {
-										return;
-									}
-									method520(Draw2D.data, arg0, arg6, arg3 >> 16, arg5 >> 16);
-									arg5 += local18;
-									arg3 += local3;
-									arg0 += Draw2D.width2d;
-								}
-							}
-							method520(Draw2D.data, arg0, arg6, arg3 >> 16, arg4 >> 16);
-							arg4 += local33;
-							arg3 += local3;
-							arg0 += Draw2D.width2d;
-						}
-					}
-				}
-			}
-		} else if (arg1 <= arg2) {
-			if (arg1 < Draw2D.bottom) {
-				if (arg2 > Draw2D.bottom) {
-					arg2 = Draw2D.bottom;
-				}
-				if (arg0 > Draw2D.bottom) {
-					arg0 = Draw2D.bottom;
-				}
-				if (arg2 < arg0) {
-					arg3 = arg4 <<= 0x10;
-					if (arg1 < 0) {
-						arg3 -= local3 * arg1;
-						arg4 -= local18 * arg1;
-						arg1 = 0;
-					}
-					arg5 <<= 0x10;
-					if (arg2 < 0) {
-						arg5 -= local33 * arg2;
-						arg2 = 0;
-					}
-					if (arg1 != arg2 && local3 < local18 || arg1 == arg2 && local3 > local33) {
-						arg0 -= arg2;
-						arg2 -= arg1;
-						arg1 = anIntArray183[arg1];
-						while (true) {
-							arg2--;
-							if (arg2 < 0) {
-								while (true) {
-									arg0--;
-									if (arg0 < 0) {
-										return;
-									}
-									method520(Draw2D.data, arg1, arg6, arg3 >> 16, arg5 >> 16);
-									arg3 += local3;
-									arg5 += local33;
-									arg1 += Draw2D.width2d;
-								}
-							}
-							method520(Draw2D.data, arg1, arg6, arg3 >> 16, arg4 >> 16);
-							arg3 += local3;
-							arg4 += local18;
-							arg1 += Draw2D.width2d;
-						}
-					} else {
-						arg0 -= arg2;
-						arg2 -= arg1;
-						arg1 = anIntArray183[arg1];
-						while (true) {
-							arg2--;
-							if (arg2 < 0) {
-								while (true) {
-									arg0--;
-									if (arg0 < 0) {
-										return;
-									}
-									method520(Draw2D.data, arg1, arg6, arg5 >> 16, arg3 >> 16);
-									arg3 += local3;
-									arg5 += local33;
-									arg1 += Draw2D.width2d;
-								}
-							}
-							method520(Draw2D.data, arg1, arg6, arg4 >> 16, arg3 >> 16);
-							arg3 += local3;
-							arg4 += local18;
-							arg1 += Draw2D.width2d;
-						}
-					}
-				} else {
-					arg5 = arg4 <<= 0x10;
-					if (arg1 < 0) {
-						arg5 -= local3 * arg1;
-						arg4 -= local18 * arg1;
-						arg1 = 0;
-					}
-					arg3 <<= 0x10;
-					if (arg0 < 0) {
-						arg3 -= local33 * arg0;
-						arg0 = 0;
-					}
-					if (local3 < local18) {
-						arg2 -= arg0;
-						arg0 -= arg1;
-						arg1 = anIntArray183[arg1];
-						while (true) {
-							arg0--;
-							if (arg0 < 0) {
-								while (true) {
-									arg2--;
-									if (arg2 < 0) {
-										return;
-									}
-									method520(Draw2D.data, arg1, arg6, arg3 >> 16, arg4 >> 16);
-									arg3 += local33;
-									arg4 += local18;
-									arg1 += Draw2D.width2d;
-								}
-							}
-							method520(Draw2D.data, arg1, arg6, arg5 >> 16, arg4 >> 16);
-							arg5 += local3;
-							arg4 += local18;
-							arg1 += Draw2D.width2d;
-						}
-					} else {
-						arg2 -= arg0;
-						arg0 -= arg1;
-						arg1 = anIntArray183[arg1];
-						while (true) {
-							arg0--;
-							if (arg0 < 0) {
-								while (true) {
-									arg2--;
-									if (arg2 < 0) {
-										return;
-									}
-									method520(Draw2D.data, arg1, arg6, arg4 >> 16, arg3 >> 16);
-									arg3 += local33;
-									arg4 += local18;
-									arg1 += Draw2D.width2d;
-								}
-							}
-							method520(Draw2D.data, arg1, arg6, arg4 >> 16, arg5 >> 16);
-							arg5 += local3;
-							arg4 += local18;
-							arg1 += Draw2D.width2d;
-						}
-					}
-				}
-			}
-		} else if (arg2 < Draw2D.bottom) {
-			if (arg0 > Draw2D.bottom) {
-				arg0 = Draw2D.bottom;
-			}
-			if (arg1 > Draw2D.bottom) {
-				arg1 = Draw2D.bottom;
-			}
-			if (arg0 < arg1) {
-				arg4 = arg5 <<= 0x10;
-				if (arg2 < 0) {
-					arg4 -= local18 * arg2;
-					arg5 -= local33 * arg2;
-					arg2 = 0;
-				}
-				arg3 <<= 0x10;
-				if (arg0 < 0) {
-					arg3 -= local3 * arg0;
-					arg0 = 0;
-				}
-				if (local18 < local33) {
-					arg1 -= arg0;
-					arg0 -= arg2;
-					arg2 = anIntArray183[arg2];
-					while (true) {
-						arg0--;
-						if (arg0 < 0) {
-							while (true) {
-								arg1--;
-								if (arg1 < 0) {
-									return;
-								}
-								method520(Draw2D.data, arg2, arg6, arg4 >> 16, arg3 >> 16);
-								arg4 += local18;
-								arg3 += local3;
-								arg2 += Draw2D.width2d;
-							}
-						}
-						method520(Draw2D.data, arg2, arg6, arg4 >> 16, arg5 >> 16);
-						arg4 += local18;
-						arg5 += local33;
-						arg2 += Draw2D.width2d;
-					}
-				} else {
-					arg1 -= arg0;
-					arg0 -= arg2;
-					arg2 = anIntArray183[arg2];
-					while (true) {
-						arg0--;
-						if (arg0 < 0) {
-							while (true) {
-								arg1--;
-								if (arg1 < 0) {
-									return;
-								}
-								method520(Draw2D.data, arg2, arg6, arg3 >> 16, arg4 >> 16);
-								arg4 += local18;
-								arg3 += local3;
-								arg2 += Draw2D.width2d;
-							}
-						}
-						method520(Draw2D.data, arg2, arg6, arg5 >> 16, arg4 >> 16);
-						arg4 += local18;
-						arg5 += local33;
-						arg2 += Draw2D.width2d;
-					}
-				}
-			} else {
-				arg3 = arg5 <<= 0x10;
-				if (arg2 < 0) {
-					arg3 -= local18 * arg2;
-					arg5 -= local33 * arg2;
-					arg2 = 0;
-				}
-				arg4 <<= 0x10;
-				if (arg1 < 0) {
-					arg4 -= local3 * arg1;
-					arg1 = 0;
-				}
-				if (local18 < local33) {
-					arg0 -= arg1;
-					arg1 -= arg2;
-					arg2 = anIntArray183[arg2];
-					while (true) {
-						arg1--;
-						if (arg1 < 0) {
-							while (true) {
-								arg0--;
-								if (arg0 < 0) {
-									return;
-								}
-								method520(Draw2D.data, arg2, arg6, arg4 >> 16, arg5 >> 16);
-								arg4 += local3;
-								arg5 += local33;
-								arg2 += Draw2D.width2d;
-							}
-						}
-						method520(Draw2D.data, arg2, arg6, arg3 >> 16, arg5 >> 16);
-						arg3 += local18;
-						arg5 += local33;
-						arg2 += Draw2D.width2d;
-					}
-				} else {
-					arg0 -= arg1;
-					arg1 -= arg2;
-					arg2 = anIntArray183[arg2];
-					while (true) {
-						arg1--;
-						if (arg1 < 0) {
-							while (true) {
-								arg0--;
-								if (arg0 < 0) {
-									return;
-								}
-								method520(Draw2D.data, arg2, arg6, arg5 >> 16, arg4 >> 16);
-								arg4 += local3;
-								arg5 += local33;
-								arg2 += Draw2D.width2d;
-							}
-						}
-						method520(Draw2D.data, arg2, arg6, arg5 >> 16, arg3 >> 16);
-						arg3 += local18;
-						arg5 += local33;
-						arg2 += Draw2D.width2d;
-					}
-				}
-			}
-		}
-	}
+               while(true) {
+                  --var1;
+                  if (var1 < 0) {
+                     while(true) {
+                        --var2;
+                        if (var2 < 0) {
+                           return;
+                        }
 
-	private static void method520( int[] arg0, int arg1, int arg2, int arg3, int arg4) {
-		if (aBoolean177) {
-			if (arg4 > Draw2D.boundX) {
-				arg4 = Draw2D.boundX;
-			}
-			if (arg3 < 0) {
-				arg3 = 0;
-			}
-		}
-		if (arg3 >= arg4) {
-			return;
-		}
-		arg1 += arg3;
-		int local26 = arg4 - arg3 >> 2;
-		int local33;
-		if (anInt685 == 0) {
-			while (true) {
-				local26--;
-				if (local26 < 0) {
-					local26 = arg4 - arg3 & 0x3;
-					while (true) {
-						local26--;
-						if (local26 < 0) {
-							return;
-						}
-						arg0[arg1++] = arg2;
-					}
-				}
-				local33 = arg1 + 1;
-				arg0[arg1] = arg2;
-				arg0[local33++] = arg2;
-				arg0[local33++] = arg2;
-				arg1 = local33 + 1;
-				arg0[local33] = arg2;
-			}
-		}
-		int local72 = anInt685;
-		int local76 = 256 - anInt685;
-		int local96 = ((arg2 & 0xFF00FF) * local76 >> 8 & 0xFF00FF) + ((arg2 & 0xFF00) * local76 >> 8 & 0xFF00);
-		while (true) {
-			local26--;
-			if (local26 < 0) {
-				local26 = arg4 - arg3 & 0x3;
-				while (true) {
-					local26--;
-					if (local26 < 0) {
-						return;
-					}
-					arg0[arg1++] = local96 + ((arg0[arg1] & 0xFF00FF) * local72 >> 8 & 0xFF00FF) + ((arg0[arg1] & 0xFF00) * local72 >> 8 & 0xFF00);
-				}
-			}
-			local33 = arg1 + 1;
-			arg0[arg1] = local96 + ((arg0[local33] & 0xFF00FF) * local72 >> 8 & 0xFF00FF) + ((arg0[local33] & 0xFF00) * local72 >> 8 & 0xFF00);
-			int local130 = local33 + 1;
-			arg0[local33] = local96 + ((arg0[local130] & 0xFF00FF) * local72 >> 8 & 0xFF00FF) + ((arg0[local130] & 0xFF00) * local72 >> 8 & 0xFF00);
-			int local159 = local130 + 1;
-			arg0[local130] = local96 + ((arg0[local159] & 0xFF00FF) * local72 >> 8 & 0xFF00FF) + ((arg0[local159] & 0xFF00) * local72 >> 8 & 0xFF00);
-			arg1 = local159 + 1;
-			arg0[local159] = local96 + ((arg0[arg1] & 0xFF00FF) * local72 >> 8 & 0xFF00FF) + ((arg0[arg1] & 0xFF00) * local72 >> 8 & 0xFF00);
-		}
-	}
+                        method520(Draw2D.data, var0, var6, var4 >> 16, var5 >> 16);
+                        var5 += var9;
+                        var4 += var8;
+                        var0 += Draw2D.width2d;
+                     }
+                  }
 
-	public static void method521( int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, int arg12, int arg13, int arg14, int arg15, int arg16, int arg17, int arg18) {
-		int[] local4 = method514(arg18);
-		aBoolean178 = !aBooleanArray9[arg18];
-		int local16 = arg9 - arg10;
-		int local20 = arg12 - arg13;
-		int local24 = arg15 - arg16;
-		int local28 = arg11 - arg9;
-		int local32 = arg14 - arg12;
-		int local36 = arg17 - arg15;
-		int local46 = local28 * arg12 - local32 * arg9 << 14;
-		int local56 = local32 * arg15 - local36 * arg12 << 8;
-		int local66 = local36 * arg9 - local28 * arg15 << 5;
-		int local76 = local16 * arg12 - local20 * arg9 << 14;
-		int local86 = local20 * arg15 - local24 * arg12 << 8;
-		int local96 = local24 * arg9 - local16 * arg15 << 5;
-		int local106 = local20 * local28 - local16 * local32 << 14;
-		int local116 = local24 * local32 - local20 * local36 << 8;
-		int local126 = local16 * local36 - local24 * local28 << 5;
-		int local128 = 0;
-		int local130 = 0;
-		if (arg1 != arg0) {
-			local128 = (arg4 - arg3 << 16) / (arg1 - arg0);
-			local130 = (arg7 - arg6 << 16) / (arg1 - arg0);
-		}
-		int local155 = 0;
-		int local157 = 0;
-		if (arg2 != arg1) {
-			local155 = (arg5 - arg4 << 16) / (arg2 - arg1);
-			local157 = (arg8 - arg7 << 16) / (arg2 - arg1);
-		}
-		int local182 = 0;
-		int local184 = 0;
-		if (arg2 != arg0) {
-			local182 = (arg3 - arg5 << 16) / (arg0 - arg2);
-			local184 = (arg6 - arg8 << 16) / (arg0 - arg2);
-		}
-		int local298;
-		if (arg0 <= arg1 && arg0 <= arg2) {
-			if (arg0 < Draw2D.bottom) {
-				if (arg1 > Draw2D.bottom) {
-					arg1 = Draw2D.bottom;
-				}
-				if (arg2 > Draw2D.bottom) {
-					arg2 = Draw2D.bottom;
-				}
-				if (arg1 < arg2) {
-					arg5 = arg3 <<= 0x10;
-					arg8 = arg6 <<= 0x10;
-					if (arg0 < 0) {
-						arg5 -= local182 * arg0;
-						arg3 -= local128 * arg0;
-						arg8 -= local184 * arg0;
-						arg6 -= local130 * arg0;
-						arg0 = 0;
-					}
-					arg4 <<= 0x10;
-					arg7 <<= 0x10;
-					if (arg1 < 0) {
-						arg4 -= local155 * arg1;
-						arg7 -= local157 * arg1;
-						arg1 = 0;
-					}
-					local298 = arg0 - anInt687;
-					local46 += local66 * local298;
-					local76 += local96 * local298;
-					local106 += local126 * local298;
-					if (arg0 != arg1 && local182 < local128 || arg0 == arg1 && local182 > local155) {
-						arg2 -= arg1;
-						arg1 -= arg0;
-						arg0 = anIntArray183[arg0];
-						while (true) {
-							arg1--;
-							if (arg1 < 0) {
-								while (true) {
-									arg2--;
-									if (arg2 < 0) {
-										return;
-									}
-									method522(Draw2D.data, local4, 0, 0, arg0, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
-									arg5 += local182;
-									arg4 += local155;
-									arg8 += local184;
-									arg7 += local157;
-									arg0 += Draw2D.width2d;
-									local46 += local66;
-									local76 += local96;
-									local106 += local126;
-								}
-							}
-							method522(Draw2D.data, local4, 0, 0, arg0, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
-							arg5 += local182;
-							arg3 += local128;
-							arg8 += local184;
-							arg6 += local130;
-							arg0 += Draw2D.width2d;
-							local46 += local66;
-							local76 += local96;
-							local106 += local126;
-						}
-					} else {
-						arg2 -= arg1;
-						arg1 -= arg0;
-						arg0 = anIntArray183[arg0];
-						while (true) {
-							arg1--;
-							if (arg1 < 0) {
-								while (true) {
-									arg2--;
-									if (arg2 < 0) {
-										return;
-									}
-									method522(Draw2D.data, local4, 0, 0, arg0, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
-									arg5 += local182;
-									arg4 += local155;
-									arg8 += local184;
-									arg7 += local157;
-									arg0 += Draw2D.width2d;
-									local46 += local66;
-									local76 += local96;
-									local106 += local126;
-								}
-							}
-							method522(Draw2D.data, local4, 0, 0, arg0, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
-							arg5 += local182;
-							arg3 += local128;
-							arg8 += local184;
-							arg6 += local130;
-							arg0 += Draw2D.width2d;
-							local46 += local66;
-							local76 += local96;
-							local106 += local126;
-						}
-					}
-				} else {
-					arg4 = arg3 <<= 0x10;
-					arg7 = arg6 <<= 0x10;
-					if (arg0 < 0) {
-						arg4 -= local182 * arg0;
-						arg3 -= local128 * arg0;
-						arg7 -= local184 * arg0;
-						arg6 -= local130 * arg0;
-						arg0 = 0;
-					}
-					arg5 <<= 0x10;
-					arg8 <<= 0x10;
-					if (arg2 < 0) {
-						arg5 -= local155 * arg2;
-						arg8 -= local157 * arg2;
-						arg2 = 0;
-					}
-					local298 = arg0 - anInt687;
-					local46 += local66 * local298;
-					local76 += local96 * local298;
-					local106 += local126 * local298;
-					if ((arg0 == arg2 || local182 >= local128) && (arg0 != arg2 || local155 <= local128)) {
-						arg1 -= arg2;
-						arg2 -= arg0;
-						arg0 = anIntArray183[arg0];
-						while (true) {
-							arg2--;
-							if (arg2 < 0) {
-								while (true) {
-									arg1--;
-									if (arg1 < 0) {
-										return;
-									}
-									method522(Draw2D.data, local4, 0, 0, arg0, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
-									arg5 += local155;
-									arg3 += local128;
-									arg8 += local157;
-									arg6 += local130;
-									arg0 += Draw2D.width2d;
-									local46 += local66;
-									local76 += local96;
-									local106 += local126;
-								}
-							}
-							method522(Draw2D.data, local4, 0, 0, arg0, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
-							arg4 += local182;
-							arg3 += local128;
-							arg7 += local184;
-							arg6 += local130;
-							arg0 += Draw2D.width2d;
-							local46 += local66;
-							local76 += local96;
-							local106 += local126;
-						}
-					} else {
-						arg1 -= arg2;
-						arg2 -= arg0;
-						arg0 = anIntArray183[arg0];
-						while (true) {
-							arg2--;
-							if (arg2 < 0) {
-								while (true) {
-									arg1--;
-									if (arg1 < 0) {
-										return;
-									}
-									method522(Draw2D.data, local4, 0, 0, arg0, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
-									arg5 += local155;
-									arg3 += local128;
-									arg8 += local157;
-									arg6 += local130;
-									arg0 += Draw2D.width2d;
-									local46 += local66;
-									local76 += local96;
-									local106 += local126;
-								}
-							}
-							method522(Draw2D.data, local4, 0, 0, arg0, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
-							arg4 += local182;
-							arg3 += local128;
-							arg7 += local184;
-							arg6 += local130;
-							arg0 += Draw2D.width2d;
-							local46 += local66;
-							local76 += local96;
-							local106 += local126;
-						}
-					}
-				}
-			}
-		} else if (arg1 <= arg2) {
-			if (arg1 < Draw2D.bottom) {
-				if (arg2 > Draw2D.bottom) {
-					arg2 = Draw2D.bottom;
-				}
-				if (arg0 > Draw2D.bottom) {
-					arg0 = Draw2D.bottom;
-				}
-				if (arg2 < arg0) {
-					arg3 = arg4 <<= 0x10;
-					arg6 = arg7 <<= 0x10;
-					if (arg1 < 0) {
-						arg3 -= local128 * arg1;
-						arg4 -= local155 * arg1;
-						arg6 -= local130 * arg1;
-						arg7 -= local157 * arg1;
-						arg1 = 0;
-					}
-					arg5 <<= 0x10;
-					arg8 <<= 0x10;
-					if (arg2 < 0) {
-						arg5 -= local182 * arg2;
-						arg8 -= local184 * arg2;
-						arg2 = 0;
-					}
-					local298 = arg1 - anInt687;
-					local46 += local66 * local298;
-					local76 += local96 * local298;
-					local106 += local126 * local298;
-					if (arg1 != arg2 && local128 < local155 || arg1 == arg2 && local128 > local182) {
-						arg0 -= arg2;
-						arg2 -= arg1;
-						arg1 = anIntArray183[arg1];
-						while (true) {
-							arg2--;
-							if (arg2 < 0) {
-								while (true) {
-									arg0--;
-									if (arg0 < 0) {
-										return;
-									}
-									method522(Draw2D.data, local4, 0, 0, arg1, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
-									arg3 += local128;
-									arg5 += local182;
-									arg6 += local130;
-									arg8 += local184;
-									arg1 += Draw2D.width2d;
-									local46 += local66;
-									local76 += local96;
-									local106 += local126;
-								}
-							}
-							method522(Draw2D.data, local4, 0, 0, arg1, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
-							arg3 += local128;
-							arg4 += local155;
-							arg6 += local130;
-							arg7 += local157;
-							arg1 += Draw2D.width2d;
-							local46 += local66;
-							local76 += local96;
-							local106 += local126;
-						}
-					} else {
-						arg0 -= arg2;
-						arg2 -= arg1;
-						arg1 = anIntArray183[arg1];
-						while (true) {
-							arg2--;
-							if (arg2 < 0) {
-								while (true) {
-									arg0--;
-									if (arg0 < 0) {
-										return;
-									}
-									method522(Draw2D.data, local4, 0, 0, arg1, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
-									arg3 += local128;
-									arg5 += local182;
-									arg6 += local130;
-									arg8 += local184;
-									arg1 += Draw2D.width2d;
-									local46 += local66;
-									local76 += local96;
-									local106 += local126;
-								}
-							}
-							method522(Draw2D.data, local4, 0, 0, arg1, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
-							arg3 += local128;
-							arg4 += local155;
-							arg6 += local130;
-							arg7 += local157;
-							arg1 += Draw2D.width2d;
-							local46 += local66;
-							local76 += local96;
-							local106 += local126;
-						}
-					}
-				} else {
-					arg5 = arg4 <<= 0x10;
-					arg8 = arg7 <<= 0x10;
-					if (arg1 < 0) {
-						arg5 -= local128 * arg1;
-						arg4 -= local155 * arg1;
-						arg8 -= local130 * arg1;
-						arg7 -= local157 * arg1;
-						arg1 = 0;
-					}
-					arg3 <<= 0x10;
-					arg6 <<= 0x10;
-					if (arg0 < 0) {
-						arg3 -= local182 * arg0;
-						arg6 -= local184 * arg0;
-						arg0 = 0;
-					}
-					local298 = arg1 - anInt687;
-					local46 += local66 * local298;
-					local76 += local96 * local298;
-					local106 += local126 * local298;
-					if (local128 < local155) {
-						arg2 -= arg0;
-						arg0 -= arg1;
-						arg1 = anIntArray183[arg1];
-						while (true) {
-							arg0--;
-							if (arg0 < 0) {
-								while (true) {
-									arg2--;
-									if (arg2 < 0) {
-										return;
-									}
-									method522(Draw2D.data, local4, 0, 0, arg1, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
-									arg3 += local182;
-									arg4 += local155;
-									arg6 += local184;
-									arg7 += local157;
-									arg1 += Draw2D.width2d;
-									local46 += local66;
-									local76 += local96;
-									local106 += local126;
-								}
-							}
-							method522(Draw2D.data, local4, 0, 0, arg1, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
-							arg5 += local128;
-							arg4 += local155;
-							arg8 += local130;
-							arg7 += local157;
-							arg1 += Draw2D.width2d;
-							local46 += local66;
-							local76 += local96;
-							local106 += local126;
-						}
-					} else {
-						arg2 -= arg0;
-						arg0 -= arg1;
-						arg1 = anIntArray183[arg1];
-						while (true) {
-							arg0--;
-							if (arg0 < 0) {
-								while (true) {
-									arg2--;
-									if (arg2 < 0) {
-										return;
-									}
-									method522(Draw2D.data, local4, 0, 0, arg1, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
-									arg3 += local182;
-									arg4 += local155;
-									arg6 += local184;
-									arg7 += local157;
-									arg1 += Draw2D.width2d;
-									local46 += local66;
-									local76 += local96;
-									local106 += local126;
-								}
-							}
-							method522(Draw2D.data, local4, 0, 0, arg1, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
-							arg5 += local128;
-							arg4 += local155;
-							arg8 += local130;
-							arg7 += local157;
-							arg1 += Draw2D.width2d;
-							local46 += local66;
-							local76 += local96;
-							local106 += local126;
-						}
-					}
-				}
-			}
-		} else if (arg2 < Draw2D.bottom) {
-			if (arg0 > Draw2D.bottom) {
-				arg0 = Draw2D.bottom;
-			}
-			if (arg1 > Draw2D.bottom) {
-				arg1 = Draw2D.bottom;
-			}
-			if (arg0 < arg1) {
-				arg4 = arg5 <<= 0x10;
-				arg7 = arg8 <<= 0x10;
-				if (arg2 < 0) {
-					arg4 -= local155 * arg2;
-					arg5 -= local182 * arg2;
-					arg7 -= local157 * arg2;
-					arg8 -= local184 * arg2;
-					arg2 = 0;
-				}
-				arg3 <<= 0x10;
-				arg6 <<= 0x10;
-				if (arg0 < 0) {
-					arg3 -= local128 * arg0;
-					arg6 -= local130 * arg0;
-					arg0 = 0;
-				}
-				local298 = arg2 - anInt687;
-				local46 += local66 * local298;
-				local76 += local96 * local298;
-				local106 += local126 * local298;
-				if (local155 < local182) {
-					arg1 -= arg0;
-					arg0 -= arg2;
-					arg2 = anIntArray183[arg2];
-					while (true) {
-						arg0--;
-						if (arg0 < 0) {
-							while (true) {
-								arg1--;
-								if (arg1 < 0) {
-									return;
-								}
-								method522(Draw2D.data, local4, 0, 0, arg2, arg4 >> 16, arg3 >> 16, arg7 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
-								arg4 += local155;
-								arg3 += local128;
-								arg7 += local157;
-								arg6 += local130;
-								arg2 += Draw2D.width2d;
-								local46 += local66;
-								local76 += local96;
-								local106 += local126;
-							}
-						}
-						method522(Draw2D.data, local4, 0, 0, arg2, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
-						arg4 += local155;
-						arg5 += local182;
-						arg7 += local157;
-						arg8 += local184;
-						arg2 += Draw2D.width2d;
-						local46 += local66;
-						local76 += local96;
-						local106 += local126;
-					}
-				} else {
-					arg1 -= arg0;
-					arg0 -= arg2;
-					arg2 = anIntArray183[arg2];
-					while (true) {
-						arg0--;
-						if (arg0 < 0) {
-							while (true) {
-								arg1--;
-								if (arg1 < 0) {
-									return;
-								}
-								method522(Draw2D.data, local4, 0, 0, arg2, arg3 >> 16, arg4 >> 16, arg6 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
-								arg4 += local155;
-								arg3 += local128;
-								arg7 += local157;
-								arg6 += local130;
-								arg2 += Draw2D.width2d;
-								local46 += local66;
-								local76 += local96;
-								local106 += local126;
-							}
-						}
-						method522(Draw2D.data, local4, 0, 0, arg2, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
-						arg4 += local155;
-						arg5 += local182;
-						arg7 += local157;
-						arg8 += local184;
-						arg2 += Draw2D.width2d;
-						local46 += local66;
-						local76 += local96;
-						local106 += local126;
-					}
-				}
-			} else {
-				arg3 = arg5 <<= 0x10;
-				arg6 = arg8 <<= 0x10;
-				if (arg2 < 0) {
-					arg3 -= local155 * arg2;
-					arg5 -= local182 * arg2;
-					arg6 -= local157 * arg2;
-					arg8 -= local184 * arg2;
-					arg2 = 0;
-				}
-				arg4 <<= 0x10;
-				arg7 <<= 0x10;
-				if (arg1 < 0) {
-					arg4 -= local128 * arg1;
-					arg7 -= local130 * arg1;
-					arg1 = 0;
-				}
-				local298 = arg2 - anInt687;
-				local46 += local66 * local298;
-				local76 += local96 * local298;
-				local106 += local126 * local298;
-				if (local155 < local182) {
-					arg0 -= arg1;
-					arg1 -= arg2;
-					arg2 = anIntArray183[arg2];
-					while (true) {
-						arg1--;
-						if (arg1 < 0) {
-							while (true) {
-								arg0--;
-								if (arg0 < 0) {
-									return;
-								}
-								method522(Draw2D.data, local4, 0, 0, arg2, arg4 >> 16, arg5 >> 16, arg7 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
-								arg4 += local128;
-								arg5 += local182;
-								arg7 += local130;
-								arg8 += local184;
-								arg2 += Draw2D.width2d;
-								local46 += local66;
-								local76 += local96;
-								local106 += local126;
-							}
-						}
-						method522(Draw2D.data, local4, 0, 0, arg2, arg3 >> 16, arg5 >> 16, arg6 >> 8, arg8 >> 8, local46, local76, local106, local56, local86, local116);
-						arg3 += local155;
-						arg5 += local182;
-						arg6 += local157;
-						arg8 += local184;
-						arg2 += Draw2D.width2d;
-						local46 += local66;
-						local76 += local96;
-						local106 += local126;
-					}
-				} else {
-					arg0 -= arg1;
-					arg1 -= arg2;
-					arg2 = anIntArray183[arg2];
-					while (true) {
-						arg1--;
-						if (arg1 < 0) {
-							while (true) {
-								arg0--;
-								if (arg0 < 0) {
-									return;
-								}
-								method522(Draw2D.data, local4, 0, 0, arg2, arg5 >> 16, arg4 >> 16, arg8 >> 8, arg7 >> 8, local46, local76, local106, local56, local86, local116);
-								arg4 += local128;
-								arg5 += local182;
-								arg7 += local130;
-								arg8 += local184;
-								arg2 += Draw2D.width2d;
-								local46 += local66;
-								local76 += local96;
-								local106 += local126;
-							}
-						}
-						method522(Draw2D.data, local4, 0, 0, arg2, arg5 >> 16, arg3 >> 16, arg8 >> 8, arg6 >> 8, local46, local76, local106, local56, local86, local116);
-						arg3 += local155;
-						arg5 += local182;
-						arg6 += local157;
-						arg8 += local184;
-						arg2 += Draw2D.width2d;
-						local46 += local66;
-						local76 += local96;
-						local106 += local126;
-					}
-				}
-			}
-		}
-	}
+                  method520(Draw2D.data, var0, var6, var3 >> 16, var5 >> 16);
+                  var5 += var9;
+                  var3 += var7;
+                  var0 += Draw2D.width2d;
+               }
+            }
 
-	private static void method522( int[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, int arg12, int arg13, int arg14) {
-		if (arg5 >= arg6) {
-			return;
-		}
-		int local15;
-		int local40;
-		if (aBoolean177) {
-			local15 = (arg8 - arg7) / (arg6 - arg5);
-			if (arg6 > Draw2D.boundX) {
-				arg6 = Draw2D.boundX;
-			}
-			if (arg5 < 0) {
-				arg7 -= arg5 * local15;
-				arg5 = 0;
-			}
-			if (arg5 >= arg6) {
-				return;
-			}
-			local40 = arg6 - arg5 >> 3;
-			local15 <<= 0xC;
-			arg7 <<= 0x9;
-		} else {
-			if (arg6 - arg5 > 7) {
-				local40 = arg6 - arg5 >> 3;
-				local15 = (arg8 - arg7) * anIntArray179[local40] >> 6;
-			} else {
-				local40 = 0;
-				local15 = 0;
-			}
-			arg7 <<= 0x9;
-		}
-		arg4 += arg5;
-		int local89;
-		int local91;
-		int local123;
-		int local95;
-		int local188;
-		int local194;
-		int local206;
-		int local213;
-		int local103;
-		int local111;
-		int local119;
-		if (aBoolean176) {
-			local89 = 0;
-			local91 = 0;
-			local95 = arg5 - anInt686;
-			local103 = arg9 + (arg12 >> 3) * local95;
-			local111 = arg10 + (arg13 >> 3) * local95;
-			local119 = arg11 + (arg14 >> 3) * local95;
-			local123 = local119 >> 12;
-			if (local123 != 0) {
-				arg2 = local103 / local123;
-				arg3 = local111 / local123;
-				if (arg2 < 0) {
-					arg2 = 0;
-				} else if (arg2 > 4032) {
-					arg2 = 4032;
-				}
-			}
-			arg9 = local103 + arg12;
-			arg10 = local111 + arg13;
-			arg11 = local119 + arg14;
-			local123 = arg11 >> 12;
-			if (local123 != 0) {
-				local89 = arg9 / local123;
-				local91 = arg10 / local123;
-				if (local89 < 7) {
-					local89 = 7;
-				} else if (local89 > 4032) {
-					local89 = 4032;
-				}
-			}
-			local188 = local89 - arg2 >> 3;
-			local194 = local91 - arg3 >> 3;
-			arg2 += arg7 >> 3 & 0xC0000;
-			local206 = arg7 >> 23;
-			if (aBoolean178) {
-				while (local40-- > 0) {
-					local213 = arg4 + 1;
-					arg0[arg4] = arg1[(arg3 & 0xFC0) + (arg2 >> 6)] >>> local206;
-					arg2 += local188;
-					arg3 += local194;
-					arg0[local213++] = arg1[(arg3 & 0xFC0) + (arg2 >> 6)] >>> local206;
-					arg2 += local188;
-					arg3 += local194;
-					arg0[local213++] = arg1[(arg3 & 0xFC0) + (arg2 >> 6)] >>> local206;
-					arg2 += local188;
-					arg3 += local194;
-					arg0[local213++] = arg1[(arg3 & 0xFC0) + (arg2 >> 6)] >>> local206;
-					arg2 += local188;
-					arg3 += local194;
-					arg0[local213++] = arg1[(arg3 & 0xFC0) + (arg2 >> 6)] >>> local206;
-					arg2 += local188;
-					arg3 += local194;
-					arg0[local213++] = arg1[(arg3 & 0xFC0) + (arg2 >> 6)] >>> local206;
-					arg2 += local188;
-					arg3 += local194;
-					arg0[local213++] = arg1[(arg3 & 0xFC0) + (arg2 >> 6)] >>> local206;
-					arg2 += local188;
-					arg3 += local194;
-					arg4 = local213 + 1;
-					arg0[local213] = arg1[(arg3 & 0xFC0) + (arg2 >> 6)] >>> local206;
-					arg2 = local89;
-					arg3 = local91;
-					arg9 += arg12;
-					arg10 += arg13;
-					arg11 += arg14;
-					local123 = arg11 >> 12;
-					if (local123 != 0) {
-						local89 = arg9 / local123;
-						local91 = arg10 / local123;
-						if (local89 < 7) {
-							local89 = 7;
-						} else if (local89 > 4032) {
-							local89 = 4032;
-						}
-					}
-					local188 = local89 - arg2 >> 3;
-					local194 = local91 - arg3 >> 3;
-					arg7 += local15;
-					arg2 += arg7 >> 3 & 0xC0000;
-					local206 = arg7 >> 23;
-				}
-				local40 = arg6 - arg5 & 0x7;
-				while (local40-- > 0) {
-					arg0[arg4++] = arg1[(arg3 & 0xFC0) + (arg2 >> 6)] >>> local206;
-					arg2 += local188;
-					arg3 += local194;
-				}
-			} else {
-				while (local40-- > 0) {
-					int local507;
-					if ((local507 = arg1[(arg3 & 0xFC0) + (arg2 >> 6)] >>> local206) != 0) {
-						arg0[arg4] = local507;
-					}
-					local213 = arg4 + 1;
-					arg2 += local188;
-					arg3 += local194;
-					int local534;
-					if ((local534 = arg1[(arg3 & 0xFC0) + (arg2 >> 6)] >>> local206) != 0) {
-						arg0[local213] = local534;
-					}
-					local213++;
-					arg2 += local188;
-					arg3 += local194;
-					int local561;
-					if ((local561 = arg1[(arg3 & 0xFC0) + (arg2 >> 6)] >>> local206) != 0) {
-						arg0[local213] = local561;
-					}
-					local213++;
-					arg2 += local188;
-					arg3 += local194;
-					int local588;
-					if ((local588 = arg1[(arg3 & 0xFC0) + (arg2 >> 6)] >>> local206) != 0) {
-						arg0[local213] = local588;
-					}
-					local213++;
-					arg2 += local188;
-					arg3 += local194;
-					int local615;
-					if ((local615 = arg1[(arg3 & 0xFC0) + (arg2 >> 6)] >>> local206) != 0) {
-						arg0[local213] = local615;
-					}
-					local213++;
-					arg2 += local188;
-					arg3 += local194;
-					int local642;
-					if ((local642 = arg1[(arg3 & 0xFC0) + (arg2 >> 6)] >>> local206) != 0) {
-						arg0[local213] = local642;
-					}
-					local213++;
-					arg2 += local188;
-					arg3 += local194;
-					int local669;
-					if ((local669 = arg1[(arg3 & 0xFC0) + (arg2 >> 6)] >>> local206) != 0) {
-						arg0[local213] = local669;
-					}
-					local213++;
-					arg2 += local188;
-					arg3 += local194;
-					int local696;
-					if ((local696 = arg1[(arg3 & 0xFC0) + (arg2 >> 6)] >>> local206) != 0) {
-						arg0[local213] = local696;
-					}
-					arg4 = local213 + 1;
-					arg2 = local89;
-					arg3 = local91;
-					arg9 += arg12;
-					arg10 += arg13;
-					arg11 += arg14;
-					local123 = arg11 >> 12;
-					if (local123 != 0) {
-						local89 = arg9 / local123;
-						local91 = arg10 / local123;
-						if (local89 < 7) {
-							local89 = 7;
-						} else if (local89 > 4032) {
-							local89 = 4032;
-						}
-					}
-					local188 = local89 - arg2 >> 3;
-					local194 = local91 - arg3 >> 3;
-					arg7 += local15;
-					arg2 += arg7 >> 3 & 0xC0000;
-					local206 = arg7 >> 23;
-				}
-				local40 = arg6 - arg5 & 0x7;
-				while (local40-- > 0) {
-					int local796;
-					if ((local796 = arg1[(arg3 & 0xFC0) + (arg2 >> 6)] >>> local206) != 0) {
-						arg0[arg4] = local796;
-					}
-					arg4++;
-					arg2 += local188;
-					arg3 += local194;
-				}
-			}
-			return;
-		}
-		local89 = 0;
-		local91 = 0;
-		local95 = arg5 - anInt686;
-		local103 = arg9 + (arg12 >> 3) * local95;
-		local111 = arg10 + (arg13 >> 3) * local95;
-		local119 = arg11 + (arg14 >> 3) * local95;
-		local123 = local119 >> 14;
-		if (local123 != 0) {
-			arg2 = local103 / local123;
-			arg3 = local111 / local123;
-			if (arg2 < 0) {
-				arg2 = 0;
-			} else if (arg2 > 16256) {
-				arg2 = 16256;
-			}
-		}
-		arg9 = local103 + arg12;
-		arg10 = local111 + arg13;
-		arg11 = local119 + arg14;
-		local123 = arg11 >> 14;
-		if (local123 != 0) {
-			local89 = arg9 / local123;
-			local91 = arg10 / local123;
-			if (local89 < 7) {
-				local89 = 7;
-			} else if (local89 > 16256) {
-				local89 = 16256;
-			}
-		}
-		local188 = local89 - arg2 >> 3;
-		local194 = local91 - arg3 >> 3;
-		arg2 += arg7 & 0x600000;
-		local206 = arg7 >> 23;
-		if (aBoolean178) {
-			while (local40-- > 0) {
-				local213 = arg4 + 1;
-				arg0[arg4] = arg1[(arg3 & 0x3F80) + (arg2 >> 7)] >>> local206;
-				arg2 += local188;
-				arg3 += local194;
-				int local961 = local213 + 1;
-				arg0[local213] = arg1[(arg3 & 0x3F80) + (arg2 >> 7)] >>> local206;
-				arg2 += local188;
-				arg3 += local194;
-				int local984 = local961 + 1;
-				arg0[local961] = arg1[(arg3 & 0x3F80) + (arg2 >> 7)] >>> local206;
-				arg2 += local188;
-				arg3 += local194;
-				int local1007 = local984 + 1;
-				arg0[local984] = arg1[(arg3 & 0x3F80) + (arg2 >> 7)] >>> local206;
-				arg2 += local188;
-				arg3 += local194;
-				int local1030 = local1007 + 1;
-				arg0[local1007] = arg1[(arg3 & 0x3F80) + (arg2 >> 7)] >>> local206;
-				arg2 += local188;
-				arg3 += local194;
-				int local1053 = local1030 + 1;
-				arg0[local1030] = arg1[(arg3 & 0x3F80) + (arg2 >> 7)] >>> local206;
-				arg2 += local188;
-				arg3 += local194;
-				int local1076 = local1053 + 1;
-				arg0[local1053] = arg1[(arg3 & 0x3F80) + (arg2 >> 7)] >>> local206;
-				arg2 += local188;
-				arg3 += local194;
-				arg4 = local1076 + 1;
-				arg0[local1076] = arg1[(arg3 & 0x3F80) + (arg2 >> 7)] >>> local206;
-				arg2 = local89;
-				arg3 = local91;
-				arg9 += arg12;
-				arg10 += arg13;
-				arg11 += arg14;
-				local123 = arg11 >> 14;
-				if (local123 != 0) {
-					local89 = arg9 / local123;
-					local91 = arg10 / local123;
-					if (local89 < 7) {
-						local89 = 7;
-					} else if (local89 > 16256) {
-						local89 = 16256;
-					}
-				}
-				local188 = local89 - arg2 >> 3;
-				local194 = local91 - arg3 >> 3;
-				arg7 += local15;
-				arg2 += arg7 & 0x600000;
-				local206 = arg7 >> 23;
-			}
-			local40 = arg6 - arg5 & 0x7;
-			while (local40-- > 0) {
-				arg0[arg4++] = arg1[(arg3 & 0x3F80) + (arg2 >> 7)] >>> local206;
-				arg2 += local188;
-				arg3 += local194;
-			}
-			return;
-		}
-		while (local40-- > 0) {
-			int local1230;
-			if ((local1230 = arg1[(arg3 & 0x3F80) + (arg2 >> 7)] >>> local206) != 0) {
-				arg0[arg4] = local1230;
-			}
-			local213 = arg4 + 1;
-			arg2 += local188;
-			arg3 += local194;
-			int local1257;
-			if ((local1257 = arg1[(arg3 & 0x3F80) + (arg2 >> 7)] >>> local206) != 0) {
-				arg0[local213] = local1257;
-			}
-			local213++;
-			arg2 += local188;
-			arg3 += local194;
-			int local1284;
-			if ((local1284 = arg1[(arg3 & 0x3F80) + (arg2 >> 7)] >>> local206) != 0) {
-				arg0[local213] = local1284;
-			}
-			local213++;
-			arg2 += local188;
-			arg3 += local194;
-			int local1311;
-			if ((local1311 = arg1[(arg3 & 0x3F80) + (arg2 >> 7)] >>> local206) != 0) {
-				arg0[local213] = local1311;
-			}
-			local213++;
-			arg2 += local188;
-			arg3 += local194;
-			int local1338;
-			if ((local1338 = arg1[(arg3 & 0x3F80) + (arg2 >> 7)] >>> local206) != 0) {
-				arg0[local213] = local1338;
-			}
-			local213++;
-			arg2 += local188;
-			arg3 += local194;
-			int local1365;
-			if ((local1365 = arg1[(arg3 & 0x3F80) + (arg2 >> 7)] >>> local206) != 0) {
-				arg0[local213] = local1365;
-			}
-			local213++;
-			arg2 += local188;
-			arg3 += local194;
-			int local1392;
-			if ((local1392 = arg1[(arg3 & 0x3F80) + (arg2 >> 7)] >>> local206) != 0) {
-				arg0[local213] = local1392;
-			}
-			local213++;
-			arg2 += local188;
-			arg3 += local194;
-			int local1419;
-			if ((local1419 = arg1[(arg3 & 0x3F80) + (arg2 >> 7)] >>> local206) != 0) {
-				arg0[local213] = local1419;
-			}
-			arg4 = local213 + 1;
-			arg2 = local89;
-			arg3 = local91;
-			arg9 += arg12;
-			arg10 += arg13;
-			arg11 += arg14;
-			local123 = arg11 >> 14;
-			if (local123 != 0) {
-				local89 = arg9 / local123;
-				local91 = arg10 / local123;
-				if (local89 < 7) {
-					local89 = 7;
-				} else if (local89 > 16256) {
-					local89 = 16256;
-				}
-			}
-			local188 = local89 - arg2 >> 3;
-			local194 = local91 - arg3 >> 3;
-			arg7 += local15;
-			arg2 += arg7 & 0x600000;
-			local206 = arg7 >> 23;
-		}
-		local40 = arg6 - arg5 & 0x7;
-		while (local40-- > 0) {
-			int local1517;
-			if ((local1517 = arg1[(arg3 & 0x3F80) + (arg2 >> 7)] >>> local206) != 0) {
-				arg0[arg4] = local1517;
-			}
-			arg4++;
-			arg2 += local188;
-			arg3 += local194;
-		}
-	}
+            var4 = var3 <<= 16;
+            if (var0 < 0) {
+               var4 -= var9 * var0;
+               var3 -= var7 * var0;
+               var0 = 0;
+            }
+
+            var5 <<= 16;
+            if (var2 < 0) {
+               var5 -= var8 * var2;
+               var2 = 0;
+            }
+
+            if ((var0 == var2 || var9 >= var7) && (var0 != var2 || var8 <= var7)) {
+               var1 -= var2;
+               var2 -= var0;
+               var0 = anIntArray183[var0];
+
+               while(true) {
+                  --var2;
+                  if (var2 < 0) {
+                     while(true) {
+                        --var1;
+                        if (var1 < 0) {
+                           return;
+                        }
+
+                        method520(Draw2D.data, var0, var6, var3 >> 16, var5 >> 16);
+                        var5 += var8;
+                        var3 += var7;
+                        var0 += Draw2D.width2d;
+                     }
+                  }
+
+                  method520(Draw2D.data, var0, var6, var3 >> 16, var4 >> 16);
+                  var4 += var9;
+                  var3 += var7;
+                  var0 += Draw2D.width2d;
+               }
+            }
+
+            var1 -= var2;
+            var2 -= var0;
+            var0 = anIntArray183[var0];
+
+            while(true) {
+               --var2;
+               if (var2 < 0) {
+                  while(true) {
+                     --var1;
+                     if (var1 < 0) {
+                        return;
+                     }
+
+                     method520(Draw2D.data, var0, var6, var5 >> 16, var3 >> 16);
+                     var5 += var8;
+                     var3 += var7;
+                     var0 += Draw2D.width2d;
+                  }
+               }
+
+               method520(Draw2D.data, var0, var6, var4 >> 16, var3 >> 16);
+               var4 += var9;
+               var3 += var7;
+               var0 += Draw2D.width2d;
+            }
+         }
+      } else if (var1 <= var2) {
+         if (var1 < Draw2D.bottom) {
+            if (var2 > Draw2D.bottom) {
+               var2 = Draw2D.bottom;
+            }
+
+            if (var0 > Draw2D.bottom) {
+               var0 = Draw2D.bottom;
+            }
+
+            if (var2 < var0) {
+               var3 = var4 <<= 16;
+               if (var1 < 0) {
+                  var3 -= var7 * var1;
+                  var4 -= var8 * var1;
+                  var1 = 0;
+               }
+
+               var5 <<= 16;
+               if (var2 < 0) {
+                  var5 -= var9 * var2;
+                  var2 = 0;
+               }
+
+               if (var1 != var2 && var7 < var8 || var1 == var2 && var7 > var9) {
+                  var0 -= var2;
+                  var2 -= var1;
+                  var1 = anIntArray183[var1];
+
+                  while(true) {
+                     --var2;
+                     if (var2 < 0) {
+                        while(true) {
+                           --var0;
+                           if (var0 < 0) {
+                              return;
+                           }
+
+                           method520(Draw2D.data, var1, var6, var3 >> 16, var5 >> 16);
+                           var3 += var7;
+                           var5 += var9;
+                           var1 += Draw2D.width2d;
+                        }
+                     }
+
+                     method520(Draw2D.data, var1, var6, var3 >> 16, var4 >> 16);
+                     var3 += var7;
+                     var4 += var8;
+                     var1 += Draw2D.width2d;
+                  }
+               }
+
+               var0 -= var2;
+               var2 -= var1;
+               var1 = anIntArray183[var1];
+
+               while(true) {
+                  --var2;
+                  if (var2 < 0) {
+                     while(true) {
+                        --var0;
+                        if (var0 < 0) {
+                           return;
+                        }
+
+                        method520(Draw2D.data, var1, var6, var5 >> 16, var3 >> 16);
+                        var3 += var7;
+                        var5 += var9;
+                        var1 += Draw2D.width2d;
+                     }
+                  }
+
+                  method520(Draw2D.data, var1, var6, var4 >> 16, var3 >> 16);
+                  var3 += var7;
+                  var4 += var8;
+                  var1 += Draw2D.width2d;
+               }
+            }
+
+            var5 = var4 <<= 16;
+            if (var1 < 0) {
+               var5 -= var7 * var1;
+               var4 -= var8 * var1;
+               var1 = 0;
+            }
+
+            var3 <<= 16;
+            if (var0 < 0) {
+               var3 -= var9 * var0;
+               var0 = 0;
+            }
+
+            if (var7 < var8) {
+               var2 -= var0;
+               var0 -= var1;
+               var1 = anIntArray183[var1];
+
+               while(true) {
+                  --var0;
+                  if (var0 < 0) {
+                     while(true) {
+                        --var2;
+                        if (var2 < 0) {
+                           return;
+                        }
+
+                        method520(Draw2D.data, var1, var6, var3 >> 16, var4 >> 16);
+                        var3 += var9;
+                        var4 += var8;
+                        var1 += Draw2D.width2d;
+                     }
+                  }
+
+                  method520(Draw2D.data, var1, var6, var5 >> 16, var4 >> 16);
+                  var5 += var7;
+                  var4 += var8;
+                  var1 += Draw2D.width2d;
+               }
+            }
+
+            var2 -= var0;
+            var0 -= var1;
+            var1 = anIntArray183[var1];
+
+            while(true) {
+               --var0;
+               if (var0 < 0) {
+                  while(true) {
+                     --var2;
+                     if (var2 < 0) {
+                        return;
+                     }
+
+                     method520(Draw2D.data, var1, var6, var4 >> 16, var3 >> 16);
+                     var3 += var9;
+                     var4 += var8;
+                     var1 += Draw2D.width2d;
+                  }
+               }
+
+               method520(Draw2D.data, var1, var6, var4 >> 16, var5 >> 16);
+               var5 += var7;
+               var4 += var8;
+               var1 += Draw2D.width2d;
+            }
+         }
+      } else if (var2 < Draw2D.bottom) {
+         if (var0 > Draw2D.bottom) {
+            var0 = Draw2D.bottom;
+         }
+
+         if (var1 > Draw2D.bottom) {
+            var1 = Draw2D.bottom;
+         }
+
+         if (var0 < var1) {
+            var4 = var5 <<= 16;
+            if (var2 < 0) {
+               var4 -= var8 * var2;
+               var5 -= var9 * var2;
+               var2 = 0;
+            }
+
+            var3 <<= 16;
+            if (var0 < 0) {
+               var3 -= var7 * var0;
+               var0 = 0;
+            }
+
+            if (var8 < var9) {
+               var1 -= var0;
+               var0 -= var2;
+               var2 = anIntArray183[var2];
+
+               while(true) {
+                  --var0;
+                  if (var0 < 0) {
+                     while(true) {
+                        --var1;
+                        if (var1 < 0) {
+                           return;
+                        }
+
+                        method520(Draw2D.data, var2, var6, var4 >> 16, var3 >> 16);
+                        var4 += var8;
+                        var3 += var7;
+                        var2 += Draw2D.width2d;
+                     }
+                  }
+
+                  method520(Draw2D.data, var2, var6, var4 >> 16, var5 >> 16);
+                  var4 += var8;
+                  var5 += var9;
+                  var2 += Draw2D.width2d;
+               }
+            }
+
+            var1 -= var0;
+            var0 -= var2;
+            var2 = anIntArray183[var2];
+
+            while(true) {
+               --var0;
+               if (var0 < 0) {
+                  while(true) {
+                     --var1;
+                     if (var1 < 0) {
+                        return;
+                     }
+
+                     method520(Draw2D.data, var2, var6, var3 >> 16, var4 >> 16);
+                     var4 += var8;
+                     var3 += var7;
+                     var2 += Draw2D.width2d;
+                  }
+               }
+
+               method520(Draw2D.data, var2, var6, var5 >> 16, var4 >> 16);
+               var4 += var8;
+               var5 += var9;
+               var2 += Draw2D.width2d;
+            }
+         }
+
+         var3 = var5 <<= 16;
+         if (var2 < 0) {
+            var3 -= var8 * var2;
+            var5 -= var9 * var2;
+            var2 = 0;
+         }
+
+         var4 <<= 16;
+         if (var1 < 0) {
+            var4 -= var7 * var1;
+            var1 = 0;
+         }
+
+         if (var8 < var9) {
+            var0 -= var1;
+            var1 -= var2;
+            var2 = anIntArray183[var2];
+
+            while(true) {
+               --var1;
+               if (var1 < 0) {
+                  while(true) {
+                     --var0;
+                     if (var0 < 0) {
+                        return;
+                     }
+
+                     method520(Draw2D.data, var2, var6, var4 >> 16, var5 >> 16);
+                     var4 += var7;
+                     var5 += var9;
+                     var2 += Draw2D.width2d;
+                  }
+               }
+
+               method520(Draw2D.data, var2, var6, var3 >> 16, var5 >> 16);
+               var3 += var8;
+               var5 += var9;
+               var2 += Draw2D.width2d;
+            }
+         }
+
+         var0 -= var1;
+         var1 -= var2;
+         var2 = anIntArray183[var2];
+
+         while(true) {
+            --var1;
+            if (var1 < 0) {
+               while(true) {
+                  --var0;
+                  if (var0 < 0) {
+                     return;
+                  }
+
+                  method520(Draw2D.data, var2, var6, var5 >> 16, var4 >> 16);
+                  var4 += var7;
+                  var5 += var9;
+                  var2 += Draw2D.width2d;
+               }
+            }
+
+            method520(Draw2D.data, var2, var6, var5 >> 16, var3 >> 16);
+            var3 += var8;
+            var5 += var9;
+            var2 += Draw2D.width2d;
+         }
+      }
+
+   }
+
+   public static void method517(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
+      int var9 = 0;
+      int var10 = 0;
+      if (var1 != var0) {
+         var9 = (var4 - var3 << 16) / (var1 - var0);
+         var10 = (var7 - var6 << 15) / (var1 - var0);
+      }
+
+      int var11 = 0;
+      int var12 = 0;
+      if (var2 != var1) {
+         var11 = (var5 - var4 << 16) / (var2 - var1);
+         var12 = (var8 - var7 << 15) / (var2 - var1);
+      }
+
+      int var13 = 0;
+      int var14 = 0;
+      if (var2 != var0) {
+         var13 = (var3 - var5 << 16) / (var0 - var2);
+         var14 = (var6 - var8 << 15) / (var0 - var2);
+      }
+
+      if (var0 <= var1 && var0 <= var2) {
+         if (var0 < Draw2D.bottom) {
+            if (var1 > Draw2D.bottom) {
+               var1 = Draw2D.bottom;
+            }
+
+            if (var2 > Draw2D.bottom) {
+               var2 = Draw2D.bottom;
+            }
+
+            if (var1 < var2) {
+               var5 = var3 <<= 16;
+               var8 = var6 <<= 15;
+               if (var0 < 0) {
+                  var5 -= var13 * var0;
+                  var3 -= var9 * var0;
+                  var8 -= var14 * var0;
+                  var6 -= var10 * var0;
+                  var0 = 0;
+               }
+
+               var4 <<= 16;
+               var7 <<= 15;
+               if (var1 < 0) {
+                  var4 -= var11 * var1;
+                  var7 -= var12 * var1;
+                  var1 = 0;
+               }
+
+               if (var0 != var1 && var13 < var9 || var0 == var1 && var13 > var11) {
+                  var2 -= var1;
+                  var1 -= var0;
+                  var0 = anIntArray183[var0];
+
+                  while(true) {
+                     --var1;
+                     if (var1 < 0) {
+                        while(true) {
+                           --var2;
+                           if (var2 < 0) {
+                              return;
+                           }
+
+                           method518(Draw2D.data, var0, var5 >> 16, var4 >> 16, var8 >> 7, var7 >> 7);
+                           var5 += var13;
+                           var4 += var11;
+                           var8 += var14;
+                           var7 += var12;
+                           var0 += Draw2D.width2d;
+                        }
+                     }
+
+                     method518(Draw2D.data, var0, var5 >> 16, var3 >> 16, var8 >> 7, var6 >> 7);
+                     var5 += var13;
+                     var3 += var9;
+                     var8 += var14;
+                     var6 += var10;
+                     var0 += Draw2D.width2d;
+                  }
+               }
+
+               var2 -= var1;
+               var1 -= var0;
+               var0 = anIntArray183[var0];
+
+               while(true) {
+                  --var1;
+                  if (var1 < 0) {
+                     while(true) {
+                        --var2;
+                        if (var2 < 0) {
+                           return;
+                        }
+
+                        method518(Draw2D.data, var0, var4 >> 16, var5 >> 16, var7 >> 7, var8 >> 7);
+                        var5 += var13;
+                        var4 += var11;
+                        var8 += var14;
+                        var7 += var12;
+                        var0 += Draw2D.width2d;
+                     }
+                  }
+
+                  method518(Draw2D.data, var0, var3 >> 16, var5 >> 16, var6 >> 7, var8 >> 7);
+                  var5 += var13;
+                  var3 += var9;
+                  var8 += var14;
+                  var6 += var10;
+                  var0 += Draw2D.width2d;
+               }
+            }
+
+            var4 = var3 <<= 16;
+            var7 = var6 <<= 15;
+            if (var0 < 0) {
+               var4 -= var13 * var0;
+               var3 -= var9 * var0;
+               var7 -= var14 * var0;
+               var6 -= var10 * var0;
+               var0 = 0;
+            }
+
+            var5 <<= 16;
+            var8 <<= 15;
+            if (var2 < 0) {
+               var5 -= var11 * var2;
+               var8 -= var12 * var2;
+               var2 = 0;
+            }
+
+            if ((var0 == var2 || var13 >= var9) && (var0 != var2 || var11 <= var9)) {
+               var1 -= var2;
+               var2 -= var0;
+               var0 = anIntArray183[var0];
+
+               while(true) {
+                  --var2;
+                  if (var2 < 0) {
+                     while(true) {
+                        --var1;
+                        if (var1 < 0) {
+                           return;
+                        }
+
+                        method518(Draw2D.data, var0, var3 >> 16, var5 >> 16, var6 >> 7, var8 >> 7);
+                        var5 += var11;
+                        var3 += var9;
+                        var8 += var12;
+                        var6 += var10;
+                        var0 += Draw2D.width2d;
+                     }
+                  }
+
+                  method518(Draw2D.data, var0, var3 >> 16, var4 >> 16, var6 >> 7, var7 >> 7);
+                  var4 += var13;
+                  var3 += var9;
+                  var7 += var14;
+                  var6 += var10;
+                  var0 += Draw2D.width2d;
+               }
+            }
+
+            var1 -= var2;
+            var2 -= var0;
+            var0 = anIntArray183[var0];
+
+            while(true) {
+               --var2;
+               if (var2 < 0) {
+                  while(true) {
+                     --var1;
+                     if (var1 < 0) {
+                        return;
+                     }
+
+                     method518(Draw2D.data, var0, var5 >> 16, var3 >> 16, var8 >> 7, var6 >> 7);
+                     var5 += var11;
+                     var3 += var9;
+                     var8 += var12;
+                     var6 += var10;
+                     var0 += Draw2D.width2d;
+                  }
+               }
+
+               method518(Draw2D.data, var0, var4 >> 16, var3 >> 16, var7 >> 7, var6 >> 7);
+               var4 += var13;
+               var3 += var9;
+               var7 += var14;
+               var6 += var10;
+               var0 += Draw2D.width2d;
+            }
+         }
+      } else if (var1 <= var2) {
+         if (var1 < Draw2D.bottom) {
+            if (var2 > Draw2D.bottom) {
+               var2 = Draw2D.bottom;
+            }
+
+            if (var0 > Draw2D.bottom) {
+               var0 = Draw2D.bottom;
+            }
+
+            if (var2 < var0) {
+               var3 = var4 <<= 16;
+               var6 = var7 <<= 15;
+               if (var1 < 0) {
+                  var3 -= var9 * var1;
+                  var4 -= var11 * var1;
+                  var6 -= var10 * var1;
+                  var7 -= var12 * var1;
+                  var1 = 0;
+               }
+
+               var5 <<= 16;
+               var8 <<= 15;
+               if (var2 < 0) {
+                  var5 -= var13 * var2;
+                  var8 -= var14 * var2;
+                  var2 = 0;
+               }
+
+               if (var1 != var2 && var9 < var11 || var1 == var2 && var9 > var13) {
+                  var0 -= var2;
+                  var2 -= var1;
+                  var1 = anIntArray183[var1];
+
+                  while(true) {
+                     --var2;
+                     if (var2 < 0) {
+                        while(true) {
+                           --var0;
+                           if (var0 < 0) {
+                              return;
+                           }
+
+                           method518(Draw2D.data, var1, var3 >> 16, var5 >> 16, var6 >> 7, var8 >> 7);
+                           var3 += var9;
+                           var5 += var13;
+                           var6 += var10;
+                           var8 += var14;
+                           var1 += Draw2D.width2d;
+                        }
+                     }
+
+                     method518(Draw2D.data, var1, var3 >> 16, var4 >> 16, var6 >> 7, var7 >> 7);
+                     var3 += var9;
+                     var4 += var11;
+                     var6 += var10;
+                     var7 += var12;
+                     var1 += Draw2D.width2d;
+                  }
+               }
+
+               var0 -= var2;
+               var2 -= var1;
+               var1 = anIntArray183[var1];
+
+               while(true) {
+                  --var2;
+                  if (var2 < 0) {
+                     while(true) {
+                        --var0;
+                        if (var0 < 0) {
+                           return;
+                        }
+
+                        method518(Draw2D.data, var1, var5 >> 16, var3 >> 16, var8 >> 7, var6 >> 7);
+                        var3 += var9;
+                        var5 += var13;
+                        var6 += var10;
+                        var8 += var14;
+                        var1 += Draw2D.width2d;
+                     }
+                  }
+
+                  method518(Draw2D.data, var1, var4 >> 16, var3 >> 16, var7 >> 7, var6 >> 7);
+                  var3 += var9;
+                  var4 += var11;
+                  var6 += var10;
+                  var7 += var12;
+                  var1 += Draw2D.width2d;
+               }
+            }
+
+            var5 = var4 <<= 16;
+            var8 = var7 <<= 15;
+            if (var1 < 0) {
+               var5 -= var9 * var1;
+               var4 -= var11 * var1;
+               var8 -= var10 * var1;
+               var7 -= var12 * var1;
+               var1 = 0;
+            }
+
+            var3 <<= 16;
+            var6 <<= 15;
+            if (var0 < 0) {
+               var3 -= var13 * var0;
+               var6 -= var14 * var0;
+               var0 = 0;
+            }
+
+            if (var9 < var11) {
+               var2 -= var0;
+               var0 -= var1;
+               var1 = anIntArray183[var1];
+
+               while(true) {
+                  --var0;
+                  if (var0 < 0) {
+                     while(true) {
+                        --var2;
+                        if (var2 < 0) {
+                           return;
+                        }
+
+                        method518(Draw2D.data, var1, var3 >> 16, var4 >> 16, var6 >> 7, var7 >> 7);
+                        var3 += var13;
+                        var4 += var11;
+                        var6 += var14;
+                        var7 += var12;
+                        var1 += Draw2D.width2d;
+                     }
+                  }
+
+                  method518(Draw2D.data, var1, var5 >> 16, var4 >> 16, var8 >> 7, var7 >> 7);
+                  var5 += var9;
+                  var4 += var11;
+                  var8 += var10;
+                  var7 += var12;
+                  var1 += Draw2D.width2d;
+               }
+            }
+
+            var2 -= var0;
+            var0 -= var1;
+            var1 = anIntArray183[var1];
+
+            while(true) {
+               --var0;
+               if (var0 < 0) {
+                  while(true) {
+                     --var2;
+                     if (var2 < 0) {
+                        return;
+                     }
+
+                     method518(Draw2D.data, var1, var4 >> 16, var3 >> 16, var7 >> 7, var6 >> 7);
+                     var3 += var13;
+                     var4 += var11;
+                     var6 += var14;
+                     var7 += var12;
+                     var1 += Draw2D.width2d;
+                  }
+               }
+
+               method518(Draw2D.data, var1, var4 >> 16, var5 >> 16, var7 >> 7, var8 >> 7);
+               var5 += var9;
+               var4 += var11;
+               var8 += var10;
+               var7 += var12;
+               var1 += Draw2D.width2d;
+            }
+         }
+      } else if (var2 < Draw2D.bottom) {
+         if (var0 > Draw2D.bottom) {
+            var0 = Draw2D.bottom;
+         }
+
+         if (var1 > Draw2D.bottom) {
+            var1 = Draw2D.bottom;
+         }
+
+         if (var0 < var1) {
+            var4 = var5 <<= 16;
+            var7 = var8 <<= 15;
+            if (var2 < 0) {
+               var4 -= var11 * var2;
+               var5 -= var13 * var2;
+               var7 -= var12 * var2;
+               var8 -= var14 * var2;
+               var2 = 0;
+            }
+
+            var3 <<= 16;
+            var6 <<= 15;
+            if (var0 < 0) {
+               var3 -= var9 * var0;
+               var6 -= var10 * var0;
+               var0 = 0;
+            }
+
+            if (var11 < var13) {
+               var1 -= var0;
+               var0 -= var2;
+               var2 = anIntArray183[var2];
+
+               while(true) {
+                  --var0;
+                  if (var0 < 0) {
+                     while(true) {
+                        --var1;
+                        if (var1 < 0) {
+                           return;
+                        }
+
+                        method518(Draw2D.data, var2, var4 >> 16, var3 >> 16, var7 >> 7, var6 >> 7);
+                        var4 += var11;
+                        var3 += var9;
+                        var7 += var12;
+                        var6 += var10;
+                        var2 += Draw2D.width2d;
+                     }
+                  }
+
+                  method518(Draw2D.data, var2, var4 >> 16, var5 >> 16, var7 >> 7, var8 >> 7);
+                  var4 += var11;
+                  var5 += var13;
+                  var7 += var12;
+                  var8 += var14;
+                  var2 += Draw2D.width2d;
+               }
+            }
+
+            var1 -= var0;
+            var0 -= var2;
+            var2 = anIntArray183[var2];
+
+            while(true) {
+               --var0;
+               if (var0 < 0) {
+                  while(true) {
+                     --var1;
+                     if (var1 < 0) {
+                        return;
+                     }
+
+                     method518(Draw2D.data, var2, var3 >> 16, var4 >> 16, var6 >> 7, var7 >> 7);
+                     var4 += var11;
+                     var3 += var9;
+                     var7 += var12;
+                     var6 += var10;
+                     var2 += Draw2D.width2d;
+                  }
+               }
+
+               method518(Draw2D.data, var2, var5 >> 16, var4 >> 16, var8 >> 7, var7 >> 7);
+               var4 += var11;
+               var5 += var13;
+               var7 += var12;
+               var8 += var14;
+               var2 += Draw2D.width2d;
+            }
+         }
+
+         var3 = var5 <<= 16;
+         var6 = var8 <<= 15;
+         if (var2 < 0) {
+            var3 -= var11 * var2;
+            var5 -= var13 * var2;
+            var6 -= var12 * var2;
+            var8 -= var14 * var2;
+            var2 = 0;
+         }
+
+         var4 <<= 16;
+         var7 <<= 15;
+         if (var1 < 0) {
+            var4 -= var9 * var1;
+            var7 -= var10 * var1;
+            var1 = 0;
+         }
+
+         if (var11 < var13) {
+            var0 -= var1;
+            var1 -= var2;
+            var2 = anIntArray183[var2];
+
+            while(true) {
+               --var1;
+               if (var1 < 0) {
+                  while(true) {
+                     --var0;
+                     if (var0 < 0) {
+                        return;
+                     }
+
+                     method518(Draw2D.data, var2, var4 >> 16, var5 >> 16, var7 >> 7, var8 >> 7);
+                     var4 += var9;
+                     var5 += var13;
+                     var7 += var10;
+                     var8 += var14;
+                     var2 += Draw2D.width2d;
+                  }
+               }
+
+               method518(Draw2D.data, var2, var3 >> 16, var5 >> 16, var6 >> 7, var8 >> 7);
+               var3 += var11;
+               var5 += var13;
+               var6 += var12;
+               var8 += var14;
+               var2 += Draw2D.width2d;
+            }
+         }
+
+         var0 -= var1;
+         var1 -= var2;
+         var2 = anIntArray183[var2];
+
+         while(true) {
+            --var1;
+            if (var1 < 0) {
+               while(true) {
+                  --var0;
+                  if (var0 < 0) {
+                     return;
+                  }
+
+                  method518(Draw2D.data, var2, var5 >> 16, var4 >> 16, var8 >> 7, var7 >> 7);
+                  var4 += var9;
+                  var5 += var13;
+                  var7 += var10;
+                  var8 += var14;
+                  var2 += Draw2D.width2d;
+               }
+            }
+
+            method518(Draw2D.data, var2, var5 >> 16, var3 >> 16, var8 >> 7, var6 >> 7);
+            var3 += var11;
+            var5 += var13;
+            var6 += var12;
+            var8 += var14;
+            var2 += Draw2D.width2d;
+         }
+      }
+
+   }
+
+   private static int[] method514(int var0) {
+      anIntArray185[var0] = anInt690++;
+      if (anIntArrayArray18[var0] != null) {
+         return anIntArrayArray18[var0];
+      } else {
+         int[] var1;
+         int var2;
+         if (anInt689 > 0) {
+            var1 = anIntArrayArray17[--anInt689];
+            anIntArrayArray17[anInt689] = null;
+         } else {
+            int var6 = 0;
+            int var7 = -1;
+
+            for(var2 = 0; var2 < anInt688; ++var2) {
+               if (anIntArrayArray18[var2] != null && (anIntArray185[var2] < var6 || var7 == -1)) {
+                  var6 = anIntArray185[var2];
+                  var7 = var2;
+               }
+            }
+
+            var1 = anIntArrayArray18[var7];
+            anIntArrayArray18[var7] = null;
+         }
+
+         anIntArrayArray18[var0] = var1;
+         Class10_Sub1_Sub1_Sub3 var3 = aClass10_Sub1_Sub1_Sub3Array1[var0];
+         int[] var4 = anIntArrayArray19[var0];
+         int var5;
+         if (aBoolean176) {
+            aBooleanArray9[var0] = false;
+
+            for(var2 = 0; var2 < 4096; ++var2) {
+               var5 = var1[var2] = var4[var3.aByteArray16[var2]] & 16316671;
+               if (var5 == 0) {
+                  aBooleanArray9[var0] = true;
+               }
+
+               var1[var2 + 4096] = var5 - (var5 >>> 3) & 16316671;
+               var1[var2 + 8192] = var5 - (var5 >>> 2) & 16316671;
+               var1[var2 + 12288] = var5 - (var5 >>> 2) - (var5 >>> 3) & 16316671;
+            }
+         } else {
+            if (var3.anInt652 != 64) {
+               for(var2 = 0; var2 < 16384; ++var2) {
+                  var1[var2] = var4[var3.aByteArray16[var2]];
+               }
+            } else {
+               for(var2 = 0; var2 < 128; ++var2) {
+                  for(var5 = 0; var5 < 128; ++var5) {
+                     var1[var5 + (var2 << 7)] = var4[var3.aByteArray16[(var5 >> 1) + (var2 >> 1 << 6)]];
+                  }
+               }
+            }
+
+            aBooleanArray9[var0] = false;
+
+            for(var2 = 0; var2 < 16384; ++var2) {
+               var1[var2] &= 16316671;
+               var5 = var1[var2];
+               if (var5 == 0) {
+                  aBooleanArray9[var0] = true;
+               }
+
+               var1[var2 + 16384] = var5 - (var5 >>> 3) & 16316671;
+               var1[var2 + 32768] = var5 - (var5 >>> 2) & 16316671;
+               var1[var2 + 49152] = var5 - (var5 >>> 2) - (var5 >>> 3) & 16316671;
+            }
+         }
+
+         return var1;
+      }
+   }
+
+   public static void method521(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18) {
+      int[] var19 = method514(var18);
+      aBoolean178 = !aBooleanArray9[var18];
+      int var20 = var9 - var10;
+      int var21 = var12 - var13;
+      int var22 = var15 - var16;
+      int var23 = var11 - var9;
+      int var24 = var14 - var12;
+      int var25 = var17 - var15;
+      int var26 = var23 * var12 - var24 * var9 << 14;
+      int var27 = var24 * var15 - var25 * var12 << 8;
+      int var28 = var25 * var9 - var23 * var15 << 5;
+      int var29 = var20 * var12 - var21 * var9 << 14;
+      int var30 = var21 * var15 - var22 * var12 << 8;
+      int var31 = var22 * var9 - var20 * var15 << 5;
+      int var32 = var21 * var23 - var20 * var24 << 14;
+      int var33 = var22 * var24 - var21 * var25 << 8;
+      int var34 = var20 * var25 - var22 * var23 << 5;
+      int var35 = 0;
+      int var36 = 0;
+      if (var1 != var0) {
+         var35 = (var4 - var3 << 16) / (var1 - var0);
+         var36 = (var7 - var6 << 16) / (var1 - var0);
+      }
+
+      int var37 = 0;
+      int var38 = 0;
+      if (var2 != var1) {
+         var37 = (var5 - var4 << 16) / (var2 - var1);
+         var38 = (var8 - var7 << 16) / (var2 - var1);
+      }
+
+      int var39 = 0;
+      int var40 = 0;
+      if (var2 != var0) {
+         var39 = (var3 - var5 << 16) / (var0 - var2);
+         var40 = (var6 - var8 << 16) / (var0 - var2);
+      }
+
+      int var41;
+      if (var0 <= var1 && var0 <= var2) {
+         if (var0 < Draw2D.bottom) {
+            if (var1 > Draw2D.bottom) {
+               var1 = Draw2D.bottom;
+            }
+
+            if (var2 > Draw2D.bottom) {
+               var2 = Draw2D.bottom;
+            }
+
+            if (var1 < var2) {
+               var5 = var3 <<= 16;
+               var8 = var6 <<= 16;
+               if (var0 < 0) {
+                  var5 -= var39 * var0;
+                  var3 -= var35 * var0;
+                  var8 -= var40 * var0;
+                  var6 -= var36 * var0;
+                  var0 = 0;
+               }
+
+               var4 <<= 16;
+               var7 <<= 16;
+               if (var1 < 0) {
+                  var4 -= var37 * var1;
+                  var7 -= var38 * var1;
+                  var1 = 0;
+               }
+
+               var41 = var0 - anInt687;
+               var26 += var28 * var41;
+               var29 += var31 * var41;
+               var32 += var34 * var41;
+               if (var0 != var1 && var39 < var35 || var0 == var1 && var39 > var37) {
+                  var2 -= var1;
+                  var1 -= var0;
+                  var0 = anIntArray183[var0];
+
+                  while(true) {
+                     --var1;
+                     if (var1 < 0) {
+                        while(true) {
+                           --var2;
+                           if (var2 < 0) {
+                              return;
+                           }
+
+                           method522(Draw2D.data, var19, 0, 0, var0, var5 >> 16, var4 >> 16, var8 >> 8, var7 >> 8, var26, var29, var32, var27, var30, var33);
+                           var5 += var39;
+                           var4 += var37;
+                           var8 += var40;
+                           var7 += var38;
+                           var0 += Draw2D.width2d;
+                           var26 += var28;
+                           var29 += var31;
+                           var32 += var34;
+                        }
+                     }
+
+                     method522(Draw2D.data, var19, 0, 0, var0, var5 >> 16, var3 >> 16, var8 >> 8, var6 >> 8, var26, var29, var32, var27, var30, var33);
+                     var5 += var39;
+                     var3 += var35;
+                     var8 += var40;
+                     var6 += var36;
+                     var0 += Draw2D.width2d;
+                     var26 += var28;
+                     var29 += var31;
+                     var32 += var34;
+                  }
+               }
+
+               var2 -= var1;
+               var1 -= var0;
+               var0 = anIntArray183[var0];
+
+               while(true) {
+                  --var1;
+                  if (var1 < 0) {
+                     while(true) {
+                        --var2;
+                        if (var2 < 0) {
+                           return;
+                        }
+
+                        method522(Draw2D.data, var19, 0, 0, var0, var4 >> 16, var5 >> 16, var7 >> 8, var8 >> 8, var26, var29, var32, var27, var30, var33);
+                        var5 += var39;
+                        var4 += var37;
+                        var8 += var40;
+                        var7 += var38;
+                        var0 += Draw2D.width2d;
+                        var26 += var28;
+                        var29 += var31;
+                        var32 += var34;
+                     }
+                  }
+
+                  method522(Draw2D.data, var19, 0, 0, var0, var3 >> 16, var5 >> 16, var6 >> 8, var8 >> 8, var26, var29, var32, var27, var30, var33);
+                  var5 += var39;
+                  var3 += var35;
+                  var8 += var40;
+                  var6 += var36;
+                  var0 += Draw2D.width2d;
+                  var26 += var28;
+                  var29 += var31;
+                  var32 += var34;
+               }
+            }
+
+            var4 = var3 <<= 16;
+            var7 = var6 <<= 16;
+            if (var0 < 0) {
+               var4 -= var39 * var0;
+               var3 -= var35 * var0;
+               var7 -= var40 * var0;
+               var6 -= var36 * var0;
+               var0 = 0;
+            }
+
+            var5 <<= 16;
+            var8 <<= 16;
+            if (var2 < 0) {
+               var5 -= var37 * var2;
+               var8 -= var38 * var2;
+               var2 = 0;
+            }
+
+            var41 = var0 - anInt687;
+            var26 += var28 * var41;
+            var29 += var31 * var41;
+            var32 += var34 * var41;
+            if (var0 != var2 && var39 < var35 || var0 == var2 && var37 > var35) {
+               var1 -= var2;
+               var2 -= var0;
+               var0 = anIntArray183[var0];
+
+               while(true) {
+                  --var2;
+                  if (var2 < 0) {
+                     while(true) {
+                        --var1;
+                        if (var1 < 0) {
+                           return;
+                        }
+
+                        method522(Draw2D.data, var19, 0, 0, var0, var5 >> 16, var3 >> 16, var8 >> 8, var6 >> 8, var26, var29, var32, var27, var30, var33);
+                        var5 += var37;
+                        var3 += var35;
+                        var8 += var38;
+                        var6 += var36;
+                        var0 += Draw2D.width2d;
+                        var26 += var28;
+                        var29 += var31;
+                        var32 += var34;
+                     }
+                  }
+
+                  method522(Draw2D.data, var19, 0, 0, var0, var4 >> 16, var3 >> 16, var7 >> 8, var6 >> 8, var26, var29, var32, var27, var30, var33);
+                  var4 += var39;
+                  var3 += var35;
+                  var7 += var40;
+                  var6 += var36;
+                  var0 += Draw2D.width2d;
+                  var26 += var28;
+                  var29 += var31;
+                  var32 += var34;
+               }
+            }
+
+            var1 -= var2;
+            var2 -= var0;
+            var0 = anIntArray183[var0];
+
+            while(true) {
+               --var2;
+               if (var2 < 0) {
+                  while(true) {
+                     --var1;
+                     if (var1 < 0) {
+                        return;
+                     }
+
+                     method522(Draw2D.data, var19, 0, 0, var0, var3 >> 16, var5 >> 16, var6 >> 8, var8 >> 8, var26, var29, var32, var27, var30, var33);
+                     var5 += var37;
+                     var3 += var35;
+                     var8 += var38;
+                     var6 += var36;
+                     var0 += Draw2D.width2d;
+                     var26 += var28;
+                     var29 += var31;
+                     var32 += var34;
+                  }
+               }
+
+               method522(Draw2D.data, var19, 0, 0, var0, var3 >> 16, var4 >> 16, var6 >> 8, var7 >> 8, var26, var29, var32, var27, var30, var33);
+               var4 += var39;
+               var3 += var35;
+               var7 += var40;
+               var6 += var36;
+               var0 += Draw2D.width2d;
+               var26 += var28;
+               var29 += var31;
+               var32 += var34;
+            }
+         }
+      } else if (var1 <= var2) {
+         if (var1 < Draw2D.bottom) {
+            if (var2 > Draw2D.bottom) {
+               var2 = Draw2D.bottom;
+            }
+
+            if (var0 > Draw2D.bottom) {
+               var0 = Draw2D.bottom;
+            }
+
+            if (var2 < var0) {
+               var3 = var4 <<= 16;
+               var6 = var7 <<= 16;
+               if (var1 < 0) {
+                  var3 -= var35 * var1;
+                  var4 -= var37 * var1;
+                  var6 -= var36 * var1;
+                  var7 -= var38 * var1;
+                  var1 = 0;
+               }
+
+               var5 <<= 16;
+               var8 <<= 16;
+               if (var2 < 0) {
+                  var5 -= var39 * var2;
+                  var8 -= var40 * var2;
+                  var2 = 0;
+               }
+
+               var41 = var1 - anInt687;
+               var26 += var28 * var41;
+               var29 += var31 * var41;
+               var32 += var34 * var41;
+               if (var1 != var2 && var35 < var37 || var1 == var2 && var35 > var39) {
+                  var0 -= var2;
+                  var2 -= var1;
+                  var1 = anIntArray183[var1];
+
+                  while(true) {
+                     --var2;
+                     if (var2 < 0) {
+                        while(true) {
+                           --var0;
+                           if (var0 < 0) {
+                              return;
+                           }
+
+                           method522(Draw2D.data, var19, 0, 0, var1, var3 >> 16, var5 >> 16, var6 >> 8, var8 >> 8, var26, var29, var32, var27, var30, var33);
+                           var3 += var35;
+                           var5 += var39;
+                           var6 += var36;
+                           var8 += var40;
+                           var1 += Draw2D.width2d;
+                           var26 += var28;
+                           var29 += var31;
+                           var32 += var34;
+                        }
+                     }
+
+                     method522(Draw2D.data, var19, 0, 0, var1, var3 >> 16, var4 >> 16, var6 >> 8, var7 >> 8, var26, var29, var32, var27, var30, var33);
+                     var3 += var35;
+                     var4 += var37;
+                     var6 += var36;
+                     var7 += var38;
+                     var1 += Draw2D.width2d;
+                     var26 += var28;
+                     var29 += var31;
+                     var32 += var34;
+                  }
+               }
+
+               var0 -= var2;
+               var2 -= var1;
+               var1 = anIntArray183[var1];
+
+               while(true) {
+                  --var2;
+                  if (var2 < 0) {
+                     while(true) {
+                        --var0;
+                        if (var0 < 0) {
+                           return;
+                        }
+
+                        method522(Draw2D.data, var19, 0, 0, var1, var5 >> 16, var3 >> 16, var8 >> 8, var6 >> 8, var26, var29, var32, var27, var30, var33);
+                        var3 += var35;
+                        var5 += var39;
+                        var6 += var36;
+                        var8 += var40;
+                        var1 += Draw2D.width2d;
+                        var26 += var28;
+                        var29 += var31;
+                        var32 += var34;
+                     }
+                  }
+
+                  method522(Draw2D.data, var19, 0, 0, var1, var4 >> 16, var3 >> 16, var7 >> 8, var6 >> 8, var26, var29, var32, var27, var30, var33);
+                  var3 += var35;
+                  var4 += var37;
+                  var6 += var36;
+                  var7 += var38;
+                  var1 += Draw2D.width2d;
+                  var26 += var28;
+                  var29 += var31;
+                  var32 += var34;
+               }
+            }
+
+            var5 = var4 <<= 16;
+            var8 = var7 <<= 16;
+            if (var1 < 0) {
+               var5 -= var35 * var1;
+               var4 -= var37 * var1;
+               var8 -= var36 * var1;
+               var7 -= var38 * var1;
+               var1 = 0;
+            }
+
+            var3 <<= 16;
+            var6 <<= 16;
+            if (var0 < 0) {
+               var3 -= var39 * var0;
+               var6 -= var40 * var0;
+               var0 = 0;
+            }
+
+            var41 = var1 - anInt687;
+            var26 += var28 * var41;
+            var29 += var31 * var41;
+            var32 += var34 * var41;
+            if (var35 < var37) {
+               var2 -= var0;
+               var0 -= var1;
+               var1 = anIntArray183[var1];
+
+               while(true) {
+                  --var0;
+                  if (var0 < 0) {
+                     while(true) {
+                        --var2;
+                        if (var2 < 0) {
+                           return;
+                        }
+
+                        method522(Draw2D.data, var19, 0, 0, var1, var3 >> 16, var4 >> 16, var6 >> 8, var7 >> 8, var26, var29, var32, var27, var30, var33);
+                        var3 += var39;
+                        var4 += var37;
+                        var6 += var40;
+                        var7 += var38;
+                        var1 += Draw2D.width2d;
+                        var26 += var28;
+                        var29 += var31;
+                        var32 += var34;
+                     }
+                  }
+
+                  method522(Draw2D.data, var19, 0, 0, var1, var5 >> 16, var4 >> 16, var8 >> 8, var7 >> 8, var26, var29, var32, var27, var30, var33);
+                  var5 += var35;
+                  var4 += var37;
+                  var8 += var36;
+                  var7 += var38;
+                  var1 += Draw2D.width2d;
+                  var26 += var28;
+                  var29 += var31;
+                  var32 += var34;
+               }
+            }
+
+            var2 -= var0;
+            var0 -= var1;
+            var1 = anIntArray183[var1];
+
+            while(true) {
+               --var0;
+               if (var0 < 0) {
+                  while(true) {
+                     --var2;
+                     if (var2 < 0) {
+                        return;
+                     }
+
+                     method522(Draw2D.data, var19, 0, 0, var1, var4 >> 16, var3 >> 16, var7 >> 8, var6 >> 8, var26, var29, var32, var27, var30, var33);
+                     var3 += var39;
+                     var4 += var37;
+                     var6 += var40;
+                     var7 += var38;
+                     var1 += Draw2D.width2d;
+                     var26 += var28;
+                     var29 += var31;
+                     var32 += var34;
+                  }
+               }
+
+               method522(Draw2D.data, var19, 0, 0, var1, var4 >> 16, var5 >> 16, var7 >> 8, var8 >> 8, var26, var29, var32, var27, var30, var33);
+               var5 += var35;
+               var4 += var37;
+               var8 += var36;
+               var7 += var38;
+               var1 += Draw2D.width2d;
+               var26 += var28;
+               var29 += var31;
+               var32 += var34;
+            }
+         }
+      } else if (var2 < Draw2D.bottom) {
+         if (var0 > Draw2D.bottom) {
+            var0 = Draw2D.bottom;
+         }
+
+         if (var1 > Draw2D.bottom) {
+            var1 = Draw2D.bottom;
+         }
+
+         if (var0 < var1) {
+            var4 = var5 <<= 16;
+            var7 = var8 <<= 16;
+            if (var2 < 0) {
+               var4 -= var37 * var2;
+               var5 -= var39 * var2;
+               var7 -= var38 * var2;
+               var8 -= var40 * var2;
+               var2 = 0;
+            }
+
+            var3 <<= 16;
+            var6 <<= 16;
+            if (var0 < 0) {
+               var3 -= var35 * var0;
+               var6 -= var36 * var0;
+               var0 = 0;
+            }
+
+            var41 = var2 - anInt687;
+            var26 += var28 * var41;
+            var29 += var31 * var41;
+            var32 += var34 * var41;
+            if (var37 < var39) {
+               var1 -= var0;
+               var0 -= var2;
+               var2 = anIntArray183[var2];
+
+               while(true) {
+                  --var0;
+                  if (var0 < 0) {
+                     while(true) {
+                        --var1;
+                        if (var1 < 0) {
+                           return;
+                        }
+
+                        method522(Draw2D.data, var19, 0, 0, var2, var4 >> 16, var3 >> 16, var7 >> 8, var6 >> 8, var26, var29, var32, var27, var30, var33);
+                        var4 += var37;
+                        var3 += var35;
+                        var7 += var38;
+                        var6 += var36;
+                        var2 += Draw2D.width2d;
+                        var26 += var28;
+                        var29 += var31;
+                        var32 += var34;
+                     }
+                  }
+
+                  method522(Draw2D.data, var19, 0, 0, var2, var4 >> 16, var5 >> 16, var7 >> 8, var8 >> 8, var26, var29, var32, var27, var30, var33);
+                  var4 += var37;
+                  var5 += var39;
+                  var7 += var38;
+                  var8 += var40;
+                  var2 += Draw2D.width2d;
+                  var26 += var28;
+                  var29 += var31;
+                  var32 += var34;
+               }
+            }
+
+            var1 -= var0;
+            var0 -= var2;
+            var2 = anIntArray183[var2];
+
+            while(true) {
+               --var0;
+               if (var0 < 0) {
+                  while(true) {
+                     --var1;
+                     if (var1 < 0) {
+                        return;
+                     }
+
+                     method522(Draw2D.data, var19, 0, 0, var2, var3 >> 16, var4 >> 16, var6 >> 8, var7 >> 8, var26, var29, var32, var27, var30, var33);
+                     var4 += var37;
+                     var3 += var35;
+                     var7 += var38;
+                     var6 += var36;
+                     var2 += Draw2D.width2d;
+                     var26 += var28;
+                     var29 += var31;
+                     var32 += var34;
+                  }
+               }
+
+               method522(Draw2D.data, var19, 0, 0, var2, var5 >> 16, var4 >> 16, var8 >> 8, var7 >> 8, var26, var29, var32, var27, var30, var33);
+               var4 += var37;
+               var5 += var39;
+               var7 += var38;
+               var8 += var40;
+               var2 += Draw2D.width2d;
+               var26 += var28;
+               var29 += var31;
+               var32 += var34;
+            }
+         }
+
+         var3 = var5 <<= 16;
+         var6 = var8 <<= 16;
+         if (var2 < 0) {
+            var3 -= var37 * var2;
+            var5 -= var39 * var2;
+            var6 -= var38 * var2;
+            var8 -= var40 * var2;
+            var2 = 0;
+         }
+
+         var4 <<= 16;
+         var7 <<= 16;
+         if (var1 < 0) {
+            var4 -= var35 * var1;
+            var7 -= var36 * var1;
+            var1 = 0;
+         }
+
+         var41 = var2 - anInt687;
+         var26 += var28 * var41;
+         var29 += var31 * var41;
+         var32 += var34 * var41;
+         if (var37 < var39) {
+            var0 -= var1;
+            var1 -= var2;
+            var2 = anIntArray183[var2];
+
+            while(true) {
+               --var1;
+               if (var1 < 0) {
+                  while(true) {
+                     --var0;
+                     if (var0 < 0) {
+                        return;
+                     }
+
+                     method522(Draw2D.data, var19, 0, 0, var2, var4 >> 16, var5 >> 16, var7 >> 8, var8 >> 8, var26, var29, var32, var27, var30, var33);
+                     var4 += var35;
+                     var5 += var39;
+                     var7 += var36;
+                     var8 += var40;
+                     var2 += Draw2D.width2d;
+                     var26 += var28;
+                     var29 += var31;
+                     var32 += var34;
+                  }
+               }
+
+               method522(Draw2D.data, var19, 0, 0, var2, var3 >> 16, var5 >> 16, var6 >> 8, var8 >> 8, var26, var29, var32, var27, var30, var33);
+               var3 += var37;
+               var5 += var39;
+               var6 += var38;
+               var8 += var40;
+               var2 += Draw2D.width2d;
+               var26 += var28;
+               var29 += var31;
+               var32 += var34;
+            }
+         }
+
+         var0 -= var1;
+         var1 -= var2;
+         var2 = anIntArray183[var2];
+
+         while(true) {
+            --var1;
+            if (var1 < 0) {
+               while(true) {
+                  --var0;
+                  if (var0 < 0) {
+                     return;
+                  }
+
+                  method522(Draw2D.data, var19, 0, 0, var2, var5 >> 16, var4 >> 16, var8 >> 8, var7 >> 8, var26, var29, var32, var27, var30, var33);
+                  var4 += var35;
+                  var5 += var39;
+                  var7 += var36;
+                  var8 += var40;
+                  var2 += Draw2D.width2d;
+                  var26 += var28;
+                  var29 += var31;
+                  var32 += var34;
+               }
+            }
+
+            method522(Draw2D.data, var19, 0, 0, var2, var5 >> 16, var3 >> 16, var8 >> 8, var6 >> 8, var26, var29, var32, var27, var30, var33);
+            var3 += var37;
+            var5 += var39;
+            var6 += var38;
+            var8 += var40;
+            var2 += Draw2D.width2d;
+            var26 += var28;
+            var29 += var31;
+            var32 += var34;
+         }
+      }
+
+   }
+
+   private static void method520(int[] var0, int var1, int var2, int var3, int var4) {
+      if (aBoolean177) {
+         if (var4 > Draw2D.boundX) {
+            var4 = Draw2D.boundX;
+         }
+
+         if (var3 < 0) {
+            var3 = 0;
+         }
+      }
+
+      if (var3 < var4) {
+         var1 += var3;
+         int var5 = var4 - var3 >> 2;
+         int var6;
+         if (anInt685 == 0) {
+            while(true) {
+               --var5;
+               if (var5 < 0) {
+                  var5 = var4 - var3 & 3;
+
+                  while(true) {
+                     --var5;
+                     if (var5 < 0) {
+                        return;
+                     }
+
+                     var0[var1++] = var2;
+                  }
+               }
+
+               var6 = var1 + 1;
+               var0[var1] = var2;
+               var0[var6++] = var2;
+               var0[var6++] = var2;
+               var1 = var6 + 1;
+               var0[var6] = var2;
+            }
+         } else {
+            int var7 = anInt685;
+            int var8 = 256 - anInt685;
+            int var9 = ((var2 & 16711935) * var8 >> 8 & 16711935) + ((var2 & 65280) * var8 >> 8 & 65280);
+
+            while(true) {
+               --var5;
+               if (var5 < 0) {
+                  var5 = var4 - var3 & 3;
+
+                  while(true) {
+                     --var5;
+                     if (var5 < 0) {
+                        return;
+                     }
+
+                     var0[var1++] = var9 + ((var0[var1] & 16711935) * var7 >> 8 & 16711935) + ((var0[var1] & 65280) * var7 >> 8 & 65280);
+                  }
+               }
+
+               var6 = var1 + 1;
+               var0[var1] = var9 + ((var0[var6] & 16711935) * var7 >> 8 & 16711935) + ((var0[var6] & 65280) * var7 >> 8 & 65280);
+               int var10 = var6 + 1;
+               var0[var6] = var9 + ((var0[var10] & 16711935) * var7 >> 8 & 16711935) + ((var0[var10] & 65280) * var7 >> 8 & 65280);
+               int var11 = var10 + 1;
+               var0[var10] = var9 + ((var0[var11] & 16711935) * var7 >> 8 & 16711935) + ((var0[var11] & 65280) * var7 >> 8 & 65280);
+               var1 = var11 + 1;
+               var0[var11] = var9 + ((var0[var1] & 16711935) * var7 >> 8 & 16711935) + ((var0[var1] & 65280) * var7 >> 8 & 65280);
+            }
+         }
+      }
+   }
+
+   private static void method518(int[] var0, int var1, int var2, int var3, int var4, int var5) {
+      int var6;
+      int var7;
+      int var8;
+      int var9;
+      int var10;
+      int var11;
+      int var12;
+      if (aBoolean179) {
+         if (aBoolean177) {
+            if (var3 - var2 > 3) {
+               var6 = (var5 - var4) / (var3 - var2);
+            } else {
+               var6 = 0;
+            }
+
+            if (var3 > Draw2D.boundX) {
+               var3 = Draw2D.boundX;
+            }
+
+            if (var2 < 0) {
+               var4 -= var2 * var6;
+               var2 = 0;
+            }
+
+            if (var2 >= var3) {
+               return;
+            }
+
+            var1 += var2;
+            var9 = var3 - var2 >> 2;
+            var6 <<= 2;
+         } else {
+            if (var2 >= var3) {
+               return;
+            }
+
+            var1 += var2;
+            var9 = var3 - var2 >> 2;
+            if (var9 > 0) {
+               var6 = (var5 - var4) * anIntArray179[var9] >> 15;
+            } else {
+               var6 = 0;
+            }
+         }
+
+         if (anInt685 != 0) {
+            var7 = anInt685;
+            var8 = 256 - anInt685;
+
+            while(true) {
+               --var9;
+               if (var9 < 0) {
+                  var9 = var3 - var2 & 3;
+                  if (var9 > 0) {
+                     var10 = anIntArray186[var4 >> 8];
+                     var10 = ((var10 & 16711935) * var8 >> 8 & 16711935) + ((var10 & 65280) * var8 >> 8 & 65280);
+
+                     do {
+                        var0[var1++] = var10 + ((var0[var1] & 16711935) * var7 >> 8 & 16711935) + ((var0[var1] & 65280) * var7 >> 8 & 65280);
+                        --var9;
+                     } while(var9 > 0);
+                  }
+                  break;
+               }
+
+               var10 = anIntArray186[var4 >> 8];
+               var4 += var6;
+               var10 = ((var10 & 16711935) * var8 >> 8 & 16711935) + ((var10 & 65280) * var8 >> 8 & 65280);
+               var11 = var1 + 1;
+               var0[var1] = var10 + ((var0[var11] & 16711935) * var7 >> 8 & 16711935) + ((var0[var11] & 65280) * var7 >> 8 & 65280);
+               var0[var11++] = var10 + ((var0[var11] & 16711935) * var7 >> 8 & 16711935) + ((var0[var11] & 65280) * var7 >> 8 & 65280);
+               var0[var11++] = var10 + ((var0[var11] & 16711935) * var7 >> 8 & 16711935) + ((var0[var11] & 65280) * var7 >> 8 & 65280);
+               var1 = var11 + 1;
+               var0[var11] = var10 + ((var0[var1] & 16711935) * var7 >> 8 & 16711935) + ((var0[var1] & 65280) * var7 >> 8 & 65280);
+            }
+         } else {
+            while(true) {
+               --var9;
+               if (var9 < 0) {
+                  var9 = var3 - var2 & 3;
+                  if (var9 > 0) {
+                     var10 = anIntArray186[var4 >> 8];
+
+                     do {
+                        var0[var1++] = var10;
+                        --var9;
+                     } while(var9 > 0);
+
+                     return;
+                  }
+                  break;
+               }
+
+               var10 = anIntArray186[var4 >> 8];
+               var4 += var6;
+               var11 = var1 + 1;
+               var0[var1] = var10;
+               var12 = var11 + 1;
+               var0[var11] = var10;
+               int var13 = var12 + 1;
+               var0[var12] = var10;
+               var1 = var13 + 1;
+               var0[var13] = var10;
+            }
+         }
+      } else if (var2 < var3) {
+         var6 = (var5 - var4) / (var3 - var2);
+         if (aBoolean177) {
+            if (var3 > Draw2D.boundX) {
+               var3 = Draw2D.boundX;
+            }
+
+            if (var2 < 0) {
+               var4 -= var2 * var6;
+               var2 = 0;
+            }
+
+            if (var2 >= var3) {
+               return;
+            }
+         }
+
+         var11 = var1 + var2;
+         var9 = var3 - var2;
+         if (anInt685 == 0) {
+            do {
+               var0[var11++] = anIntArray186[var4 >> 8];
+               var4 += var6;
+               --var9;
+            } while(var9 > 0);
+         } else {
+            var7 = anInt685;
+            var8 = 256 - anInt685;
+
+            do {
+               var10 = anIntArray186[var4 >> 8];
+               var4 += var6;
+               var12 = ((var10 & 16711935) * var8 >> 8 & 16711935) + ((var10 & 65280) * var8 >> 8 & 65280);
+               var0[var11++] = var12 + ((var0[var11] & 16711935) * var7 >> 8 & 16711935) + ((var0[var11] & 65280) * var7 >> 8 & 65280);
+               --var9;
+            } while(var9 > 0);
+         }
+      }
+
+   }
+
+   private static void method522(int[] var0, int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14) {
+      if (var5 < var6) {
+         int var15;
+         int var16;
+         if (aBoolean177) {
+            var15 = (var8 - var7) / (var6 - var5);
+            if (var6 > Draw2D.boundX) {
+               var6 = Draw2D.boundX;
+            }
+
+            if (var5 < 0) {
+               var7 -= var5 * var15;
+               var5 = 0;
+            }
+
+            if (var5 >= var6) {
+               return;
+            }
+
+            var16 = var6 - var5 >> 3;
+            var15 <<= 12;
+            var7 <<= 9;
+         } else {
+            if (var6 - var5 > 7) {
+               var16 = var6 - var5 >> 3;
+               var15 = (var8 - var7) * anIntArray179[var16] >> 6;
+            } else {
+               var16 = 0;
+               var15 = 0;
+            }
+
+            var7 <<= 9;
+         }
+
+         var4 += var5;
+         int var17;
+         int var18;
+         int var19;
+         int var20;
+         int var21;
+         int var22;
+         int var23;
+         int var24;
+         int var25;
+         int var26;
+         int var27;
+         int var28;
+         int var29;
+         int var30;
+         int var31;
+         int var32;
+         int var33;
+         int var34;
+         int var35;
+         if (aBoolean176) {
+            var17 = 0;
+            var18 = 0;
+            var20 = var5 - anInt686;
+            var25 = var9 + (var12 >> 3) * var20;
+            var26 = var10 + (var13 >> 3) * var20;
+            var27 = var11 + (var14 >> 3) * var20;
+            var19 = var27 >> 12;
+            if (var19 != 0) {
+               var2 = var25 / var19;
+               var3 = var26 / var19;
+               if (var2 < 0) {
+                  var2 = 0;
+               } else if (var2 > 4032) {
+                  var2 = 4032;
+               }
+            }
+
+            var9 = var25 + var12;
+            var10 = var26 + var13;
+            var11 = var27 + var14;
+            var19 = var11 >> 12;
+            if (var19 != 0) {
+               var17 = var9 / var19;
+               var18 = var10 / var19;
+               if (var17 < 7) {
+                  var17 = 7;
+               } else if (var17 > 4032) {
+                  var17 = 4032;
+               }
+            }
+
+            var21 = var17 - var2 >> 3;
+            var22 = var18 - var3 >> 3;
+            var2 += var7 >> 3 & 786432;
+            var23 = var7 >> 23;
+            if (aBoolean178) {
+               while(var16-- > 0) {
+                  var24 = var4 + 1;
+                  var0[var4] = var1[(var3 & 4032) + (var2 >> 6)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var0[var24++] = var1[(var3 & 4032) + (var2 >> 6)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var0[var24++] = var1[(var3 & 4032) + (var2 >> 6)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var0[var24++] = var1[(var3 & 4032) + (var2 >> 6)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var0[var24++] = var1[(var3 & 4032) + (var2 >> 6)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var0[var24++] = var1[(var3 & 4032) + (var2 >> 6)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var0[var24++] = var1[(var3 & 4032) + (var2 >> 6)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var4 = var24 + 1;
+                  var0[var24] = var1[(var3 & 4032) + (var2 >> 6)] >>> var23;
+                  var2 = var17;
+                  var3 = var18;
+                  var9 += var12;
+                  var10 += var13;
+                  var11 += var14;
+                  var19 = var11 >> 12;
+                  if (var19 != 0) {
+                     var17 = var9 / var19;
+                     var18 = var10 / var19;
+                     if (var17 < 7) {
+                        var17 = 7;
+                     } else if (var17 > 4032) {
+                        var17 = 4032;
+                     }
+                  }
+
+                  var21 = var17 - var2 >> 3;
+                  var22 = var18 - var3 >> 3;
+                  var7 += var15;
+                  var2 += var7 >> 3 & 786432;
+                  var23 = var7 >> 23;
+               }
+
+               for(var16 = var6 - var5 & 7; var16-- > 0; var3 += var22) {
+                  var0[var4++] = var1[(var3 & 4032) + (var2 >> 6)] >>> var23;
+                  var2 += var21;
+               }
+            } else {
+               while(var16-- > 0) {
+                  if ((var28 = var1[(var3 & 4032) + (var2 >> 6)] >>> var23) != 0) {
+                     var0[var4] = var28;
+                  }
+
+                  var24 = var4 + 1;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var29 = var1[(var3 & 4032) + (var2 >> 6)] >>> var23) != 0) {
+                     var0[var24] = var29;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var30 = var1[(var3 & 4032) + (var2 >> 6)] >>> var23) != 0) {
+                     var0[var24] = var30;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var31 = var1[(var3 & 4032) + (var2 >> 6)] >>> var23) != 0) {
+                     var0[var24] = var31;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var32 = var1[(var3 & 4032) + (var2 >> 6)] >>> var23) != 0) {
+                     var0[var24] = var32;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var33 = var1[(var3 & 4032) + (var2 >> 6)] >>> var23) != 0) {
+                     var0[var24] = var33;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var34 = var1[(var3 & 4032) + (var2 >> 6)] >>> var23) != 0) {
+                     var0[var24] = var34;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var35 = var1[(var3 & 4032) + (var2 >> 6)] >>> var23) != 0) {
+                     var0[var24] = var35;
+                  }
+
+                  var4 = var24 + 1;
+                  var2 = var17;
+                  var3 = var18;
+                  var9 += var12;
+                  var10 += var13;
+                  var11 += var14;
+                  var19 = var11 >> 12;
+                  if (var19 != 0) {
+                     var17 = var9 / var19;
+                     var18 = var10 / var19;
+                     if (var17 < 7) {
+                        var17 = 7;
+                     } else if (var17 > 4032) {
+                        var17 = 4032;
+                     }
+                  }
+
+                  var21 = var17 - var2 >> 3;
+                  var22 = var18 - var3 >> 3;
+                  var7 += var15;
+                  var2 += var7 >> 3 & 786432;
+                  var23 = var7 >> 23;
+               }
+
+               for(var16 = var6 - var5 & 7; var16-- > 0; var3 += var22) {
+                  if ((var28 = var1[(var3 & 4032) + (var2 >> 6)] >>> var23) != 0) {
+                     var0[var4] = var28;
+                  }
+
+                  ++var4;
+                  var2 += var21;
+               }
+            }
+
+         } else {
+            var17 = 0;
+            var18 = 0;
+            var20 = var5 - anInt686;
+            var25 = var9 + (var12 >> 3) * var20;
+            var26 = var10 + (var13 >> 3) * var20;
+            var27 = var11 + (var14 >> 3) * var20;
+            var19 = var27 >> 14;
+            if (var19 != 0) {
+               var2 = var25 / var19;
+               var3 = var26 / var19;
+               if (var2 < 0) {
+                  var2 = 0;
+               } else if (var2 > 16256) {
+                  var2 = 16256;
+               }
+            }
+
+            var9 = var25 + var12;
+            var10 = var26 + var13;
+            var11 = var27 + var14;
+            var19 = var11 >> 14;
+            if (var19 != 0) {
+               var17 = var9 / var19;
+               var18 = var10 / var19;
+               if (var17 < 7) {
+                  var17 = 7;
+               } else if (var17 > 16256) {
+                  var17 = 16256;
+               }
+            }
+
+            var21 = var17 - var2 >> 3;
+            var22 = var18 - var3 >> 3;
+            var2 += var7 & 6291456;
+            var23 = var7 >> 23;
+            if (!aBoolean178) {
+               while(var16-- > 0) {
+                  if ((var28 = var1[(var3 & 16256) + (var2 >> 7)] >>> var23) != 0) {
+                     var0[var4] = var28;
+                  }
+
+                  var24 = var4 + 1;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var29 = var1[(var3 & 16256) + (var2 >> 7)] >>> var23) != 0) {
+                     var0[var24] = var29;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var30 = var1[(var3 & 16256) + (var2 >> 7)] >>> var23) != 0) {
+                     var0[var24] = var30;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var31 = var1[(var3 & 16256) + (var2 >> 7)] >>> var23) != 0) {
+                     var0[var24] = var31;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var32 = var1[(var3 & 16256) + (var2 >> 7)] >>> var23) != 0) {
+                     var0[var24] = var32;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var33 = var1[(var3 & 16256) + (var2 >> 7)] >>> var23) != 0) {
+                     var0[var24] = var33;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var34 = var1[(var3 & 16256) + (var2 >> 7)] >>> var23) != 0) {
+                     var0[var24] = var34;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var35 = var1[(var3 & 16256) + (var2 >> 7)] >>> var23) != 0) {
+                     var0[var24] = var35;
+                  }
+
+                  var4 = var24 + 1;
+                  var2 = var17;
+                  var3 = var18;
+                  var9 += var12;
+                  var10 += var13;
+                  var11 += var14;
+                  var19 = var11 >> 14;
+                  if (var19 != 0) {
+                     var17 = var9 / var19;
+                     var18 = var10 / var19;
+                     if (var17 < 7) {
+                        var17 = 7;
+                     } else if (var17 > 16256) {
+                        var17 = 16256;
+                     }
+                  }
+
+                  var21 = var17 - var2 >> 3;
+                  var22 = var18 - var3 >> 3;
+                  var7 += var15;
+                  var2 += var7 & 6291456;
+                  var23 = var7 >> 23;
+               }
+
+               for(var16 = var6 - var5 & 7; var16-- > 0; var3 += var22) {
+                  if ((var28 = var1[(var3 & 16256) + (var2 >> 7)] >>> var23) != 0) {
+                     var0[var4] = var28;
+                  }
+
+                  ++var4;
+                  var2 += var21;
+               }
+
+            } else {
+               while(var16-- > 0) {
+                  var24 = var4 + 1;
+                  var0[var4] = var1[(var3 & 16256) + (var2 >> 7)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var28 = var24 + 1;
+                  var0[var24] = var1[(var3 & 16256) + (var2 >> 7)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var29 = var28 + 1;
+                  var0[var28] = var1[(var3 & 16256) + (var2 >> 7)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var30 = var29 + 1;
+                  var0[var29] = var1[(var3 & 16256) + (var2 >> 7)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var31 = var30 + 1;
+                  var0[var30] = var1[(var3 & 16256) + (var2 >> 7)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var32 = var31 + 1;
+                  var0[var31] = var1[(var3 & 16256) + (var2 >> 7)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var33 = var32 + 1;
+                  var0[var32] = var1[(var3 & 16256) + (var2 >> 7)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var4 = var33 + 1;
+                  var0[var33] = var1[(var3 & 16256) + (var2 >> 7)] >>> var23;
+                  var2 = var17;
+                  var3 = var18;
+                  var9 += var12;
+                  var10 += var13;
+                  var11 += var14;
+                  var19 = var11 >> 14;
+                  if (var19 != 0) {
+                     var17 = var9 / var19;
+                     var18 = var10 / var19;
+                     if (var17 < 7) {
+                        var17 = 7;
+                     } else if (var17 > 16256) {
+                        var17 = 16256;
+                     }
+                  }
+
+                  var21 = var17 - var2 >> 3;
+                  var22 = var18 - var3 >> 3;
+                  var7 += var15;
+                  var2 += var7 & 6291456;
+                  var23 = var7 >> 23;
+               }
+
+               for(var16 = var6 - var5 & 7; var16-- > 0; var3 += var22) {
+                  var0[var4++] = var1[(var3 & 16256) + (var2 >> 7)] >>> var23;
+                  var2 += var21;
+               }
+
+            }
+         }
+      }
+   }
+
+   public static void method507(int var0) {
+      boolean var1 = false;
+      anIntArray183 = new int[Draw2D.height2d];
+
+      for(int var2 = 0; var2 < Draw2D.height2d; ++var2) {
+         anIntArray183[var2] = Draw2D.width2d * var2;
+      }
+
+      anInt686 = Draw2D.width2d / 2;
+      anInt687 = Draw2D.height2d / 2;
+   }
+
+   public static int method512(int var0) {
+      if (anIntArray184[var0] != 0) {
+         return anIntArray184[var0];
+      } else {
+         int var1 = 0;
+         int var2 = 0;
+         int var3 = 0;
+         int var4 = anIntArrayArray19[var0].length;
+
+         int var5;
+         for(var5 = 0; var5 < var4; ++var5) {
+            var1 += anIntArrayArray19[var0][var5] >> 16 & 255;
+            var2 += anIntArrayArray19[var0][var5] >> 8 & 255;
+            var3 += anIntArrayArray19[var0][var5] & 255;
+         }
+
+         var5 = (var1 / var4 << 16) + (var2 / var4 << 8) + var3 / var4;
+         var5 = method516(var5, 1.4);
+         if (var5 == 0) {
+            var5 = 1;
+         }
+
+         anIntArray184[var0] = var5;
+         return var5;
+      }
+   }
+
+   public static void method506() {
+      anIntArray179 = null;
+      anIntArray179 = null;
+      anIntArray181 = null;
+      anIntArray182 = null;
+      anIntArray183 = null;
+      aClass10_Sub1_Sub1_Sub3Array1 = null;
+      aBooleanArray9 = null;
+      anIntArray184 = null;
+      anIntArrayArray17 = null;
+      anIntArrayArray18 = null;
+      anIntArray185 = null;
+      anIntArray186 = null;
+      anIntArrayArray19 = null;
+   }
+
+   public static void method511(JagFile var0) {
+      anInt688 = 0;
+
+      for(int var1 = 0; var1 < 50; ++var1) {
+         try {
+            aClass10_Sub1_Sub1_Sub3Array1[var1] = new Class10_Sub1_Sub1_Sub3(var0, String.valueOf(var1), 0);
+            if (aBoolean176 && aClass10_Sub1_Sub1_Sub3Array1[var1].anInt656 == 128) {
+               aClass10_Sub1_Sub1_Sub3Array1[var1].method435();
+            } else {
+               aClass10_Sub1_Sub1_Sub3Array1[var1].method436();
+            }
+
+            ++anInt688;
+         } catch (Exception var3) {
+         }
+      }
+
+   }
+
+   public static void method508(int var0, int var1) {
+      anIntArray183 = new int[var0];
+
+      for(int var2 = 0; var2 < var0; ++var2) {
+         anIntArray183[var2] = var1 * var2;
+      }
+
+      anInt686 = var1 / 2;
+      anInt687 = var0 / 2;
+   }
 }

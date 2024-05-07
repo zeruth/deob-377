@@ -1,82 +1,79 @@
 package ext;
 
-import javax.swing.*;
 import java.applet.Applet;
 import java.applet.AppletContext;
 import java.applet.AppletStub;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.net.MalformedURLException;
 import java.net.URL;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class Launcher implements AppletStub {
-    static JFrame frame = new JFrame("RS2 377");
-    static BorderLayout layout = new BorderLayout();
-    static JPanel gamePanel = new JPanel(layout);
-    static Dimension gameSize = new Dimension(779, 530);
+   static URL baseURL;
+   static JFrame frame = new JFrame("RS2 377");
+   static Dimension gameSize;
+   static BorderLayout layout = new BorderLayout();
+   static JPanel gamePanel;
+   static Launcher INSTANCE;
 
-    static URL baseURL;
+   static {
+      gamePanel = new JPanel(layout);
+      gameSize = new Dimension(779, 530);
+      INSTANCE = new Launcher();
 
-    static Launcher INSTANCE = new Launcher();
+      try {
+         baseURL = new URL("http://127.0.0.1");
+      } catch (MalformedURLException var1) {
+         throw new RuntimeException(var1);
+      }
+   }
 
-    static {
-        try {
-            baseURL = new URL("http://127.0.0.1");
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+   public boolean isActive() {
+      return true;
+   }
 
-    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
-        frame.setSize(gameSize);
-        frame.setBackground(Color.BLACK);
-        gamePanel.setSize(gameSize);
-        gamePanel.setBackground(Color.BLACK);
-        Applet client = (Applet) ClassLoader.getSystemClassLoader().loadClass("unmapped.Client").newInstance();
-        client.setStub(INSTANCE);
-        gamePanel.add(client, BorderLayout.CENTER);
-        frame.add(gamePanel);
-        frame.setVisible(true);
-        client.init();
-        client.start();
-        frame.show();
-    }
+   public URL getDocumentBase() {
+      return baseURL;
+   }
 
-    @Override
-    public boolean isActive() {
-        return true;
-    }
+   public URL getCodeBase() {
+      return baseURL;
+   }
 
-    @Override
-    public URL getDocumentBase() {
-        return baseURL;
-    }
+   public String getParameter(String var1) {
+      if (var1.equals("nodeid")) {
+         return "10";
+      } else if (var1.equals("portoff")) {
+         return "0";
+      } else if (!var1.equals("lowmem") && !var1.equals("free")) {
+         throw new RuntimeException("unknown paramater: " + var1);
+      } else {
+         return "false";
+      }
+   }
 
-    @Override
-    public URL getCodeBase() {
-        return baseURL;
-    }
+   public AppletContext getAppletContext() {
+      return null;
+   }
 
-    @Override
-    public String getParameter(String name) {
-        switch (name) {
-            case "nodeid":
-                return "10";
-            case "portoff":
-                return "0";
-            case "lowmem":
-            case "free":
-                return "false";
-            default:
-                throw new RuntimeException("unknown paramater: " + name);
-        }
-    }
+   public void appletResize(int var1, int var2) {
+   }
 
-    @Override
-    public AppletContext getAppletContext() {
-        return null;
-    }
-
-    @Override
-    public void appletResize(int width, int height) {
-    }
+   public static void main(String[] var0) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+      frame.setSize(gameSize);
+      frame.setBackground(Color.BLACK);
+      gamePanel.setSize(gameSize);
+      gamePanel.setBackground(Color.BLACK);
+      Applet var1 = (Applet)ClassLoader.getSystemClassLoader().loadClass("unmapped.Client").newInstance();
+      var1.setStub(INSTANCE);
+      gamePanel.add(var1, "Center");
+      frame.add(gamePanel);
+      frame.setVisible(true);
+      var1.init();
+      var1.start();
+      frame.show();
+   }
 }

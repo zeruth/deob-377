@@ -1,143 +1,123 @@
 package unmapped;
 
-
 import jagex2.io.Packet;
-import sign.signlink;
 
 public final class Class37 {
+   private static float[][] aFloatArrayArray1 = new float[2][8];
+   public static int[][] anIntArrayArray14 = new int[2][8];
+   private static float aFloat1;
+   public static int anInt563;
+   private int[][][] anIntArrayArrayArray5 = new int[2][2][4];
+   private int[][][] anIntArrayArrayArray6 = new int[2][2][4];
+   private boolean aBoolean139 = true;
+   private int[] anIntArray164 = new int[2];
+   public int[] anIntArray163 = new int[2];
 
-	private static float aFloat1;
+   private float method396(float var1) {
+      float var2 = (float)Math.pow(2.0, (double)var1) * 32.703197F;
+      return var2 * 3.1415927F / 11025.0F;
+   }
 
-	public static int anInt563;
+   private float method395(int var1, int var2, float var3, int var4) {
+      float var5 = (float)this.anIntArrayArrayArray6[var1][0][var4] + var3 * (float)(this.anIntArrayArrayArray6[var1][1][var4] - this.anIntArrayArrayArray6[var1][0][var4]);
+      float var6 = var5 * 0.0015258789F;
+      boolean var7 = false;
+      return 1.0F - (float)Math.pow(10.0, (double)(-var6 / 20.0F));
+   }
 
-	private static float[][] aFloatArrayArray1 = new float[2][8];
+   private float method397(int var1, int var2, float var3) {
+      float var4 = (float)this.anIntArrayArrayArray5[var2][0][var1] + var3 * (float)(this.anIntArrayArrayArray5[var2][1][var1] - this.anIntArrayArrayArray5[var2][0][var1]);
+      float var5 = var4 * 1.2207031E-4F;
+      return this.method396(var5);
+   }
 
-	public static int[][] anIntArrayArray14 = new int[2][8];
+   public int method398(int var1, float var2) {
+      float var3;
+      if (var1 == 0) {
+         var3 = (float)this.anIntArray164[0] + (float)(this.anIntArray164[1] - this.anIntArray164[0]) * var2;
+         float var4 = var3 * 0.0030517578F;
+         aFloat1 = (float)Math.pow(0.1, (double)(var4 / 20.0F));
+         anInt563 = (int)(aFloat1 * 65536.0F);
+      }
 
-	private int anInt562;
+      if (this.anIntArray163[var1] == 0) {
+         return 0;
+      } else {
+         var3 = this.method395(var1, 849, var2, 0);
+         aFloatArrayArray1[var1][0] = -2.0F * var3 * (float)Math.cos((double)this.method397(0, var1, var2));
+         aFloatArrayArray1[var1][1] = var3 * var3;
 
-	private boolean aBoolean139 = true;
+         float[] var10000;
+         int var8;
+         for(var8 = 1; var8 < this.anIntArray163[var1]; ++var8) {
+            var3 = this.method395(var1, 849, var2, var8);
+            float var5 = -2.0F * var3 * (float)Math.cos((double)this.method397(var8, var1, var2));
+            float var6 = var3 * var3;
+            aFloatArrayArray1[var1][var8 * 2 + 1] = aFloatArrayArray1[var1][var8 * 2 - 1] * var6;
+            aFloatArrayArray1[var1][var8 * 2] = aFloatArrayArray1[var1][var8 * 2 - 1] * var5 + aFloatArrayArray1[var1][var8 * 2 - 2] * var6;
 
-	public int[] anIntArray163 = new int[2];
+            for(int var7 = var8 * 2 - 1; var7 >= 2; --var7) {
+               var10000 = aFloatArrayArray1[var1];
+               var10000[var7] += aFloatArrayArray1[var1][var7 - 1] * var5 + aFloatArrayArray1[var1][var7 - 2] * var6;
+            }
 
-	private int[][][] anIntArrayArrayArray5 = new int[2][2][4];
+            var10000 = aFloatArrayArray1[var1];
+            var10000[1] += aFloatArrayArray1[var1][0] * var5 + var6;
+            var10000 = aFloatArrayArray1[var1];
+            var10000[0] += var5;
+         }
 
-	private int[][][] anIntArrayArrayArray6 = new int[2][2][4];
+         if (var1 == 0) {
+            for(var8 = 0; var8 < this.anIntArray163[0] * 2; ++var8) {
+               var10000 = aFloatArrayArray1[0];
+               var10000[var8] *= aFloat1;
+            }
+         }
 
-	private int[] anIntArray164 = new int[2];
+         for(var8 = 0; var8 < this.anIntArray163[var1] * 2; ++var8) {
+            anIntArrayArray14[var1][var8] = (int)(aFloatArrayArray1[var1][var8] * 65536.0F);
+         }
 
-	private float method395( int arg0, int arg1, float arg2, int arg3) {
-		try {
-			float local30 = (float) this.anIntArrayArrayArray6[arg0][0][arg3] + arg2 * (float) (this.anIntArrayArrayArray6[arg0][1][arg3] - this.anIntArrayArrayArray6[arg0][0][arg3]);
-			float local34 = local30 * 0.0015258789F;
-			boolean local38 = false;
-			return 1.0F - (float) Math.pow(10.0D, (double) (-local34 / 20.0F));
-		} catch ( RuntimeException local50) {
-			signlink.reporterror("40586, " + arg0 + ", " + arg1 + ", " + arg2 + ", " + arg3 + ", " + local50.toString());
-			throw new RuntimeException();
-		}
-	}
+         return this.anIntArray163[var1] * 2;
+      }
+   }
 
-	private float method396( float arg0) {
-		try {
-			float local7 = (float) Math.pow(2.0D, (double) arg0) * 32.703197F;
-			return local7 * 3.1415927F / 11025.0F;
-		} catch ( RuntimeException local24) {
-			signlink.reporterror("89834, " + arg0 + ", " + -335 + ", " + local24.toString());
-			throw new RuntimeException();
-		}
-	}
+   public void method399(Class30 var1, Packet var2) {
+      int var3 = var2.g1();
+      this.anIntArray163[0] = var3 >> 4;
+      this.anIntArray163[1] = var3 & 15;
+      if (var3 == 0) {
+         this.anIntArray164[0] = this.anIntArray164[1] = 0;
+      } else {
+         this.anIntArray164[0] = var2.g2();
+         this.anIntArray164[1] = var2.g2();
+         int var4 = var2.g1();
 
-	private float method397( int arg0, int arg1, float arg2) {
-		try {
-			float local35 = (float) this.anIntArrayArrayArray5[arg1][0][arg0] + arg2 * (float) (this.anIntArrayArrayArray5[arg1][1][arg0] - this.anIntArrayArrayArray5[arg1][0][arg0]);
-			float local39 = local35 * 1.2207031E-4F;
-			return this.method396(local39);
-		} catch ( RuntimeException local45) {
-			signlink.reporterror("65056, " + arg0 + ", " + 0 + ", " + arg1 + ", " + arg2 + ", " + local45.toString());
-			throw new RuntimeException();
-		}
-	}
+         int var5;
+         int var6;
+         for(var6 = 0; var6 < 2; ++var6) {
+            for(var5 = 0; var5 < this.anIntArray163[var6]; ++var5) {
+               this.anIntArrayArrayArray5[var6][0][var5] = var2.g2();
+               this.anIntArrayArrayArray6[var6][0][var5] = var2.g2();
+            }
+         }
 
-	public int method398( int arg0, float arg1) {
-		try {
-			float local31;
-			if (arg0 == 0) {
-				local31 = (float) this.anIntArray164[0] + (float) (this.anIntArray164[1] - this.anIntArray164[0]) * arg1;
-				float local35 = local31 * 0.0030517578F;
-				aFloat1 = (float) Math.pow(0.1D, (double) (local35 / 20.0F));
-				anInt563 = (int) (aFloat1 * 65536.0F);
-			}
-			if (this.anIntArray163[arg0] == 0) {
-				return 0;
-			}
-			local31 = this.method395(arg0, 849, arg1, 0);
-			aFloatArrayArray1[arg0][0] = -2.0F * local31 * (float) Math.cos((double) this.method397(0, arg0, arg1));
-			aFloatArrayArray1[arg0][1] = local31 * local31;
-			for ( int local90 = 1; local90 < this.anIntArray163[arg0]; local90++) {
-				local31 = this.method395(arg0, 849, arg1, local90);
-				float local113 = -2.0F * local31 * (float) Math.cos((double) this.method397(local90, arg0, arg1));
-				float local117 = local31 * local31;
-				aFloatArrayArray1[arg0][local90 * 2 + 1] = aFloatArrayArray1[arg0][local90 * 2 - 1] * local117;
-				aFloatArrayArray1[arg0][local90 * 2] = aFloatArrayArray1[arg0][local90 * 2 - 1] * local113 + aFloatArrayArray1[arg0][local90 * 2 - 2] * local117;
-				for ( int local173 = local90 * 2 - 1; local173 >= 2; local173--) {
-					aFloatArrayArray1[arg0][local173] += aFloatArrayArray1[arg0][local173 - 1] * local113 + aFloatArrayArray1[arg0][local173 - 2] * local117;
-				}
-				aFloatArrayArray1[arg0][1] += aFloatArrayArray1[arg0][0] * local113 + local117;
-				aFloatArrayArray1[arg0][0] += local113;
-			}
-			int local243;
-			if (arg0 == 0) {
-				for (local243 = 0; local243 < this.anIntArray163[0] * 2; local243++) {
-					aFloatArrayArray1[0][local243] *= aFloat1;
-				}
-			}
-			for (local243 = 0; local243 < this.anIntArray163[arg0] * 2; local243++) {
-				anIntArrayArray14[arg0][local243] = (int) (aFloatArrayArray1[arg0][local243] * 65536.0F);
-			}
-			return this.anIntArray163[arg0] * 2;
-		} catch ( RuntimeException local297) {
-			signlink.reporterror("5181, " + arg0 + ", " + true + ", " + arg1 + ", " + local297.toString());
-			throw new RuntimeException();
-		}
-	}
+         for(var5 = 0; var5 < 2; ++var5) {
+            for(var6 = 0; var6 < this.anIntArray163[var5]; ++var6) {
+               if ((var4 & 1 << var5 * 4 << var6) == 0) {
+                  this.anIntArrayArrayArray5[var5][1][var6] = this.anIntArrayArrayArray5[var5][0][var6];
+                  this.anIntArrayArrayArray6[var5][1][var6] = this.anIntArrayArrayArray6[var5][0][var6];
+               } else {
+                  this.anIntArrayArrayArray5[var5][1][var6] = var2.g2();
+                  this.anIntArrayArrayArray6[var5][1][var6] = var2.g2();
+               }
+            }
+         }
 
-	public void method399( Class30 arg0, Packet arg1) {
-		try {
-			int local4 = arg1.g1();
-			this.anIntArray163[0] = local4 >> 4;
-			this.anIntArray163[1] = local4 & 0xF;
-			if (local4 == 0) {
-				this.anIntArray164[0] = this.anIntArray164[1] = 0;
-			} else {
-				this.anIntArray164[0] = arg1.g2();
-				this.anIntArray164[1] = arg1.g2();
-				int local46 = arg1.g1();
-				int local52;
-				for ( int local48 = 0; local48 < 2; local48++) {
-					for (local52 = 0; local52 < this.anIntArray163[local48]; local52++) {
-						this.anIntArrayArrayArray5[local48][0][local52] = arg1.g2();
-						this.anIntArrayArrayArray6[local48][0][local52] = arg1.g2();
-					}
-				}
-				for (local52 = 0; local52 < 2; local52++) {
-					for ( int local91 = 0; local91 < this.anIntArray163[local52]; local91++) {
-						if ((local46 & 0x1 << local52 * 4 << local91) == 0) {
-							this.anIntArrayArrayArray5[local52][1][local91] = this.anIntArrayArrayArray5[local52][0][local91];
-							this.anIntArrayArrayArray6[local52][1][local91] = this.anIntArrayArrayArray6[local52][0][local91];
-						} else {
-							this.anIntArrayArrayArray5[local52][1][local91] = arg1.g2();
-							this.anIntArrayArrayArray6[local52][1][local91] = arg1.g2();
-						}
-					}
-				}
-				if (local46 != 0 || this.anIntArray164[1] != this.anIntArray164[0]) {
-					arg0.method360(arg1);
-				}
-			}
-		} catch ( RuntimeException local201) {
-			signlink.reporterror("70345, " + -954 + ", " + arg0 + ", " + arg1 + ", " + local201.toString());
-			throw new RuntimeException();
-		}
-	}
+         if (var4 != 0 || this.anIntArray164[1] != this.anIntArray164[0]) {
+            var1.method360(var2);
+         }
+      }
+
+   }
 }

@@ -1,163 +1,148 @@
 package unmapped;
 
-
 import jagex2.io.Packet;
-import sign.signlink;
 
 public final class Class22 {
+   private static int anInt237 = 217;
+   private static Class22[] aClass22Array1;
+   private static boolean aBoolean75;
+   private static boolean[] aBooleanArray3;
+   public Class42 aClass42_1;
+   public int anInt238;
+   public int anInt239;
+   public int[] anIntArray81;
+   public int[] anIntArray82;
+   public int[] anIntArray83;
+   public int[] anIntArray84;
 
-	private static boolean aBoolean75;
+   private Class22() {
+   }
 
-	private static Class22[] aClass22Array1;
+   public static Class22 method168(int var0) {
+      return aClass22Array1 == null ? null : aClass22Array1[var0];
+   }
 
-	private static boolean[] aBooleanArray3;
+   public static boolean method169(boolean var0, int var1) {
+      if (!var0) {
+         aBoolean75 = !aBoolean75;
+      }
 
-	private static int anInt237 = 217;
+      return var1 == -1;
+   }
 
-	public int anInt238;
+   public static void method166(byte[] var0) {
+      Packet var1 = new Packet(var0);
+      var1.pos = var0.length - 8;
+      int var2 = var1.g2();
+      int var3 = var1.g2();
+      int var4 = var1.g2();
+      int var5 = var1.g2();
+      Packet var6 = new Packet(var0);
+      var6.pos = 0;
+      int var7 = var2 + 0 + 2;
+      Packet var8 = new Packet(var0);
+      var8.pos = var7;
+      int var9 = var7 + var3;
+      Packet var10 = new Packet(var0);
+      var10.pos = var9;
+      int var11 = var9 + var4;
+      Packet var12 = new Packet(var0);
+      var12.pos = var11;
+      int var13 = var11 + var5;
+      Packet var14 = new Packet(var0);
+      var14.pos = var13;
+      Class42 var15 = new Class42(var14, 0);
+      int var16 = var6.g2();
+      int[] var17 = new int[500];
+      int[] var18 = new int[500];
+      int[] var19 = new int[500];
+      int[] var20 = new int[500];
 
-	public Class42 aClass42_1;
+      for(int var21 = 0; var21 < var16; ++var21) {
+         int var22 = var6.g2();
+         Class22 var23 = aClass22Array1[var22] = new Class22();
+         var23.anInt238 = var12.g1();
+         var23.aClass42_1 = var15;
+         int var24 = var6.g1();
+         int var25 = -1;
+         int var26 = 0;
 
-	public int anInt239;
+         int var27;
+         for(int var28 = 0; var28 < var24; ++var28) {
+            var27 = var8.g1();
+            if (var27 > 0) {
+               if (var15.anIntArray172[var28] != 0) {
+                  for(int var29 = var28 - 1; var29 > var25; --var29) {
+                     if (var15.anIntArray172[var29] == 0) {
+                        var17[var26] = var29;
+                        var18[var26] = 0;
+                        var19[var26] = 0;
+                        var20[var26] = 0;
+                        ++var26;
+                        break;
+                     }
+                  }
+               }
 
-	public int[] anIntArray81;
+               var17[var26] = var28;
+               short var30 = 0;
+               if (var15.anIntArray172[var28] == 3) {
+                  var30 = 128;
+               }
 
-	public int[] anIntArray82;
+               if ((var27 & 1) == 0) {
+                  var18[var26] = var30;
+               } else {
+                  var18[var26] = var10.gsmart();
+               }
 
-	public int[] anIntArray83;
+               if ((var27 & 2) == 0) {
+                  var19[var26] = var30;
+               } else {
+                  var19[var26] = var10.gsmart();
+               }
 
-	public int[] anIntArray84;
+               if ((var27 & 4) == 0) {
+                  var20[var26] = var30;
+               } else {
+                  var20[var26] = var10.gsmart();
+               }
 
-	public static void method165( int arg0) {
-		aClass22Array1 = new Class22[arg0 + 1];
-		aBooleanArray3 = new boolean[arg0 + 1];
-		for ( int local11 = 0; local11 < arg0 + 1; local11++) {
-			aBooleanArray3[local11] = true;
-		}
-	}
+               var25 = var28;
+               ++var26;
+               if (var15.anIntArray172[var28] == 5) {
+                  aBooleanArray3[var22] = false;
+               }
+            }
+         }
 
-	public static void method166( byte[] arg0) {
-		try {
-			Packet local7 = new Packet(arg0);
-			local7.pos = arg0.length - 8;
-			int local16 = local7.g2();
-			int local19 = local7.g2();
-			int local22 = local7.g2();
-			int local28 = local7.g2();
-			Packet local36 = new Packet(arg0);
-			local36.pos = 0;
-			int local45 = local16 + 0 + 2;
-			Packet local51 = new Packet(arg0);
-			local51.pos = local45;
-			int local58 = local45 + local19;
-			Packet local64 = new Packet(arg0);
-			local64.pos = local58;
-			int local71 = local58 + local22;
-			Packet local77 = new Packet(arg0);
-			local77.pos = local71;
-			int local84 = local71 + local28;
-			Packet local90 = new Packet(arg0);
-			local90.pos = local84;
-			Class42 local99 = new Class42(local90, 0);
-			int local102 = local36.g2();
-			int[] local105 = new int[500];
-			int[] local108 = new int[500];
-			int[] local111 = new int[500];
-			int[] local114 = new int[500];
-			for ( int local116 = 0; local116 < local102; local116++) {
-				int local121 = local36.g2();
-				Class22 local129 = aClass22Array1[local121] = new Class22();
-				local129.anInt238 = local77.g1();
-				local129.aClass42_1 = local99;
-				int local139 = local36.g1();
-				int local141 = -1;
-				int local143 = 0;
-				int local150;
-				for ( int local145 = 0; local145 < local139; local145++) {
-					local150 = local51.g1();
-					if (local150 > 0) {
-						if (local99.anIntArray172[local145] != 0) {
-							for ( int local161 = local145 - 1; local161 > local141; local161--) {
-								if (local99.anIntArray172[local161] == 0) {
-									local105[local143] = local161;
-									local108[local143] = 0;
-									local111[local143] = 0;
-									local114[local143] = 0;
-									local143++;
-									break;
-								}
-							}
-						}
-						local105[local143] = local145;
-						short local197 = 0;
-						if (local99.anIntArray172[local145] == 3) {
-							local197 = 128;
-						}
-						if ((local150 & 0x1) == 0) {
-							local108[local143] = local197;
-						} else {
-							local108[local143] = local64.gsmart();
-						}
-						if ((local150 & 0x2) == 0) {
-							local111[local143] = local197;
-						} else {
-							local111[local143] = local64.gsmart();
-						}
-						if ((local150 & 0x4) == 0) {
-							local114[local143] = local197;
-						} else {
-							local114[local143] = local64.gsmart();
-						}
-						local141 = local145;
-						local143++;
-						if (local99.anIntArray172[local145] == 5) {
-							aBooleanArray3[local121] = false;
-						}
-					}
-				}
-				local129.anInt239 = local143;
-				local129.anIntArray81 = new int[local143];
-				local129.anIntArray82 = new int[local143];
-				local129.anIntArray83 = new int[local143];
-				local129.anIntArray84 = new int[local143];
-				for (local150 = 0; local150 < local143; local150++) {
-					local129.anIntArray81[local150] = local105[local150];
-					local129.anIntArray82[local150] = local108[local150];
-					local129.anIntArray83[local150] = local111[local150];
-					local129.anIntArray84[local150] = local114[local150];
-				}
-			}
-		} catch ( RuntimeException local328) {
-			signlink.reporterror("6319, " + arg0 + ", " + true + ", " + local328.toString());
-			throw new RuntimeException();
-		}
-	}
+         var23.anInt239 = var26;
+         var23.anIntArray81 = new int[var26];
+         var23.anIntArray82 = new int[var26];
+         var23.anIntArray83 = new int[var26];
+         var23.anIntArray84 = new int[var26];
 
-	public static void method167() {
-		try {
-			aClass22Array1 = null;
-		} catch ( RuntimeException local7) {
-			signlink.reporterror("60321, " + false + ", " + local7.toString());
-			throw new RuntimeException();
-		}
-	}
+         for(var27 = 0; var27 < var26; ++var27) {
+            var23.anIntArray81[var27] = var17[var27];
+            var23.anIntArray82[var27] = var18[var27];
+            var23.anIntArray83[var27] = var19[var27];
+            var23.anIntArray84[var27] = var20[var27];
+         }
+      }
 
-	public static Class22 method168( int arg0) {
-		return aClass22Array1 == null ? null : aClass22Array1[arg0];
-	}
+   }
 
-	public static boolean method169( boolean arg0, int arg1) {
-		try {
-			if (!arg0) {
-				aBoolean75 = !aBoolean75;
-			}
-			return arg1 == -1;
-		} catch ( RuntimeException local15) {
-			signlink.reporterror("71201, " + arg0 + ", " + arg1 + ", " + local15.toString());
-			throw new RuntimeException();
-		}
-	}
+   public static void method165(int var0) {
+      aClass22Array1 = new Class22[var0 + 1];
+      aBooleanArray3 = new boolean[var0 + 1];
 
-	private Class22() {
-	}
+      for(int var1 = 0; var1 < var0 + 1; ++var1) {
+         aBooleanArray3[var1] = true;
+      }
+
+   }
+
+   public static void method167() {
+      aClass22Array1 = null;
+   }
 }

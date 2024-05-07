@@ -1,58 +1,55 @@
 package jagex2.datastruct;
 
-
 public final class LruCache {
-	private Hashable selectedNode = new Hashable();
+   private HashTable hashtable;
+   private int available;
+   private Stack history = new Stack();
+   private Hashable selectedNode = new Hashable();
+   private int capacity;
 
-	private Stack history = new Stack();
+   public LruCache(int var1) {
+      this.capacity = var1;
+      this.available = var1;
+      this.hashtable = new HashTable(1024);
+   }
 
-	private int capacity;
+   public void clear() {
+      while(true) {
+         Hashable var1 = this.history.pop();
+         if (var1 == null) {
+            this.available = this.capacity;
+            return;
+         }
 
-	private int available;
+         var1.unlink();
+         var1.uncache();
+      }
+   }
 
-	private HashTable hashtable;
+   public Hashable get(long var1) {
+      Hashable var3 = (Hashable)this.hashtable.get(var1);
+      if (var3 != null) {
+         this.history.method33(var3);
+      }
 
-	public LruCache(int size) {
-		this.capacity = size;
-		this.available = size;
-		this.hashtable = new HashTable(1024);
-	}
+      return var3;
+   }
 
-	public Hashable get(long arg0) {
-		Hashable node = (Hashable) this.hashtable.get(arg0);
-		if (node != null) {
-			this.history.method33(node);
-		}
+   public void put(Hashable var1, long var2) {
+      if (this.available == 0) {
+         Hashable var4 = this.history.pop();
+         var4.unlink();
+         var4.uncache();
+         if (var4 == this.selectedNode) {
+            var4 = this.history.pop();
+            var4.unlink();
+            var4.uncache();
+         }
+      } else {
+         --this.available;
+      }
 
-		return node;
-	}
-
-	public void put(Hashable value, long key) {
-		if (this.available == 0) {
-			Hashable node = this.history.pop();
-			node.unlink();
-			node.uncache();
-			if (node == this.selectedNode) {
-				node = this.history.pop();
-				node.unlink();
-				node.uncache();
-			}
-		} else {
-			this.available--;
-		}
-		this.hashtable.method164(value, key);
-		this.history.method33(value);
-	}
-
-	public void clear() {
-		while (true) {
-			Hashable node = this.history.pop();
-			if (node == null) {
-				this.available = this.capacity;
-				return;
-			}
-			node.unlink();
-			node.uncache();
-		}
-	}
+      this.hashtable.method164(var1, var2);
+      this.history.method33(var1);
+   }
 }
