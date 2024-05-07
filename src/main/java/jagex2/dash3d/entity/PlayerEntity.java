@@ -1,427 +1,446 @@
 package jagex2.dash3d.entity;
 
-
 import jagex2.config.IdkType;
 import jagex2.datastruct.LruCache;
 import jagex2.graphics.Model;
 import jagex2.io.Packet;
-import sign.signlink;
-import unmapped.*;
+import unmapped.Class15;
+import unmapped.Class17;
+import unmapped.Class22;
+import unmapped.Class26;
+import unmapped.Class28;
+import unmapped.Class38;
+import unmapped.Client;
 
 public final class PlayerEntity extends PathingEntity {
+   public static LruCache aClass34_9 = new LruCache(260);
+   public Class38 aClass38_2;
+   public boolean visible = false;
+   private boolean aBoolean197 = false;
+   private long aLong25;
+   public int anInt765 = -1;
+   public int anInt770;
+   private int anInt768;
+   public String aString14;
+   public int[] appearances = new int[12];
+   private long aLong24 = -1L;
+   public int anInt769 = -1;
+   public int anInt767;
+   public boolean aBoolean200 = false;
+   public int[] anIntArray199 = new int[5];
+   public Model aClass10_Sub1_Sub2_Sub4_2;
+   private boolean aBoolean199 = true;
+   public int anInt773;
+   public int anInt772;
+   private boolean aBoolean201 = false;
+   public int anInt771;
+   private int anInt778 = 932;
+   public int anInt762;
+   public int anInt764;
+   public int anInt763;
+   public int anInt766;
+   public int anInt775;
+   public int anInt774;
+   public int anInt777;
+   public int anInt776;
 
-	public static LruCache aClass34_9 = new LruCache(260);
+   private Model method544() {
+      if (this.aClass38_2 != null) {
+         int var1 = -1;
+         if (super.anInt753 >= 0 && super.anInt756 == 0) {
+            var1 = Class15.aClass15Array1[super.anInt753].anIntArray47[super.anInt754];
+         } else if (super.anInt719 >= 0) {
+            var1 = Class15.aClass15Array1[super.anInt719].anIntArray47[super.anInt720];
+         }
 
-	public int anInt762;
+         return this.aClass38_2.method405(var1, -1, (int[])null);
+      } else {
+         long var13 = this.aLong25;
+         int var3 = -1;
+         int var4 = -1;
+         int var5 = -1;
+         int var6 = -1;
+         if (super.anInt753 >= 0 && super.anInt756 == 0) {
+            Class15 var7 = Class15.aClass15Array1[super.anInt753];
+            var3 = var7.anIntArray47[super.anInt754];
+            if (super.anInt719 >= 0 && super.anInt719 != super.anInt760) {
+               var4 = Class15.aClass15Array1[super.anInt719].anIntArray47[super.anInt720];
+            }
 
-	public int anInt763;
+            if (var7.anInt155 >= 0) {
+               var5 = var7.anInt155;
+               var13 += (long)(var5 - this.appearances[5] << 8);
+            }
 
-	public int anInt764;
+            if (var7.anInt156 >= 0) {
+               var6 = var7.anInt156;
+               var13 += (long)(var6 - this.appearances[3] << 16);
+            }
+         } else if (super.anInt719 >= 0) {
+            var3 = Class15.aClass15Array1[super.anInt719].anIntArray47[super.anInt720];
+         }
 
-	public Model aClass10_Sub1_Sub2_Sub4_2;
+         Model var16 = (Model)aClass34_9.get(var13);
+         int var8;
+         int var9;
+         if (var16 == null) {
+            boolean var10 = false;
 
-	public int anInt766;
+            for(var8 = 0; var8 < 12; ++var8) {
+               var9 = this.appearances[var8];
+               if (var6 >= 0 && var8 == 3) {
+                  var9 = var6;
+               }
 
-	public String aString14;
+               if (var5 >= 0 && var8 == 5) {
+                  var9 = var5;
+               }
 
-	public int anInt767;
+               if (var9 >= 256 && var9 < 512 && !IdkType.instances[var9 - 256].method548(256)) {
+                  var10 = true;
+               }
 
-	private long aLong25;
+               if (var9 >= 512 && !Class17.method104(var9 - 512).method108(this.anInt768)) {
+                  var10 = true;
+               }
+            }
 
-	private int anInt768;
+            if (var10) {
+               if (this.aLong24 != -1L) {
+                  var16 = (Model)aClass34_9.get(this.aLong24);
+               }
 
-	public Class38 aClass38_2;
+               if (var16 == null) {
+                  return null;
+               }
+            }
+         }
 
-	public int anInt770;
+         if (var16 == null) {
+            Model[] var15 = new Model[12];
+            var8 = 0;
 
-	public int anInt771;
+            int var11;
+            for(var9 = 0; var9 < 12; ++var9) {
+               var11 = this.appearances[var9];
+               if (var6 >= 0 && var9 == 3) {
+                  var11 = var6;
+               }
 
-	public int anInt772;
+               if (var5 >= 0 && var9 == 5) {
+                  var11 = var5;
+               }
 
-	public int anInt773;
+               Model var12;
+               if (var11 >= 256 && var11 < 512) {
+                  var12 = IdkType.instances[var11 - 256].getModel();
+                  if (var12 != null) {
+                     var15[var8++] = var12;
+                  }
+               }
 
-	public int anInt774;
+               if (var11 >= 512) {
+                  var12 = Class17.method104(var11 - 512).method105(this.anInt768);
+                  if (var12 != null) {
+                     var15[var8++] = var12;
+                  }
+               }
+            }
 
-	public int anInt775;
+            var16 = new Model(var8, var15);
 
-	public int anInt776;
+            for(var11 = 0; var11 < 5; ++var11) {
+               if (this.anIntArray199[var11] != 0) {
+                  var16.recolor(Client.anIntArrayArray24[var11][0], Client.anIntArrayArray24[var11][this.anIntArray199[var11]]);
+                  if (var11 == 1) {
+                     var16.recolor(Client.anIntArray266[0], Client.anIntArray266[this.anIntArray199[var11]]);
+                  }
+               }
+            }
 
-	public int anInt777;
+            var16.method278();
+            var16.method288(64, 850, -30, -50, -30, true);
+            aClass34_9.put(var16, var13);
+            this.aLong24 = var13;
+         }
 
-	private boolean aBoolean197 = false;
+         if (this.aBoolean200) {
+            return var16;
+         } else {
+            Model var17 = Model.aClass10_Sub1_Sub2_Sub4_1;
+            var17.method273(Class22.method169(this.aBoolean199, var3) & Class22.method169(this.aBoolean199, var4), var16);
+            if (var3 != -1 && var4 != -1) {
+               var17.method280(var4, var3, Class15.aClass15Array1[super.anInt753].anIntArray50);
+            } else if (var3 != -1) {
+               var17.method279(var3, (byte)6);
+            }
 
-	public int anInt765 = -1;
+            var17.method275(this.anInt778);
+            var17.anIntArrayArray11 = null;
+            var17.anIntArrayArray10 = null;
+            return var17;
+         }
+      }
+   }
 
-	private long aLong24 = -1L;
+   protected Model method537(byte var1) {
+      if (!this.visible) {
+         return null;
+      } else {
+         Model var2 = this.method544();
+         if (var2 == null) {
+            return null;
+         } else {
+            super.anInt723 = var2.anInt713;
+            var2.aBoolean106 = true;
+            if (this.aBoolean200) {
+               return var2;
+            } else {
+               if (super.anInt743 != -1 && super.anInt744 != -1) {
+                  Class28 var3 = Class28.aClass28Array1[super.anInt743];
+                  Model var4 = var3.method352();
+                  if (var4 != null) {
+                     Model var5 = new Model(false, false, true, var4, Class22.method169(this.aBoolean199, super.anInt744));
+                     var5.method284(0, 0, -super.anInt747);
+                     var5.method278();
+                     var5.method279(var3.aClass15_1.anIntArray47[super.anInt744], (byte)6);
+                     var5.anIntArrayArray11 = null;
+                     var5.anIntArrayArray10 = null;
+                     if (var3.anInt438 != 128 || var3.anInt439 != 128) {
+                        var5.method287(var3.anInt439, var3.anInt438, var3.anInt438);
+                     }
 
-	public int[] appearances = new int[12];
+                     var5.method288(var3.anInt441 + 64, var3.anInt442 + 850, -30, -50, -30, true);
+                     Model[] var6 = new Model[]{var2, var5};
+                     var2 = new Model(2, true, 0, var6);
+                  }
+               }
 
-	public int anInt769 = -1;
+               if (this.aClass10_Sub1_Sub2_Sub4_2 != null) {
+                  if (Client.anInt1050 >= this.anInt772) {
+                     this.aClass10_Sub1_Sub2_Sub4_2 = null;
+                  }
 
-	public boolean visible = false;
+                  if (Client.anInt1050 >= this.anInt771 && Client.anInt1050 < this.anInt772) {
+                     Model var8 = this.aClass10_Sub1_Sub2_Sub4_2;
+                     var8.method284(this.anInt762 - super.anInt739, this.anInt764 - super.anInt740, this.anInt763 - this.anInt766);
+                     if (super.anInt717 == 512) {
+                        var8.method282();
+                        var8.method282();
+                        var8.method282();
+                     } else if (super.anInt717 == 1024) {
+                        var8.method282();
+                        var8.method282();
+                     } else if (super.anInt717 == 1536) {
+                        var8.method282();
+                     }
 
-	public int[] anIntArray199 = new int[5];
+                     Model[] var9 = new Model[]{var2, var8};
+                     var2 = new Model(2, true, 0, var9);
+                     if (super.anInt717 == 512) {
+                        var8.method282();
+                     } else if (super.anInt717 == 1024) {
+                        var8.method282();
+                        var8.method282();
+                     } else if (super.anInt717 == 1536) {
+                        var8.method282();
+                        var8.method282();
+                        var8.method282();
+                     }
 
-	private boolean aBoolean199 = true;
+                     var8.method284(super.anInt739 - this.anInt762, super.anInt740 - this.anInt764, this.anInt766 - this.anInt763);
+                  }
+               }
 
-	public boolean aBoolean200 = false;
+               var2.aBoolean106 = true;
+               if (var1 == 3) {
+                  boolean var7 = false;
+               } else {
+                  this.aBoolean201 = !this.aBoolean201;
+               }
 
-	private boolean aBoolean201 = false;
+               return var2;
+            }
+         }
+      }
+   }
 
-	private int anInt778 = 932;
+   public boolean isVisible() {
+      return this.visible;
+   }
 
-	public Model getHeadModel() {
-		if (!this.visible) {
-			return null;
-		} else if (this.aClass38_2 == null) {
-			boolean local16 = false;
-			for ( int part = 0; part < 12; part++) {
-				int value = this.appearances[part];
-				if (value >= 256 && value < 512 && !IdkType.instances[value - 256].method550()) {
-					local16 = true;
-				}
-				if (value >= 512 && !Class17.method104(value - 512).method103(this.anInt768)) {
-					local16 = true;
-				}
-			}
-			if (local16) {
-				return null;
-			}
-			Model[] local66 = new Model[12];
-			int local68 = 0;
-			for ( int local70 = 0; local70 < 12; local70++) {
-				int local77 = this.appearances[local70];
-				Model local92;
-				if (local77 >= 256 && local77 < 512) {
-					local92 = IdkType.instances[local77 - 256].getHeadModel();
-					if (local92 != null) {
-						local66[local68++] = local92;
-					}
-				}
-				if (local77 >= 512) {
-					local92 = Class17.method104(local77 - 512).method111(this.anInt768);
-					if (local92 != null) {
-						local66[local68++] = local92;
-					}
-				}
-			}
-			Model local129 = new Model(local68, local66);
-			for ( int local137 = 0; local137 < 5; local137++) {
-				if (this.anIntArray199[local137] != 0) {
-					local129.recolor(Client.anIntArrayArray24[local137][0], Client.anIntArrayArray24[local137][this.anIntArray199[local137]]);
-					if (local137 == 1) {
-						local129.recolor(Client.anIntArray266[0], Client.anIntArray266[this.anIntArray199[local137]]);
-					}
-				}
-			}
-			return local129;
-		} else {
-			return this.aClass38_2.method402();
-		}
-	}
+   public Model getHeadModel() {
+      if (!this.visible) {
+         return null;
+      } else if (this.aClass38_2 == null) {
+         boolean var1 = false;
 
-	private Model method544() {
-		try {
-			if (this.aClass38_2 != null) {
-				int local6 = -1;
-				if (super.anInt753 >= 0 && super.anInt756 == 0) {
-					local6 = Class15.aClass15Array1[super.anInt753].anIntArray47[super.anInt754];
-				} else if (super.anInt719 >= 0) {
-					local6 = Class15.aClass15Array1[super.anInt719].anIntArray47[super.anInt720];
-				}
-				return this.aClass38_2.method405(local6, -1, null);
-			}
-			long local48 = this.aLong25;
-			int local50 = -1;
-			int local52 = -1;
-			int local54 = -1;
-			int local56 = -1;
-			if (super.anInt753 >= 0 && super.anInt756 == 0) {
-				Class15 local78 = Class15.aClass15Array1[super.anInt753];
-				local50 = local78.anIntArray47[super.anInt754];
-				if (super.anInt719 >= 0 && super.anInt719 != super.anInt760) {
-					local52 = Class15.aClass15Array1[super.anInt719].anIntArray47[super.anInt720];
-				}
-				if (local78.anInt155 >= 0) {
-					local54 = local78.anInt155;
-					local48 += local54 - this.appearances[5] << 8;
-				}
-				if (local78.anInt156 >= 0) {
-					local56 = local78.anInt156;
-					local48 += local56 - this.appearances[3] << 16;
-				}
-			} else if (super.anInt719 >= 0) {
-				local50 = Class15.aClass15Array1[super.anInt719].anIntArray47[super.anInt720];
-			}
-			Model local156 = (Model) aClass34_9.get(local48);
-			int local162;
-			int local169;
-			if (local156 == null) {
-				boolean local160 = false;
-				for (local162 = 0; local162 < 12; local162++) {
-					local169 = this.appearances[local162];
-					if (local56 >= 0 && local162 == 3) {
-						local169 = local56;
-					}
-					if (local54 >= 0 && local162 == 5) {
-						local169 = local54;
-					}
-					if (local169 >= 256 && local169 < 512 && !IdkType.instances[local169 - 256].method548(256)) {
-						local160 = true;
-					}
-					if (local169 >= 512 && !Class17.method104(local169 - 512).method108(this.anInt768)) {
-						local160 = true;
-					}
-				}
-				if (local160) {
-					if (this.aLong24 != -1L) {
-						local156 = (Model) aClass34_9.get(this.aLong24);
-					}
-					if (local156 == null) {
-						return null;
-					}
-				}
-			}
-			if (local156 == null) {
-				Model[] local239 = new Model[12];
-				local162 = 0;
-				int local250;
-				for (local169 = 0; local169 < 12; local169++) {
-					local250 = this.appearances[local169];
-					if (local56 >= 0 && local169 == 3) {
-						local250 = local56;
-					}
-					if (local54 >= 0 && local169 == 5) {
-						local250 = local54;
-					}
-					Model local278;
-					if (local250 >= 256 && local250 < 512) {
-						local278 = IdkType.instances[local250 - 256].getModel();
-						if (local278 != null) {
-							local239[local162++] = local278;
-						}
-					}
-					if (local250 >= 512) {
-						local278 = Class17.method104(local250 - 512).method105(this.anInt768);
-						if (local278 != null) {
-							local239[local162++] = local278;
-						}
-					}
-				}
-				local156 = new Model(local162, local239);
-				for (local250 = 0; local250 < 5; local250++) {
-					if (this.anIntArray199[local250] != 0) {
-						local156.recolor(Client.anIntArrayArray24[local250][0], Client.anIntArrayArray24[local250][this.anIntArray199[local250]]);
-						if (local250 == 1) {
-							local156.recolor(Client.anIntArray266[0], Client.anIntArray266[this.anIntArray199[local250]]);
-						}
-					}
-				}
-				local156.method278();
-				local156.method288(64, 850, -30, -50, -30, true);
-				aClass34_9.put(local156, local48);
-				this.aLong24 = local48;
-			}
-			if (this.aBoolean200) {
-				return local156;
-			}
-			Model local383 = Model.aClass10_Sub1_Sub2_Sub4_1;
-			local383.method273(Class22.method169(this.aBoolean199, local50) & Class22.method169(this.aBoolean199, local52), local156);
-			if (local50 != -1 && local52 != -1) {
-				local383.method280(local52, local50, Class15.aClass15Array1[super.anInt753].anIntArray50);
-			} else if (local50 != -1) {
-				local383.method279(local50, (byte) 6);
-			}
-			local383.method275(this.anInt778);
-			local383.anIntArrayArray11 = null;
-			local383.anIntArrayArray10 = null;
-			return local383;
-		} catch ( RuntimeException local434) {
-			signlink.reporterror("95366, " + 122 + ", " + local434.toString());
-			throw new RuntimeException();
-		}
-	}
+         int var3;
+         for(int var2 = 0; var2 < 12; ++var2) {
+            var3 = this.appearances[var2];
+            if (var3 >= 256 && var3 < 512 && !IdkType.instances[var3 - 256].method550()) {
+               var1 = true;
+            }
 
-	@Override
-	public boolean isVisible() {
-		return this.visible;
-	}
+            if (var3 >= 512 && !Class17.method104(var3 - 512).method103(this.anInt768)) {
+               var1 = true;
+            }
+         }
 
-	@Override
-	protected Model method537(byte arg0) {
-		try {
-			if (!this.visible) {
-				return null;
-			}
-			Model local10 = this.method544();
-			if (local10 == null) {
-				return null;
-			}
-			super.anInt723 = local10.anInt713;
-			local10.aBoolean106 = true;
-			if (this.aBoolean200) {
-				return local10;
-			}
-			if (super.anInt743 != -1 && super.anInt744 != -1) {
-				Class28 local39 = Class28.aClass28Array1[super.anInt743];
-				Model local42 = local39.method352();
-				if (local42 != null) {
-					Model local57 = new Model(false, false, true, local42, Class22.method169(this.aBoolean199, super.anInt744));
-					local57.method284(0, 0, -super.anInt747);
-					local57.method278();
-					local57.method279(local39.aClass15_1.anIntArray47[super.anInt744], (byte) 6);
-					local57.anIntArrayArray11 = null;
-					local57.anIntArrayArray10 = null;
-					if (local39.anInt438 != 128 || local39.anInt439 != 128) {
-						local57.method287(local39.anInt439, local39.anInt438, local39.anInt438);
-					}
-					local57.method288(local39.anInt441 + 64, local39.anInt442 + 850, -30, -50, -30, true);
-					Model[] local125 = new Model[] { local10, local57 };
-					local10 = new Model(2, true, 0, local125);
-				}
-			}
-			if (this.aClass10_Sub1_Sub2_Sub4_2 != null) {
-				if (Client.anInt1050 >= this.anInt772) {
-					this.aClass10_Sub1_Sub2_Sub4_2 = null;
-				}
-				if (Client.anInt1050 >= this.anInt771 && Client.anInt1050 < this.anInt772) {
-					Model local154 = this.aClass10_Sub1_Sub2_Sub4_2;
-					local154.method284(this.anInt762 - super.anInt739, this.anInt764 - super.anInt740, this.anInt763 - this.anInt766);
-					if (super.anInt717 == 512) {
-						local154.method282();
-						local154.method282();
-						local154.method282();
-					} else if (super.anInt717 == 1024) {
-						local154.method282();
-						local154.method282();
-					} else if (super.anInt717 == 1536) {
-						local154.method282();
-					}
-					Model[] local217 = new Model[] { local10, local154 };
-					local10 = new Model(2, true, 0, local217);
-					if (super.anInt717 == 512) {
-						local154.method282();
-					} else if (super.anInt717 == 1024) {
-						local154.method282();
-						local154.method282();
-					} else if (super.anInt717 == 1536) {
-						local154.method282();
-						local154.method282();
-						local154.method282();
-					}
-					local154.method284(super.anInt739 - this.anInt762, super.anInt740 - this.anInt764, this.anInt766 - this.anInt763);
-				}
-			}
-			local10.aBoolean106 = true;
-			if (arg0 == 3) {
-				boolean local285 = false;
-			} else {
-				this.aBoolean201 = !this.aBoolean201;
-			}
-			return local10;
-		} catch ( RuntimeException local298) {
-			signlink.reporterror("65126, " + arg0 + ", " + local298.toString());
-			throw new RuntimeException();
-		}
-	}
+         if (var1) {
+            return null;
+         } else {
+            Model[] var7 = new Model[12];
+            var3 = 0;
 
-	public void method545( Packet arg0) {
-		try {
-			arg0.pos = 0;
-			this.anInt768 = arg0.g1();
-			this.anInt769 = arg0.g1b();
-			this.anInt765 = arg0.g1b();
-			this.aClass38_2 = null;
-			this.anInt773 = 0;
-			int local29;
-			int local41;
-			int local88;
-			for ( int local24 = 0; local24 < 12; local24++) {
-				local29 = arg0.g1();
-				if (local29 == 0) {
-					this.appearances[local24] = 0;
-				} else {
-					local41 = arg0.g1();
-					this.appearances[local24] = (local29 << 8) + local41;
-					if (local24 == 0 && this.appearances[0] == 65535) {
-						this.aClass38_2 = Class38.method407(arg0.g2());
-						break;
-					}
-					if (this.appearances[local24] >= 512 && this.appearances[local24] - 512 < Class17.anInt179) {
-						local88 = Class17.method104(this.appearances[local24] - 512).anInt176;
-						if (local88 != 0) {
-							this.anInt773 = local88;
-						}
-					}
-				}
-			}
-			for (local29 = 0; local29 < 5; local29++) {
-				local41 = arg0.g1();
-				if (local41 < 0 || local41 >= Client.anIntArrayArray24[local29].length) {
-					local41 = 0;
-				}
-				this.anIntArray199[local29] = local41;
-			}
-			super.anInt760 = arg0.g2();
-			if (super.anInt760 == 65535) {
-				super.anInt760 = -1;
-			}
-			super.anInt761 = arg0.g2();
-			if (super.anInt761 == 65535) {
-				super.anInt761 = -1;
-			}
-			super.anInt748 = arg0.g2();
-			if (super.anInt748 == 65535) {
-				super.anInt748 = -1;
-			}
-			super.anInt749 = arg0.g2();
-			if (super.anInt749 == 65535) {
-				super.anInt749 = -1;
-			}
-			super.anInt750 = arg0.g2();
-			if (super.anInt750 == 65535) {
-				super.anInt750 = -1;
-			}
-			super.anInt751 = arg0.g2();
-			if (super.anInt751 == 65535) {
-				super.anInt751 = -1;
-			}
-			super.anInt758 = arg0.g2();
-			if (super.anInt758 == 65535) {
-				super.anInt758 = -1;
-			}
-			this.aString14 = Class26.method252(Class26.method249(arg0.g8()), (byte) 7);
-			this.anInt767 = arg0.g1();
-			this.anInt770 = arg0.g2();
-			this.visible = true;
-			this.aLong25 = 0L;
-			local41 = this.appearances[5];
-			local88 = this.appearances[9];
-			this.appearances[5] = local88;
-			this.appearances[9] = local41;
-			for ( int local248 = 0; local248 < 12; local248++) {
-				this.aLong25 <<= 0x4;
-				if (this.appearances[local248] >= 256) {
-					this.aLong25 += this.appearances[local248] - 256;
-				}
-			}
-			if (this.appearances[0] >= 256) {
-				this.aLong25 += this.appearances[0] - 256 >> 4;
-			}
-			if (this.appearances[1] >= 256) {
-				this.aLong25 += this.appearances[1] - 256 >> 8;
-			}
-			this.appearances[5] = local41;
-			this.appearances[9] = local88;
-			for ( int local330 = 0; local330 < 5; local330++) {
-				this.aLong25 <<= 0x3;
-				this.aLong25 += this.anIntArray199[local330];
-			}
-			this.aLong25 <<= 0x1;
-			this.aLong25 += this.anInt768;
-		} catch ( RuntimeException local368) {
-			signlink.reporterror("13892, " + arg0 + ", " + 0 + ", " + local368.toString());
-			throw new RuntimeException();
-		}
-	}
+            int var5;
+            for(int var4 = 0; var4 < 12; ++var4) {
+               var5 = this.appearances[var4];
+               Model var6;
+               if (var5 >= 256 && var5 < 512) {
+                  var6 = IdkType.instances[var5 - 256].getHeadModel();
+                  if (var6 != null) {
+                     var7[var3++] = var6;
+                  }
+               }
+
+               if (var5 >= 512) {
+                  var6 = Class17.method104(var5 - 512).method111(this.anInt768);
+                  if (var6 != null) {
+                     var7[var3++] = var6;
+                  }
+               }
+            }
+
+            Model var8 = new Model(var3, var7);
+
+            for(var5 = 0; var5 < 5; ++var5) {
+               if (this.anIntArray199[var5] != 0) {
+                  var8.recolor(Client.anIntArrayArray24[var5][0], Client.anIntArrayArray24[var5][this.anIntArray199[var5]]);
+                  if (var5 == 1) {
+                     var8.recolor(Client.anIntArray266[0], Client.anIntArray266[this.anIntArray199[var5]]);
+                  }
+               }
+            }
+
+            return var8;
+         }
+      } else {
+         return this.aClass38_2.method402();
+      }
+   }
+
+   public void method545(Packet var1) {
+      var1.pos = 0;
+      this.anInt768 = var1.g1();
+      this.anInt769 = var1.g1b();
+      this.anInt765 = var1.g1b();
+      this.aClass38_2 = null;
+      this.anInt773 = 0;
+
+      int var2;
+      int var3;
+      int var4;
+      int var5;
+      for(var5 = 0; var5 < 12; ++var5) {
+         var2 = var1.g1();
+         if (var2 == 0) {
+            this.appearances[var5] = 0;
+         } else {
+            var3 = var1.g1();
+            this.appearances[var5] = (var2 << 8) + var3;
+            if (var5 == 0 && this.appearances[0] == 65535) {
+               this.aClass38_2 = Class38.method407(var1.g2());
+               break;
+            }
+
+            if (this.appearances[var5] >= 512 && this.appearances[var5] - 512 < Class17.anInt179) {
+               var4 = Class17.method104(this.appearances[var5] - 512).anInt176;
+               if (var4 != 0) {
+                  this.anInt773 = var4;
+               }
+            }
+         }
+      }
+
+      for(var2 = 0; var2 < 5; ++var2) {
+         var3 = var1.g1();
+         if (var3 < 0 || var3 >= Client.anIntArrayArray24[var2].length) {
+            var3 = 0;
+         }
+
+         this.anIntArray199[var2] = var3;
+      }
+
+      super.anInt760 = var1.g2();
+      if (super.anInt760 == 65535) {
+         super.anInt760 = -1;
+      }
+
+      super.anInt761 = var1.g2();
+      if (super.anInt761 == 65535) {
+         super.anInt761 = -1;
+      }
+
+      super.anInt748 = var1.g2();
+      if (super.anInt748 == 65535) {
+         super.anInt748 = -1;
+      }
+
+      super.anInt749 = var1.g2();
+      if (super.anInt749 == 65535) {
+         super.anInt749 = -1;
+      }
+
+      super.anInt750 = var1.g2();
+      if (super.anInt750 == 65535) {
+         super.anInt750 = -1;
+      }
+
+      super.anInt751 = var1.g2();
+      if (super.anInt751 == 65535) {
+         super.anInt751 = -1;
+      }
+
+      super.anInt758 = var1.g2();
+      if (super.anInt758 == 65535) {
+         super.anInt758 = -1;
+      }
+
+      this.aString14 = Class26.method252(Class26.method249(var1.g8()), (byte)7);
+      this.anInt767 = var1.g1();
+      this.anInt770 = var1.g2();
+      this.visible = true;
+      this.aLong25 = 0L;
+      var3 = this.appearances[5];
+      var4 = this.appearances[9];
+      this.appearances[5] = var4;
+      this.appearances[9] = var3;
+
+      for(var5 = 0; var5 < 12; ++var5) {
+         this.aLong25 <<= 4;
+         if (this.appearances[var5] >= 256) {
+            this.aLong25 += (long)(this.appearances[var5] - 256);
+         }
+      }
+
+      if (this.appearances[0] >= 256) {
+         this.aLong25 += (long)(this.appearances[0] - 256 >> 4);
+      }
+
+      if (this.appearances[1] >= 256) {
+         this.aLong25 += (long)(this.appearances[1] - 256 >> 8);
+      }
+
+      this.appearances[5] = var3;
+      this.appearances[9] = var4;
+
+      for(var5 = 0; var5 < 5; ++var5) {
+         this.aLong25 <<= 3;
+         this.aLong25 += (long)this.anIntArray199[var5];
+      }
+
+      this.aLong25 <<= 1;
+      this.aLong25 += (long)this.anInt768;
+   }
 }

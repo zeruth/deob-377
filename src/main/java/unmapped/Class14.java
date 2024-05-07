@@ -1,572 +1,509 @@
 package unmapped;
 
-
 import jagex2.datastruct.LruCache;
 import jagex2.graphics.Model;
 import jagex2.graphics.Pix24;
 import jagex2.io.JagFile;
 import jagex2.io.Packet;
-import sign.signlink;
 
 public final class Class14 {
-
-	private static int anInt110;
-
-	private static JagFile aClass2_1;
-
-	private static Class14[] aClass14Array1;
-
-	private static Class10_Sub1_Sub1_Sub2[] aClass10_Sub1_Sub1_Sub2Array1;
-
-	private static int anInt125;
-
-	private static LruCache aClass34_1;
-
-	private static boolean aBoolean38;
-
-	private static int anInt144;
-
-	private static byte[][] aByteArrayArray2;
-
-	public static int anInt127 = -1;
-
-	private static int anInt133 = -1;
-
-	private static LruCache aClass34_2 = new LruCache(30);
-
-	private static int anInt141 = -291;
-
-	private static int anInt142 = -1;
-
-	private static boolean aBoolean42 = true;
-
-	private static int anInt143 = 373;
-
-	public String aString1;
-
-	public Pix24 aClass10_Sub1_Sub1_Sub1_1;
-
-	public int[] anIntArray38;
-
-	public int anInt111;
-
-	public boolean aBoolean32;
-
-	public int anInt112;
-
-	public boolean aBoolean33;
-
-	public byte aByte9;
-
-	public int[] anIntArray39;
-
-	public int anInt113;
-
-	public int[] anIntArray40;
-
-	private int anInt114;
-
-	public int anInt115;
-
-	public int anInt116;
-
-	public int anInt117;
-
-	public boolean aBoolean34;
-
-	public String aString2;
-
-	public int anInt118;
-
-	public int[] anIntArray41;
-
-	private boolean aBoolean35;
-
-	public int[][] anIntArrayArray5;
-
-	public int anInt119;
-
-	public int anInt120;
-
-	public Class10_Sub1_Sub1_Sub2 aClass10_Sub1_Sub1_Sub2_1;
-
-	public int anInt121;
-
-	public boolean aBoolean36;
-
-	public int anInt122;
-
-	public int anInt123;
-
-	public int anInt124;
-
-	public int anInt126;
-
-	public Pix24 aClass10_Sub1_Sub1_Sub1_2;
-
-	public boolean aBoolean37;
-
-	public int anInt128;
-
-	public String aString3;
-
-	public int anInt129;
-
-	public int anInt130;
-
-	public int anInt131;
-
-	public int anInt132;
-
-	public int[] anIntArray42;
-
-	public int[] anIntArray43;
-
-	public int anInt134;
-
-	public int anInt135;
-
-	public int anInt136;
-
-	public String[] aStringArray1;
-
-	public int anInt137;
-
-	public Pix24[] aClass10_Sub1_Sub1_Sub1Array1;
-
-	private int anInt138;
-
-	private int anInt139;
-
-	public String aString4;
-
-	public int[] anIntArray44;
-
-	public boolean aBoolean40;
-
-	public int[] anIntArray45;
-
-	public boolean aBoolean41;
-
-	public int[] anIntArray46;
-
-	public String aString5;
-
-	public int anInt145;
-
-	public int anInt146;
-
-	public int anInt147;
-
-	public int anInt148;
-
-	public int anInt149;
-
-	public boolean aBoolean43;
-
-	public int anInt150;
-
-	private int anInt140 = -68;
-
-	private boolean aBoolean39 = true;
-
-	private static Pix24 method86(int arg0, String arg1) {
-		try {
-			long local8 = (Class26.method250(183, arg1) << 8) + (long) arg0;
-			Pix24 local17 = (Pix24) aClass34_1.get(local8);
-			if (local17 != null) {
-				return local17;
-			} else if (aClass2_1 == null) {
-				return null;
-			} else {
-				try {
-					local17 = new Pix24(aClass2_1, arg1, arg0);
-					aClass34_1.put(local17, local8);
-					return local17;
-				} catch ( Exception local39) {
-					return null;
-				}
-			}
-		} catch ( RuntimeException local44) {
-			signlink.reporterror("18265, " + arg0 + ", " + arg1 + ", " + 373 + ", " + local44.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public static Class14 method87( int arg0) {
-		if (aClass14Array1[arg0] == null) {
-			Packet local11 = new Packet(aByteArrayArray2[arg0]);
-			int local14 = local11.g2();
-			aClass14Array1[arg0] = method90(local14, local11, arg0);
-		}
-		return aClass14Array1[arg0];
-	}
-
-	private static Class14 method90(int arg0, Packet arg1, int arg2) {
-		try {
-			Class14 local5 = new Class14();
-			local5.anInt111 = arg2;
-			local5.anInt128 = arg0;
-			local5.anInt120 = arg1.g1();
-			local5.anInt150 = arg1.g1();
-			local5.anInt124 = arg1.g2();
-			local5.anInt123 = arg1.g2();
-			local5.anInt121 = arg1.g2();
-			local5.aByte9 = (byte) arg1.g1();
-			local5.anInt132 = arg1.g1();
-			if (local5.anInt132 == 0) {
-				local5.anInt132 = -1;
-			} else {
-				local5.anInt132 = (local5.anInt132 - 1 << 8) + arg1.g1();
-			}
-			if (local5.anInt124 == 600) {
-				anInt127 = arg0;
-			}
-			if (local5.anInt124 == 650) {
-				anInt133 = arg0;
-			}
-			if (local5.anInt124 == 655) {
-				anInt142 = arg0;
-			}
-			int local89 = arg1.g1();
-			int local101;
-			if (local89 > 0) {
-				local5.anIntArray45 = new int[local89];
-				local5.anIntArray42 = new int[local89];
-				for (local101 = 0; local101 < local89; local101++) {
-					local5.anIntArray45[local101] = arg1.g1();
-					local5.anIntArray42[local101] = arg1.g2();
-				}
-			}
-			local101 = arg1.g1();
-			int local130;
-			int local135;
-			if (local101 > 0) {
-				local5.anIntArrayArray5 = new int[local101][];
-				for (local130 = 0; local130 < local101; local130++) {
-					local135 = arg1.g2();
-					local5.anIntArrayArray5[local130] = new int[local135];
-					for ( int local143 = 0; local143 < local135; local143++) {
-						local5.anIntArrayArray5[local130][local143] = arg1.g2();
-					}
-				}
-			}
-			if (local5.anInt120 == 0) {
-				local5.anInt147 = arg1.g2();
-				local5.aBoolean33 = arg1.g1() == 1;
-				local130 = arg1.g2();
-				local5.anIntArray43 = new int[local130];
-				local5.anIntArray41 = new int[local130];
-				local5.anIntArray46 = new int[local130];
-				for (local135 = 0; local135 < local130; local135++) {
-					local5.anIntArray43[local135] = arg1.g2();
-					local5.anIntArray41[local135] = arg1.g2b();
-					local5.anIntArray46[local135] = arg1.g2b();
-				}
-			}
-			if (local5.anInt120 == 1) {
-				local5.anInt114 = arg1.g2();
-				local5.aBoolean35 = arg1.g1() == 1;
-			}
-			if (local5.anInt120 == 2) {
-				local5.anIntArray44 = new int[local5.anInt123 * local5.anInt121];
-				local5.anIntArray40 = new int[local5.anInt123 * local5.anInt121];
-				local5.aBoolean41 = arg1.g1() == 1;
-				local5.aBoolean34 = arg1.g1() == 1;
-				local5.aBoolean43 = arg1.g1() == 1;
-				local5.aBoolean32 = arg1.g1() == 1;
-				local5.anInt137 = arg1.g1();
-				local5.anInt126 = arg1.g1();
-				local5.anIntArray39 = new int[20];
-				local5.anIntArray38 = new int[20];
-				local5.aClass10_Sub1_Sub1_Sub1Array1 = new Pix24[20];
-				for (local130 = 0; local130 < 20; local130++) {
-					local135 = arg1.g1();
-					if (local135 == 1) {
-						local5.anIntArray39[local130] = arg1.g2b();
-						local5.anIntArray38[local130] = arg1.g2b();
-						String local336 = arg1.gjstr();
-						if (local336.length() > 0) {
-							int local343 = local336.lastIndexOf(",");
-							local5.aClass10_Sub1_Sub1_Sub1Array1[local130] = method86(Integer.parseInt(local336.substring(local343 + 1)), local336.substring(0, local343));
-						}
-					}
-				}
-				local5.aStringArray1 = new String[5];
-				for (local135 = 0; local135 < 5; local135++) {
-					local5.aStringArray1[local135] = arg1.gjstr();
-					if (local5.aStringArray1[local135].length() == 0) {
-						local5.aStringArray1[local135] = null;
-					}
-				}
-			}
-			if (local5.anInt120 == 3) {
-				local5.aBoolean36 = arg1.g1() == 1;
-			}
-			if (local5.anInt120 == 4 || local5.anInt120 == 1) {
-				local5.aBoolean40 = arg1.g1() == 1;
-				local130 = arg1.g1();
-				if (aClass10_Sub1_Sub1_Sub2Array1 != null) {
-					local5.aClass10_Sub1_Sub1_Sub2_1 = aClass10_Sub1_Sub1_Sub2Array1[local130];
-				}
-				local5.aBoolean37 = arg1.g1() == 1;
-			}
-			if (local5.anInt120 == 4) {
-				local5.aString2 = arg1.gjstr();
-				local5.aString3 = arg1.gjstr();
-			}
-			if (local5.anInt120 == 1 || local5.anInt120 == 3 || local5.anInt120 == 4) {
-				local5.anInt122 = arg1.g4();
-			}
-			if (local5.anInt120 == 3 || local5.anInt120 == 4) {
-				local5.anInt135 = arg1.g4();
-				local5.anInt136 = arg1.g4();
-				local5.anInt115 = arg1.g4();
-			}
-			if (local5.anInt120 == 5) {
-				String local496 = arg1.gjstr();
-				if (local496.length() > 0) {
-					local135 = local496.lastIndexOf(",");
-					local5.aClass10_Sub1_Sub1_Sub1_1 = method86(Integer.parseInt(local496.substring(local135 + 1)), local496.substring(0, local135));
-				}
-				local496 = arg1.gjstr();
-				if (local496.length() > 0) {
-					local135 = local496.lastIndexOf(",");
-					local5.aClass10_Sub1_Sub1_Sub1_2 = method86(Integer.parseInt(local496.substring(local135 + 1)), local496.substring(0, local135));
-				}
-			}
-			if (local5.anInt120 == 6) {
-				int local548 = arg1.g1();
-				if (local548 != 0) {
-					local5.anInt145 = 1;
-					local5.anInt146 = (local548 - 1 << 8) + arg1.g1();
-				}
-				local548 = arg1.g1();
-				if (local548 != 0) {
-					local5.anInt138 = 1;
-					local5.anInt139 = (local548 - 1 << 8) + arg1.g1();
-				}
-				local548 = arg1.g1();
-				if (local548 == 0) {
-					local5.anInt148 = -1;
-				} else {
-					local5.anInt148 = (local548 - 1 << 8) + arg1.g1();
-				}
-				local548 = arg1.g1();
-				if (local548 == 0) {
-					local5.anInt149 = -1;
-				} else {
-					local5.anInt149 = (local548 - 1 << 8) + arg1.g1();
-				}
-				local5.anInt129 = arg1.g2();
-				local5.anInt130 = arg1.g2();
-				local5.anInt131 = arg1.g2();
-			}
-			if (local5.anInt120 == 7) {
-				local5.anIntArray44 = new int[local5.anInt123 * local5.anInt121];
-				local5.anIntArray40 = new int[local5.anInt123 * local5.anInt121];
-				local5.aBoolean40 = arg1.g1() == 1;
-				local130 = arg1.g1();
-				if (aClass10_Sub1_Sub1_Sub2Array1 != null) {
-					local5.aClass10_Sub1_Sub1_Sub2_1 = aClass10_Sub1_Sub1_Sub2Array1[local130];
-				}
-				local5.aBoolean37 = arg1.g1() == 1;
-				local5.anInt122 = arg1.g4();
-				local5.anInt137 = arg1.g2b();
-				local5.anInt126 = arg1.g2b();
-				local5.aBoolean34 = arg1.g1() == 1;
-				local5.aStringArray1 = new String[5];
-				for (local135 = 0; local135 < 5; local135++) {
-					local5.aStringArray1[local135] = arg1.gjstr();
-					if (local5.aStringArray1[local135].length() == 0) {
-						local5.aStringArray1[local135] = null;
-					}
-				}
-			}
-			if (local5.anInt120 == 8) {
-				local5.aString2 = arg1.gjstr();
-			}
-			if (local5.anInt150 == 2 || local5.anInt120 == 2) {
-				local5.aString5 = arg1.gjstr();
-				local5.aString1 = arg1.gjstr();
-				local5.anInt113 = arg1.g2();
-			}
-			if (local5.anInt150 == 1 || local5.anInt150 == 4 || local5.anInt150 == 5 || local5.anInt150 == 6) {
-				local5.aString4 = arg1.gjstr();
-				if (local5.aString4.length() == 0) {
-					if (local5.anInt150 == 1) {
-						local5.aString4 = "Ok";
-					}
-					if (local5.anInt150 == 4) {
-						local5.aString4 = "Select";
-					}
-					if (local5.anInt150 == 5) {
-						local5.aString4 = "Select";
-					}
-					if (local5.anInt150 == 6) {
-						local5.aString4 = "Continue";
-					}
-				}
-			}
-			return local5;
-		} catch ( RuntimeException local814) {
-			signlink.reporterror("1128, " + arg0 + ", " + arg1 + ", " + 10896 + ", " + arg2 + ", " + local814.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public static void method91(Class10_Sub1_Sub1_Sub2[] arg0, JagFile arg1, JagFile arg2) {
-		try {
-			aClass34_1 = new LruCache(50000);
-			aClass2_1 = arg2;
-			aClass10_Sub1_Sub1_Sub2Array1 = arg0;
-			int local13 = -1;
-			Packet local22 = new Packet(arg1.read("data", null));
-			int local25 = local22.g2();
-			aClass14Array1 = new Class14[local25];
-			aByteArrayArray2 = new byte[local25][];
-			while (local22.pos < local22.data.length) {
-				int local36 = local22.g2();
-				if (local36 == 65535) {
-					local13 = local22.g2();
-					local36 = local22.g2();
-				}
-				int local48 = local22.pos;
-				Class14 local54 = method90(local13, local22, local36);
-				byte[] local67 = aByteArrayArray2[local54.anInt111] = new byte[local22.pos + 2 - local48];
-				for (int local69 = local48; local69 < local22.pos; local69++) {
-					local67[local69 + 2 - local48] = local22.data[local69];
-				}
-				local67[0] = (byte) (local13 >> 8);
-				local67[1] = (byte) local13;
-			}
-			aClass2_1 = null;
-		} catch ( RuntimeException local113) {
-			signlink.reporterror("40859, " + -845 + ", " + arg0 + ", " + arg1 + ", " + arg2 + ", " + local113.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public static void method92( boolean arg0, int arg1) {
-		try {
-			if (!arg0) {
-				aBoolean38 = !aBoolean38;
-			}
-			if (arg1 != -1) {
-				for ( int local13 = 0; local13 < aClass14Array1.length; local13++) {
-					if (aClass14Array1[local13] != null && aClass14Array1[local13].anInt128 == arg1 && aClass14Array1[local13].anInt120 != 2) {
-						aClass14Array1[local13] = null;
-					}
-				}
-			}
-		} catch ( RuntimeException local42) {
-			signlink.reporterror("24394, " + arg0 + ", " + arg1 + ", " + local42.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public static void method93( Model arg0) {
-		try {
-			aClass34_2.clear();
-			if (arg0 != null) {
-				aClass34_2.put(arg0, (long) 327680);
-			}
-		} catch ( RuntimeException local28) {
-			signlink.reporterror("30015, " + 5 + ", " + arg0 + ", " + 0 + ", " + 6 + ", " + local28.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public static void method94() {
-		try {
-			aClass14Array1 = null;
-			aClass2_1 = null;
-			aClass34_1 = null;
-			aClass10_Sub1_Sub1_Sub2Array1 = null;
-			aByteArrayArray2 = null;
-		} catch ( RuntimeException local19) {
-			signlink.reporterror("71741, " + false + ", " + local19.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public void method88( int arg0, int arg1) {
-		try {
-			int local4 = this.anIntArray44[arg1];
-			this.anIntArray44[arg1] = this.anIntArray44[arg0];
-			this.anIntArray44[arg0] = local4;
-			int local22 = this.anIntArray40[arg1];
-			this.anIntArray40[arg1] = this.anIntArray40[arg0];
-			this.anIntArray40[arg0] = local22;
-		} catch ( RuntimeException local40) {
-			signlink.reporterror("71471, " + arg0 + ", " + -291 + ", " + arg1 + ", " + local40.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	private Model method89(int arg0, int arg1) {
-		Class17 local1 = null;
-		if (arg0 == 4) {
-			local1 = Class17.method104(arg1);
-			anInt144 += local1.anInt187;
-			anInt125 += local1.anInt191;
-		}
-		Model local27 = (Model) aClass34_2.get((long) ((arg0 << 16) + arg1));
-		if (local27 != null) {
-			return local27;
-		}
-		if (arg0 == 1) {
-			local27 = Model.createModel(arg1);
-		}
-		if (arg0 == 2) {
-			local27 = Class38.method407(arg1).method402();
-		}
-		if (arg0 == 3) {
-			local27 = Client.localPlayer.getHeadModel();
-		}
-		if (arg0 == 4) {
-			local27 = local1.method109(this.anInt140, 50);
-		}
-		if (arg0 == 5) {
-			local27 = null;
-		}
-		if (local27 != null) {
-			aClass34_2.put(local27, (long) ((arg0 << 16) + arg1));
-		}
-		return local27;
-	}
-
-	public Model method95(int arg0, int arg1, boolean arg2) {
-		try {
-			anInt144 = 64;
-			anInt125 = 768;
-			Model local12;
-			if (arg2) {
-				local12 = this.method89(this.anInt138, this.anInt139);
-			} else {
-				local12 = this.method89(this.anInt145, this.anInt146);
-			}
-			if (local12 == null) {
-				return null;
-			} else if (arg0 == -1 && arg1 == -1 && local12.anIntArray125 == null) {
-				return local12;
-			} else {
-				Model local53 = new Model(false, false, true, local12, Class22.method169(this.aBoolean39, arg0) & Class22.method169(this.aBoolean39, arg1));
-				if (arg0 != -1 || arg1 != -1) {
-					local53.method278();
-				}
-				if (arg0 != -1) {
-					local53.method279(arg0, (byte) 6);
-				}
-				if (arg1 != -1) {
-					local53.method279(arg1, (byte) 6);
-				}
-				local53.method288(anInt144, anInt125, -50, -10, -50, true);
-				return local53;
-			}
-		} catch ( RuntimeException local97) {
-			signlink.reporterror("62237, " + arg0 + ", " + arg1 + ", " + 0 + ", " + arg2 + ", " + local97.toString());
-			throw new RuntimeException();
-		}
-	}
+   private static int anInt144;
+   public static int anInt127 = -1;
+   private static Class14[] aClass14Array1;
+   private static LruCache aClass34_2 = new LruCache(30);
+   private static int anInt133 = -1;
+   private static int anInt125;
+   private static boolean aBoolean38;
+   private static byte[][] aByteArrayArray2;
+   private static int anInt141 = -291;
+   private static int anInt142 = -1;
+   private static boolean aBoolean42 = true;
+   private static int anInt143 = 373;
+   private static JagFile aClass2_1;
+   private static LruCache aClass34_1;
+   private static Class10_Sub1_Sub1_Sub2[] aClass10_Sub1_Sub1_Sub2Array1;
+   public int[] anIntArray45;
+   public int[][] anIntArrayArray5;
+   public int anInt124;
+   public int anInt120;
+   public int[] anIntArray44;
+   private int anInt140 = -68;
+   public int[] anIntArray43;
+   private boolean aBoolean39 = true;
+   public boolean aBoolean33;
+   private int anInt138;
+   public int anInt145;
+   private int anInt139;
+   public int anInt146;
+   public int[] anIntArray42;
+   public String aString2;
+   public int anInt111;
+   public int[] anIntArray40;
+   public int anInt150;
+   public int anInt123;
+   public int anInt121;
+   public int anInt128;
+   public int anInt130;
+   public int anInt118;
+   public int anInt119;
+   public int anInt147;
+   public Pix24 aClass10_Sub1_Sub1_Sub1_1;
+   public int anInt148;
+   public int anInt116;
+   public int[] anIntArray41;
+   public int anInt149;
+   public int anInt131;
+   public Pix24 aClass10_Sub1_Sub1_Sub1_2;
+   public int[] anIntArray46;
+   public int anInt112;
+   public int anInt122;
+   public int anInt117;
+   public int anInt134;
+   public int anInt132;
+   public boolean aBoolean41;
+   public int anInt136;
+   public boolean aBoolean32;
+   public Class10_Sub1_Sub1_Sub2 aClass10_Sub1_Sub1_Sub2_1;
+   public int anInt137;
+   public int anInt126;
+   public int[] anIntArray39;
+   public int anInt135;
+   public int[] anIntArray38;
+   public int anInt115;
+   public byte aByte9;
+   public String aString3;
+   public Pix24[] aClass10_Sub1_Sub1_Sub1Array1;
+   public boolean aBoolean36;
+   public int anInt129;
+   public String aString5;
+   public String aString4;
+   public String aString1;
+   public boolean aBoolean40;
+   public boolean aBoolean37;
+   public boolean aBoolean34;
+   public boolean aBoolean43;
+   public String[] aStringArray1;
+   private int anInt114;
+   private boolean aBoolean35;
+   public int anInt113;
+
+   private Model method89(int var1, int var2) {
+      Class17 var3 = null;
+      if (var1 == 4) {
+         var3 = Class17.method104(var2);
+         anInt144 += var3.anInt187;
+         anInt125 += var3.anInt191;
+      }
+
+      Model var4 = (Model)aClass34_2.get((long)((var1 << 16) + var2));
+      if (var4 != null) {
+         return var4;
+      } else {
+         if (var1 == 1) {
+            var4 = Model.createModel(var2);
+         }
+
+         if (var1 == 2) {
+            var4 = Class38.method407(var2).method402();
+         }
+
+         if (var1 == 3) {
+            var4 = Client.localPlayer.getHeadModel();
+         }
+
+         if (var1 == 4) {
+            var4 = var3.method109(this.anInt140, 50);
+         }
+
+         if (var1 == 5) {
+            var4 = null;
+         }
+
+         if (var4 != null) {
+            aClass34_2.put(var4, (long)((var1 << 16) + var2));
+         }
+
+         return var4;
+      }
+   }
+
+   public Model method95(int var1, int var2, boolean var3) {
+      anInt144 = 64;
+      anInt125 = 768;
+      Model var4;
+      if (var3) {
+         var4 = this.method89(this.anInt138, this.anInt139);
+      } else {
+         var4 = this.method89(this.anInt145, this.anInt146);
+      }
+
+      if (var4 == null) {
+         return null;
+      } else if (var1 == -1 && var2 == -1 && var4.anIntArray125 == null) {
+         return var4;
+      } else {
+         Model var5 = new Model(false, false, true, var4, Class22.method169(this.aBoolean39, var1) & Class22.method169(this.aBoolean39, var2));
+         if (var1 != -1 || var2 != -1) {
+            var5.method278();
+         }
+
+         if (var1 != -1) {
+            var5.method279(var1, (byte)6);
+         }
+
+         if (var2 != -1) {
+            var5.method279(var2, (byte)6);
+         }
+
+         var5.method288(anInt144, anInt125, -50, -10, -50, true);
+         return var5;
+      }
+   }
+
+   public void method88(int var1, int var2) {
+      int var3 = this.anIntArray44[var2];
+      this.anIntArray44[var2] = this.anIntArray44[var1];
+      this.anIntArray44[var1] = var3;
+      int var4 = this.anIntArray40[var2];
+      this.anIntArray40[var2] = this.anIntArray40[var1];
+      this.anIntArray40[var1] = var4;
+   }
+
+   public static Class14 method87(int var0) {
+      if (aClass14Array1[var0] == null) {
+         Packet var1 = new Packet(aByteArrayArray2[var0]);
+         int var2 = var1.g2();
+         aClass14Array1[var0] = method90(var2, var1, var0);
+      }
+
+      return aClass14Array1[var0];
+   }
+
+   public static void method92(boolean var0, int var1) {
+      if (!var0) {
+         aBoolean38 = !aBoolean38;
+      }
+
+      if (var1 != -1) {
+         for(int var2 = 0; var2 < aClass14Array1.length; ++var2) {
+            if (aClass14Array1[var2] != null && aClass14Array1[var2].anInt128 == var1 && aClass14Array1[var2].anInt120 != 2) {
+               aClass14Array1[var2] = null;
+            }
+         }
+      }
+
+   }
+
+   private static Class14 method90(int var0, Packet var1, int var2) {
+      Class14 var3 = new Class14();
+      var3.anInt111 = var2;
+      var3.anInt128 = var0;
+      var3.anInt120 = var1.g1();
+      var3.anInt150 = var1.g1();
+      var3.anInt124 = var1.g2();
+      var3.anInt123 = var1.g2();
+      var3.anInt121 = var1.g2();
+      var3.aByte9 = (byte)var1.g1();
+      var3.anInt132 = var1.g1();
+      if (var3.anInt132 == 0) {
+         var3.anInt132 = -1;
+      } else {
+         var3.anInt132 = (var3.anInt132 - 1 << 8) + var1.g1();
+      }
+
+      if (var3.anInt124 == 600) {
+         anInt127 = var0;
+      }
+
+      if (var3.anInt124 == 650) {
+         anInt133 = var0;
+      }
+
+      if (var3.anInt124 == 655) {
+         anInt142 = var0;
+      }
+
+      int var4 = var1.g1();
+      int var5;
+      if (var4 > 0) {
+         var3.anIntArray45 = new int[var4];
+         var3.anIntArray42 = new int[var4];
+
+         for(var5 = 0; var5 < var4; ++var5) {
+            var3.anIntArray45[var5] = var1.g1();
+            var3.anIntArray42[var5] = var1.g2();
+         }
+      }
+
+      var5 = var1.g1();
+      int var6;
+      int var7;
+      int var8;
+      if (var5 > 0) {
+         var3.anIntArrayArray5 = new int[var5][];
+
+         for(var6 = 0; var6 < var5; ++var6) {
+            var7 = var1.g2();
+            var3.anIntArrayArray5[var6] = new int[var7];
+
+            for(var8 = 0; var8 < var7; ++var8) {
+               var3.anIntArrayArray5[var6][var8] = var1.g2();
+            }
+         }
+      }
+
+      if (var3.anInt120 == 0) {
+         var3.anInt147 = var1.g2();
+         var3.aBoolean33 = var1.g1() == 1;
+         var6 = var1.g2();
+         var3.anIntArray43 = new int[var6];
+         var3.anIntArray41 = new int[var6];
+         var3.anIntArray46 = new int[var6];
+
+         for(var7 = 0; var7 < var6; ++var7) {
+            var3.anIntArray43[var7] = var1.g2();
+            var3.anIntArray41[var7] = var1.g2b();
+            var3.anIntArray46[var7] = var1.g2b();
+         }
+      }
+
+      if (var3.anInt120 == 1) {
+         var3.anInt114 = var1.g2();
+         var3.aBoolean35 = var1.g1() == 1;
+      }
+
+      String var10;
+      if (var3.anInt120 == 2) {
+         var3.anIntArray44 = new int[var3.anInt123 * var3.anInt121];
+         var3.anIntArray40 = new int[var3.anInt123 * var3.anInt121];
+         var3.aBoolean41 = var1.g1() == 1;
+         var3.aBoolean34 = var1.g1() == 1;
+         var3.aBoolean43 = var1.g1() == 1;
+         var3.aBoolean32 = var1.g1() == 1;
+         var3.anInt137 = var1.g1();
+         var3.anInt126 = var1.g1();
+         var3.anIntArray39 = new int[20];
+         var3.anIntArray38 = new int[20];
+         var3.aClass10_Sub1_Sub1_Sub1Array1 = new Pix24[20];
+
+         for(var6 = 0; var6 < 20; ++var6) {
+            var7 = var1.g1();
+            if (var7 == 1) {
+               var3.anIntArray39[var6] = var1.g2b();
+               var3.anIntArray38[var6] = var1.g2b();
+               var10 = var1.gjstr();
+               if (var10.length() > 0) {
+                  int var9 = var10.lastIndexOf(",");
+                  var3.aClass10_Sub1_Sub1_Sub1Array1[var6] = method86(Integer.parseInt(var10.substring(var9 + 1)), var10.substring(0, var9));
+               }
+            }
+         }
+
+         var3.aStringArray1 = new String[5];
+
+         for(var7 = 0; var7 < 5; ++var7) {
+            var3.aStringArray1[var7] = var1.gjstr();
+            if (var3.aStringArray1[var7].length() == 0) {
+               var3.aStringArray1[var7] = null;
+            }
+         }
+      }
+
+      if (var3.anInt120 == 3) {
+         var3.aBoolean36 = var1.g1() == 1;
+      }
+
+      if (var3.anInt120 == 4 || var3.anInt120 == 1) {
+         var3.aBoolean40 = var1.g1() == 1;
+         var6 = var1.g1();
+         if (aClass10_Sub1_Sub1_Sub2Array1 != null) {
+            var3.aClass10_Sub1_Sub1_Sub2_1 = aClass10_Sub1_Sub1_Sub2Array1[var6];
+         }
+
+         var3.aBoolean37 = var1.g1() == 1;
+      }
+
+      if (var3.anInt120 == 4) {
+         var3.aString2 = var1.gjstr();
+         var3.aString3 = var1.gjstr();
+      }
+
+      if (var3.anInt120 == 1 || var3.anInt120 == 3 || var3.anInt120 == 4) {
+         var3.anInt122 = var1.g4();
+      }
+
+      if (var3.anInt120 == 3 || var3.anInt120 == 4) {
+         var3.anInt135 = var1.g4();
+         var3.anInt136 = var1.g4();
+         var3.anInt115 = var1.g4();
+      }
+
+      if (var3.anInt120 == 5) {
+         var10 = var1.gjstr();
+         if (var10.length() > 0) {
+            var7 = var10.lastIndexOf(",");
+            var3.aClass10_Sub1_Sub1_Sub1_1 = method86(Integer.parseInt(var10.substring(var7 + 1)), var10.substring(0, var7));
+         }
+
+         var10 = var1.gjstr();
+         if (var10.length() > 0) {
+            var7 = var10.lastIndexOf(",");
+            var3.aClass10_Sub1_Sub1_Sub1_2 = method86(Integer.parseInt(var10.substring(var7 + 1)), var10.substring(0, var7));
+         }
+      }
+
+      if (var3.anInt120 == 6) {
+         var8 = var1.g1();
+         if (var8 != 0) {
+            var3.anInt145 = 1;
+            var3.anInt146 = (var8 - 1 << 8) + var1.g1();
+         }
+
+         var8 = var1.g1();
+         if (var8 != 0) {
+            var3.anInt138 = 1;
+            var3.anInt139 = (var8 - 1 << 8) + var1.g1();
+         }
+
+         var8 = var1.g1();
+         if (var8 == 0) {
+            var3.anInt148 = -1;
+         } else {
+            var3.anInt148 = (var8 - 1 << 8) + var1.g1();
+         }
+
+         var8 = var1.g1();
+         if (var8 == 0) {
+            var3.anInt149 = -1;
+         } else {
+            var3.anInt149 = (var8 - 1 << 8) + var1.g1();
+         }
+
+         var3.anInt129 = var1.g2();
+         var3.anInt130 = var1.g2();
+         var3.anInt131 = var1.g2();
+      }
+
+      if (var3.anInt120 == 7) {
+         var3.anIntArray44 = new int[var3.anInt123 * var3.anInt121];
+         var3.anIntArray40 = new int[var3.anInt123 * var3.anInt121];
+         var3.aBoolean40 = var1.g1() == 1;
+         var6 = var1.g1();
+         if (aClass10_Sub1_Sub1_Sub2Array1 != null) {
+            var3.aClass10_Sub1_Sub1_Sub2_1 = aClass10_Sub1_Sub1_Sub2Array1[var6];
+         }
+
+         var3.aBoolean37 = var1.g1() == 1;
+         var3.anInt122 = var1.g4();
+         var3.anInt137 = var1.g2b();
+         var3.anInt126 = var1.g2b();
+         var3.aBoolean34 = var1.g1() == 1;
+         var3.aStringArray1 = new String[5];
+
+         for(var7 = 0; var7 < 5; ++var7) {
+            var3.aStringArray1[var7] = var1.gjstr();
+            if (var3.aStringArray1[var7].length() == 0) {
+               var3.aStringArray1[var7] = null;
+            }
+         }
+      }
+
+      if (var3.anInt120 == 8) {
+         var3.aString2 = var1.gjstr();
+      }
+
+      if (var3.anInt150 == 2 || var3.anInt120 == 2) {
+         var3.aString5 = var1.gjstr();
+         var3.aString1 = var1.gjstr();
+         var3.anInt113 = var1.g2();
+      }
+
+      if (var3.anInt150 == 1 || var3.anInt150 == 4 || var3.anInt150 == 5 || var3.anInt150 == 6) {
+         var3.aString4 = var1.gjstr();
+         if (var3.aString4.length() == 0) {
+            if (var3.anInt150 == 1) {
+               var3.aString4 = "Ok";
+            }
+
+            if (var3.anInt150 == 4) {
+               var3.aString4 = "Select";
+            }
+
+            if (var3.anInt150 == 5) {
+               var3.aString4 = "Select";
+            }
+
+            if (var3.anInt150 == 6) {
+               var3.aString4 = "Continue";
+            }
+         }
+      }
+
+      return var3;
+   }
+
+   public static void method93(Model var0) {
+      aClass34_2.clear();
+      if (var0 != null) {
+         aClass34_2.put(var0, 327680L);
+      }
+
+   }
+
+   public static void method94() {
+      aClass14Array1 = null;
+      aClass2_1 = null;
+      aClass34_1 = null;
+      aClass10_Sub1_Sub1_Sub2Array1 = null;
+      aByteArrayArray2 = null;
+   }
+
+   private static Pix24 method86(int var0, String var1) {
+      long var2 = (Class26.method250(183, var1) << 8) + (long)var0;
+      Pix24 var4 = (Pix24)aClass34_1.get(var2);
+      if (var4 != null) {
+         return var4;
+      } else if (aClass2_1 == null) {
+         return null;
+      } else {
+         try {
+            var4 = new Pix24(aClass2_1, var1, var0);
+            aClass34_1.put(var4, var2);
+            return var4;
+         } catch (Exception var6) {
+            return null;
+         }
+      }
+   }
+
+   public static void method91(Class10_Sub1_Sub1_Sub2[] var0, JagFile var1, JagFile var2) {
+      aClass34_1 = new LruCache(50000);
+      aClass2_1 = var2;
+      aClass10_Sub1_Sub1_Sub2Array1 = var0;
+      int var3 = -1;
+      Packet var4 = new Packet(var1.read("data", (byte[])null));
+      int var5 = var4.g2();
+      aClass14Array1 = new Class14[var5];
+
+      byte[] var9;
+      for(aByteArrayArray2 = new byte[var5][]; var4.pos < var4.data.length; var9[1] = (byte)var3) {
+         int var6 = var4.g2();
+         if (var6 == 65535) {
+            var3 = var4.g2();
+            var6 = var4.g2();
+         }
+
+         int var7 = var4.pos;
+         Class14 var8 = method90(var3, var4, var6);
+         var9 = aByteArrayArray2[var8.anInt111] = new byte[var4.pos + 2 - var7];
+
+         for(int var10 = var7; var10 < var4.pos; ++var10) {
+            var9[var10 + 2 - var7] = var4.data[var10];
+         }
+
+         var9[0] = (byte)(var3 >> 8);
+      }
+
+      aClass2_1 = null;
+   }
 }

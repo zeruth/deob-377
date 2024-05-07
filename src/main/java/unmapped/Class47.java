@@ -1,620 +1,648 @@
 package unmapped;
 
-
-import sign.signlink;
-
 public final class Class47 {
+   private int anInt669;
+   private int anInt667 = 0;
+   public int[][] anIntArrayArray16;
+   private boolean aBoolean168 = false;
+   private int anInt670;
+   private int anInt668 = 0;
+   private int anInt665 = -766;
+   private boolean aBoolean169 = true;
+   private int anInt666 = 3;
+   private boolean aBoolean170 = true;
 
-	private boolean aBoolean168 = false;
+   public Class47(int var1, int var2, int var3) {
+      this.anInt669 = var3;
+      this.anInt670 = var1;
+      this.anIntArrayArray16 = new int[this.anInt669][this.anInt670];
+      this.method480();
+   }
 
-	private int anInt665 = -766;
+   private void method487(int var1, int var2, int var3) {
+      int[] var10000 = this.anIntArrayArray16[var1];
+      var10000[var3] &= 16777215 - var2;
+   }
 
-	private boolean aBoolean169 = true;
+   private void method484(int var1, int var2, int var3) {
+      int[] var10000 = this.anIntArrayArray16[var1];
+      var10000[var2] |= var3;
+   }
 
-	private int anInt666 = 3;
+   public void method483(int var1, int var2) {
+      int var3 = var2 - this.anInt667;
+      int var4 = var1 - this.anInt668;
+      int[] var10000 = this.anIntArrayArray16[var3];
+      var10000[var4] |= 2097152;
+   }
 
-	private boolean aBoolean170 = true;
+   public void method480() {
+      for(int var1 = 0; var1 < this.anInt669; ++var1) {
+         for(int var2 = 0; var2 < this.anInt670; ++var2) {
+            if (var1 != 0 && var2 != 0 && var1 != this.anInt669 - 1 && var2 != this.anInt670 - 1) {
+               this.anIntArrayArray16[var1][var2] = 16777216;
+            } else {
+               this.anIntArrayArray16[var1][var2] = 16777215;
+            }
+         }
+      }
 
-	private int anInt667;
+   }
 
-	private int anInt668;
+   public boolean method489(int var1, int var2, int var3, int var4, int var5, int var6) {
+      if (var4 == var1 && var5 == var2) {
+         return true;
+      } else {
+         int var7 = var4 - this.anInt667;
+         int var8 = var5 - this.anInt668;
+         int var9 = var1 - this.anInt667;
+         int var10 = var2 - this.anInt668;
+         if (var3 == 0) {
+            if (var6 == 0) {
+               if (var7 == var9 - 1 && var8 == var10) {
+                  return true;
+               }
 
-	private int anInt669;
+               if (var7 == var9 && var8 == var10 + 1 && (this.anIntArrayArray16[var7][var8] & 19398944) == 0) {
+                  return true;
+               }
 
-	private int anInt670;
+               if (var7 == var9 && var8 == var10 - 1 && (this.anIntArrayArray16[var7][var8] & 19398914) == 0) {
+                  return true;
+               }
+            } else if (var6 == 1) {
+               if (var7 == var9 && var8 == var10 + 1) {
+                  return true;
+               }
 
-	public int[][] anIntArrayArray16;
+               if (var7 == var9 - 1 && var8 == var10 && (this.anIntArrayArray16[var7][var8] & 19398920) == 0) {
+                  return true;
+               }
 
-	public Class47( int arg0, int arg1, int arg2) {
-		try {
-			this.anInt667 = 0;
-			this.anInt668 = 0;
-			this.anInt669 = arg2;
-			this.anInt670 = arg0;
-			this.anIntArrayArray16 = new int[this.anInt669][this.anInt670];
-			this.method480();
-		} catch ( RuntimeException local52) {
-			signlink.reporterror("76844, " + arg0 + ", " + arg1 + ", " + arg2 + ", " + local52.toString());
-			throw new RuntimeException();
-		}
-	}
+               if (var7 == var9 + 1 && var8 == var10 && (this.anIntArrayArray16[var7][var8] & 19399040) == 0) {
+                  return true;
+               }
+            } else if (var6 == 2) {
+               if (var7 == var9 + 1 && var8 == var10) {
+                  return true;
+               }
 
-	public void method480() {
-		for ( int local3 = 0; local3 < this.anInt669; local3++) {
-			for ( int local7 = 0; local7 < this.anInt670; local7++) {
-				if (local3 == 0 || local7 == 0 || local3 == this.anInt669 - 1 || local7 == this.anInt670 - 1) {
-					this.anIntArrayArray16[local3][local7] = 16777215;
-				} else {
-					this.anIntArrayArray16[local3][local7] = 16777216;
-				}
-			}
-		}
-	}
+               if (var7 == var9 && var8 == var10 + 1 && (this.anIntArrayArray16[var7][var8] & 19398944) == 0) {
+                  return true;
+               }
 
-	public void method481( int arg0, boolean arg1, int arg2, int arg3, int arg4) {
-		try {
-			int local4 = arg3 - this.anInt667;
-			int local13 = arg4 - this.anInt668;
-			if (arg2 == 0) {
-				if (arg0 == 0) {
-					this.method484(local4, local13, 128);
-					this.method484(local4 - 1, local13, 8);
-				}
-				if (arg0 == 1) {
-					this.method484(local4, local13, 2);
-					this.method484(local4, local13 + 1, 32);
-				}
-				if (arg0 == 2) {
-					this.method484(local4, local13, 8);
-					this.method484(local4 + 1, local13, 128);
-				}
-				if (arg0 == 3) {
-					this.method484(local4, local13, 32);
-					this.method484(local4, local13 - 1, 2);
-				}
-			}
-			if (arg2 == 1 || arg2 == 3) {
-				if (arg0 == 0) {
-					this.method484(local4, local13, 1);
-					this.method484(local4 - 1, local13 + 1, 16);
-				}
-				if (arg0 == 1) {
-					this.method484(local4, local13, 4);
-					this.method484(local4 + 1, local13 + 1, 64);
-				}
-				if (arg0 == 2) {
-					this.method484(local4, local13, 16);
-					this.method484(local4 + 1, local13 - 1, 1);
-				}
-				if (arg0 == 3) {
-					this.method484(local4, local13, 64);
-					this.method484(local4 - 1, local13 - 1, 4);
-				}
-			}
-			if (arg2 == 2) {
-				if (arg0 == 0) {
-					this.method484(local4, local13, 130);
-					this.method484(local4 - 1, local13, 8);
-					this.method484(local4, local13 + 1, 32);
-				}
-				if (arg0 == 1) {
-					this.method484(local4, local13, 10);
-					this.method484(local4, local13 + 1, 32);
-					this.method484(local4 + 1, local13, 128);
-				}
-				if (arg0 == 2) {
-					this.method484(local4, local13, 40);
-					this.method484(local4 + 1, local13, 128);
-					this.method484(local4, local13 - 1, 2);
-				}
-				if (arg0 == 3) {
-					this.method484(local4, local13, 160);
-					this.method484(local4, local13 - 1, 2);
-					this.method484(local4 - 1, local13, 8);
-				}
-			}
-			if (arg1) {
-				if (arg2 == 0) {
-					if (arg0 == 0) {
-						this.method484(local4, local13, 65536);
-						this.method484(local4 - 1, local13, 4096);
-					}
-					if (arg0 == 1) {
-						this.method484(local4, local13, 1024);
-						this.method484(local4, local13 + 1, 16384);
-					}
-					if (arg0 == 2) {
-						this.method484(local4, local13, 4096);
-						this.method484(local4 + 1, local13, 65536);
-					}
-					if (arg0 == 3) {
-						this.method484(local4, local13, 16384);
-						this.method484(local4, local13 - 1, 1024);
-					}
-				}
-				if (arg2 == 1 || arg2 == 3) {
-					if (arg0 == 0) {
-						this.method484(local4, local13, 512);
-						this.method484(local4 - 1, local13 + 1, 8192);
-					}
-					if (arg0 == 1) {
-						this.method484(local4, local13, 2048);
-						this.method484(local4 + 1, local13 + 1, 32768);
-					}
-					if (arg0 == 2) {
-						this.method484(local4, local13, 8192);
-						this.method484(local4 + 1, local13 - 1, 512);
-					}
-					if (arg0 == 3) {
-						this.method484(local4, local13, 32768);
-						this.method484(local4 - 1, local13 - 1, 2048);
-					}
-				}
-				if (arg2 == 2) {
-					if (arg0 == 0) {
-						this.method484(local4, local13, 66560);
-						this.method484(local4 - 1, local13, 4096);
-						this.method484(local4, local13 + 1, 16384);
-					}
-					if (arg0 == 1) {
-						this.method484(local4, local13, 5120);
-						this.method484(local4, local13 + 1, 16384);
-						this.method484(local4 + 1, local13, 65536);
-					}
-					if (arg0 == 2) {
-						this.method484(local4, local13, 20480);
-						this.method484(local4 + 1, local13, 65536);
-						this.method484(local4, local13 - 1, 1024);
-					}
-					if (arg0 == 3) {
-						this.method484(local4, local13, 81920);
-						this.method484(local4, local13 - 1, 1024);
-						this.method484(local4 - 1, local13, 4096);
-						return;
-					}
-				}
-			}
-		} catch ( RuntimeException local465) {
-			signlink.reporterror("50376, " + arg0 + ", " + 37679 + ", " + arg1 + ", " + arg2 + ", " + arg3 + ", " + arg4 + ", " + local465.toString());
-			throw new RuntimeException();
-		}
-	}
+               if (var7 == var9 && var8 == var10 - 1 && (this.anIntArrayArray16[var7][var8] & 19398914) == 0) {
+                  return true;
+               }
+            } else if (var6 == 3) {
+               if (var7 == var9 && var8 == var10 - 1) {
+                  return true;
+               }
 
-	public void method482( int arg0, int arg1, int arg2, int arg3, boolean arg4, int arg5) {
-		try {
-			int local9 = 256;
-			if (arg4) {
-				local9 = 131328;
-			}
-			int local20 = arg5 - this.anInt667;
-			int local25 = arg0 - this.anInt668;
-			int local33;
-			if (arg1 == 1 || arg1 == 3) {
-				local33 = arg3;
-				arg3 = arg2;
-				arg2 = local33;
-			}
-			for (local33 = local20; local33 < local20 + arg3; local33++) {
-				if (local33 >= 0 && local33 < this.anInt669) {
-					for ( int local49 = local25; local49 < local25 + arg2; local49++) {
-						if (local49 >= 0 && local49 < this.anInt670) {
-							this.method484(local33, local49, local9);
-						}
-					}
-				}
-			}
-		} catch ( RuntimeException local76) {
-			signlink.reporterror("46082, " + arg0 + ", " + arg1 + ", " + arg2 + ", " + arg3 + ", " + arg4 + ", " + arg5 + ", " + 52 + ", " + local76.toString());
-			throw new RuntimeException();
-		}
-	}
+               if (var7 == var9 - 1 && var8 == var10 && (this.anIntArrayArray16[var7][var8] & 19398920) == 0) {
+                  return true;
+               }
 
-	public void method483( int arg0, int arg1) {
-		try {
-			int local4 = arg1 - this.anInt667;
-			int local9 = arg0 - this.anInt668;
-			this.anIntArrayArray16[local4][local9] |= 0x200000;
-		} catch ( RuntimeException local30) {
-			signlink.reporterror("54577, " + 8 + ", " + arg0 + ", " + arg1 + ", " + local30.toString());
-			throw new RuntimeException();
-		}
-	}
+               if (var7 == var9 + 1 && var8 == var10 && (this.anIntArrayArray16[var7][var8] & 19399040) == 0) {
+                  return true;
+               }
+            }
+         }
 
-	private void method484( int arg0, int arg1, int arg2) {
-		this.anIntArrayArray16[arg0][arg1] |= arg2;
-	}
+         if (var3 == 2) {
+            if (var6 == 0) {
+               if (var7 == var9 - 1 && var8 == var10) {
+                  return true;
+               }
 
-	public void method485( int arg0, int arg1, int arg2, int arg3, boolean arg4) {
-		try {
-			int local14 = arg1 - this.anInt667;
-			int local19 = arg2 - this.anInt668;
-			if (arg3 == 0) {
-				if (arg0 == 0) {
-					this.method487(local14, 128, local19);
-					this.method487(local14 - 1, 8, local19);
-				}
-				if (arg0 == 1) {
-					this.method487(local14, 2, local19);
-					this.method487(local14, 32, local19 + 1);
-				}
-				if (arg0 == 2) {
-					this.method487(local14, 8, local19);
-					this.method487(local14 + 1, 128, local19);
-				}
-				if (arg0 == 3) {
-					this.method487(local14, 32, local19);
-					this.method487(local14, 2, local19 - 1);
-				}
-			}
-			if (arg3 == 1 || arg3 == 3) {
-				if (arg0 == 0) {
-					this.method487(local14, 1, local19);
-					this.method487(local14 - 1, 16, local19 + 1);
-				}
-				if (arg0 == 1) {
-					this.method487(local14, 4, local19);
-					this.method487(local14 + 1, 64, local19 + 1);
-				}
-				if (arg0 == 2) {
-					this.method487(local14, 16, local19);
-					this.method487(local14 + 1, 1, local19 - 1);
-				}
-				if (arg0 == 3) {
-					this.method487(local14, 64, local19);
-					this.method487(local14 - 1, 4, local19 - 1);
-				}
-			}
-			if (arg3 == 2) {
-				if (arg0 == 0) {
-					this.method487(local14, 130, local19);
-					this.method487(local14 - 1, 8, local19);
-					this.method487(local14, 32, local19 + 1);
-				}
-				if (arg0 == 1) {
-					this.method487(local14, 10, local19);
-					this.method487(local14, 32, local19 + 1);
-					this.method487(local14 + 1, 128, local19);
-				}
-				if (arg0 == 2) {
-					this.method487(local14, 40, local19);
-					this.method487(local14 + 1, 128, local19);
-					this.method487(local14, 2, local19 - 1);
-				}
-				if (arg0 == 3) {
-					this.method487(local14, 160, local19);
-					this.method487(local14, 2, local19 - 1);
-					this.method487(local14 - 1, 8, local19);
-				}
-			}
-			if (arg4) {
-				if (arg3 == 0) {
-					if (arg0 == 0) {
-						this.method487(local14, 65536, local19);
-						this.method487(local14 - 1, 4096, local19);
-					}
-					if (arg0 == 1) {
-						this.method487(local14, 1024, local19);
-						this.method487(local14, 16384, local19 + 1);
-					}
-					if (arg0 == 2) {
-						this.method487(local14, 4096, local19);
-						this.method487(local14 + 1, 65536, local19);
-					}
-					if (arg0 == 3) {
-						this.method487(local14, 16384, local19);
-						this.method487(local14, 1024, local19 - 1);
-					}
-				}
-				if (arg3 == 1 || arg3 == 3) {
-					if (arg0 == 0) {
-						this.method487(local14, 512, local19);
-						this.method487(local14 - 1, 8192, local19 + 1);
-					}
-					if (arg0 == 1) {
-						this.method487(local14, 2048, local19);
-						this.method487(local14 + 1, 32768, local19 + 1);
-					}
-					if (arg0 == 2) {
-						this.method487(local14, 8192, local19);
-						this.method487(local14 + 1, 512, local19 - 1);
-					}
-					if (arg0 == 3) {
-						this.method487(local14, 32768, local19);
-						this.method487(local14 - 1, 2048, local19 - 1);
-					}
-				}
-				if (arg3 == 2) {
-					if (arg0 == 0) {
-						this.method487(local14, 66560, local19);
-						this.method487(local14 - 1, 4096, local19);
-						this.method487(local14, 16384, local19 + 1);
-					}
-					if (arg0 == 1) {
-						this.method487(local14, 5120, local19);
-						this.method487(local14, 16384, local19 + 1);
-						this.method487(local14 + 1, 65536, local19);
-					}
-					if (arg0 == 2) {
-						this.method487(local14, 20480, local19);
-						this.method487(local14 + 1, 65536, local19);
-						this.method487(local14, 1024, local19 - 1);
-					}
-					if (arg0 == 3) {
-						this.method487(local14, 81920, local19);
-						this.method487(local14, 1024, local19 - 1);
-						this.method487(local14 - 1, 4096, local19);
-						return;
-					}
-				}
-			}
-		} catch ( RuntimeException local527) {
-			signlink.reporterror("26181, " + arg0 + ", " + arg1 + ", " + 0 + ", " + arg2 + ", " + arg3 + ", " + arg4 + ", " + local527.toString());
-			throw new RuntimeException();
-		}
-	}
+               if (var7 == var9 && var8 == var10 + 1) {
+                  return true;
+               }
 
-	public void method486( int arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5, int arg6) {
-		try {
-			int local3 = 256;
-			if (arg5) {
-				local3 = 131328;
-			}
-			int local14 = arg2 - this.anInt667;
-			if (arg0 != 2) {
-				this.aBoolean169 = !this.aBoolean169;
-			}
-			int local30 = arg1 - this.anInt668;
-			int local38;
-			if (arg3 == 1 || arg3 == 3) {
-				local38 = arg6;
-				arg6 = arg4;
-				arg4 = local38;
-			}
-			for (local38 = local14; local38 < local14 + arg6; local38++) {
-				if (local38 >= 0 && local38 < this.anInt669) {
-					for ( int local54 = local30; local54 < local30 + arg4; local54++) {
-						if (local54 >= 0 && local54 < this.anInt670) {
-							this.method487(local38, local3, local54);
-						}
-					}
-				}
-			}
-		} catch ( RuntimeException local82) {
-			signlink.reporterror("89340, " + arg0 + ", " + arg1 + ", " + arg2 + ", " + arg3 + ", " + arg4 + ", " + arg5 + ", " + arg6 + ", " + local82.toString());
-			throw new RuntimeException();
-		}
-	}
+               if (var7 == var9 + 1 && var8 == var10 && (this.anIntArrayArray16[var7][var8] & 19399040) == 0) {
+                  return true;
+               }
 
-	private void method487( int arg0, int arg1, int arg2) {
-		try {
-			this.anIntArrayArray16[arg0][arg2] &= 16777215 - arg1;
-		} catch ( RuntimeException local16) {
-			signlink.reporterror("9094, " + arg0 + ", " + arg1 + ", " + 17 + ", " + arg2 + ", " + local16.toString());
-			throw new RuntimeException();
-		}
-	}
+               if (var7 == var9 && var8 == var10 - 1 && (this.anIntArrayArray16[var7][var8] & 19398914) == 0) {
+                  return true;
+               }
+            } else if (var6 == 1) {
+               if (var7 == var9 - 1 && var8 == var10 && (this.anIntArrayArray16[var7][var8] & 19398920) == 0) {
+                  return true;
+               }
 
-	public void method488( int arg0, int arg1) {
-		try {
-			int local8 = arg0 - this.anInt667;
-			int local13 = arg1 - this.anInt668;
-			this.anIntArrayArray16[local8][local13] &= 0xDFFFFF;
-		} catch ( RuntimeException local25) {
-			signlink.reporterror("62509, " + arg0 + ", " + -122 + ", " + arg1 + ", " + local25.toString());
-			throw new RuntimeException();
-		}
-	}
+               if (var7 == var9 && var8 == var10 + 1) {
+                  return true;
+               }
 
-	public boolean method489( int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-		try {
-			if (arg3 == arg0 && arg4 == arg1) {
-				return true;
-			}
-			int local12 = arg3 - this.anInt667;
-			int local27 = arg4 - this.anInt668;
-			int local32 = arg0 - this.anInt667;
-			int local37 = arg1 - this.anInt668;
-			if (arg2 == 0) {
-				if (arg5 == 0) {
-					if (local12 == local32 - 1 && local27 == local37) {
-						return true;
-					}
-					if (local12 == local32 && local27 == local37 + 1 && (this.anIntArrayArray16[local12][local27] & 0x1280120) == 0) {
-						return true;
-					}
-					if (local12 == local32 && local27 == local37 - 1 && (this.anIntArrayArray16[local12][local27] & 0x1280102) == 0) {
-						return true;
-					}
-				} else if (arg5 == 1) {
-					if (local12 == local32 && local27 == local37 + 1) {
-						return true;
-					}
-					if (local12 == local32 - 1 && local27 == local37 && (this.anIntArrayArray16[local12][local27] & 0x1280108) == 0) {
-						return true;
-					}
-					if (local12 == local32 + 1 && local27 == local37 && (this.anIntArrayArray16[local12][local27] & 0x1280180) == 0) {
-						return true;
-					}
-				} else if (arg5 == 2) {
-					if (local12 == local32 + 1 && local27 == local37) {
-						return true;
-					}
-					if (local12 == local32 && local27 == local37 + 1 && (this.anIntArrayArray16[local12][local27] & 0x1280120) == 0) {
-						return true;
-					}
-					if (local12 == local32 && local27 == local37 - 1 && (this.anIntArrayArray16[local12][local27] & 0x1280102) == 0) {
-						return true;
-					}
-				} else if (arg5 == 3) {
-					if (local12 == local32 && local27 == local37 - 1) {
-						return true;
-					}
-					if (local12 == local32 - 1 && local27 == local37 && (this.anIntArrayArray16[local12][local27] & 0x1280108) == 0) {
-						return true;
-					}
-					if (local12 == local32 + 1 && local27 == local37 && (this.anIntArrayArray16[local12][local27] & 0x1280180) == 0) {
-						return true;
-					}
-				}
-			}
-			if (arg2 == 2) {
-				if (arg5 == 0) {
-					if (local12 == local32 - 1 && local27 == local37) {
-						return true;
-					}
-					if (local12 == local32 && local27 == local37 + 1) {
-						return true;
-					}
-					if (local12 == local32 + 1 && local27 == local37 && (this.anIntArrayArray16[local12][local27] & 0x1280180) == 0) {
-						return true;
-					}
-					if (local12 == local32 && local27 == local37 - 1 && (this.anIntArrayArray16[local12][local27] & 0x1280102) == 0) {
-						return true;
-					}
-				} else if (arg5 == 1) {
-					if (local12 == local32 - 1 && local27 == local37 && (this.anIntArrayArray16[local12][local27] & 0x1280108) == 0) {
-						return true;
-					}
-					if (local12 == local32 && local27 == local37 + 1) {
-						return true;
-					}
-					if (local12 == local32 + 1 && local27 == local37) {
-						return true;
-					}
-					if (local12 == local32 && local27 == local37 - 1 && (this.anIntArrayArray16[local12][local27] & 0x1280102) == 0) {
-						return true;
-					}
-				} else if (arg5 == 2) {
-					if (local12 == local32 - 1 && local27 == local37 && (this.anIntArrayArray16[local12][local27] & 0x1280108) == 0) {
-						return true;
-					}
-					if (local12 == local32 && local27 == local37 + 1 && (this.anIntArrayArray16[local12][local27] & 0x1280120) == 0) {
-						return true;
-					}
-					if (local12 == local32 + 1 && local27 == local37) {
-						return true;
-					}
-					if (local12 == local32 && local27 == local37 - 1) {
-						return true;
-					}
-				} else if (arg5 == 3) {
-					if (local12 == local32 - 1 && local27 == local37) {
-						return true;
-					}
-					if (local12 == local32 && local27 == local37 + 1 && (this.anIntArrayArray16[local12][local27] & 0x1280120) == 0) {
-						return true;
-					}
-					if (local12 == local32 + 1 && local27 == local37 && (this.anIntArrayArray16[local12][local27] & 0x1280180) == 0) {
-						return true;
-					}
-					if (local12 == local32 && local27 == local37 - 1) {
-						return true;
-					}
-				}
-			}
-			if (arg2 == 9) {
-				if (local12 == local32 && local27 == local37 + 1 && (this.anIntArrayArray16[local12][local27] & 0x20) == 0) {
-					return true;
-				}
-				if (local12 == local32 && local27 == local37 - 1 && (this.anIntArrayArray16[local12][local27] & 0x2) == 0) {
-					return true;
-				}
-				if (local12 == local32 - 1 && local27 == local37 && (this.anIntArrayArray16[local12][local27] & 0x8) == 0) {
-					return true;
-				}
-				if (local12 == local32 + 1 && local27 == local37 && (this.anIntArrayArray16[local12][local27] & 0x80) == 0) {
-					return true;
-				}
-			}
-			return false;
-		} catch ( RuntimeException local570) {
-			signlink.reporterror("56038, " + arg0 + ", " + 0 + ", " + arg1 + ", " + arg2 + ", " + arg3 + ", " + arg4 + ", " + arg5 + ", " + local570.toString());
-			throw new RuntimeException();
-		}
-	}
+               if (var7 == var9 + 1 && var8 == var10) {
+                  return true;
+               }
 
-	public boolean method490( int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
-		try {
-			if (arg2 == arg1 && arg0 == arg5) {
-				return true;
-			}
-			int local12 = arg2 - this.anInt667;
-			int local17 = arg0 - this.anInt668;
-			int local22 = arg1 - this.anInt667;
-			int local33 = arg5 - this.anInt668;
-			if (arg4 == 6 || arg4 == 7) {
-				if (arg4 == 7) {
-					arg3 = arg3 + 2 & 0x3;
-				}
-				if (arg3 == 0) {
-					if (local12 == local22 + 1 && local17 == local33 && (this.anIntArrayArray16[local12][local17] & 0x80) == 0) {
-						return true;
-					}
-					if (local12 == local22 && local17 == local33 - 1 && (this.anIntArrayArray16[local12][local17] & 0x2) == 0) {
-						return true;
-					}
-				} else if (arg3 == 1) {
-					if (local12 == local22 - 1 && local17 == local33 && (this.anIntArrayArray16[local12][local17] & 0x8) == 0) {
-						return true;
-					}
-					if (local12 == local22 && local17 == local33 - 1 && (this.anIntArrayArray16[local12][local17] & 0x2) == 0) {
-						return true;
-					}
-				} else if (arg3 == 2) {
-					if (local12 == local22 - 1 && local17 == local33 && (this.anIntArrayArray16[local12][local17] & 0x8) == 0) {
-						return true;
-					}
-					if (local12 == local22 && local17 == local33 + 1 && (this.anIntArrayArray16[local12][local17] & 0x20) == 0) {
-						return true;
-					}
-				} else if (arg3 == 3) {
-					if (local12 == local22 + 1 && local17 == local33 && (this.anIntArrayArray16[local12][local17] & 0x80) == 0) {
-						return true;
-					}
-					if (local12 == local22 && local17 == local33 + 1 && (this.anIntArrayArray16[local12][local17] & 0x20) == 0) {
-						return true;
-					}
-				}
-			}
-			if (arg4 == 8) {
-				if (local12 == local22 && local17 == local33 + 1 && (this.anIntArrayArray16[local12][local17] & 0x20) == 0) {
-					return true;
-				}
-				if (local12 == local22 && local17 == local33 - 1 && (this.anIntArrayArray16[local12][local17] & 0x2) == 0) {
-					return true;
-				}
-				if (local12 == local22 - 1 && local17 == local33 && (this.anIntArrayArray16[local12][local17] & 0x8) == 0) {
-					return true;
-				}
-				if (local12 == local22 + 1 && local17 == local33 && (this.anIntArrayArray16[local12][local17] & 0x80) == 0) {
-					return true;
-				}
-			}
-			return false;
-		} catch ( RuntimeException local293) {
-			signlink.reporterror("24337, " + -37 + ", " + arg0 + ", " + arg1 + ", " + arg2 + ", " + arg3 + ", " + arg4 + ", " + arg5 + ", " + local293.toString());
-			throw new RuntimeException();
-		}
-	}
+               if (var7 == var9 && var8 == var10 - 1 && (this.anIntArrayArray16[var7][var8] & 19398914) == 0) {
+                  return true;
+               }
+            } else if (var6 == 2) {
+               if (var7 == var9 - 1 && var8 == var10 && (this.anIntArrayArray16[var7][var8] & 19398920) == 0) {
+                  return true;
+               }
 
-	public boolean method491( int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
-		try {
-			int local5 = arg2 + arg0 - 1;
-			int local11 = arg5 + arg4 - 1;
-			if (arg1 >= arg2 && arg1 <= local5 && arg6 >= arg5 && arg6 <= local11) {
-				return true;
-			} else if (arg1 == arg2 - 1 && arg6 >= arg5 && arg6 <= local11 && (this.anIntArrayArray16[arg1 - this.anInt667][arg6 - this.anInt668] & 0x8) == 0 && (arg3 & 0x8) == 0) {
-				return true;
-			} else if (arg1 == local5 + 1 && arg6 >= arg5 && arg6 <= local11 && (this.anIntArrayArray16[arg1 - this.anInt667][arg6 - this.anInt668] & 0x80) == 0 && (arg3 & 0x2) == 0) {
-				return true;
-			} else if (arg6 == arg5 - 1 && arg1 >= arg2 && arg1 <= local5 && (this.anIntArrayArray16[arg1 - this.anInt667][arg6 - this.anInt668] & 0x2) == 0 && (arg3 & 0x4) == 0) {
-				return true;
-			} else {
-				return arg6 == local11 + 1 && arg1 >= arg2 && arg1 <= local5 && (this.anIntArrayArray16[arg1 - this.anInt667][arg6 - this.anInt668] & 0x20) == 0 && (arg3 & 0x1) == 0;
-			}
-		} catch ( RuntimeException local161) {
-			signlink.reporterror("27401, " + arg0 + ", " + arg1 + ", " + true + ", " + arg2 + ", " + arg3 + ", " + arg4 + ", " + arg5 + ", " + arg6 + ", " + local161.toString());
-			throw new RuntimeException();
-		}
-	}
+               if (var7 == var9 && var8 == var10 + 1 && (this.anIntArrayArray16[var7][var8] & 19398944) == 0) {
+                  return true;
+               }
+
+               if (var7 == var9 + 1 && var8 == var10) {
+                  return true;
+               }
+
+               if (var7 == var9 && var8 == var10 - 1) {
+                  return true;
+               }
+            } else if (var6 == 3) {
+               if (var7 == var9 - 1 && var8 == var10) {
+                  return true;
+               }
+
+               if (var7 == var9 && var8 == var10 + 1 && (this.anIntArrayArray16[var7][var8] & 19398944) == 0) {
+                  return true;
+               }
+
+               if (var7 == var9 + 1 && var8 == var10 && (this.anIntArrayArray16[var7][var8] & 19399040) == 0) {
+                  return true;
+               }
+
+               if (var7 == var9 && var8 == var10 - 1) {
+                  return true;
+               }
+            }
+         }
+
+         if (var3 == 9) {
+            if (var7 == var9 && var8 == var10 + 1 && (this.anIntArrayArray16[var7][var8] & 32) == 0) {
+               return true;
+            }
+
+            if (var7 == var9 && var8 == var10 - 1 && (this.anIntArrayArray16[var7][var8] & 2) == 0) {
+               return true;
+            }
+
+            if (var7 == var9 - 1 && var8 == var10 && (this.anIntArrayArray16[var7][var8] & 8) == 0) {
+               return true;
+            }
+
+            if (var7 == var9 + 1 && var8 == var10 && (this.anIntArrayArray16[var7][var8] & 128) == 0) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public boolean method491(int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
+      int var8 = var3 + var1 - 1;
+      int var9 = var6 + var5 - 1;
+      if (var2 >= var3 && var2 <= var8 && var7 >= var6 && var7 <= var9) {
+         return true;
+      } else if (var2 == var3 - 1 && var7 >= var6 && var7 <= var9 && (this.anIntArrayArray16[var2 - this.anInt667][var7 - this.anInt668] & 8) == 0 && (var4 & 8) == 0) {
+         return true;
+      } else if (var2 == var8 + 1 && var7 >= var6 && var7 <= var9 && (this.anIntArrayArray16[var2 - this.anInt667][var7 - this.anInt668] & 128) == 0 && (var4 & 2) == 0) {
+         return true;
+      } else if (var7 == var6 - 1 && var2 >= var3 && var2 <= var8 && (this.anIntArrayArray16[var2 - this.anInt667][var7 - this.anInt668] & 2) == 0 && (var4 & 4) == 0) {
+         return true;
+      } else {
+         return var7 == var9 + 1 && var2 >= var3 && var2 <= var8 && (this.anIntArrayArray16[var2 - this.anInt667][var7 - this.anInt668] & 32) == 0 && (var4 & 1) == 0;
+      }
+   }
+
+   public boolean method490(int var1, int var2, int var3, int var4, int var5, int var6) {
+      if (var3 == var2 && var1 == var6) {
+         return true;
+      } else {
+         int var7 = var3 - this.anInt667;
+         int var8 = var1 - this.anInt668;
+         int var9 = var2 - this.anInt667;
+         int var10 = var6 - this.anInt668;
+         if (var5 == 6 || var5 == 7) {
+            if (var5 == 7) {
+               var4 = var4 + 2 & 3;
+            }
+
+            if (var4 == 0) {
+               if (var7 == var9 + 1 && var8 == var10 && (this.anIntArrayArray16[var7][var8] & 128) == 0) {
+                  return true;
+               }
+
+               if (var7 == var9 && var8 == var10 - 1 && (this.anIntArrayArray16[var7][var8] & 2) == 0) {
+                  return true;
+               }
+            } else if (var4 == 1) {
+               if (var7 == var9 - 1 && var8 == var10 && (this.anIntArrayArray16[var7][var8] & 8) == 0) {
+                  return true;
+               }
+
+               if (var7 == var9 && var8 == var10 - 1 && (this.anIntArrayArray16[var7][var8] & 2) == 0) {
+                  return true;
+               }
+            } else if (var4 == 2) {
+               if (var7 == var9 - 1 && var8 == var10 && (this.anIntArrayArray16[var7][var8] & 8) == 0) {
+                  return true;
+               }
+
+               if (var7 == var9 && var8 == var10 + 1 && (this.anIntArrayArray16[var7][var8] & 32) == 0) {
+                  return true;
+               }
+            } else if (var4 == 3) {
+               if (var7 == var9 + 1 && var8 == var10 && (this.anIntArrayArray16[var7][var8] & 128) == 0) {
+                  return true;
+               }
+
+               if (var7 == var9 && var8 == var10 + 1 && (this.anIntArrayArray16[var7][var8] & 32) == 0) {
+                  return true;
+               }
+            }
+         }
+
+         if (var5 == 8) {
+            if (var7 == var9 && var8 == var10 + 1 && (this.anIntArrayArray16[var7][var8] & 32) == 0) {
+               return true;
+            }
+
+            if (var7 == var9 && var8 == var10 - 1 && (this.anIntArrayArray16[var7][var8] & 2) == 0) {
+               return true;
+            }
+
+            if (var7 == var9 - 1 && var8 == var10 && (this.anIntArrayArray16[var7][var8] & 8) == 0) {
+               return true;
+            }
+
+            if (var7 == var9 + 1 && var8 == var10 && (this.anIntArrayArray16[var7][var8] & 128) == 0) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public void method485(int var1, int var2, int var3, int var4, boolean var5) {
+      int var6 = var2 - this.anInt667;
+      int var7 = var3 - this.anInt668;
+      if (var4 == 0) {
+         if (var1 == 0) {
+            this.method487(var6, 128, var7);
+            this.method487(var6 - 1, 8, var7);
+         }
+
+         if (var1 == 1) {
+            this.method487(var6, 2, var7);
+            this.method487(var6, 32, var7 + 1);
+         }
+
+         if (var1 == 2) {
+            this.method487(var6, 8, var7);
+            this.method487(var6 + 1, 128, var7);
+         }
+
+         if (var1 == 3) {
+            this.method487(var6, 32, var7);
+            this.method487(var6, 2, var7 - 1);
+         }
+      }
+
+      if (var4 == 1 || var4 == 3) {
+         if (var1 == 0) {
+            this.method487(var6, 1, var7);
+            this.method487(var6 - 1, 16, var7 + 1);
+         }
+
+         if (var1 == 1) {
+            this.method487(var6, 4, var7);
+            this.method487(var6 + 1, 64, var7 + 1);
+         }
+
+         if (var1 == 2) {
+            this.method487(var6, 16, var7);
+            this.method487(var6 + 1, 1, var7 - 1);
+         }
+
+         if (var1 == 3) {
+            this.method487(var6, 64, var7);
+            this.method487(var6 - 1, 4, var7 - 1);
+         }
+      }
+
+      if (var4 == 2) {
+         if (var1 == 0) {
+            this.method487(var6, 130, var7);
+            this.method487(var6 - 1, 8, var7);
+            this.method487(var6, 32, var7 + 1);
+         }
+
+         if (var1 == 1) {
+            this.method487(var6, 10, var7);
+            this.method487(var6, 32, var7 + 1);
+            this.method487(var6 + 1, 128, var7);
+         }
+
+         if (var1 == 2) {
+            this.method487(var6, 40, var7);
+            this.method487(var6 + 1, 128, var7);
+            this.method487(var6, 2, var7 - 1);
+         }
+
+         if (var1 == 3) {
+            this.method487(var6, 160, var7);
+            this.method487(var6, 2, var7 - 1);
+            this.method487(var6 - 1, 8, var7);
+         }
+      }
+
+      if (var5) {
+         if (var4 == 0) {
+            if (var1 == 0) {
+               this.method487(var6, 65536, var7);
+               this.method487(var6 - 1, 4096, var7);
+            }
+
+            if (var1 == 1) {
+               this.method487(var6, 1024, var7);
+               this.method487(var6, 16384, var7 + 1);
+            }
+
+            if (var1 == 2) {
+               this.method487(var6, 4096, var7);
+               this.method487(var6 + 1, 65536, var7);
+            }
+
+            if (var1 == 3) {
+               this.method487(var6, 16384, var7);
+               this.method487(var6, 1024, var7 - 1);
+            }
+         }
+
+         if (var4 == 1 || var4 == 3) {
+            if (var1 == 0) {
+               this.method487(var6, 512, var7);
+               this.method487(var6 - 1, 8192, var7 + 1);
+            }
+
+            if (var1 == 1) {
+               this.method487(var6, 2048, var7);
+               this.method487(var6 + 1, 32768, var7 + 1);
+            }
+
+            if (var1 == 2) {
+               this.method487(var6, 8192, var7);
+               this.method487(var6 + 1, 512, var7 - 1);
+            }
+
+            if (var1 == 3) {
+               this.method487(var6, 32768, var7);
+               this.method487(var6 - 1, 2048, var7 - 1);
+            }
+         }
+
+         if (var4 == 2) {
+            if (var1 == 0) {
+               this.method487(var6, 66560, var7);
+               this.method487(var6 - 1, 4096, var7);
+               this.method487(var6, 16384, var7 + 1);
+            }
+
+            if (var1 == 1) {
+               this.method487(var6, 5120, var7);
+               this.method487(var6, 16384, var7 + 1);
+               this.method487(var6 + 1, 65536, var7);
+            }
+
+            if (var1 == 2) {
+               this.method487(var6, 20480, var7);
+               this.method487(var6 + 1, 65536, var7);
+               this.method487(var6, 1024, var7 - 1);
+            }
+
+            if (var1 == 3) {
+               this.method487(var6, 81920, var7);
+               this.method487(var6, 1024, var7 - 1);
+               this.method487(var6 - 1, 4096, var7);
+               return;
+            }
+         }
+      }
+
+   }
+
+   public void method488(int var1, int var2) {
+      int var3 = var1 - this.anInt667;
+      int var4 = var2 - this.anInt668;
+      int[] var10000 = this.anIntArrayArray16[var3];
+      var10000[var4] &= 14680063;
+   }
+
+   public void method482(int var1, int var2, int var3, int var4, boolean var5, int var6) {
+      int var7 = 256;
+      if (var5) {
+         var7 = 131328;
+      }
+
+      int var8 = var6 - this.anInt667;
+      int var9 = var1 - this.anInt668;
+      int var10;
+      if (var2 == 1 || var2 == 3) {
+         var10 = var4;
+         var4 = var3;
+         var3 = var10;
+      }
+
+      for(var10 = var8; var10 < var8 + var4; ++var10) {
+         if (var10 >= 0 && var10 < this.anInt669) {
+            for(int var11 = var9; var11 < var9 + var3; ++var11) {
+               if (var11 >= 0 && var11 < this.anInt670) {
+                  this.method484(var10, var11, var7);
+               }
+            }
+         }
+      }
+
+   }
+
+   public void method481(int var1, boolean var2, int var3, int var4, int var5) {
+      int var6 = var4 - this.anInt667;
+      int var7 = var5 - this.anInt668;
+      if (var3 == 0) {
+         if (var1 == 0) {
+            this.method484(var6, var7, 128);
+            this.method484(var6 - 1, var7, 8);
+         }
+
+         if (var1 == 1) {
+            this.method484(var6, var7, 2);
+            this.method484(var6, var7 + 1, 32);
+         }
+
+         if (var1 == 2) {
+            this.method484(var6, var7, 8);
+            this.method484(var6 + 1, var7, 128);
+         }
+
+         if (var1 == 3) {
+            this.method484(var6, var7, 32);
+            this.method484(var6, var7 - 1, 2);
+         }
+      }
+
+      if (var3 == 1 || var3 == 3) {
+         if (var1 == 0) {
+            this.method484(var6, var7, 1);
+            this.method484(var6 - 1, var7 + 1, 16);
+         }
+
+         if (var1 == 1) {
+            this.method484(var6, var7, 4);
+            this.method484(var6 + 1, var7 + 1, 64);
+         }
+
+         if (var1 == 2) {
+            this.method484(var6, var7, 16);
+            this.method484(var6 + 1, var7 - 1, 1);
+         }
+
+         if (var1 == 3) {
+            this.method484(var6, var7, 64);
+            this.method484(var6 - 1, var7 - 1, 4);
+         }
+      }
+
+      if (var3 == 2) {
+         if (var1 == 0) {
+            this.method484(var6, var7, 130);
+            this.method484(var6 - 1, var7, 8);
+            this.method484(var6, var7 + 1, 32);
+         }
+
+         if (var1 == 1) {
+            this.method484(var6, var7, 10);
+            this.method484(var6, var7 + 1, 32);
+            this.method484(var6 + 1, var7, 128);
+         }
+
+         if (var1 == 2) {
+            this.method484(var6, var7, 40);
+            this.method484(var6 + 1, var7, 128);
+            this.method484(var6, var7 - 1, 2);
+         }
+
+         if (var1 == 3) {
+            this.method484(var6, var7, 160);
+            this.method484(var6, var7 - 1, 2);
+            this.method484(var6 - 1, var7, 8);
+         }
+      }
+
+      if (var2) {
+         if (var3 == 0) {
+            if (var1 == 0) {
+               this.method484(var6, var7, 65536);
+               this.method484(var6 - 1, var7, 4096);
+            }
+
+            if (var1 == 1) {
+               this.method484(var6, var7, 1024);
+               this.method484(var6, var7 + 1, 16384);
+            }
+
+            if (var1 == 2) {
+               this.method484(var6, var7, 4096);
+               this.method484(var6 + 1, var7, 65536);
+            }
+
+            if (var1 == 3) {
+               this.method484(var6, var7, 16384);
+               this.method484(var6, var7 - 1, 1024);
+            }
+         }
+
+         if (var3 == 1 || var3 == 3) {
+            if (var1 == 0) {
+               this.method484(var6, var7, 512);
+               this.method484(var6 - 1, var7 + 1, 8192);
+            }
+
+            if (var1 == 1) {
+               this.method484(var6, var7, 2048);
+               this.method484(var6 + 1, var7 + 1, 32768);
+            }
+
+            if (var1 == 2) {
+               this.method484(var6, var7, 8192);
+               this.method484(var6 + 1, var7 - 1, 512);
+            }
+
+            if (var1 == 3) {
+               this.method484(var6, var7, 32768);
+               this.method484(var6 - 1, var7 - 1, 2048);
+            }
+         }
+
+         if (var3 == 2) {
+            if (var1 == 0) {
+               this.method484(var6, var7, 66560);
+               this.method484(var6 - 1, var7, 4096);
+               this.method484(var6, var7 + 1, 16384);
+            }
+
+            if (var1 == 1) {
+               this.method484(var6, var7, 5120);
+               this.method484(var6, var7 + 1, 16384);
+               this.method484(var6 + 1, var7, 65536);
+            }
+
+            if (var1 == 2) {
+               this.method484(var6, var7, 20480);
+               this.method484(var6 + 1, var7, 65536);
+               this.method484(var6, var7 - 1, 1024);
+            }
+
+            if (var1 == 3) {
+               this.method484(var6, var7, 81920);
+               this.method484(var6, var7 - 1, 1024);
+               this.method484(var6 - 1, var7, 4096);
+               return;
+            }
+         }
+      }
+
+   }
+
+   public void method486(int var1, int var2, int var3, int var4, int var5, boolean var6, int var7) {
+      int var8 = 256;
+      if (var6) {
+         var8 = 131328;
+      }
+
+      int var9 = var3 - this.anInt667;
+      if (var1 != 2) {
+         this.aBoolean169 = !this.aBoolean169;
+      }
+
+      int var10 = var2 - this.anInt668;
+      int var11;
+      if (var4 == 1 || var4 == 3) {
+         var11 = var7;
+         var7 = var5;
+         var5 = var11;
+      }
+
+      for(var11 = var9; var11 < var9 + var7; ++var11) {
+         if (var11 >= 0 && var11 < this.anInt669) {
+            for(int var12 = var10; var12 < var10 + var5; ++var12) {
+               if (var12 >= 0 && var12 < this.anInt670) {
+                  this.method487(var11, var8, var12);
+               }
+            }
+         }
+      }
+
+   }
 }

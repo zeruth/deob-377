@@ -1,392 +1,356 @@
 package unmapped;
 
-
 import jagex2.datastruct.LruCache;
 import jagex2.graphics.Model;
 import jagex2.io.JagFile;
 import jagex2.io.Packet;
-import sign.signlink;
 
 public final class Class38 {
+   public static LruCache aClass34_6 = new LruCache(30);
+   private static byte aByte32 = 6;
+   public static Client aClient3;
+   private static int anInt583;
+   private static Class38[] aClass38Array1;
+   private static Packet aClass10_Sub1_Sub3_3;
+   private static int[] anIntArray169;
+   private static int anInt578;
+   private int anInt580 = -1;
+   public int[] anIntArray165;
+   public int anInt564 = -1;
+   private int anInt582 = -1;
+   private int[] anIntArray166;
+   private boolean aBoolean140 = true;
+   public long aLong19 = -1L;
+   private int anInt565 = 932;
+   public boolean aBoolean141 = true;
+   private int anInt566 = -1;
+   private int[] anIntArray167;
+   public String aString10 = "null";
+   public int anInt572 = -1;
+   public byte aByte31 = 1;
+   public byte[] aByteArray14;
+   private int anInt567 = 128;
+   public int anInt576 = -1;
+   private int[] anIntArray168;
+   public String[] aStringArray4;
+   private int anInt568 = 128;
+   public boolean aBoolean143 = false;
+   private int anInt577 = -1;
+   public int anInt569 = -1;
+   public int anInt575 = -1;
+   private int[] anIntArray170;
+   public int anInt571 = -1;
+   public boolean aBoolean142 = true;
+   private int anInt570 = -1;
+   private int anInt584;
+   private int anInt581;
+   public int anInt574 = -1;
+   private int anInt573 = 7;
+   public int anInt579 = 32;
+   private boolean aBoolean144 = false;
+   private boolean aBoolean145 = false;
 
-	public static Client aClient3;
+   private Class38() {
+   }
 
-	private static int anInt578;
+   public Class38 method406() {
+      int var1 = -1;
+      if (this.anInt580 != -1) {
+         Class50 var2 = Class50.aClass50Array1[this.anInt580];
+         int var3 = var2.anInt800;
+         int var4 = var2.anInt801;
+         int var5 = var2.anInt802;
+         int var6 = Client.anIntArray262[var5 - var4];
+         var1 = aClient3.anIntArray244[var3] >> var4 & var6;
+      } else if (this.anInt582 != -1) {
+         var1 = aClient3.anIntArray244[this.anInt582];
+      }
 
-	private static int[] anIntArray169;
+      return var1 >= 0 && var1 < this.anIntArray165.length && this.anIntArray165[var1] != -1 ? method407(this.anIntArray165[var1]) : null;
+   }
 
-	private static Class38[] aClass38Array1;
+   public Model method402() {
+      if (this.anIntArray165 != null) {
+         Class38 var1 = this.method406();
+         return var1 == null ? null : var1.method402();
+      } else if (this.anIntArray166 == null) {
+         return null;
+      } else {
+         boolean var5 = false;
 
-	private static Packet aClass10_Sub1_Sub3_3;
+         for(int var2 = 0; var2 < this.anIntArray166.length; ++var2) {
+            if (!Model.method272(this.anIntArray166[var2])) {
+               var5 = true;
+            }
+         }
 
-	private static int anInt583;
+         if (var5) {
+            return null;
+         } else {
+            Model[] var6 = new Model[this.anIntArray166.length];
 
-	public static LruCache aClass34_6 = new LruCache(30);
+            for(int var3 = 0; var3 < this.anIntArray166.length; ++var3) {
+               var6[var3] = Model.createModel(this.anIntArray166[var3]);
+            }
 
-	private static byte aByte32 = 6;
+            Model var7;
+            if (var6.length == 1) {
+               var7 = var6[0];
+            } else {
+               var7 = new Model(var6.length, var6);
+            }
 
-	public int[] anIntArray165;
+            if (this.anIntArray168 != null) {
+               for(int var4 = 0; var4 < this.anIntArray168.length; ++var4) {
+                  var7.recolor(this.anIntArray168[var4], this.anIntArray170[var4]);
+               }
+            }
 
-	private int[] anIntArray166;
+            return var7;
+         }
+      }
+   }
 
-	private int[] anIntArray167;
+   public Model method405(int var1, int var2, int[] var3) {
+      if (this.anIntArray165 != null) {
+         Class38 var10 = this.method406();
+         return var10 == null ? null : var10.method405(var1, var2, var3);
+      } else {
+         Model var4 = (Model)aClass34_6.get(this.aLong19);
+         if (var4 == null) {
+            boolean var5 = false;
 
-	private int[] anIntArray168;
+            for(int var6 = 0; var6 < this.anIntArray167.length; ++var6) {
+               if (!Model.method272(this.anIntArray167[var6])) {
+                  var5 = true;
+               }
+            }
 
-	public String[] aStringArray4;
+            if (var5) {
+               return null;
+            }
 
-	private int[] anIntArray170;
+            Model[] var9 = new Model[this.anIntArray167.length];
 
-	private int anInt581;
+            int var7;
+            for(var7 = 0; var7 < this.anIntArray167.length; ++var7) {
+               var9[var7] = Model.createModel(this.anIntArray167[var7]);
+            }
 
-	public byte[] aByteArray14;
+            if (var9.length == 1) {
+               var4 = var9[0];
+            } else {
+               var4 = new Model(var9.length, var9);
+            }
 
-	private int anInt584;
+            if (this.anIntArray168 != null) {
+               for(var7 = 0; var7 < this.anIntArray168.length; ++var7) {
+                  var4.recolor(this.anIntArray168[var7], this.anIntArray170[var7]);
+               }
+            }
 
-	public int anInt564 = -1;
+            var4.method278();
+            var4.method288(this.anInt584 + 64, this.anInt581 + 850, -30, -50, -30, true);
+            aClass34_6.put(var4, this.aLong19);
+         }
 
-	private boolean aBoolean140 = true;
+         Model var8 = Model.aClass10_Sub1_Sub2_Sub4_1;
+         var8.method273(Class22.method169(this.aBoolean140, var1) & Class22.method169(this.aBoolean140, var2), var4);
+         if (var1 != -1 && var2 != -1) {
+            var8.method280(var2, var1, var3);
+         } else if (var1 != -1) {
+            var8.method279(var1, (byte)6);
+         }
 
-	private int anInt565 = 932;
+         if (this.anInt568 != 128 || this.anInt567 != 128) {
+            var8.method287(this.anInt567, this.anInt568, this.anInt568);
+         }
 
-	private int anInt566 = -1;
+         var8.method275(this.anInt565);
+         var8.anIntArrayArray11 = null;
+         var8.anIntArrayArray10 = null;
+         if (this.aByte31 == 1) {
+            var8.aBoolean106 = true;
+         }
 
-	public long aLong19 = -1L;
+         return var8;
+      }
+   }
 
-	private int anInt567 = 128;
+   public boolean method403() {
+      if (this.anIntArray165 == null) {
+         return true;
+      } else {
+         int var1 = -1;
+         if (this.anInt580 != -1) {
+            Class50 var2 = Class50.aClass50Array1[this.anInt580];
+            int var3 = var2.anInt800;
+            int var4 = var2.anInt801;
+            int var5 = var2.anInt802;
+            int var6 = Client.anIntArray262[var5 - var4];
+            var1 = aClient3.anIntArray244[var3] >> var4 & var6;
+         } else if (this.anInt582 != -1) {
+            var1 = aClient3.anIntArray244[this.anInt582];
+         }
 
-	public boolean aBoolean141 = true;
+         return var1 >= 0 && var1 < this.anIntArray165.length && this.anIntArray165[var1] != -1;
+      }
+   }
 
-	private int anInt568 = 128;
+   private void method400(byte var1, Packet var2) {
+      if (var1 != 6) {
+         throw new NullPointerException();
+      } else {
+         boolean var3 = false;
 
-	public int anInt569 = -1;
+         while(true) {
+            while(true) {
+               int var4 = var2.g1();
+               if (var4 == 0) {
+                  return;
+               }
 
-	public boolean aBoolean142 = true;
+               int var5;
+               int var6;
+               if (var4 == 1) {
+                  var5 = var2.g1();
+                  this.anIntArray167 = new int[var5];
 
-	private int anInt570 = -1;
+                  for(var6 = 0; var6 < var5; ++var6) {
+                     this.anIntArray167[var6] = var2.g2();
+                  }
+               } else if (var4 == 2) {
+                  this.aString10 = var2.gjstr();
+               } else if (var4 == 3) {
+                  this.aByteArray14 = var2.gstrbyte();
+               } else if (var4 == 12) {
+                  this.aByte31 = var2.g1b();
+               } else if (var4 == 13) {
+                  this.anInt564 = var2.g2();
+               } else if (var4 == 14) {
+                  this.anInt576 = var2.g2();
+               } else if (var4 == 17) {
+                  this.anInt576 = var2.g2();
+                  this.anInt575 = var2.g2();
+                  this.anInt574 = var2.g2();
+                  this.anInt569 = var2.g2();
+               } else if (var4 >= 30 && var4 < 40) {
+                  if (this.aStringArray4 == null) {
+                     this.aStringArray4 = new String[5];
+                  }
 
-	public int anInt571 = -1;
+                  this.aStringArray4[var4 - 30] = var2.gjstr();
+                  if (this.aStringArray4[var4 - 30].equalsIgnoreCase("hidden")) {
+                     this.aStringArray4[var4 - 30] = null;
+                  }
+               } else if (var4 == 40) {
+                  var5 = var2.g1();
+                  this.anIntArray168 = new int[var5];
+                  this.anIntArray170 = new int[var5];
 
-	public int anInt572 = -1;
+                  for(var6 = 0; var6 < var5; ++var6) {
+                     this.anIntArray168[var6] = var2.g2();
+                     this.anIntArray170[var6] = var2.g2();
+                  }
+               } else if (var4 == 60) {
+                  var5 = var2.g1();
+                  this.anIntArray166 = new int[var5];
 
-	private int anInt573 = 7;
+                  for(var6 = 0; var6 < var5; ++var6) {
+                     this.anIntArray166[var6] = var2.g2();
+                  }
+               } else if (var4 == 90) {
+                  this.anInt577 = var2.g2();
+               } else if (var4 == 91) {
+                  this.anInt566 = var2.g2();
+               } else if (var4 == 92) {
+                  this.anInt570 = var2.g2();
+               } else if (var4 == 93) {
+                  this.aBoolean142 = false;
+               } else if (var4 == 95) {
+                  this.anInt572 = var2.g2();
+               } else if (var4 == 97) {
+                  this.anInt568 = var2.g2();
+               } else if (var4 == 98) {
+                  this.anInt567 = var2.g2();
+               } else if (var4 == 99) {
+                  this.aBoolean143 = true;
+               } else if (var4 == 100) {
+                  this.anInt584 = var2.g1b();
+               } else if (var4 == 101) {
+                  this.anInt581 = var2.g1b() * 5;
+               } else if (var4 == 102) {
+                  this.anInt571 = var2.g2();
+               } else if (var4 == 103) {
+                  this.anInt579 = var2.g2();
+               } else if (var4 == 106) {
+                  this.anInt580 = var2.g2();
+                  if (this.anInt580 == 65535) {
+                     this.anInt580 = -1;
+                  }
 
-	public int anInt574 = -1;
+                  this.anInt582 = var2.g2();
+                  if (this.anInt582 == 65535) {
+                     this.anInt582 = -1;
+                  }
 
-	public byte aByte31 = 1;
+                  var5 = var2.g1();
+                  this.anIntArray165 = new int[var5 + 1];
 
-	public int anInt575 = -1;
+                  for(var6 = 0; var6 <= var5; ++var6) {
+                     this.anIntArray165[var6] = var2.g2();
+                     if (this.anIntArray165[var6] == 65535) {
+                        this.anIntArray165[var6] = -1;
+                     }
+                  }
+               } else if (var4 == 107) {
+                  this.aBoolean141 = false;
+               }
+            }
+         }
+      }
+   }
 
-	public boolean aBoolean143 = false;
+   public static Class38 method407(int var0) {
+      for(int var1 = 0; var1 < 20; ++var1) {
+         if (aClass38Array1[var1].aLong19 == (long)var0) {
+            return aClass38Array1[var1];
+         }
+      }
 
-	public int anInt576 = -1;
+      anInt583 = (anInt583 + 1) % 20;
+      Class38 var2 = aClass38Array1[anInt583] = new Class38();
+      aClass10_Sub1_Sub3_3.pos = anIntArray169[var0];
+      var2.aLong19 = (long)var0;
+      var2.method400(aByte32, aClass10_Sub1_Sub3_3);
+      return var2;
+   }
 
-	private boolean aBoolean144 = false;
+   public static void method401() {
+      aClass34_6 = null;
+      anIntArray169 = null;
+      aClass38Array1 = null;
+      aClass10_Sub1_Sub3_3 = null;
+   }
 
-	private int anInt577 = -1;
+   public static void method404(JagFile var0) {
+      aClass10_Sub1_Sub3_3 = new Packet(var0.read("npc.dat", (byte[])null));
+      Packet var1 = new Packet(var0.read("npc.idx", (byte[])null));
+      anInt578 = var1.g2();
+      anIntArray169 = new int[anInt578];
+      int var2 = 2;
 
-	public int anInt579 = 32;
+      int var3;
+      for(var3 = 0; var3 < anInt578; ++var3) {
+         anIntArray169[var3] = var2;
+         var2 += var1.g2();
+      }
 
-	public String aString10 = "null";
+      aClass38Array1 = new Class38[20];
 
-	private int anInt580 = -1;
+      for(var3 = 0; var3 < 20; ++var3) {
+         aClass38Array1[var3] = new Class38();
+      }
 
-	private int anInt582 = -1;
-
-	private boolean aBoolean145 = false;
-
-	public static void method401() {
-		try {
-			aClass34_6 = null;
-			anIntArray169 = null;
-			aClass38Array1 = null;
-			aClass10_Sub1_Sub3_3 = null;
-		} catch ( RuntimeException local18) {
-			signlink.reporterror("53356, " + false + ", " + local18.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public static void method404( JagFile arg0) {
-		aClass10_Sub1_Sub3_3 = new Packet(arg0.read("npc.dat", null));
-		Packet local19 = new Packet(arg0.read("npc.idx", null));
-		anInt578 = local19.g2();
-		anIntArray169 = new int[anInt578];
-		int local27 = 2;
-		for ( int local29 = 0; local29 < anInt578; local29++) {
-			anIntArray169[local29] = local27;
-			local27 += local19.g2();
-		}
-		aClass38Array1 = new Class38[20];
-		for ( int local49 = 0; local49 < 20; local49++) {
-			aClass38Array1[local49] = new Class38();
-		}
-	}
-
-	public static Class38 method407( int arg0) {
-		for ( int local1 = 0; local1 < 20; local1++) {
-			if (aClass38Array1[local1].aLong19 == (long) arg0) {
-				return aClass38Array1[local1];
-			}
-		}
-		anInt583 = (anInt583 + 1) % 20;
-		Class38 local33 = aClass38Array1[anInt583] = new Class38();
-		aClass10_Sub1_Sub3_3.pos = anIntArray169[arg0];
-		local33.aLong19 = arg0;
-		local33.method400(aByte32, aClass10_Sub1_Sub3_3);
-		return local33;
-	}
-
-	private Class38() {
-	}
-
-	private void method400( byte arg0, Packet arg1) {
-		try {
-			if (arg0 != 6) {
-				throw new NullPointerException();
-			}
-			boolean local6 = false;
-			while (true) {
-				while (true) {
-					int local15 = arg1.g1();
-					if (local15 == 0) {
-						return;
-					}
-					int local24;
-					int local30;
-					if (local15 == 1) {
-						local24 = arg1.g1();
-						this.anIntArray167 = new int[local24];
-						for (local30 = 0; local30 < local24; local30++) {
-							this.anIntArray167[local30] = arg1.g2();
-						}
-					} else if (local15 == 2) {
-						this.aString10 = arg1.gjstr();
-					} else if (local15 == 3) {
-						this.aByteArray14 = arg1.gstrbyte();
-					} else if (local15 == 12) {
-						this.aByte31 = arg1.g1b();
-					} else if (local15 == 13) {
-						this.anInt564 = arg1.g2();
-					} else if (local15 == 14) {
-						this.anInt576 = arg1.g2();
-					} else if (local15 == 17) {
-						this.anInt576 = arg1.g2();
-						this.anInt575 = arg1.g2();
-						this.anInt574 = arg1.g2();
-						this.anInt569 = arg1.g2();
-					} else if (local15 >= 30 && local15 < 40) {
-						if (this.aStringArray4 == null) {
-							this.aStringArray4 = new String[5];
-						}
-						this.aStringArray4[local15 - 30] = arg1.gjstr();
-						if (this.aStringArray4[local15 - 30].equalsIgnoreCase("hidden")) {
-							this.aStringArray4[local15 - 30] = null;
-						}
-					} else if (local15 == 40) {
-						local24 = arg1.g1();
-						this.anIntArray168 = new int[local24];
-						this.anIntArray170 = new int[local24];
-						for (local30 = 0; local30 < local24; local30++) {
-							this.anIntArray168[local30] = arg1.g2();
-							this.anIntArray170[local30] = arg1.g2();
-						}
-					} else if (local15 == 60) {
-						local24 = arg1.g1();
-						this.anIntArray166 = new int[local24];
-						for (local30 = 0; local30 < local24; local30++) {
-							this.anIntArray166[local30] = arg1.g2();
-						}
-					} else if (local15 == 90) {
-						this.anInt577 = arg1.g2();
-					} else if (local15 == 91) {
-						this.anInt566 = arg1.g2();
-					} else if (local15 == 92) {
-						this.anInt570 = arg1.g2();
-					} else if (local15 == 93) {
-						this.aBoolean142 = false;
-					} else if (local15 == 95) {
-						this.anInt572 = arg1.g2();
-					} else if (local15 == 97) {
-						this.anInt568 = arg1.g2();
-					} else if (local15 == 98) {
-						this.anInt567 = arg1.g2();
-					} else if (local15 == 99) {
-						this.aBoolean143 = true;
-					} else if (local15 == 100) {
-						this.anInt584 = arg1.g1b();
-					} else if (local15 == 101) {
-						this.anInt581 = arg1.g1b() * 5;
-					} else if (local15 == 102) {
-						this.anInt571 = arg1.g2();
-					} else if (local15 == 103) {
-						this.anInt579 = arg1.g2();
-					} else if (local15 == 106) {
-						this.anInt580 = arg1.g2();
-						if (this.anInt580 == 65535) {
-							this.anInt580 = -1;
-						}
-						this.anInt582 = arg1.g2();
-						if (this.anInt582 == 65535) {
-							this.anInt582 = -1;
-						}
-						local24 = arg1.g1();
-						this.anIntArray165 = new int[local24 + 1];
-						for (local30 = 0; local30 <= local24; local30++) {
-							this.anIntArray165[local30] = arg1.g2();
-							if (this.anIntArray165[local30] == 65535) {
-								this.anIntArray165[local30] = -1;
-							}
-						}
-					} else if (local15 == 107) {
-						this.aBoolean141 = false;
-					}
-				}
-			}
-		} catch ( RuntimeException local389) {
-			signlink.reporterror("86174, " + arg0 + ", " + arg1 + ", " + local389.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public Model method402() {
-		try {
-			if (this.anIntArray165 != null) {
-				Class38 local17 = this.method406();
-				return local17 == null ? null : local17.method402();
-			} else if (this.anIntArray166 == null) {
-				return null;
-			} else {
-				boolean local32 = false;
-				for ( int local34 = 0; local34 < this.anIntArray166.length; local34++) {
-					if (!Model.method272(this.anIntArray166[local34])) {
-						local32 = true;
-					}
-				}
-				if (local32) {
-					return null;
-				}
-				Model[] local59 = new Model[this.anIntArray166.length];
-				for ( int local61 = 0; local61 < this.anIntArray166.length; local61++) {
-					local59[local61] = Model.createModel(this.anIntArray166[local61]);
-				}
-				Model local85;
-				if (local59.length == 1) {
-					local85 = local59[0];
-				} else {
-					local85 = new Model(local59.length, local59);
-				}
-				if (this.anIntArray168 != null) {
-					for ( int local100 = 0; local100 < this.anIntArray168.length; local100++) {
-						local85.recolor(this.anIntArray168[local100], this.anIntArray170[local100]);
-					}
-				}
-				return local85;
-			}
-		} catch ( RuntimeException local121) {
-			signlink.reporterror("48168, " + 858 + ", " + local121.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public boolean method403() {
-		try {
-			if (this.anIntArray165 == null) {
-				return true;
-			}
-			int local20 = -1;
-			if (this.anInt580 != -1) {
-				Class50 local29 = Class50.aClass50Array1[this.anInt580];
-				int local32 = local29.anInt800;
-				int local35 = local29.anInt801;
-				int local38 = local29.anInt802;
-				int local44 = Client.anIntArray262[local38 - local35];
-				local20 = aClient3.anIntArray244[local32] >> local35 & local44;
-			} else if (this.anInt582 != -1) {
-				local20 = aClient3.anIntArray244[this.anInt582];
-			}
-			return local20 >= 0 && local20 < this.anIntArray165.length && this.anIntArray165[local20] != -1;
-		} catch ( RuntimeException local83) {
-			signlink.reporterror("77856, " + -993 + ", " + local83.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public Model method405(int arg0, int arg1, int[] arg2) {
-		try {
-			if (this.anIntArray165 != null) {
-				Class38 local8 = this.method406();
-				return local8 == null ? null : local8.method405(arg0, arg1, arg2);
-			}
-			Model local25 = (Model) aClass34_6.get(this.aLong19);
-			if (local25 == null) {
-				boolean local29 = false;
-				for ( int local31 = 0; local31 < this.anIntArray167.length; local31++) {
-					if (!Model.method272(this.anIntArray167[local31])) {
-						local29 = true;
-					}
-				}
-				if (local29) {
-					return null;
-				}
-				Model[] local56 = new Model[this.anIntArray167.length];
-				for ( int local58 = 0; local58 < this.anIntArray167.length; local58++) {
-					local56[local58] = Model.createModel(this.anIntArray167[local58]);
-				}
-				if (local56.length == 1) {
-					local25 = local56[0];
-				} else {
-					local25 = new Model(local56.length, local56);
-				}
-				if (this.anIntArray168 != null) {
-					for ( int local97 = 0; local97 < this.anIntArray168.length; local97++) {
-						local25.recolor(this.anIntArray168[local97], this.anIntArray170[local97]);
-					}
-				}
-				local25.method278();
-				local25.method288(this.anInt584 + 64, this.anInt581 + 850, -30, -50, -30, true);
-				aClass34_6.put(local25, this.aLong19);
-			}
-			Model local140 = Model.aClass10_Sub1_Sub2_Sub4_1;
-			local140.method273(Class22.method169(this.aBoolean140, arg0) & Class22.method169(this.aBoolean140, arg1), local25);
-			if (arg0 != -1 && arg1 != -1) {
-				local140.method280(arg1, arg0, arg2);
-			} else if (arg0 != -1) {
-				local140.method279(arg0, (byte) 6);
-			}
-			if (this.anInt568 != 128 || this.anInt567 != 128) {
-				local140.method287(this.anInt567, this.anInt568, this.anInt568);
-			}
-			local140.method275(this.anInt565);
-			local140.anIntArrayArray11 = null;
-			local140.anIntArrayArray10 = null;
-			if (this.aByte31 == 1) {
-				local140.aBoolean106 = true;
-			}
-			return local140;
-		} catch ( RuntimeException local221) {
-			signlink.reporterror("95203, " + arg0 + ", " + arg1 + ", " + 0 + ", " + arg2 + ", " + local221.toString());
-			throw new RuntimeException();
-		}
-	}
-
-	public Class38 method406() {
-		try {
-			int local6 = -1;
-			if (this.anInt580 != -1) {
-				Class50 local15 = Class50.aClass50Array1[this.anInt580];
-				int local18 = local15.anInt800;
-				int local21 = local15.anInt801;
-				int local24 = local15.anInt802;
-				int local30 = Client.anIntArray262[local24 - local21];
-				local6 = aClient3.anIntArray244[local18] >> local21 & local30;
-			} else if (this.anInt582 != -1) {
-				local6 = aClient3.anIntArray244[this.anInt582];
-			}
-			return local6 < 0 || local6 >= this.anIntArray165.length || this.anIntArray165[local6] == -1 ? null : method407(this.anIntArray165[local6]);
-		} catch ( RuntimeException local73) {
-			signlink.reporterror("65525, " + false + ", " + local73.toString());
-			throw new RuntimeException();
-		}
-	}
+   }
 }
