@@ -1,16 +1,18 @@
-package unmapped;
+package jagex2.config;
 
 import jagex2.datastruct.LruCache;
 import jagex2.graphics.Model;
 import jagex2.io.JagFile;
 import jagex2.io.Packet;
+import unmapped.Class22;
+import unmapped.Client;
 
-public final class Class38 {
+public final class NpcType {
    public static LruCache aClass34_6 = new LruCache(30);
    private static byte aByte32 = 6;
    public static Client aClient3;
    private static int anInt583;
-   private static Class38[] aClass38Array1;
+   private static NpcType[] aClass38Array1;
    private static Packet aClass10_Sub1_Sub3_3;
    private static int[] anIntArray169;
    private static int anInt578;
@@ -50,13 +52,13 @@ public final class Class38 {
    private boolean aBoolean144 = false;
    private boolean aBoolean145 = false;
 
-   private Class38() {
+   private NpcType() {
    }
 
-   public Class38 method406() {
+   public NpcType method406() {
       int var1 = -1;
       if (this.anInt580 != -1) {
-         Class50 var2 = Class50.aClass50Array1[this.anInt580];
+         VarbitType var2 = VarbitType.aClass50Array1[this.anInt580];
          int var3 = var2.anInt800;
          int var4 = var2.anInt801;
          int var5 = var2.anInt802;
@@ -71,7 +73,7 @@ public final class Class38 {
 
    public Model method402() {
       if (this.anIntArray165 != null) {
-         Class38 var1 = this.method406();
+         NpcType var1 = this.method406();
          return var1 == null ? null : var1.method402();
       } else if (this.anIntArray166 == null) {
          return null;
@@ -113,7 +115,7 @@ public final class Class38 {
 
    public Model method405(int var1, int var2, int[] var3) {
       if (this.anIntArray165 != null) {
-         Class38 var10 = this.method406();
+         NpcType var10 = this.method406();
          return var10 == null ? null : var10.method405(var1, var2, var3);
       } else {
          Model var4 = (Model)aClass34_6.get(this.aLong19);
@@ -183,7 +185,7 @@ public final class Class38 {
       } else {
          int var1 = -1;
          if (this.anInt580 != -1) {
-            Class50 var2 = Class50.aClass50Array1[this.anInt580];
+            VarbitType var2 = VarbitType.aClass50Array1[this.anInt580];
             int var3 = var2.anInt800;
             int var4 = var2.anInt801;
             int var5 = var2.anInt802;
@@ -311,7 +313,7 @@ public final class Class38 {
       }
    }
 
-   public static Class38 method407(int var0) {
+   public static NpcType method407(int var0) {
       for(int var1 = 0; var1 < 20; ++var1) {
          if (aClass38Array1[var1].aLong19 == (long)var0) {
             return aClass38Array1[var1];
@@ -319,7 +321,7 @@ public final class Class38 {
       }
 
       anInt583 = (anInt583 + 1) % 20;
-      Class38 var2 = aClass38Array1[anInt583] = new Class38();
+      NpcType var2 = aClass38Array1[anInt583] = new NpcType();
       aClass10_Sub1_Sub3_3.pos = anIntArray169[var0];
       var2.aLong19 = (long)var0;
       var2.method400(aByte32, aClass10_Sub1_Sub3_3);
@@ -333,7 +335,7 @@ public final class Class38 {
       aClass10_Sub1_Sub3_3 = null;
    }
 
-   public static void method404(JagFile var0) {
+   public static void unpack(JagFile var0) {
       aClass10_Sub1_Sub3_3 = new Packet(var0.read("npc.dat", (byte[])null));
       Packet var1 = new Packet(var0.read("npc.idx", (byte[])null));
       anInt578 = var1.g2();
@@ -346,10 +348,10 @@ public final class Class38 {
          var2 += var1.g2();
       }
 
-      aClass38Array1 = new Class38[20];
+      aClass38Array1 = new NpcType[20];
 
       for(var3 = 0; var3 < 20; ++var3) {
-         aClass38Array1[var3] = new Class38();
+         aClass38Array1[var3] = new NpcType();
       }
 
    }

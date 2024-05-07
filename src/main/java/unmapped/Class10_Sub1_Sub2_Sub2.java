@@ -1,11 +1,12 @@
 package unmapped;
 
+import jagex2.config.SpotAnimType;
 import jagex2.dash3d.entity.Entity;
 import jagex2.graphics.Model;
 
 public final class Class10_Sub1_Sub2_Sub2 extends Entity {
    private boolean aBoolean86 = false;
-   private Class28 aClass28_1;
+   private SpotAnimType aClass28_1;
    private boolean aBoolean84 = false;
    private int anInt274;
    public int anInt271;
@@ -33,7 +34,7 @@ public final class Class10_Sub1_Sub2_Sub2 extends Entity {
    private int anInt273;
 
    public Class10_Sub1_Sub2_Sub2(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, byte var9, int var10, int var11, int var12) {
-      this.aClass28_1 = Class28.aClass28Array1[var5];
+      this.aClass28_1 = SpotAnimType.aClass28Array1[var5];
       this.anInt264 = var1;
       this.anInt274 = var11;
       this.anInt275 = var4;

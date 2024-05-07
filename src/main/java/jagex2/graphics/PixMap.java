@@ -53,7 +53,7 @@ public final class PixMap implements ImageProducer, ImageObserver {
       Draw2D.bind(this.width, this.height, this.pixels);
    }
 
-   public void method131(int var1, int var2, Graphics var3) {
+   public void draw(int var1, int var2, Graphics var3) {
       this.setPixels();
       var3.drawImage(this.image, var2, var1, this);
    }

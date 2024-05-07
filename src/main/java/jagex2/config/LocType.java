@@ -1,17 +1,20 @@
-package unmapped;
+package jagex2.config;
 
 import jagex2.datastruct.LruCache;
 import jagex2.graphics.Model;
 import jagex2.io.JagFile;
 import jagex2.io.Packet;
+import unmapped.Class22;
+import unmapped.Class33_Sub1;
+import unmapped.Client;
 
-public final class Class48 {
+public final class LocType {
    public static LruCache aClass34_8 = new LruCache(500);
    public static LruCache aClass34_7 = new LruCache(40);
    public static Client aClient4;
    private static Model[] aClass10_Sub1_Sub2_Sub4Array1 = new Model[4];
    private static int anInt698;
-   private static Class48[] aClass48Array1;
+   private static LocType[] aClass48Array1;
    public static boolean aBoolean183;
    private static byte aByte41 = 6;
    private static Packet aClass10_Sub1_Sub3_5;
@@ -59,7 +62,7 @@ public final class Class48 {
    private int anInt694;
    public boolean aBoolean181;
 
-   private Class48() {
+   private LocType() {
    }
 
    private Model method527(int var1, int var2, int var3) {
@@ -204,10 +207,10 @@ public final class Class48 {
       return var9;
    }
 
-   public Class48 method524() {
+   public LocType method524() {
       int var1 = -1;
       if (this.anInt699 != -1) {
-         Class50 var2 = Class50.aClass50Array1[this.anInt699];
+         VarbitType var2 = VarbitType.aClass50Array1[this.anInt699];
          int var3 = var2.anInt800;
          int var4 = var2.anInt801;
          int var5 = var2.anInt802;
@@ -511,7 +514,7 @@ public final class Class48 {
 
    }
 
-   public static Class48 method523(int var0) {
+   public static LocType method523(int var0) {
       for(int var1 = 0; var1 < 20; ++var1) {
          if (aClass48Array1[var1].anInt696 == var0) {
             return aClass48Array1[var1];
@@ -519,7 +522,7 @@ public final class Class48 {
       }
 
       anInt698 = (anInt698 + 1) % 20;
-      Class48 var2 = aClass48Array1[anInt698];
+      LocType var2 = aClass48Array1[anInt698];
       aClass10_Sub1_Sub3_5.pos = anIntArray187[var0];
       var2.anInt696 = var0;
       var2.method529();
@@ -535,7 +538,7 @@ public final class Class48 {
       aClass10_Sub1_Sub3_5 = null;
    }
 
-   public static void method526(JagFile var0) {
+   public static void unpack(JagFile var0) {
       aClass10_Sub1_Sub3_5 = new Packet(var0.read("loc.dat", (byte[])null));
       Packet var1 = new Packet(var0.read("loc.idx", (byte[])null));
       anInt711 = var1.g2();
@@ -548,10 +551,10 @@ public final class Class48 {
          var2 += var1.g2();
       }
 
-      aClass48Array1 = new Class48[20];
+      aClass48Array1 = new LocType[20];
 
       for(var3 = 0; var3 < 20; ++var3) {
-         aClass48Array1[var3] = new Class48();
+         aClass48Array1[var3] = new LocType();
       }
 
    }

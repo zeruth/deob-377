@@ -1,13 +1,11 @@
 package unmapped;
 
 import jagex2.client.GameShell;
-import jagex2.config.IdkType;
+import jagex2.config.*;
+import jagex2.dash3d.World3D;
 import jagex2.dash3d.entity.PathingEntity;
 import jagex2.dash3d.entity.PlayerEntity;
-import jagex2.graphics.Draw2D;
-import jagex2.graphics.Model;
-import jagex2.graphics.Pix24;
-import jagex2.graphics.PixMap;
+import jagex2.graphics.*;
 import jagex2.io.ClientStream;
 import jagex2.io.Isaac;
 import jagex2.io.JagFile;
@@ -29,6 +27,9 @@ import java.net.URL;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.zip.CRC32;
+
+import jagex2.wordenc.WordFilter;
+import jagex2.wordenc.WordPack;
 import sign.signlink;
 
 public final class Client extends GameShell {
@@ -78,12 +79,12 @@ public final class Client extends GameShell {
    private int anInt977;
    private int anInt876;
    private int anInt1048;
-   private int anInt962;
+   private int sceneCycle;
    private int anInt885;
    private Class6 spotanims;
    private boolean aBoolean219;
    private PixMap aClass19_16;
-   private int anInt998;
+   private int titleScreenState;
    private volatile boolean aBoolean257;
    private int systemUpdateTimer;
    private int anInt960;
@@ -102,20 +103,20 @@ public final class Client extends GameShell {
    private int hintType;
    private Class6 spawnedLocations;
    private boolean aBoolean236;
-   private PixMap aClass19_17;
+   private PixMap areaViewport;
    private Class6[][][] levelObjStacks;
-   private int anInt950;
+   private int objDragArea;
    private int anInt926;
    private int sceneState;
    private byte[][] aByteArrayArray5;
-   private boolean aBoolean259;
+   private boolean midiActive;
    private ClientStream stream;
    public boolean ingame;
-   private Class23 aClass23_1;
+   private World3D scene;
    private PlayerEntity[] players;
    private int packetSize;
    private int objSelected;
-   private int anInt992;
+   private int cameraZ;
    private Class10_Sub1_Sub1_Sub2 aClass10_Sub1_Sub1_Sub2_4;
    private Class33_Sub1 aClass33_Sub1_1;
    private int menuSize;
@@ -128,15 +129,15 @@ public final class Client extends GameShell {
    private boolean aBoolean263;
    private int anInt1041;
    private int anInt872;
-   private int anInt990;
+   private int cameraX;
    private int anInt838;
    private int anInt985;
    private int[] anIntArray231;
    private String[] messageText;
    private Packet in;
    private int anInt888;
-   private int anInt942;
-   private int[] anIntArray233;
+   private int currentLevel;
+   private int[] menuAction;
    private int[][] anIntArrayArray22;
    private int anInt996;
    private int anInt849;
@@ -149,7 +150,7 @@ public final class Client extends GameShell {
    private boolean aBoolean264;
    private int anInt921;
    private String aString25;
-   private int anInt958;
+   private int nextMusicDelay;
    private int[] anIntArray264;
    private int minimapAnticheatAngle;
    private int[] anIntArray256;
@@ -160,10 +161,10 @@ public final class Client extends GameShell {
    private int anInt837;
    private int anInt955;
    private int spellSelected;
-   private int anInt993;
+   private int cameraPitch;
    private Class10_Sub1_Sub2_Sub3_Sub1[] npcs;
-   private int anInt909;
-   private String[] aStringArray12;
+   private int crossMode;
+   private String[] menuOption;
    private int[] anIntArray237;
    private Class10_Sub1_Sub1_Sub3 aClass10_Sub1_Sub1_Sub3_15;
    private int[] anIntArray236;
@@ -176,15 +177,15 @@ public final class Client extends GameShell {
    private int anInt1043;
    private int anInt873;
    private String[] aStringArray8;
-   private int anInt941;
-   private int anInt976;
+   private int sidebarInterfaceId;
+   private int viewportInterfaceId;
    private boolean aBoolean255;
-   private int anInt914;
+   private int sceneBaseTileX;
    private int[] anIntArray232;
    private int anInt932;
    private boolean aBoolean261;
    private byte aByte52;
-   private Pix24[] aClass10_Sub1_Sub1_Sub1Array4;
+   private Pix24[] imageCrosses;
    private boolean aBoolean240;
    private byte[][] aByteArrayArray6;
    private PixMap aClass19_22;
@@ -197,7 +198,7 @@ public final class Client extends GameShell {
    private String loginMessage1;
    private long[] aLongArray4;
    private int[] anIntArray276;
-   private int[] anIntArray270;
+   private int[] messageType;
    private int packetType;
    private int[][] anIntArrayArray25;
    private byte aByte45;
@@ -215,8 +216,8 @@ public final class Client extends GameShell {
    private boolean menuVisible;
    public int[] anIntArray244;
    private int[][][] anIntArrayArrayArray8;
-   private int anInt991;
-   private int anInt908;
+   private int cameraY;
+   private int crossCycle;
    private Class10_Sub1_Sub1_Sub3 aClass10_Sub1_Sub1_Sub3_16;
    private int anInt1029;
    private Class10_Sub1_Sub1_Sub3 aClass10_Sub1_Sub1_Sub3_18;
@@ -225,14 +226,14 @@ public final class Client extends GameShell {
    private int[] anIntArray272;
    private int cameraAnticheatOffsetZ;
    private Packet[] playerAppearanceBuffer;
-   private int anInt834;
+   private int chatScrollOffset;
    private int anInt1002;
    private PixMap aClass19_20;
    private int anInt890;
    private int anInt956;
    private Class10_Sub1_Sub1_Sub3 aClass10_Sub1_Sub1_Sub3_20;
    private int anInt1037;
-   private String aString27;
+   private String username;
    private int anInt878;
    private int anInt1010;
    private Class10_Sub1_Sub1_Sub2 aClass10_Sub1_Sub1_Sub2_3;
@@ -254,9 +255,9 @@ public final class Client extends GameShell {
    private int[] anIntArray218;
    private int anInt1019;
    private String aString30;
-   private String aString28;
-   private int anInt907;
-   private int anInt915;
+   private String password;
+   private int crossX;
+   private int sceneBaseTileZ;
    private int anInt866;
    private Pix24 aClass10_Sub1_Sub1_Sub1_10;
    private int[] anIntArray242;
@@ -274,7 +275,7 @@ public final class Client extends GameShell {
    private int minimapZoom;
    private int[] anIntArray245;
    private int lastPacketType2;
-   private int anInt899;
+   private int publicChatSetting;
    private int anInt880;
    private int anInt1039;
    private int anInt863;
@@ -287,8 +288,8 @@ public final class Client extends GameShell {
    private int anInt833;
    private String aString20;
    private int anInt928;
-   private String[] aStringArray13;
-   private int anInt906;
+   private String[] messageSender;
+   private int crossY;
    private boolean aBoolean248;
    private int[] anIntArray213 = new int[]{16776960, 16711680, 65280, 65535, 16711935, 16777215};
    private PixMap aClass19_4;
@@ -308,7 +309,7 @@ public final class Client extends GameShell {
    private String aString31;
    private int anInt943;
    private int anInt1020;
-   private Class47[] aClass47Array1;
+   private Class47[] levelCollisionMap;
    private boolean aBoolean254;
    private PixMap aClass19_5;
    private int[] anIntArray223;
@@ -332,7 +333,7 @@ public final class Client extends GameShell {
    private long serverSeed;
    private int anInt842;
    private int anInt1051;
-   private boolean aBoolean252;
+   private boolean cutscene;
    private PixMap aClass19_14;
    private Pix24 aClass10_Sub1_Sub1_Sub1_9;
    private int[] anIntArray220;
@@ -351,7 +352,7 @@ public final class Client extends GameShell {
    private int anInt957;
    private Pix24[] aClass10_Sub1_Sub1_Sub1Array5;
    private long aLong33;
-   private int[] anIntArray215;
+   private int[] cameraModifierWobbleScale;
    private String[] aStringArray11;
    private PixMap aClass19_26;
    private int anInt1033;
@@ -365,11 +366,11 @@ public final class Client extends GameShell {
    private byte aByte51;
    private Pix24[] aClass10_Sub1_Sub1_Sub1Array7;
    private PixMap aClass19_27;
-   private int anInt994;
+   private int cameraYaw;
    private Class10_Sub1_Sub1_Sub3 aClass10_Sub1_Sub1_Sub3_3;
    private int anInt937;
    private int anInt999;
-   private boolean[] aBooleanArray11;
+   private boolean[] cameraModifierEnabled;
    private int anInt912;
    private Class10_Sub1_Sub1_Sub3 aClass10_Sub1_Sub1_Sub3_4;
    private PixMap aClass19_7;
@@ -399,7 +400,7 @@ public final class Client extends GameShell {
    private int[] anIntArray246;
    private PixMap aClass19_9;
    private Class10_Sub1_Sub1_Sub3 aClass10_Sub1_Sub1_Sub3_11;
-   private int[] anIntArray253;
+   private int[] cameraModifierJitter;
    private Class10_Sub1_Sub1_Sub3 aClass10_Sub1_Sub1_Sub3_12;
    private int[][] anIntArrayArray23;
    private int anInt1046;
@@ -414,14 +415,14 @@ public final class Client extends GameShell {
    private boolean aBoolean265;
    private int anInt1022;
    private int[] anIntArray247;
-   private int[] anIntArray257;
+   private int[] cameraModifierCycle;
    private Class10_Sub1_Sub1_Sub3[] aClass10_Sub1_Sub1_Sub3Array4;
    private int anInt857;
    private int anInt948;
    private PixMap aClass19_11;
    private int anInt934;
    private int anInt1047;
-   private int[] anIntArray235;
+   private int[] cameraModifierWobbleSpeed;
    private int anInt949;
    private Pix24 aClass10_Sub1_Sub1_Sub1_7;
    private int anInt859;
@@ -484,7 +485,7 @@ public final class Client extends GameShell {
    private Class10_Sub1_Sub1_Sub3 aClass10_Sub1_Sub1_Sub3_8;
    private int anInt894;
    private int anInt935;
-   private Class14 aClass14_1;
+   private ComType aClass14_1;
    private int anInt895;
    private boolean aBoolean226;
    private int anInt987;
@@ -549,7 +550,7 @@ public final class Client extends GameShell {
    public Client() {
       this.anIntArray214 = new int[Class43.anInt612];
       this.aStringArray8 = new String[200];
-      this.anIntArray215 = new int[5];
+      this.cameraModifierWobbleScale = new int[5];
       this.anInt836 = 2;
       this.aString18 = "";
       this.aStringArray9 = new String[100];
@@ -560,7 +561,7 @@ public final class Client extends GameShell {
       this.anIntArrayArray23 = new int[104][104];
       this.aBoolean218 = false;
       this.anInt857 = -992;
-      this.aClass10_Sub1_Sub1_Sub1Array4 = new Pix24[8];
+      this.imageCrosses = new Pix24[8];
       this.anInt859 = 559;
       this.aByte45 = 6;
       this.aBoolean219 = false;
@@ -570,7 +571,7 @@ public final class Client extends GameShell {
       this.aBoolean221 = true;
       this.anIntArray220 = new int[151];
       this.anInt866 = 8;
-      this.aBooleanArray11 = new boolean[5];
+      this.cameraModifierEnabled = new boolean[5];
       this.anInt870 = -188;
       this.login = Packet.method299();
       this.anInt871 = 2301979;
@@ -610,10 +611,10 @@ public final class Client extends GameShell {
       this.aClass10_Sub1_Sub1_Sub3Array2 = new Class10_Sub1_Sub1_Sub3[13];
       this.anIntArray231 = new int[500];
       this.anIntArray232 = new int[500];
-      this.anIntArray233 = new int[500];
+      this.menuAction = new int[500];
       this.anIntArray234 = new int[500];
       this.anInt888 = -1;
-      this.anIntArray235 = new int[5];
+      this.cameraModifierWobbleSpeed = new int[5];
       this.anIntArray240 = new int[2000];
       this.anInt901 = 2;
       this.aBoolean231 = false;
@@ -646,15 +647,15 @@ public final class Client extends GameShell {
       this.anInt937 = 5063219;
       this.anIntArray248 = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
       this.aCRC32_2 = new CRC32();
-      this.anInt941 = -1;
+      this.sidebarInterfaceId = -1;
       this.anIntArray251 = new int[50];
-      this.aString27 = "";
-      this.aString28 = "";
+      this.username = "";
+      this.password = "";
       this.aBoolean240 = false;
       this.aBoolean241 = false;
       this.designColors = new int[5];
       this.aString29 = "";
-      this.anIntArray253 = new int[5];
+      this.cameraModifierJitter = new int[5];
       this.anInt947 = 78;
       this.anInt954 = -30658;
       this.anIntArray254 = new int[4000];
@@ -671,25 +672,25 @@ public final class Client extends GameShell {
       this.aClass10_Sub1_Sub1_Sub3Array4 = new Class10_Sub1_Sub1_Sub3[2];
       this.aByte50 = -80;
       this.aBoolean245 = true;
-      this.anIntArray257 = new int[5];
+      this.cameraModifierCycle = new int[5];
       this.aClass10_Sub1_Sub1_Sub3Array5 = new Class10_Sub1_Sub1_Sub3[100];
       this.anInt971 = -916;
       this.aBoolean246 = false;
       this.aByte51 = 97;
       this.aBoolean247 = false;
       this.anIntArray258 = new int[256];
-      this.anInt976 = -1;
+      this.viewportInterfaceId = -1;
       this.anInt982 = 300;
       this.anIntArray261 = new int[33];
       this.aBoolean248 = false;
       this.aClass10_Sub1_Sub1_Sub1Array8 = new Pix24[20];
-      this.aStringArray12 = new String[500];
+      this.menuOption = new String[500];
       this.in = Packet.method299();
       this.anIntArrayArray25 = new int[104][104];
       this.anInt985 = -1;
       this.aBoolean251 = false;
       this.spotanims = new Class6(true);
-      this.aBoolean252 = false;
+      this.cutscene = false;
       this.aBoolean253 = false;
       this.anInt988 = -1;
       this.aClass24Array1 = new Class24[5];
@@ -700,16 +701,16 @@ public final class Client extends GameShell {
       this.aBoolean255 = false;
       this.aBoolean257 = false;
       this.aByteArray21 = new byte[16384];
-      this.aClass14_1 = new Class14();
+      this.aClass14_1 = new ComType();
       this.anInt1012 = 128;
       this.anInt1017 = 1;
       this.anInt1018 = 100;
       this.anIntArray263 = new int[100];
       this.anIntArray264 = new int[50];
-      this.aClass47Array1 = new Class47[4];
+      this.levelCollisionMap = new Class47[4];
       this.spawnedLocations = new Class6(true);
       this.aBoolean258 = false;
-      this.aBoolean259 = true;
+      this.midiActive = true;
       this.anIntArray265 = new int[200];
       this.aBoolean260 = true;
       this.anInt1024 = -1;
@@ -728,8 +729,8 @@ public final class Client extends GameShell {
       this.aClass10_Sub1_Sub1_Sub1Array10 = new Pix24[32];
       this.anIntArray268 = new int[]{17, 24, 34, 40};
       this.anIntArray269 = new int[1000];
-      this.anIntArray270 = new int[100];
-      this.aStringArray13 = new String[100];
+      this.messageType = new int[100];
+      this.messageSender = new String[100];
       this.messageText = new String[100];
       this.aBoolean265 = true;
       this.aBoolean266 = false;
@@ -743,7 +744,7 @@ public final class Client extends GameShell {
       this.anInt1052 = 409;
    }
 
-   private void method650() {
+   private void drawPrivateMessages() {
       this.packetSize += 0;
       if (this.anInt997 != 0) {
          Class10_Sub1_Sub1_Sub2 var1 = this.aClass10_Sub1_Sub1_Sub2_3;
@@ -754,8 +755,8 @@ public final class Client extends GameShell {
 
          for(int var3 = 0; var3 < 100; ++var3) {
             if (this.messageText[var3] != null) {
-               int var4 = this.anIntArray270[var3];
-               String var5 = this.aStringArray13[var3];
+               int var4 = this.messageType[var3];
+               String var5 = this.messageSender[var3];
                byte var6 = 0;
                if (var5 != null && var5.startsWith("@cr1@")) {
                   var5 = var5.substring(5);
@@ -768,7 +769,7 @@ public final class Client extends GameShell {
                }
 
                int var7;
-               if ((var4 == 3 || var4 == 7) && (var4 == 7 || this.anInt853 == 0 || this.anInt853 == 1 && this.method723(var5))) {
+               if ((var4 == 3 || var4 == 7) && (var4 == 7 || this.anInt853 == 0 || this.anInt853 == 1 && this.isFriend(var5))) {
                   var7 = 329 - var2 * 13;
                   var1.method152(4, 0, var7, "From");
                   var1.method152(4, 65535, var7 - 1, "From");
@@ -826,7 +827,7 @@ public final class Client extends GameShell {
          this.aClass19_18 = null;
          this.aClass19_16 = null;
          this.aClass19_15 = null;
-         this.aClass19_17 = null;
+         this.areaViewport = null;
          this.aClass19_12 = null;
          this.aClass19_13 = null;
          this.aClass19_14 = null;
@@ -876,20 +877,20 @@ public final class Client extends GameShell {
          Draw2D.fillRect(30, 64, 9179409, var1 * 3, 30);
          Draw2D.fillRect(30, 64, 0, 300 - var1 * 3, var1 * 3 + 30);
          this.aClass10_Sub1_Sub1_Sub2_4.method148(180, 452, 85, 16777215, var2);
-         this.aClass19_21.method131(171, 202, super.graphics);
+         this.aClass19_21.draw(171, 202, super.graphics);
          if (this.aBoolean236) {
             this.aBoolean236 = false;
             if (!this.aBoolean257) {
-               this.aClass19_22.method131(0, 0, super.graphics);
-               this.aClass19_23.method131(0, 637, super.graphics);
+               this.aClass19_22.draw(0, 0, super.graphics);
+               this.aClass19_23.draw(0, 637, super.graphics);
             }
 
-            this.aClass19_19.method131(0, 128, super.graphics);
-            this.aClass19_20.method131(371, 202, super.graphics);
-            this.aClass19_24.method131(265, 0, super.graphics);
-            this.aClass19_25.method131(265, 562, super.graphics);
-            this.aClass19_26.method131(171, 128, super.graphics);
-            this.aClass19_27.method131(171, 562, super.graphics);
+            this.aClass19_19.draw(0, 128, super.graphics);
+            this.aClass19_20.draw(371, 202, super.graphics);
+            this.aClass19_24.draw(265, 0, super.graphics);
+            this.aClass19_25.draw(265, 562, super.graphics);
+            this.aClass19_26.draw(171, 128, super.graphics);
+            this.aClass19_27.draw(171, 562, super.graphics);
          }
       }
 
@@ -1044,21 +1045,21 @@ public final class Client extends GameShell {
 
    private void method712(int var1, int var2, int var3) {
       if (var1 >= 128 && var3 >= 128 && var1 <= 13056 && var3 <= 13056) {
-         int var4 = this.method685(var3, var1, this.anInt942) - var2;
-         int var5 = var1 - this.anInt990;
-         int var6 = var4 - this.anInt991;
-         int var7 = var3 - this.anInt992;
-         int var8 = Model.anIntArray146[this.anInt993];
-         int var9 = Model.anIntArray147[this.anInt993];
-         int var10 = Model.anIntArray146[this.anInt994];
-         int var11 = Model.anIntArray147[this.anInt994];
+         int var4 = this.getHeightmapY(var3, var1, this.currentLevel) - var2;
+         int var5 = var1 - this.cameraX;
+         int var6 = var4 - this.cameraY;
+         int var7 = var3 - this.cameraZ;
+         int var8 = Model.anIntArray146[this.cameraPitch];
+         int var9 = Model.anIntArray147[this.cameraPitch];
+         int var10 = Model.anIntArray146[this.cameraYaw];
+         int var11 = Model.anIntArray147[this.cameraYaw];
          int var12 = var7 * var10 + var5 * var11 >> 16;
          int var13 = var7 * var11 - var5 * var10 >> 16;
          int var15 = var6 * var9 - var13 * var8 >> 16;
          int var16 = var6 * var8 + var13 * var9 >> 16;
          if (var16 >= 50) {
-            this.anInt872 = Class10_Sub1_Sub1_Sub4.anInt686 + (var12 << 9) / var16;
-            this.anInt873 = Class10_Sub1_Sub1_Sub4.anInt687 + (var15 << 9) / var16;
+            this.anInt872 = Draw3D.anInt686 + (var12 << 9) / var16;
+            this.anInt873 = Draw3D.anInt687 + (var15 << 9) / var16;
          } else {
             this.anInt872 = -1;
             this.anInt873 = -1;
@@ -1072,9 +1073,9 @@ public final class Client extends GameShell {
 
    private void method700(String var1, String var2) {
       int var3;
-      if (this.aClass19_17 != null) {
-         this.aClass19_17.method130();
-         Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray238;
+      if (this.areaViewport != null) {
+         this.areaViewport.method130();
+         Draw3D.lineOffset = this.anIntArray238;
          var3 = 151;
          if (var1 != null) {
             var3 -= 7;
@@ -1088,10 +1089,10 @@ public final class Client extends GameShell {
             this.aClass10_Sub1_Sub1_Sub2_3.method148(256, 452, var3 - 1, 16777215, var1);
          }
 
-         this.aClass19_17.method131(4, 4, super.graphics);
+         this.areaViewport.draw(4, 4, super.graphics);
       } else if (super.gameSurface != null) {
          super.gameSurface.method130();
-         Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray239;
+         Draw3D.lineOffset = this.anIntArray239;
          var3 = 251;
          Draw2D.fillRect(50, 221, 0, 300, 233);
          Draw2D.drawRect(221, 50, 16777215, 233, 300);
@@ -1107,7 +1108,7 @@ public final class Client extends GameShell {
             this.aClass10_Sub1_Sub1_Sub2_3.method148(382, 452, var3 - 1, 16777215, var1);
          }
 
-         super.gameSurface.method131(0, 0, super.graphics);
+         super.gameSurface.draw(0, 0, super.graphics);
       }
 
    }
@@ -1126,37 +1127,37 @@ public final class Client extends GameShell {
             if (var5 > 2500) {
                var2.method84(this.aClass10_Sub1_Sub1_Sub3_17, 83 - var11 - var2.cropH / 2 - 4, var10 + 94 - var2.cropW / 2 + 4);
             } else {
-               var2.method78(83 - var11 - var2.cropH / 2 - 4, var10 + 94 - var2.cropW / 2 + 4);
+               var2.draw(83 - var11 - var2.cropH / 2 - 4, var10 + 94 - var2.cropW / 2 + 4);
             }
          }
       }
 
    }
 
-   private void method634() {
+   private void tryReconnect() {
       if (this.idleTimeout > 0) {
-         this.method699();
+         this.logout();
       } else {
          this.method700("Please wait - attempting to reestablish", "Connection lost");
          this.anInt923 = 0;
          this.anInt955 = 0;
-         ClientStream var1 = this.stream;
+         ClientStream stream = this.stream;
          this.ingame = false;
          this.anInt833 = 0;
-         this.login(this.aString27, this.aString28, true);
+         this.login(this.username, this.password, true);
          if (!this.ingame) {
-            this.method699();
+            this.logout();
          }
 
          try {
-            var1.close();
+            stream.close();
          } catch (Exception var3) {
          }
       }
 
    }
 
-   private void method699() {
+   private void logout() {
       try {
          if (this.stream != null) {
             this.stream.close();
@@ -1166,22 +1167,21 @@ public final class Client extends GameShell {
 
       this.stream = null;
       this.ingame = false;
-      this.anInt998 = 0;
-      this.aString27 = "";
-      this.aString28 = "";
-      this.method624();
-      this.ingame &= true;
-      this.aClass23_1.method190();
+      this.titleScreenState = 0;
+      this.username = "";
+      this.password = "";
+      this.clearCaches();
+      this.scene.reset();
 
-      for(int var2 = 0; var2 < 4; ++var2) {
-         this.aClass47Array1[var2].method480();
+      for(int level = 0; level < 4; ++level) {
+         this.levelCollisionMap[level].reset();
       }
 
       System.gc();
-      this.method625();
+      this.stopMidi();
       this.anInt1051 = -1;
       this.anInt1023 = -1;
-      this.anInt958 = 0;
+      this.nextMusicDelay = 0;
    }
 
    protected void load() {
@@ -1270,10 +1270,10 @@ public final class Client extends GameShell {
                JagFile var8 = this.method636(this.archiveChecksum[8], "sounds", 55, 8, "sound effects");
                this.aByteArrayArrayArray8 = new byte[4][104][104];
                this.anIntArrayArrayArray8 = new int[4][105][105];
-               this.aClass23_1 = new Class23(this.anIntArrayArrayArray8, 104, 4, 104, (byte)5);
+               this.scene = new World3D(this.anIntArrayArrayArray8, 104, 4, 104, (byte)5);
 
                for(int var9 = 0; var9 < 4; ++var9) {
-                  this.aClass47Array1[var9] = new Class47(104, 0, 104);
+                  this.levelCollisionMap[var9] = new Class47(104, 0, 104);
                }
 
                this.aClass10_Sub1_Sub1_Sub1_11 = new Pix24(512, 512);
@@ -1486,7 +1486,7 @@ public final class Client extends GameShell {
                this.aClass10_Sub1_Sub1_Sub1_6 = new Pix24(var5, "mapmarker", 1);
 
                for(var15 = 0; var15 < 8; ++var15) {
-                  this.aClass10_Sub1_Sub1_Sub1Array4[var15] = new Pix24(var5, "cross", var15);
+                  this.imageCrosses[var15] = new Pix24(var5, "cross", var15);
                }
 
                this.aClass10_Sub1_Sub1_Sub1_12 = new Pix24(var5, "mapdots", 0);
@@ -1563,20 +1563,20 @@ public final class Client extends GameShell {
                }
 
                this.drawProgress(83, "Unpacking textures");
-               Class10_Sub1_Sub1_Sub4.method511(var6);
-               Class10_Sub1_Sub1_Sub4.method515(0.8, (byte)6);
-               Class10_Sub1_Sub1_Sub4.method510();
+               Draw3D.unpackTextures(var6);
+               Draw3D.setBrightness(0.8);
+               Draw3D.initPool();
                this.drawProgress(86, "Unpacking config");
-               Class15.method96(var36);
-               Class48.method526(var36);
-               Class16.method99(var36);
-               Class17.method106(var36);
-               Class38.method404(var36);
+               SeqType.unpack(var36);
+               LocType.unpack(var36);
+               FloType.unpack(var36);
+               ObjType.unpack(var36);
+               NpcType.unpack(var36);
                IdkType.unpack(var36);
-               Class28.method350(var36);
-               Class44.method414(var36);
-               Class50.method574(var36);
-               Class17.aBoolean49 = members;
+               SpotAnimType.unpack(var36);
+               VarpType.unpack(var36);
+               VarbitType.unpack(var36);
+               ObjType.aBoolean49 = members;
                if (!lowMemory) {
                   this.drawProgress(90, "Unpacking sounds");
                   byte[] var42 = var8.read("sounds.dat", (byte[])null);
@@ -1586,7 +1586,7 @@ public final class Client extends GameShell {
 
                this.drawProgress(95, "Unpacking interfaces");
                Class10_Sub1_Sub1_Sub2[] var49 = new Class10_Sub1_Sub1_Sub2[]{this.aClass10_Sub1_Sub1_Sub2_2, this.aClass10_Sub1_Sub1_Sub2_3, this.aClass10_Sub1_Sub1_Sub2_4, this.aClass10_Sub1_Sub1_Sub2_5};
-               Class14.method91(var49, var4, var5);
+               ComType.method91(var49, var4, var5);
                this.drawProgress(100, "Preparing game engine");
 
                int var30;
@@ -1631,30 +1631,30 @@ public final class Client extends GameShell {
                   this.anIntArray220[var43 - 5] = var31 - var30;
                }
 
-               Class10_Sub1_Sub1_Sub4.method508(503, 765);
-               this.anIntArray239 = Class10_Sub1_Sub1_Sub4.anIntArray183;
-               Class10_Sub1_Sub1_Sub4.method508(96, 479);
-               this.anIntArray236 = Class10_Sub1_Sub1_Sub4.anIntArray183;
-               Class10_Sub1_Sub1_Sub4.method508(261, 190);
-               this.anIntArray237 = Class10_Sub1_Sub1_Sub4.anIntArray183;
-               Class10_Sub1_Sub1_Sub4.method508(334, 512);
-               this.anIntArray238 = Class10_Sub1_Sub1_Sub4.anIntArray183;
+               Draw3D.init3D(503, 765);
+               this.anIntArray239 = Draw3D.lineOffset;
+               Draw3D.init3D(96, 479);
+               this.anIntArray236 = Draw3D.lineOffset;
+               Draw3D.init3D(261, 190);
+               this.anIntArray237 = Draw3D.lineOffset;
+               Draw3D.init3D(334, 512);
+               this.anIntArray238 = Draw3D.lineOffset;
                int[] var33 = new int[9];
 
                for(var31 = 0; var31 < 9; ++var31) {
                   var32 = var31 * 32 + 128 + 15;
                   int var34 = var32 * 3 + 600;
-                  int var35 = Class10_Sub1_Sub1_Sub4.anIntArray181[var32];
+                  int var35 = Draw3D.anIntArray181[var32];
                   var33[var31] = var34 * var35 >> 16;
                }
 
-               Class23.method226(var33);
-               Class46.method442(var7);
+               World3D.init(var33);
+               WordFilter.unpack(var7);
                this.aClass7_1 = new Class7(this, (byte)-116);
                this.startThread(this.aClass7_1, 10);
                Class10_Sub1_Sub2_Sub5.aClient2 = this;
-               Class48.aClient4 = this;
-               Class38.aClient3 = this;
+               LocType.aClient4 = this;
+               NpcType.aClient3 = this;
             } catch (Exception var48) {
                signlink.reporterror("loaderror " + this.aString25 + " " + this.anInt1048);
                this.aBoolean264 = true;
@@ -1724,8 +1724,8 @@ public final class Client extends GameShell {
       this.aClass19_11 = null;
       this.anIntArrayArrayArray8 = null;
       this.aByteArrayArrayArray8 = null;
-      this.aClass23_1 = null;
-      this.aClass47Array1 = null;
+      this.scene = null;
+      this.levelCollisionMap = null;
       this.aClass10_Sub1_Sub1_Sub1_11 = null;
       this.aClass19_22 = null;
       this.aClass19_23 = null;
@@ -1737,14 +1737,14 @@ public final class Client extends GameShell {
       this.aClass10_Sub1_Sub1_Sub1Array10 = null;
       this.aClass10_Sub1_Sub1_Sub1Array7 = null;
       this.aClass10_Sub1_Sub1_Sub1Array5 = null;
-      this.aClass10_Sub1_Sub1_Sub1Array4 = null;
-      this.method625();
+      this.imageCrosses = null;
+      this.stopMidi();
       this.out = null;
       this.login = null;
       this.in = null;
       this.aClass19_15 = null;
       this.aClass19_16 = null;
-      this.aClass19_17 = null;
+      this.areaViewport = null;
       this.aClass19_18 = null;
       this.aClass10_Sub1_Sub1_Sub3_16 = null;
       this.aClass10_Sub1_Sub1_Sub3_17 = null;
@@ -1779,34 +1779,34 @@ public final class Client extends GameShell {
       this.aClass33_Sub1_1 = null;
       this.anIntArray231 = null;
       this.anIntArray232 = null;
-      this.anIntArray233 = null;
+      this.menuAction = null;
       this.anIntArray234 = null;
-      this.aStringArray12 = null;
+      this.menuOption = null;
       this.levelObjStacks = null;
       boolean var2 = false;
       this.spawnedLocations = null;
       this.method716();
-      Class48.method533();
-      Class38.method401();
-      Class17.method114();
-      Class14.method94();
-      Class16.aClass16Array1 = null;
+      LocType.method533();
+      NpcType.method401();
+      ObjType.method114();
+      ComType.method94();
+      FloType.aClass16Array1 = null;
       IdkType.instances = null;
       Class4.aClass4Array1 = null;
-      Class15.aClass15Array1 = null;
-      Class28.aClass28Array1 = null;
-      Class28.aClass34_5 = null;
-      Class44.aClass44Array1 = null;
+      SeqType.aClass15Array1 = null;
+      SpotAnimType.aClass28Array1 = null;
+      SpotAnimType.aClass34_5 = null;
+      VarpType.aClass44Array1 = null;
       super.gameSurface = null;
       PlayerEntity.aClass34_9 = null;
-      Class10_Sub1_Sub1_Sub4.method506();
-      Class23.method189();
+      Draw3D.method506();
+      World3D.method189();
       Model.method267();
       Class22.method167();
       System.gc();
    }
 
-   private int method685(int var1, int var2, int var3) {
+   private int getHeightmapY(int var1, int var2, int var3) {
       int var4 = var2 >> 7;
       int var5 = var1 >> 7;
       if (var4 >= 0 && var5 >= 0 && var4 <= 103 && var5 <= 103) {
@@ -1826,7 +1826,7 @@ public final class Client extends GameShell {
    }
 
    private void method694(boolean var1) {
-      if (localPlayer.anInt739 >> 7 == this.anInt955 && localPlayer.anInt740 >> 7 == this.anInt956) {
+      if (localPlayer.x >> 7 == this.anInt955 && localPlayer.z >> 7 == this.anInt956) {
          this.anInt955 = 0;
       }
 
@@ -1852,24 +1852,24 @@ public final class Client extends GameShell {
                var4.aBoolean200 = true;
             }
 
-            int var6 = var4.anInt739 >> 7;
-            int var7 = var4.anInt740 >> 7;
+            int var6 = var4.x >> 7;
+            int var7 = var4.z >> 7;
             if (var6 >= 0 && var6 < 104 && var7 >= 0 && var7 < 104) {
                if (var4.aClass10_Sub1_Sub2_Sub4_2 != null && anInt1050 >= var4.anInt771 && anInt1050 < var4.anInt772) {
                   var4.aBoolean200 = false;
-                  var4.anInt766 = this.method685(var4.anInt740, var4.anInt739, this.anInt942);
-                  this.aClass23_1.method202(var4.anInt766, var4.anInt775, var4, var4.anInt774, var4.anInt740, var4.anInt777, var4.anInt739, var4.anInt741, var4.anInt776, this.anInt942, var5);
+                  var4.anInt766 = this.getHeightmapY(var4.z, var4.x, this.currentLevel);
+                  this.scene.method202(var4.anInt766, var4.anInt775, var4, var4.anInt774, var4.z, var4.anInt777, var4.x, var4.anInt741, var4.anInt776, this.currentLevel, var5);
                } else {
-                  if ((var4.anInt739 & 127) == 64 && (var4.anInt740 & 127) == 64) {
-                     if (this.anIntArrayArray23[var6][var7] == this.anInt962) {
+                  if ((var4.x & 127) == 64 && (var4.z & 127) == 64) {
+                     if (this.anIntArrayArray23[var6][var7] == this.sceneCycle) {
                         continue;
                      }
 
-                     this.anIntArrayArray23[var6][var7] = this.anInt962;
+                     this.anIntArrayArray23[var6][var7] = this.sceneCycle;
                   }
 
-                  var4.anInt766 = this.method685(var4.anInt740, var4.anInt739, this.anInt942);
-                  this.aClass23_1.method201(var5, var4, var4.anInt739, var4.anInt766, var4.aBoolean196, this.anInt942, 60, var4.anInt740, var4.anInt741);
+                  var4.anInt766 = this.getHeightmapY(var4.z, var4.x, this.currentLevel);
+                  this.scene.method201(var5, var4, var4.x, var4.anInt766, var4.aBoolean196, this.currentLevel, 60, var4.z, var4.anInt741);
                }
             }
          }
@@ -1895,14 +1895,14 @@ public final class Client extends GameShell {
          Draw2D.clear();
          this.aClass10_Sub1_Sub1_Sub3_17.method440(0, 0);
          this.aClass19_15 = new PixMap(this.getBaseComponent(), 190, 261);
-         this.aClass19_17 = new PixMap(this.getBaseComponent(), 512, 334);
+         this.areaViewport = new PixMap(this.getBaseComponent(), 512, 334);
          Draw2D.clear();
          this.aClass19_12 = new PixMap(this.getBaseComponent(), 496, 50);
          this.aClass19_13 = new PixMap(this.getBaseComponent(), 269, 37);
          this.aClass19_14 = new PixMap(this.getBaseComponent(), 249, 45);
          this.aBoolean236 = true;
-         this.aClass19_17.method130();
-         Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray238;
+         this.areaViewport.method130();
+         Draw3D.lineOffset = this.anIntArray238;
       }
 
    }
@@ -1923,8 +1923,8 @@ public final class Client extends GameShell {
       for(int var2 = 0; var2 < this.aByteArrayArray5.length; ++var2) {
          byte[] var3 = this.aByteArrayArray6[var2];
          if (var3 != null) {
-            int var4 = (this.anIntArray216[var2] >> 8) * 64 - this.anInt914;
-            int var5 = (this.anIntArray216[var2] & 255) * 64 - this.anInt915;
+            int var4 = (this.anIntArray216[var2] >> 8) * 64 - this.sceneBaseTileX;
+            int var5 = (this.anIntArray216[var2] & 255) * 64 - this.sceneBaseTileZ;
             if (this.aBoolean247) {
                var4 = 10;
                var5 = 10;
@@ -1940,7 +1940,7 @@ public final class Client extends GameShell {
          return -4;
       } else {
          this.sceneState = 2;
-         Class8.anInt60 = this.anInt942;
+         Class8.anInt60 = this.currentLevel;
          this.method668(175);
          this.out.p1isaac(6);
          return 0;
@@ -1951,7 +1951,7 @@ public final class Client extends GameShell {
       return signlink.mainapp == null ? new Socket(InetAddress.getByName(this.getCodeBase().getHost()), var1) : signlink.opensocket(var1);
    }
 
-   private int method704(int var1, Class14 var2) {
+   private int method704(int var1, ComType var2) {
       if (var2.anIntArrayArray5 != null && var1 < var2.anIntArrayArray5.length) {
          try {
             int[] var3 = var2.anIntArrayArray5[var1];
@@ -1979,13 +1979,13 @@ public final class Client extends GameShell {
                   var8 = this.anIntArray214[var3[var5++]];
                }
 
-               Class14 var10;
+               ComType var10;
                int var11;
                int var12;
                if (var7 == 4) {
-                  var10 = Class14.method87(var3[var5++]);
+                  var10 = ComType.method87(var3[var5++]);
                   var11 = var3[var5++];
-                  if (var11 >= 0 && var11 < Class17.anInt179 && (!Class17.method104(var11).aBoolean54 || members)) {
+                  if (var11 >= 0 && var11 < ObjType.anInt179 && (!ObjType.method104(var11).aBoolean54 || members)) {
                      for(var12 = 0; var12 < var10.anIntArray44.length; ++var12) {
                         if (var10.anIntArray44[var12] == var11 + 1) {
                            var8 += var10.anIntArray40[var12];
@@ -2020,9 +2020,9 @@ public final class Client extends GameShell {
                }
 
                if (var7 == 10) {
-                  var10 = Class14.method87(var3[var5++]);
+                  var10 = ComType.method87(var3[var5++]);
                   var11 = var3[var5++] + 1;
-                  if (var11 >= 0 && var11 < Class17.anInt179 && (!Class17.method104(var11).aBoolean54 || members)) {
+                  if (var11 >= 0 && var11 < ObjType.anInt179 && (!ObjType.method104(var11).aBoolean54 || members)) {
                      for(var12 = 0; var12 < var10.anIntArray44.length; ++var12) {
                         if (var10.anIntArray44[var12] == var11) {
                            var8 = 999999999;
@@ -2048,7 +2048,7 @@ public final class Client extends GameShell {
 
                if (var7 == 14) {
                   var13 = var3[var5++];
-                  Class50 var14 = Class50.aClass50Array1[var13];
+                  VarbitType var14 = VarbitType.aClass50Array1[var13];
                   var12 = var14.anInt800;
                   int var15 = var14.anInt801;
                   int var16 = var14.anInt802;
@@ -2069,11 +2069,11 @@ public final class Client extends GameShell {
                }
 
                if (var7 == 18) {
-                  var8 = (localPlayer.anInt739 >> 7) + this.anInt914;
+                  var8 = (localPlayer.x >> 7) + this.sceneBaseTileX;
                }
 
                if (var7 == 19) {
-                  var8 = (localPlayer.anInt740 >> 7) + this.anInt915;
+                  var8 = (localPlayer.z >> 7) + this.sceneBaseTileZ;
                }
 
                if (var7 == 20) {
@@ -2141,7 +2141,7 @@ public final class Client extends GameShell {
                   }
                } else if (var5 == 3) {
                   var6 = var3.gBit(1);
-                  this.anInt942 = var3.gBit(2);
+                  this.currentLevel = var3.gBit(2);
                   var7 = var3.gBit(7);
                   var8 = var3.gBit(7);
                   int var9 = var3.gBit(1);
@@ -2172,8 +2172,8 @@ public final class Client extends GameShell {
       }
 
       for(int var4 = 99; var4 > 0; --var4) {
-         this.anIntArray270[var4] = this.anIntArray270[var4 - 1];
-         this.aStringArray13[var4] = this.aStringArray13[var4 - 1];
+         this.messageType[var4] = this.messageType[var4 - 1];
+         this.messageSender[var4] = this.messageSender[var4 - 1];
          this.messageText[var4] = this.messageText[var4 - 1];
       }
 
@@ -2181,8 +2181,8 @@ public final class Client extends GameShell {
          this.anInt964 = this.randomIn.nextInt();
       }
 
-      this.anIntArray270[0] = var3;
-      this.aStringArray13[0] = var1;
+      this.messageType[0] = var3;
+      this.messageSender[0] = var1;
       this.messageText[0] = var2;
    }
 
@@ -2193,22 +2193,22 @@ public final class Client extends GameShell {
          Class10_Sub1_Sub2_Sub3_Sub1 var5 = this.npcs[this.anIntArray256[var4]];
          int var6 = (this.anIntArray256[var4] << 14) + 536870912;
          if (var5 != null && var5.isVisible() && var5.aClass38_1.aBoolean143 == var2 && var5.aClass38_1.method403()) {
-            int var7 = var5.anInt739 >> 7;
-            int var8 = var5.anInt740 >> 7;
+            int var7 = var5.x >> 7;
+            int var8 = var5.z >> 7;
             if (var7 >= 0 && var7 < 104 && var8 >= 0 && var8 < 104) {
-               if (var5.anInt730 == 1 && (var5.anInt739 & 127) == 64 && (var5.anInt740 & 127) == 64) {
-                  if (this.anIntArrayArray23[var7][var8] == this.anInt962) {
+               if (var5.anInt730 == 1 && (var5.x & 127) == 64 && (var5.z & 127) == 64) {
+                  if (this.anIntArrayArray23[var7][var8] == this.sceneCycle) {
                      continue;
                   }
 
-                  this.anIntArrayArray23[var7][var8] = this.anInt962;
+                  this.anIntArrayArray23[var7][var8] = this.sceneCycle;
                }
 
                if (!var5.aClass38_1.aBoolean141) {
                   var6 -= Integer.MIN_VALUE;
                }
 
-               this.aClass23_1.method201(var6, var5, var5.anInt739, this.method685(var5.anInt740, var5.anInt739, this.anInt942), var5.aBoolean196, this.anInt942, (var5.anInt730 - 1) * 64 + 60, var5.anInt740, var5.anInt741);
+               this.scene.method201(var6, var5, var5.x, this.getHeightmapY(var5.z, var5.x, this.currentLevel), var5.aBoolean196, this.currentLevel, (var5.anInt730 - 1) * 64 + 60, var5.z, var5.anInt741);
             }
          }
       }
@@ -2230,7 +2230,7 @@ public final class Client extends GameShell {
       }
 
       if (var3 > this.anInt960) {
-         signlink.reporterror(this.aString27 + " Too many npcs");
+         signlink.reporterror(this.username + " Too many npcs");
          throw new RuntimeException("eek");
       } else {
          this.anInt960 = 0;
@@ -2291,7 +2291,7 @@ public final class Client extends GameShell {
       }
 
       if (var3 > this.anInt884) {
-         signlink.reporterror(this.aString27 + " Too many players");
+         signlink.reporterror(this.username + " Too many players");
          throw new RuntimeException("eek");
       } else {
          this.anInt884 = 0;
@@ -2343,23 +2343,23 @@ public final class Client extends GameShell {
    }
 
    private void method643(int var1, PathingEntity var2) {
-      if (var2.anInt739 < 128 || var2.anInt740 < 128 || var2.anInt739 >= 13184 || var2.anInt740 >= 13184) {
+      if (var2.x < 128 || var2.z < 128 || var2.x >= 13184 || var2.z >= 13184) {
          var2.anInt753 = -1;
          var2.anInt743 = -1;
          var2.anInt735 = 0;
          var2.anInt736 = 0;
-         var2.anInt739 = var2.anIntArray193[0] * 128 + var2.anInt730 * 64;
-         var2.anInt740 = var2.anIntArray194[0] * 128 + var2.anInt730 * 64;
+         var2.x = var2.anIntArray193[0] * 128 + var2.anInt730 * 64;
+         var2.z = var2.anIntArray194[0] * 128 + var2.anInt730 * 64;
          var2.method538();
       }
 
-      if (var2 == localPlayer && (var2.anInt739 < 1536 || var2.anInt740 < 1536 || var2.anInt739 >= 11776 || var2.anInt740 >= 11776)) {
+      if (var2 == localPlayer && (var2.x < 1536 || var2.z < 1536 || var2.x >= 11776 || var2.z >= 11776)) {
          var2.anInt753 = -1;
          var2.anInt743 = -1;
          var2.anInt735 = 0;
          var2.anInt736 = 0;
-         var2.anInt739 = var2.anIntArray193[0] * 128 + var2.anInt730 * 64;
-         var2.anInt740 = var2.anIntArray194[0] * 128 + var2.anInt730 * 64;
+         var2.x = var2.anIntArray193[0] * 128 + var2.anInt730 * 64;
+         var2.z = var2.anIntArray194[0] * 128 + var2.anInt730 * 64;
          var2.method538();
       }
 
@@ -2381,7 +2381,7 @@ public final class Client extends GameShell {
       this.aClass10_Sub1_Sub1_Sub3_19.method440(0, 0);
       byte var2;
       int var3;
-      if (this.anInt998 == 0) {
+      if (this.titleScreenState == 0) {
          this.aClass10_Sub1_Sub1_Sub2_2.method149(true, this.anInt928, 7711145, 180, 180, this.aClass33_Sub1_1.aString15);
          var2 = 80;
          this.aClass10_Sub1_Sub1_Sub2_4.method149(true, this.anInt928, 16776960, 80, 180, "Welcome to RuneScape");
@@ -2392,7 +2392,7 @@ public final class Client extends GameShell {
          this.aClass10_Sub1_Sub1_Sub2_4.method149(true, this.anInt928, 16777215, 125, 260, "Existing User");
       }
 
-      if (this.anInt998 == 2) {
+      if (this.titleScreenState == 2) {
          var2 = 60;
          if (this.loginMessage0.length() > 0) {
             this.aClass10_Sub1_Sub1_Sub2_4.method149(true, this.anInt928, 16776960, 45, 180, this.loginMessage0);
@@ -2403,9 +2403,9 @@ public final class Client extends GameShell {
             var3 = var2 + 30;
          }
 
-         this.aClass10_Sub1_Sub1_Sub2_4.method156(16777215, 90, 90, true, "Username: " + this.aString27 + (this.anInt886 == 0 & anInt1050 % 40 < 20 ? "@yel@|" : ""));
+         this.aClass10_Sub1_Sub1_Sub2_4.method156(16777215, 90, 90, true, "Username: " + this.username + (this.anInt886 == 0 & anInt1050 % 40 < 20 ? "@yel@|" : ""));
          var3 += 15;
-         this.aClass10_Sub1_Sub1_Sub2_4.method156(16777215, 92, 105, true, "Password: " + Class26.method253(this.aString28) + (this.anInt886 == 1 & anInt1050 % 40 < 20 ? "@yel@|" : ""));
+         this.aClass10_Sub1_Sub1_Sub2_4.method156(16777215, 92, 105, true, "Password: " + Class26.method253(this.password) + (this.anInt886 == 1 & anInt1050 % 40 < 20 ? "@yel@|" : ""));
          var3 += 15;
          if (!var1) {
             this.aClass10_Sub1_Sub1_Sub3_20.method440(130, 27);
@@ -2415,7 +2415,7 @@ public final class Client extends GameShell {
          }
       }
 
-      if (this.anInt998 == 3) {
+      if (this.titleScreenState == 3) {
          this.aClass10_Sub1_Sub1_Sub2_4.method149(true, this.anInt928, 16776960, 40, 180, "Create a free account");
          var2 = 65;
          this.aClass10_Sub1_Sub1_Sub2_4.method149(true, this.anInt928, 16777215, 65, 180, "To create a new account you need to");
@@ -2430,22 +2430,22 @@ public final class Client extends GameShell {
          this.aClass10_Sub1_Sub1_Sub2_4.method149(true, this.anInt928, 16777215, 155, 180, "Cancel");
       }
 
-      this.aClass19_21.method131(171, 202, super.graphics);
+      this.aClass19_21.draw(171, 202, super.graphics);
       if (this.aBoolean236) {
          this.aBoolean236 = false;
-         this.aClass19_19.method131(0, 128, super.graphics);
-         this.aClass19_20.method131(371, 202, super.graphics);
-         this.aClass19_24.method131(265, 0, super.graphics);
-         this.aClass19_25.method131(265, 562, super.graphics);
-         this.aClass19_26.method131(171, 128, super.graphics);
-         this.aClass19_27.method131(171, 562, super.graphics);
+         this.aClass19_19.draw(0, 128, super.graphics);
+         this.aClass19_20.draw(371, 202, super.graphics);
+         this.aClass19_24.draw(265, 0, super.graphics);
+         this.aClass19_25.draw(265, 562, super.graphics);
+         this.aClass19_26.draw(171, 128, super.graphics);
+         this.aClass19_27.draw(171, 562, super.graphics);
       }
 
    }
 
    private void method619(boolean var1, int var2) {
       if (var1) {
-         Class14.method92(aBoolean249, var2);
+         ComType.method92(aBoolean249, var2);
       }
 
    }
@@ -2456,23 +2456,23 @@ public final class Client extends GameShell {
       int var4 = 0;
       int var5 = 0;
       if (var1.anInt455 == 0) {
-         var2 = this.aClass23_1.method216(var1.anInt454, var1.anInt456, var1.anInt457);
+         var2 = this.scene.method216(var1.anInt454, var1.anInt456, var1.anInt457);
       }
 
       if (var1.anInt455 == 1) {
-         var2 = this.aClass23_1.method217(var1.anInt456, var1.anInt454, var1.anInt457);
+         var2 = this.scene.method217(var1.anInt456, var1.anInt454, var1.anInt457);
       }
 
       if (var1.anInt455 == 2) {
-         var2 = this.aClass23_1.method218(var1.anInt454, var1.anInt456, var1.anInt457);
+         var2 = this.scene.method218(var1.anInt454, var1.anInt456, var1.anInt457);
       }
 
       if (var1.anInt455 == 3) {
-         var2 = this.aClass23_1.method219(var1.anInt454, var1.anInt456, var1.anInt457);
+         var2 = this.scene.method219(var1.anInt454, var1.anInt456, var1.anInt457);
       }
 
       if (var2 != 0) {
-         int var6 = this.aClass23_1.method220(var1.anInt454, var1.anInt456, var1.anInt457, var2);
+         int var6 = this.scene.method220(var1.anInt454, var1.anInt456, var1.anInt457, var2);
          var3 = var2 >> 14 & 32767;
          var4 = var6 & 31;
          var5 = var6 >> 6;
@@ -2483,14 +2483,14 @@ public final class Client extends GameShell {
       var1.anInt451 = var5;
    }
 
-   private boolean method663(int var1, int var2, byte var3) {
+   private boolean updateInterfaceAnimation(int var1, int var2) {
       boolean var4 = false;
-      Class14 var5 = Class14.method87(var2);
+      ComType var5 = ComType.method87(var2);
 
       for(int var6 = 0; var6 < var5.anIntArray43.length && var5.anIntArray43[var6] != -1; ++var6) {
-         Class14 var7 = Class14.method87(var5.anIntArray43[var6]);
+         ComType var7 = ComType.method87(var5.anIntArray43[var6]);
          if (var7.anInt120 == 0) {
-            var4 |= this.method663(var1, var7.anInt111, (byte)5);
+            var4 |= this.updateInterfaceAnimation(var1, var7.anInt111);
          }
 
          int var8;
@@ -2503,7 +2503,7 @@ public final class Client extends GameShell {
             }
 
             if (var8 != -1) {
-               Class15 var10 = Class15.aClass15Array1[var8];
+               SeqType var10 = SeqType.aClass15Array1[var8];
 
                for(var7.anInt116 += var1; var7.anInt116 > var10.method97(var7.anInt119); var4 = true) {
                   var7.anInt116 -= var10.method97(var7.anInt119);
@@ -2603,7 +2603,7 @@ public final class Client extends GameShell {
                }
 
                int var8 = var1.gBit(1);
-               var4.aClass38_1 = Class38.method407(var1.gBit(13));
+               var4.aClass38_1 = NpcType.method407(var1.gBit(13));
                var4.anInt730 = var4.aClass38_1.aByte31;
                var4.anInt729 = var4.aClass38_1.anInt579;
                var4.anInt748 = var4.aClass38_1.anInt576;
@@ -2633,7 +2633,7 @@ public final class Client extends GameShell {
 
          var6 = var4.method332(this.anInt1006);
          if (var5 == var2.anInt753 && var5 != -1) {
-            var7 = Class15.aClass15Array1[var5].anInt160;
+            var7 = SeqType.aClass15Array1[var5].anInt160;
             if (var7 == 1) {
                var2.anInt754 = 0;
                var2.anInt755 = 0;
@@ -2644,7 +2644,7 @@ public final class Client extends GameShell {
             if (var7 == 2) {
                var2.anInt757 = 0;
             }
-         } else if (var5 == -1 || var2.anInt753 == -1 || Class15.aClass15Array1[var5].anInt154 >= Class15.aClass15Array1[var2.anInt753].anInt154) {
+         } else if (var5 == -1 || var2.anInt753 == -1 || SeqType.aClass15Array1[var5].anInt154 >= SeqType.aClass15Array1[var2.anInt753].anInt154) {
             var2.anInt753 = var5;
             var2.anInt754 = 0;
             var2.anInt755 = 0;
@@ -2747,8 +2747,8 @@ public final class Client extends GameShell {
                   this.aClass10_Sub1_Sub3_8.pos = 0;
                   var4.method349(this.aClass10_Sub1_Sub3_8.data, var7);
                   this.aClass10_Sub1_Sub3_8.pos = 0;
-                  String var17 = Class32.method371(this.aClass10_Sub1_Sub3_8, var7);
-                  String var13 = Class46.method452(var17);
+                  String var17 = WordPack.unpack(this.aClass10_Sub1_Sub3_8, var7);
+                  String var13 = WordFilter.method452(var17);
                   var2.aString13 = var13;
                   var2.anInt716 = var5 >> 8;
                   var2.anInt722 = var5 & 255;
@@ -2842,7 +2842,7 @@ public final class Client extends GameShell {
                var4 = this.in.method342();
                var2 = this.in.method342();
                var5 = this.in.g2();
-               Class14 var6 = Class14.method87(var5);
+               ComType var6 = ComType.method87(var5);
                var6.anInt117 = var2;
                var6.anInt134 = var4;
                this.packetType = -1;
@@ -2855,9 +2855,9 @@ public final class Client extends GameShell {
                var2 = this.in.method341();
                var5 = this.in.method340();
                var28 = this.in.method339();
-               Class14.method87(var2).anInt130 = var4;
-               Class14.method87(var2).anInt131 = var28;
-               Class14.method87(var2).anInt129 = var5;
+               ComType.method87(var2).anInt130 = var4;
+               ComType.method87(var2).anInt131 = var28;
+               ComType.method87(var2).anInt129 = var5;
                this.packetType = -1;
                return true;
             }
@@ -2865,8 +2865,8 @@ public final class Client extends GameShell {
             if (this.packetType == 216) {
                var4 = this.in.method341();
                var2 = this.in.method341();
-               Class14.method87(var2).anInt145 = 1;
-               Class14.method87(var2).anInt146 = var4;
+               ComType.method87(var2).anInt145 = 1;
+               ComType.method87(var2).anInt146 = var4;
                this.packetType = -1;
                return true;
             }
@@ -2936,8 +2936,8 @@ public final class Client extends GameShell {
             if (this.packetType == 162) {
                var4 = this.in.method340();
                var2 = this.in.method339();
-               Class14.method87(var2).anInt145 = 2;
-               Class14.method87(var2).anInt146 = var4;
+               ComType.method87(var2).anInt145 = 2;
+               ComType.method87(var2).anInt146 = var4;
                this.packetType = -1;
                return true;
             }
@@ -2945,9 +2945,9 @@ public final class Client extends GameShell {
             if (this.packetType == 109) {
                var4 = this.in.g2();
                this.method687(var4);
-               if (this.anInt941 != -1) {
-                  this.method619(aBoolean249, this.anInt941);
-                  this.anInt941 = -1;
+               if (this.sidebarInterfaceId != -1) {
+                  this.method619(aBoolean249, this.sidebarInterfaceId);
+                  this.sidebarInterfaceId = -1;
                   this.aBoolean248 = true;
                   this.aBoolean225 = true;
                }
@@ -2963,9 +2963,9 @@ public final class Client extends GameShell {
                   this.anInt880 = -1;
                }
 
-               if (this.anInt976 != -1) {
-                  this.method619(aBoolean249, this.anInt976);
-                  this.anInt976 = -1;
+               if (this.viewportInterfaceId != -1) {
+                  this.method619(aBoolean249, this.viewportInterfaceId);
+                  this.viewportInterfaceId = -1;
                }
 
                if (this.anInt888 != var4) {
@@ -2985,7 +2985,7 @@ public final class Client extends GameShell {
                   var4 = -1;
                }
 
-               if (var4 != this.anInt1051 && this.aBoolean259 && !lowMemory && this.anInt958 == 0) {
+               if (var4 != this.anInt1051 && this.midiActive && !lowMemory && this.nextMusicDelay == 0) {
                   this.anInt1023 = var4;
                   this.aBoolean260 = true;
                   this.aClass33_Sub1_1.method558(2, this.anInt1023);
@@ -2999,11 +2999,11 @@ public final class Client extends GameShell {
             if (this.packetType == 249) {
                var4 = this.in.method339();
                var2 = this.in.method344();
-               if (this.aBoolean259 && !lowMemory) {
+               if (this.midiActive && !lowMemory) {
                   this.anInt1023 = var4;
                   this.aBoolean260 = false;
                   this.aClass33_Sub1_1.method558(2, this.anInt1023);
-                  this.anInt958 = var2;
+                  this.nextMusicDelay = var2;
                }
 
                this.packetType = -1;
@@ -3029,7 +3029,7 @@ public final class Client extends GameShell {
                var5 = var2 >> 10 & 31;
                var28 = var2 >> 5 & 31;
                var7 = var2 & 31;
-               Class14.method87(var4).anInt122 = (var5 << 19) + (var28 << 11) + (var7 << 3);
+               ComType.method87(var4).anInt122 = (var5 << 19) + (var28 << 11) + (var7 << 3);
                this.packetType = -1;
                return true;
             }
@@ -3062,7 +3062,7 @@ public final class Client extends GameShell {
             }
 
             if (this.packetType == 201) {
-               this.anInt899 = this.in.g1();
+               this.publicChatSetting = this.in.g1();
                this.anInt853 = this.in.g1();
                this.anInt1000 = this.in.g1();
                this.aBoolean253 = true;
@@ -3120,7 +3120,7 @@ public final class Client extends GameShell {
             int var9;
             int var10;
             if (this.packetType == 167) {
-               this.aBoolean252 = true;
+               this.cutscene = true;
                this.anInt892 = this.in.g1();
                this.anInt893 = this.in.g1();
                this.anInt894 = this.in.g2();
@@ -3129,19 +3129,19 @@ public final class Client extends GameShell {
                if (this.anInt896 >= 100) {
                   var4 = this.anInt892 * 128 + 64;
                   var2 = this.anInt893 * 128 + 64;
-                  var5 = this.method685(var2, var4, this.anInt942) - this.anInt894;
-                  var28 = var4 - this.anInt990;
-                  var7 = var5 - this.anInt991;
-                  var9 = var2 - this.anInt992;
+                  var5 = this.getHeightmapY(var2, var4, this.currentLevel) - this.anInt894;
+                  var28 = var4 - this.cameraX;
+                  var7 = var5 - this.cameraY;
+                  var9 = var2 - this.cameraZ;
                   var10 = (int)Math.sqrt((double)(var28 * var28 + var9 * var9));
-                  this.anInt993 = (int)(Math.atan2((double)var7, (double)var10) * 325.949) & 2047;
-                  this.anInt994 = (int)(Math.atan2((double)var28, (double)var9) * -325.949) & 2047;
-                  if (this.anInt993 < 128) {
-                     this.anInt993 = 128;
+                  this.cameraPitch = (int)(Math.atan2((double)var7, (double)var10) * 325.949) & 2047;
+                  this.cameraYaw = (int)(Math.atan2((double)var28, (double)var9) * -325.949) & 2047;
+                  if (this.cameraPitch < 128) {
+                     this.cameraPitch = 128;
                   }
 
-                  if (this.anInt993 > 383) {
-                     this.anInt993 = 383;
+                  if (this.cameraPitch > 383) {
+                     this.cameraPitch = 383;
                   }
                }
 
@@ -3150,7 +3150,7 @@ public final class Client extends GameShell {
             }
 
             if (this.packetType == 5) {
-               this.method699();
+               this.logout();
                this.packetType = -1;
                return false;
             }
@@ -3173,9 +3173,9 @@ public final class Client extends GameShell {
             }
 
             if (this.packetType == 29) {
-               if (this.anInt941 != -1) {
-                  this.method619(aBoolean249, this.anInt941);
-                  this.anInt941 = -1;
+               if (this.sidebarInterfaceId != -1) {
+                  this.method619(aBoolean249, this.sidebarInterfaceId);
+                  this.sidebarInterfaceId = -1;
                   this.aBoolean248 = true;
                   this.aBoolean225 = true;
                }
@@ -3197,9 +3197,9 @@ public final class Client extends GameShell {
                   this.anInt880 = -1;
                }
 
-               if (this.anInt976 != -1) {
-                  this.method619(aBoolean249, this.anInt976);
-                  this.anInt976 = -1;
+               if (this.viewportInterfaceId != -1) {
+                  this.method619(aBoolean249, this.viewportInterfaceId);
+                  this.viewportInterfaceId = -1;
                }
 
                if (this.anInt1010 != 0) {
@@ -3306,7 +3306,7 @@ public final class Client extends GameShell {
             if (this.packetType == 82) {
                boolean var29 = this.in.g1() == 1;
                var2 = this.in.g2();
-               Class14.method87(var2).aBoolean33 = var29;
+               ComType.method87(var2).aBoolean33 = var29;
                this.packetType = -1;
                return true;
             }
@@ -3353,14 +3353,14 @@ public final class Client extends GameShell {
                   this.anInt880 = -1;
                }
 
-               if (this.anInt976 != var4) {
-                  this.method619(aBoolean249, this.anInt976);
-                  this.anInt976 = var4;
+               if (this.viewportInterfaceId != var4) {
+                  this.method619(aBoolean249, this.viewportInterfaceId);
+                  this.viewportInterfaceId = var4;
                }
 
-               if (this.anInt941 != var2) {
-                  this.method619(aBoolean249, this.anInt941);
-                  this.anInt941 = var2;
+               if (this.sidebarInterfaceId != var2) {
+                  this.method619(aBoolean249, this.sidebarInterfaceId);
+                  this.sidebarInterfaceId = var2;
                }
 
                if (this.anInt1010 != 0) {
@@ -3380,20 +3380,20 @@ public final class Client extends GameShell {
                var2 = this.in.g1();
                var5 = this.in.g1();
                var28 = this.in.g1();
-               this.aBooleanArray11[var4] = true;
-               this.anIntArray253[var4] = var2;
-               this.anIntArray215[var4] = var5;
-               this.anIntArray235[var4] = var28;
-               this.anIntArray257[var4] = 0;
+               this.cameraModifierEnabled[var4] = true;
+               this.cameraModifierJitter[var4] = var2;
+               this.cameraModifierWobbleScale[var4] = var5;
+               this.cameraModifierWobbleSpeed[var4] = var28;
+               this.cameraModifierCycle[var4] = 0;
                this.packetType = -1;
                return true;
             }
 
-            Class14 var30;
+            ComType var30;
             if (this.packetType == 134) {
                this.aBoolean248 = true;
                var4 = this.in.g2();
-               var30 = Class14.method87(var4);
+               var30 = ComType.method87(var4);
 
                while(this.in.pos < this.packetSize) {
                   var5 = this.in.gsmarts();
@@ -3496,15 +3496,15 @@ public final class Client extends GameShell {
 
                for(var4 = this.anInt889; var4 < this.anInt889 + 8; ++var4) {
                   for(var2 = this.anInt890; var2 < this.anInt890 + 8; ++var2) {
-                     if (this.levelObjStacks[this.anInt942][var4][var2] != null) {
-                        this.levelObjStacks[this.anInt942][var4][var2] = null;
+                     if (this.levelObjStacks[this.currentLevel][var4][var2] != null) {
+                        this.levelObjStacks[this.currentLevel][var4][var2] = null;
                         this.method601(var4, var2);
                      }
                   }
                }
 
                for(Class10_Sub2 var45 = (Class10_Sub2)this.spawnedLocations.method6(); var45 != null; var45 = (Class10_Sub2)this.spawnedLocations.method8()) {
-                  if (var45.anInt456 >= this.anInt889 && var45.anInt456 < this.anInt889 + 8 && var45.anInt457 >= this.anInt890 && var45.anInt457 < this.anInt890 + 8 && var45.anInt454 == this.anInt942) {
+                  if (var45.anInt456 >= this.anInt889 && var45.anInt456 < this.anInt889 + 8 && var45.anInt457 >= this.anInt890 && var45.anInt457 < this.anInt890 + 8 && var45.anInt454 == this.currentLevel) {
                      var45.anInt453 = 0;
                   }
                }
@@ -3515,11 +3515,11 @@ public final class Client extends GameShell {
 
             if (this.packetType == 255) {
                var4 = this.in.method341();
-               Class14.method87(var4).anInt145 = 3;
+               ComType.method87(var4).anInt145 = 3;
                if (localPlayer.aClass38_2 == null) {
-                  Class14.method87(var4).anInt146 = (localPlayer.anIntArray199[0] << 25) + (localPlayer.anIntArray199[4] << 20) + (localPlayer.appearances[0] << 15) + (localPlayer.appearances[8] << 10) + (localPlayer.appearances[11] << 5) + localPlayer.appearances[1];
+                  ComType.method87(var4).anInt146 = (localPlayer.anIntArray199[0] << 25) + (localPlayer.anIntArray199[4] << 20) + (localPlayer.appearances[0] << 15) + (localPlayer.appearances[8] << 10) + (localPlayer.appearances[11] << 5) + localPlayer.appearances[1];
                } else {
-                  Class14.method87(var4).anInt146 = (int)(localPlayer.aClass38_2.aLong19 + 305419896L);
+                  ComType.method87(var4).anInt146 = (int)(localPlayer.aClass38_2.aLong19 + 305419896L);
                }
 
                this.packetType = -1;
@@ -3552,9 +3552,9 @@ public final class Client extends GameShell {
                   try {
                      this.anIntArray263[this.anInt970] = var5;
                      this.anInt970 = (this.anInt970 + 1) % 100;
-                     var12 = Class32.method371(this.in, this.packetSize - 13);
+                     var12 = WordPack.unpack(this.in, this.packetSize - 13);
                      if (var28 != 3) {
-                        var12 = Class46.method452(var12);
+                        var12 = WordFilter.method452(var12);
                      }
 
                      if (var28 != 2 && var28 != 3) {
@@ -3591,9 +3591,9 @@ public final class Client extends GameShell {
             if (this.packetType == 159) {
                var4 = this.in.method341();
                this.method687(var4);
-               if (this.anInt941 != -1) {
-                  this.method619(aBoolean249, this.anInt941);
-                  this.anInt941 = -1;
+               if (this.sidebarInterfaceId != -1) {
+                  this.method619(aBoolean249, this.sidebarInterfaceId);
+                  this.sidebarInterfaceId = -1;
                   this.aBoolean248 = true;
                   this.aBoolean225 = true;
                }
@@ -3615,9 +3615,9 @@ public final class Client extends GameShell {
                   this.anInt880 = -1;
                }
 
-               if (this.anInt976 != var4) {
-                  this.method619(aBoolean249, this.anInt976);
-                  this.anInt976 = var4;
+               if (this.viewportInterfaceId != var4) {
+                  this.method619(aBoolean249, this.viewportInterfaceId);
+                  this.viewportInterfaceId = var4;
                }
 
                if (this.anInt1010 != 0) {
@@ -3650,14 +3650,14 @@ public final class Client extends GameShell {
                   this.anInt880 = -1;
                }
 
-               if (this.anInt976 != -1) {
-                  this.method619(aBoolean249, this.anInt976);
-                  this.anInt976 = -1;
+               if (this.viewportInterfaceId != -1) {
+                  this.method619(aBoolean249, this.viewportInterfaceId);
+                  this.viewportInterfaceId = -1;
                }
 
-               if (this.anInt941 != var4) {
-                  this.method619(aBoolean249, this.anInt941);
-                  this.anInt941 = var4;
+               if (this.sidebarInterfaceId != var4) {
+                  this.method619(aBoolean249, this.sidebarInterfaceId);
+                  this.sidebarInterfaceId = var4;
                }
 
                if (this.anInt1010 != 0) {
@@ -3694,7 +3694,7 @@ public final class Client extends GameShell {
             if (this.packetType == 206) {
                this.aBoolean248 = true;
                var4 = this.in.g2();
-               var30 = Class14.method87(var4);
+               var30 = ComType.method87(var4);
                var5 = this.in.g2();
 
                for(var28 = 0; var28 < var5; ++var28) {
@@ -3740,43 +3740,43 @@ public final class Client extends GameShell {
                      var2 = this.in.method339();
                      var5 = this.in.method341();
                      if (var2 == 65535) {
-                        Class14.method87(var5).anInt145 = 0;
+                        ComType.method87(var5).anInt145 = 0;
                         this.packetType = -1;
                         return true;
                      }
 
-                     Class17 var43 = Class17.method104(var2);
-                     Class14.method87(var5).anInt145 = 4;
-                     Class14.method87(var5).anInt146 = var2;
-                     Class14.method87(var5).anInt130 = var43.anInt192;
-                     Class14.method87(var5).anInt131 = var43.anInt189;
-                     Class14.method87(var5).anInt129 = var43.anInt200 * 100 / var4;
+                     ObjType var43 = ObjType.method104(var2);
+                     ComType.method87(var5).anInt145 = 4;
+                     ComType.method87(var5).anInt146 = var2;
+                     ComType.method87(var5).anInt130 = var43.anInt192;
+                     ComType.method87(var5).anInt131 = var43.anInt189;
+                     ComType.method87(var5).anInt129 = var43.anInt200 * 100 / var4;
                      this.packetType = -1;
                      return true;
                   }
 
                   if (this.packetType == 3) {
-                     this.aBoolean252 = true;
+                     this.cutscene = true;
                      this.anInt848 = this.in.g1();
                      this.anInt849 = this.in.g1();
                      this.anInt850 = this.in.g2();
                      this.anInt851 = this.in.g1();
                      this.anInt852 = this.in.g1();
                      if (this.anInt852 >= 100) {
-                        this.anInt990 = this.anInt848 * 128 + 64;
-                        this.anInt992 = this.anInt849 * 128 + 64;
-                        this.anInt991 = this.method685(this.anInt992, this.anInt990, this.anInt942) - this.anInt850;
+                        this.cameraX = this.anInt848 * 128 + 64;
+                        this.cameraZ = this.anInt849 * 128 + 64;
+                        this.cameraY = this.getHeightmapY(this.cameraZ, this.cameraX, this.currentLevel) - this.anInt850;
                      }
 
                      this.packetType = -1;
                      return true;
                   }
 
-                  Class14 var42;
+                  ComType var42;
                   if (this.packetType == 2) {
                      var4 = this.in.method341();
                      var2 = this.in.method343();
-                     var42 = Class14.method87(var4);
+                     var42 = ComType.method87(var4);
                      if (var42.anInt148 != var2 || var2 == -1) {
                         var42.anInt148 = var2;
                         var42.anInt119 = 0;
@@ -3824,7 +3824,7 @@ public final class Client extends GameShell {
 
                   if (this.packetType == 219) {
                      var4 = this.in.method339();
-                     var30 = Class14.method87(var4);
+                     var30 = ComType.method87(var4);
 
                      for(var5 = 0; var5 < var30.anIntArray44.length; ++var5) {
                         var30.anIntArray44[var5] = -1;
@@ -3852,10 +3852,10 @@ public final class Client extends GameShell {
                   }
 
                   if (this.packetType == 148) {
-                     this.aBoolean252 = false;
+                     this.cutscene = false;
 
                      for(var4 = 0; var4 < 5; ++var4) {
-                        this.aBooleanArray11[var4] = false;
+                        this.cameraModifierEnabled[var4] = false;
                      }
 
                      this.packetType = -1;
@@ -3884,14 +3884,14 @@ public final class Client extends GameShell {
                         this.method687(var4);
                      }
 
-                     if (this.anInt976 != -1) {
-                        this.method619(aBoolean249, this.anInt976);
-                        this.anInt976 = -1;
+                     if (this.viewportInterfaceId != -1) {
+                        this.method619(aBoolean249, this.viewportInterfaceId);
+                        this.viewportInterfaceId = -1;
                      }
 
-                     if (this.anInt941 != -1) {
-                        this.method619(aBoolean249, this.anInt941);
-                        this.anInt941 = -1;
+                     if (this.sidebarInterfaceId != -1) {
+                        this.method619(aBoolean249, this.sidebarInterfaceId);
+                        this.sidebarInterfaceId = -1;
                      }
 
                      if (this.anInt888 != -1) {
@@ -3926,7 +3926,7 @@ public final class Client extends GameShell {
                      var4 = this.in.g2();
                      var2 = this.in.method340();
                      var5 = this.in.method339();
-                     Class14.method87(var2).anInt112 = (var4 << 16) + var5;
+                     ComType.method87(var2).anInt112 = (var4 << 16) + var5;
                      this.packetType = -1;
                      return true;
                   }
@@ -3954,9 +3954,9 @@ public final class Client extends GameShell {
                   if (this.packetType == 232) {
                      var4 = this.in.method341();
                      var8 = this.in.gjstr();
-                     Class14.method87(var4).aString2 = var8;
+                     ComType.method87(var4).aString2 = var8;
                      var18 = this.anIntArray248[this.anInt1031];
-                     if (Class14.method87(var4).anInt128 == var18) {
+                     if (ComType.method87(var4).anInt128 == var18) {
                         this.aBoolean248 = true;
                      }
 
@@ -3967,7 +3967,7 @@ public final class Client extends GameShell {
                   if (this.packetType == 200) {
                      var4 = this.in.g2();
                      var2 = this.in.method341();
-                     var42 = Class14.method87(var4);
+                     var42 = ComType.method87(var4);
                      if (var42 != null && var42.anInt120 == 0) {
                         if (var2 < 0) {
                            var2 = 0;
@@ -3985,7 +3985,7 @@ public final class Client extends GameShell {
                   }
 
                   signlink.reporterror("T1 - " + this.packetType + "," + this.packetSize + " - " + this.lastPacketType1 + "," + this.lastPacketType2);
-                  this.method699();
+                  this.logout();
                   return true;
                }
 
@@ -4037,8 +4037,8 @@ public final class Client extends GameShell {
 
             this.anInt854 = var4;
             this.anInt855 = var2;
-            this.anInt914 = (this.anInt854 - 6) * 8;
-            this.anInt915 = (this.anInt855 - 6) * 8;
+            this.sceneBaseTileX = (this.anInt854 - 6) * 8;
+            this.sceneBaseTileZ = (this.anInt855 - 6) * 8;
             this.aBoolean238 = false;
             if ((this.anInt854 / 8 == 48 || this.anInt854 / 8 == 49) && this.anInt855 / 8 == 48) {
                this.aBoolean238 = true;
@@ -4169,10 +4169,10 @@ public final class Client extends GameShell {
                }
             }
 
-            var5 = this.anInt914 - this.anInt916;
-            var28 = this.anInt915 - this.anInt917;
-            this.anInt916 = this.anInt914;
-            this.anInt917 = this.anInt915;
+            var5 = this.sceneBaseTileX - this.anInt916;
+            var28 = this.sceneBaseTileZ - this.anInt917;
+            this.anInt916 = this.sceneBaseTileX;
+            this.anInt917 = this.sceneBaseTileZ;
 
             int[] var10000;
             for(var7 = 0; var7 < 16384; ++var7) {
@@ -4185,8 +4185,8 @@ public final class Client extends GameShell {
                      var10000[var10] -= var28;
                   }
 
-                  var40.anInt739 -= var5 * 128;
-                  var40.anInt740 -= var28 * 128;
+                  var40.x -= var5 * 128;
+                  var40.z -= var28 * 128;
                }
             }
 
@@ -4200,8 +4200,8 @@ public final class Client extends GameShell {
                      var10000[var14] -= var28;
                   }
 
-                  var41.anInt739 -= var5 * 128;
-                  var41.anInt740 -= var28 * 128;
+                  var41.x -= var5 * 128;
+                  var41.z -= var28 * 128;
                }
             }
 
@@ -4252,20 +4252,20 @@ public final class Client extends GameShell {
                this.anInt956 -= var28;
             }
 
-            this.aBoolean252 = false;
+            this.cutscene = false;
             this.packetType = -1;
             return true;
          } catch (IOException var37) {
-            this.method634();
+            this.tryReconnect();
          } catch (Exception var38) {
-            var1 = "T2 - " + this.packetType + "," + this.lastPacketType1 + "," + this.lastPacketType2 + " - " + this.packetSize + "," + (this.anInt914 + localPlayer.anIntArray193[0]) + "," + (this.anInt915 + localPlayer.anIntArray194[0]) + " - ";
+            var1 = "T2 - " + this.packetType + "," + this.lastPacketType1 + "," + this.lastPacketType2 + " - " + this.packetSize + "," + (this.sceneBaseTileX + localPlayer.anIntArray193[0]) + "," + (this.sceneBaseTileZ + localPlayer.anIntArray194[0]) + " - ";
 
             for(var2 = 0; var2 < this.packetSize && var2 < 50; ++var2) {
                var1 = var1 + this.in.data[var2] + ",";
             }
 
             signlink.reporterror(var1);
-            this.method699();
+            this.logout();
          }
 
          return true;
@@ -4347,8 +4347,8 @@ public final class Client extends GameShell {
 
    }
 
-   private void method726() {
-      ++this.anInt962;
+   private void drawScene() {
+      ++this.sceneCycle;
       this.method694(true);
       this.method632(751, true);
       this.method694(false);
@@ -4356,94 +4356,94 @@ public final class Client extends GameShell {
       this.method626();
       this.method651();
       int var1;
-      int var2;
-      if (!this.aBoolean252) {
+      int cameraX;
+      if (!this.cutscene) {
          var1 = this.anInt1012;
          if (this.anInt1033 / 256 > var1) {
             var1 = this.anInt1033 / 256;
          }
 
-         if (this.aBooleanArray11[4] && this.anIntArray215[4] + 128 > var1) {
-            var1 = this.anIntArray215[4] + 128;
+         if (this.cameraModifierEnabled[4] && this.cameraModifierWobbleScale[4] + 128 > var1) {
+            var1 = this.cameraModifierWobbleScale[4] + 128;
          }
 
-         var2 = this.orbitCameraYaw + this.cameraAnticheatAngle & 2047;
-         this.method669(this.method685(localPlayer.anInt740, localPlayer.anInt739, this.anInt942) - 50, this.anInt1019, var1, var1 * 3 + 600, var2, this.anInt1020);
+         cameraX = this.orbitCameraYaw + this.cameraAnticheatAngle & 2047;
+         this.orbitCamera(this.getHeightmapY(localPlayer.z, localPlayer.x, this.currentLevel) - 50, this.anInt1019, var1, var1 * 3 + 600, cameraX, this.anInt1020);
       }
 
-      if (this.aBoolean252) {
-         var1 = this.method693();
+      if (this.cutscene) {
+         var1 = this.getTopLevelCutscene();
       } else {
-         var1 = this.method692((byte)1);
+         var1 = this.getTopLevel((byte)1);
       }
 
-      var2 = this.anInt990;
-      int var3 = this.anInt991;
-      int var4 = this.anInt992;
-      int var5 = this.anInt993;
-      int var6 = this.anInt994;
+      cameraX = this.cameraX;
+      int cameraY = this.cameraY;
+      int cameraZ = this.cameraZ;
+      int cameraPitch = this.cameraPitch;
+      int cameraYaw = this.cameraYaw;
 
       int var7;
       for(int var8 = 0; var8 < 5; ++var8) {
-         if (this.aBooleanArray11[var8]) {
-            var7 = (int)(Math.random() * (double)(this.anIntArray253[var8] * 2 + 1) - (double)this.anIntArray253[var8] + Math.sin((double)this.anIntArray257[var8] * ((double)this.anIntArray235[var8] / 100.0)) * (double)this.anIntArray215[var8]);
+         if (this.cameraModifierEnabled[var8]) {
+            var7 = (int)(Math.random() * (double)(this.cameraModifierJitter[var8] * 2 + 1) - (double)this.cameraModifierJitter[var8] + Math.sin((double)this.cameraModifierCycle[var8] * ((double)this.cameraModifierWobbleSpeed[var8] / 100.0)) * (double)this.cameraModifierWobbleScale[var8]);
             if (var8 == 0) {
-               this.anInt990 += var7;
+               this.cameraX += var7;
             }
 
             if (var8 == 1) {
-               this.anInt991 += var7;
+               this.cameraY += var7;
             }
 
             if (var8 == 2) {
-               this.anInt992 += var7;
+               this.cameraZ += var7;
             }
 
             if (var8 == 3) {
-               this.anInt994 = this.anInt994 + var7 & 2047;
+               this.cameraYaw = this.cameraYaw + var7 & 2047;
             }
 
             if (var8 == 4) {
-               this.anInt993 += var7;
-               if (this.anInt993 < 128) {
-                  this.anInt993 = 128;
+               this.cameraPitch += var7;
+               if (this.cameraPitch < 128) {
+                  this.cameraPitch = 128;
                }
 
-               if (this.anInt993 > 383) {
-                  this.anInt993 = 383;
+               if (this.cameraPitch > 383) {
+                  this.cameraPitch = 383;
                }
             }
          }
       }
 
-      var7 = Class10_Sub1_Sub1_Sub4.anInt690;
-      Model.aBoolean107 = true;
-      Model.anInt419 = 0;
-      Model.anInt417 = super.mouseX - 4;
-      Model.anInt418 = super.mouseY - 4;
+      var7 = Draw3D.cycle;
+      Model.checkHover = true;
+      Model.pickedCount = 0;
+      Model.mouseX = super.mouseX - 4;
+      Model.mouseZ = super.mouseY - 4;
       Draw2D.clear();
-      this.aClass23_1.method229(this.anInt990, var1, this.anInt991, this.anInt992, this.anInt994, this.anInt993);
-      this.aClass23_1.method204(this.anInt859);
-      this.method696();
-      this.method702();
-      this.method640(var7);
-      this.method684();
-      this.aClass19_17.method131(4, 4, super.graphics);
-      this.anInt990 = var2;
-      this.anInt991 = var3;
-      this.anInt992 = var4;
-      this.anInt993 = var5;
-      this.anInt994 = var6;
+      this.scene.draw(this.cameraX, var1, this.cameraY, this.cameraZ, this.cameraYaw, this.cameraPitch);
+      this.scene.clearTemporaryLocs();
+      this.draw2DEntityElements();
+      this.drawTileHint();
+      this.updateTextures(var7);
+      this.draw3DEntityElements();
+      this.areaViewport.draw(4, 4, super.graphics);
+      this.cameraX = cameraX;
+      this.cameraY = cameraY;
+      this.cameraZ = cameraZ;
+      this.cameraPitch = cameraPitch;
+      this.cameraYaw = cameraYaw;
    }
 
-   private void method624() {
-      Class48.aClass34_8.clear();
-      Class48.aClass34_7.clear();
-      Class38.aClass34_6.clear();
-      Class17.aClass34_3.clear();
-      Class17.aClass34_4.clear();
+   private void clearCaches() {
+      LocType.aClass34_8.clear();
+      LocType.aClass34_7.clear();
+      NpcType.aClass34_6.clear();
+      ObjType.aClass34_3.clear();
+      ObjType.aClass34_4.clear();
       PlayerEntity.aClass34_9.clear();
-      Class28.aClass34_5.clear();
+      SpotAnimType.aClass34_5.clear();
    }
 
    private void method615(int var1, Packet var2, int var3) {
@@ -4469,7 +4469,7 @@ public final class Client extends GameShell {
          Class10_Sub1_Sub2_Sub3_Sub1 var7 = this.npcs[var6];
          int var8 = var1.g1();
          if ((var8 & 1) != 0) {
-            var7.aClass38_1 = Class38.method407(var1.method340());
+            var7.aClass38_1 = NpcType.method407(var1.method340());
             var7.anInt730 = var7.aClass38_1.aByte31;
             var7.anInt729 = var7.aClass38_1.anInt579;
             var7.anInt748 = var7.aClass38_1.anInt576;
@@ -4531,7 +4531,7 @@ public final class Client extends GameShell {
 
             var10 = var1.method332(this.anInt1006);
             if (var9 == var7.anInt753 && var9 != -1) {
-               int var11 = Class15.aClass15Array1[var9].anInt160;
+               int var11 = SeqType.aClass15Array1[var9].anInt160;
                if (var11 == 1) {
                   var7.anInt754 = 0;
                   var7.anInt755 = 0;
@@ -4542,7 +4542,7 @@ public final class Client extends GameShell {
                if (var11 == 2) {
                   var7.anInt757 = 0;
                }
-            } else if (var9 == -1 || var7.anInt753 == -1 || Class15.aClass15Array1[var9].anInt154 >= Class15.aClass15Array1[var7.anInt753].anInt154) {
+            } else if (var9 == -1 || var7.anInt753 == -1 || SeqType.aClass15Array1[var9].anInt154 >= SeqType.aClass15Array1[var7.anInt753].anInt154) {
                var7.anInt753 = var9;
                var7.anInt754 = 0;
                var7.anInt755 = 0;
@@ -4582,8 +4582,8 @@ public final class Client extends GameShell {
 
          for(int var4 = 0; var4 < 100; ++var4) {
             if (this.messageText[var4] != null) {
-               int var5 = this.anIntArray270[var4];
-               String var6 = this.aStringArray13[var4];
+               int var5 = this.messageType[var4];
+               String var6 = this.messageSender[var4];
                if (var6 != null && var6.startsWith("@cr1@")) {
                   var6 = var6.substring(5);
                }
@@ -4592,7 +4592,7 @@ public final class Client extends GameShell {
                   var6 = var6.substring(5);
                }
 
-               if ((var5 == 3 || var5 == 7) && (var5 == 7 || this.anInt853 == 0 || this.anInt853 == 1 && this.method723(var6))) {
+               if ((var5 == 3 || var5 == 7) && (var5 == 7 || this.anInt853 == 0 || this.anInt853 == 1 && this.isFriend(var6))) {
                   int var7 = 329 - var3 * 13;
                   if (super.mouseX > 4 && super.mouseY - 4 > var7 - 10 && super.mouseY - 4 <= var7 + 3) {
                      int var8 = this.aClass10_Sub1_Sub1_Sub2_3.method150("From:  " + var6 + this.messageText[var4]) + 25;
@@ -4602,16 +4602,16 @@ public final class Client extends GameShell {
 
                      if (super.mouseX < var8 + 4) {
                         if (this.anInt842 >= 1) {
-                           this.aStringArray12[this.menuSize] = "Report abuse @whi@" + var6;
-                           this.anIntArray233[this.menuSize] = 2507;
+                           this.menuOption[this.menuSize] = "Report abuse @whi@" + var6;
+                           this.menuAction[this.menuSize] = 2507;
                            ++this.menuSize;
                         }
 
-                        this.aStringArray12[this.menuSize] = "Add ignore @whi@" + var6;
-                        this.anIntArray233[this.menuSize] = 2574;
+                        this.menuOption[this.menuSize] = "Add ignore @whi@" + var6;
+                        this.menuAction[this.menuSize] = 2574;
                         ++this.menuSize;
-                        this.aStringArray12[this.menuSize] = "Add friend @whi@" + var6;
-                        this.anIntArray233[this.menuSize] = 2762;
+                        this.menuOption[this.menuSize] = "Add friend @whi@" + var6;
+                        this.menuAction[this.menuSize] = 2762;
                         ++this.menuSize;
                      }
                   }
@@ -4789,17 +4789,17 @@ public final class Client extends GameShell {
          this.method727();
          ++this.idleNetCycles;
          if (this.idleNetCycles > 750) {
-            this.method634();
+            this.tryReconnect();
          }
 
          this.method675();
          this.method642();
          this.method660();
          ++this.anInt878;
-         if (this.anInt909 != 0) {
-            this.anInt908 += 20;
-            if (this.anInt908 >= 400) {
-               this.anInt909 = 0;
+         if (this.crossMode != 0) {
+            this.crossCycle += 20;
+            if (this.crossCycle >= 400) {
+               this.crossMode = 0;
             }
          }
 
@@ -4818,27 +4818,27 @@ public final class Client extends GameShell {
             }
          }
 
-         if (this.anInt950 != 0) {
+         if (this.objDragArea != 0) {
             ++this.anInt1022;
             if (super.mouseX > this.anInt951 + 5 || super.mouseX < this.anInt951 - 5 || super.mouseY > this.anInt952 + 5 || super.mouseY < this.anInt952 - 5) {
                this.aBoolean246 = true;
             }
 
             if (super.mouseButton == 0) {
-               if (this.anInt950 == 2) {
+               if (this.objDragArea == 2) {
                   this.aBoolean248 = true;
                }
 
-               if (this.anInt950 == 3) {
+               if (this.objDragArea == 3) {
                   this.aBoolean255 = true;
                }
 
-               this.anInt950 = 0;
+               this.objDragArea = 0;
                if (this.aBoolean246 && this.anInt1022 >= 5) {
                   this.anInt931 = -1;
-                  this.method666();
+                  this.handleInput();
                   if (this.anInt931 == this.anInt948 && this.anInt930 != this.anInt949) {
-                     Class14 var6 = Class14.method87(this.anInt948);
+                     ComType var6 = ComType.method87(this.anInt948);
                      byte var21 = 0;
                      if (this.anInt879 == 1 && var6.anInt124 == 206) {
                         var21 = 1;
@@ -4890,16 +4890,16 @@ public final class Client extends GameShell {
          }
 
          int var15;
-         if (Class23.anInt307 != -1) {
-            var15 = Class23.anInt307;
-            var7 = Class23.anInt308;
+         if (World3D.anInt307 != -1) {
+            var15 = World3D.anInt307;
+            var7 = World3D.anInt308;
             boolean var22 = this.method610(true, var7, localPlayer.anIntArray194[0], 0, 0, 0, 0, var15, 0, 0, localPlayer.anIntArray193[0]);
-            Class23.anInt307 = -1;
+            World3D.anInt307 = -1;
             if (var22) {
-               this.anInt906 = super.anInt822;
-               this.anInt907 = super.anInt823;
-               this.anInt909 = 1;
-               this.anInt908 = 0;
+               this.crossY = super.anInt822;
+               this.crossX = super.anInt823;
+               this.crossMode = 1;
+               this.crossCycle = 0;
             }
          }
 
@@ -4941,12 +4941,12 @@ public final class Client extends GameShell {
             this.method597(409);
          }
 
-         if (this.sceneState == 2 && this.aBoolean252) {
+         if (this.sceneState == 2 && this.cutscene) {
             this.method604(this.aBoolean227);
          }
 
          for(var15 = 0; var15 < 5; ++var15) {
-            int var10003 = this.anIntArray257[var15]++;
+            int var10003 = this.cameraModifierCycle[var15]++;
          }
 
          this.method605((byte)2);
@@ -5039,9 +5039,9 @@ public final class Client extends GameShell {
                this.anInt846 = 0;
             }
          } catch (IOException var17) {
-            this.method634();
+            this.tryReconnect();
          } catch (Exception var18) {
-            this.method699();
+            this.logout();
          }
       }
 
@@ -5060,13 +5060,13 @@ public final class Client extends GameShell {
          this.anInt1026 = -1;
          this.spotanims.clear();
          this.projectiles.clear();
-         Class10_Sub1_Sub1_Sub4.method509();
-         this.method624();
-         this.aClass23_1.method190();
+         Draw3D.method509();
+         this.clearCaches();
+         this.scene.reset();
          System.gc();
 
          for(var2 = 0; var2 < 4; ++var2) {
-            this.aClass47Array1[var2].method480();
+            this.levelCollisionMap[var2].reset();
          }
 
          for(var3 = 0; var3 < 4; ++var3) {
@@ -5085,17 +5085,17 @@ public final class Client extends GameShell {
          if (!this.aBoolean247) {
             byte[] var13;
             for(var6 = 0; var6 < var5; ++var6) {
-               var7 = (this.anIntArray216[var6] >> 8) * 64 - this.anInt914;
-               var8 = (this.anIntArray216[var6] & 255) * 64 - this.anInt915;
+               var7 = (this.anIntArray216[var6] >> 8) * 64 - this.sceneBaseTileX;
+               var8 = (this.anIntArray216[var6] & 255) * 64 - this.sceneBaseTileZ;
                var13 = this.aByteArrayArray5[var6];
                if (var13 != null) {
-                  var10.method22(var8, (this.anInt855 - 6) * 8, var7, var13, (this.anInt854 - 6) * 8, this.aClass47Array1);
+                  var10.method22(var8, (this.anInt855 - 6) * 8, var7, var13, (this.anInt854 - 6) * 8, this.levelCollisionMap);
                }
             }
 
             for(var7 = 0; var7 < var5; ++var7) {
-               var8 = (this.anIntArray216[var7] >> 8) * 64 - this.anInt914;
-               var9 = (this.anIntArray216[var7] & 255) * 64 - this.anInt915;
+               var8 = (this.anIntArray216[var7] >> 8) * 64 - this.sceneBaseTileX;
+               var9 = (this.anIntArray216[var7] & 255) * 64 - this.sceneBaseTileZ;
                byte[] var14 = this.aByteArrayArray5[var7];
                if (var14 == null && this.anInt855 < 800) {
                   var10.method28(var8, var9, 64, 64);
@@ -5107,9 +5107,9 @@ public final class Client extends GameShell {
             for(var8 = 0; var8 < var5; ++var8) {
                var13 = this.aByteArrayArray6[var8];
                if (var13 != null) {
-                  var12 = (this.anIntArray216[var8] >> 8) * 64 - this.anInt914;
-                  var11 = (this.anIntArray216[var8] & 255) * 64 - this.anInt915;
-                  var10.method27(var11, this.aClass47Array1, var12, this.aClass23_1, var13);
+                  var12 = (this.anIntArray216[var8] >> 8) * 64 - this.sceneBaseTileX;
+                  var11 = (this.anIntArray216[var8] & 255) * 64 - this.sceneBaseTileZ;
+                  var10.method27(var11, this.levelCollisionMap, var12, this.scene, var13);
                }
             }
          }
@@ -5154,7 +5154,7 @@ public final class Client extends GameShell {
 
                               for(int var23 = 0; var23 < this.anIntArray216.length; ++var23) {
                                  if (this.anIntArray216[var23] == var17 && this.aByteArrayArray6[var23] != null) {
-                                    var10.method20(var8, this.aClass47Array1, this.aClass23_1, this.aByteArrayArray6[var23], var12 * 8, var20, (var15 & 7) * 8, var9 * 8, (var16 & 7) * 8, var19);
+                                    var10.method20(var8, this.levelCollisionMap, this.scene, this.aByteArrayArray6[var23], var12 * 8, var20, (var15 & 7) * 8, var9 * 8, (var16 & 7) * 8, var19);
                                     break;
                                  }
                               }
@@ -5179,7 +5179,7 @@ public final class Client extends GameShell {
 
                         for(var17 = 0; var17 < this.anIntArray216.length; ++var17) {
                            if (this.anIntArray216[var17] == var16 && this.aByteArrayArray5[var17] != null) {
-                              var10.method16(var19, (var15 & 7) * 8, this.aByteArrayArray5[var17], var6, var11, var7 * 8, this.aClass47Array1, var8 * 8, (var20 & 7) * 8);
+                              var10.method16(var19, (var15 & 7) * 8, this.aByteArrayArray5[var17], var6, var11, var7 * 8, this.levelCollisionMap, var8 * 8, (var20 & 7) * 8);
                               var18 = true;
                               break;
                            }
@@ -5197,26 +5197,26 @@ public final class Client extends GameShell {
          }
 
          this.out.p1isaac(40);
-         var10.method15(this.aClass47Array1, this.anInt1046, this.aClass23_1);
-         if (this.aClass19_17 != null) {
-            this.aClass19_17.method130();
-            Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray238;
+         var10.method15(this.levelCollisionMap, this.anInt1046, this.scene);
+         if (this.areaViewport != null) {
+            this.areaViewport.method130();
+            Draw3D.lineOffset = this.anIntArray238;
          }
 
          this.out.p1isaac(40);
          var6 = Class8.anInt56;
-         if (var6 > this.anInt942) {
-            var6 = this.anInt942;
+         if (var6 > this.currentLevel) {
+            var6 = this.currentLevel;
          }
 
-         if (var6 < this.anInt942 - 1) {
-            var6 = this.anInt942 - 1;
+         if (var6 < this.currentLevel - 1) {
+            var6 = this.currentLevel - 1;
          }
 
          if (lowMemory) {
-            this.aClass23_1.method191(Class8.anInt56);
+            this.scene.method191(Class8.anInt56);
          } else {
-            this.aClass23_1.method191(0);
+            this.scene.method191(0);
          }
 
          for(var7 = 0; var7 < 104; ++var7) {
@@ -5229,7 +5229,7 @@ public final class Client extends GameShell {
       } catch (Exception var22) {
       }
 
-      Class48.aClass34_8.clear();
+      LocType.aClass34_8.clear();
       if (super.frame != null) {
          this.out.p1isaac(78);
          this.out.p4(1057001181);
@@ -5247,7 +5247,7 @@ public final class Client extends GameShell {
       }
 
       System.gc();
-      Class10_Sub1_Sub1_Sub4.method510();
+      Draw3D.initPool();
       this.aClass33_Sub1_1.method565();
       var2 = (this.anInt854 - 6) / 8 - 1;
       var3 = (this.anInt854 + 6) / 8 + 1;
@@ -5282,12 +5282,12 @@ public final class Client extends GameShell {
    private void method724() {
       int var1;
       int var2;
-      if (this.anInt998 == 0) {
+      if (this.titleScreenState == 0) {
          var1 = super.screenWidth / 2 - 80;
          var2 = super.screenHeight / 2 + 20;
          var2 += 20;
          if (super.anInt821 == 1 && super.anInt822 >= var1 - 75 && super.anInt822 <= var1 + 75 && super.anInt823 >= var2 - 20 && super.anInt823 <= var2 + 20) {
-            this.anInt998 = 3;
+            this.titleScreenState = 3;
             this.anInt886 = 0;
          }
 
@@ -5295,12 +5295,12 @@ public final class Client extends GameShell {
          if (super.anInt821 == 1 && super.anInt822 >= var1 - 75 && super.anInt822 <= var1 + 75 && super.anInt823 >= var2 - 20 && super.anInt823 <= var2 + 20) {
             this.loginMessage0 = "";
             this.loginMessage1 = "Enter your username & password.";
-            this.anInt998 = 2;
+            this.titleScreenState = 2;
             this.anInt886 = 0;
          }
       } else {
          int var3;
-         if (this.anInt998 == 2) {
+         if (this.titleScreenState == 2) {
             var1 = super.screenHeight / 2 - 40;
             var1 += 30;
             var1 += 25;
@@ -5319,7 +5319,7 @@ public final class Client extends GameShell {
             int var4 = var3 + 20;
             if (super.anInt821 == 1 && super.anInt822 >= var2 - 75 && super.anInt822 <= var2 + 75 && super.anInt823 >= var4 - 20 && super.anInt823 <= var4 + 20) {
                this.anInt833 = 0;
-               this.login(this.aString27, this.aString28, false);
+               this.login(this.username, this.password, false);
                if (this.ingame) {
                   return;
                }
@@ -5327,9 +5327,9 @@ public final class Client extends GameShell {
 
             var2 = super.screenWidth / 2 + 80;
             if (super.anInt821 == 1 && super.anInt822 >= var2 - 75 && super.anInt822 <= var2 + 75 && super.anInt823 >= var4 - 20 && super.anInt823 <= var4 + 20) {
-               this.anInt998 = 0;
-               this.aString27 = "";
-               this.aString28 = "";
+               this.titleScreenState = 0;
+               this.username = "";
+               this.password = "";
             }
 
             while(true) {
@@ -5349,8 +5349,8 @@ public final class Client extends GameShell {
                   }
 
                   if (this.anInt886 == 0) {
-                     if (var5 == 8 && this.aString27.length() > 0) {
-                        this.aString27 = this.aString27.substring(0, this.aString27.length() - 1);
+                     if (var5 == 8 && this.username.length() > 0) {
+                        this.username = this.username.substring(0, this.username.length() - 1);
                      }
 
                      if (var5 == 9 || var5 == 10 || var5 == 13) {
@@ -5358,15 +5358,15 @@ public final class Client extends GameShell {
                      }
 
                      if (var6) {
-                        this.aString27 = this.aString27 + (char)var5;
+                        this.username = this.username + (char)var5;
                      }
 
-                     if (this.aString27.length() > 12) {
-                        this.aString27 = this.aString27.substring(0, 12);
+                     if (this.username.length() > 12) {
+                        this.username = this.username.substring(0, 12);
                      }
                   } else if (this.anInt886 == 1) {
-                     if (var5 == 8 && this.aString28.length() > 0) {
-                        this.aString28 = this.aString28.substring(0, this.aString28.length() - 1);
+                     if (var5 == 8 && this.password.length() > 0) {
+                        this.password = this.password.substring(0, this.password.length() - 1);
                      }
 
                      if (var5 == 9 || var5 == 10 || var5 == 13) {
@@ -5374,23 +5374,23 @@ public final class Client extends GameShell {
                      }
 
                      if (var6) {
-                        this.aString28 = this.aString28 + (char)var5;
+                        this.password = this.password + (char)var5;
                      }
 
-                     if (this.aString28.length() > 20) {
-                        this.aString28 = this.aString28.substring(0, 20);
+                     if (this.password.length() > 20) {
+                        this.password = this.password.substring(0, 20);
                      }
                   }
                }
             }
          }
 
-         if (this.anInt998 == 3) {
+         if (this.titleScreenState == 3) {
             var1 = super.screenWidth / 2;
             var2 = super.screenHeight / 2 + 50;
             var3 = var2 + 20;
             if (super.anInt821 == 1 && super.anInt822 >= var1 - 75 && super.anInt822 <= var1 + 75 && super.anInt823 >= var3 - 20 && super.anInt823 <= var3 + 20) {
-               this.anInt998 = 0;
+               this.titleScreenState = 0;
                return;
             }
          }
@@ -5400,12 +5400,12 @@ public final class Client extends GameShell {
 
    private void method626() {
       for(Class10_Sub1_Sub2_Sub2 var1 = (Class10_Sub1_Sub2_Sub2)this.projectiles.method6(); var1 != null; var1 = (Class10_Sub1_Sub2_Sub2)this.projectiles.method8()) {
-         if (var1.anInt264 == this.anInt942 && anInt1050 <= var1.anInt271) {
+         if (var1.anInt264 == this.currentLevel && anInt1050 <= var1.anInt271) {
             if (anInt1050 >= var1.anInt270) {
                if (var1.anInt267 > 0) {
                   Class10_Sub1_Sub2_Sub3_Sub1 var2 = this.npcs[var1.anInt267 - 1];
-                  if (var2 != null && var2.anInt739 >= 0 && var2.anInt739 < 13312 && var2.anInt740 >= 0 && var2.anInt740 < 13312) {
-                     var1.method187(var2.anInt739, var2.anInt740, this.method685(var2.anInt740, var2.anInt739, var1.anInt264) - var1.anInt277, anInt1050);
+                  if (var2 != null && var2.x >= 0 && var2.x < 13312 && var2.z >= 0 && var2.z < 13312) {
+                     var1.method187(var2.x, var2.z, this.getHeightmapY(var2.z, var2.x, var1.anInt264) - var1.anInt277, anInt1050);
                   }
                }
 
@@ -5418,13 +5418,13 @@ public final class Client extends GameShell {
                      var3 = this.players[var4];
                   }
 
-                  if (var3 != null && var3.anInt739 >= 0 && var3.anInt739 < 13312 && var3.anInt740 >= 0 && var3.anInt740 < 13312) {
-                     var1.method187(var3.anInt739, var3.anInt740, this.method685(var3.anInt740, var3.anInt739, var1.anInt264) - var1.anInt277, anInt1050);
+                  if (var3 != null && var3.x >= 0 && var3.x < 13312 && var3.z >= 0 && var3.z < 13312) {
+                     var1.method187(var3.x, var3.z, this.getHeightmapY(var3.z, var3.x, var1.anInt264) - var1.anInt277, anInt1050);
                   }
                }
 
                var1.method188(this.anInt878);
-               this.aClass23_1.method201(-1, var1, (int)var1.aDouble1, (int)var1.aDouble3, false, this.anInt942, 60, (int)var1.aDouble2, var1.anInt268);
+               this.scene.method201(-1, var1, (int)var1.aDouble1, (int)var1.aDouble3, false, this.currentLevel, 60, (int)var1.aDouble2, var1.anInt268);
             }
          } else {
             var1.unlink();
@@ -5444,22 +5444,22 @@ public final class Client extends GameShell {
          if (this.aBoolean236) {
             this.prepareGameScreen();
             this.aBoolean236 = false;
-            this.aClass19_3.method131(4, 0, super.graphics);
-            this.aClass19_4.method131(357, 0, super.graphics);
-            this.aClass19_5.method131(4, 722, super.graphics);
-            this.aClass19_6.method131(205, 743, super.graphics);
-            this.aClass19_7.method131(0, 0, super.graphics);
-            this.aClass19_8.method131(4, 516, super.graphics);
-            this.aClass19_9.method131(205, 516, super.graphics);
-            this.aClass19_10.method131(357, 496, super.graphics);
-            this.aClass19_11.method131(338, 0, super.graphics);
+            this.aClass19_3.draw(4, 0, super.graphics);
+            this.aClass19_4.draw(357, 0, super.graphics);
+            this.aClass19_5.draw(4, 722, super.graphics);
+            this.aClass19_6.draw(205, 743, super.graphics);
+            this.aClass19_7.draw(0, 0, super.graphics);
+            this.aClass19_8.draw(4, 516, super.graphics);
+            this.aClass19_9.draw(205, 516, super.graphics);
+            this.aClass19_10.draw(357, 496, super.graphics);
+            this.aClass19_11.draw(338, 0, super.graphics);
             this.aBoolean248 = true;
             this.aBoolean255 = true;
             this.aBoolean225 = true;
             this.aBoolean253 = true;
             if (this.sceneState != 2) {
-               this.aClass19_17.method131(4, 4, super.graphics);
-               this.aClass19_16.method131(4, 550, super.graphics);
+               this.areaViewport.draw(4, 4, super.graphics);
+               this.aClass19_16.draw(4, 550, super.graphics);
             }
 
             ++anInt1007;
@@ -5470,7 +5470,7 @@ public final class Client extends GameShell {
          }
 
          if (this.sceneState == 2) {
-            this.method726();
+            this.drawScene();
          }
 
          if (this.menuVisible && this.anInt1039 == 1) {
@@ -5478,8 +5478,8 @@ public final class Client extends GameShell {
          }
 
          boolean var4;
-         if (this.anInt941 != -1) {
-            var4 = this.method663(this.anInt878, this.anInt941, (byte)5);
+         if (this.sidebarInterfaceId != -1) {
+            var4 = this.updateInterfaceAnimation(this.anInt878, this.sidebarInterfaceId);
             if (var4) {
                this.aBoolean248 = true;
             }
@@ -5489,7 +5489,7 @@ public final class Client extends GameShell {
             this.aBoolean248 = true;
          }
 
-         if (this.anInt950 == 2) {
+         if (this.objDragArea == 2) {
             this.aBoolean248 = true;
          }
 
@@ -5500,7 +5500,7 @@ public final class Client extends GameShell {
 
          int var2;
          if (this.anInt888 == -1 && this.anInt1010 == 0) {
-            this.aClass14_1.anInt118 = this.anInt947 - this.anInt834 - 77;
+            this.aClass14_1.anInt118 = this.anInt947 - this.chatScrollOffset - 77;
             if (super.mouseX > 448 && super.mouseX < 560 && super.mouseY > 332) {
                this.method617(this.anInt947, 0, this.aClass14_1, super.mouseY - 357, -1, super.mouseX - 17, 77, 463);
             }
@@ -5514,8 +5514,8 @@ public final class Client extends GameShell {
                var2 = this.anInt947 - 77;
             }
 
-            if (this.anInt834 != var2) {
-               this.anInt834 = var2;
+            if (this.chatScrollOffset != var2) {
+               this.chatScrollOffset = var2;
                this.aBoolean255 = true;
             }
          }
@@ -5543,7 +5543,7 @@ public final class Client extends GameShell {
          }
 
          if (this.anInt888 != -1) {
-            var4 = this.method663(this.anInt878, this.anInt888, (byte)5);
+            var4 = this.updateInterfaceAnimation(this.anInt878, this.anInt888);
             if (var4) {
                this.aBoolean255 = true;
             }
@@ -5553,7 +5553,7 @@ public final class Client extends GameShell {
             this.aBoolean255 = true;
          }
 
-         if (this.anInt950 == 3) {
+         if (this.objDragArea == 3) {
             this.aBoolean255 = true;
          }
 
@@ -5572,7 +5572,7 @@ public final class Client extends GameShell {
 
          if (this.sceneState == 2) {
             this.method662(503);
-            this.aClass19_16.method131(4, 550, super.graphics);
+            this.aClass19_16.draw(4, 550, super.graphics);
          }
 
          if (this.anInt988 != -1) {
@@ -5589,7 +5589,7 @@ public final class Client extends GameShell {
             this.aBoolean225 = false;
             this.aClass19_14.method130();
             this.aClass10_Sub1_Sub1_Sub3_8.method440(0, 0);
-            if (this.anInt941 == -1) {
+            if (this.sidebarInterfaceId == -1) {
                if (this.anIntArray248[this.anInt1031] != -1) {
                   if (this.anInt1031 == 0) {
                      this.aClass10_Sub1_Sub1_Sub3_1.method440(10, 22);
@@ -5649,10 +5649,10 @@ public final class Client extends GameShell {
                }
             }
 
-            this.aClass19_14.method131(160, 516, super.graphics);
+            this.aClass19_14.draw(160, 516, super.graphics);
             this.aClass19_13.method130();
             this.aClass10_Sub1_Sub1_Sub3_7.method440(0, 0);
-            if (this.anInt941 == -1) {
+            if (this.sidebarInterfaceId == -1) {
                if (this.anIntArray248[this.anInt1031] != -1) {
                   if (this.anInt1031 == 7) {
                      this.aClass10_Sub1_Sub1_Sub3_9.method440(0, 42);
@@ -5708,9 +5708,9 @@ public final class Client extends GameShell {
                }
             }
 
-            this.aClass19_13.method131(466, 496, super.graphics);
-            this.aClass19_17.method130();
-            Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray238;
+            this.aClass19_13.draw(466, 496, super.graphics);
+            this.areaViewport.method130();
+            Draw3D.lineOffset = this.anIntArray238;
          }
 
          if (this.aBoolean253) {
@@ -5718,19 +5718,19 @@ public final class Client extends GameShell {
             this.aClass19_12.method130();
             this.aClass10_Sub1_Sub1_Sub3_6.method440(0, 0);
             this.aClass10_Sub1_Sub1_Sub2_3.method149(true, this.anInt928, 16777215, 28, 55, "Public chat");
-            if (this.anInt899 == 0) {
+            if (this.publicChatSetting == 0) {
                this.aClass10_Sub1_Sub1_Sub2_3.method149(true, this.anInt928, 65280, 41, 55, "On");
             }
 
-            if (this.anInt899 == 1) {
+            if (this.publicChatSetting == 1) {
                this.aClass10_Sub1_Sub1_Sub2_3.method149(true, this.anInt928, 16776960, 41, 55, "Friends");
             }
 
-            if (this.anInt899 == 2) {
+            if (this.publicChatSetting == 2) {
                this.aClass10_Sub1_Sub1_Sub2_3.method149(true, this.anInt928, 16711680, 41, 55, "Off");
             }
 
-            if (this.anInt899 == 3) {
+            if (this.publicChatSetting == 3) {
                this.aClass10_Sub1_Sub1_Sub2_3.method149(true, this.anInt928, 65535, 41, 55, "Hide");
             }
 
@@ -5761,51 +5761,51 @@ public final class Client extends GameShell {
             }
 
             this.aClass10_Sub1_Sub1_Sub2_3.method149(true, this.anInt928, 16777215, 33, 458, "Report abuse");
-            this.aClass19_12.method131(453, 0, super.graphics);
-            this.aClass19_17.method130();
-            Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray238;
+            this.aClass19_12.draw(453, 0, super.graphics);
+            this.areaViewport.method130();
+            Draw3D.lineOffset = this.anIntArray238;
          }
 
          this.anInt878 = 0;
       } else {
          if (this.sceneState == 2) {
-            this.method663(this.anInt878, this.anInt926, (byte)5);
+            this.updateInterfaceAnimation(this.anInt878, this.anInt926);
             if (this.anInt880 != -1) {
-               this.method663(this.anInt878, this.anInt880, (byte)5);
+               this.updateInterfaceAnimation(this.anInt878, this.anInt880);
             }
 
             this.anInt878 = 0;
             this.method722(this.anInt964);
             super.gameSurface.method130();
-            Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray239;
+            Draw3D.lineOffset = this.anIntArray239;
             Draw2D.clear();
             this.aBoolean236 = true;
-            Class14 var1 = Class14.method87(this.anInt926);
+            ComType var1 = ComType.method87(this.anInt926);
             if (var1.anInt123 == 512 && var1.anInt121 == 334 && var1.anInt120 == 0) {
                var1.anInt123 = 765;
                var1.anInt121 = 503;
             }
 
-            this.method717(0, 0, var1, 0);
+            this.drawInterface(0, 0, var1, 0);
             if (this.anInt880 != -1) {
-               var1 = Class14.method87(this.anInt880);
+               var1 = ComType.method87(this.anInt880);
                if (var1.anInt123 == 512 && var1.anInt121 == 334 && var1.anInt120 == 0) {
                   var1.anInt123 = 765;
                   var1.anInt121 = 503;
                }
 
-               this.method717(0, 0, var1, 0);
+               this.drawInterface(0, 0, var1, 0);
             }
 
             if (this.menuVisible) {
-               this.method703();
+               this.drawMenu();
             } else {
-               this.method666();
-               this.method609();
+               this.handleInput();
+               this.drawTooltip();
             }
          }
 
-         super.gameSurface.method131(0, 0, super.graphics);
+         super.gameSurface.draw(0, 0, super.graphics);
       }
 
    }
@@ -5882,7 +5882,7 @@ public final class Client extends GameShell {
          var4 += var6;
       }
 
-      this.aClass19_22.method131(0, 0, super.graphics);
+      this.aClass19_22.draw(0, 0, super.graphics);
       boolean var15 = true;
 
       for(var5 = 0; var5 < 33920; ++var5) {
@@ -5914,7 +5914,7 @@ public final class Client extends GameShell {
          var4 += 128 - var8 - var7;
       }
 
-      this.aClass19_23.method131(0, 637, super.graphics);
+      this.aClass19_23.draw(0, 637, super.graphics);
    }
 
    private boolean method653() {
@@ -5923,13 +5923,13 @@ public final class Client extends GameShell {
 
    private void method651() {
       for(Class10_Sub1_Sub2_Sub6 var1 = (Class10_Sub1_Sub2_Sub6)this.spotanims.method6(); var1 != null; var1 = (Class10_Sub1_Sub2_Sub6)this.spotanims.method8()) {
-         if (var1.anInt623 == this.anInt942 && !var1.aBoolean156) {
+         if (var1.anInt623 == this.currentLevel && !var1.aBoolean156) {
             if (anInt1050 >= var1.anInt629) {
                var1.method420((byte)1, this.anInt878);
                if (var1.aBoolean156) {
                   var1.unlink();
                } else {
-                  this.aClass23_1.method201(-1, var1, var1.anInt624, var1.anInt626, false, var1.anInt623, 60, var1.anInt625, 0);
+                  this.scene.method201(-1, var1, var1.anInt624, var1.anInt626, false, var1.anInt623, 60, var1.anInt625, 0);
                }
             }
          } else {
@@ -5940,10 +5940,10 @@ public final class Client extends GameShell {
    }
 
    private void method687(int var1) {
-      Class14 var2 = Class14.method87(var1);
+      ComType var2 = ComType.method87(var1);
 
       for(int var3 = 0; var3 < var2.anIntArray43.length && var2.anIntArray43[var3] != -1; ++var3) {
-         Class14 var4 = Class14.method87(var2.anIntArray43[var3]);
+         ComType var4 = ComType.method87(var2.anIntArray43[var3]);
          if (var4.anInt120 == 1) {
             this.method687(var4.anInt111);
          }
@@ -6005,7 +6005,7 @@ public final class Client extends GameShell {
       }
    }
 
-   private void method717(int var1, int var2, Class14 var3, int var4) {
+   private void drawInterface(int var1, int var2, ComType var3, int var4) {
       if (var3.anInt120 == 0 && var3.anIntArray43 != null && (!var3.aBoolean33 || this.anInt1037 == var3.anInt111 || this.anInt1028 == var3.anInt111 || this.anInt946 == var3.anInt111)) {
          int var5 = Draw2D.left;
          int var6 = Draw2D.top;
@@ -6017,7 +6017,7 @@ public final class Client extends GameShell {
          for(int var10 = 0; var10 < var9; ++var10) {
             int var11 = var3.anIntArray41[var10] + var2;
             int var12 = var3.anIntArray46[var10] + var1 - var4;
-            Class14 var13 = Class14.method87(var3.anIntArray43[var10]);
+            ComType var13 = ComType.method87(var3.anIntArray43[var10]);
             int var14 = var11 + var13.anInt117;
             int var15 = var12 + var13.anInt134;
             if (var13.anInt124 > 0) {
@@ -6033,7 +6033,7 @@ public final class Client extends GameShell {
                   var13.anInt118 = 0;
                }
 
-               this.method717(var15, var14, var13, var13.anInt118);
+               this.drawInterface(var15, var14, var13, var13.anInt118);
                if (var13.anInt147 > var13.anInt121) {
                   this.method631(var13.anInt118, var14 + var13.anInt123, var13.anInt121, var13.anInt147, var15);
                }
@@ -6063,23 +6063,23 @@ public final class Client extends GameShell {
                            if (var13.aClass10_Sub1_Sub1_Sub1Array1 != null && var22 < 20) {
                               var36 = var13.aClass10_Sub1_Sub1_Sub1Array1[var22];
                               if (var36 != null) {
-                                 var36.method78(var32, var18);
+                                 var36.draw(var32, var18);
                               }
                            }
                         } else {
                            var23 = 0;
                            var19 = 0;
                            var20 = var13.anIntArray44[var22] - 1;
-                           if (var18 > Draw2D.left - 32 && var18 < Draw2D.right && var32 > Draw2D.top - 32 && var32 < Draw2D.bottom || this.anInt950 != 0 && this.anInt949 == var22) {
+                           if (var18 > Draw2D.left - 32 && var18 < Draw2D.right && var32 > Draw2D.top - 32 && var32 < Draw2D.bottom || this.objDragArea != 0 && this.anInt949 == var22) {
                               var21 = 0;
                               if (this.objSelected == 1 && this.anInt966 == var22 && this.anInt967 == var13.anInt111) {
                                  var21 = 16777215;
                               }
 
-                              var36 = Class17.method113(var21, var13.anIntArray40[var22], var20);
+                              var36 = ObjType.method113(var21, var13.anIntArray40[var22], var20);
                               if (var36 != null) {
                                  int var37;
-                                 if (this.anInt950 != 0 && this.anInt949 == var22 && this.anInt948 == var13.anInt111) {
+                                 if (this.objDragArea != 0 && this.anInt949 == var22 && this.anInt948 == var13.anInt111) {
                                     var23 = super.mouseX - this.anInt951;
                                     var19 = super.mouseY - this.anInt952;
                                     if (var23 < 5 && var23 > -5) {
@@ -6126,7 +6126,7 @@ public final class Client extends GameShell {
                                  } else if (this.anInt1056 != 0 && this.anInt1055 == var22 && this.anInt1054 == var13.anInt111) {
                                     var36.method80(var18, var32);
                                  } else {
-                                    var36.method78(var32, var18);
+                                    var36.draw(var32, var18);
                                  }
 
                                  if (var36.cropW == 33 || var13.anIntArray40[var22] != 1) {
@@ -6277,15 +6277,15 @@ public final class Client extends GameShell {
                      }
 
                      if (var34 != null) {
-                        var34.method78(var15, var14);
+                        var34.draw(var15, var14);
                      }
                   } else if (var13.anInt120 == 6) {
-                     var22 = Class10_Sub1_Sub1_Sub4.anInt686;
-                     var16 = Class10_Sub1_Sub1_Sub4.anInt687;
-                     Class10_Sub1_Sub1_Sub4.anInt686 = var14 + var13.anInt123 / 2;
-                     Class10_Sub1_Sub1_Sub4.anInt687 = var15 + var13.anInt121 / 2;
-                     var17 = Class10_Sub1_Sub1_Sub4.anIntArray181[var13.anInt130] * var13.anInt129 >> 16;
-                     var18 = Class10_Sub1_Sub1_Sub4.anIntArray182[var13.anInt130] * var13.anInt129 >> 16;
+                     var22 = Draw3D.anInt686;
+                     var16 = Draw3D.anInt687;
+                     Draw3D.anInt686 = var14 + var13.anInt123 / 2;
+                     Draw3D.anInt687 = var15 + var13.anInt121 / 2;
+                     var17 = Draw3D.anIntArray181[var13.anInt130] * var13.anInt129 >> 16;
+                     var18 = Draw3D.anIntArray182[var13.anInt130] * var13.anInt129 >> 16;
                      boolean var30 = this.method670(var13);
                      if (var30) {
                         var23 = var13.anInt149;
@@ -6297,7 +6297,7 @@ public final class Client extends GameShell {
                      if (var23 == -1) {
                         var38 = var13.method95(-1, -1, var30);
                      } else {
-                        Class15 var28 = Class15.aClass15Array1[var23];
+                        SeqType var28 = SeqType.aClass15Array1[var23];
                         var38 = var13.method95(var28.anIntArray47[var13.anInt119], var28.anIntArray48[var13.anInt119], var30);
                      }
 
@@ -6305,8 +6305,8 @@ public final class Client extends GameShell {
                         var38.method292(var13.anInt131, 0, var13.anInt130, 0, var17, var18);
                      }
 
-                     Class10_Sub1_Sub1_Sub4.anInt686 = var22;
-                     Class10_Sub1_Sub1_Sub4.anInt687 = var16;
+                     Draw3D.anInt686 = var22;
+                     Draw3D.anInt687 = var16;
                   } else {
                      String var31;
                      if (var13.anInt120 == 7) {
@@ -6316,7 +6316,7 @@ public final class Client extends GameShell {
                         for(var17 = 0; var17 < var13.anInt121; ++var17) {
                            for(var18 = 0; var18 < var13.anInt123; ++var18) {
                               if (var13.anIntArray44[var16] > 0) {
-                                 Class17 var26 = Class17.method104(var13.anIntArray44[var16] - 1);
+                                 ObjType var26 = ObjType.method104(var13.anIntArray44[var16] - 1);
                                  var31 = String.valueOf(var26.aString7);
                                  if (var26.aBoolean52 || var13.anIntArray40[var16] != 1) {
                                     var31 = var31 + " x" + method710(var13.anIntArray40[var16]);
@@ -6419,7 +6419,7 @@ public final class Client extends GameShell {
          this.aClass19_18 = null;
          this.aClass19_16 = null;
          this.aClass19_15 = null;
-         this.aClass19_17 = null;
+         this.areaViewport = null;
          this.aClass19_12 = null;
          this.aClass19_13 = null;
          this.aClass19_14 = null;
@@ -6624,14 +6624,14 @@ public final class Client extends GameShell {
                this.anInt985 = -1;
                this.method619(aBoolean249, this.anInt888);
                this.anInt888 = -1;
-               this.method619(aBoolean249, this.anInt976);
-               this.anInt976 = -1;
+               this.method619(aBoolean249, this.viewportInterfaceId);
+               this.viewportInterfaceId = -1;
                this.method619(aBoolean249, this.anInt926);
                this.anInt926 = -1;
                this.method619(aBoolean249, this.anInt880);
                this.anInt880 = -1;
-               this.method619(aBoolean249, this.anInt941);
-               this.anInt941 = -1;
+               this.method619(aBoolean249, this.sidebarInterfaceId);
+               this.sidebarInterfaceId = -1;
                this.method619(aBoolean249, this.anInt1027);
                this.anInt1027 = -1;
                this.aBoolean254 = false;
@@ -6797,7 +6797,7 @@ public final class Client extends GameShell {
       this.anIntArray255[0] = var3;
       boolean var17 = false;
       int var18 = this.anIntArray254.length;
-      int[][] var19 = this.aClass47Array1[this.anInt942].anIntArrayArray16;
+      int[][] var19 = this.levelCollisionMap[this.currentLevel].anIntArrayArray16;
 
       int var20;
       while(var15 != var16) {
@@ -6810,18 +6810,18 @@ public final class Client extends GameShell {
          }
 
          if (var7 != 0) {
-            if ((var7 < 5 || var7 == 10) && this.aClass47Array1[this.anInt942].method489(var8, var2, var7 - 1, var12, var13, var10)) {
+            if ((var7 < 5 || var7 == 10) && this.levelCollisionMap[this.currentLevel].method489(var8, var2, var7 - 1, var12, var13, var10)) {
                var17 = true;
                break;
             }
 
-            if (var7 < 10 && this.aClass47Array1[this.anInt942].method490(var13, var8, var12, var10, var7 - 1, var2)) {
+            if (var7 < 10 && this.levelCollisionMap[this.currentLevel].method490(var13, var8, var12, var10, var7 - 1, var2)) {
                var17 = true;
                break;
             }
          }
 
-         if (var4 != 0 && var5 != 0 && this.aClass47Array1[this.anInt942].method491(var4, var12, var8, var9, var5, var2, var13)) {
+         if (var4 != 0 && var5 != 0 && this.levelCollisionMap[this.currentLevel].method491(var4, var12, var8, var9, var5, var2, var13)) {
             var17 = true;
             break;
          }
@@ -6999,9 +6999,9 @@ public final class Client extends GameShell {
             this.out.p1(var18 + var18 + 3);
          }
 
-         this.out.method338(var25 + this.anInt914);
+         this.out.method338(var25 + this.sceneBaseTileX);
          this.out.p1(super.actionKey[5] == 1 ? 1 : 0);
-         this.out.method338(var22 + this.anInt915);
+         this.out.method338(var22 + this.sceneBaseTileZ);
          this.anInt955 = this.anIntArray254[0];
          this.anInt956 = this.anIntArray255[0];
 
@@ -7016,7 +7016,7 @@ public final class Client extends GameShell {
    }
 
    private void method599(boolean var1, byte[] var2, int var3) {
-      if (this.aBoolean259) {
+      if (this.midiActive) {
          signlink.anInt1064 = var1 ? 1 : 0;
          signlink.midisave(var2, var2.length);
          boolean var4 = false;
@@ -7070,7 +7070,7 @@ public final class Client extends GameShell {
 
    }
 
-   private void method703() {
+   private void drawMenu() {
       int var1 = this.anInt1040;
       int var2 = this.anInt1041;
       int var3 = this.anInt1042;
@@ -7103,12 +7103,12 @@ public final class Client extends GameShell {
             var9 = 16776960;
          }
 
-         this.aClass10_Sub1_Sub1_Sub2_4.method156(var9, var1 + 3, var8, true, this.aStringArray12[var7]);
+         this.aClass10_Sub1_Sub1_Sub2_4.method156(var9, var1 + 3, var8, true, this.menuOption[var7]);
       }
 
    }
 
-   private boolean method670(Class14 var1) {
+   private boolean method670(ComType var1) {
       if (var1.anIntArray45 == null) {
          return false;
       } else {
@@ -7136,14 +7136,14 @@ public final class Client extends GameShell {
       }
    }
 
-   private void method641(int var1, Class14 var2, int var3, int var4, int var5, int var6, int var7) {
+   private void handleInterfaceInput(int var1, ComType var2, int var3, int var4, int var5, int var6, int var7) {
       if (var2.anInt120 == 0 && var2.anIntArray43 != null && !var2.aBoolean33 && var6 >= var5 && var7 >= var1 && var6 <= var5 + var2.anInt123 && var7 <= var1 + var2.anInt121) {
          int var8 = var2.anIntArray43.length;
 
          for(int var9 = 0; var9 < var8; ++var9) {
             int var10 = var2.anIntArray41[var9] + var5;
             int var11 = var2.anIntArray46[var9] + var1 - var4;
-            Class14 var12 = Class14.method87(var2.anIntArray43[var9]);
+            ComType var12 = ComType.method87(var2.anIntArray43[var9]);
             int var13 = var10 + var12.anInt117;
             int var14 = var11 + var12.anInt134;
             if ((var12.anInt132 >= 0 || var12.anInt136 != 0) && var6 >= var13 && var7 >= var14 && var6 < var13 + var12.anInt123 && var7 < var14 + var12.anInt121) {
@@ -7159,7 +7159,7 @@ public final class Client extends GameShell {
             }
 
             if (var12.anInt120 == 0) {
-               this.method641(var14, var12, var3, var12.anInt118, var13, var6, var7);
+               this.handleInterfaceInput(var14, var12, var3, var12.anInt118, var13, var6, var7);
                if (var12.anInt147 > var12.anInt121) {
                   this.method617(var12.anInt147, var14, var12, var7, var3, var6, var12.anInt121, var13 + var12.anInt123);
                }
@@ -7171,8 +7171,8 @@ public final class Client extends GameShell {
                   }
 
                   if (!var15) {
-                     this.aStringArray12[this.menuSize] = var12.aString4;
-                     this.anIntArray233[this.menuSize] = 352;
+                     this.menuOption[this.menuSize] = var12.aString4;
+                     this.menuAction[this.menuSize] = 352;
                      this.anIntArray232[this.menuSize] = var12.anInt111;
                      ++this.menuSize;
                   }
@@ -7184,18 +7184,18 @@ public final class Client extends GameShell {
                      var22 = var22.substring(0, var22.indexOf(" "));
                   }
 
-                  this.aStringArray12[this.menuSize] = var22 + " @gre@" + var12.aString1;
-                  this.anIntArray233[this.menuSize] = 70;
+                  this.menuOption[this.menuSize] = var22 + " @gre@" + var12.aString1;
+                  this.menuAction[this.menuSize] = 70;
                   this.anIntArray232[this.menuSize] = var12.anInt111;
                   ++this.menuSize;
                }
 
                if (var12.anInt150 == 3 && var6 >= var13 && var7 >= var14 && var6 < var13 + var12.anInt123 && var7 < var14 + var12.anInt121) {
-                  this.aStringArray12[this.menuSize] = "Close";
+                  this.menuOption[this.menuSize] = "Close";
                   if (var3 == 3) {
-                     this.anIntArray233[this.menuSize] = 55;
+                     this.menuAction[this.menuSize] = 55;
                   } else {
-                     this.anIntArray233[this.menuSize] = 639;
+                     this.menuAction[this.menuSize] = 639;
                   }
 
                   this.anIntArray232[this.menuSize] = var12.anInt111;
@@ -7203,22 +7203,22 @@ public final class Client extends GameShell {
                }
 
                if (var12.anInt150 == 4 && var6 >= var13 && var7 >= var14 && var6 < var13 + var12.anInt123 && var7 < var14 + var12.anInt121) {
-                  this.aStringArray12[this.menuSize] = var12.aString4;
-                  this.anIntArray233[this.menuSize] = 890;
+                  this.menuOption[this.menuSize] = var12.aString4;
+                  this.menuAction[this.menuSize] = 890;
                   this.anIntArray232[this.menuSize] = var12.anInt111;
                   ++this.menuSize;
                }
 
                if (var12.anInt150 == 5 && var6 >= var13 && var7 >= var14 && var6 < var13 + var12.anInt123 && var7 < var14 + var12.anInt121) {
-                  this.aStringArray12[this.menuSize] = var12.aString4;
-                  this.anIntArray233[this.menuSize] = 518;
+                  this.menuOption[this.menuSize] = var12.aString4;
+                  this.menuAction[this.menuSize] = 518;
                   this.anIntArray232[this.menuSize] = var12.anInt111;
                   ++this.menuSize;
                }
 
                if (var12.anInt150 == 6 && !this.aBoolean254 && var6 >= var13 && var7 >= var14 && var6 < var13 + var12.anInt123 && var7 < var14 + var12.anInt121) {
-                  this.aStringArray12[this.menuSize] = var12.aString4;
-                  this.anIntArray233[this.menuSize] = 575;
+                  this.menuOption[this.menuSize] = var12.aString4;
+                  this.menuAction[this.menuSize] = 575;
                   this.anIntArray232[this.menuSize] = var12.anInt111;
                   ++this.menuSize;
                }
@@ -7239,11 +7239,11 @@ public final class Client extends GameShell {
                            this.anInt930 = var23;
                            this.anInt931 = var12.anInt111;
                            if (var12.anIntArray44[var23] > 0) {
-                              Class17 var20 = Class17.method104(var12.anIntArray44[var23] - 1);
+                              ObjType var20 = ObjType.method104(var12.anIntArray44[var23] - 1);
                               if (this.objSelected == 1 && var12.aBoolean34) {
                                  if (var12.anInt111 != this.anInt967 || var23 != this.anInt966) {
-                                    this.aStringArray12[this.menuSize] = "Use " + this.aString30 + " with @lre@" + var20.aString7;
-                                    this.anIntArray233[this.menuSize] = 903;
+                                    this.menuOption[this.menuSize] = "Use " + this.aString30 + " with @lre@" + var20.aString7;
+                                    this.menuAction[this.menuSize] = 903;
                                     this.anIntArray234[this.menuSize] = var20.anInt196;
                                     this.anIntArray231[this.menuSize] = var23;
                                     this.anIntArray232[this.menuSize] = var12.anInt111;
@@ -7251,8 +7251,8 @@ public final class Client extends GameShell {
                                  }
                               } else if (this.spellSelected == 1 && var12.aBoolean34) {
                                  if ((this.anInt980 & 16) == 16) {
-                                    this.aStringArray12[this.menuSize] = this.aString31 + " @lre@" + var20.aString7;
-                                    this.anIntArray233[this.menuSize] = 361;
+                                    this.menuOption[this.menuSize] = this.aString31 + " @lre@" + var20.aString7;
+                                    this.menuAction[this.menuSize] = 361;
                                     this.anIntArray234[this.menuSize] = var20.anInt196;
                                     this.anIntArray231[this.menuSize] = var23;
                                     this.anIntArray232[this.menuSize] = var12.anInt111;
@@ -7263,13 +7263,13 @@ public final class Client extends GameShell {
                                  if (var12.aBoolean34) {
                                     for(var21 = 4; var21 >= 3; --var21) {
                                        if (var20.aStringArray3 != null && var20.aStringArray3[var21] != null) {
-                                          this.aStringArray12[this.menuSize] = var20.aStringArray3[var21] + " @lre@" + var20.aString7;
+                                          this.menuOption[this.menuSize] = var20.aStringArray3[var21] + " @lre@" + var20.aString7;
                                           if (var21 == 3) {
-                                             this.anIntArray233[this.menuSize] = 227;
+                                             this.menuAction[this.menuSize] = 227;
                                           }
 
                                           if (var21 == 4) {
-                                             this.anIntArray233[this.menuSize] = 891;
+                                             this.menuAction[this.menuSize] = 891;
                                           }
 
                                           this.anIntArray234[this.menuSize] = var20.anInt196;
@@ -7277,8 +7277,8 @@ public final class Client extends GameShell {
                                           this.anIntArray232[this.menuSize] = var12.anInt111;
                                           ++this.menuSize;
                                        } else if (var21 == 4) {
-                                          this.aStringArray12[this.menuSize] = "Drop @lre@" + var20.aString7;
-                                          this.anIntArray233[this.menuSize] = 891;
+                                          this.menuOption[this.menuSize] = "Drop @lre@" + var20.aString7;
+                                          this.menuAction[this.menuSize] = 891;
                                           this.anIntArray234[this.menuSize] = var20.anInt196;
                                           this.anIntArray231[this.menuSize] = var23;
                                           this.anIntArray232[this.menuSize] = var12.anInt111;
@@ -7288,8 +7288,8 @@ public final class Client extends GameShell {
                                  }
 
                                  if (var12.aBoolean43) {
-                                    this.aStringArray12[this.menuSize] = "Use @lre@" + var20.aString7;
-                                    this.anIntArray233[this.menuSize] = 52;
+                                    this.menuOption[this.menuSize] = "Use @lre@" + var20.aString7;
+                                    this.menuAction[this.menuSize] = 52;
                                     this.anIntArray234[this.menuSize] = var20.anInt196;
                                     this.anIntArray231[this.menuSize] = var23;
                                     this.anIntArray232[this.menuSize] = var12.anInt111;
@@ -7299,17 +7299,17 @@ public final class Client extends GameShell {
                                  if (var12.aBoolean34 && var20.aStringArray3 != null) {
                                     for(var21 = 2; var21 >= 0; --var21) {
                                        if (var20.aStringArray3[var21] != null) {
-                                          this.aStringArray12[this.menuSize] = var20.aStringArray3[var21] + " @lre@" + var20.aString7;
+                                          this.menuOption[this.menuSize] = var20.aStringArray3[var21] + " @lre@" + var20.aString7;
                                           if (var21 == 0) {
-                                             this.anIntArray233[this.menuSize] = 961;
+                                             this.menuAction[this.menuSize] = 961;
                                           }
 
                                           if (var21 == 1) {
-                                             this.anIntArray233[this.menuSize] = 399;
+                                             this.menuAction[this.menuSize] = 399;
                                           }
 
                                           if (var21 == 2) {
-                                             this.anIntArray233[this.menuSize] = 324;
+                                             this.menuAction[this.menuSize] = 324;
                                           }
 
                                           this.anIntArray234[this.menuSize] = var20.anInt196;
@@ -7323,25 +7323,25 @@ public final class Client extends GameShell {
                                  if (var12.aStringArray1 != null) {
                                     for(var21 = 4; var21 >= 0; --var21) {
                                        if (var12.aStringArray1[var21] != null) {
-                                          this.aStringArray12[this.menuSize] = var12.aStringArray1[var21] + " @lre@" + var20.aString7;
+                                          this.menuOption[this.menuSize] = var12.aStringArray1[var21] + " @lre@" + var20.aString7;
                                           if (var21 == 0) {
-                                             this.anIntArray233[this.menuSize] = 9;
+                                             this.menuAction[this.menuSize] = 9;
                                           }
 
                                           if (var21 == 1) {
-                                             this.anIntArray233[this.menuSize] = 225;
+                                             this.menuAction[this.menuSize] = 225;
                                           }
 
                                           if (var21 == 2) {
-                                             this.anIntArray233[this.menuSize] = 444;
+                                             this.menuAction[this.menuSize] = 444;
                                           }
 
                                           if (var21 == 3) {
-                                             this.anIntArray233[this.menuSize] = 564;
+                                             this.menuAction[this.menuSize] = 564;
                                           }
 
                                           if (var21 == 4) {
-                                             this.anIntArray233[this.menuSize] = 894;
+                                             this.menuAction[this.menuSize] = 894;
                                           }
 
                                           this.anIntArray234[this.menuSize] = var20.anInt196;
@@ -7352,8 +7352,8 @@ public final class Client extends GameShell {
                                     }
                                  }
 
-                                 this.aStringArray12[this.menuSize] = "Examine @lre@" + var20.aString7;
-                                 this.anIntArray233[this.menuSize] = 1094;
+                                 this.menuOption[this.menuSize] = "Examine @lre@" + var20.aString7;
+                                 this.menuAction[this.menuSize] = 1094;
                                  this.anIntArray234[this.menuSize] = var20.anInt196;
                                  this.anIntArray231[this.menuSize] = var23;
                                  this.anIntArray232[this.menuSize] = var12.anInt111;
@@ -7372,9 +7372,9 @@ public final class Client extends GameShell {
 
    }
 
-   private int method693() {
-      int var1 = this.method685(this.anInt992, this.anInt990, this.anInt942);
-      return var1 - this.anInt991 < 800 && (this.aByteArrayArrayArray8[this.anInt942][this.anInt990 >> 7][this.anInt992 >> 7] & 4) != 0 ? this.anInt942 : 3;
+   private int getTopLevelCutscene() {
+      int var1 = this.getHeightmapY(this.cameraZ, this.cameraX, this.currentLevel);
+      return var1 - this.cameraY < 800 && (this.aByteArrayArrayArray8[this.currentLevel][this.cameraX >> 7][this.cameraZ >> 7] & 4) != 0 ? this.currentLevel : 3;
    }
 
    private void method589(String var1) {
@@ -7394,8 +7394,8 @@ public final class Client extends GameShell {
                this.anInt840 = 0;
 
                label46:
-               for(var5 = 0; var5 < Class17.anInt179; ++var5) {
-                  Class17 var9 = Class17.method104(var5);
+               for(var5 = 0; var5 < ObjType.anInt179; ++var5) {
+                  ObjType var9 = ObjType.method104(var5);
                   if (var9.anInt182 == -1 && var9.aString7 != null) {
                      String var7 = var9.aString7.toLowerCase();
 
@@ -7430,14 +7430,14 @@ public final class Client extends GameShell {
    }
 
    private void method711(PathingEntity var1, int var2) {
-      this.method712(var1.anInt739, var2, var1.anInt740);
+      this.method712(var1.x, var2, var1.z);
    }
 
    private boolean method701(int var1, byte var2) {
       if (var1 < 0) {
          return false;
       } else {
-         int var3 = this.anIntArray233[var1];
+         int var3 = this.menuAction[var1];
          if (var2 != 97) {
             throw new NullPointerException();
          } else {
@@ -7452,63 +7452,63 @@ public final class Client extends GameShell {
 
    private void method620(int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
       if (var2 >= 1 && var4 >= 1 && var2 <= 102 && var4 <= 102) {
-         if (lowMemory && var5 != this.anInt942) {
+         if (lowMemory && var5 != this.currentLevel) {
             return;
          }
 
          int var8 = 0;
          if (var7 == 0) {
-            var8 = this.aClass23_1.method216(var5, var2, var4);
+            var8 = this.scene.method216(var5, var2, var4);
          }
 
          if (var7 == 1) {
-            var8 = this.aClass23_1.method217(var2, var5, var4);
+            var8 = this.scene.method217(var2, var5, var4);
          }
 
          if (var7 == 2) {
-            var8 = this.aClass23_1.method218(var5, var2, var4);
+            var8 = this.scene.method218(var5, var2, var4);
          }
 
          if (var7 == 3) {
-            var8 = this.aClass23_1.method219(var5, var2, var4);
+            var8 = this.scene.method219(var5, var2, var4);
          }
 
          int var9;
          if (var8 != 0) {
-            var9 = this.aClass23_1.method220(var5, var2, var4, var8);
+            var9 = this.scene.method220(var5, var2, var4, var8);
             int var10 = var8 >> 14 & 32767;
             int var11 = var9 & 31;
             int var12 = var9 >> 6;
-            Class48 var13;
+            LocType var13;
             if (var7 == 0) {
-               this.aClass23_1.method207(var4, var5, var2);
-               var13 = Class48.method523(var10);
+               this.scene.method207(var4, var5, var2);
+               var13 = LocType.method523(var10);
                if (var13.aBoolean192) {
-                  this.aClass47Array1[var5].method485(var12, var2, var4, var11, var13.aBoolean191);
+                  this.levelCollisionMap[var5].method485(var12, var2, var4, var11, var13.aBoolean191);
                }
             }
 
             if (var7 == 1) {
-               this.aClass23_1.method208(var2, var4, var5);
+               this.scene.method208(var2, var4, var5);
             }
 
             if (var7 == 2) {
-               this.aClass23_1.method209(var4, var5, var2);
-               var13 = Class48.method523(var10);
+               this.scene.method209(var4, var5, var2);
+               var13 = LocType.method523(var10);
                if (var2 + var13.anInt707 > 103 || var4 + var13.anInt707 > 103 || var2 + var13.anInt697 > 103 || var4 + var13.anInt697 > 103) {
                   return;
                }
 
                if (var13.aBoolean192) {
-                  this.aClass47Array1[var5].method486(this.anInt927, var4, var2, var12, var13.anInt697, var13.aBoolean191, var13.anInt707);
+                  this.levelCollisionMap[var5].method486(this.anInt927, var4, var2, var12, var13.anInt697, var13.aBoolean191, var13.anInt707);
                }
             }
 
             if (var7 == 3) {
-               this.aClass23_1.method210(var2, var4, var5);
-               var13 = Class48.method523(var10);
+               this.scene.method210(var2, var4, var5);
+               var13 = LocType.method523(var10);
                if (var13.aBoolean192 && var13.aBoolean180) {
-                  this.aClass47Array1[var5].method488(var2, var4);
+                  this.levelCollisionMap[var5].method488(var2, var4);
                }
             }
          }
@@ -7519,14 +7519,14 @@ public final class Client extends GameShell {
                var9 = var5 + 1;
             }
 
-            Class8.method13(var3, var9, var6, var4, this.aClass47Array1[var5], var1, var2, var5, this.aClass23_1, this.anIntArrayArrayArray8);
+            Class8.method13(var3, var9, var6, var4, this.levelCollisionMap[var5], var1, var2, var5, this.scene, this.anIntArrayArrayArray8);
             return;
          }
       }
 
    }
 
-   private void method625() {
+   private void stopMidi() {
       signlink.aBoolean268 = false;
       signlink.anInt1064 = 0;
       signlink.midi = "stop";
@@ -7548,11 +7548,11 @@ public final class Client extends GameShell {
 
          for(var5 = 1; var5 < 103; ++var5) {
             if ((this.aByteArrayArrayArray8[var1][var5][var6] & 24) == 0) {
-               this.aClass23_1.method225(var2, var4, var1, var5, var6);
+               this.scene.method225(var2, var4, var1, var5, var6);
             }
 
             if (var1 < 3 && (this.aByteArrayArrayArray8[var1 + 1][var5][var6] & 8) != 0) {
-               this.aClass23_1.method225(var2, var4, var1 + 1, var5, var6);
+               this.scene.method225(var2, var4, var1 + 1, var5, var6);
             }
 
             var4 += 4;
@@ -7576,9 +7576,9 @@ public final class Client extends GameShell {
          }
       }
 
-      if (this.aClass19_17 != null) {
-         this.aClass19_17.method130();
-         Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray238;
+      if (this.areaViewport != null) {
+         this.areaViewport.method130();
+         Draw3D.lineOffset = this.anIntArray238;
       }
 
       ++anInt938;
@@ -7592,15 +7592,15 @@ public final class Client extends GameShell {
 
       for(var6 = 0; var6 < 104; ++var6) {
          for(var7 = 0; var7 < 104; ++var7) {
-            int var8 = this.aClass23_1.method219(this.anInt942, var6, var7);
+            int var8 = this.scene.method219(this.currentLevel, var6, var7);
             if (var8 != 0) {
                var8 = var8 >> 14 & 32767;
-               int var9 = Class48.method523(var8).anInt710;
+               int var9 = LocType.method523(var8).anInt710;
                if (var9 >= 0) {
                   int var10 = var6;
                   int var11 = var7;
                   if (var9 != 22 && var9 != 29 && var9 != 34 && var9 != 36 && var9 != 46 && var9 != 47 && var9 != 48) {
-                     int[][] var12 = this.aClass47Array1[this.anInt942].anIntArrayArray16;
+                     int[][] var12 = this.levelCollisionMap[this.currentLevel].anIntArrayArray16;
 
                      for(int var13 = 0; var13 < 10; ++var13) {
                         int var14 = (int)(Math.random() * 4.0);
@@ -7633,10 +7633,10 @@ public final class Client extends GameShell {
 
    }
 
-   private void method618() {
+   private void handleViewportOptions() {
       if (this.objSelected == 0 && this.spellSelected == 0) {
-         this.aStringArray12[this.menuSize] = "Walk here";
-         this.anIntArray233[this.menuSize] = 14;
+         this.menuOption[this.menuSize] = "Walk here";
+         this.menuAction[this.menuSize] = 14;
          this.anIntArray231[this.menuSize] = super.mouseX;
          this.anIntArray232[this.menuSize] = super.mouseY;
          ++this.menuSize;
@@ -7644,7 +7644,7 @@ public final class Client extends GameShell {
 
       int var1 = -1;
 
-      for(int var2 = 0; var2 < Model.anInt419; ++var2) {
+      for(int var2 = 0; var2 < Model.pickedCount; ++var2) {
          int var3 = Model.anIntArray145[var2];
          int var4 = var3 & 127;
          int var5 = var3 >> 7 & 127;
@@ -7653,8 +7653,8 @@ public final class Client extends GameShell {
          if (var3 != var1) {
             var1 = var3;
             int var8;
-            if (var6 == 2 && this.aClass23_1.method220(this.anInt942, var4, var5, var3) >= 0) {
-               Class48 var9 = Class48.method523(var7);
+            if (var6 == 2 && this.scene.method220(this.currentLevel, var4, var5, var3) >= 0) {
+               LocType var9 = LocType.method523(var7);
                if (var9.anIntArray192 != null) {
                   var9 = var9.method524();
                }
@@ -7664,8 +7664,8 @@ public final class Client extends GameShell {
                }
 
                if (this.objSelected == 1) {
-                  this.aStringArray12[this.menuSize] = "Use " + this.aString30 + " with @cya@" + var9.aString12;
-                  this.anIntArray233[this.menuSize] = 467;
+                  this.menuOption[this.menuSize] = "Use " + this.aString30 + " with @cya@" + var9.aString12;
+                  this.menuAction[this.menuSize] = 467;
                   this.anIntArray234[this.menuSize] = var3;
                   this.anIntArray231[this.menuSize] = var4;
                   this.anIntArray232[this.menuSize] = var5;
@@ -7674,25 +7674,25 @@ public final class Client extends GameShell {
                   if (var9.aStringArray7 != null) {
                      for(var8 = 4; var8 >= 0; --var8) {
                         if (var9.aStringArray7[var8] != null) {
-                           this.aStringArray12[this.menuSize] = var9.aStringArray7[var8] + " @cya@" + var9.aString12;
+                           this.menuOption[this.menuSize] = var9.aStringArray7[var8] + " @cya@" + var9.aString12;
                            if (var8 == 0) {
-                              this.anIntArray233[this.menuSize] = 35;
+                              this.menuAction[this.menuSize] = 35;
                            }
 
                            if (var8 == 1) {
-                              this.anIntArray233[this.menuSize] = 389;
+                              this.menuAction[this.menuSize] = 389;
                            }
 
                            if (var8 == 2) {
-                              this.anIntArray233[this.menuSize] = 888;
+                              this.menuAction[this.menuSize] = 888;
                            }
 
                            if (var8 == 3) {
-                              this.anIntArray233[this.menuSize] = 892;
+                              this.menuAction[this.menuSize] = 892;
                            }
 
                            if (var8 == 4) {
-                              this.anIntArray233[this.menuSize] = 1280;
+                              this.menuAction[this.menuSize] = 1280;
                            }
 
                            this.anIntArray234[this.menuSize] = var3;
@@ -7703,15 +7703,15 @@ public final class Client extends GameShell {
                      }
                   }
 
-                  this.aStringArray12[this.menuSize] = "Examine @cya@" + var9.aString12;
-                  this.anIntArray233[this.menuSize] = 1412;
+                  this.menuOption[this.menuSize] = "Examine @cya@" + var9.aString12;
+                  this.menuAction[this.menuSize] = 1412;
                   this.anIntArray234[this.menuSize] = var9.anInt696 << 14;
                   this.anIntArray231[this.menuSize] = var4;
                   this.anIntArray232[this.menuSize] = var5;
                   ++this.menuSize;
                } else if ((this.anInt980 & 4) == 4) {
-                  this.aStringArray12[this.menuSize] = this.aString31 + " @cya@" + var9.aString12;
-                  this.anIntArray233[this.menuSize] = 376;
+                  this.menuOption[this.menuSize] = this.aString31 + " @cya@" + var9.aString12;
+                  this.menuAction[this.menuSize] = 376;
                   this.anIntArray234[this.menuSize] = var3;
                   this.anIntArray231[this.menuSize] = var4;
                   this.anIntArray232[this.menuSize] = var5;
@@ -7724,17 +7724,17 @@ public final class Client extends GameShell {
             Class10_Sub1_Sub2_Sub3_Sub1 var16;
             if (var6 == 1) {
                Class10_Sub1_Sub2_Sub3_Sub1 var12 = this.npcs[var7];
-               if (var12.aClass38_1.aByte31 == 1 && (var12.anInt739 & 127) == 64 && (var12.anInt740 & 127) == 64) {
+               if (var12.aClass38_1.aByte31 == 1 && (var12.x & 127) == 64 && (var12.z & 127) == 64) {
                   for(var8 = 0; var8 < this.anInt960; ++var8) {
                      var16 = this.npcs[this.anIntArray256[var8]];
-                     if (var16 != null && var16 != var12 && var16.aClass38_1.aByte31 == 1 && var16.anInt739 == var12.anInt739 && var16.anInt740 == var12.anInt740) {
+                     if (var16 != null && var16 != var12 && var16.aClass38_1.aByte31 == 1 && var16.x == var12.x && var16.z == var12.z) {
                         this.method657(var16.aClass38_1, var5, var4, this.anIntArray256[var8]);
                      }
                   }
 
                   for(var11 = 0; var11 < this.anInt884; ++var11) {
                      var10 = this.players[this.anIntArray229[var11]];
-                     if (var10 != null && var10.anInt739 == var12.anInt739 && var10.anInt740 == var12.anInt740) {
+                     if (var10 != null && var10.x == var12.x && var10.z == var12.z) {
                         this.method613(this.anIntArray229[var11], var5, var4, var10);
                      }
                   }
@@ -7745,17 +7745,17 @@ public final class Client extends GameShell {
 
             if (var6 == 0) {
                PlayerEntity var17 = this.players[var7];
-               if ((var17.anInt739 & 127) == 64 && (var17.anInt740 & 127) == 64) {
+               if ((var17.x & 127) == 64 && (var17.z & 127) == 64) {
                   for(var8 = 0; var8 < this.anInt960; ++var8) {
                      var16 = this.npcs[this.anIntArray256[var8]];
-                     if (var16 != null && var16.aClass38_1.aByte31 == 1 && var16.anInt739 == var17.anInt739 && var16.anInt740 == var17.anInt740) {
+                     if (var16 != null && var16.aClass38_1.aByte31 == 1 && var16.x == var17.x && var16.z == var17.z) {
                         this.method657(var16.aClass38_1, var5, var4, this.anIntArray256[var8]);
                      }
                   }
 
                   for(var11 = 0; var11 < this.anInt884; ++var11) {
                      var10 = this.players[this.anIntArray229[var11]];
-                     if (var10 != null && var10 != var17 && var10.anInt739 == var17.anInt739 && var10.anInt740 == var17.anInt740) {
+                     if (var10 != null && var10 != var17 && var10.x == var17.x && var10.z == var17.z) {
                         this.method613(this.anIntArray229[var11], var5, var4, var10);
                      }
                   }
@@ -7765,21 +7765,21 @@ public final class Client extends GameShell {
             }
 
             if (var6 == 3) {
-               Class6 var18 = this.levelObjStacks[this.anInt942][var4][var5];
+               Class6 var18 = this.levelObjStacks[this.currentLevel][var4][var5];
                if (var18 != null) {
                   for(Class10_Sub1_Sub2_Sub1 var13 = (Class10_Sub1_Sub2_Sub1)var18.method7(); var13 != null; var13 = (Class10_Sub1_Sub2_Sub1)var18.method9()) {
-                     Class17 var14 = Class17.method104(var13.anInt211);
+                     ObjType var14 = ObjType.method104(var13.anInt211);
                      if (this.objSelected == 1) {
-                        this.aStringArray12[this.menuSize] = "Use " + this.aString30 + " with @lre@" + var14.aString7;
-                        this.anIntArray233[this.menuSize] = 100;
+                        this.menuOption[this.menuSize] = "Use " + this.aString30 + " with @lre@" + var14.aString7;
+                        this.menuAction[this.menuSize] = 100;
                         this.anIntArray234[this.menuSize] = var13.anInt211;
                         this.anIntArray231[this.menuSize] = var4;
                         this.anIntArray232[this.menuSize] = var5;
                         ++this.menuSize;
                      } else if (this.spellSelected == 1) {
                         if ((this.anInt980 & 1) == 1) {
-                           this.aStringArray12[this.menuSize] = this.aString31 + " @lre@" + var14.aString7;
-                           this.anIntArray233[this.menuSize] = 199;
+                           this.menuOption[this.menuSize] = this.aString31 + " @lre@" + var14.aString7;
+                           this.menuAction[this.menuSize] = 199;
                            this.anIntArray234[this.menuSize] = var13.anInt211;
                            this.anIntArray231[this.menuSize] = var4;
                            this.anIntArray232[this.menuSize] = var5;
@@ -7788,25 +7788,25 @@ public final class Client extends GameShell {
                      } else {
                         for(int var15 = 4; var15 >= 0; --var15) {
                            if (var14.aStringArray2 != null && var14.aStringArray2[var15] != null) {
-                              this.aStringArray12[this.menuSize] = var14.aStringArray2[var15] + " @lre@" + var14.aString7;
+                              this.menuOption[this.menuSize] = var14.aStringArray2[var15] + " @lre@" + var14.aString7;
                               if (var15 == 0) {
-                                 this.anIntArray233[this.menuSize] = 68;
+                                 this.menuAction[this.menuSize] = 68;
                               }
 
                               if (var15 == 1) {
-                                 this.anIntArray233[this.menuSize] = 26;
+                                 this.menuAction[this.menuSize] = 26;
                               }
 
                               if (var15 == 2) {
-                                 this.anIntArray233[this.menuSize] = 684;
+                                 this.menuAction[this.menuSize] = 684;
                               }
 
                               if (var15 == 3) {
-                                 this.anIntArray233[this.menuSize] = 930;
+                                 this.menuAction[this.menuSize] = 930;
                               }
 
                               if (var15 == 4) {
-                                 this.anIntArray233[this.menuSize] = 270;
+                                 this.menuAction[this.menuSize] = 270;
                               }
 
                               this.anIntArray234[this.menuSize] = var13.anInt211;
@@ -7814,8 +7814,8 @@ public final class Client extends GameShell {
                               this.anIntArray232[this.menuSize] = var5;
                               ++this.menuSize;
                            } else if (var15 == 2) {
-                              this.aStringArray12[this.menuSize] = "Take @lre@" + var14.aString7;
-                              this.anIntArray233[this.menuSize] = 684;
+                              this.menuOption[this.menuSize] = "Take @lre@" + var14.aString7;
+                              this.menuAction[this.menuSize] = 684;
                               this.anIntArray234[this.menuSize] = var13.anInt211;
                               this.anIntArray231[this.menuSize] = var4;
                               this.anIntArray232[this.menuSize] = var5;
@@ -7823,8 +7823,8 @@ public final class Client extends GameShell {
                            }
                         }
 
-                        this.aStringArray12[this.menuSize] = "Examine @lre@" + var14.aString7;
-                        this.anIntArray233[this.menuSize] = 1564;
+                        this.menuOption[this.menuSize] = "Examine @lre@" + var14.aString7;
+                        this.menuAction[this.menuSize] = 1564;
                         this.anIntArray234[this.menuSize] = var13.anInt211;
                         this.anIntArray231[this.menuSize] = var4;
                         this.anIntArray232[this.menuSize] = var5;
@@ -7838,7 +7838,7 @@ public final class Client extends GameShell {
 
    }
 
-   private boolean method723(String var1) {
+   private boolean isFriend(String var1) {
       if (var1 == null) {
          return false;
       } else {
@@ -7853,7 +7853,7 @@ public final class Client extends GameShell {
    }
 
    private void method725(int var1, int var2, int var3, int var4, int var5, int var6) {
-      int var7 = this.aClass23_1.method216(var2, var3, var1);
+      int var7 = this.scene.method216(var2, var3, var1);
       boolean var8 = false;
       int var9;
       int var10;
@@ -7863,7 +7863,7 @@ public final class Client extends GameShell {
       int var14;
       Class10_Sub1_Sub1_Sub3 var17;
       if (var7 != 0) {
-         var9 = this.aClass23_1.method220(var2, var3, var1, var7);
+         var9 = this.scene.method220(var2, var3, var1, var7);
          var10 = var9 >> 6 & 3;
          var11 = var9 & 31;
          var12 = var6;
@@ -7874,7 +7874,7 @@ public final class Client extends GameShell {
          int[] var15 = this.aClass10_Sub1_Sub1_Sub1_11.pixels;
          var13 = var3 * 4 + (103 - var1) * 512 * 4 + 24624;
          var14 = var7 >> 14 & 32767;
-         Class48 var16 = Class48.method523(var14);
+         LocType var16 = LocType.method523(var14);
          if (var16.anInt705 == -1) {
             if (var11 == 0 || var11 == 2) {
                if (var10 == 0) {
@@ -7945,14 +7945,14 @@ public final class Client extends GameShell {
          }
       }
 
-      var7 = this.aClass23_1.method218(var2, var3, var1);
-      Class48 var22;
+      var7 = this.scene.method218(var2, var3, var1);
+      LocType var22;
       if (var7 != 0) {
-         var9 = this.aClass23_1.method220(var2, var3, var1, var7);
+         var9 = this.scene.method220(var2, var3, var1, var7);
          var10 = var9 >> 6 & 3;
          var11 = var9 & 31;
          var12 = var7 >> 14 & 32767;
-         var22 = Class48.method523(var12);
+         var22 = LocType.method523(var12);
          int var20;
          if (var22.anInt705 != -1) {
             var17 = this.aClass10_Sub1_Sub1_Sub3Array5[var22.anInt705];
@@ -7983,10 +7983,10 @@ public final class Client extends GameShell {
          }
       }
 
-      var7 = this.aClass23_1.method219(var2, var3, var1);
+      var7 = this.scene.method219(var2, var3, var1);
       if (var7 != 0) {
          var9 = var7 >> 14 & 32767;
-         var22 = Class48.method523(var9);
+         var22 = LocType.method523(var9);
          if (var22.anInt705 != -1) {
             Class10_Sub1_Sub1_Sub3 var23 = this.aClass10_Sub1_Sub1_Sub3Array5[var22.anInt705];
             if (var23 != null) {
@@ -8001,16 +8001,16 @@ public final class Client extends GameShell {
    }
 
    private void method601(int var1, int var2) {
-      Class6 var3 = this.levelObjStacks[this.anInt942][var1][var2];
+      Class6 var3 = this.levelObjStacks[this.currentLevel][var1][var2];
       if (var3 == null) {
-         this.aClass23_1.method211(this.anInt942, var1, var2);
+         this.scene.method211(this.currentLevel, var1, var2);
       } else {
          int var4 = -99999999;
          Class10_Sub1_Sub2_Sub1 var5 = null;
 
          Class10_Sub1_Sub2_Sub1 var6;
          for(var6 = (Class10_Sub1_Sub2_Sub1)var3.method6(); var6 != null; var6 = (Class10_Sub1_Sub2_Sub1)var3.method8()) {
-            Class17 var7 = Class17.method104(var6.anInt211);
+            ObjType var7 = ObjType.method104(var6.anInt211);
             int var8 = var7.anInt183;
             if (var7.aBoolean52) {
                var8 *= var6.anInt213 + 1;
@@ -8037,14 +8037,14 @@ public final class Client extends GameShell {
          }
 
          int var9 = var1 + (var2 << 7) + 1610612736;
-         this.aClass23_1.method197(this.method685(var2 * 128 + 64, var1 * 128 + 64, this.anInt942), this.anInt942, var5, var11, var9, var10, var2, var1);
+         this.scene.method197(this.getHeightmapY(var2 * 128 + 64, var1 * 128 + 64, this.currentLevel), this.currentLevel, var5, var11, var9, var10, var2, var1);
       }
    }
 
-   private void method682() {
+   private void method999() {
       this.anInt1011 = 0;
-      int var1 = (localPlayer.anInt739 >> 7) + this.anInt914;
-      int var2 = (localPlayer.anInt740 >> 7) + this.anInt915;
+      int var1 = (localPlayer.x >> 7) + this.sceneBaseTileX;
+      int var2 = (localPlayer.z >> 7) + this.sceneBaseTileZ;
       if (var1 >= 3053 && var1 <= 3156 && var2 >= 3056 && var2 <= 3136) {
          this.anInt1011 = 1;
       }
@@ -8063,7 +8063,7 @@ public final class Client extends GameShell {
       if (var1 >= 0) {
          int var2 = this.anIntArray231[var1];
          int var3 = this.anIntArray232[var1];
-         int var4 = this.anIntArray233[var1];
+         int var4 = this.menuAction[var1];
          int var5 = this.anIntArray234[var1];
          if (this.anInt866 > 8 || this.anInt866 < 8) {
             this.packetType = this.in.g1();
@@ -8083,10 +8083,10 @@ public final class Client extends GameShell {
             var6 = this.players[var5];
             if (var6 != null) {
                this.method610(false, var6.anIntArray194[0], localPlayer.anIntArray194[0], 1, 1, 2, 0, var6.anIntArray193[0], 0, 0, localPlayer.anIntArray193[0]);
-               this.anInt906 = super.anInt822;
-               this.anInt907 = super.anInt823;
-               this.anInt909 = 2;
-               this.anInt908 = 0;
+               this.crossY = super.anInt822;
+               this.crossX = super.anInt823;
+               this.crossMode = 2;
+               this.crossCycle = 0;
                this.out.p1isaac(245);
                this.out.method338(var5);
             }
@@ -8108,11 +8108,11 @@ public final class Client extends GameShell {
             this.anInt1054 = var3;
             this.anInt1055 = var2;
             this.anInt1056 = 2;
-            if (Class14.method87(var3).anInt128 == this.anInt976) {
+            if (ComType.method87(var3).anInt128 == this.viewportInterfaceId) {
                this.anInt1056 = 1;
             }
 
-            if (Class14.method87(var3).anInt128 == this.anInt888) {
+            if (ComType.method87(var3).anInt128 == this.anInt888) {
                this.anInt1056 = 3;
             }
          }
@@ -8121,10 +8121,10 @@ public final class Client extends GameShell {
             var6 = this.players[var5];
             if (var6 != null) {
                this.method610(false, var6.anIntArray194[0], localPlayer.anIntArray194[0], 1, 1, 2, 0, var6.anIntArray193[0], 0, 0, localPlayer.anIntArray193[0]);
-               this.anInt906 = super.anInt822;
-               this.anInt907 = super.anInt823;
-               this.anInt909 = 2;
-               this.anInt908 = 0;
+               this.crossY = super.anInt822;
+               this.crossX = super.anInt823;
+               this.crossMode = 2;
+               this.crossCycle = 0;
                this.out.p1isaac(45);
                this.out.method337(var5);
             }
@@ -8135,10 +8135,10 @@ public final class Client extends GameShell {
             var7 = this.npcs[var5];
             if (var7 != null) {
                this.method610(false, var7.anIntArray194[0], localPlayer.anIntArray194[0], 1, 1, 2, 0, var7.anIntArray193[0], 0, 0, localPlayer.anIntArray193[0]);
-               this.anInt906 = super.anInt822;
-               this.anInt907 = super.anInt823;
-               this.anInt909 = 2;
-               this.anInt908 = 0;
+               this.crossY = super.anInt822;
+               this.crossX = super.anInt823;
+               this.crossMode = 2;
+               this.crossCycle = 0;
                this.out.p1isaac(67);
                this.out.method337(var5);
             }
@@ -8160,11 +8160,11 @@ public final class Client extends GameShell {
             this.anInt1054 = var3;
             this.anInt1055 = var2;
             this.anInt1056 = 2;
-            if (Class14.method87(var3).anInt128 == this.anInt976) {
+            if (ComType.method87(var3).anInt128 == this.viewportInterfaceId) {
                this.anInt1056 = 1;
             }
 
-            if (Class14.method87(var3).anInt128 == this.anInt888) {
+            if (ComType.method87(var3).anInt128 == this.anInt888) {
                this.anInt1056 = 3;
             }
          }
@@ -8174,9 +8174,9 @@ public final class Client extends GameShell {
             this.out.method336(var5 >> 14 & 32767);
             this.out.method336(this.anInt967);
             this.out.method336(this.anInt968);
-            this.out.method336(var3 + this.anInt915);
+            this.out.method336(var3 + this.sceneBaseTileZ);
             this.out.p2(this.anInt966);
-            this.out.method338(var2 + this.anInt914);
+            this.out.method338(var2 + this.sceneBaseTileX);
          }
 
          if (var4 == 9) {
@@ -8188,11 +8188,11 @@ public final class Client extends GameShell {
             this.anInt1054 = var3;
             this.anInt1055 = var2;
             this.anInt1056 = 2;
-            if (Class14.method87(var3).anInt128 == this.anInt976) {
+            if (ComType.method87(var3).anInt128 == this.viewportInterfaceId) {
                this.anInt1056 = 1;
             }
 
-            if (Class14.method87(var3).anInt128 == this.anInt888) {
+            if (ComType.method87(var3).anInt128 == this.anInt888) {
                this.anInt1056 = 3;
             }
          }
@@ -8201,10 +8201,10 @@ public final class Client extends GameShell {
             var7 = this.npcs[var5];
             if (var7 != null) {
                this.method610(false, var7.anIntArray194[0], localPlayer.anIntArray194[0], 1, 1, 2, 0, var7.anIntArray193[0], 0, 0, localPlayer.anIntArray193[0]);
-               this.anInt906 = super.anInt822;
-               this.anInt907 = super.anInt823;
-               this.anInt909 = 2;
-               this.anInt908 = 0;
+               this.crossY = super.anInt822;
+               this.crossX = super.anInt823;
+               this.crossMode = 2;
+               this.crossCycle = 0;
                this.out.p1isaac(42);
                this.out.method336(var5);
             }
@@ -8214,10 +8214,10 @@ public final class Client extends GameShell {
             var6 = this.players[var5];
             if (var6 != null) {
                this.method610(false, var6.anIntArray194[0], localPlayer.anIntArray194[0], 1, 1, 2, 0, var6.anIntArray193[0], 0, 0, localPlayer.anIntArray193[0]);
-               this.anInt906 = super.anInt822;
-               this.anInt907 = super.anInt823;
-               this.anInt909 = 2;
-               this.anInt908 = 0;
+               this.crossY = super.anInt822;
+               this.crossX = super.anInt823;
+               this.crossMode = 2;
+               this.crossCycle = 0;
                this.out.p1isaac(116);
                this.out.method336(var5);
             }
@@ -8227,7 +8227,7 @@ public final class Client extends GameShell {
          long var9;
          String var11;
          if (var4 == 762 || var4 == 574 || var4 == 775 || var4 == 859) {
-            var11 = this.aStringArray12[var1];
+            var11 = this.menuOption[var1];
             var8 = var11.indexOf("@whi@");
             if (var8 != -1) {
                var9 = Class26.method248(var11.substring(var8 + 5).trim());
@@ -8256,14 +8256,14 @@ public final class Client extends GameShell {
                this.method610(false, var3, localPlayer.anIntArray194[0], 1, 1, 2, 0, var2, 0, 0, localPlayer.anIntArray193[0]);
             }
 
-            this.anInt906 = super.anInt822;
-            this.anInt907 = super.anInt823;
-            this.anInt909 = 2;
-            this.anInt908 = 0;
+            this.crossY = super.anInt822;
+            this.crossX = super.anInt823;
+            this.crossMode = 2;
+            this.crossCycle = 0;
             this.out.p1isaac(54);
             this.out.method337(var5);
-            this.out.method336(var3 + this.anInt915);
-            this.out.p2(var2 + this.anInt914);
+            this.out.method336(var3 + this.sceneBaseTileZ);
+            this.out.p2(var2 + this.sceneBaseTileX);
          }
 
          if (var4 == 399) {
@@ -8275,11 +8275,11 @@ public final class Client extends GameShell {
             this.anInt1054 = var3;
             this.anInt1055 = var2;
             this.anInt1056 = 2;
-            if (Class14.method87(var3).anInt128 == this.anInt976) {
+            if (ComType.method87(var3).anInt128 == this.viewportInterfaceId) {
                this.anInt1056 = 1;
             }
 
-            if (Class14.method87(var3).anInt128 == this.anInt888) {
+            if (ComType.method87(var3).anInt128 == this.anInt888) {
                this.anInt1056 = 3;
             }
          }
@@ -8288,10 +8288,10 @@ public final class Client extends GameShell {
             var7 = this.npcs[var5];
             if (var7 != null) {
                this.method610(false, var7.anIntArray194[0], localPlayer.anIntArray194[0], 1, 1, 2, 0, var7.anIntArray193[0], 0, 0, localPlayer.anIntArray193[0]);
-               this.anInt906 = super.anInt822;
-               this.anInt907 = super.anInt823;
-               this.anInt909 = 2;
-               this.anInt908 = 0;
+               this.crossY = super.anInt822;
+               this.crossX = super.anInt823;
+               this.crossMode = 2;
+               this.crossCycle = 0;
                this.out.p1isaac(57);
                this.out.p2(var5);
                this.out.method336(this.anInt968);
@@ -8300,11 +8300,11 @@ public final class Client extends GameShell {
             }
          }
 
-         Class14 var13;
+         ComType var13;
          if (var4 == 890) {
             this.out.p1isaac(79);
             this.out.p2(var3);
-            var13 = Class14.method87(var3);
+            var13 = ComType.method87(var3);
             if (var13.anIntArrayArray5 != null && var13.anIntArrayArray5[0][0] == 5) {
                var8 = var13.anIntArrayArray5[0][1];
                this.anIntArray244[var8] = 1 - this.anIntArray244[var8];
@@ -8317,10 +8317,10 @@ public final class Client extends GameShell {
             var6 = this.players[var5];
             if (var6 != null) {
                this.method610(false, var6.anIntArray194[0], localPlayer.anIntArray194[0], 1, 1, 2, 0, var6.anIntArray193[0], 0, 0, localPlayer.anIntArray193[0]);
-               this.anInt906 = super.anInt822;
-               this.anInt907 = super.anInt823;
-               this.anInt909 = 2;
-               this.anInt908 = 0;
+               this.crossY = super.anInt822;
+               this.crossX = super.anInt823;
+               this.crossMode = 2;
+               this.crossCycle = 0;
                this.out.p1isaac(233);
                this.out.method337(var5);
             }
@@ -8328,9 +8328,9 @@ public final class Client extends GameShell {
 
          if (var4 == 14) {
             if (this.menuVisible) {
-               this.aClass23_1.method228(var2 - 4, var3 - 4);
+               this.scene.method228(var2 - 4, var3 - 4);
             } else {
-               this.aClass23_1.method228(super.anInt822 - 4, super.anInt823 - 4);
+               this.scene.method228(super.anInt822 - 4, super.anInt823 - 4);
             }
          }
 
@@ -8346,11 +8346,11 @@ public final class Client extends GameShell {
             this.anInt1054 = var3;
             this.anInt1055 = var2;
             this.anInt1056 = 2;
-            if (Class14.method87(var3).anInt128 == this.anInt976) {
+            if (ComType.method87(var3).anInt128 == this.viewportInterfaceId) {
                this.anInt1056 = 1;
             }
 
-            if (Class14.method87(var3).anInt128 == this.anInt888) {
+            if (ComType.method87(var3).anInt128 == this.anInt888) {
                this.anInt1056 = 3;
             }
          }
@@ -8365,11 +8365,11 @@ public final class Client extends GameShell {
             this.anInt1054 = var3;
             this.anInt1055 = var2;
             this.anInt1056 = 2;
-            if (Class14.method87(var3).anInt128 == this.anInt976) {
+            if (ComType.method87(var3).anInt128 == this.viewportInterfaceId) {
                this.anInt1056 = 1;
             }
 
-            if (Class14.method87(var3).anInt128 == this.anInt888) {
+            if (ComType.method87(var3).anInt128 == this.anInt888) {
                this.anInt1056 = 3;
             }
          }
@@ -8378,10 +8378,10 @@ public final class Client extends GameShell {
             var7 = this.npcs[var5];
             if (var7 != null) {
                this.method610(false, var7.anIntArray194[0], localPlayer.anIntArray194[0], 1, 1, 2, 0, var7.anIntArray193[0], 0, 0, localPlayer.anIntArray193[0]);
-               this.anInt906 = super.anInt822;
-               this.anInt907 = super.anInt823;
-               this.anInt909 = 2;
-               this.anInt908 = 0;
+               this.crossY = super.anInt822;
+               this.crossX = super.anInt823;
+               this.crossMode = 2;
+               this.crossCycle = 0;
                anInt1005 += var5;
                if (anInt1005 >= 143) {
                   this.out.p1isaac(157);
@@ -8398,18 +8398,18 @@ public final class Client extends GameShell {
             this.out.p1isaac(210);
             this.out.p2(this.anInt979);
             this.out.method336(var5 >> 14 & 32767);
-            this.out.method337(var2 + this.anInt914);
-            this.out.method336(var3 + this.anInt915);
+            this.out.method337(var2 + this.sceneBaseTileX);
+            this.out.method336(var3 + this.sceneBaseTileZ);
          }
 
          if (var4 == 432) {
             var7 = this.npcs[var5];
             if (var7 != null) {
                this.method610(false, var7.anIntArray194[0], localPlayer.anIntArray194[0], 1, 1, 2, 0, var7.anIntArray193[0], 0, 0, localPlayer.anIntArray193[0]);
-               this.anInt906 = super.anInt822;
-               this.anInt907 = super.anInt823;
-               this.anInt909 = 2;
-               this.anInt908 = 0;
+               this.crossY = super.anInt822;
+               this.crossX = super.anInt823;
+               this.crossMode = 2;
+               this.crossCycle = 0;
                this.out.p1isaac(8);
                this.out.method336(var5);
             }
@@ -8423,10 +8423,10 @@ public final class Client extends GameShell {
             var6 = this.players[var5];
             if (var6 != null) {
                this.method610(false, var6.anIntArray194[0], localPlayer.anIntArray194[0], 1, 1, 2, 0, var6.anIntArray193[0], 0, 0, localPlayer.anIntArray193[0]);
-               this.anInt906 = super.anInt822;
-               this.anInt907 = super.anInt823;
-               this.anInt909 = 2;
-               this.anInt908 = 0;
+               this.crossY = super.anInt822;
+               this.crossX = super.anInt823;
+               this.crossMode = 2;
+               this.crossCycle = 0;
                this.out.p1isaac(31);
                this.out.p2(var5);
                this.out.method336(this.anInt979);
@@ -8437,10 +8437,10 @@ public final class Client extends GameShell {
             var7 = this.npcs[var5];
             if (var7 != null) {
                this.method610(false, var7.anIntArray194[0], localPlayer.anIntArray194[0], 1, 1, 2, 0, var7.anIntArray193[0], 0, 0, localPlayer.anIntArray193[0]);
-               this.anInt906 = super.anInt822;
-               this.anInt907 = super.anInt823;
-               this.anInt909 = 2;
-               this.anInt908 = 0;
+               this.crossY = super.anInt822;
+               this.crossX = super.anInt823;
+               this.crossMode = 2;
+               this.crossCycle = 0;
                this.out.p1isaac(104);
                this.out.method337(this.anInt979);
                this.out.method336(var5);
@@ -8453,13 +8453,13 @@ public final class Client extends GameShell {
                this.method610(false, var3, localPlayer.anIntArray194[0], 1, 1, 2, 0, var2, 0, 0, localPlayer.anIntArray193[0]);
             }
 
-            this.anInt906 = super.anInt822;
-            this.anInt907 = super.anInt823;
-            this.anInt909 = 2;
-            this.anInt908 = 0;
+            this.crossY = super.anInt822;
+            this.crossX = super.anInt823;
+            this.crossMode = 2;
+            this.crossCycle = 0;
             this.out.p1isaac(77);
-            this.out.method337(var2 + this.anInt914);
-            this.out.p2(var3 + this.anInt915);
+            this.out.method337(var2 + this.sceneBaseTileX);
+            this.out.p2(var3 + this.sceneBaseTileZ);
             this.out.method338(var5);
          }
 
@@ -8469,10 +8469,10 @@ public final class Client extends GameShell {
                this.method610(false, var3, localPlayer.anIntArray194[0], 1, 1, 2, 0, var2, 0, 0, localPlayer.anIntArray193[0]);
             }
 
-            this.anInt906 = super.anInt822;
-            this.anInt907 = super.anInt823;
-            this.anInt909 = 2;
-            this.anInt908 = 0;
+            this.crossY = super.anInt822;
+            this.crossX = super.anInt823;
+            this.crossMode = 2;
+            this.crossCycle = 0;
             if ((var5 & 3) == 0) {
                ++anInt925;
             }
@@ -8485,14 +8485,14 @@ public final class Client extends GameShell {
 
             this.out.p1isaac(71);
             this.out.method338(var5);
-            this.out.method338(var2 + this.anInt914);
-            this.out.method337(var3 + this.anInt915);
+            this.out.method338(var2 + this.sceneBaseTileX);
+            this.out.method337(var3 + this.sceneBaseTileZ);
          }
 
          int var14;
          String var15;
          if (var4 == 544 || var4 == 695) {
-            var11 = this.aStringArray12[var1];
+            var11 = this.menuOption[var1];
             var8 = var11.indexOf("@whi@");
             if (var8 != -1) {
                var11 = var11.substring(var8 + 5).trim();
@@ -8533,18 +8533,18 @@ public final class Client extends GameShell {
             this.anInt1054 = var3;
             this.anInt1055 = var2;
             this.anInt1056 = 2;
-            if (Class14.method87(var3).anInt128 == this.anInt976) {
+            if (ComType.method87(var3).anInt128 == this.viewportInterfaceId) {
                this.anInt1056 = 1;
             }
 
-            if (Class14.method87(var3).anInt128 == this.anInt888) {
+            if (ComType.method87(var3).anInt128 == this.anInt888) {
                this.anInt1056 = 3;
             }
          }
 
          String var16;
          if (var4 == 70) {
-            var13 = Class14.method87(var3);
+            var13 = ComType.method87(var3);
             this.spellSelected = 1;
             this.anInt979 = var3;
             this.anInt980 = var13.anInt113;
@@ -8576,11 +8576,11 @@ public final class Client extends GameShell {
                this.anInt1054 = var3;
                this.anInt1055 = var2;
                this.anInt1056 = 2;
-               if (Class14.method87(var3).anInt128 == this.anInt976) {
+               if (ComType.method87(var3).anInt128 == this.viewportInterfaceId) {
                   this.anInt1056 = 1;
                }
 
-               if (Class14.method87(var3).anInt128 == this.anInt888) {
+               if (ComType.method87(var3).anInt128 == this.anInt888) {
                   this.anInt1056 = 3;
                }
             }
@@ -8594,11 +8594,11 @@ public final class Client extends GameShell {
                this.anInt1054 = var3;
                this.anInt1055 = var2;
                this.anInt1056 = 2;
-               if (Class14.method87(var3).anInt128 == this.anInt976) {
+               if (ComType.method87(var3).anInt128 == this.viewportInterfaceId) {
                   this.anInt1056 = 1;
                }
 
-               if (Class14.method87(var3).anInt128 == this.anInt888) {
+               if (ComType.method87(var3).anInt128 == this.anInt888) {
                   this.anInt1056 = 3;
                }
             }
@@ -8607,24 +8607,24 @@ public final class Client extends GameShell {
                this.method655(var3, var2, var5);
                this.out.p1isaac(55);
                this.out.method336(var5 >> 14 & 32767);
-               this.out.method336(var3 + this.anInt915);
-               this.out.p2(var2 + this.anInt914);
+               this.out.method336(var3 + this.sceneBaseTileZ);
+               this.out.p2(var2 + this.sceneBaseTileX);
             }
 
             if (var4 == 35) {
                this.method655(var3, var2, var5);
                this.out.p1isaac(181);
-               this.out.method337(var2 + this.anInt914);
-               this.out.method336(var3 + this.anInt915);
+               this.out.method337(var2 + this.sceneBaseTileX);
+               this.out.method336(var3 + this.sceneBaseTileZ);
                this.out.method336(var5 >> 14 & 32767);
             }
 
             if (var4 == 888) {
                this.method655(var3, var2, var5);
                this.out.p1isaac(50);
-               this.out.method337(var3 + this.anInt915);
+               this.out.method337(var3 + this.sceneBaseTileZ);
                this.out.method336(var5 >> 14 & 32767);
-               this.out.method338(var2 + this.anInt914);
+               this.out.method338(var2 + this.sceneBaseTileX);
             }
 
             if (var4 == 324) {
@@ -8636,19 +8636,19 @@ public final class Client extends GameShell {
                this.anInt1054 = var3;
                this.anInt1055 = var2;
                this.anInt1056 = 2;
-               if (Class14.method87(var3).anInt128 == this.anInt976) {
+               if (ComType.method87(var3).anInt128 == this.viewportInterfaceId) {
                   this.anInt1056 = 1;
                }
 
-               if (Class14.method87(var3).anInt128 == this.anInt888) {
+               if (ComType.method87(var3).anInt128 == this.anInt888) {
                   this.anInt1056 = 3;
                }
             }
 
-            Class17 var22;
+            ObjType var22;
             if (var4 == 1094) {
-               var22 = Class17.method104(var5);
-               Class14 var18 = Class14.method87(var3);
+               var22 = ObjType.method104(var5);
+               ComType var18 = ComType.method87(var3);
                if (var18 != null && var18.anIntArray40[var2] >= 100000) {
                   var16 = var18.anIntArray40[var2] + " x " + var22.aString7;
                } else if (var22.aByteArray8 == null) {
@@ -8661,7 +8661,7 @@ public final class Client extends GameShell {
             }
 
             if (var4 == 352) {
-               var13 = Class14.method87(var3);
+               var13 = ComType.method87(var3);
                boolean var21 = true;
                if (var13.anInt124 > 0) {
                   var21 = this.method635(var13);
@@ -8676,7 +8676,7 @@ public final class Client extends GameShell {
             int var24;
             if (var4 == 1412) {
                var24 = var5 >> 14 & 32767;
-               Class48 var19 = Class48.method523(var24);
+               LocType var19 = LocType.method523(var24);
                if (var19.aByteArray17 == null) {
                   var15 = "It's a " + var19.aString12 + ".";
                } else {
@@ -8695,8 +8695,8 @@ public final class Client extends GameShell {
             if (var4 == 892) {
                this.method655(var3, var2, var5);
                this.out.p1isaac(136);
-               this.out.p2(var2 + this.anInt914);
-               this.out.method336(var3 + this.anInt915);
+               this.out.p2(var2 + this.sceneBaseTileX);
+               this.out.method336(var3 + this.sceneBaseTileZ);
                this.out.p2(var5 >> 14 & 32767);
             }
 
@@ -8706,24 +8706,24 @@ public final class Client extends GameShell {
                   this.method610(false, var3, localPlayer.anIntArray194[0], 1, 1, 2, 0, var2, 0, 0, localPlayer.anIntArray193[0]);
                }
 
-               this.anInt906 = super.anInt822;
-               this.anInt907 = super.anInt823;
-               this.anInt909 = 2;
-               this.anInt908 = 0;
+               this.crossY = super.anInt822;
+               this.crossX = super.anInt823;
+               this.crossMode = 2;
+               this.crossCycle = 0;
                this.out.p1isaac(230);
                this.out.method336(var5);
-               this.out.method337(var2 + this.anInt914);
-               this.out.p2(var3 + this.anInt915);
+               this.out.method337(var2 + this.sceneBaseTileX);
+               this.out.p2(var3 + this.sceneBaseTileZ);
             }
 
             if (var4 == 596) {
                var6 = this.players[var5];
                if (var6 != null) {
                   this.method610(false, var6.anIntArray194[0], localPlayer.anIntArray194[0], 1, 1, 2, 0, var6.anIntArray193[0], 0, 0, localPlayer.anIntArray193[0]);
-                  this.anInt906 = super.anInt822;
-                  this.anInt907 = super.anInt823;
-                  this.anInt909 = 2;
-                  this.anInt908 = 0;
+                  this.crossY = super.anInt822;
+                  this.crossX = super.anInt823;
+                  this.crossMode = 2;
+                  this.crossCycle = 0;
                   this.out.p1isaac(143);
                   this.out.method336(this.anInt968);
                   this.out.method338(this.anInt966);
@@ -8738,15 +8738,15 @@ public final class Client extends GameShell {
                   this.method610(false, var3, localPlayer.anIntArray194[0], 1, 1, 2, 0, var2, 0, 0, localPlayer.anIntArray193[0]);
                }
 
-               this.anInt906 = super.anInt822;
-               this.anInt907 = super.anInt823;
-               this.anInt909 = 2;
-               this.anInt908 = 0;
+               this.crossY = super.anInt822;
+               this.crossX = super.anInt823;
+               this.crossMode = 2;
+               this.crossCycle = 0;
                this.out.p1isaac(211);
                this.out.method338(this.anInt966);
                this.out.method337(this.anInt968);
-               this.out.method338(var3 + this.anInt915);
-               this.out.method338(var2 + this.anInt914);
+               this.out.method338(var3 + this.sceneBaseTileZ);
+               this.out.method338(var2 + this.sceneBaseTileX);
                this.out.method336(this.anInt967);
                this.out.method336(var5);
             }
@@ -8754,7 +8754,7 @@ public final class Client extends GameShell {
             if (var4 == 1668) {
                var7 = this.npcs[var5];
                if (var7 != null) {
-                  Class38 var23 = var7.aClass38_1;
+                  NpcType var23 = var7.aClass38_1;
                   if (var23.anIntArray165 != null) {
                      var23 = var23.method406();
                   }
@@ -8777,10 +8777,10 @@ public final class Client extends GameShell {
                   this.method610(false, var3, localPlayer.anIntArray194[0], 1, 1, 2, 0, var2, 0, 0, localPlayer.anIntArray193[0]);
                }
 
-               this.anInt906 = super.anInt822;
-               this.anInt907 = super.anInt823;
-               this.anInt909 = 2;
-               this.anInt908 = 0;
+               this.crossY = super.anInt822;
+               this.crossX = super.anInt823;
+               this.crossMode = 2;
+               this.crossCycle = 0;
                ++anInt944;
                if (anInt944 >= 120) {
                   this.out.p1isaac(95);
@@ -8789,8 +8789,8 @@ public final class Client extends GameShell {
                }
 
                this.out.p1isaac(100);
-               this.out.p2(var2 + this.anInt914);
-               this.out.method337(var3 + this.anInt915);
+               this.out.p2(var2 + this.sceneBaseTileX);
+               this.out.method337(var3 + this.sceneBaseTileZ);
                this.out.method338(var5);
             }
 
@@ -8803,24 +8803,24 @@ public final class Client extends GameShell {
                this.anInt1054 = var3;
                this.anInt1055 = var2;
                this.anInt1056 = 2;
-               if (Class14.method87(var3).anInt128 == this.anInt976) {
+               if (ComType.method87(var3).anInt128 == this.viewportInterfaceId) {
                   this.anInt1056 = 1;
                }
 
-               if (Class14.method87(var3).anInt128 == this.anInt888) {
+               if (ComType.method87(var3).anInt128 == this.anInt888) {
                   this.anInt1056 = 3;
                }
             }
 
             if (var4 == 507) {
-               var11 = this.aStringArray12[var1];
+               var11 = this.menuOption[var1];
                var8 = var11.indexOf("@whi@");
                if (var8 != -1) {
-                  if (this.anInt976 == -1) {
+                  if (this.viewportInterfaceId == -1) {
                      this.method590();
                      this.aString17 = var11.substring(var8 + 5).trim();
                      this.aBoolean241 = false;
-                     this.anInt1002 = this.anInt976 = Class14.anInt127;
+                     this.anInt1002 = this.viewportInterfaceId = ComType.anInt127;
                   } else {
                      this.method622("", "Please close the interface you have open before using 'report abuse'", 0);
                   }
@@ -8831,8 +8831,8 @@ public final class Client extends GameShell {
                this.method655(var3, var2, var5);
                this.out.p1isaac(241);
                this.out.p2(var5 >> 14 & 32767);
-               this.out.p2(var2 + this.anInt914);
-               this.out.method337(var3 + this.anInt915);
+               this.out.p2(var2 + this.sceneBaseTileX);
+               this.out.method337(var3 + this.sceneBaseTileZ);
             }
 
             if (var4 == 564) {
@@ -8844,17 +8844,17 @@ public final class Client extends GameShell {
                this.anInt1054 = var3;
                this.anInt1055 = var2;
                this.anInt1056 = 2;
-               if (Class14.method87(var3).anInt128 == this.anInt976) {
+               if (ComType.method87(var3).anInt128 == this.viewportInterfaceId) {
                   this.anInt1056 = 1;
                }
 
-               if (Class14.method87(var3).anInt128 == this.anInt888) {
+               if (ComType.method87(var3).anInt128 == this.anInt888) {
                   this.anInt1056 = 3;
                }
             }
 
             if (var4 == 984) {
-               var11 = this.aStringArray12[var1];
+               var11 = this.menuOption[var1];
                var8 = var11.indexOf("@whi@");
                if (var8 != -1) {
                   var9 = Class26.method248(var11.substring(var8 + 5).trim());
@@ -8882,7 +8882,7 @@ public final class Client extends GameShell {
             if (var4 == 518) {
                this.out.p1isaac(79);
                this.out.p2(var3);
-               var13 = Class14.method87(var3);
+               var13 = ComType.method87(var3);
                if (var13.anIntArrayArray5 != null && var13.anIntArrayArray5[0][0] == 5) {
                   var8 = var13.anIntArrayArray5[0][1];
                   if (this.anIntArray244[var8] != var13.anIntArray42[0]) {
@@ -8897,10 +8897,10 @@ public final class Client extends GameShell {
                var7 = this.npcs[var5];
                if (var7 != null) {
                   this.method610(false, var7.anIntArray194[0], localPlayer.anIntArray194[0], 1, 1, 2, 0, var7.anIntArray193[0], 0, 0, localPlayer.anIntArray193[0]);
-                  this.anInt906 = super.anInt822;
-                  this.anInt907 = super.anInt823;
-                  this.anInt909 = 2;
-                  this.anInt908 = 0;
+                  this.crossY = super.anInt822;
+                  this.crossX = super.anInt823;
+                  this.crossMode = 2;
+                  this.crossCycle = 0;
                   this.out.p1isaac(112);
                   this.out.method336(var5);
                }
@@ -8912,15 +8912,15 @@ public final class Client extends GameShell {
                   this.method610(false, var3, localPlayer.anIntArray194[0], 1, 1, 2, 0, var2, 0, 0, localPlayer.anIntArray193[0]);
                }
 
-               this.anInt906 = super.anInt822;
-               this.anInt907 = super.anInt823;
-               this.anInt909 = 2;
-               this.anInt908 = 0;
+               this.crossY = super.anInt822;
+               this.crossX = super.anInt823;
+               this.crossMode = 2;
+               this.crossCycle = 0;
                this.out.p1isaac(83);
                this.out.method336(var5);
-               this.out.p2(var3 + this.anInt915);
+               this.out.p2(var3 + this.sceneBaseTileZ);
                this.out.method336(this.anInt979);
-               this.out.method338(var2 + this.anInt914);
+               this.out.method338(var2 + this.sceneBaseTileX);
             }
 
             if (var4 == 55) {
@@ -8934,12 +8934,12 @@ public final class Client extends GameShell {
                this.anInt966 = var2;
                this.anInt967 = var3;
                this.anInt968 = var5;
-               this.aString30 = String.valueOf(Class17.method104(var5).aString7);
+               this.aString30 = String.valueOf(ObjType.method104(var5).aString7);
                this.spellSelected = 0;
                this.aBoolean248 = true;
             } else {
                if (var4 == 1564) {
-                  var22 = Class17.method104(var5);
+                  var22 = ObjType.method104(var5);
                   if (var22.aByteArray8 == null) {
                      var16 = "It's a " + var22.aString7 + ".";
                   } else {
@@ -8953,10 +8953,10 @@ public final class Client extends GameShell {
                   var6 = this.players[var5];
                   if (var6 != null) {
                      this.method610(false, var6.anIntArray194[0], localPlayer.anIntArray194[0], 1, 1, 2, 0, var6.anIntArray193[0], 0, 0, localPlayer.anIntArray193[0]);
-                     this.anInt906 = super.anInt822;
-                     this.anInt907 = super.anInt823;
-                     this.anInt909 = 2;
-                     this.anInt908 = 0;
+                     this.crossY = super.anInt822;
+                     this.crossX = super.anInt823;
+                     this.crossMode = 2;
+                     this.crossCycle = 0;
                      this.out.p1isaac(194);
                      this.out.method336(var5);
                   }
@@ -9045,8 +9045,8 @@ public final class Client extends GameShell {
 
          int var6;
          if (this.objSelected == 1) {
-            this.aStringArray12[this.menuSize] = "Use " + this.aString30 + " with @whi@" + var5;
-            this.anIntArray233[this.menuSize] = 596;
+            this.menuOption[this.menuSize] = "Use " + this.aString30 + " with @whi@" + var5;
+            this.menuAction[this.menuSize] = 596;
             this.anIntArray234[this.menuSize] = var1;
             this.anIntArray231[this.menuSize] = var3;
             this.anIntArray232[this.menuSize] = var2;
@@ -9054,7 +9054,7 @@ public final class Client extends GameShell {
          } else if (this.spellSelected != 1) {
             for(var6 = 4; var6 >= 0; --var6) {
                if (this.aStringArray11[var6] != null) {
-                  this.aStringArray12[this.menuSize] = this.aStringArray11[var6] + " @whi@" + var5;
+                  this.menuOption[this.menuSize] = this.aStringArray11[var6] + " @whi@" + var5;
                   short var7 = 0;
                   if (this.aStringArray11[var6].equalsIgnoreCase("attack")) {
                      if (var4.anInt767 > localPlayer.anInt767) {
@@ -9073,23 +9073,23 @@ public final class Client extends GameShell {
                   }
 
                   if (var6 == 0) {
-                     this.anIntArray233[this.menuSize] = var7 + 200;
+                     this.menuAction[this.menuSize] = var7 + 200;
                   }
 
                   if (var6 == 1) {
-                     this.anIntArray233[this.menuSize] = var7 + 493;
+                     this.menuAction[this.menuSize] = var7 + 493;
                   }
 
                   if (var6 == 2) {
-                     this.anIntArray233[this.menuSize] = var7 + 408;
+                     this.menuAction[this.menuSize] = var7 + 408;
                   }
 
                   if (var6 == 3) {
-                     this.anIntArray233[this.menuSize] = var7 + 677;
+                     this.menuAction[this.menuSize] = var7 + 677;
                   }
 
                   if (var6 == 4) {
-                     this.anIntArray233[this.menuSize] = var7 + 876;
+                     this.menuAction[this.menuSize] = var7 + 876;
                   }
 
                   this.anIntArray234[this.menuSize] = var1;
@@ -9099,8 +9099,8 @@ public final class Client extends GameShell {
                }
             }
          } else if ((this.anInt980 & 8) == 8) {
-            this.aStringArray12[this.menuSize] = this.aString31 + " @whi@" + var5;
-            this.anIntArray233[this.menuSize] = 918;
+            this.menuOption[this.menuSize] = this.aString31 + " @whi@" + var5;
+            this.menuAction[this.menuSize] = 918;
             this.anIntArray234[this.menuSize] = var1;
             this.anIntArray231[this.menuSize] = var3;
             this.anIntArray232[this.menuSize] = var2;
@@ -9108,8 +9108,8 @@ public final class Client extends GameShell {
          }
 
          for(var6 = 0; var6 < this.menuSize; ++var6) {
-            if (this.anIntArray233[var6] == 14) {
-               this.aStringArray12[var6] = "Walk here @whi@" + var5;
+            if (this.menuAction[var6] == 14) {
+               this.menuOption[var6] = "Walk here @whi@" + var5;
                return;
             }
          }
@@ -9121,8 +9121,8 @@ public final class Client extends GameShell {
       int var2 = var1.anInt735 - anInt1050;
       int var3 = var1.anInt731 * 128 + var1.anInt730 * 64;
       int var4 = var1.anInt733 * 128 + var1.anInt730 * 64;
-      var1.anInt739 += (var3 - var1.anInt739) / var2;
-      var1.anInt740 += (var4 - var1.anInt740) / var2;
+      var1.x += (var3 - var1.x) / var2;
+      var1.z += (var4 - var1.z) / var2;
       var1.anInt752 = 0;
       if (var1.anInt737 == 0) {
          var1.anInt717 = 1024;
@@ -9142,7 +9142,7 @@ public final class Client extends GameShell {
 
    }
 
-   private void method657(Class38 var1, int var2, int var3, int var4) {
+   private void method657(NpcType var1, int var2, int var3, int var4) {
       if (this.menuSize < 400) {
          if (var1.anIntArray165 != null) {
             var1 = var1.method406();
@@ -9155,8 +9155,8 @@ public final class Client extends GameShell {
             }
 
             if (this.objSelected == 1) {
-               this.aStringArray12[this.menuSize] = "Use " + this.aString30 + " with @yel@" + var5;
-               this.anIntArray233[this.menuSize] = 347;
+               this.menuOption[this.menuSize] = "Use " + this.aString30 + " with @yel@" + var5;
+               this.menuAction[this.menuSize] = 347;
                this.anIntArray234[this.menuSize] = var4;
                this.anIntArray231[this.menuSize] = var3;
                this.anIntArray232[this.menuSize] = var2;
@@ -9166,25 +9166,25 @@ public final class Client extends GameShell {
                if (var1.aStringArray4 != null) {
                   for(var6 = 4; var6 >= 0; --var6) {
                      if (var1.aStringArray4[var6] != null && !var1.aStringArray4[var6].equalsIgnoreCase("attack")) {
-                        this.aStringArray12[this.menuSize] = var1.aStringArray4[var6] + " @yel@" + var5;
+                        this.menuOption[this.menuSize] = var1.aStringArray4[var6] + " @yel@" + var5;
                         if (var6 == 0) {
-                           this.anIntArray233[this.menuSize] = 318;
+                           this.menuAction[this.menuSize] = 318;
                         }
 
                         if (var6 == 1) {
-                           this.anIntArray233[this.menuSize] = 921;
+                           this.menuAction[this.menuSize] = 921;
                         }
 
                         if (var6 == 2) {
-                           this.anIntArray233[this.menuSize] = 118;
+                           this.menuAction[this.menuSize] = 118;
                         }
 
                         if (var6 == 3) {
-                           this.anIntArray233[this.menuSize] = 553;
+                           this.menuAction[this.menuSize] = 553;
                         }
 
                         if (var6 == 4) {
-                           this.anIntArray233[this.menuSize] = 432;
+                           this.menuAction[this.menuSize] = 432;
                         }
 
                         this.anIntArray234[this.menuSize] = var4;
@@ -9203,25 +9203,25 @@ public final class Client extends GameShell {
                            var7 = 2000;
                         }
 
-                        this.aStringArray12[this.menuSize] = var1.aStringArray4[var6] + " @yel@" + var5;
+                        this.menuOption[this.menuSize] = var1.aStringArray4[var6] + " @yel@" + var5;
                         if (var6 == 0) {
-                           this.anIntArray233[this.menuSize] = var7 + 318;
+                           this.menuAction[this.menuSize] = var7 + 318;
                         }
 
                         if (var6 == 1) {
-                           this.anIntArray233[this.menuSize] = var7 + 921;
+                           this.menuAction[this.menuSize] = var7 + 921;
                         }
 
                         if (var6 == 2) {
-                           this.anIntArray233[this.menuSize] = var7 + 118;
+                           this.menuAction[this.menuSize] = var7 + 118;
                         }
 
                         if (var6 == 3) {
-                           this.anIntArray233[this.menuSize] = var7 + 553;
+                           this.menuAction[this.menuSize] = var7 + 553;
                         }
 
                         if (var6 == 4) {
-                           this.anIntArray233[this.menuSize] = var7 + 432;
+                           this.menuAction[this.menuSize] = var7 + 432;
                         }
 
                         this.anIntArray234[this.menuSize] = var4;
@@ -9232,15 +9232,15 @@ public final class Client extends GameShell {
                   }
                }
 
-               this.aStringArray12[this.menuSize] = "Examine @yel@" + var5;
-               this.anIntArray233[this.menuSize] = 1668;
+               this.menuOption[this.menuSize] = "Examine @yel@" + var5;
+               this.menuAction[this.menuSize] = 1668;
                this.anIntArray234[this.menuSize] = var4;
                this.anIntArray231[this.menuSize] = var3;
                this.anIntArray232[this.menuSize] = var2;
                ++this.menuSize;
             } else if ((this.anInt980 & 2) == 2) {
-               this.aStringArray12[this.menuSize] = this.aString31 + " @yel@" + var5;
-               this.anIntArray233[this.menuSize] = 67;
+               this.menuOption[this.menuSize] = this.aString31 + " @yel@" + var5;
+               this.menuAction[this.menuSize] = 67;
                this.anIntArray234[this.menuSize] = var4;
                this.anIntArray231[this.menuSize] = var3;
                this.anIntArray232[this.menuSize] = var2;
@@ -9252,7 +9252,7 @@ public final class Client extends GameShell {
 
    }
 
-   private void method678(byte var1, Class14 var2) {
+   private void method678(byte var1, ComType var2) {
       boolean var3 = false;
       int var4 = var2.anInt124;
       int var5;
@@ -9361,11 +9361,11 @@ public final class Client extends GameShell {
                }
 
                var12.method278();
-               var12.method279(Class15.aClass15Array1[localPlayer.anInt760].anIntArray47[0], (byte)6);
+               var12.method279(SeqType.aClass15Array1[localPlayer.anInt760].anIntArray47[0], (byte)6);
                var12.method288(64, 850, -30, -50, -30, true);
                var2.anInt145 = 5;
                var2.anInt146 = 0;
-               Class14.method93(var12);
+               ComType.method93(var12);
             }
          } else if (var4 == 324) {
             if (this.aClass10_Sub1_Sub1_Sub1_8 == null) {
@@ -9525,20 +9525,20 @@ public final class Client extends GameShell {
 
    }
 
-   private void method666() {
-      if (this.anInt950 == 0) {
-         this.aStringArray12[0] = "Cancel";
-         this.anIntArray233[0] = 1016;
+   private void handleInput() {
+      if (this.objDragArea == 0) {
+         this.menuOption[0] = "Cancel";
+         this.menuAction[0] = 1016;
          this.menuSize = 1;
          if (this.anInt926 == -1) {
             this.method686(this.anInt982);
             this.anInt863 = 0;
             this.anInt1045 = 0;
             if (super.mouseX > 4 && super.mouseY > 4 && super.mouseX < 516 && super.mouseY < 338) {
-               if (this.anInt976 == -1) {
-                  this.method618();
+               if (this.viewportInterfaceId == -1) {
+                  this.handleViewportOptions();
                } else {
-                  this.method641(4, Class14.method87(this.anInt976), 0, 0, 4, super.mouseX, super.mouseY);
+                  this.handleInterfaceInput(4, ComType.method87(this.viewportInterfaceId), 0, 0, 4, super.mouseX, super.mouseY);
                }
             }
 
@@ -9553,10 +9553,10 @@ public final class Client extends GameShell {
             this.anInt863 = 0;
             this.anInt1045 = 0;
             if (super.mouseX > 553 && super.mouseY > 205 && super.mouseX < 743 && super.mouseY < 466) {
-               if (this.anInt941 != -1) {
-                  this.method641(205, Class14.method87(this.anInt941), 1, 0, 553, super.mouseX, super.mouseY);
+               if (this.sidebarInterfaceId != -1) {
+                  this.handleInterfaceInput(205, ComType.method87(this.sidebarInterfaceId), 1, 0, 553, super.mouseX, super.mouseY);
                } else if (this.anIntArray248[this.anInt1031] != -1) {
-                  this.method641(205, Class14.method87(this.anIntArray248[this.anInt1031]), 1, 0, 553, super.mouseX, super.mouseY);
+                  this.handleInterfaceInput(205, ComType.method87(this.anIntArray248[this.anInt1031]), 1, 0, 553, super.mouseX, super.mouseY);
                }
             }
 
@@ -9574,11 +9574,11 @@ public final class Client extends GameShell {
             this.anInt1045 = 0;
             if (super.mouseX > 17 && super.mouseY > 357 && super.mouseX < 496 && super.mouseY < 453) {
                if (this.anInt888 != -1) {
-                  this.method641(357, Class14.method87(this.anInt888), 2, 0, 17, super.mouseX, super.mouseY);
+                  this.handleInterfaceInput(357, ComType.method87(this.anInt888), 2, 0, 17, super.mouseX, super.mouseY);
                } else if (this.anInt985 != -1) {
-                  this.method641(357, Class14.method87(this.anInt985), 3, 0, 17, super.mouseX, super.mouseY);
+                  this.handleInterfaceInput(357, ComType.method87(this.anInt985), 3, 0, 17, super.mouseX, super.mouseY);
                } else if (super.mouseY < 434 && super.mouseX < 426 && this.anInt1010 == 0) {
-                  this.method688(466, super.mouseX - 17, super.mouseY - 357);
+                  this.handleChatMouseInput(super.mouseX - 17, super.mouseY - 357);
                }
             }
 
@@ -9598,13 +9598,13 @@ public final class Client extends GameShell {
                var1 = true;
 
                for(int var2 = 0; var2 < this.menuSize - 1; ++var2) {
-                  if (this.anIntArray233[var2] < 1000 && this.anIntArray233[var2 + 1] > 1000) {
-                     String var3 = this.aStringArray12[var2];
-                     this.aStringArray12[var2] = this.aStringArray12[var2 + 1];
-                     this.aStringArray12[var2 + 1] = var3;
-                     int var4 = this.anIntArray233[var2];
-                     this.anIntArray233[var2] = this.anIntArray233[var2 + 1];
-                     this.anIntArray233[var2 + 1] = var4;
+                  if (this.menuAction[var2] < 1000 && this.menuAction[var2 + 1] > 1000) {
+                     String var3 = this.menuOption[var2];
+                     this.menuOption[var2] = this.menuOption[var2 + 1];
+                     this.menuOption[var2 + 1] = var3;
+                     int var4 = this.menuAction[var2];
+                     this.menuAction[var2] = this.menuAction[var2 + 1];
+                     this.menuAction[var2 + 1] = var4;
                      int var5 = this.anIntArray231[var2];
                      this.anIntArray231[var2] = this.anIntArray231[var2 + 1];
                      this.anIntArray231[var2 + 1] = var5;
@@ -9621,7 +9621,7 @@ public final class Client extends GameShell {
          } else {
             this.anInt863 = 0;
             this.anInt1045 = 0;
-            this.method641(0, Class14.method87(this.anInt926), 0, 0, 0, super.mouseX, super.mouseY);
+            this.handleInterfaceInput(0, ComType.method87(this.anInt926), 0, 0, 0, super.mouseX, super.mouseY);
             if (this.anInt863 != this.anInt1037) {
                this.anInt1037 = this.anInt863;
             }
@@ -9640,7 +9640,7 @@ public final class Client extends GameShell {
       int var2;
       int var3;
       for(var3 = 0; var3 < this.menuSize; ++var3) {
-         var2 = this.aClass10_Sub1_Sub1_Sub2_4.method150(this.aStringArray12[var3]);
+         var2 = this.aClass10_Sub1_Sub1_Sub2_4.method150(this.menuOption[var3]);
          if (var2 > var1) {
             var1 = var2;
          }
@@ -9731,8 +9731,8 @@ public final class Client extends GameShell {
          if (var1.anInt738 != -1 && var1.anInt738 < 32768) {
             Class10_Sub1_Sub2_Sub3_Sub1 var4 = this.npcs[var1.anInt738];
             if (var4 != null) {
-               var2 = var1.anInt739 - var4.anInt739;
-               var3 = var1.anInt740 - var4.anInt740;
+               var2 = var1.x - var4.x;
+               var3 = var1.z - var4.z;
                if (var2 != 0 || var3 != 0) {
                   var1.anInt717 = (int)(Math.atan2((double)var2, (double)var3) * 325.949) & 2047;
                }
@@ -9748,8 +9748,8 @@ public final class Client extends GameShell {
 
             PlayerEntity var5 = this.players[var7];
             if (var5 != null) {
-               var3 = var1.anInt739 - var5.anInt739;
-               int var6 = var1.anInt740 - var5.anInt740;
+               var3 = var1.x - var5.x;
+               int var6 = var1.z - var5.z;
                if (var3 != 0 || var6 != 0) {
                   var1.anInt717 = (int)(Math.atan2((double)var3, (double)var6) * 325.949) & 2047;
                }
@@ -9757,8 +9757,8 @@ public final class Client extends GameShell {
          }
 
          if ((var1.anInt727 != 0 || var1.anInt728 != 0) && (var1.anInt759 == 0 || var1.anInt752 > 0)) {
-            var7 = var1.anInt739 - (var1.anInt727 - this.anInt914 - this.anInt914) * 64;
-            var2 = var1.anInt740 - (var1.anInt728 - this.anInt915 - this.anInt915) * 64;
+            var7 = var1.x - (var1.anInt727 - this.sceneBaseTileX - this.sceneBaseTileX) * 64;
+            var2 = var1.z - (var1.anInt728 - this.sceneBaseTileZ - this.sceneBaseTileZ) * 64;
             if (var7 != 0 || var2 != 0) {
                var1.anInt717 = (int)(Math.atan2((double)var7, (double)var2) * 325.949) & 2047;
             }
@@ -9794,7 +9794,7 @@ public final class Client extends GameShell {
 
    }
 
-   private void method609() {
+   private void drawTooltip() {
       if (this.menuSize >= 2 || this.objSelected != 0 || this.spellSelected != 0) {
          String var1;
          if (this.objSelected == 1 && this.menuSize < 2) {
@@ -9802,7 +9802,7 @@ public final class Client extends GameShell {
          } else if (this.spellSelected == 1 && this.menuSize < 2) {
             var1 = this.aString31 + "...";
          } else {
-            var1 = this.aStringArray12[this.menuSize - 1];
+            var1 = this.menuOption[this.menuSize - 1];
          }
 
          if (this.menuSize > 2) {
@@ -9816,9 +9816,9 @@ public final class Client extends GameShell {
 
    private void method648(PathingEntity var1) {
       var1.aBoolean196 = false;
-      Class15 var2;
+      SeqType var2;
       if (var1.anInt719 != -1) {
-         var2 = Class15.aClass15Array1[var1.anInt719];
+         var2 = SeqType.aClass15Array1[var1.anInt719];
          ++var1.anInt721;
          if (var1.anInt720 < var2.anInt152 && var1.anInt721 > var2.method97(var1.anInt720)) {
             var1.anInt721 = 1;
@@ -9836,7 +9836,7 @@ public final class Client extends GameShell {
             var1.anInt744 = 0;
          }
 
-         var2 = Class28.aClass28Array1[var1.anInt743].aClass15_1;
+         var2 = SpotAnimType.aClass28Array1[var1.anInt743].aClass15_1;
          ++var1.anInt745;
          if (var1.anInt744 < var2.anInt152 && var1.anInt745 > var2.method97(var1.anInt744)) {
             var1.anInt745 = 1;
@@ -9849,7 +9849,7 @@ public final class Client extends GameShell {
       }
 
       if (var1.anInt753 != -1 && var1.anInt756 <= 1) {
-         var2 = Class15.aClass15Array1[var1.anInt753];
+         var2 = SeqType.aClass15Array1[var1.anInt753];
          if (var2.anInt158 == 1 && var1.anInt742 > 0 && var1.anInt735 <= anInt1050 && var1.anInt736 < anInt1050) {
             var1.anInt756 = 1;
             return;
@@ -9857,7 +9857,7 @@ public final class Client extends GameShell {
       }
 
       if (var1.anInt753 != -1 && var1.anInt756 == 0) {
-         var2 = Class15.aClass15Array1[var1.anInt753];
+         var2 = SeqType.aClass15Array1[var1.anInt753];
          ++var1.anInt755;
          if (var1.anInt754 < var2.anInt152 && var1.anInt755 > var2.method97(var1.anInt754)) {
             var1.anInt755 = 1;
@@ -9958,7 +9958,7 @@ public final class Client extends GameShell {
 
    }
 
-   private void method669(int var1, int var2, int var3, int var4, int var5, int var6) {
+   private void orbitCamera(int var1, int var2, int var3, int var4, int var5, int var6) {
       int var7 = 2048 - var3 & 2047;
       int var8 = 2048 - var5 & 2047;
       int var9 = 0;
@@ -9983,11 +9983,11 @@ public final class Client extends GameShell {
          var9 = var14;
       }
 
-      this.anInt990 = var2 - var9;
-      this.anInt991 = var1 - var10;
-      this.anInt992 = var6 - var11;
-      this.anInt993 = var3;
-      this.anInt994 = var5;
+      this.cameraX = var2 - var9;
+      this.cameraY = var1 - var10;
+      this.cameraZ = var6 - var11;
+      this.cameraPitch = var3;
+      this.cameraYaw = var5;
    }
 
    private void method628(long var1) {
@@ -10188,7 +10188,7 @@ public final class Client extends GameShell {
       super.aBoolean213 = true;
    }
 
-   private int method692(byte var1) {
+   private int getTopLevel(byte var1) {
       int var2 = 3;
       if (this.aByte48 == 1) {
          boolean var3 = false;
@@ -10196,7 +10196,7 @@ public final class Client extends GameShell {
          this.load();
       }
 
-      if (this.anInt993 < 310) {
+      if (this.cameraPitch < 310) {
          ++anInt887;
          int var11;
          if (anInt887 > 1457) {
@@ -10220,12 +10220,12 @@ public final class Client extends GameShell {
             this.out.psize1(this.out.pos - var11);
          }
 
-         var11 = this.anInt990 >> 7;
-         int var4 = this.anInt992 >> 7;
-         int var5 = localPlayer.anInt739 >> 7;
-         int var6 = localPlayer.anInt740 >> 7;
-         if ((this.aByteArrayArrayArray8[this.anInt942][var11][var4] & 4) != 0) {
-            var2 = this.anInt942;
+         var11 = this.cameraX >> 7;
+         int var4 = this.cameraZ >> 7;
+         int var5 = localPlayer.x >> 7;
+         int var6 = localPlayer.z >> 7;
+         if ((this.aByteArrayArrayArray8[this.currentLevel][var11][var4] & 4) != 0) {
+            var2 = this.currentLevel;
          }
 
          int var7;
@@ -10255,8 +10255,8 @@ public final class Client extends GameShell {
                   --var11;
                }
 
-               if ((this.aByteArrayArrayArray8[this.anInt942][var11][var4] & 4) != 0) {
-                  var2 = this.anInt942;
+               if ((this.aByteArrayArrayArray8[this.currentLevel][var11][var4] & 4) != 0) {
+                  var2 = this.currentLevel;
                }
 
                var10 += var9;
@@ -10268,8 +10268,8 @@ public final class Client extends GameShell {
                      --var4;
                   }
 
-                  if ((this.aByteArrayArrayArray8[this.anInt942][var11][var4] & 4) != 0) {
-                     var2 = this.anInt942;
+                  if ((this.aByteArrayArrayArray8[this.currentLevel][var11][var4] & 4) != 0) {
+                     var2 = this.currentLevel;
                   }
                }
             }
@@ -10284,8 +10284,8 @@ public final class Client extends GameShell {
                   --var4;
                }
 
-               if ((this.aByteArrayArrayArray8[this.anInt942][var11][var4] & 4) != 0) {
-                  var2 = this.anInt942;
+               if ((this.aByteArrayArrayArray8[this.currentLevel][var11][var4] & 4) != 0) {
+                  var2 = this.currentLevel;
                }
 
                var10 += var9;
@@ -10297,16 +10297,16 @@ public final class Client extends GameShell {
                      --var11;
                   }
 
-                  if ((this.aByteArrayArrayArray8[this.anInt942][var11][var4] & 4) != 0) {
-                     var2 = this.anInt942;
+                  if ((this.aByteArrayArrayArray8[this.currentLevel][var11][var4] & 4) != 0) {
+                     var2 = this.currentLevel;
                   }
                }
             }
          }
       }
 
-      if ((this.aByteArrayArrayArray8[this.anInt942][localPlayer.anInt739 >> 7][localPlayer.anInt740 >> 7] & 4) != 0) {
-         var2 = this.anInt942;
+      if ((this.aByteArrayArrayArray8[this.currentLevel][localPlayer.x >> 7][localPlayer.z >> 7] & 4) != 0) {
+         var2 = this.currentLevel;
       }
 
       return var2;
@@ -10363,7 +10363,7 @@ public final class Client extends GameShell {
 
    }
 
-   private void method617(int var1, int var2, Class14 var3, int var4, int var5, int var6, int var7, int var8) {
+   private void method617(int var1, int var2, ComType var3, int var4, int var5, int var6, int var7, int var8) {
       if (this.aBoolean242) {
          this.anInt1038 = 32;
       } else {
@@ -10498,15 +10498,15 @@ public final class Client extends GameShell {
    }
 
    private void method645(PathingEntity var1) {
-      if (var1.anInt736 == anInt1050 || var1.anInt753 == -1 || var1.anInt756 != 0 || var1.anInt755 + 1 > Class15.aClass15Array1[var1.anInt753].method97(var1.anInt754)) {
+      if (var1.anInt736 == anInt1050 || var1.anInt753 == -1 || var1.anInt756 != 0 || var1.anInt755 + 1 > SeqType.aClass15Array1[var1.anInt753].method97(var1.anInt754)) {
          int var2 = var1.anInt736 - var1.anInt735;
          int var3 = anInt1050 - var1.anInt735;
          int var4 = var1.anInt731 * 128 + var1.anInt730 * 64;
          int var5 = var1.anInt733 * 128 + var1.anInt730 * 64;
          int var6 = var1.anInt732 * 128 + var1.anInt730 * 64;
          int var7 = var1.anInt734 * 128 + var1.anInt730 * 64;
-         var1.anInt739 = (var4 * (var2 - var3) + var6 * var3) / var2;
-         var1.anInt740 = (var5 * (var2 - var3) + var7 * var3) / var2;
+         var1.x = (var4 * (var2 - var3) + var6 * var3) / var2;
+         var1.z = (var5 * (var2 - var3) + var7 * var3) / var2;
       }
 
       var1.anInt752 = 0;
@@ -10535,7 +10535,7 @@ public final class Client extends GameShell {
          var1.anInt752 = 0;
       } else {
          if (var1.anInt753 != -1 && var1.anInt756 == 0) {
-            Class15 var2 = Class15.aClass15Array1[var1.anInt753];
+            SeqType var2 = SeqType.aClass15Array1[var1.anInt753];
             if (var1.anInt742 > 0 && var2.anInt158 == 0) {
                ++var1.anInt752;
                return;
@@ -10547,8 +10547,8 @@ public final class Client extends GameShell {
             }
          }
 
-         int var9 = var1.anInt739;
-         int var3 = var1.anInt740;
+         int var9 = var1.x;
+         int var3 = var1.z;
          int var4 = var1.anIntArray193[var1.anInt759 - 1] * 128 + var1.anInt730 * 64;
          int var5 = var1.anIntArray194[var1.anInt759 - 1] * 128 + var1.anInt730 * 64;
          if (var4 - var9 <= 256 && var4 - var9 >= -256 && var5 - var3 <= 256 && var5 - var3 >= -256) {
@@ -10620,30 +10620,30 @@ public final class Client extends GameShell {
             }
 
             if (var9 < var4) {
-               var1.anInt739 += var8;
-               if (var1.anInt739 > var4) {
-                  var1.anInt739 = var4;
+               var1.x += var8;
+               if (var1.x > var4) {
+                  var1.x = var4;
                }
             } else if (var9 > var4) {
-               var1.anInt739 -= var8;
-               if (var1.anInt739 < var4) {
-                  var1.anInt739 = var4;
+               var1.x -= var8;
+               if (var1.x < var4) {
+                  var1.x = var4;
                }
             }
 
             if (var3 < var5) {
-               var1.anInt740 += var8;
-               if (var1.anInt740 > var5) {
-                  var1.anInt740 = var5;
+               var1.z += var8;
+               if (var1.z > var5) {
+                  var1.z = var5;
                }
             } else if (var3 > var5) {
-               var1.anInt740 -= var8;
-               if (var1.anInt740 < var5) {
-                  var1.anInt740 = var5;
+               var1.z -= var8;
+               if (var1.z < var5) {
+                  var1.z = var5;
                }
             }
 
-            if (var1.anInt739 == var4 && var1.anInt740 == var5) {
+            if (var1.x == var4 && var1.z == var5) {
                --var1.anInt759;
                if (var1.anInt742 > 0) {
                   --var1.anInt742;
@@ -10651,8 +10651,8 @@ public final class Client extends GameShell {
                }
             }
          } else {
-            var1.anInt739 = var4;
-            var1.anInt740 = var5;
+            var1.x = var4;
+            var1.z = var5;
          }
       }
 
@@ -10717,7 +10717,7 @@ public final class Client extends GameShell {
       var3.method76(-171, -180);
       var3 = new Pix24(this.aClass2_2, "logo", 0);
       this.aClass19_19.method130();
-      var3.method78(18, 382 - var3.width / 2 - 128);
+      var3.draw(18, 382 - var3.width / 2 - 128);
       System.gc();
    }
 
@@ -10825,13 +10825,13 @@ public final class Client extends GameShell {
 
    }
 
-   private boolean method598(Class14 var1, int var2) {
+   private boolean method598(ComType var1, int var2) {
       boolean var3 = true;
       int var4 = var1.anInt124;
       if ((var4 < 1 || var4 > 200) && (var4 < 701 || var4 > 900)) {
          if (var4 >= 401 && var4 <= 500) {
-            this.aStringArray12[this.menuSize] = "Remove @whi@" + var1.aString2;
-            this.anIntArray233[this.menuSize] = 859;
+            this.menuOption[this.menuSize] = "Remove @whi@" + var1.aString2;
+            this.menuAction[this.menuSize] = 859;
             ++this.menuSize;
             return true;
          } else {
@@ -10848,11 +10848,11 @@ public final class Client extends GameShell {
             --var4;
          }
 
-         this.aStringArray12[this.menuSize] = "Remove @whi@" + this.aStringArray8[var4];
-         this.anIntArray233[this.menuSize] = 775;
+         this.menuOption[this.menuSize] = "Remove @whi@" + this.aStringArray8[var4];
+         this.menuAction[this.menuSize] = 775;
          ++this.menuSize;
-         this.aStringArray12[this.menuSize] = "Message @whi@" + this.aStringArray8[var4];
-         this.anIntArray233[this.menuSize] = 984;
+         this.menuOption[this.menuSize] = "Message @whi@" + this.aStringArray8[var4];
+         this.menuAction[this.menuSize] = 984;
          ++this.menuSize;
          return true;
       }
@@ -10860,9 +10860,9 @@ public final class Client extends GameShell {
 
    private void method590() {
       this.out.p1isaac(110);
-      if (this.anInt941 != -1) {
-         this.method619(aBoolean249, this.anInt941);
-         this.anInt941 = -1;
+      if (this.sidebarInterfaceId != -1) {
+         this.method619(aBoolean249, this.sidebarInterfaceId);
+         this.sidebarInterfaceId = -1;
          this.aBoolean248 = true;
          this.aBoolean254 = false;
          this.aBoolean225 = true;
@@ -10886,75 +10886,74 @@ public final class Client extends GameShell {
          this.anInt880 = -1;
       }
 
-      if (this.anInt976 != -1) {
-         this.method619(aBoolean249, this.anInt976);
-         this.anInt976 = -1;
+      if (this.viewportInterfaceId != -1) {
+         this.method619(aBoolean249, this.viewportInterfaceId);
+         this.viewportInterfaceId = -1;
       }
 
    }
 
    private void method680(int var1) {
-      this.packetSize += 0;
-      int var2 = Class44.aClass44Array1[var1].anInt617;
+      int var2 = VarpType.aClass44Array1[var1].anInt617;
       if (var2 != 0) {
          int var3 = this.anIntArray244[var1];
          if (var2 == 1) {
             if (var3 == 1) {
-               Class10_Sub1_Sub1_Sub4.method515(0.9, (byte)6);
+               Draw3D.setBrightness(0.9);
             }
 
             if (var3 == 2) {
-               Class10_Sub1_Sub1_Sub4.method515(0.8, (byte)6);
+               Draw3D.setBrightness(0.8);
             }
 
             if (var3 == 3) {
-               Class10_Sub1_Sub1_Sub4.method515(0.7, (byte)6);
+               Draw3D.setBrightness(0.7);
             }
 
             if (var3 == 4) {
-               Class10_Sub1_Sub1_Sub4.method515(0.6, (byte)6);
+               Draw3D.setBrightness(0.6);
             }
 
-            Class17.aClass34_4.clear();
+            ObjType.aClass34_4.clear();
             this.aBoolean236 = true;
          }
 
          if (var2 == 3) {
-            boolean var4 = this.aBoolean259;
+            boolean var4 = this.midiActive;
             if (var3 == 0) {
-               this.method674(this.aBoolean259, 0);
-               this.aBoolean259 = true;
+               this.method674(this.midiActive, 0);
+               this.midiActive = true;
             }
 
             if (var3 == 1) {
-               this.method674(this.aBoolean259, -400);
-               this.aBoolean259 = true;
+               this.method674(this.midiActive, -400);
+               this.midiActive = true;
             }
 
             if (var3 == 2) {
-               this.method674(this.aBoolean259, -800);
-               this.aBoolean259 = true;
+               this.method674(this.midiActive, -800);
+               this.midiActive = true;
             }
 
             if (var3 == 3) {
-               this.method674(this.aBoolean259, -1200);
-               this.aBoolean259 = true;
+               this.method674(this.midiActive, -1200);
+               this.midiActive = true;
             }
 
             if (var3 == 4) {
-               this.aBoolean259 = false;
+               this.midiActive = false;
             }
 
-            if (this.aBoolean259 != var4 && !lowMemory) {
-               if (this.aBoolean259) {
+            if (this.midiActive != var4 && !lowMemory) {
+               if (this.midiActive) {
                   this.anInt1023 = this.anInt1051;
                   this.aBoolean260 = true;
                   this.aClass33_Sub1_1.method558(2, this.anInt1023);
                } else {
-                  this.method625();
+                  this.stopMidi();
                }
 
-               this.anInt958 = 0;
+               this.nextMusicDelay = 0;
             }
          }
 
@@ -11024,7 +11023,7 @@ public final class Client extends GameShell {
 
    }
 
-   private void method696() {
+   private void draw2DEntityElements() {
       this.anInt876 = 0;
 
       int var1;
@@ -11040,7 +11039,7 @@ public final class Client extends GameShell {
          }
 
          if (var3 != null && ((PathingEntity)var3).isVisible()) {
-            Class38 var4;
+            NpcType var4;
             if (var3 instanceof Class10_Sub1_Sub2_Sub3_Sub1) {
                var4 = ((Class10_Sub1_Sub2_Sub3_Sub1)var3).aClass38_1;
                if (var4.anIntArray165 != null) {
@@ -11057,14 +11056,14 @@ public final class Client extends GameShell {
                if (var4.anInt571 >= 0 && var4.anInt571 < this.aClass10_Sub1_Sub1_Sub1Array7.length) {
                   this.method711((PathingEntity)var3, ((PathingEntity)var3).anInt723 + 15);
                   if (this.anInt872 > -1) {
-                     this.aClass10_Sub1_Sub1_Sub1Array7[var4.anInt571].method78(this.anInt873 - 30, this.anInt872 - 12);
+                     this.aClass10_Sub1_Sub1_Sub1Array7[var4.anInt571].draw(this.anInt873 - 30, this.anInt872 - 12);
                   }
                }
 
                if (this.hintType == 1 && this.anInt999 == this.anIntArray256[var2 - this.anInt884] && anInt1050 % 20 < 10) {
                   this.method711((PathingEntity)var3, ((PathingEntity)var3).anInt723 + 15);
                   if (this.anInt872 > -1) {
-                     this.aClass10_Sub1_Sub1_Sub1Array5[0].method78(this.anInt873 - 28, this.anInt872 - 12);
+                     this.aClass10_Sub1_Sub1_Sub1Array5[0].draw(this.anInt873 - 28, this.anInt872 - 12);
                   }
                }
             } else {
@@ -11074,12 +11073,12 @@ public final class Client extends GameShell {
                   this.method711((PathingEntity)var3, ((PathingEntity)var3).anInt723 + 15);
                   if (this.anInt872 > -1) {
                      if (var5.anInt769 != -1) {
-                        this.aClass10_Sub1_Sub1_Sub1Array10[var5.anInt769].method78(this.anInt873 - 30, this.anInt872 - 12);
+                        this.aClass10_Sub1_Sub1_Sub1Array10[var5.anInt769].draw(this.anInt873 - 30, this.anInt872 - 12);
                         var1 += 25;
                      }
 
                      if (var5.anInt765 != -1) {
-                        this.aClass10_Sub1_Sub1_Sub1Array7[var5.anInt765].method78(this.anInt873 - var1, this.anInt872 - 12);
+                        this.aClass10_Sub1_Sub1_Sub1Array7[var5.anInt765].draw(this.anInt873 - var1, this.anInt872 - 12);
                         var1 += 25;
                      }
                   }
@@ -11088,12 +11087,12 @@ public final class Client extends GameShell {
                if (var2 >= 0 && this.hintType == 10 && this.anInt969 == this.anIntArray229[var2]) {
                   this.method711((PathingEntity)var3, ((PathingEntity)var3).anInt723 + 15);
                   if (this.anInt872 > -1) {
-                     this.aClass10_Sub1_Sub1_Sub1Array5[1].method78(this.anInt873 - var1, this.anInt872 - 12);
+                     this.aClass10_Sub1_Sub1_Sub1Array5[1].draw(this.anInt873 - var1, this.anInt872 - 12);
                   }
                }
             }
 
-            if (((PathingEntity)var3).aString13 != null && (var2 >= this.anInt884 || this.anInt899 == 0 || this.anInt899 == 3 || this.anInt899 == 1 && this.method723(((PlayerEntity)var3).aString14))) {
+            if (((PathingEntity)var3).aString13 != null && (var2 >= this.anInt884 || this.publicChatSetting == 0 || this.publicChatSetting == 3 || this.publicChatSetting == 1 && this.isFriend(((PlayerEntity)var3).aString14))) {
                this.method711((PathingEntity)var3, ((PathingEntity)var3).anInt723);
                if (this.anInt872 > -1 && this.anInt876 < this.anInt877) {
                   this.anIntArray224[this.anInt876] = this.aClass10_Sub1_Sub1_Sub2_4.method151(((PathingEntity)var3).aString13) / 2;
@@ -11158,7 +11157,7 @@ public final class Client extends GameShell {
                         this.anInt873 -= 10;
                      }
 
-                     this.aClass10_Sub1_Sub1_Sub1Array8[((PathingEntity)var3).anIntArray196[var1]].method78(this.anInt873 - 12, this.anInt872 - 12);
+                     this.aClass10_Sub1_Sub1_Sub1Array8[((PathingEntity)var3).anIntArray196[var1]].draw(this.anInt873 - 12, this.anInt872 - 12);
                      this.aClass10_Sub1_Sub1_Sub2_2.method148(this.anInt872, 452, this.anInt873 + 4, 0, String.valueOf(((PathingEntity)var3).anIntArray195[var1]));
                      this.aClass10_Sub1_Sub1_Sub2_2.method148(this.anInt872 - 1, 452, this.anInt873 + 3, 16777215, String.valueOf(((PathingEntity)var3).anIntArray195[var1]));
                   }
@@ -11195,15 +11194,15 @@ public final class Client extends GameShell {
             }
 
             if (this.anIntArray225[var2] == 6) {
-               var8 = this.anInt962 % 20 < 10 ? 16711680 : 16776960;
+               var8 = this.sceneCycle % 20 < 10 ? 16711680 : 16776960;
             }
 
             if (this.anIntArray225[var2] == 7) {
-               var8 = this.anInt962 % 20 < 10 ? 255 : '\uffff';
+               var8 = this.sceneCycle % 20 < 10 ? 255 : '\uffff';
             }
 
             if (this.anIntArray225[var2] == 8) {
-               var8 = this.anInt962 % 20 < 10 ? '뀀' : 8454016;
+               var8 = this.sceneCycle % 20 < 10 ? '뀀' : 8454016;
             }
 
             int var9;
@@ -11246,18 +11245,18 @@ public final class Client extends GameShell {
             }
 
             if (this.anIntArray226[var2] == 1) {
-               this.aClass10_Sub1_Sub1_Sub2_4.method153(this.anInt873 + 1, (byte)4, this.anInt962, var14, this.anInt872, 0);
-               this.aClass10_Sub1_Sub1_Sub2_4.method153(this.anInt873, (byte)4, this.anInt962, var14, this.anInt872, var8);
+               this.aClass10_Sub1_Sub1_Sub2_4.method153(this.anInt873 + 1, (byte)4, this.sceneCycle, var14, this.anInt872, 0);
+               this.aClass10_Sub1_Sub1_Sub2_4.method153(this.anInt873, (byte)4, this.sceneCycle, var14, this.anInt872, var8);
             }
 
             if (this.anIntArray226[var2] == 2) {
-               this.aClass10_Sub1_Sub1_Sub2_4.method154(this.anInt873 + 1, 0, var14, this.anInt872, this.anInt962);
-               this.aClass10_Sub1_Sub1_Sub2_4.method154(this.anInt873, var8, var14, this.anInt872, this.anInt962);
+               this.aClass10_Sub1_Sub1_Sub2_4.method154(this.anInt873 + 1, 0, var14, this.anInt872, this.sceneCycle);
+               this.aClass10_Sub1_Sub1_Sub2_4.method154(this.anInt873, var8, var14, this.anInt872, this.sceneCycle);
             }
 
             if (this.anIntArray226[var2] == 3) {
-               this.aClass10_Sub1_Sub1_Sub2_4.method155(var14, 0, this.anInt872, this.anInt873 + 1, 150 - this.anIntArray227[var2], this.anInt962);
-               this.aClass10_Sub1_Sub1_Sub2_4.method155(var14, var8, this.anInt872, this.anInt873, 150 - this.anIntArray227[var2], this.anInt962);
+               this.aClass10_Sub1_Sub1_Sub2_4.method155(var14, 0, this.anInt872, this.anInt873 + 1, 150 - this.anIntArray227[var2], this.sceneCycle);
+               this.aClass10_Sub1_Sub1_Sub2_4.method155(var14, var8, this.anInt872, this.anInt873, 150 - this.anIntArray227[var2], this.sceneCycle);
             }
 
             int var10;
@@ -11292,18 +11291,18 @@ public final class Client extends GameShell {
 
    }
 
-   private void method702() {
+   private void drawTileHint() {
       if (this.hintType == 2) {
-         this.method712((this.anInt828 - this.anInt914 << 7) + this.anInt831, this.anInt830 * 2, (this.anInt829 - this.anInt915 << 7) + this.anInt832);
+         this.method712((this.anInt828 - this.sceneBaseTileX << 7) + this.anInt831, this.anInt830 * 2, (this.anInt829 - this.sceneBaseTileZ << 7) + this.anInt832);
          if (this.anInt872 > -1 && anInt1050 % 20 < 10) {
-            this.aClass10_Sub1_Sub1_Sub1Array5[0].method78(this.anInt873 - 28, this.anInt872 - 12);
+            this.aClass10_Sub1_Sub1_Sub1Array5[0].draw(this.anInt873 - 28, this.anInt872 - 12);
          }
       }
 
    }
 
    private void method718() {
-      if (lowMemory && this.sceneState == 2 && Class8.anInt60 != this.anInt942) {
+      if (lowMemory && this.sceneState == 2 && Class8.anInt60 != this.currentLevel) {
          this.method700((String)null, "Loading - please wait.");
          this.sceneState = 1;
          this.loginTime = System.currentTimeMillis();
@@ -11312,24 +11311,24 @@ public final class Client extends GameShell {
       if (this.sceneState == 1) {
          int var1 = this.method719();
          if (var1 != 0 && System.currentTimeMillis() - this.loginTime > 360000L) {
-            signlink.reporterror(this.aString27 + " glcfb " + this.serverSeed + "," + var1 + "," + lowMemory + "," + this.aClass24Array1[0] + "," + this.aClass33_Sub1_1.method562() + "," + this.anInt942 + "," + this.anInt854 + "," + this.anInt855);
+            signlink.reporterror(this.username + " glcfb " + this.serverSeed + "," + var1 + "," + lowMemory + "," + this.aClass24Array1[0] + "," + this.aClass33_Sub1_1.method562() + "," + this.currentLevel + "," + this.anInt854 + "," + this.anInt855);
             this.loginTime = System.currentTimeMillis();
          }
       }
 
-      if (this.sceneState == 2 && this.anInt942 != this.anInt1026) {
-         this.anInt1026 = this.anInt942;
-         this.method690(this.anInt942);
+      if (this.sceneState == 2 && this.currentLevel != this.anInt1026) {
+         this.anInt1026 = this.currentLevel;
+         this.method690(this.currentLevel);
       }
 
    }
 
-   private void method640(int var1) {
+   private void updateTextures(int var1) {
       if (!lowMemory) {
          for(int var2 = 0; var2 < this.anIntArray268.length; ++var2) {
             int var3 = this.anIntArray268[var2];
-            if (Class10_Sub1_Sub1_Sub4.anIntArray185[var3] >= var1) {
-               Class10_Sub1_Sub1_Sub3 var4 = Class10_Sub1_Sub1_Sub4.aClass10_Sub1_Sub1_Sub3Array1[var3];
+            if (Draw3D.anIntArray185[var3] >= var1) {
+               Class10_Sub1_Sub1_Sub3 var4 = Draw3D.aClass10_Sub1_Sub1_Sub3Array1[var3];
                int var5 = var4.anInt652 * var4.anInt653 - 1;
                int var6 = var4.anInt652 * this.anInt878 * 2;
                byte[] var7 = var4.aByteArray16;
@@ -11341,7 +11340,7 @@ public final class Client extends GameShell {
 
                var4.aByteArray16 = var8;
                this.aByteArray21 = var7;
-               Class10_Sub1_Sub1_Sub4.method513(var3);
+               Draw3D.method513(var3);
             }
          }
       }
@@ -11382,36 +11381,36 @@ public final class Client extends GameShell {
       return var1 < 999999999 ? String.valueOf(var1) : "*";
    }
 
-   private void method684() {
-      this.method650();
-      if (this.anInt909 == 1) {
-         this.aClass10_Sub1_Sub1_Sub1Array4[this.anInt908 / 100].method78(this.anInt907 - 8 - 4, this.anInt906 - 8 - 4);
+   private void draw3DEntityElements() {
+      this.drawPrivateMessages();
+      if (this.crossMode == 1) {
+         this.imageCrosses[this.crossCycle / 100].draw(this.crossX - 8 - 4, this.crossY - 8 - 4);
       }
 
-      if (this.anInt909 == 2) {
-         this.aClass10_Sub1_Sub1_Sub1Array4[this.anInt908 / 100 + 4].method78(this.anInt907 - 8 - 4, this.anInt906 - 8 - 4);
+      if (this.crossMode == 2) {
+         this.imageCrosses[this.crossCycle / 100 + 4].draw(this.crossX - 8 - 4, this.crossY - 8 - 4);
       }
 
       if (this.anInt1027 != -1) {
-         this.method663(this.anInt878, this.anInt1027, (byte)5);
-         this.method717(0, 0, Class14.method87(this.anInt1027), 0);
+         this.updateInterfaceAnimation(this.anInt878, this.anInt1027);
+         this.drawInterface(0, 0, ComType.method87(this.anInt1027), 0);
       }
 
-      if (this.anInt976 != -1) {
-         this.method663(this.anInt878, this.anInt976, (byte)5);
-         this.method717(0, 0, Class14.method87(this.anInt976), 0);
+      if (this.viewportInterfaceId != -1) {
+         this.updateInterfaceAnimation(this.anInt878, this.viewportInterfaceId);
+         this.drawInterface(0, 0, ComType.method87(this.viewportInterfaceId), 0);
       }
 
-      this.method682();
+      this.method999();
       if (!this.menuVisible) {
-         this.method666();
-         this.method609();
+         this.handleInput();
+         this.drawTooltip();
       } else if (this.anInt1039 == 0) {
-         this.method703();
+         this.drawMenu();
       }
 
       if (this.anInt1047 == 1) {
-         this.aClass10_Sub1_Sub1_Sub1_7.method78(296, 472);
+         this.aClass10_Sub1_Sub1_Sub1_7.draw(296, 472);
       }
 
       int var1;
@@ -11514,13 +11513,13 @@ public final class Client extends GameShell {
          }
       }
 
-      if (this.anInt958 > 0) {
-         this.anInt958 -= 20;
-         if (this.anInt958 < 0) {
-            this.anInt958 = 0;
+      if (this.nextMusicDelay > 0) {
+         this.nextMusicDelay -= 20;
+         if (this.nextMusicDelay < 0) {
+            this.nextMusicDelay = 0;
          }
 
-         if (this.anInt958 == 0 && this.aBoolean259 && !lowMemory) {
+         if (this.nextMusicDelay == 0 && this.midiActive && !lowMemory) {
             this.anInt1023 = this.anInt1051;
             this.aBoolean260 = true;
             this.aClass33_Sub1_1.method558(2, this.anInt1023);
@@ -11530,19 +11529,19 @@ public final class Client extends GameShell {
 
    }
 
-   private void method688(int var1, int var2, int var3) {
+   private void handleChatMouseInput(int mouseX, int mouseY) {
       int var4 = 0;
       boolean var5 = false;
 
       for(int var6 = 0; var6 < 100; ++var6) {
          if (this.messageText[var6] != null) {
-            int var7 = this.anIntArray270[var6];
-            int var8 = this.anInt834 + 70 + 4 - var4 * 14;
-            if (var8 < -20) {
+            int type = this.messageType[var6];
+            int y = this.chatScrollOffset + 70 + 4 - var4 * 14;
+            if (y < -20) {
                break;
             }
 
-            String var9 = this.aStringArray13[var6];
+            String var9 = this.messageSender[var6];
             if (var9 != null && var9.startsWith("@cr1@")) {
                var9 = var9.substring(5);
             }
@@ -11551,66 +11550,66 @@ public final class Client extends GameShell {
                var9 = var9.substring(5);
             }
 
-            if (var7 == 0) {
+            if (type == 0) {
                ++var4;
             }
 
-            if ((var7 == 1 || var7 == 2) && (var7 == 1 || this.anInt899 == 0 || this.anInt899 == 1 && this.method723(var9))) {
-               if (var3 > var8 - 14 && var3 <= var8 && !var9.equals(localPlayer.aString14)) {
+            if ((type == 1 || type == 2) && (type == 1 || this.publicChatSetting == 0 || this.publicChatSetting == 1 && this.isFriend(var9))) {
+               if (mouseY > y - 14 && mouseY <= y && !var9.equals(localPlayer.aString14)) {
                   if (this.anInt842 >= 1) {
-                     this.aStringArray12[this.menuSize] = "Report abuse @whi@" + var9;
-                     this.anIntArray233[this.menuSize] = 507;
+                     this.menuOption[this.menuSize] = "Report abuse @whi@" + var9;
+                     this.menuAction[this.menuSize] = 507;
                      ++this.menuSize;
                   }
 
-                  this.aStringArray12[this.menuSize] = "Add ignore @whi@" + var9;
-                  this.anIntArray233[this.menuSize] = 574;
+                  this.menuOption[this.menuSize] = "Add ignore @whi@" + var9;
+                  this.menuAction[this.menuSize] = 574;
                   ++this.menuSize;
-                  this.aStringArray12[this.menuSize] = "Add friend @whi@" + var9;
-                  this.anIntArray233[this.menuSize] = 762;
+                  this.menuOption[this.menuSize] = "Add friend @whi@" + var9;
+                  this.menuAction[this.menuSize] = 762;
                   ++this.menuSize;
                }
 
                ++var4;
             }
 
-            if ((var7 == 3 || var7 == 7) && this.anInt997 == 0 && (var7 == 7 || this.anInt853 == 0 || this.anInt853 == 1 && this.method723(var9))) {
-               if (var3 > var8 - 14 && var3 <= var8) {
+            if ((type == 3 || type == 7) && this.anInt997 == 0 && (type == 7 || this.anInt853 == 0 || this.anInt853 == 1 && this.isFriend(var9))) {
+               if (mouseY > y - 14 && mouseY <= y) {
                   if (this.anInt842 >= 1) {
-                     this.aStringArray12[this.menuSize] = "Report abuse @whi@" + var9;
-                     this.anIntArray233[this.menuSize] = 507;
+                     this.menuOption[this.menuSize] = "Report abuse @whi@" + var9;
+                     this.menuAction[this.menuSize] = 507;
                      ++this.menuSize;
                   }
 
-                  this.aStringArray12[this.menuSize] = "Add ignore @whi@" + var9;
-                  this.anIntArray233[this.menuSize] = 574;
+                  this.menuOption[this.menuSize] = "Add ignore @whi@" + var9;
+                  this.menuAction[this.menuSize] = 574;
                   ++this.menuSize;
-                  this.aStringArray12[this.menuSize] = "Add friend @whi@" + var9;
-                  this.anIntArray233[this.menuSize] = 762;
-                  ++this.menuSize;
-               }
-
-               ++var4;
-            }
-
-            if (var7 == 4 && (this.anInt1000 == 0 || this.anInt1000 == 1 && this.method723(var9))) {
-               if (var3 > var8 - 14 && var3 <= var8) {
-                  this.aStringArray12[this.menuSize] = "Accept trade @whi@" + var9;
-                  this.anIntArray233[this.menuSize] = 544;
+                  this.menuOption[this.menuSize] = "Add friend @whi@" + var9;
+                  this.menuAction[this.menuSize] = 762;
                   ++this.menuSize;
                }
 
                ++var4;
             }
 
-            if ((var7 == 5 || var7 == 6) && this.anInt997 == 0 && this.anInt853 < 2) {
+            if (type == 4 && (this.anInt1000 == 0 || this.anInt1000 == 1 && this.isFriend(var9))) {
+               if (mouseY > y - 14 && mouseY <= y) {
+                  this.menuOption[this.menuSize] = "Accept trade @whi@" + var9;
+                  this.menuAction[this.menuSize] = 544;
+                  ++this.menuSize;
+               }
+
                ++var4;
             }
 
-            if (var7 == 8 && (this.anInt1000 == 0 || this.anInt1000 == 1 && this.method723(var9))) {
-               if (var3 > var8 - 14 && var3 <= var8) {
-                  this.aStringArray12[this.menuSize] = "Accept challenge @whi@" + var9;
-                  this.anIntArray233[this.menuSize] = 695;
+            if ((type == 5 || type == 6) && this.anInt997 == 0 && this.anInt853 < 2) {
+               ++var4;
+            }
+
+            if (type == 8 && (this.anInt1000 == 0 || this.anInt1000 == 1 && this.isFriend(var9))) {
+               if (mouseY > y - 14 && mouseY <= y) {
+                  this.menuOption[this.menuSize] = "Accept challenge @whi@" + var9;
+                  this.menuAction[this.menuSize] = 695;
                   ++this.menuSize;
                }
 
@@ -11645,21 +11644,21 @@ public final class Client extends GameShell {
 
    private void method709() {
       this.aClass19_15.method130();
-      Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray237;
+      Draw3D.lineOffset = this.anIntArray237;
       this.aClass10_Sub1_Sub1_Sub3_16.method440(0, 0);
-      if (this.anInt941 != -1) {
-         this.method717(0, 0, Class14.method87(this.anInt941), 0);
+      if (this.sidebarInterfaceId != -1) {
+         this.drawInterface(0, 0, ComType.method87(this.sidebarInterfaceId), 0);
       } else if (this.anIntArray248[this.anInt1031] != -1) {
-         this.method717(0, 0, Class14.method87(this.anIntArray248[this.anInt1031]), 0);
+         this.drawInterface(0, 0, ComType.method87(this.anIntArray248[this.anInt1031]), 0);
       }
 
       if (this.menuVisible && this.anInt1039 == 1) {
-         this.method703();
+         this.drawMenu();
       }
 
-      this.aClass19_15.method131(205, 553, super.graphics);
-      this.aClass19_17.method130();
-      Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray238;
+      this.aClass19_15.draw(205, 553, super.graphics);
+      this.areaViewport.method130();
+      Draw3D.lineOffset = this.anIntArray238;
    }
 
    private void method642() {
@@ -11745,14 +11744,14 @@ public final class Client extends GameShell {
          }
 
          if (var18 != null) {
-            Class48 var19 = Class48.method523(var3);
-            int var20 = this.anIntArrayArrayArray8[this.anInt942][var9][var10];
-            int var21 = this.anIntArrayArrayArray8[this.anInt942][var9 + 1][var10];
-            int var22 = this.anIntArrayArrayArray8[this.anInt942][var9 + 1][var10 + 1];
-            int var23 = this.anIntArrayArrayArray8[this.anInt942][var9][var10 + 1];
+            LocType var19 = LocType.method523(var3);
+            int var20 = this.anIntArrayArrayArray8[this.currentLevel][var9][var10];
+            int var21 = this.anIntArrayArrayArray8[this.currentLevel][var9 + 1][var10];
+            int var22 = this.anIntArrayArrayArray8[this.currentLevel][var9 + 1][var10 + 1];
+            int var23 = this.anIntArrayArrayArray8[this.currentLevel][var9][var10 + 1];
             Model var24 = var19.method531(var5, var6, var20, var21, var22, var23, -1);
             if (var24 != null) {
-               this.method720(this.anInt942, var9, 0, var11 + 1, 0, -1, var17 + 1, var7, var10);
+               this.method720(this.currentLevel, var9, 0, var11 + 1, 0, -1, var17 + 1, var7, var10);
                var18.anInt771 = var17 + anInt1050;
                var18.anInt772 = var11 + anInt1050;
                var18.aClass10_Sub1_Sub2_Sub4_2 = var24;
@@ -11765,7 +11764,7 @@ public final class Client extends GameShell {
 
                var18.anInt762 = var9 * 128 + var25 * 64;
                var18.anInt764 = var10 * 128 + var26 * 64;
-               var18.anInt763 = this.method685(var18.anInt764, var18.anInt762, this.anInt942);
+               var18.anInt763 = this.getHeightmapY(var18.anInt764, var18.anInt762, this.currentLevel);
                byte var27;
                if (var14 > var13) {
                   var27 = (byte)var14;
@@ -11798,11 +11797,11 @@ public final class Client extends GameShell {
             Class10_Sub1_Sub2_Sub1 var28 = new Class10_Sub1_Sub2_Sub1();
             var28.anInt211 = var7;
             var28.anInt213 = var6;
-            if (this.levelObjStacks[this.anInt942][var4][var5] == null) {
-               this.levelObjStacks[this.anInt942][var4][var5] = new Class6(true);
+            if (this.levelObjStacks[this.currentLevel][var4][var5] == null) {
+               this.levelObjStacks[this.currentLevel][var4][var5] = new Class6(true);
             }
 
-            this.levelObjStacks[this.anInt942][var4][var5].method3(var28);
+            this.levelObjStacks[this.currentLevel][var4][var5].method3(var28);
             this.method601(var4, var5);
          }
       } else if (var2 == 142) {
@@ -11815,12 +11814,12 @@ public final class Client extends GameShell {
          var8 = this.anInt889 + (var13 >> 4 & 7);
          var9 = this.anInt890 + (var13 & 7);
          if (var8 >= 0 && var9 >= 0 && var8 < 103 && var9 < 103) {
-            var10 = this.anIntArrayArrayArray8[this.anInt942][var8][var9];
-            var14 = this.anIntArrayArrayArray8[this.anInt942][var8 + 1][var9];
-            var11 = this.anIntArrayArrayArray8[this.anInt942][var8 + 1][var9 + 1];
-            var12 = this.anIntArrayArrayArray8[this.anInt942][var8][var9 + 1];
+            var10 = this.anIntArrayArrayArray8[this.currentLevel][var8][var9];
+            var14 = this.anIntArrayArrayArray8[this.currentLevel][var8 + 1][var9];
+            var11 = this.anIntArrayArrayArray8[this.currentLevel][var8 + 1][var9 + 1];
+            var12 = this.anIntArrayArrayArray8[this.currentLevel][var8][var9 + 1];
             if (var7 == 0) {
-               Class45 var29 = this.aClass23_1.method212(this.anInt942, var8, var9);
+               Class45 var29 = this.scene.method212(this.currentLevel, var8, var9);
                if (var29 != null) {
                   var16 = var29.anInt635 >> 14 & 32767;
                   if (var5 == 2) {
@@ -11833,14 +11832,14 @@ public final class Client extends GameShell {
             }
 
             if (var7 == 1) {
-               Class36 var32 = this.aClass23_1.method213(this.anInt942, var9, var8);
+               Class36 var32 = this.scene.method213(this.currentLevel, var9, var8);
                if (var32 != null) {
                   var32.aClass10_Sub1_Sub2_6 = new Class10_Sub1_Sub2_Sub5(var3, var11, var12, var14, 4, (byte)3, var32.anInt561 >> 14 & 32767, false, var10, 0);
                }
             }
 
             if (var7 == 2) {
-               Class5 var33 = this.aClass23_1.method214(var8, var9, this.anInt942);
+               Class5 var33 = this.scene.method214(var8, var9, this.currentLevel);
                if (var5 == 11) {
                   var5 = 10;
                }
@@ -11851,7 +11850,7 @@ public final class Client extends GameShell {
             }
 
             if (var7 == 3) {
-               Class29 var34 = this.aClass23_1.method215(this.anInt942, var9, var8);
+               Class29 var34 = this.scene.method215(this.currentLevel, var9, var8);
                if (var34 != null) {
                   var34.aClass10_Sub1_Sub2_5 = new Class10_Sub1_Sub2_Sub5(var3, var11, var12, var14, 22, (byte)3, var34.anInt446 >> 14 & 32767, false, var10, var6);
                }
@@ -11869,11 +11868,11 @@ public final class Client extends GameShell {
                var35 = new Class10_Sub1_Sub2_Sub1();
                var35.anInt211 = var3;
                var35.anInt213 = var7;
-               if (this.levelObjStacks[this.anInt942][var5][var6] == null) {
-                  this.levelObjStacks[this.anInt942][var5][var6] = new Class6(true);
+               if (this.levelObjStacks[this.currentLevel][var5][var6] == null) {
+                  this.levelObjStacks[this.currentLevel][var5][var6] = new Class6(true);
                }
 
-               this.levelObjStacks[this.anInt942][var5][var6].method3(var35);
+               this.levelObjStacks[this.currentLevel][var5][var6].method3(var35);
                this.method601(var5, var6);
             }
          } else {
@@ -11886,7 +11885,7 @@ public final class Client extends GameShell {
                var7 = var1.g2();
                var13 = var1.g2();
                if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {
-                  var30 = this.levelObjStacks[this.anInt942][var4][var5];
+                  var30 = this.levelObjStacks[this.currentLevel][var4][var5];
                   if (var30 != null) {
                      for(Class10_Sub1_Sub2_Sub1 var31 = (Class10_Sub1_Sub2_Sub1)var30.method6(); var31 != null; var31 = (Class10_Sub1_Sub2_Sub1)var30.method8()) {
                         if (var31.anInt211 == (var6 & 32767) && var31.anInt213 == var7) {
@@ -11917,8 +11916,8 @@ public final class Client extends GameShell {
                   var5 = var5 * 128 + 64;
                   var6 = var6 * 128 + 64;
                   var7 = var7 * 128 + 64;
-                  Class10_Sub1_Sub2_Sub2 var37 = new Class10_Sub1_Sub2_Sub2(this.anInt942, var10, var16, var5, var8, var11 + anInt1050, var12, var13, (byte)-41, this.method685(var5, var4, this.anInt942) - var9, var4, var14 + anInt1050);
-                  var37.method187(var6, var7, this.method685(var7, var6, this.anInt942) - var10, var14 + anInt1050);
+                  Class10_Sub1_Sub2_Sub2 var37 = new Class10_Sub1_Sub2_Sub2(this.currentLevel, var10, var16, var5, var8, var11 + anInt1050, var12, var13, (byte)-41, this.getHeightmapY(var5, var4, this.currentLevel) - var9, var4, var14 + anInt1050);
+                  var37.method187(var6, var7, this.getHeightmapY(var7, var6, this.currentLevel) - var10, var14 + anInt1050);
                   this.projectiles.method3(var37);
                }
             } else {
@@ -11948,7 +11947,7 @@ public final class Client extends GameShell {
                   if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {
                      var4 = var4 * 128 + 64;
                      var5 = var5 * 128 + 64;
-                     Class10_Sub1_Sub2_Sub6 var36 = new Class10_Sub1_Sub2_Sub6(var4, this.anInt942, this.method685(var5, var4, this.anInt942) - var7, var13, var6, anInt1050, var5, 10709);
+                     Class10_Sub1_Sub2_Sub6 var36 = new Class10_Sub1_Sub2_Sub6(var4, this.currentLevel, this.getHeightmapY(var5, var4, this.currentLevel) - var7, var13, var6, anInt1050, var5, 10709);
                      this.spotanims.method3(var36);
                   }
                } else if (var2 == 152) {
@@ -11961,7 +11960,7 @@ public final class Client extends GameShell {
                   var8 = this.anInt889 + (var13 >> 4 & 7);
                   var9 = this.anInt890 + (var13 & 7);
                   if (var8 >= 0 && var9 >= 0 && var8 < 104 && var9 < 104) {
-                     this.method720(this.anInt942, var8, var5, -1, var4, var7, 0, var6, var9);
+                     this.method720(this.currentLevel, var8, var5, -1, var4, var7, 0, var6, var9);
                   }
                } else if (var2 == 208) {
                   var3 = var1.method340();
@@ -11969,7 +11968,7 @@ public final class Client extends GameShell {
                   var5 = this.anInt889 + (var4 >> 4 & 7);
                   var6 = this.anInt890 + (var4 & 7);
                   if (var5 >= 0 && var6 >= 0 && var5 < 104 && var6 < 104) {
-                     var30 = this.levelObjStacks[this.anInt942][var5][var6];
+                     var30 = this.levelObjStacks[this.currentLevel][var5][var6];
                      if (var30 != null) {
                         for(var35 = (Class10_Sub1_Sub2_Sub1)var30.method6(); var35 != null; var35 = (Class10_Sub1_Sub2_Sub1)var30.method8()) {
                            if (var35.anInt211 == (var3 & 32767)) {
@@ -11979,7 +11978,7 @@ public final class Client extends GameShell {
                         }
 
                         if (var30.method6() == null) {
-                           this.levelObjStacks[this.anInt942][var5][var6] = null;
+                           this.levelObjStacks[this.currentLevel][var5][var6] = null;
                         }
 
                         this.method601(var5, var6);
@@ -11994,7 +11993,7 @@ public final class Client extends GameShell {
                   var13 = var6 & 3;
                   var8 = this.anIntArray243[var7];
                   if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {
-                     this.method720(this.anInt942, var4, var13, -1, var7, -1, 0, var8, var5);
+                     this.method720(this.currentLevel, var4, var13, -1, var7, -1, 0, var8, var5);
                   }
                }
             }
@@ -12024,7 +12023,7 @@ public final class Client extends GameShell {
 
    private boolean method655(int var1, int var2, int var3) {
       int var4 = var3 >> 14 & 32767;
-      int var5 = this.aClass23_1.method220(this.anInt942, var2, var1, var3);
+      int var5 = this.scene.method220(this.currentLevel, var2, var1, var3);
       if (var5 == -1) {
          return false;
       } else {
@@ -12033,7 +12032,7 @@ public final class Client extends GameShell {
          if (var6 != 10 && var6 != 11 && var6 != 22) {
             this.method610(true, var1, localPlayer.anIntArray194[0], 0, 0, 2, var6 + 1, var2, 0, var7, localPlayer.anIntArray193[0]);
          } else {
-            Class48 var8 = Class48.method523(var4);
+            LocType var8 = LocType.method523(var4);
             int var9;
             int var10;
             if (var7 != 0 && var7 != 2) {
@@ -12052,10 +12051,10 @@ public final class Client extends GameShell {
             this.method610(true, var1, localPlayer.anIntArray194[0], var9, var10, 2, 0, var2, var11, 0, localPlayer.anIntArray193[0]);
          }
 
-         this.anInt906 = super.anInt822;
-         this.anInt907 = super.anInt823;
-         this.anInt909 = 2;
-         this.anInt908 = 0;
+         this.crossY = super.anInt822;
+         this.crossX = super.anInt823;
+         this.crossMode = 2;
+         this.crossCycle = 0;
          this.packetSize += 0;
          return true;
       }
@@ -12063,7 +12062,7 @@ public final class Client extends GameShell {
 
    private void method659() {
       this.aClass19_18.method130();
-      Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray236;
+      Draw3D.lineOffset = this.anIntArray236;
       this.aClass10_Sub1_Sub1_Sub3_18.method440(0, 0);
       if (this.aBoolean216) {
          this.aClass10_Sub1_Sub1_Sub2_4.method148(239, 452, 40, 0, this.aString19);
@@ -12111,7 +12110,7 @@ public final class Client extends GameShell {
             this.aClass10_Sub1_Sub1_Sub2_4.method148(239, 452, 40, 0, this.aString26);
             this.aClass10_Sub1_Sub1_Sub2_4.method148(239, 452, 60, 128, "Click to continue");
          } else if (this.anInt888 != -1) {
-            this.method717(0, 0, Class14.method87(this.anInt888), 0);
+            this.drawInterface(0, 0, ComType.method87(this.anInt888), 0);
          } else if (this.anInt985 == -1) {
             var1 = this.aClass10_Sub1_Sub1_Sub2_3;
             var2 = 0;
@@ -12119,9 +12118,9 @@ public final class Client extends GameShell {
 
             for(var3 = 0; var3 < 100; ++var3) {
                if (this.messageText[var3] != null) {
-                  int var4 = this.anIntArray270[var3];
-                  int var5 = this.anInt834 + 70 - var2 * 14;
-                  String var6 = this.aStringArray13[var3];
+                  int var4 = this.messageType[var3];
+                  int var5 = this.chatScrollOffset + 70 - var2 * 14;
+                  String var6 = this.messageSender[var3];
                   byte var7 = 0;
                   if (var6 != null && var6.startsWith("@cr1@")) {
                      var6 = var6.substring(5);
@@ -12142,7 +12141,7 @@ public final class Client extends GameShell {
                   }
 
                   int var8;
-                  if ((var4 == 1 || var4 == 2) && (var4 == 1 || this.anInt899 == 0 || this.anInt899 == 1 && this.method723(var6))) {
+                  if ((var4 == 1 || var4 == 2) && (var4 == 1 || this.publicChatSetting == 0 || this.publicChatSetting == 1 && this.isFriend(var6))) {
                      if (var5 > 0 && var5 < 110) {
                         var8 = 4;
                         if (var7 == 1) {
@@ -12163,7 +12162,7 @@ public final class Client extends GameShell {
                      ++var2;
                   }
 
-                  if ((var4 == 3 || var4 == 7) && this.anInt997 == 0 && (var4 == 7 || this.anInt853 == 0 || this.anInt853 == 1 && this.method723(var6))) {
+                  if ((var4 == 3 || var4 == 7) && this.anInt997 == 0 && (var4 == 7 || this.anInt853 == 0 || this.anInt853 == 1 && this.isFriend(var6))) {
                      if (var5 > 0 && var5 < 110) {
                         var1.method152(4, 0, var5, "From");
                         var8 = var1.method150("From ") + 4;
@@ -12185,7 +12184,7 @@ public final class Client extends GameShell {
                      ++var2;
                   }
 
-                  if (var4 == 4 && (this.anInt1000 == 0 || this.anInt1000 == 1 && this.method723(var6))) {
+                  if (var4 == 4 && (this.anInt1000 == 0 || this.anInt1000 == 1 && this.isFriend(var6))) {
                      if (var5 > 0 && var5 < 110) {
                         var1.method152(4, 8388736, var5, var6 + " " + this.messageText[var3]);
                      }
@@ -12210,7 +12209,7 @@ public final class Client extends GameShell {
                      ++var2;
                   }
 
-                  if (var4 == 8 && (this.anInt1000 == 0 || this.anInt1000 == 1 && this.method723(var6))) {
+                  if (var4 == 8 && (this.anInt1000 == 0 || this.anInt1000 == 1 && this.isFriend(var6))) {
                      if (var5 > 0 && var5 < 110) {
                         var1.method152(4, 8270336, var5, var6 + " " + this.messageText[var3]);
                      }
@@ -12226,29 +12225,29 @@ public final class Client extends GameShell {
                this.anInt947 = 78;
             }
 
-            this.method631(this.anInt947 - this.anInt834 - 77, 463, 77, this.anInt947, 0);
+            this.method631(this.anInt947 - this.chatScrollOffset - 77, 463, 77, this.anInt947, 0);
             String var9;
             if (localPlayer != null && localPlayer.aString14 != null) {
                var9 = localPlayer.aString14;
             } else {
-               var9 = Class26.method252(this.aString27, (byte)7);
+               var9 = Class26.method252(this.username, (byte)7);
             }
 
             var1.method152(4, 0, 90, var9 + ":");
             var1.method152(var1.method150(var9 + ": ") + 6, 255, 90, this.aString29 + "*");
             Draw2D.drawHorizontalLine(0, 0, 77, 479);
          } else {
-            this.method717(0, 0, Class14.method87(this.anInt985), 0);
+            this.drawInterface(0, 0, ComType.method87(this.anInt985), 0);
          }
       }
 
       if (this.menuVisible && this.anInt1039 == 2) {
-         this.method703();
+         this.drawMenu();
       }
 
-      this.aClass19_18.method131(357, 17, super.graphics);
-      this.aClass19_17.method130();
-      Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray238;
+      this.aClass19_18.draw(357, 17, super.graphics);
+      this.areaViewport.method130();
+      Draw3D.lineOffset = this.anIntArray238;
    }
 
    private void method662(int var1) {
@@ -12267,29 +12266,29 @@ public final class Client extends GameShell {
          }
 
          this.aClass10_Sub1_Sub1_Sub1_10.method82(0, 567, 33, 25, 33, this.anIntArray267, 0, this.orbitCameraYaw, 256, this.anIntArray261, 25);
-         this.aClass19_17.method130();
-         Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray238;
+         this.areaViewport.method130();
+         Draw3D.lineOffset = this.anIntArray238;
       } else {
          int var14 = this.orbitCameraYaw + this.minimapAnticheatAngle & 2047;
-         int var15 = localPlayer.anInt739 / 32 + 48;
+         int var15 = localPlayer.x / 32 + 48;
          boolean var6 = false;
-         var2 = 464 - localPlayer.anInt740 / 32;
+         var2 = 464 - localPlayer.z / 32;
          this.aClass10_Sub1_Sub1_Sub1_11.method82(5, 567, 151, var15, 146, this.anIntArray220, 25, var14, this.minimapZoom + 256, this.anIntArray241, var2);
          this.aClass10_Sub1_Sub1_Sub1_10.method82(0, 567, 33, 25, 33, this.anIntArray267, 0, this.orbitCameraYaw, 256, this.anIntArray261, 25);
 
          for(var3 = 0; var3 < this.anInt936; ++var3) {
-            var15 = this.anIntArray246[var3] * 4 + 2 - localPlayer.anInt739 / 32;
-            var2 = this.anIntArray247[var3] * 4 + 2 - localPlayer.anInt740 / 32;
+            var15 = this.anIntArray246[var3] * 4 + 2 - localPlayer.x / 32;
+            var2 = this.anIntArray247[var3] * 4 + 2 - localPlayer.z / 32;
             this.method705(var2, this.aClass10_Sub1_Sub1_Sub1Array9[var3], var15);
          }
 
          int var7;
          for(int var8 = 0; var8 < 104; ++var8) {
             for(var7 = 0; var7 < 104; ++var7) {
-               Class6 var9 = this.levelObjStacks[this.anInt942][var8][var7];
+               Class6 var9 = this.levelObjStacks[this.currentLevel][var8][var7];
                if (var9 != null) {
-                  var15 = var8 * 4 + 2 - localPlayer.anInt739 / 32;
-                  var2 = var7 * 4 + 2 - localPlayer.anInt740 / 32;
+                  var15 = var8 * 4 + 2 - localPlayer.x / 32;
+                  var2 = var7 * 4 + 2 - localPlayer.z / 32;
                   this.method705(var2, this.aClass10_Sub1_Sub1_Sub1_12, var15);
                }
             }
@@ -12298,14 +12297,14 @@ public final class Client extends GameShell {
          for(var7 = 0; var7 < this.anInt960; ++var7) {
             Class10_Sub1_Sub2_Sub3_Sub1 var16 = this.npcs[this.anIntArray256[var7]];
             if (var16 != null && var16.isVisible()) {
-               Class38 var18 = var16.aClass38_1;
+               NpcType var18 = var16.aClass38_1;
                if (var18.anIntArray165 != null) {
                   var18 = var18.method406();
                }
 
                if (var18 != null && var18.aBoolean142 && var18.aBoolean141) {
-                  var15 = var16.anInt739 / 32 - localPlayer.anInt739 / 32;
-                  var2 = var16.anInt740 / 32 - localPlayer.anInt740 / 32;
+                  var15 = var16.x / 32 - localPlayer.x / 32;
+                  var2 = var16.z / 32 - localPlayer.z / 32;
                   this.method705(var2, this.aClass10_Sub1_Sub1_Sub1_13, var15);
                }
             }
@@ -12315,8 +12314,8 @@ public final class Client extends GameShell {
          for(int var17 = 0; var17 < this.anInt884; ++var17) {
             var21 = this.players[this.anIntArray229[var17]];
             if (var21 != null && var21.isVisible()) {
-               var15 = var21.anInt739 / 32 - localPlayer.anInt739 / 32;
-               var2 = var21.anInt740 / 32 - localPlayer.anInt740 / 32;
+               var15 = var21.x / 32 - localPlayer.x / 32;
+               var2 = var21.z / 32 - localPlayer.z / 32;
                boolean var10 = false;
                long var11 = Class26.method248(var21.aString14);
 
@@ -12346,37 +12345,37 @@ public final class Client extends GameShell {
             if (this.hintType == 1 && this.anInt999 >= 0 && this.anInt999 < this.npcs.length) {
                Class10_Sub1_Sub2_Sub3_Sub1 var19 = this.npcs[this.anInt999];
                if (var19 != null) {
-                  var15 = var19.anInt739 / 32 - localPlayer.anInt739 / 32;
-                  var2 = var19.anInt740 / 32 - localPlayer.anInt740 / 32;
+                  var15 = var19.x / 32 - localPlayer.x / 32;
+                  var2 = var19.z / 32 - localPlayer.z / 32;
                   this.method630(var2, this.aClass10_Sub1_Sub1_Sub1_6, var15);
                }
             }
 
             if (this.hintType == 2) {
-               var15 = (this.anInt828 - this.anInt914) * 4 + 2 - localPlayer.anInt739 / 32;
-               var2 = (this.anInt829 - this.anInt915) * 4 + 2 - localPlayer.anInt740 / 32;
+               var15 = (this.anInt828 - this.sceneBaseTileX) * 4 + 2 - localPlayer.x / 32;
+               var2 = (this.anInt829 - this.sceneBaseTileZ) * 4 + 2 - localPlayer.z / 32;
                this.method630(var2, this.aClass10_Sub1_Sub1_Sub1_6, var15);
             }
 
             if (this.hintType == 10 && this.anInt969 >= 0 && this.anInt969 < this.players.length) {
                var21 = this.players[this.anInt969];
                if (var21 != null) {
-                  var15 = var21.anInt739 / 32 - localPlayer.anInt739 / 32;
-                  var2 = var21.anInt740 / 32 - localPlayer.anInt740 / 32;
+                  var15 = var21.x / 32 - localPlayer.x / 32;
+                  var2 = var21.z / 32 - localPlayer.z / 32;
                   this.method630(var2, this.aClass10_Sub1_Sub1_Sub1_6, var15);
                }
             }
          }
 
          if (this.anInt955 != 0) {
-            var15 = this.anInt955 * 4 + 2 - localPlayer.anInt739 / 32;
-            var2 = this.anInt956 * 4 + 2 - localPlayer.anInt740 / 32;
+            var15 = this.anInt955 * 4 + 2 - localPlayer.x / 32;
+            var2 = this.anInt956 * 4 + 2 - localPlayer.z / 32;
             this.method705(var2, this.aClass10_Sub1_Sub1_Sub1_5, var15);
          }
 
          Draw2D.fillRect(3, 78, 16777215, 3, 97);
-         this.aClass19_17.method130();
-         Class10_Sub1_Sub1_Sub4.anIntArray183 = this.anIntArray238;
+         this.areaViewport.method130();
+         Draw3D.lineOffset = this.anIntArray238;
       }
 
    }
@@ -12399,12 +12398,12 @@ public final class Client extends GameShell {
       }
 
       if (var1.pos != var3) {
-         signlink.reporterror(this.aString27 + " size mismatch in getnpcpos - pos:" + var1.pos + " psize:" + var3);
+         signlink.reporterror(this.username + " size mismatch in getnpcpos - pos:" + var1.pos + " psize:" + var3);
          throw new RuntimeException("eek");
       } else {
          for(var4 = 0; var4 < this.anInt960; ++var4) {
             if (this.npcs[this.anIntArray256[var4]] == null) {
-               signlink.reporterror(this.aString27 + " null entry in npc list - pos:" + var4 + " size:" + this.anInt960);
+               signlink.reporterror(this.username + " null entry in npc list - pos:" + var4 + " size:" + this.anInt960);
                throw new RuntimeException("eek");
             }
          }
@@ -12413,7 +12412,7 @@ public final class Client extends GameShell {
    }
 
    private void method629() {
-      if (this.anInt950 == 0) {
+      if (this.objDragArea == 0) {
          int var1 = super.anInt821;
          if (this.spellSelected == 1 && super.anInt822 >= 516 && super.anInt823 >= 160 && super.anInt822 <= 765 && super.anInt823 <= 205) {
             var1 = 0;
@@ -12499,25 +12498,25 @@ public final class Client extends GameShell {
             }
          } else {
             if (var1 == 1 && this.menuSize > 0) {
-               var2 = this.anIntArray233[this.menuSize - 1];
+               var2 = this.menuAction[this.menuSize - 1];
                if (var2 == 9 || var2 == 225 || var2 == 444 || var2 == 564 || var2 == 894 || var2 == 961 || var2 == 399 || var2 == 324 || var2 == 227 || var2 == 891 || var2 == 52 || var2 == 1094) {
                   var3 = this.anIntArray231[this.menuSize - 1];
                   var4 = this.anIntArray232[this.menuSize - 1];
-                  Class14 var10 = Class14.method87(var4);
+                  ComType var10 = ComType.method87(var4);
                   if (var10.aBoolean41 || var10.aBoolean32) {
                      this.aBoolean246 = false;
                      this.anInt1022 = 0;
                      this.anInt948 = var4;
                      this.anInt949 = var3;
-                     this.anInt950 = 2;
+                     this.objDragArea = 2;
                      this.anInt951 = super.anInt822;
                      this.anInt952 = super.anInt823;
-                     if (Class14.method87(var4).anInt128 == this.anInt976) {
-                        this.anInt950 = 1;
+                     if (ComType.method87(var4).anInt128 == this.viewportInterfaceId) {
+                        this.objDragArea = 1;
                      }
 
-                     if (Class14.method87(var4).anInt128 == this.anInt888) {
-                        this.anInt950 = 3;
+                     if (ComType.method87(var4).anInt128 == this.anInt888) {
+                        this.objDragArea = 3;
                      }
 
                      return;
@@ -12566,7 +12565,7 @@ public final class Client extends GameShell {
       } else {
          for(var5 = 0; var5 < this.anInt884; ++var5) {
             if (this.players[this.anIntArray229[var5]] == null) {
-               signlink.reporterror(this.aString27 + " null entry in pl list - pos:" + var5 + " size:" + this.anInt884);
+               signlink.reporterror(this.username + " null entry in pl list - pos:" + var5 + " size:" + this.anInt884);
                throw new RuntimeException("eek");
             }
          }
@@ -12582,14 +12581,14 @@ public final class Client extends GameShell {
             var1 -= 73;
             var2 -= 75;
             int var3 = this.orbitCameraYaw + this.minimapAnticheatAngle & 2047;
-            int var4 = Class10_Sub1_Sub1_Sub4.anIntArray181[var3];
-            int var5 = Class10_Sub1_Sub1_Sub4.anIntArray182[var3];
+            int var4 = Draw3D.anIntArray181[var3];
+            int var5 = Draw3D.anIntArray182[var3];
             int var6 = var4 * (this.minimapZoom + 256) >> 8;
             int var7 = var5 * (this.minimapZoom + 256) >> 8;
             int var8 = var2 * var6 + var1 * var7 >> 11;
             int var9 = var2 * var7 - var1 * var6 >> 11;
-            int var10 = localPlayer.anInt739 + var8 >> 7;
-            int var11 = localPlayer.anInt740 - var9 >> 7;
+            int var10 = localPlayer.x + var8 >> 7;
+            int var11 = localPlayer.z - var9 >> 7;
             boolean var12 = this.method610(true, var11, localPlayer.anIntArray194[0], 0, 0, 1, 0, var10, 0, 0, localPlayer.anIntArray193[0]);
             if (var12) {
                this.out.p1(var1);
@@ -12599,8 +12598,8 @@ public final class Client extends GameShell {
                this.out.p1(this.minimapAnticheatAngle);
                this.out.p1(this.minimapZoom);
                this.out.p1(89);
-               this.out.p2(localPlayer.anInt739);
-               this.out.p2(localPlayer.anInt740);
+               this.out.p2(localPlayer.x);
+               this.out.p2(localPlayer.z);
                this.out.p1(this.anInt957);
                this.out.p1(63);
                return;
@@ -12703,11 +12702,11 @@ public final class Client extends GameShell {
    private void method614() {
       if (super.anInt821 == 1) {
          if (super.anInt822 >= 6 && super.anInt822 <= 106 && super.anInt823 >= 467 && super.anInt823 <= 499) {
-            this.anInt899 = (this.anInt899 + 1) % 4;
+            this.publicChatSetting = (this.publicChatSetting + 1) % 4;
             this.aBoolean253 = true;
             this.aBoolean255 = true;
             this.out.p1isaac(176);
-            this.out.p1(this.anInt899);
+            this.out.p1(this.publicChatSetting);
             this.out.p1(this.anInt853);
             this.out.p1(this.anInt1000);
          }
@@ -12717,7 +12716,7 @@ public final class Client extends GameShell {
             this.aBoolean253 = true;
             this.aBoolean255 = true;
             this.out.p1isaac(176);
-            this.out.p1(this.anInt899);
+            this.out.p1(this.publicChatSetting);
             this.out.p1(this.anInt853);
             this.out.p1(this.anInt1000);
          }
@@ -12727,17 +12726,17 @@ public final class Client extends GameShell {
             this.aBoolean253 = true;
             this.aBoolean255 = true;
             this.out.p1isaac(176);
-            this.out.p1(this.anInt899);
+            this.out.p1(this.publicChatSetting);
             this.out.p1(this.anInt853);
             this.out.p1(this.anInt1000);
          }
 
          if (super.anInt822 >= 412 && super.anInt822 <= 512 && super.anInt823 >= 467 && super.anInt823 <= 499) {
-            if (this.anInt976 == -1) {
+            if (this.viewportInterfaceId == -1) {
                this.method590();
                this.aString17 = "";
                this.aBoolean241 = false;
-               this.anInt1002 = this.anInt976 = Class14.anInt127;
+               this.anInt1002 = this.viewportInterfaceId = ComType.anInt127;
             } else {
                this.method622("", "Please close the interface you have open before using 'report abuse'", 0);
             }
@@ -12758,8 +12757,8 @@ public final class Client extends GameShell {
       boolean var2 = false;
 
       try {
-         int var3 = localPlayer.anInt739 + this.cameraAnticheatOffsetX;
-         int var4 = localPlayer.anInt740 + this.cameraAnticheatOffsetZ;
+         int var3 = localPlayer.x + this.cameraAnticheatOffsetX;
+         int var4 = localPlayer.z + this.cameraAnticheatOffsetZ;
          if (this.anInt1019 - var3 < -500 || this.anInt1019 - var3 > 500 || this.anInt1020 - var4 < -500 || this.anInt1020 - var4 > 500) {
             this.anInt1019 = var3;
             this.anInt1020 = var4;
@@ -12801,13 +12800,13 @@ public final class Client extends GameShell {
 
          int var5 = this.anInt1019 >> 7;
          int var6 = this.anInt1020 >> 7;
-         int var7 = this.method685(this.anInt1020, this.anInt1019, this.anInt942);
+         int var7 = this.getHeightmapY(this.anInt1020, this.anInt1019, this.currentLevel);
          int var8 = 0;
          int var9;
          if (var5 > 3 && var6 > 3 && var5 < 100 && var6 < 100) {
             for(var9 = var5 - 4; var9 <= var5 + 4; ++var9) {
                for(int var10 = var6 - 4; var10 <= var6 + 4; ++var10) {
-                  int var11 = this.anInt942;
+                  int var11 = this.currentLevel;
                   if (var11 < 3 && (this.aByteArrayArrayArray8[1][var9][var10] & 2) == 2) {
                      ++var11;
                   }
@@ -12836,7 +12835,7 @@ public final class Client extends GameShell {
          }
 
       } catch (Exception var14) {
-         signlink.reporterror("glfc_ex " + localPlayer.anInt739 + "," + localPlayer.anInt740 + "," + this.anInt1019 + "," + this.anInt1020 + "," + this.anInt854 + "," + this.anInt855 + "," + this.anInt914 + "," + this.anInt915);
+         signlink.reporterror("glfc_ex " + localPlayer.x + "," + localPlayer.z + "," + this.anInt1019 + "," + this.anInt1020 + "," + this.anInt854 + "," + this.anInt855 + "," + this.sceneBaseTileX + "," + this.sceneBaseTileZ);
          throw new RuntimeException("eek");
       }
    }
@@ -12844,55 +12843,55 @@ public final class Client extends GameShell {
    private void method604(boolean var1) {
       int var2 = this.anInt848 * 128 + 64;
       int var3 = this.anInt849 * 128 + 64;
-      int var4 = this.method685(var3, var2, this.anInt942) - this.anInt850;
-      if (this.anInt990 < var2) {
-         this.anInt990 += this.anInt851 + (var2 - this.anInt990) * this.anInt852 / 1000;
-         if (this.anInt990 > var2) {
-            this.anInt990 = var2;
+      int var4 = this.getHeightmapY(var3, var2, this.currentLevel) - this.anInt850;
+      if (this.cameraX < var2) {
+         this.cameraX += this.anInt851 + (var2 - this.cameraX) * this.anInt852 / 1000;
+         if (this.cameraX > var2) {
+            this.cameraX = var2;
          }
       }
 
-      if (this.anInt990 > var2) {
-         this.anInt990 -= this.anInt851 + (this.anInt990 - var2) * this.anInt852 / 1000;
-         if (this.anInt990 < var2) {
-            this.anInt990 = var2;
+      if (this.cameraX > var2) {
+         this.cameraX -= this.anInt851 + (this.cameraX - var2) * this.anInt852 / 1000;
+         if (this.cameraX < var2) {
+            this.cameraX = var2;
          }
       }
 
-      if (this.anInt991 < var4) {
-         this.anInt991 += this.anInt851 + (var4 - this.anInt991) * this.anInt852 / 1000;
-         if (this.anInt991 > var4) {
-            this.anInt991 = var4;
+      if (this.cameraY < var4) {
+         this.cameraY += this.anInt851 + (var4 - this.cameraY) * this.anInt852 / 1000;
+         if (this.cameraY > var4) {
+            this.cameraY = var4;
          }
       }
 
-      if (this.anInt991 > var4) {
-         this.anInt991 -= this.anInt851 + (this.anInt991 - var4) * this.anInt852 / 1000;
-         if (this.anInt991 < var4) {
-            this.anInt991 = var4;
+      if (this.cameraY > var4) {
+         this.cameraY -= this.anInt851 + (this.cameraY - var4) * this.anInt852 / 1000;
+         if (this.cameraY < var4) {
+            this.cameraY = var4;
          }
       }
 
-      if (this.anInt992 < var3) {
-         this.anInt992 += this.anInt851 + (var3 - this.anInt992) * this.anInt852 / 1000;
-         if (this.anInt992 > var3) {
-            this.anInt992 = var3;
+      if (this.cameraZ < var3) {
+         this.cameraZ += this.anInt851 + (var3 - this.cameraZ) * this.anInt852 / 1000;
+         if (this.cameraZ > var3) {
+            this.cameraZ = var3;
          }
       }
 
-      if (this.anInt992 > var3) {
-         this.anInt992 -= this.anInt851 + (this.anInt992 - var3) * this.anInt852 / 1000;
-         if (this.anInt992 < var3) {
-            this.anInt992 = var3;
+      if (this.cameraZ > var3) {
+         this.cameraZ -= this.anInt851 + (this.cameraZ - var3) * this.anInt852 / 1000;
+         if (this.cameraZ < var3) {
+            this.cameraZ = var3;
          }
       }
 
       var2 = this.anInt892 * 128 + 64;
       var3 = this.anInt893 * 128 + 64;
-      var4 = this.method685(var3, var2, this.anInt942) - this.anInt894;
-      int var5 = var2 - this.anInt990;
-      int var6 = var4 - this.anInt991;
-      int var7 = var3 - this.anInt992;
+      var4 = this.getHeightmapY(var3, var2, this.currentLevel) - this.anInt894;
+      int var5 = var2 - this.cameraX;
+      int var6 = var4 - this.cameraY;
+      int var7 = var3 - this.cameraZ;
       int var8 = (int)Math.sqrt((double)(var5 * var5 + var7 * var7));
       int var9 = (int)(Math.atan2((double)var6, (double)var8) * 325.949) & 2047;
       int var10;
@@ -12910,21 +12909,21 @@ public final class Client extends GameShell {
          var9 = 383;
       }
 
-      if (this.anInt993 < var9) {
-         this.anInt993 += this.anInt895 + (var9 - this.anInt993) * this.anInt896 / 1000;
-         if (this.anInt993 > var9) {
-            this.anInt993 = var9;
+      if (this.cameraPitch < var9) {
+         this.cameraPitch += this.anInt895 + (var9 - this.cameraPitch) * this.anInt896 / 1000;
+         if (this.cameraPitch > var9) {
+            this.cameraPitch = var9;
          }
       }
 
-      if (this.anInt993 > var9) {
-         this.anInt993 -= this.anInt895 + (this.anInt993 - var9) * this.anInt896 / 1000;
-         if (this.anInt993 < var9) {
-            this.anInt993 = var9;
+      if (this.cameraPitch > var9) {
+         this.cameraPitch -= this.anInt895 + (this.cameraPitch - var9) * this.anInt896 / 1000;
+         if (this.cameraPitch < var9) {
+            this.cameraPitch = var9;
          }
       }
 
-      int var11 = var10 - this.anInt994;
+      int var11 = var10 - this.cameraYaw;
       if (var11 > 1024) {
          var11 -= 2048;
       }
@@ -12934,16 +12933,16 @@ public final class Client extends GameShell {
       }
 
       if (var11 > 0) {
-         this.anInt994 += this.anInt895 + var11 * this.anInt896 / 1000;
-         this.anInt994 &= 2047;
+         this.cameraYaw += this.anInt895 + var11 * this.anInt896 / 1000;
+         this.cameraYaw &= 2047;
       }
 
       if (var11 < 0) {
-         this.anInt994 -= this.anInt895 + -var11 * this.anInt896 / 1000;
-         this.anInt994 &= 2047;
+         this.cameraYaw -= this.anInt895 + -var11 * this.anInt896 / 1000;
+         this.cameraYaw &= 2047;
       }
 
-      int var12 = var10 - this.anInt994;
+      int var12 = var10 - this.cameraYaw;
       if (var12 > 1024) {
          var12 -= 2048;
       }
@@ -12953,7 +12952,7 @@ public final class Client extends GameShell {
       }
 
       if (var12 < 0 && var11 > 0 || var12 > 0 && var11 < 0) {
-         this.anInt994 = var10;
+         this.cameraYaw = var10;
       }
 
    }
@@ -12970,7 +12969,7 @@ public final class Client extends GameShell {
                   return;
                }
 
-               if (this.anInt976 != -1 && this.anInt976 == this.anInt1002) {
+               if (this.viewportInterfaceId != -1 && this.viewportInterfaceId == this.anInt1002) {
                   if (var3 == 8 && this.aString17.length() > 0) {
                      this.aString17 = this.aString17.substring(0, this.aString17.length() - 1);
                   }
@@ -13008,16 +13007,16 @@ public final class Client extends GameShell {
                         this.out.p1(0);
                         var4 = this.out.pos;
                         this.out.p8(this.aLong31);
-                        Class32.method372(this.aString24, this.out);
+                        WordPack.pack(this.aString24, this.out);
                         this.out.psize1(this.out.pos - var4);
-                        this.aString24 = Class32.method373(this.aString24);
-                        this.aString24 = Class46.method452(this.aString24);
+                        this.aString24 = WordPack.method373(this.aString24);
+                        this.aString24 = WordFilter.method452(this.aString24);
                         this.method622(Class26.method252(Class26.method249(this.aLong31), (byte)7), this.aString24, 6);
                         if (this.anInt853 == 2) {
                            this.anInt853 = 1;
                            this.aBoolean253 = true;
                            this.out.p1isaac(176);
-                           this.out.p1(this.anInt899);
+                           this.out.p1(this.publicChatSetting);
                            this.out.p1(this.anInt853);
                            this.out.p1(this.anInt1000);
                         }
@@ -13104,7 +13103,7 @@ public final class Client extends GameShell {
                   if ((var3 == 13 || var3 == 10) && this.aString29.length() > 0) {
                      if (this.anInt842 == 2) {
                         if (this.aString29.equals("::clientdrop")) {
-                           this.method634();
+                           this.tryReconnect();
                         }
 
                         if (this.aString29.equals("::lag")) {
@@ -13129,7 +13128,7 @@ public final class Client extends GameShell {
                            for(var4 = 0; var4 < 4; ++var4) {
                               for(int var10 = 1; var10 < 103; ++var10) {
                                  for(int var6 = 1; var6 < 103; ++var6) {
-                                    this.aClass47Array1[var4].anIntArrayArray16[var10][var6] = 0;
+                                    this.levelCollisionMap[var4].anIntArrayArray16[var10][var6] = 0;
                                  }
                               }
                            }
@@ -13206,11 +13205,11 @@ public final class Client extends GameShell {
                         this.out.method328(var12);
                         this.out.method327(var7);
                         this.aClass10_Sub1_Sub3_8.pos = 0;
-                        Class32.method372(this.aString29, this.aClass10_Sub1_Sub3_8);
+                        WordPack.pack(this.aString29, this.aClass10_Sub1_Sub3_8);
                         this.out.pdata(this.aClass10_Sub1_Sub3_8.data, this.aClass10_Sub1_Sub3_8.pos);
                         this.out.psize1(this.out.pos - var8);
-                        this.aString29 = Class32.method373(this.aString29);
-                        this.aString29 = Class46.method452(this.aString29);
+                        this.aString29 = WordPack.method373(this.aString29);
+                        this.aString29 = WordFilter.method452(this.aString29);
                         localPlayer.aString13 = this.aString29;
                         localPlayer.anInt716 = var12;
                         localPlayer.anInt722 = var7;
@@ -13223,11 +13222,11 @@ public final class Client extends GameShell {
                            this.method622(localPlayer.aString14, localPlayer.aString13, 2);
                         }
 
-                        if (this.anInt899 == 2) {
-                           this.anInt899 = 3;
+                        if (this.publicChatSetting == 2) {
+                           this.publicChatSetting = 3;
                            this.aBoolean253 = true;
                            this.out.p1isaac(176);
-                           this.out.p1(this.anInt899);
+                           this.out.p1(this.publicChatSetting);
                            this.out.p1(this.anInt853);
                            this.out.p1(this.anInt1000);
                         }
@@ -13246,7 +13245,7 @@ public final class Client extends GameShell {
       }
    }
 
-   private boolean method635(Class14 var1) {
+   private boolean method635(ComType var1) {
       int var2 = var1.anInt124;
       if (this.anInt839 == 2) {
          if (var2 == 201) {
@@ -13438,19 +13437,19 @@ public final class Client extends GameShell {
    }
 
    private static void setLowMemory() {
-      Class23.aBoolean93 = true;
-      Class10_Sub1_Sub1_Sub4.aBoolean176 = true;
+      World3D.aBoolean93 = true;
+      Draw3D.aBoolean176 = true;
       lowMemory = true;
       Class8.aBoolean15 = true;
-      Class48.aBoolean183 = true;
+      LocType.aBoolean183 = true;
    }
 
    private static void setHighMemory() {
-      Class23.aBoolean93 = false;
-      Class10_Sub1_Sub1_Sub4.aBoolean176 = false;
+      World3D.aBoolean93 = false;
+      Draw3D.aBoolean176 = false;
       lowMemory = false;
       Class8.aBoolean15 = false;
-      Class48.aBoolean183 = false;
+      LocType.aBoolean183 = false;
    }
 
    private static String method710(int var0) {

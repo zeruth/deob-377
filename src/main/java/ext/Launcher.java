@@ -21,7 +21,7 @@ public class Launcher implements AppletStub {
 
    static {
       gamePanel = new JPanel(layout);
-      gameSize = new Dimension(779, 530);
+      gameSize = new Dimension(779, 540);
       INSTANCE = new Launcher();
 
       try {
@@ -69,7 +69,7 @@ public class Launcher implements AppletStub {
       gamePanel.setBackground(Color.BLACK);
       Applet var1 = (Applet)ClassLoader.getSystemClassLoader().loadClass("unmapped.Client").newInstance();
       var1.setStub(INSTANCE);
-      gamePanel.add(var1, "Center");
+      gamePanel.add(var1, BorderLayout.CENTER);
       frame.add(gamePanel);
       frame.setVisible(true);
       var1.init();

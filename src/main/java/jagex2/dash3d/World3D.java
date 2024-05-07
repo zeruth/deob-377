@@ -1,10 +1,12 @@
-package unmapped;
+package jagex2.dash3d;
 
 import jagex2.dash3d.entity.Entity;
 import jagex2.graphics.Draw2D;
+import jagex2.graphics.Draw3D;
 import jagex2.graphics.Model;
+import unmapped.*;
 
-public final class Class23 {
+public final class World3D {
    private static int[] anIntArray91;
    public static boolean aBoolean93 = true;
    private static boolean aBoolean94;
@@ -96,7 +98,7 @@ public final class Class23 {
       aBooleanArrayArrayArrayArray1 = new boolean[8][32][51][51];
    }
 
-   public Class23(int[][][] var1, int var2, int var3, int var4, byte var5) {
+   public World3D(int[][][] var1, int var2, int var3, int var4, byte var5) {
       this.anInt284 = var3;
       this.anInt285 = var4;
       this.anInt286 = var2;
@@ -104,7 +106,7 @@ public final class Class23 {
       this.anIntArrayArrayArray4 = new int[var3][var4 + 1][var2 + 1];
       this.anIntArrayArrayArray3 = var1;
       boolean var6 = false;
-      this.method190();
+      this.reset();
    }
 
    private boolean method236(int var1, int var2, int var3) {
@@ -419,7 +421,7 @@ public final class Class23 {
       }
    }
 
-   public void method190() {
+   public void reset() {
       int var1;
       int var2;
       int var3;
@@ -872,20 +874,20 @@ public final class Class23 {
                var21 = var20 * var4 - var30 * var3 >> 16;
                int var32 = var20 * var3 + var30 * var4 >> 16;
                if (var32 >= 50) {
-                  int var33 = Class10_Sub1_Sub1_Sub4.anInt686 + (var23 << 9) / var25;
-                  int var34 = Class10_Sub1_Sub1_Sub4.anInt687 + (var24 << 9) / var25;
-                  int var35 = Class10_Sub1_Sub1_Sub4.anInt686 + (var14 << 9) / var28;
-                  int var36 = Class10_Sub1_Sub1_Sub4.anInt687 + (var18 << 9) / var28;
-                  int var37 = Class10_Sub1_Sub1_Sub4.anInt686 + (var29 << 9) / var16;
-                  int var38 = Class10_Sub1_Sub1_Sub4.anInt687 + (var19 << 9) / var16;
-                  int var39 = Class10_Sub1_Sub1_Sub4.anInt686 + (var31 << 9) / var32;
-                  int var40 = Class10_Sub1_Sub1_Sub4.anInt687 + (var21 << 9) / var32;
-                  Class10_Sub1_Sub1_Sub4.anInt685 = 0;
+                  int var33 = Draw3D.anInt686 + (var23 << 9) / var25;
+                  int var34 = Draw3D.anInt687 + (var24 << 9) / var25;
+                  int var35 = Draw3D.anInt686 + (var14 << 9) / var28;
+                  int var36 = Draw3D.anInt687 + (var18 << 9) / var28;
+                  int var37 = Draw3D.anInt686 + (var29 << 9) / var16;
+                  int var38 = Draw3D.anInt687 + (var19 << 9) / var16;
+                  int var39 = Draw3D.anInt686 + (var31 << 9) / var32;
+                  int var40 = Draw3D.anInt687 + (var21 << 9) / var32;
+                  Draw3D.anInt685 = 0;
                   int var41;
                   if ((var37 - var39) * (var36 - var40) - (var38 - var40) * (var35 - var39) > 0) {
-                     Class10_Sub1_Sub1_Sub4.aBoolean177 = false;
+                     Draw3D.aBoolean177 = false;
                      if (var37 < 0 || var39 < 0 || var35 < 0 || var37 > Draw2D.boundX || var39 > Draw2D.boundX || var35 > Draw2D.boundX) {
-                        Class10_Sub1_Sub1_Sub4.aBoolean177 = true;
+                        Draw3D.aBoolean177 = true;
                      }
 
                      if (aBoolean94 && this.method234(anInt305, anInt306, var38, var40, var36, var37, var39, var35)) {
@@ -895,22 +897,22 @@ public final class Class23 {
 
                      if (var1.anInt35 == -1) {
                         if (var1.anInt33 != 12345678) {
-                           Class10_Sub1_Sub1_Sub4.method517(var38, var40, var36, var37, var39, var35, var1.anInt33, var1.anInt34, var1.anInt32);
+                           Draw3D.method517(var38, var40, var36, var37, var39, var35, var1.anInt33, var1.anInt34, var1.anInt32);
                         }
                      } else if (aBoolean93) {
                         var41 = anIntArray99[var1.anInt35];
-                        Class10_Sub1_Sub1_Sub4.method517(var38, var40, var36, var37, var39, var35, this.method233(var1.anInt33, var41), this.method233(var1.anInt34, var41), this.method233(var1.anInt32, var41));
+                        Draw3D.method517(var38, var40, var36, var37, var39, var35, this.method233(var1.anInt33, var41), this.method233(var1.anInt34, var41), this.method233(var1.anInt32, var41));
                      } else if (var1.aBoolean4) {
-                        Class10_Sub1_Sub1_Sub4.method521(var38, var40, var36, var37, var39, var35, var1.anInt33, var1.anInt34, var1.anInt32, var23, var14, var31, var24, var18, var21, var25, var28, var32, var1.anInt35);
+                        Draw3D.method521(var38, var40, var36, var37, var39, var35, var1.anInt33, var1.anInt34, var1.anInt32, var23, var14, var31, var24, var18, var21, var25, var28, var32, var1.anInt35);
                      } else {
-                        Class10_Sub1_Sub1_Sub4.method521(var38, var40, var36, var37, var39, var35, var1.anInt33, var1.anInt34, var1.anInt32, var29, var31, var14, var19, var21, var18, var16, var32, var28, var1.anInt35);
+                        Draw3D.method521(var38, var40, var36, var37, var39, var35, var1.anInt33, var1.anInt34, var1.anInt32, var29, var31, var14, var19, var21, var18, var16, var32, var28, var1.anInt35);
                      }
                   }
 
                   if ((var33 - var35) * (var40 - var36) - (var34 - var36) * (var39 - var35) > 0) {
-                     Class10_Sub1_Sub1_Sub4.aBoolean177 = false;
+                     Draw3D.aBoolean177 = false;
                      if (var33 < 0 || var35 < 0 || var39 < 0 || var33 > Draw2D.boundX || var35 > Draw2D.boundX || var39 > Draw2D.boundX) {
-                        Class10_Sub1_Sub1_Sub4.aBoolean177 = true;
+                        Draw3D.aBoolean177 = true;
                      }
 
                      if (aBoolean94 && this.method234(anInt305, anInt306, var34, var36, var40, var33, var35, var39)) {
@@ -920,14 +922,14 @@ public final class Class23 {
 
                      if (var1.anInt35 != -1) {
                         if (!aBoolean93) {
-                           Class10_Sub1_Sub1_Sub4.method521(var34, var36, var40, var33, var35, var39, var1.anInt31, var1.anInt32, var1.anInt34, var23, var14, var31, var24, var18, var21, var25, var28, var32, var1.anInt35);
+                           Draw3D.method521(var34, var36, var40, var33, var35, var39, var1.anInt31, var1.anInt32, var1.anInt34, var23, var14, var31, var24, var18, var21, var25, var28, var32, var1.anInt35);
                            return;
                         }
 
                         var41 = anIntArray99[var1.anInt35];
-                        Class10_Sub1_Sub1_Sub4.method517(var34, var36, var40, var33, var35, var39, this.method233(var1.anInt31, var41), this.method233(var1.anInt32, var41), this.method233(var1.anInt34, var41));
+                        Draw3D.method517(var34, var36, var40, var33, var35, var39, this.method233(var1.anInt31, var41), this.method233(var1.anInt32, var41), this.method233(var1.anInt34, var41));
                      } else if (var1.anInt31 != 12345678) {
-                        Class10_Sub1_Sub1_Sub4.method517(var34, var36, var40, var33, var35, var39, var1.anInt31, var1.anInt32, var1.anInt34);
+                        Draw3D.method517(var34, var36, var40, var33, var35, var39, var1.anInt31, var1.anInt32, var1.anInt34);
                         return;
                      }
 
@@ -981,11 +983,11 @@ public final class Class23 {
             Class21.anIntArray77[var13] = var16;
          }
 
-         Class21.anIntArray73[var13] = Class10_Sub1_Sub1_Sub4.anInt686 + (var12 << 9) / var16;
-         Class21.anIntArray74[var13] = Class10_Sub1_Sub1_Sub4.anInt687 + (var15 << 9) / var16;
+         Class21.anIntArray73[var13] = Draw3D.anInt686 + (var12 << 9) / var16;
+         Class21.anIntArray74[var13] = Draw3D.anInt687 + (var15 << 9) / var16;
       }
 
-      Class10_Sub1_Sub1_Sub4.anInt685 = 0;
+      Draw3D.anInt685 = 0;
       var8 = var3.anIntArray69.length;
 
       for(var9 = 0; var9 < var8; ++var9) {
@@ -999,9 +1001,9 @@ public final class Class23 {
          int var17 = Class21.anIntArray74[var11];
          int var18 = Class21.anIntArray74[var12];
          if ((var13 - var14) * (var18 - var17) - (var16 - var17) * (var15 - var14) > 0) {
-            Class10_Sub1_Sub1_Sub4.aBoolean177 = false;
+            Draw3D.aBoolean177 = false;
             if (var13 < 0 || var14 < 0 || var15 < 0 || var13 > Draw2D.boundX || var14 > Draw2D.boundX || var15 > Draw2D.boundX) {
-               Class10_Sub1_Sub1_Sub4.aBoolean177 = true;
+               Draw3D.aBoolean177 = true;
             }
 
             if (aBoolean94 && this.method234(anInt305, anInt306, var16, var17, var18, var13, var14, var15)) {
@@ -1012,14 +1014,14 @@ public final class Class23 {
             if (var3.anIntArray72 != null && var3.anIntArray72[var9] != -1) {
                if (aBoolean93) {
                   int var19 = anIntArray99[var3.anIntArray72[var9]];
-                  Class10_Sub1_Sub1_Sub4.method517(var16, var17, var18, var13, var14, var15, this.method233(var3.anIntArray66[var9], var19), this.method233(var3.anIntArray67[var9], var19), this.method233(var3.anIntArray68[var9], var19));
+                  Draw3D.method517(var16, var17, var18, var13, var14, var15, this.method233(var3.anIntArray66[var9], var19), this.method233(var3.anIntArray67[var9], var19), this.method233(var3.anIntArray68[var9], var19));
                } else if (var3.aBoolean74) {
-                  Class10_Sub1_Sub1_Sub4.method521(var16, var17, var18, var13, var14, var15, var3.anIntArray66[var9], var3.anIntArray67[var9], var3.anIntArray68[var9], Class21.anIntArray75[0], Class21.anIntArray75[1], Class21.anIntArray75[3], Class21.anIntArray76[0], Class21.anIntArray76[1], Class21.anIntArray76[3], Class21.anIntArray77[0], Class21.anIntArray77[1], Class21.anIntArray77[3], var3.anIntArray72[var9]);
+                  Draw3D.method521(var16, var17, var18, var13, var14, var15, var3.anIntArray66[var9], var3.anIntArray67[var9], var3.anIntArray68[var9], Class21.anIntArray75[0], Class21.anIntArray75[1], Class21.anIntArray75[3], Class21.anIntArray76[0], Class21.anIntArray76[1], Class21.anIntArray76[3], Class21.anIntArray77[0], Class21.anIntArray77[1], Class21.anIntArray77[3], var3.anIntArray72[var9]);
                } else {
-                  Class10_Sub1_Sub1_Sub4.method521(var16, var17, var18, var13, var14, var15, var3.anIntArray66[var9], var3.anIntArray67[var9], var3.anIntArray68[var9], Class21.anIntArray75[var10], Class21.anIntArray75[var11], Class21.anIntArray75[var12], Class21.anIntArray76[var10], Class21.anIntArray76[var11], Class21.anIntArray76[var12], Class21.anIntArray77[var10], Class21.anIntArray77[var11], Class21.anIntArray77[var12], var3.anIntArray72[var9]);
+                  Draw3D.method521(var16, var17, var18, var13, var14, var15, var3.anIntArray66[var9], var3.anIntArray67[var9], var3.anIntArray68[var9], Class21.anIntArray75[var10], Class21.anIntArray75[var11], Class21.anIntArray75[var12], Class21.anIntArray76[var10], Class21.anIntArray76[var11], Class21.anIntArray76[var12], Class21.anIntArray77[var10], Class21.anIntArray77[var11], Class21.anIntArray77[var12], var3.anIntArray72[var9]);
                }
             } else if (var3.anIntArray66[var9] != 12345678) {
-               Class10_Sub1_Sub1_Sub4.method517(var16, var17, var18, var13, var14, var15, var3.anIntArray66[var9], var3.anIntArray67[var9], var3.anIntArray68[var9]);
+               Draw3D.method517(var16, var17, var18, var13, var14, var15, var3.anIntArray66[var9], var3.anIntArray67[var9], var3.anIntArray68[var9]);
             }
          }
       }
@@ -1465,7 +1467,7 @@ public final class Class23 {
 
    }
 
-   public void method229(int var1, int var2, int var3, int var4, int var5, int var6) {
+   public void draw(int var1, int var2, int var3, int var4, int var5, int var6) {
       if (var1 < 0) {
          var1 = 0;
       } else if (var1 >= this.anInt285 * 128) {
@@ -1653,9 +1655,7 @@ public final class Class23 {
       aBoolean94 = false;
    }
 
-   public void method204(int var1) {
-      int var2 = 16 / var1;
-
+   public void clearTemporaryLocs() {
       for(int var3 = 0; var3 < this.anInt288; ++var3) {
          Class5 var4 = this.aClass5Array1[var3];
          this.method205(var4);
@@ -2277,7 +2277,7 @@ public final class Class23 {
       aBooleanArrayArray1 = null;
    }
 
-   public static void method226(int[] var0) {
+   public static void init(int[] var0) {
       anInt314 = 0;
       anInt315 = 0;
       anInt316 = 512;

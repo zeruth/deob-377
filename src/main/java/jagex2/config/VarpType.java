@@ -1,10 +1,10 @@
-package unmapped;
+package jagex2.config;
 
 import jagex2.io.JagFile;
 import jagex2.io.Packet;
 
-public final class Class44 {
-   public static Class44[] aClass44Array1;
+public final class VarpType {
+   public static VarpType[] aClass44Array1;
    private static int[] anIntArray173;
    private static int anInt614;
    private static int anInt613;
@@ -21,7 +21,7 @@ public final class Class44 {
    private int anInt618;
    private String aString11;
 
-   private Class44() {
+   private VarpType() {
    }
 
    private void method415(int var1, Packet var2) {
@@ -66,12 +66,12 @@ public final class Class44 {
       }
    }
 
-   public static void method414(JagFile var0) {
+   public static void unpack(JagFile var0) {
       Packet var1 = new Packet(var0.read("varp.dat", (byte[])null));
       anInt614 = 0;
       anInt613 = var1.g2();
       if (aClass44Array1 == null) {
-         aClass44Array1 = new Class44[anInt613];
+         aClass44Array1 = new VarpType[anInt613];
       }
 
       if (anIntArray173 == null) {
@@ -80,7 +80,7 @@ public final class Class44 {
 
       for(int var2 = 0; var2 < anInt613; ++var2) {
          if (aClass44Array1[var2] == null) {
-            aClass44Array1[var2] = new Class44();
+            aClass44Array1[var2] = new VarpType();
          }
 
          aClass44Array1[var2].method415(var2, var1);
