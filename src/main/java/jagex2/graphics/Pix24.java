@@ -9,7 +9,7 @@ import java.awt.image.PixelGrabber;
 
 import sign.signlink;
 import unmapped.Class10_Sub1_Sub1_Sub3;
-import unmapped.Packet;
+import jagex2.io.Packet;
 import jagex2.io.JagFile;
 
 public final class Pix24 extends Draw2D {

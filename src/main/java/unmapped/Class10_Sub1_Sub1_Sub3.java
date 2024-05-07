@@ -3,6 +3,7 @@ package unmapped;
 
 import jagex2.graphics.Draw2D;
 import jagex2.io.JagFile;
+import jagex2.io.Packet;
 import sign.signlink;
 
 public final class Class10_Sub1_Sub1_Sub3 extends Draw2D {

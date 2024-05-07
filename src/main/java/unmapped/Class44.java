@@ -2,6 +2,7 @@ package unmapped;
 
 
 import jagex2.io.JagFile;
+import jagex2.io.Packet;
 import sign.signlink;
 
 public final class Class44 {

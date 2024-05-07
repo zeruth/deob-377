@@ -9,7 +9,9 @@ import java.util.zip.CRC32;
 import java.util.zip.GZIPInputStream;
 
 
+import jagex2.datastruct.Stack;
 import jagex2.io.JagFile;
+import jagex2.io.Packet;
 import sign.signlink;
 
 public final class Class33_Sub1 extends Class33 implements Runnable {
@@ -98,7 +100,7 @@ public final class Class33_Sub1 extends Class33 implements Runnable {
 
 	private int anInt794 = 591;
 
-	private Class9 aClass9_2 = new Class9(true);
+	private Stack aClass9_2 = new Stack();
 
 	private byte aByte44 = 6;
 
@@ -316,7 +318,7 @@ public final class Class33_Sub1 extends Class33 implements Runnable {
 		if (arg0 > this.anIntArrayArray21.length || arg1 < 0 || arg1 > this.anIntArrayArray21[arg0].length || this.anIntArrayArray21[arg0][arg1] == 0) {
 			return;
 		}
-		Class9 local27 = this.aClass9_2;
+		Stack local27 = this.aClass9_2;
 		synchronized (this.aClass9_2) {
 			Class10_Sub1_Sub4 local34;
 			for (local34 = (Class10_Sub1_Sub4) this.aClass9_2.method35(); local34 != null; local34 = (Class10_Sub1_Sub4) this.aClass9_2.method36()) {
@@ -345,7 +347,7 @@ public final class Class33_Sub1 extends Class33 implements Runnable {
 		if (local11 == null) {
 			return null;
 		}
-		Class9 local24 = this.aClass9_2;
+		Stack local24 = this.aClass9_2;
 		synchronized (this.aClass9_2) {
 			local11.uncache();
 		}
@@ -508,7 +510,7 @@ public final class Class33_Sub1 extends Class33 implements Runnable {
 	}
 
 	public int method562() {
-		Class9 local2 = this.aClass9_2;
+		Stack local2 = this.aClass9_2;
 		synchronized (this.aClass9_2) {
 			return this.aClass9_2.method37();
 		}

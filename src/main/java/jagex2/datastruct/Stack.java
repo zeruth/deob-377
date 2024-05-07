@@ -1,10 +1,10 @@
-package unmapped;
+package jagex2.datastruct;
 
 
 import jagex2.datastruct.Hashable;
 import sign.signlink;
 
-public final class Class9 {
+public final class Stack {
 
 	private Hashable aClass10_Sub1_2;
 
@@ -12,14 +12,9 @@ public final class Class9 {
 
 	private Hashable aClass10_Sub1_1 = new Hashable();
 
-	public Class9( boolean arg0) {
-		try {
-			this.aClass10_Sub1_1.nextHashable = this.aClass10_Sub1_1;
-			this.aClass10_Sub1_1.prevHashable = this.aClass10_Sub1_1;
-		} catch ( RuntimeException local29) {
-			signlink.reporterror("93229, " + arg0 + ", " + local29.toString());
-			throw new RuntimeException();
-		}
+	public Stack() {
+		this.aClass10_Sub1_1.nextHashable = this.aClass10_Sub1_1;
+		this.aClass10_Sub1_1.prevHashable = this.aClass10_Sub1_1;
 	}
 
 	public void method33( Hashable arg0) {
@@ -32,7 +27,7 @@ public final class Class9 {
 		arg0.nextHashable.prevHashable = arg0;
 	}
 
-	public Hashable method34() {
+	public Hashable pop() {
 		Hashable local3 = this.aClass10_Sub1_1.nextHashable;
 		if (local3 == this.aClass10_Sub1_1) {
 			return null;

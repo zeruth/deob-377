@@ -1,6 +1,8 @@
 package unmapped;
 
 
+import jagex2.dash3d.entity.Entity;
+
 public final class Class45 {
 
 	public int anInt630;
@@ -13,9 +15,9 @@ public final class Class45 {
 
 	public int anInt634;
 
-	public Class10_Sub1_Sub2 aClass10_Sub1_Sub2_7;
+	public Entity aClass10_Sub1_Sub2_7;
 
-	public Class10_Sub1_Sub2 aClass10_Sub1_Sub2_8;
+	public Entity aClass10_Sub1_Sub2_8;
 
 	public int anInt635;
 

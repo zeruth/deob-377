@@ -1,9 +1,11 @@
 package unmapped;
 
 
+import jagex2.dash3d.entity.Entity;
+import jagex2.graphics.Model;
 import sign.signlink;
 
-public final class Class10_Sub1_Sub2_Sub5 extends Class10_Sub1_Sub2 {
+public final class Class10_Sub1_Sub2_Sub5 extends Entity {
 
 	public static Client aClient2;
 
@@ -88,7 +90,7 @@ public final class Class10_Sub1_Sub2_Sub5 extends Class10_Sub1_Sub2 {
 	}
 
 	@Override
-	protected Class10_Sub1_Sub2_Sub4 method537( byte arg0) {
+	protected Model method537(byte arg0) {
 		try {
 			if (arg0 != 3) {
 				this.aBoolean122 = !this.aBoolean122;

@@ -1,7 +1,9 @@
 package unmapped;
 
 
+import jagex2.dash3d.entity.Entity;
 import jagex2.graphics.Draw2D;
+import jagex2.graphics.Model;
 import sign.signlink;
 
 public final class Class23 {
@@ -208,10 +210,10 @@ public final class Class23 {
 			int local73;
 			for ( int local25 = 128; local25 <= 384; local25 += 32) {
 				for (local29 = 0; local29 < 2048; local29 += 64) {
-					anInt301 = Class10_Sub1_Sub2_Sub4.anIntArray146[local25];
-					anInt302 = Class10_Sub1_Sub2_Sub4.anIntArray147[local25];
-					anInt303 = Class10_Sub1_Sub2_Sub4.anIntArray146[local29];
-					anInt304 = Class10_Sub1_Sub2_Sub4.anIntArray147[local29];
+					anInt301 = Model.anIntArray146[local25];
+					anInt302 = Model.anIntArray147[local25];
+					anInt303 = Model.anIntArray146[local29];
+					anInt304 = Model.anIntArray147[local29];
 					local53 = (local25 - 128) / 32;
 					local57 = local29 / 64;
 					for (local59 = -26; local59 <= 26; local59++) {
@@ -413,7 +415,7 @@ public final class Class23 {
 		}
 	}
 
-	public void method196( int arg0, int arg1, byte arg2, int arg3, int arg4, int arg5, Class10_Sub1_Sub2 arg6) {
+	public void method196( int arg0, int arg1, byte arg2, int arg3, int arg4, int arg5, Entity arg6) {
 		try {
 			if (arg6 != null) {
 				Class29 local9 = new Class29();
@@ -434,7 +436,7 @@ public final class Class23 {
 		}
 	}
 
-	public void method197( int arg0, int arg1, Class10_Sub1_Sub2 arg2, Class10_Sub1_Sub2 arg3, int arg4, Class10_Sub1_Sub2 arg5, int arg6, int arg7) {
+	public void method197(int arg0, int arg1, Entity arg2, Entity arg3, int arg4, Entity arg5, int arg6, int arg7) {
 		try {
 			Class11 local3 = new Class11();
 			local3.aClass10_Sub1_Sub2_2 = arg2;
@@ -448,8 +450,8 @@ public final class Class23 {
 			Class10_Sub3 local57 = this.aClass10_Sub3ArrayArrayArray1[arg1][arg7][arg6];
 			if (local57 != null) {
 				for ( int local61 = 0; local61 < local57.anInt548; local61++) {
-					if (local57.aClass5Array3[local61].aClass10_Sub1_Sub2_1 instanceof Class10_Sub1_Sub2_Sub4) {
-						int local78 = ((Class10_Sub1_Sub2_Sub4) local57.aClass5Array3[local61].aClass10_Sub1_Sub2_1).anInt413;
+					if (local57.aClass5Array3[local61].aClass10_Sub1_Sub2_1 instanceof Model) {
+						int local78 = ((Model) local57.aClass5Array3[local61].aClass10_Sub1_Sub2_1).anInt413;
 						if (local78 > local48) {
 							local48 = local78;
 						}
@@ -467,7 +469,7 @@ public final class Class23 {
 		}
 	}
 
-	public void method198( int arg0, int arg1, int arg2, Class10_Sub1_Sub2 arg3, int arg4, int arg5, byte arg6, int arg7, Class10_Sub1_Sub2 arg8, int arg9) {
+	public void method198(int arg0, int arg1, int arg2, Entity arg3, int arg4, int arg5, byte arg6, int arg7, Entity arg8, int arg9) {
 		try {
 			if (arg8 != null || arg3 != null) {
 				Class45 local10 = new Class45();
@@ -493,7 +495,7 @@ public final class Class23 {
 		}
 	}
 
-	public void method199( int arg0, int arg1, int arg2, int arg3, byte arg4, int arg5, int arg6, int arg7, int arg8, int arg9, Class10_Sub1_Sub2 arg10) {
+	public void method199( int arg0, int arg1, int arg2, int arg3, byte arg4, int arg5, int arg6, int arg7, int arg8, int arg9, Entity arg10) {
 		try {
 			if (arg10 != null) {
 				Class36 local6 = new Class36();
@@ -518,7 +520,7 @@ public final class Class23 {
 		}
 	}
 
-	public boolean method200( int arg0, int arg1, int arg2, Class10_Sub1_Sub2 arg3, byte arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
+	public boolean method200(int arg0, int arg1, int arg2, Entity arg3, byte arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
 		try {
 			if (arg3 == null) {
 				return true;
@@ -533,7 +535,7 @@ public final class Class23 {
 		}
 	}
 
-	public boolean method201( int arg0, Class10_Sub1_Sub2 arg1, int arg2, int arg3, boolean arg4, int arg5, int arg6, int arg7, int arg8) {
+	public boolean method201(int arg0, Entity arg1, int arg2, int arg3, boolean arg4, int arg5, int arg6, int arg7, int arg8) {
 		try {
 			if (arg1 == null) {
 				return true;
@@ -567,7 +569,7 @@ public final class Class23 {
 		}
 	}
 
-	public boolean method202( int arg0, int arg1, Class10_Sub1_Sub2 arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10) {
+	public boolean method202(int arg0, int arg1, Entity arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10) {
 		try {
 			return arg2 == null ? true : this.method203(arg9, arg3, arg1, arg8 + 1 - arg3, arg5 - arg1 + 1, arg6, arg4, arg0, arg2, arg7, true, arg10, (byte) 0);
 		} catch ( RuntimeException local42) {
@@ -576,7 +578,7 @@ public final class Class23 {
 		}
 	}
 
-	private boolean method203( int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, Class10_Sub1_Sub2 arg8, int arg9, boolean arg10, int arg11, byte arg12) {
+	private boolean method203(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, Entity arg8, int arg9, boolean arg10, int arg11, byte arg12) {
 		for ( int local3 = arg1; local3 < arg1 + arg3; local3++) {
 			for ( int local7 = arg2; local7 < arg2 + arg4; local7++) {
 				if (local3 < 0 || local7 < 0 || local3 >= this.anInt285 || local7 >= this.anInt286) {
@@ -871,25 +873,25 @@ public final class Class23 {
 						if (local22 != null) {
 							Class45 local27 = local22.aClass45_1;
 							if (local27 != null && local27.aClass10_Sub1_Sub2_7 != null && local27.aClass10_Sub1_Sub2_7.aClass41Array10 != null) {
-								this.method223(local11, local3, 1, (Class10_Sub1_Sub2_Sub4) local27.aClass10_Sub1_Sub2_7, local7, 1);
+								this.method223(local11, local3, 1, (Model) local27.aClass10_Sub1_Sub2_7, local7, 1);
 								if (local27.aClass10_Sub1_Sub2_8 != null && local27.aClass10_Sub1_Sub2_8.aClass41Array10 != null) {
-									this.method223(local11, local3, 1, (Class10_Sub1_Sub2_Sub4) local27.aClass10_Sub1_Sub2_8, local7, 1);
-									this.method224((Class10_Sub1_Sub2_Sub4) local27.aClass10_Sub1_Sub2_7, (Class10_Sub1_Sub2_Sub4) local27.aClass10_Sub1_Sub2_8, 0, 0, 0, false);
-									((Class10_Sub1_Sub2_Sub4) local27.aClass10_Sub1_Sub2_8).method289();
+									this.method223(local11, local3, 1, (Model) local27.aClass10_Sub1_Sub2_8, local7, 1);
+									this.method224((Model) local27.aClass10_Sub1_Sub2_7, (Model) local27.aClass10_Sub1_Sub2_8, 0, 0, 0, false);
+									((Model) local27.aClass10_Sub1_Sub2_8).method289();
 								}
-								((Class10_Sub1_Sub2_Sub4) local27.aClass10_Sub1_Sub2_7).method289();
+								((Model) local27.aClass10_Sub1_Sub2_7).method289();
 							}
 							for ( int local95 = 0; local95 < local22.anInt548; local95++) {
 								Class5 local102 = local22.aClass5Array3[local95];
 								if (local102 != null && local102.aClass10_Sub1_Sub2_1 != null && local102.aClass10_Sub1_Sub2_1.aClass41Array10 != null) {
-									this.method223(local11, local3, local102.anInt45 + 1 - local102.anInt44, (Class10_Sub1_Sub2_Sub4) local102.aClass10_Sub1_Sub2_1, local7, local102.anInt47 + 1 - local102.anInt46);
-									((Class10_Sub1_Sub2_Sub4) local102.aClass10_Sub1_Sub2_1).method289();
+									this.method223(local11, local3, local102.anInt45 + 1 - local102.anInt44, (Model) local102.aClass10_Sub1_Sub2_1, local7, local102.anInt47 + 1 - local102.anInt46);
+									((Model) local102.aClass10_Sub1_Sub2_1).method289();
 								}
 							}
 							Class29 local150 = local22.aClass29_1;
 							if (local150 != null && local150.aClass10_Sub1_Sub2_5.aClass41Array10 != null) {
-								this.method222(local7, (Class10_Sub1_Sub2_Sub4) local150.aClass10_Sub1_Sub2_5, local11, local3);
-								((Class10_Sub1_Sub2_Sub4) local150.aClass10_Sub1_Sub2_5).method289();
+								this.method222(local7, (Model) local150.aClass10_Sub1_Sub2_5, local11, local3);
+								((Model) local150.aClass10_Sub1_Sub2_5).method289();
 							}
 						}
 					}
@@ -902,31 +904,31 @@ public final class Class23 {
 		}
 	}
 
-	private void method222( int arg0, Class10_Sub1_Sub2_Sub4 arg1, int arg2, int arg3) {
+	private void method222(int arg0, Model arg1, int arg2, int arg3) {
 		try {
 			Class10_Sub3 local17;
 			if (arg0 < this.anInt285) {
 				local17 = this.aClass10_Sub3ArrayArrayArray1[arg3][arg0 + 1][arg2];
 				if (local17 != null && local17.aClass29_1 != null && local17.aClass29_1.aClass10_Sub1_Sub2_5.aClass41Array10 != null) {
-					this.method224(arg1, (Class10_Sub1_Sub2_Sub4) local17.aClass29_1.aClass10_Sub1_Sub2_5, 128, 0, 0, true);
+					this.method224(arg1, (Model) local17.aClass29_1.aClass10_Sub1_Sub2_5, 128, 0, 0, true);
 				}
 			}
 			if (arg2 < this.anInt285) {
 				local17 = this.aClass10_Sub3ArrayArrayArray1[arg3][arg0][arg2 + 1];
 				if (local17 != null && local17.aClass29_1 != null && local17.aClass29_1.aClass10_Sub1_Sub2_5.aClass41Array10 != null) {
-					this.method224(arg1, (Class10_Sub1_Sub2_Sub4) local17.aClass29_1.aClass10_Sub1_Sub2_5, 0, 0, 128, true);
+					this.method224(arg1, (Model) local17.aClass29_1.aClass10_Sub1_Sub2_5, 0, 0, 128, true);
 				}
 			}
 			if (arg0 < this.anInt285 && arg2 < this.anInt286) {
 				local17 = this.aClass10_Sub3ArrayArrayArray1[arg3][arg0 + 1][arg2 + 1];
 				if (local17 != null && local17.aClass29_1 != null && local17.aClass29_1.aClass10_Sub1_Sub2_5.aClass41Array10 != null) {
-					this.method224(arg1, (Class10_Sub1_Sub2_Sub4) local17.aClass29_1.aClass10_Sub1_Sub2_5, 128, 0, 128, true);
+					this.method224(arg1, (Model) local17.aClass29_1.aClass10_Sub1_Sub2_5, 128, 0, 128, true);
 				}
 			}
 			if (arg0 < this.anInt285 && arg2 > 0) {
 				local17 = this.aClass10_Sub3ArrayArrayArray1[arg3][arg0 + 1][arg2 - 1];
 				if (local17 != null && local17.aClass29_1 != null && local17.aClass29_1.aClass10_Sub1_Sub2_5.aClass41Array10 != null) {
-					this.method224(arg1, (Class10_Sub1_Sub2_Sub4) local17.aClass29_1.aClass10_Sub1_Sub2_5, 128, 0, -128, true);
+					this.method224(arg1, (Model) local17.aClass29_1.aClass10_Sub1_Sub2_5, 128, 0, -128, true);
 					return;
 				}
 			}
@@ -936,7 +938,7 @@ public final class Class23 {
 		}
 	}
 
-	private void method223( int arg0, int arg1, int arg2, Class10_Sub1_Sub2_Sub4 arg3, int arg4, int arg5) {
+	private void method223(int arg0, int arg1, int arg2, Model arg3, int arg4, int arg5) {
 		try {
 			boolean local3 = true;
 			int local5 = arg4;
@@ -954,17 +956,17 @@ public final class Class23 {
 										int local165 = (this.anIntArrayArrayArray3[local19][local27][local38] + this.anIntArrayArrayArray3[local19][local27 + 1][local38] + this.anIntArrayArrayArray3[local19][local27][local38 + 1] + this.anIntArrayArrayArray3[local19][local27 + 1][local38 + 1]) / 4 - (this.anIntArrayArrayArray3[arg1][arg4][arg0] + this.anIntArrayArrayArray3[arg1][arg4 + 1][arg0] + this.anIntArrayArrayArray3[arg1][arg4][arg0 + 1] + this.anIntArrayArrayArray3[arg1][arg4 + 1][arg0 + 1]) / 4;
 										Class45 local168 = local71.aClass45_1;
 										if (local168 != null && local168.aClass10_Sub1_Sub2_7 != null && local168.aClass10_Sub1_Sub2_7.aClass41Array10 != null) {
-											this.method224(arg3, (Class10_Sub1_Sub2_Sub4) local168.aClass10_Sub1_Sub2_7, (local27 - arg4) * 128 + (1 - arg2) * 64, local165, (local38 - arg0) * 128 + (1 - arg5) * 64, local3);
+											this.method224(arg3, (Model) local168.aClass10_Sub1_Sub2_7, (local27 - arg4) * 128 + (1 - arg2) * 64, local165, (local38 - arg0) * 128 + (1 - arg5) * 64, local3);
 										}
 										if (local168 != null && local168.aClass10_Sub1_Sub2_8 != null && local168.aClass10_Sub1_Sub2_8.aClass41Array10 != null) {
-											this.method224(arg3, (Class10_Sub1_Sub2_Sub4) local168.aClass10_Sub1_Sub2_8, (local27 - arg4) * 128 + (1 - arg2) * 64, local165, (local38 - arg0) * 128 + (1 - arg5) * 64, local3);
+											this.method224(arg3, (Model) local168.aClass10_Sub1_Sub2_8, (local27 - arg4) * 128 + (1 - arg2) * 64, local165, (local38 - arg0) * 128 + (1 - arg5) * 64, local3);
 										}
 										for ( int local248 = 0; local248 < local71.anInt548; local248++) {
 											Class5 local255 = local71.aClass5Array3[local248];
 											if (local255 != null && local255.aClass10_Sub1_Sub2_1 != null && local255.aClass10_Sub1_Sub2_1.aClass41Array10 != null) {
 												int local272 = local255.anInt45 + 1 - local255.anInt44;
 												int local280 = local255.anInt47 + 1 - local255.anInt46;
-												this.method224(arg3, (Class10_Sub1_Sub2_Sub4) local255.aClass10_Sub1_Sub2_1, (local255.anInt44 - arg4) * 128 + (local272 - arg2) * 64, local165, (local255.anInt46 - arg0) * 128 + (local280 - arg5) * 64, local3);
+												this.method224(arg3, (Model) local255.aClass10_Sub1_Sub2_1, (local255.anInt44 - arg4) * 128 + (local272 - arg2) * 64, local165, (local255.anInt46 - arg0) * 128 + (local280 - arg5) * 64, local3);
 											}
 										}
 									}
@@ -982,7 +984,7 @@ public final class Class23 {
 		}
 	}
 
-	private void method224( Class10_Sub1_Sub2_Sub4 arg0, Class10_Sub1_Sub2_Sub4 arg1, int arg2, int arg3, int arg4, boolean arg5) {
+	private void method224(Model arg0, Model arg1, int arg2, int arg3, int arg4, boolean arg5) {
 		this.anInt311++;
 		int local9 = 0;
 		int[] local12 = arg1.anIntArray113;
@@ -1123,10 +1125,10 @@ public final class Class23 {
 				arg3 = this.anInt286 * 128 - 1;
 			}
 			anInt291++;
-			anInt301 = Class10_Sub1_Sub2_Sub4.anIntArray146[arg5];
-			anInt302 = Class10_Sub1_Sub2_Sub4.anIntArray147[arg5];
-			anInt303 = Class10_Sub1_Sub2_Sub4.anIntArray146[arg4];
-			anInt304 = Class10_Sub1_Sub2_Sub4.anIntArray147[arg4];
+			anInt301 = Model.anIntArray146[arg5];
+			anInt302 = Model.anIntArray147[arg5];
+			anInt303 = Model.anIntArray146[arg4];
+			anInt304 = Model.anIntArray147[arg4];
 			aBooleanArrayArray1 = aBooleanArrayArrayArrayArray1[(arg5 - 128) / 32][arg4 / 64];
 			anInt298 = arg0;
 			anInt299 = arg2;

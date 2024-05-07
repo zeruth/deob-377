@@ -1,7 +1,10 @@
 package unmapped;
 
 
+import jagex2.datastruct.LruCache;
+import jagex2.graphics.Model;
 import jagex2.io.JagFile;
+import jagex2.io.Packet;
 import sign.signlink;
 
 public final class Class38 {
@@ -18,7 +21,7 @@ public final class Class38 {
 
 	private static int anInt583;
 
-	public static Class34 aClass34_6 = new Class34(30, -572);
+	public static LruCache aClass34_6 = new LruCache(30);
 
 	private static byte aByte32 = 6;
 
@@ -246,7 +249,7 @@ public final class Class38 {
 		}
 	}
 
-	public Class10_Sub1_Sub2_Sub4 method402() {
+	public Model method402() {
 		try {
 			if (this.anIntArray165 != null) {
 				Class38 local17 = this.method406();
@@ -256,26 +259,26 @@ public final class Class38 {
 			} else {
 				boolean local32 = false;
 				for ( int local34 = 0; local34 < this.anIntArray166.length; local34++) {
-					if (!Class10_Sub1_Sub2_Sub4.method272(this.anIntArray166[local34])) {
+					if (!Model.method272(this.anIntArray166[local34])) {
 						local32 = true;
 					}
 				}
 				if (local32) {
 					return null;
 				}
-				Class10_Sub1_Sub2_Sub4[] local59 = new Class10_Sub1_Sub2_Sub4[this.anIntArray166.length];
+				Model[] local59 = new Model[this.anIntArray166.length];
 				for ( int local61 = 0; local61 < this.anIntArray166.length; local61++) {
-					local59[local61] = Class10_Sub1_Sub2_Sub4.method271(this.anIntArray166[local61]);
+					local59[local61] = Model.createModel(this.anIntArray166[local61]);
 				}
-				Class10_Sub1_Sub2_Sub4 local85;
+				Model local85;
 				if (local59.length == 1) {
 					local85 = local59[0];
 				} else {
-					local85 = new Class10_Sub1_Sub2_Sub4(local59.length, local59, (byte) -89);
+					local85 = new Model(local59.length, local59);
 				}
 				if (this.anIntArray168 != null) {
 					for ( int local100 = 0; local100 < this.anIntArray168.length; local100++) {
-						local85.method285(this.anIntArray168[local100], this.anIntArray170[local100]);
+						local85.recolor(this.anIntArray168[local100], this.anIntArray170[local100]);
 					}
 				}
 				return local85;
@@ -309,42 +312,42 @@ public final class Class38 {
 		}
 	}
 
-	public Class10_Sub1_Sub2_Sub4 method405( int arg0, int arg1, int[] arg2) {
+	public Model method405(int arg0, int arg1, int[] arg2) {
 		try {
 			if (this.anIntArray165 != null) {
 				Class38 local8 = this.method406();
 				return local8 == null ? null : local8.method405(arg0, arg1, arg2);
 			}
-			Class10_Sub1_Sub2_Sub4 local25 = (Class10_Sub1_Sub2_Sub4) aClass34_6.method387(this.aLong19);
+			Model local25 = (Model) aClass34_6.get(this.aLong19);
 			if (local25 == null) {
 				boolean local29 = false;
 				for ( int local31 = 0; local31 < this.anIntArray167.length; local31++) {
-					if (!Class10_Sub1_Sub2_Sub4.method272(this.anIntArray167[local31])) {
+					if (!Model.method272(this.anIntArray167[local31])) {
 						local29 = true;
 					}
 				}
 				if (local29) {
 					return null;
 				}
-				Class10_Sub1_Sub2_Sub4[] local56 = new Class10_Sub1_Sub2_Sub4[this.anIntArray167.length];
+				Model[] local56 = new Model[this.anIntArray167.length];
 				for ( int local58 = 0; local58 < this.anIntArray167.length; local58++) {
-					local56[local58] = Class10_Sub1_Sub2_Sub4.method271(this.anIntArray167[local58]);
+					local56[local58] = Model.createModel(this.anIntArray167[local58]);
 				}
 				if (local56.length == 1) {
 					local25 = local56[0];
 				} else {
-					local25 = new Class10_Sub1_Sub2_Sub4(local56.length, local56, (byte) -89);
+					local25 = new Model(local56.length, local56);
 				}
 				if (this.anIntArray168 != null) {
 					for ( int local97 = 0; local97 < this.anIntArray168.length; local97++) {
-						local25.method285(this.anIntArray168[local97], this.anIntArray170[local97]);
+						local25.recolor(this.anIntArray168[local97], this.anIntArray170[local97]);
 					}
 				}
 				local25.method278();
 				local25.method288(this.anInt584 + 64, this.anInt581 + 850, -30, -50, -30, true);
-				aClass34_6.method388(local25, this.aLong19);
+				aClass34_6.put(local25, this.aLong19);
 			}
-			Class10_Sub1_Sub2_Sub4 local140 = Class10_Sub1_Sub2_Sub4.aClass10_Sub1_Sub2_Sub4_1;
+			Model local140 = Model.aClass10_Sub1_Sub2_Sub4_1;
 			local140.method273(Class22.method169(this.aBoolean140, arg0) & Class22.method169(this.aBoolean140, arg1), local25);
 			if (arg0 != -1 && arg1 != -1) {
 				local140.method280(arg1, arg0, arg2);

@@ -1,10 +1,10 @@
-package unmapped;
+package jagex2.datastruct;
 
 
 import jagex2.datastruct.Linkable;
 import sign.signlink;
 
-public final class Class20 {
+public final class HashTable {
 
 	private boolean aBoolean72 = true;
 
@@ -14,22 +14,17 @@ public final class Class20 {
 
 	private Linkable[] aClass10Array1;
 
-	public Class20( byte arg0, int arg1) {
-		try {
-			this.anInt231 = arg1;
-			this.aClass10Array1 = new Linkable[arg1];
-			for ( int local16 = 0; local16 < arg1; local16++) {
-				Linkable local26 = this.aClass10Array1[local16] = new Linkable();
-				local26.next = local26;
-				local26.prev = local26;
-			}
-		} catch ( RuntimeException local46) {
-			signlink.reporterror("68506, " + arg0 + ", " + arg1 + ", " + local46.toString());
-			throw new RuntimeException();
+	public HashTable(int arg1) {
+		this.anInt231 = arg1;
+		this.aClass10Array1 = new Linkable[arg1];
+		for ( int local16 = 0; local16 < arg1; local16++) {
+			Linkable local26 = this.aClass10Array1[local16] = new Linkable();
+			local26.next = local26;
+			local26.prev = local26;
 		}
 	}
 
-	public Linkable method163(long arg0) {
+	public Linkable get(long arg0) {
 		Linkable local11 = this.aClass10Array1[(int) (arg0 & (long) (this.anInt231 - 1))];
 		for (Linkable local14 = local11.next; local14 != local11; local14 = local14.next) {
 			if (local14.key == arg0) {

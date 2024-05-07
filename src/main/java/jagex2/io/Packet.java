@@ -1,11 +1,11 @@
-package unmapped;
+package jagex2.io;
 
 import java.math.BigInteger;
 
 
 import jagex2.datastruct.Hashable;
-import jagex2.io.Isaac;
 import sign.signlink;
+import unmapped.Class6;
 
 public final class Packet extends Hashable {
 

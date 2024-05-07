@@ -1,8 +1,6 @@
 package jagex2.io;
 
 
-import unmapped.Packet;
-
 public final class JagFile {
 
 	private byte[] buffer;

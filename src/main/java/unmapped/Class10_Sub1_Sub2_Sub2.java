@@ -1,9 +1,11 @@
 package unmapped;
 
 
+import jagex2.dash3d.entity.Entity;
+import jagex2.graphics.Model;
 import sign.signlink;
 
-public final class Class10_Sub1_Sub2_Sub2 extends Class10_Sub1_Sub2 {
+public final class Class10_Sub1_Sub2_Sub2 extends Entity {
 
 	public double aDouble1;
 
@@ -133,9 +135,9 @@ public final class Class10_Sub1_Sub2_Sub2 extends Class10_Sub1_Sub2 {
 	}
 
 	@Override
-	protected Class10_Sub1_Sub2_Sub4 method537( byte arg0) {
+	protected Model method537(byte arg0) {
 		try {
-			Class10_Sub1_Sub2_Sub4 local3 = this.aClass28_1.method352();
+			Model local3 = this.aClass28_1.method352();
 			if (local3 == null) {
 				return null;
 			}
@@ -143,7 +145,7 @@ public final class Class10_Sub1_Sub2_Sub2 extends Class10_Sub1_Sub2 {
 			if (this.aClass28_1.aClass15_1 != null) {
 				local9 = this.aClass28_1.aClass15_1.anIntArray47[this.anInt272];
 			}
-			Class10_Sub1_Sub2_Sub4 local33 = new Class10_Sub1_Sub2_Sub4(false, false, true, local3, Class22.method169(this.aBoolean85, local9));
+			Model local33 = new Model(false, false, true, local3, Class22.method169(this.aBoolean85, local9));
 			if (local9 != -1) {
 				local33.method278();
 				local33.method279(local9, (byte) 6);

@@ -1,9 +1,11 @@
 package unmapped;
 
 
+import jagex2.dash3d.entity.Entity;
+import jagex2.graphics.Model;
 import sign.signlink;
 
-public final class Class10_Sub1_Sub2_Sub1 extends Class10_Sub1_Sub2 {
+public final class Class10_Sub1_Sub2_Sub1 extends Entity {
 
 	public int anInt211;
 
@@ -12,7 +14,7 @@ public final class Class10_Sub1_Sub2_Sub1 extends Class10_Sub1_Sub2 {
 	public int anInt213;
 
 	@Override
-	protected Class10_Sub1_Sub2_Sub4 method537( byte arg0) {
+	protected Model method537(byte arg0) {
 		try {
 			if (arg0 != 3) {
 				this.anInt212 = -358;

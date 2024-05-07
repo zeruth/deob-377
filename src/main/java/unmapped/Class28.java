@@ -1,7 +1,10 @@
 package unmapped;
 
 
+import jagex2.datastruct.LruCache;
+import jagex2.graphics.Model;
 import jagex2.io.JagFile;
+import jagex2.io.Packet;
 import sign.signlink;
 
 public final class Class28 {
@@ -14,7 +17,7 @@ public final class Class28 {
 
 	private static boolean aBoolean117 = true;
 
-	public static Class34 aClass34_5 = new Class34(30, -572);
+	public static LruCache aClass34_5 = new LruCache(30);
 
 	private int anInt435;
 
@@ -108,21 +111,21 @@ public final class Class28 {
 		}
 	}
 
-	public Class10_Sub1_Sub2_Sub4 method352() {
-		Class10_Sub1_Sub2_Sub4 local6 = (Class10_Sub1_Sub2_Sub4) aClass34_5.method387((long) this.anInt435);
+	public Model method352() {
+		Model local6 = (Model) aClass34_5.get((long) this.anInt435);
 		if (local6 != null) {
 			return local6;
 		}
-		local6 = Class10_Sub1_Sub2_Sub4.method271(this.anInt436);
+		local6 = Model.createModel(this.anInt436);
 		if (local6 == null) {
 			return null;
 		}
 		for ( int local20 = 0; local20 < 6; local20++) {
 			if (this.anIntArray152[0] != 0) {
-				local6.method285(this.anIntArray152[local20], this.anIntArray153[local20]);
+				local6.recolor(this.anIntArray152[local20], this.anIntArray153[local20]);
 			}
 		}
-		aClass34_5.method388(local6, (long) this.anInt435);
+		aClass34_5.put(local6, (long) this.anInt435);
 		return local6;
 	}
 }

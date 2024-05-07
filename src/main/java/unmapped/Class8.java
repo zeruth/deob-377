@@ -1,6 +1,9 @@
 package unmapped;
 
 
+import jagex2.dash3d.entity.Entity;
+import jagex2.graphics.Model;
+import jagex2.io.Packet;
 import sign.signlink;
 
 public final class Class8 {
@@ -96,7 +99,7 @@ public final class Class8 {
 				local69 += Integer.MIN_VALUE;
 			}
 			byte local83 = (byte) ((arg5 << 6) + arg2);
-			Class10_Sub1_Sub2 local103;
+			Entity local103;
 			if (arg2 == 22) {
 				if (local54.anInt709 == -1 && local54.anIntArray192 == null) {
 					local103 = local54.method531(22, arg5, local9, local19, local31, local41, -1);
@@ -165,10 +168,10 @@ public final class Class8 {
 					}
 				} else {
 					int local445;
-					Class10_Sub1_Sub2 local474;
+					Entity local474;
 					if (arg2 == 2) {
 						local445 = arg5 + 1 & 0x3;
-						Class10_Sub1_Sub2 local464;
+						Entity local464;
 						if (local54.anInt709 == -1 && local54.anIntArray192 == null) {
 							local464 = local54.method531(2, arg5 + 4, local9, local19, local31, local41, -1);
 							local474 = local54.method531(2, local445, local9, local19, local31, local41, -1);
@@ -933,7 +936,7 @@ public final class Class8 {
 				local109 += Integer.MIN_VALUE;
 			}
 			byte local133 = (byte) ((arg6 << 6) + arg7);
-			Class10_Sub1_Sub2 local162;
+			Entity local162;
 			if (arg7 != 22) {
 				int local260;
 				if (arg7 == 10 || arg7 == 11) {
@@ -956,9 +959,9 @@ public final class Class8 {
 							local263 = local97.anInt697;
 						}
 						if (arg0.method200(arg3, local260, arg2, local162, local133, local247, arg4, local263, local94, local109) && local97.aBoolean190) {
-							Class10_Sub1_Sub2_Sub4 local294;
-							if (local162 instanceof Class10_Sub1_Sub2_Sub4) {
-								local294 = (Class10_Sub1_Sub2_Sub4) local162;
+							Model local294;
+							if (local162 instanceof Model) {
+								local294 = (Model) local162;
 							} else {
 								local294 = local97.method531(10, arg6, local49, local60, local73, local84, -1);
 							}
@@ -1062,10 +1065,10 @@ public final class Class8 {
 					}
 				} else {
 					int local871;
-					Class10_Sub1_Sub2 local900;
+					Entity local900;
 					if (arg7 == 2) {
 						local871 = arg6 + 1 & 0x3;
-						Class10_Sub1_Sub2 local890;
+						Entity local890;
 						if (local97.anInt709 == -1 && local97.anIntArray192 == null) {
 							local890 = local97.method531(2, arg6 + 4, local49, local60, local73, local84, -1);
 							local900 = local97.method531(2, local871, local49, local60, local73, local84, -1);

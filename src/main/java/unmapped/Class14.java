@@ -1,8 +1,11 @@
 package unmapped;
 
 
+import jagex2.datastruct.LruCache;
+import jagex2.graphics.Model;
 import jagex2.graphics.Pix24;
 import jagex2.io.JagFile;
+import jagex2.io.Packet;
 import sign.signlink;
 
 public final class Class14 {
@@ -17,7 +20,7 @@ public final class Class14 {
 
 	private static int anInt125;
 
-	private static Class34 aClass34_1;
+	private static LruCache aClass34_1;
 
 	private static boolean aBoolean38;
 
@@ -29,7 +32,7 @@ public final class Class14 {
 
 	private static int anInt133 = -1;
 
-	private static Class34 aClass34_2 = new Class34(30, -572);
+	private static LruCache aClass34_2 = new LruCache(30);
 
 	private static int anInt141 = -291;
 
@@ -170,7 +173,7 @@ public final class Class14 {
 	private static Pix24 method86(int arg0, String arg1) {
 		try {
 			long local8 = (Class26.method250(183, arg1) << 8) + (long) arg0;
-			Pix24 local17 = (Pix24) aClass34_1.method387(local8);
+			Pix24 local17 = (Pix24) aClass34_1.get(local8);
 			if (local17 != null) {
 				return local17;
 			} else if (aClass2_1 == null) {
@@ -178,7 +181,7 @@ public final class Class14 {
 			} else {
 				try {
 					local17 = new Pix24(aClass2_1, arg1, arg0);
-					aClass34_1.method388(local17, local8);
+					aClass34_1.put(local17, local8);
 					return local17;
 				} catch ( Exception local39) {
 					return null;
@@ -414,7 +417,7 @@ public final class Class14 {
 
 	public static void method91(Class10_Sub1_Sub1_Sub2[] arg0, JagFile arg1, JagFile arg2) {
 		try {
-			aClass34_1 = new Class34(50000, -572);
+			aClass34_1 = new LruCache(50000);
 			aClass2_1 = arg2;
 			aClass10_Sub1_Sub1_Sub2Array1 = arg0;
 			int local13 = -1;
@@ -462,11 +465,11 @@ public final class Class14 {
 		}
 	}
 
-	public static void method93( Class10_Sub1_Sub2_Sub4 arg0) {
+	public static void method93( Model arg0) {
 		try {
-			aClass34_2.method389();
+			aClass34_2.clear();
 			if (arg0 != null) {
-				aClass34_2.method388(arg0, (long) 327680);
+				aClass34_2.put(arg0, (long) 327680);
 			}
 		} catch ( RuntimeException local28) {
 			signlink.reporterror("30015, " + 5 + ", " + arg0 + ", " + 0 + ", " + 6 + ", " + local28.toString());
@@ -501,25 +504,25 @@ public final class Class14 {
 		}
 	}
 
-	private Class10_Sub1_Sub2_Sub4 method89( int arg0, int arg1) {
+	private Model method89(int arg0, int arg1) {
 		Class17 local1 = null;
 		if (arg0 == 4) {
 			local1 = Class17.method104(arg1);
 			anInt144 += local1.anInt187;
 			anInt125 += local1.anInt191;
 		}
-		Class10_Sub1_Sub2_Sub4 local27 = (Class10_Sub1_Sub2_Sub4) aClass34_2.method387((long) ((arg0 << 16) + arg1));
+		Model local27 = (Model) aClass34_2.get((long) ((arg0 << 16) + arg1));
 		if (local27 != null) {
 			return local27;
 		}
 		if (arg0 == 1) {
-			local27 = Class10_Sub1_Sub2_Sub4.method271(arg1);
+			local27 = Model.createModel(arg1);
 		}
 		if (arg0 == 2) {
 			local27 = Class38.method407(arg1).method402();
 		}
 		if (arg0 == 3) {
-			local27 = Client.localPlayer.method543();
+			local27 = Client.localPlayer.getHeadModel();
 		}
 		if (arg0 == 4) {
 			local27 = local1.method109(this.anInt140, 50);
@@ -528,16 +531,16 @@ public final class Class14 {
 			local27 = null;
 		}
 		if (local27 != null) {
-			aClass34_2.method388(local27, (long) ((arg0 << 16) + arg1));
+			aClass34_2.put(local27, (long) ((arg0 << 16) + arg1));
 		}
 		return local27;
 	}
 
-	public Class10_Sub1_Sub2_Sub4 method95( int arg0, int arg1, boolean arg2) {
+	public Model method95(int arg0, int arg1, boolean arg2) {
 		try {
 			anInt144 = 64;
 			anInt125 = 768;
-			Class10_Sub1_Sub2_Sub4 local12;
+			Model local12;
 			if (arg2) {
 				local12 = this.method89(this.anInt138, this.anInt139);
 			} else {
@@ -548,7 +551,7 @@ public final class Class14 {
 			} else if (arg0 == -1 && arg1 == -1 && local12.anIntArray125 == null) {
 				return local12;
 			} else {
-				Class10_Sub1_Sub2_Sub4 local53 = new Class10_Sub1_Sub2_Sub4(false, false, true, local12, Class22.method169(this.aBoolean39, arg0) & Class22.method169(this.aBoolean39, arg1));
+				Model local53 = new Model(false, false, true, local12, Class22.method169(this.aBoolean39, arg0) & Class22.method169(this.aBoolean39, arg1));
 				if (arg0 != -1 || arg1 != -1) {
 					local53.method278();
 				}

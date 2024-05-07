@@ -20,12 +20,17 @@ import java.util.zip.CRC32;
 
 
 import jagex2.client.GameShell;
+import jagex2.config.IdkType;
+import jagex2.dash3d.entity.PathingEntity;
+import jagex2.dash3d.entity.PlayerEntity;
 import jagex2.graphics.Draw2D;
+import jagex2.graphics.Model;
 import jagex2.graphics.Pix24;
 import jagex2.graphics.PixMap;
 import jagex2.io.ClientStream;
 import jagex2.io.Isaac;
 import jagex2.io.JagFile;
+import jagex2.io.Packet;
 import sign.signlink;
 
 public final class Client extends GameShell {
@@ -1468,7 +1473,7 @@ public final class Client extends GameShell {
 		Class17.method114();
 		Class14.method94();
 		Class16.aClass16Array1 = null;
-		Class49.aClass49Array1 = null;
+		IdkType.instances = null;
 		Class4.aClass4Array1 = null;
 		Class15.aClass15Array1 = null;
 		Class28.aClass28Array1 = null;
@@ -1478,7 +1483,7 @@ public final class Client extends GameShell {
 		PlayerEntity.aClass34_9 = null;
 		Class10_Sub1_Sub1_Sub4.method506();
 		Class23.method189();
-		Class10_Sub1_Sub2_Sub4.method267();
+		Model.method267();
 		Class22.method167();
 		System.gc();
 	}
@@ -1699,8 +1704,8 @@ public final class Client extends GameShell {
 			this.aBoolean263 = true;
 			for ( int local12 = 0; local12 < 7; local12++) {
 				this.anIntArray276[local12] = -1;
-				for ( int local21 = 0; local21 < Class49.anInt781; local21++) {
-					if (!Class49.aClass49Array1[local21].aBoolean202 && Class49.aClass49Array1[local21].anInt782 == local12 + (this.aBoolean245 ? 0 : 7)) {
+				for (int local21 = 0; local21 < IdkType.count; local21++) {
+					if (!IdkType.instances[local21].disable && IdkType.instances[local21].type == local12 + (this.aBoolean245 ? 0 : 7)) {
 						this.anIntArray276[local12] = local21;
 						break;
 					}
@@ -3125,7 +3130,7 @@ public final class Client extends GameShell {
 					local165 = this.in.method341();
 					Class14.method87(local165).anInt145 = 3;
 					if (localPlayer.aClass38_2 == null) {
-						Class14.method87(local165).anInt146 = (localPlayer.anIntArray199[0] << 25) + (localPlayer.anIntArray199[4] << 20) + (localPlayer.anIntArray198[0] << 15) + (localPlayer.anIntArray198[8] << 10) + (localPlayer.anIntArray198[11] << 5) + localPlayer.anIntArray198[1];
+						Class14.method87(local165).anInt146 = (localPlayer.anIntArray199[0] << 25) + (localPlayer.anIntArray199[4] << 20) + (localPlayer.appearances[0] << 15) + (localPlayer.appearances[8] << 10) + (localPlayer.appearances[11] << 5) + localPlayer.appearances[1];
 					} else {
 						Class14.method87(local165).anInt146 = (int) (localPlayer.aClass38_2.aLong19 + 305419896L);
 					}
@@ -4285,8 +4290,8 @@ public final class Client extends GameShell {
 				this.menuSize++;
 			}
 			int local41 = -1;
-			for ( int local49 = 0; local49 < Class10_Sub1_Sub2_Sub4.anInt419; local49++) {
-				int local55 = Class10_Sub1_Sub2_Sub4.anIntArray145[local49];
+			for (int local49 = 0; local49 < Model.anInt419; local49++) {
+				int local55 = Model.anIntArray145[local49];
 				int local59 = local55 & 0x7F;
 				int local65 = local55 >> 7 & 0x7F;
 				int local71 = local55 >> 29 & 0x3;
@@ -4665,13 +4670,13 @@ public final class Client extends GameShell {
 
 	private void method624() {
 		try {
-			Class48.aClass34_8.method389();
-			Class48.aClass34_7.method389();
-			Class38.aClass34_6.method389();
-			Class17.aClass34_3.method389();
-			Class17.aClass34_4.method389();
-			PlayerEntity.aClass34_9.method389();
-			Class28.aClass34_5.method389();
+			Class48.aClass34_8.clear();
+			Class48.aClass34_7.clear();
+			Class38.aClass34_6.clear();
+			Class17.aClass34_3.clear();
+			Class17.aClass34_4.clear();
+			PlayerEntity.aClass34_9.clear();
+			Class28.aClass34_5.clear();
 		} catch ( RuntimeException local24) {
 			signlink.reporterror("20385, " + 383 + ", " + local24.toString());
 			throw new RuntimeException();
@@ -4947,8 +4952,8 @@ public final class Client extends GameShell {
 			int local7 = arg2 * arg2 + arg0 * arg0;
 			if (local7 > 4225 && local7 < 90000) {
 				int local28 = this.orbitCameraYaw + this.minimapAnticheatAngle & 0x7FF;
-				int local32 = Class10_Sub1_Sub2_Sub4.anIntArray146[local28];
-				int local36 = Class10_Sub1_Sub2_Sub4.anIntArray147[local28];
+				int local32 = Model.anIntArray146[local28];
+				int local36 = Model.anIntArray147[local28];
 				int local45 = local32 * 256 / (this.minimapZoom + 256);
 				int local54 = local36 * 256 / (this.minimapZoom + 256);
 				int local64 = arg0 * local45 + arg2 * local54 >> 16;
@@ -4997,7 +5002,7 @@ public final class Client extends GameShell {
 			for ( int local5 = 0; local5 < this.anInt960; local5++) {
 				Class10_Sub1_Sub2_Sub3_Sub1 local15 = this.npcs[this.anIntArray256[local5]];
 				int local24 = (this.anIntArray256[local5] << 14) + 536870912;
-				if (local15 != null && local15.method539() && local15.aClass38_1.aBoolean143 == arg1 && local15.aClass38_1.method403()) {
+				if (local15 != null && local15.isVisible() && local15.aClass38_1.aBoolean143 == arg1 && local15.aClass38_1.method403()) {
 					int local45 = local15.anInt739 >> 7;
 					int local50 = local15.anInt740 >> 7;
 					if (local45 >= 0 && local45 < 104 && local50 >= 0 && local50 < 104) {
@@ -5108,16 +5113,16 @@ public final class Client extends GameShell {
 						if (local121 == 0) {
 							local126--;
 							if (local126 < 0) {
-								local126 = Class49.anInt781 - 1;
+								local126 = IdkType.count - 1;
 							}
 						}
 						if (local121 == 1) {
 							local126++;
-							if (local126 >= Class49.anInt781) {
+							if (local126 >= IdkType.count) {
 								local126 = 0;
 							}
 						}
-						if (!Class49.aClass49Array1[local126].aBoolean202 && Class49.aClass49Array1[local126].anInt782 == local117 + (this.aBoolean245 ? 0 : 7)) {
+						if (!IdkType.instances[local126].disable && IdkType.instances[local126].type == local117 + (this.aBoolean245 ? 0 : 7)) {
 							this.anIntArray276[local117] = local126;
 							this.aBoolean263 = true;
 							break;
@@ -5513,7 +5518,7 @@ public final class Client extends GameShell {
 				local28 = arg3.method331();
 				local40 = arg3.method330();
 				int local348 = arg3.pos;
-				if (arg1.aString14 != null && arg1.aBoolean198) {
+				if (arg1.aString14 != null && arg1.visible) {
 					long local358 = Class26.method248(arg1.aString14);
 					boolean local360 = false;
 					if (local28 <= 1) {
@@ -5689,7 +5694,7 @@ public final class Client extends GameShell {
 			this.aClass33_Sub1_1 = new Class33_Sub1();
 			this.aClass33_Sub1_1.method564(local323, this);
 			Class22.method165(this.aClass33_Sub1_1.method572(553));
-			Class10_Sub1_Sub2_Sub4.method268(this.aClass33_Sub1_1.method569(0), this.aClass33_Sub1_1);
+			Model.method268(this.aClass33_Sub1_1.method569(0), this.aClass33_Sub1_1);
 			if (!lowMemory) {
 				this.anInt1023 = 0;
 				this.aBoolean260 = true;
@@ -5934,7 +5939,7 @@ public final class Client extends GameShell {
 			Class16.method99(local203);
 			Class17.method106(local203);
 			Class38.method404(local203);
-			Class49.method546(local203);
+			IdkType.unpack(local203);
 			Class28.method350(local203);
 			Class44.method414(local203);
 			Class50.method574(local203);
@@ -6263,7 +6268,7 @@ public final class Client extends GameShell {
 		}
 	}
 
-	private void method643( int arg0, Class10_Sub1_Sub2_Sub3 arg1) {
+	private void method643( int arg0, PathingEntity arg1) {
 		try {
 			if (arg1.anInt739 < 128 || arg1.anInt740 < 128 || arg1.anInt739 >= 13184 || arg1.anInt740 >= 13184) {
 				arg1.anInt753 = -1;
@@ -6298,7 +6303,7 @@ public final class Client extends GameShell {
 		}
 	}
 
-	private void method644( Class10_Sub1_Sub2_Sub3 arg0) {
+	private void method644( PathingEntity arg0) {
 		try {
 			int local12 = arg0.anInt735 - anInt1050;
 			int local22 = arg0.anInt731 * 128 + arg0.anInt730 * 64;
@@ -6324,7 +6329,7 @@ public final class Client extends GameShell {
 		}
 	}
 
-	private void method645( Class10_Sub1_Sub2_Sub3 arg0) {
+	private void method645( PathingEntity arg0) {
 		try {
 			if (arg0.anInt736 == anInt1050 || arg0.anInt753 == -1 || arg0.anInt756 != 0 || arg0.anInt755 + 1 > Class15.aClass15Array1[arg0.anInt753].method97(arg0.anInt754)) {
 				int local29 = arg0.anInt736 - arg0.anInt735;
@@ -6356,7 +6361,7 @@ public final class Client extends GameShell {
 		}
 	}
 
-	private void method646( Class10_Sub1_Sub2_Sub3 arg0) {
+	private void method646( PathingEntity arg0) {
 		try {
 			arg0.anInt719 = arg0.anInt760;
 			if (arg0.anInt759 == 0) {
@@ -6475,7 +6480,7 @@ public final class Client extends GameShell {
 		}
 	}
 
-	private void method647( Class10_Sub1_Sub2_Sub3 arg0) {
+	private void method647( PathingEntity arg0) {
 		try {
 			if (arg0.anInt729 != 0) {
 				int local35;
@@ -6540,7 +6545,7 @@ public final class Client extends GameShell {
 		}
 	}
 
-	private void method648( Class10_Sub1_Sub2_Sub3 arg0) {
+	private void method648( PathingEntity arg0) {
 		try {
 			arg0.aBoolean196 = false;
 			Class15 local20;
@@ -7028,7 +7033,7 @@ public final class Client extends GameShell {
 					return;
 				}
 				if (local10.anInt486 == 0) {
-					Class10_Sub1_Sub2_Sub4.method269(local10.aByteArray13, local10.anInt487);
+					Model.method269(local10.aByteArray13, local10.anInt487);
 					if ((this.aClass33_Sub1_1.method554(local10.anInt487) & 0x62) != 0) {
 						this.aBoolean248 = true;
 						if (this.anInt888 != -1 || this.anInt985 != -1) {
@@ -7914,7 +7919,7 @@ public final class Client extends GameShell {
 				}
 				for (local173 = 0; local173 < this.anInt960; local173++) {
 					Class10_Sub1_Sub2_Sub3_Sub1 local236 = this.npcs[this.anIntArray256[local173]];
-					if (local236 != null && local236.method539()) {
+					if (local236 != null && local236.isVisible()) {
 						Class38 local245 = local236.aClass38_1;
 						if (local245.anIntArray165 != null) {
 							local245 = local245.method406();
@@ -7929,7 +7934,7 @@ public final class Client extends GameShell {
 				PlayerEntity local304;
 				for ( int local294 = 0; local294 < this.anInt884; local294++) {
 					local304 = this.players[this.anIntArray229[local294]];
-					if (local304 != null && local304.method539()) {
+					if (local304 != null && local304.isVisible()) {
 						local74 = local304.anInt739 / 32 - localPlayer.anInt739 / 32;
 						local18 = local304.anInt740 / 32 - localPlayer.anInt740 / 32;
 						boolean local332 = false;
@@ -8376,7 +8381,7 @@ public final class Client extends GameShell {
 				this.method593();
 			} catch ( Exception local647) {
 			}
-			Class48.aClass34_8.method389();
+			Class48.aClass34_8.clear();
 			if (super.frame != null) {
 				this.out.p1isaac(78);
 				this.out.p4(1057001181);
@@ -8386,7 +8391,7 @@ public final class Client extends GameShell {
 				for (local35 = 0; local35 < local22; local35++) {
 					local39 = this.aClass33_Sub1_1.method554(local35);
 					if ((local39 & 0x79) == 0) {
-						Class10_Sub1_Sub2_Sub4.method270(local35);
+						Model.method270(local35);
 					}
 				}
 			}
@@ -8435,15 +8440,15 @@ public final class Client extends GameShell {
 			int local33;
 			int local43;
 			if (local5 != 0) {
-				local29 = Class10_Sub1_Sub2_Sub4.anIntArray146[local5];
-				local33 = Class10_Sub1_Sub2_Sub4.anIntArray147[local5];
+				local29 = Model.anIntArray146[local5];
+				local33 = Model.anIntArray147[local5];
 				local43 = local33 * 0 - arg3 * local29 >> 16;
 				local23 = local29 * 0 + arg3 * local33 >> 16;
 				local21 = local43;
 			}
 			if (local11 != 0) {
-				local29 = Class10_Sub1_Sub2_Sub4.anIntArray146[local11];
-				local33 = Class10_Sub1_Sub2_Sub4.anIntArray147[local11];
+				local29 = Model.anIntArray146[local11];
+				local33 = Model.anIntArray147[local11];
 				local43 = local23 * local29 + local33 * 0 >> 16;
 				local23 = local23 * local33 - local29 * 0 >> 16;
 				local19 = local43;
@@ -8794,25 +8799,25 @@ public final class Client extends GameShell {
 					if (this.aBoolean263) {
 						for (local70 = 0; local70 < 7; local70++) {
 							int local383 = this.anIntArray276[local70];
-							if (local383 >= 0 && !Class49.aClass49Array1[local383].method548(256)) {
+							if (local383 >= 0 && !IdkType.instances[local383].method548(256)) {
 								return;
 							}
 						}
 						this.aBoolean263 = false;
-						Class10_Sub1_Sub2_Sub4[] local402 = new Class10_Sub1_Sub2_Sub4[7];
+						Model[] local402 = new Model[7];
 						int local404 = 0;
 						for ( int local406 = 0; local406 < 7; local406++) {
 							int local413 = this.anIntArray276[local406];
 							if (local413 >= 0) {
-								local402[local404++] = Class49.aClass49Array1[local413].method549();
+								local402[local404++] = IdkType.instances[local413].getModel();
 							}
 						}
-						Class10_Sub1_Sub2_Sub4 local435 = new Class10_Sub1_Sub2_Sub4(local404, local402, (byte) -89);
+						Model local435 = new Model(local404, local402);
 						for ( int local437 = 0; local437 < 5; local437++) {
 							if (this.designColors[local437] != 0) {
-								local435.method285(anIntArrayArray24[local437][0], anIntArrayArray24[local437][this.designColors[local437]]);
+								local435.recolor(anIntArrayArray24[local437][0], anIntArrayArray24[local437][this.designColors[local437]]);
 								if (local437 == 1) {
-									local435.method285(anIntArray266[0], anIntArray266[this.designColors[local437]]);
+									local435.recolor(anIntArray266[0], anIntArray266[this.designColors[local437]]);
 								}
 							}
 						}
@@ -9008,7 +9013,7 @@ public final class Client extends GameShell {
 					if (local18 == 4) {
 						Class10_Sub1_Sub1_Sub4.method515(0.6D, (byte) 6);
 					}
-					Class17.aClass34_4.method389();
+					Class17.aClass34_4.clear();
 					this.aBoolean236 = true;
 				}
 				if (local10 == 3) {
@@ -9771,7 +9776,7 @@ public final class Client extends GameShell {
 					local33 = this.players[this.anIntArray229[local27]];
 					local38 = this.anIntArray229[local27] << 14;
 				}
-				if (local33 != null && local33.method539()) {
+				if (local33 != null && local33.isVisible()) {
 					local33.aBoolean200 = false;
 					if ((lowMemory && this.anInt884 > 50 || this.anInt884 > 200) && !arg0 && local33.anInt719 == local33.anInt760) {
 						local33.aBoolean200 = true;
@@ -10622,7 +10627,7 @@ public final class Client extends GameShell {
 			this.anInt876 = 0;
 			int local70;
 			for ( int local6 = -1; local6 < this.anInt884 + this.anInt960; local6++) {
-				Class10_Sub1_Sub2_Sub3 local13;
+				PathingEntity local13;
 				if (local6 == -1) {
 					local13 = localPlayer;
 				} else if (local6 < this.anInt884) {
@@ -10630,7 +10635,7 @@ public final class Client extends GameShell {
 				} else {
 					local13 = this.npcs[this.anIntArray256[local6 - this.anInt884]];
 				}
-				if (local13 != null && local13.method539()) {
+				if (local13 != null && local13.isVisible()) {
 					Class38 local54;
 					if (local13 instanceof Class10_Sub1_Sub2_Sub3_Sub1) {
 						local54 = ((Class10_Sub1_Sub2_Sub3_Sub1) local13).aClass38_1;
@@ -11248,8 +11253,8 @@ public final class Client extends GameShell {
 				int local10 = this.orbitCameraYaw + this.minimapAnticheatAngle & 0x7FF;
 				int local18 = arg2 * arg2 + arg0 * arg0;
 				if (local18 <= 6400) {
-					int local26 = Class10_Sub1_Sub2_Sub4.anIntArray146[local10];
-					int local30 = Class10_Sub1_Sub2_Sub4.anIntArray147[local10];
+					int local26 = Model.anIntArray146[local10];
+					int local30 = Model.anIntArray147[local10];
 					int local39 = local26 * 256 / (this.minimapZoom + 256);
 					int local48 = local30 * 256 / (this.minimapZoom + 256);
 					int local65 = arg0 * local39 + arg2 * local48 >> 16;
@@ -11421,7 +11426,7 @@ public final class Client extends GameShell {
 					int local116 = this.anIntArrayArrayArray8[this.anInt942][local45 + 1][local52];
 					int local130 = this.anIntArrayArrayArray8[this.anInt942][local45 + 1][local52 + 1];
 					int local142 = this.anIntArrayArrayArray8[this.anInt942][local45][local52 + 1];
-					Class10_Sub1_Sub2_Sub4 local152 = local94.method531(local19, local23, local104, local116, local130, local142, -1);
+					Model local152 = local94.method531(local19, local23, local104, local116, local130, local142, -1);
 					if (local152 != null) {
 						this.method720(this.anInt942, local45, 0, local61 + 1, 0, -1, local76 + 1, local28, local52);
 						local82.anInt771 = local76 + anInt1050;
@@ -11686,7 +11691,7 @@ public final class Client extends GameShell {
 		}
 	}
 
-	private void method711( Class10_Sub1_Sub2_Sub3 arg0, int arg1) {
+	private void method711(PathingEntity arg0, int arg1) {
 		try {
 			this.method712(arg0.anInt739, arg1, arg0.anInt740);
 		} catch ( RuntimeException local11) {
@@ -11702,10 +11707,10 @@ public final class Client extends GameShell {
 				int local33 = arg0 - this.anInt990;
 				int local38 = local28 - this.anInt991;
 				int local43 = arg2 - this.anInt992;
-				int local48 = Class10_Sub1_Sub2_Sub4.anIntArray146[this.anInt993];
-				int local53 = Class10_Sub1_Sub2_Sub4.anIntArray147[this.anInt993];
-				int local58 = Class10_Sub1_Sub2_Sub4.anIntArray146[this.anInt994];
-				int local63 = Class10_Sub1_Sub2_Sub4.anIntArray147[this.anInt994];
+				int local48 = Model.anIntArray146[this.anInt993];
+				int local53 = Model.anIntArray147[this.anInt993];
+				int local58 = Model.anIntArray146[this.anInt994];
+				int local63 = Model.anIntArray147[this.anInt994];
 				int local73 = local43 * local58 + local33 * local63 >> 16;
 				int local83 = local43 * local63 - local33 * local58 >> 16;
 				int local85 = local73;
@@ -12174,7 +12179,7 @@ public final class Client extends GameShell {
 								} else {
 									local213 = local83.anInt148;
 								}
-								Class10_Sub1_Sub2_Sub4 local1102;
+								Model local1102;
 								if (local213 == -1) {
 									local1102 = local83.method95(-1, -1, local1082);
 								} else {
@@ -12763,10 +12768,10 @@ public final class Client extends GameShell {
 				}
 			}
 			local184 = Class10_Sub1_Sub1_Sub4.anInt690;
-			Class10_Sub1_Sub2_Sub4.aBoolean107 = true;
-			Class10_Sub1_Sub2_Sub4.anInt419 = 0;
-			Class10_Sub1_Sub2_Sub4.anInt417 = super.mouseX - 4;
-			Class10_Sub1_Sub2_Sub4.anInt418 = super.mouseY - 4;
+			Model.aBoolean107 = true;
+			Model.anInt419 = 0;
+			Model.anInt417 = super.mouseX - 4;
+			Model.anInt418 = super.mouseY - 4;
 			Draw2D.clear();
 			this.aClass23_1.method229(this.anInt990, local35, this.anInt991, this.anInt992, this.anInt994, this.anInt993);
 			this.aClass23_1.method204(this.anInt859);
