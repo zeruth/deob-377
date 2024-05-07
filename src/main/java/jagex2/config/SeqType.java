@@ -1,11 +1,12 @@
-package unmapped;
+package jagex2.config;
 
 import jagex2.io.JagFile;
 import jagex2.io.Packet;
+import unmapped.Class22;
 
-public final class Class15 {
+public final class SeqType {
    private static byte aByte10 = 6;
-   public static Class15[] aClass15Array1;
+   public static SeqType[] aClass15Array1;
    private static int anInt151;
    private int[] anIntArray49;
    private boolean aBoolean44 = false;
@@ -24,7 +25,7 @@ public final class Class15 {
    public int anInt157 = 99;
    private int anInt161;
 
-   private Class15() {
+   private SeqType() {
    }
 
    public int method97(int var1) {
@@ -139,16 +140,16 @@ public final class Class15 {
       }
    }
 
-   public static void method96(JagFile var0) {
+   public static void unpack(JagFile var0) {
       Packet var1 = new Packet(var0.read("seq.dat", (byte[])null));
       anInt151 = var1.g2();
       if (aClass15Array1 == null) {
-         aClass15Array1 = new Class15[anInt151];
+         aClass15Array1 = new SeqType[anInt151];
       }
 
       for(int var2 = 0; var2 < anInt151; ++var2) {
          if (aClass15Array1[var2] == null) {
-            aClass15Array1[var2] = new Class15();
+            aClass15Array1[var2] = new SeqType();
          }
 
          aClass15Array1[var2].method98(aByte10, var1);

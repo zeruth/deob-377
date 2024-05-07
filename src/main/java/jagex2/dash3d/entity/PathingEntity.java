@@ -1,6 +1,6 @@
 package jagex2.dash3d.entity;
 
-import unmapped.Class15;
+import jagex2.config.SeqType;
 
 public abstract class PathingEntity extends Entity {
    public boolean aBoolean196 = false;
@@ -9,12 +9,12 @@ public abstract class PathingEntity extends Entity {
    public int anInt736;
    public int anInt735;
    public int anInt753 = -1;
-   public int anInt739;
+   public int x;
    public int anInt759;
    public int[] anIntArray193 = new int[10];
    public int[] anIntArray197 = new int[4];
    public int anInt719 = -1;
-   public int anInt740;
+   public int z;
    private int anInt714 = -89;
    public int anInt742;
    public int anInt738 = -1;
@@ -103,7 +103,7 @@ public abstract class PathingEntity extends Entity {
          --var4;
       }
 
-      if (this.anInt753 != -1 && Class15.aClass15Array1[this.anInt753].anInt159 == 1) {
+      if (this.anInt753 != -1 && SeqType.aClass15Array1[this.anInt753].anInt159 == 1) {
          this.anInt753 = -1;
       }
 
@@ -140,7 +140,7 @@ public abstract class PathingEntity extends Entity {
    }
 
    public final void method542(int var1, byte var2, boolean var3, int var4) {
-      if (this.anInt753 != -1 && Class15.aClass15Array1[this.anInt753].anInt159 == 1) {
+      if (this.anInt753 != -1 && SeqType.aClass15Array1[this.anInt753].anInt159 == 1) {
          this.anInt753 = -1;
       }
 
@@ -171,7 +171,7 @@ public abstract class PathingEntity extends Entity {
       this.anIntArray193[0] = var4;
       this.anIntArray194[0] = var1;
       boolean var8 = false;
-      this.anInt739 = this.anIntArray193[0] * 128 + this.anInt730 * 64;
-      this.anInt740 = this.anIntArray194[0] * 128 + this.anInt730 * 64;
+      this.x = this.anIntArray193[0] * 128 + this.anInt730 * 64;
+      this.z = this.anIntArray194[0] * 128 + this.anInt730 * 64;
    }
 }

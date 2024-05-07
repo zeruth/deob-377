@@ -1,16 +1,16 @@
-package unmapped;
+package jagex2.graphics;
 
-import jagex2.graphics.Draw2D;
 import jagex2.io.JagFile;
+import unmapped.Class10_Sub1_Sub1_Sub3;
 
-public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
+public final class Draw3D extends Draw2D {
    private static int anInt683 = -20714;
    public static int anInt686;
    public static int anInt687;
    public static boolean aBoolean176 = true;
    public static int anInt685;
    public static boolean aBoolean179 = true;
-   public static int[] anIntArray183;
+   public static int[] lineOffset;
    public static int[] anIntArray185;
    private static int[] anIntArray179 = new int[512];
    public static int[] anIntArray180 = new int[2048];
@@ -25,7 +25,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
    private static int[] anIntArray184;
    private static int[][] anIntArrayArray19;
    public static int[] anIntArray186;
-   public static int anInt690;
+   public static int cycle;
    private static boolean aBoolean178;
    private static int anInt688;
 
@@ -62,7 +62,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
    }
 
-   public static void method515(double var0, byte var2) {
+   public static void setBrightness(double var0) {
       double var3 = var0 + Math.random() * 0.03 - 0.015;
       int var5 = 0;
 
@@ -161,7 +161,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
    }
 
-   public static void method510() {
+   public static void initPool() {
       if (anIntArrayArray17 == null) {
          anInt689 = 20;
          if (aBoolean176) {
@@ -241,7 +241,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
                if (var0 != var1 && var9 < var7 || var0 == var1 && var9 > var8) {
                   var2 -= var1;
                   var1 -= var0;
-                  var0 = anIntArray183[var0];
+                  var0 = lineOffset[var0];
 
                   while(true) {
                      --var1;
@@ -268,7 +268,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
                var2 -= var1;
                var1 -= var0;
-               var0 = anIntArray183[var0];
+               var0 = lineOffset[var0];
 
                while(true) {
                   --var1;
@@ -309,7 +309,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
             if ((var0 == var2 || var9 >= var7) && (var0 != var2 || var8 <= var7)) {
                var1 -= var2;
                var2 -= var0;
-               var0 = anIntArray183[var0];
+               var0 = lineOffset[var0];
 
                while(true) {
                   --var2;
@@ -336,7 +336,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
             var1 -= var2;
             var2 -= var0;
-            var0 = anIntArray183[var0];
+            var0 = lineOffset[var0];
 
             while(true) {
                --var2;
@@ -387,7 +387,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
                if (var1 != var2 && var7 < var8 || var1 == var2 && var7 > var9) {
                   var0 -= var2;
                   var2 -= var1;
-                  var1 = anIntArray183[var1];
+                  var1 = lineOffset[var1];
 
                   while(true) {
                      --var2;
@@ -414,7 +414,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
                var0 -= var2;
                var2 -= var1;
-               var1 = anIntArray183[var1];
+               var1 = lineOffset[var1];
 
                while(true) {
                   --var2;
@@ -455,7 +455,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
             if (var7 < var8) {
                var2 -= var0;
                var0 -= var1;
-               var1 = anIntArray183[var1];
+               var1 = lineOffset[var1];
 
                while(true) {
                   --var0;
@@ -482,7 +482,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
             var2 -= var0;
             var0 -= var1;
-            var1 = anIntArray183[var1];
+            var1 = lineOffset[var1];
 
             while(true) {
                --var0;
@@ -532,7 +532,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
             if (var8 < var9) {
                var1 -= var0;
                var0 -= var2;
-               var2 = anIntArray183[var2];
+               var2 = lineOffset[var2];
 
                while(true) {
                   --var0;
@@ -559,7 +559,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
             var1 -= var0;
             var0 -= var2;
-            var2 = anIntArray183[var2];
+            var2 = lineOffset[var2];
 
             while(true) {
                --var0;
@@ -600,7 +600,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
          if (var8 < var9) {
             var0 -= var1;
             var1 -= var2;
-            var2 = anIntArray183[var2];
+            var2 = lineOffset[var2];
 
             while(true) {
                --var1;
@@ -627,7 +627,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
          var0 -= var1;
          var1 -= var2;
-         var2 = anIntArray183[var2];
+         var2 = lineOffset[var2];
 
          while(true) {
             --var1;
@@ -708,7 +708,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
                if (var0 != var1 && var13 < var9 || var0 == var1 && var13 > var11) {
                   var2 -= var1;
                   var1 -= var0;
-                  var0 = anIntArray183[var0];
+                  var0 = lineOffset[var0];
 
                   while(true) {
                      --var1;
@@ -739,7 +739,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
                var2 -= var1;
                var1 -= var0;
-               var0 = anIntArray183[var0];
+               var0 = lineOffset[var0];
 
                while(true) {
                   --var1;
@@ -789,7 +789,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
             if ((var0 == var2 || var13 >= var9) && (var0 != var2 || var11 <= var9)) {
                var1 -= var2;
                var2 -= var0;
-               var0 = anIntArray183[var0];
+               var0 = lineOffset[var0];
 
                while(true) {
                   --var2;
@@ -820,7 +820,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
             var1 -= var2;
             var2 -= var0;
-            var0 = anIntArray183[var0];
+            var0 = lineOffset[var0];
 
             while(true) {
                --var2;
@@ -880,7 +880,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
                if (var1 != var2 && var9 < var11 || var1 == var2 && var9 > var13) {
                   var0 -= var2;
                   var2 -= var1;
-                  var1 = anIntArray183[var1];
+                  var1 = lineOffset[var1];
 
                   while(true) {
                      --var2;
@@ -911,7 +911,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
                var0 -= var2;
                var2 -= var1;
-               var1 = anIntArray183[var1];
+               var1 = lineOffset[var1];
 
                while(true) {
                   --var2;
@@ -961,7 +961,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
             if (var9 < var11) {
                var2 -= var0;
                var0 -= var1;
-               var1 = anIntArray183[var1];
+               var1 = lineOffset[var1];
 
                while(true) {
                   --var0;
@@ -992,7 +992,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
             var2 -= var0;
             var0 -= var1;
-            var1 = anIntArray183[var1];
+            var1 = lineOffset[var1];
 
             while(true) {
                --var0;
@@ -1051,7 +1051,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
             if (var11 < var13) {
                var1 -= var0;
                var0 -= var2;
-               var2 = anIntArray183[var2];
+               var2 = lineOffset[var2];
 
                while(true) {
                   --var0;
@@ -1082,7 +1082,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
             var1 -= var0;
             var0 -= var2;
-            var2 = anIntArray183[var2];
+            var2 = lineOffset[var2];
 
             while(true) {
                --var0;
@@ -1132,7 +1132,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
          if (var11 < var13) {
             var0 -= var1;
             var1 -= var2;
-            var2 = anIntArray183[var2];
+            var2 = lineOffset[var2];
 
             while(true) {
                --var1;
@@ -1163,7 +1163,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
          var0 -= var1;
          var1 -= var2;
-         var2 = anIntArray183[var2];
+         var2 = lineOffset[var2];
 
          while(true) {
             --var1;
@@ -1195,7 +1195,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
    }
 
    private static int[] method514(int var0) {
-      anIntArray185[var0] = anInt690++;
+      anIntArray185[var0] = cycle++;
       if (anIntArrayArray18[var0] != null) {
          return anIntArrayArray18[var0];
       } else {
@@ -1344,7 +1344,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
                if (var0 != var1 && var39 < var35 || var0 == var1 && var39 > var37) {
                   var2 -= var1;
                   var1 -= var0;
-                  var0 = anIntArray183[var0];
+                  var0 = lineOffset[var0];
 
                   while(true) {
                      --var1;
@@ -1381,7 +1381,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
                var2 -= var1;
                var1 -= var0;
-               var0 = anIntArray183[var0];
+               var0 = lineOffset[var0];
 
                while(true) {
                   --var1;
@@ -1441,7 +1441,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
             if (var0 != var2 && var39 < var35 || var0 == var2 && var37 > var35) {
                var1 -= var2;
                var2 -= var0;
-               var0 = anIntArray183[var0];
+               var0 = lineOffset[var0];
 
                while(true) {
                   --var2;
@@ -1478,7 +1478,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
             var1 -= var2;
             var2 -= var0;
-            var0 = anIntArray183[var0];
+            var0 = lineOffset[var0];
 
             while(true) {
                --var2;
@@ -1548,7 +1548,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
                if (var1 != var2 && var35 < var37 || var1 == var2 && var35 > var39) {
                   var0 -= var2;
                   var2 -= var1;
-                  var1 = anIntArray183[var1];
+                  var1 = lineOffset[var1];
 
                   while(true) {
                      --var2;
@@ -1585,7 +1585,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
                var0 -= var2;
                var2 -= var1;
-               var1 = anIntArray183[var1];
+               var1 = lineOffset[var1];
 
                while(true) {
                   --var2;
@@ -1645,7 +1645,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
             if (var35 < var37) {
                var2 -= var0;
                var0 -= var1;
-               var1 = anIntArray183[var1];
+               var1 = lineOffset[var1];
 
                while(true) {
                   --var0;
@@ -1682,7 +1682,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
             var2 -= var0;
             var0 -= var1;
-            var1 = anIntArray183[var1];
+            var1 = lineOffset[var1];
 
             while(true) {
                --var0;
@@ -1751,7 +1751,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
             if (var37 < var39) {
                var1 -= var0;
                var0 -= var2;
-               var2 = anIntArray183[var2];
+               var2 = lineOffset[var2];
 
                while(true) {
                   --var0;
@@ -1788,7 +1788,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
             var1 -= var0;
             var0 -= var2;
-            var2 = anIntArray183[var2];
+            var2 = lineOffset[var2];
 
             while(true) {
                --var0;
@@ -1848,7 +1848,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
          if (var37 < var39) {
             var0 -= var1;
             var1 -= var2;
-            var2 = anIntArray183[var2];
+            var2 = lineOffset[var2];
 
             while(true) {
                --var1;
@@ -1885,7 +1885,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
          var0 -= var1;
          var1 -= var2;
-         var2 = anIntArray183[var2];
+         var2 = lineOffset[var2];
 
          while(true) {
             --var1;
@@ -2563,10 +2563,10 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
    public static void method507(int var0) {
       boolean var1 = false;
-      anIntArray183 = new int[Draw2D.height2d];
+      lineOffset = new int[Draw2D.height2d];
 
       for(int var2 = 0; var2 < Draw2D.height2d; ++var2) {
-         anIntArray183[var2] = Draw2D.width2d * var2;
+         lineOffset[var2] = Draw2D.width2d * var2;
       }
 
       anInt686 = Draw2D.width2d / 2;
@@ -2605,7 +2605,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
       anIntArray179 = null;
       anIntArray181 = null;
       anIntArray182 = null;
-      anIntArray183 = null;
+      lineOffset = null;
       aClass10_Sub1_Sub1_Sub3Array1 = null;
       aBooleanArray9 = null;
       anIntArray184 = null;
@@ -2616,7 +2616,7 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
       anIntArrayArray19 = null;
    }
 
-   public static void method511(JagFile var0) {
+   public static void unpackTextures(JagFile var0) {
       anInt688 = 0;
 
       for(int var1 = 0; var1 < 50; ++var1) {
@@ -2635,11 +2635,11 @@ public final class Class10_Sub1_Sub1_Sub4 extends Draw2D {
 
    }
 
-   public static void method508(int var0, int var1) {
-      anIntArray183 = new int[var0];
+   public static void init3D(int var0, int var1) {
+      lineOffset = new int[var0];
 
       for(int var2 = 0; var2 < var0; ++var2) {
-         anIntArray183[var2] = var1 * var2;
+         lineOffset[var2] = var1 * var2;
       }
 
       anInt686 = var1 / 2;

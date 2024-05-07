@@ -2,7 +2,6 @@ package jagex2.graphics;
 
 import jagex2.dash3d.entity.Entity;
 import jagex2.io.Packet;
-import unmapped.Class10_Sub1_Sub1_Sub4;
 import unmapped.Class22;
 import unmapped.Class27;
 import unmapped.Class33;
@@ -16,7 +15,7 @@ public final class Model extends Entity {
    private static int anInt414;
    public static Model aClass10_Sub1_Sub2_Sub4_1 = new Model(852);
    private static int[] anIntArray137 = new int[1500];
-   public static int anInt419;
+   public static int pickedCount;
    public static int[] anIntArray147;
    private static int anInt415;
    private static int[] anIntArray109 = new int[2000];
@@ -40,14 +39,14 @@ public final class Model extends Entity {
    private static int[] anIntArray143 = new int[10];
    private static int[] anIntArray133 = new int[4096];
    private static int[] anIntArray149;
-   public static int anInt417;
+   public static int mouseX;
    private static int[][] anIntArrayArray13 = new int[12][2000];
    private static int[] anIntArray144 = new int[10];
-   public static int anInt418;
+   public static int mouseZ;
    private static int[] anIntArray139 = new int[2000];
    private static int[] anIntArray140 = new int[2000];
    private static int[] anIntArray148;
-   public static boolean aBoolean107;
+   public static boolean checkHover;
    private int anInt411;
    private int anInt406;
    public int[][] anIntArrayArray10;
@@ -90,10 +89,10 @@ public final class Model extends Entity {
    public int anInt413;
 
    static {
-      anIntArray146 = Class10_Sub1_Sub1_Sub4.anIntArray181;
-      anIntArray147 = Class10_Sub1_Sub1_Sub4.anIntArray182;
-      anIntArray148 = Class10_Sub1_Sub1_Sub4.anIntArray186;
-      anIntArray149 = Class10_Sub1_Sub1_Sub4.anIntArray180;
+      anIntArray146 = Draw3D.anIntArray181;
+      anIntArray147 = Draw3D.anIntArray182;
+      anIntArray148 = Draw3D.anIntArray186;
+      anIntArray149 = Draw3D.anIntArray180;
    }
 
    private Model(int var1) {
@@ -746,8 +745,8 @@ public final class Model extends Entity {
    }
 
    private void method295(int var1) {
-      int var2 = Class10_Sub1_Sub1_Sub4.anInt686;
-      int var3 = Class10_Sub1_Sub1_Sub4.anInt687;
+      int var2 = Draw3D.anInt686;
+      int var3 = Draw3D.anInt687;
       int var4 = 0;
       int var5 = this.anIntArray116[var1];
       int var6 = this.anIntArray117[var1];
@@ -837,7 +836,7 @@ public final class Model extends Entity {
       int var15 = anIntArray143[1];
       int var16 = anIntArray143[2];
       if ((var11 - var12) * (var16 - var15) - (var14 - var15) * (var13 - var12) > 0) {
-         Class10_Sub1_Sub1_Sub4.aBoolean177 = false;
+         Draw3D.aBoolean177 = false;
          int var17;
          int var18;
          int var19;
@@ -845,7 +844,7 @@ public final class Model extends Entity {
          int var21;
          if (var4 == 3) {
             if (var11 < 0 || var12 < 0 || var13 < 0 || var11 > Draw2D.boundX || var12 > Draw2D.boundX || var13 > Draw2D.boundX) {
-               Class10_Sub1_Sub1_Sub4.aBoolean177 = true;
+               Draw3D.aBoolean177 = true;
             }
 
             if (this.anIntArray122 == null) {
@@ -855,27 +854,27 @@ public final class Model extends Entity {
             }
 
             if (var17 == 0) {
-               Class10_Sub1_Sub1_Sub4.method517(var14, var15, var16, var11, var12, var13, anIntArray144[0], anIntArray144[1], anIntArray144[2]);
+               Draw3D.method517(var14, var15, var16, var11, var12, var13, anIntArray144[0], anIntArray144[1], anIntArray144[2]);
             } else if (var17 == 1) {
-               Class10_Sub1_Sub1_Sub4.method519(var14, var15, var16, var11, var12, var13, anIntArray148[this.anIntArray119[var1]]);
+               Draw3D.method519(var14, var15, var16, var11, var12, var13, anIntArray148[this.anIntArray119[var1]]);
             } else if (var17 == 2) {
                var18 = this.anIntArray122[var1] >> 2;
                var19 = this.anIntArray126[var18];
                var20 = this.anIntArray127[var18];
                var21 = this.anIntArray128[var18];
-               Class10_Sub1_Sub1_Sub4.method521(var14, var15, var16, var11, var12, var13, anIntArray144[0], anIntArray144[1], anIntArray144[2], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
+               Draw3D.method521(var14, var15, var16, var11, var12, var13, anIntArray144[0], anIntArray144[1], anIntArray144[2], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
             } else if (var17 == 3) {
                var18 = this.anIntArray122[var1] >> 2;
                var19 = this.anIntArray126[var18];
                var20 = this.anIntArray127[var18];
                var21 = this.anIntArray128[var18];
-               Class10_Sub1_Sub1_Sub4.method521(var14, var15, var16, var11, var12, var13, this.anIntArray119[var1], this.anIntArray119[var1], this.anIntArray119[var1], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
+               Draw3D.method521(var14, var15, var16, var11, var12, var13, this.anIntArray119[var1], this.anIntArray119[var1], this.anIntArray119[var1], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
             }
          }
 
          if (var4 == 4) {
             if (var11 < 0 || var12 < 0 || var13 < 0 || var11 > Draw2D.boundX || var12 > Draw2D.boundX || var13 > Draw2D.boundX || anIntArray142[3] < 0 || anIntArray142[3] > Draw2D.boundX) {
-               Class10_Sub1_Sub1_Sub4.aBoolean177 = true;
+               Draw3D.aBoolean177 = true;
             }
 
             if (this.anIntArray122 == null) {
@@ -885,26 +884,26 @@ public final class Model extends Entity {
             }
 
             if (var17 == 0) {
-               Class10_Sub1_Sub1_Sub4.method517(var14, var15, var16, var11, var12, var13, anIntArray144[0], anIntArray144[1], anIntArray144[2]);
-               Class10_Sub1_Sub1_Sub4.method517(var14, var16, anIntArray143[3], var11, var13, anIntArray142[3], anIntArray144[0], anIntArray144[2], anIntArray144[3]);
+               Draw3D.method517(var14, var15, var16, var11, var12, var13, anIntArray144[0], anIntArray144[1], anIntArray144[2]);
+               Draw3D.method517(var14, var16, anIntArray143[3], var11, var13, anIntArray142[3], anIntArray144[0], anIntArray144[2], anIntArray144[3]);
             } else if (var17 == 1) {
                var18 = anIntArray148[this.anIntArray119[var1]];
-               Class10_Sub1_Sub1_Sub4.method519(var14, var15, var16, var11, var12, var13, var18);
-               Class10_Sub1_Sub1_Sub4.method519(var14, var16, anIntArray143[3], var11, var13, anIntArray142[3], var18);
+               Draw3D.method519(var14, var15, var16, var11, var12, var13, var18);
+               Draw3D.method519(var14, var16, anIntArray143[3], var11, var13, anIntArray142[3], var18);
             } else if (var17 == 2) {
                var18 = this.anIntArray122[var1] >> 2;
                var19 = this.anIntArray126[var18];
                var20 = this.anIntArray127[var18];
                var21 = this.anIntArray128[var18];
-               Class10_Sub1_Sub1_Sub4.method521(var14, var15, var16, var11, var12, var13, anIntArray144[0], anIntArray144[1], anIntArray144[2], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
-               Class10_Sub1_Sub1_Sub4.method521(var14, var16, anIntArray143[3], var11, var13, anIntArray142[3], anIntArray144[0], anIntArray144[2], anIntArray144[3], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
+               Draw3D.method521(var14, var15, var16, var11, var12, var13, anIntArray144[0], anIntArray144[1], anIntArray144[2], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
+               Draw3D.method521(var14, var16, anIntArray143[3], var11, var13, anIntArray142[3], anIntArray144[0], anIntArray144[2], anIntArray144[3], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
             } else if (var17 == 3) {
                var18 = this.anIntArray122[var1] >> 2;
                var19 = this.anIntArray126[var18];
                var20 = this.anIntArray127[var18];
                var21 = this.anIntArray128[var18];
-               Class10_Sub1_Sub1_Sub4.method521(var14, var15, var16, var11, var12, var13, this.anIntArray119[var1], this.anIntArray119[var1], this.anIntArray119[var1], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
-               Class10_Sub1_Sub1_Sub4.method521(var14, var16, anIntArray143[3], var11, var13, anIntArray142[3], this.anIntArray119[var1], this.anIntArray119[var1], this.anIntArray119[var1], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
+               Draw3D.method521(var14, var15, var16, var11, var12, var13, this.anIntArray119[var1], this.anIntArray119[var1], this.anIntArray119[var1], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
+               Draw3D.method521(var14, var16, anIntArray143[3], var11, var13, anIntArray142[3], this.anIntArray119[var1], this.anIntArray119[var1], this.anIntArray119[var1], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
             }
          }
       }
@@ -1066,7 +1065,7 @@ public final class Model extends Entity {
                      int var25;
                      int var26;
                      int var27;
-                     if (var9 > 0 && aBoolean107) {
+                     if (var9 > 0 && checkHover) {
                         var25 = var11 - var12;
                         if (var25 <= 50) {
                            var25 = 50;
@@ -1088,19 +1087,19 @@ public final class Model extends Entity {
                            var21 /= var25;
                         }
 
-                        var26 = anInt417 - Class10_Sub1_Sub1_Sub4.anInt686;
-                        var27 = anInt418 - Class10_Sub1_Sub1_Sub4.anInt687;
+                        var26 = mouseX - Draw3D.anInt686;
+                        var27 = mouseZ - Draw3D.anInt687;
                         if (var26 > var15 && var26 < var16 && var27 > var21 && var27 < var19) {
                            if (this.aBoolean106) {
-                              anIntArray145[anInt419++] = var9;
+                              anIntArray145[pickedCount++] = var9;
                            } else {
                               var24 = true;
                            }
                         }
                      }
 
-                     var25 = Class10_Sub1_Sub1_Sub4.anInt686;
-                     var26 = Class10_Sub1_Sub1_Sub4.anInt687;
+                     var25 = Draw3D.anInt686;
+                     var26 = Draw3D.anInt687;
                      var27 = 0;
                      int var28 = 0;
                      if (var1 != 0) {
@@ -1183,11 +1182,11 @@ public final class Model extends Entity {
          int var2 = this.anIntArray116[var1];
          int var3 = this.anIntArray117[var1];
          int var4 = this.anIntArray118[var1];
-         Class10_Sub1_Sub1_Sub4.aBoolean177 = aBooleanArray5[var1];
+         Draw3D.aBoolean177 = aBooleanArray5[var1];
          if (this.anIntArray124 == null) {
-            Class10_Sub1_Sub1_Sub4.anInt685 = 0;
+            Draw3D.anInt685 = 0;
          } else {
-            Class10_Sub1_Sub1_Sub4.anInt685 = this.anIntArray124[var1];
+            Draw3D.anInt685 = this.anIntArray124[var1];
          }
 
          int var5;
@@ -1198,9 +1197,9 @@ public final class Model extends Entity {
          }
 
          if (var5 == 0) {
-            Class10_Sub1_Sub1_Sub4.method517(anIntArray132[var2], anIntArray132[var3], anIntArray132[var4], anIntArray131[var2], anIntArray131[var3], anIntArray131[var4], this.anIntArray119[var1], this.anIntArray120[var1], this.anIntArray121[var1]);
+            Draw3D.method517(anIntArray132[var2], anIntArray132[var3], anIntArray132[var4], anIntArray131[var2], anIntArray131[var3], anIntArray131[var4], this.anIntArray119[var1], this.anIntArray120[var1], this.anIntArray121[var1]);
          } else if (var5 == 1) {
-            Class10_Sub1_Sub1_Sub4.method519(anIntArray132[var2], anIntArray132[var3], anIntArray132[var4], anIntArray131[var2], anIntArray131[var3], anIntArray131[var4], anIntArray148[this.anIntArray119[var1]]);
+            Draw3D.method519(anIntArray132[var2], anIntArray132[var3], anIntArray132[var4], anIntArray131[var2], anIntArray131[var3], anIntArray131[var4], anIntArray148[this.anIntArray119[var1]]);
          } else {
             int var6;
             int var7;
@@ -1211,13 +1210,13 @@ public final class Model extends Entity {
                var7 = this.anIntArray126[var6];
                var8 = this.anIntArray127[var6];
                var9 = this.anIntArray128[var6];
-               Class10_Sub1_Sub1_Sub4.method521(anIntArray132[var2], anIntArray132[var3], anIntArray132[var4], anIntArray131[var2], anIntArray131[var3], anIntArray131[var4], this.anIntArray119[var1], this.anIntArray120[var1], this.anIntArray121[var1], anIntArray134[var7], anIntArray134[var8], anIntArray134[var9], anIntArray135[var7], anIntArray135[var8], anIntArray135[var9], anIntArray136[var7], anIntArray136[var8], anIntArray136[var9], this.anIntArray125[var1]);
+               Draw3D.method521(anIntArray132[var2], anIntArray132[var3], anIntArray132[var4], anIntArray131[var2], anIntArray131[var3], anIntArray131[var4], this.anIntArray119[var1], this.anIntArray120[var1], this.anIntArray121[var1], anIntArray134[var7], anIntArray134[var8], anIntArray134[var9], anIntArray135[var7], anIntArray135[var8], anIntArray135[var9], anIntArray136[var7], anIntArray136[var8], anIntArray136[var9], this.anIntArray125[var1]);
             } else if (var5 == 3) {
                var6 = this.anIntArray122[var1] >> 2;
                var7 = this.anIntArray126[var6];
                var8 = this.anIntArray127[var6];
                var9 = this.anIntArray128[var6];
-               Class10_Sub1_Sub1_Sub4.method521(anIntArray132[var2], anIntArray132[var3], anIntArray132[var4], anIntArray131[var2], anIntArray131[var3], anIntArray131[var4], this.anIntArray119[var1], this.anIntArray119[var1], this.anIntArray119[var1], anIntArray134[var7], anIntArray134[var8], anIntArray134[var9], anIntArray135[var7], anIntArray135[var8], anIntArray135[var9], anIntArray136[var7], anIntArray136[var8], anIntArray136[var9], this.anIntArray125[var1]);
+               Draw3D.method521(anIntArray132[var2], anIntArray132[var3], anIntArray132[var4], anIntArray131[var2], anIntArray131[var3], anIntArray131[var4], this.anIntArray119[var1], this.anIntArray119[var1], this.anIntArray119[var1], anIntArray134[var7], anIntArray134[var8], anIntArray134[var9], anIntArray135[var7], anIntArray135[var8], anIntArray135[var9], anIntArray136[var7], anIntArray136[var8], anIntArray136[var9], this.anIntArray125[var1]);
             }
          }
 
@@ -1317,8 +1316,8 @@ public final class Model extends Entity {
             var8 = anIntArray131[var5];
             var9 = anIntArray131[var6];
             if (!var1 || var7 != -5000 && var8 != -5000 && var9 != -5000) {
-               if (var2 && this.method296(anInt417, anInt418, anIntArray132[var4], anIntArray132[var5], anIntArray132[var6], var7, var8, var9)) {
-                  anIntArray145[anInt419++] = var3;
+               if (var2 && this.method296(mouseX, mouseZ, anIntArray132[var4], anIntArray132[var5], anIntArray132[var6], var7, var8, var9)) {
+                  anIntArray145[pickedCount++] = var3;
                   var2 = false;
                }
 
@@ -1880,8 +1879,8 @@ public final class Model extends Entity {
    }
 
    public void method292(int var1, int var2, int var3, int var4, int var5, int var6) {
-      int var7 = Class10_Sub1_Sub1_Sub4.anInt686;
-      int var8 = Class10_Sub1_Sub1_Sub4.anInt687;
+      int var7 = Draw3D.anInt686;
+      int var8 = Draw3D.anInt687;
       int var9 = anIntArray146[0];
       int var10 = anIntArray147[0];
       int var11 = anIntArray146[var1];

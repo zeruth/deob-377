@@ -1,15 +1,19 @@
-package unmapped;
+package jagex2.config;
 
 import jagex2.datastruct.LruCache;
 import jagex2.graphics.Model;
 import jagex2.graphics.Pix24;
 import jagex2.io.JagFile;
 import jagex2.io.Packet;
+import unmapped.Class10_Sub1_Sub1_Sub2;
+import unmapped.Class22;
+import unmapped.Class26;
+import unmapped.Client;
 
-public final class Class14 {
+public final class ComType {
    private static int anInt144;
    public static int anInt127 = -1;
-   private static Class14[] aClass14Array1;
+   private static ComType[] aClass14Array1;
    private static LruCache aClass34_2 = new LruCache(30);
    private static int anInt133 = -1;
    private static int anInt125;
@@ -88,9 +92,9 @@ public final class Class14 {
    public int anInt113;
 
    private Model method89(int var1, int var2) {
-      Class17 var3 = null;
+      ObjType var3 = null;
       if (var1 == 4) {
-         var3 = Class17.method104(var2);
+         var3 = ObjType.method104(var2);
          anInt144 += var3.anInt187;
          anInt125 += var3.anInt191;
       }
@@ -104,7 +108,7 @@ public final class Class14 {
          }
 
          if (var1 == 2) {
-            var4 = Class38.method407(var2).method402();
+            var4 = NpcType.method407(var2).method402();
          }
 
          if (var1 == 3) {
@@ -169,7 +173,7 @@ public final class Class14 {
       this.anIntArray40[var1] = var4;
    }
 
-   public static Class14 method87(int var0) {
+   public static ComType method87(int var0) {
       if (aClass14Array1[var0] == null) {
          Packet var1 = new Packet(aByteArrayArray2[var0]);
          int var2 = var1.g2();
@@ -194,8 +198,8 @@ public final class Class14 {
 
    }
 
-   private static Class14 method90(int var0, Packet var1, int var2) {
-      Class14 var3 = new Class14();
+   private static ComType method90(int var0, Packet var1, int var2) {
+      ComType var3 = new ComType();
       var3.anInt111 = var2;
       var3.anInt128 = var0;
       var3.anInt120 = var1.g1();
@@ -483,7 +487,7 @@ public final class Class14 {
       int var3 = -1;
       Packet var4 = new Packet(var1.read("data", (byte[])null));
       int var5 = var4.g2();
-      aClass14Array1 = new Class14[var5];
+      aClass14Array1 = new ComType[var5];
 
       byte[] var9;
       for(aByteArrayArray2 = new byte[var5][]; var4.pos < var4.data.length; var9[1] = (byte)var3) {
@@ -494,7 +498,7 @@ public final class Class14 {
          }
 
          int var7 = var4.pos;
-         Class14 var8 = method90(var3, var4, var6);
+         ComType var8 = method90(var3, var4, var6);
          var9 = aByteArrayArray2[var8.anInt111] = new byte[var4.pos + 2 - var7];
 
          for(int var10 = var7; var10 < var4.pos; ++var10) {

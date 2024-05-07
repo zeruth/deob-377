@@ -1,5 +1,8 @@
 package unmapped;
 
+import jagex2.config.LocType;
+import jagex2.config.SeqType;
+import jagex2.config.VarbitType;
 import jagex2.dash3d.entity.Entity;
 import jagex2.graphics.Model;
 
@@ -7,7 +10,7 @@ public final class Class10_Sub1_Sub2_Sub5 extends Entity {
    public static Client aClient2;
    private int anInt469;
    private boolean aBoolean122 = false;
-   private Class15 aClass15_2;
+   private SeqType aClass15_2;
    private int anInt470;
    private int anInt472;
    private int anInt466;
@@ -29,7 +32,7 @@ public final class Class10_Sub1_Sub2_Sub5 extends Entity {
       this.anInt463 = var2;
       this.anInt464 = var3;
       if (var1 != -1) {
-         this.aClass15_2 = Class15.aClass15Array1[var1];
+         this.aClass15_2 = SeqType.aClass15Array1[var1];
          this.anInt473 = 0;
          this.anInt472 = Client.anInt1050 - 1;
          if (var8 && this.aClass15_2.anInt153 != -1) {
@@ -38,7 +41,7 @@ public final class Class10_Sub1_Sub2_Sub5 extends Entity {
          }
       }
 
-      Class48 var11 = Class48.method523(this.anInt466);
+      LocType var11 = LocType.method523(this.anInt466);
       this.anInt469 = var11.anInt699;
       this.anInt470 = var11.anInt701;
       this.anIntArray154 = var11.anIntArray192;
@@ -79,9 +82,9 @@ public final class Class10_Sub1_Sub2_Sub5 extends Entity {
          }
       }
 
-      Class48 var4;
+      LocType var4;
       if (this.anIntArray154 == null) {
-         var4 = Class48.method523(this.anInt466);
+         var4 = LocType.method523(this.anInt466);
       } else {
          var4 = this.method358();
       }
@@ -89,10 +92,10 @@ public final class Class10_Sub1_Sub2_Sub5 extends Entity {
       return var4 == null ? null : var4.method531(this.anInt467, this.anInt468, this.anInt461, this.anInt462, this.anInt463, this.anInt464, var2);
    }
 
-   private Class48 method358() {
+   private LocType method358() {
       int var1 = -1;
       if (this.anInt469 != -1) {
-         Class50 var2 = Class50.aClass50Array1[this.anInt469];
+         VarbitType var2 = VarbitType.aClass50Array1[this.anInt469];
          int var3 = var2.anInt800;
          int var4 = var2.anInt801;
          int var5 = var2.anInt802;
@@ -102,6 +105,6 @@ public final class Class10_Sub1_Sub2_Sub5 extends Entity {
          var1 = aClient2.anIntArray244[this.anInt470];
       }
 
-      return var1 >= 0 && var1 < this.anIntArray154.length && this.anIntArray154[var1] != -1 ? Class48.method523(this.anIntArray154[var1]) : null;
+      return var1 >= 0 && var1 < this.anIntArray154.length && this.anIntArray154[var1] != -1 ? LocType.method523(this.anIntArray154[var1]) : null;
    }
 }

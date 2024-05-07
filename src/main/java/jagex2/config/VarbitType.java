@@ -1,10 +1,10 @@
-package unmapped;
+package jagex2.config;
 
 import jagex2.io.JagFile;
 import jagex2.io.Packet;
 
-public final class Class50 {
-   public static Class50[] aClass50Array1;
+public final class VarbitType {
+   public static VarbitType[] aClass50Array1;
    private static int anInt799;
    private boolean aBoolean209 = false;
    private int anInt803 = -1;
@@ -15,7 +15,7 @@ public final class Class50 {
    public int anInt802;
    private int anInt804;
 
-   private Class50() {
+   private VarbitType() {
    }
 
    private void method575(int var1, Packet var2) {
@@ -45,21 +45,21 @@ public final class Class50 {
       }
    }
 
-   public static void method574(JagFile var0) {
+   public static void unpack(JagFile var0) {
       Packet var1 = new Packet(var0.read("varbit.dat", (byte[])null));
       anInt799 = var1.g2();
       if (aClass50Array1 == null) {
-         aClass50Array1 = new Class50[anInt799];
+         aClass50Array1 = new VarbitType[anInt799];
       }
 
       for(int var2 = 0; var2 < anInt799; ++var2) {
          if (aClass50Array1[var2] == null) {
-            aClass50Array1[var2] = new Class50();
+            aClass50Array1[var2] = new VarbitType();
          }
 
          aClass50Array1[var2].method575(var2, var1);
          if (aClass50Array1[var2].aBoolean209) {
-            Class44.aClass44Array1[aClass50Array1[var2].anInt800].aBoolean150 = true;
+            VarpType.aClass44Array1[aClass50Array1[var2].anInt800].aBoolean150 = true;
          }
       }
 

@@ -1,11 +1,11 @@
-package unmapped;
+package jagex2.config;
 
 import jagex2.io.JagFile;
 import jagex2.io.Packet;
 
-public final class Class16 {
+public final class FloType {
    private static byte aByte11 = 6;
-   public static Class16[] aClass16Array1;
+   public static FloType[] aClass16Array1;
    private static int anInt164;
    private boolean aBoolean46 = true;
    public int anInt166 = -1;
@@ -20,7 +20,7 @@ public final class Class16 {
    public int anInt171;
    public int anInt172;
 
-   private Class16() {
+   private FloType() {
    }
 
    private void method101(int var1) {
@@ -185,16 +185,16 @@ public final class Class16 {
       }
    }
 
-   public static void method99(JagFile var0) {
+   public static void unpack(JagFile var0) {
       Packet var1 = new Packet(var0.read("flo.dat", (byte[])null));
       anInt164 = var1.g2();
       if (aClass16Array1 == null) {
-         aClass16Array1 = new Class16[anInt164];
+         aClass16Array1 = new FloType[anInt164];
       }
 
       for(int var2 = 0; var2 < anInt164; ++var2) {
          if (aClass16Array1[var2] == null) {
-            aClass16Array1[var2] = new Class16();
+            aClass16Array1[var2] = new FloType();
          }
 
          aClass16Array1[var2].method100(aByte11, var1);

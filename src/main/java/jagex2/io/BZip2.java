@@ -1,9 +1,9 @@
 package jagex2.io;
 
 public final class BZip2 {
-   private static final BZip2$BZip2State state = new BZip2$BZip2State();
+   private static final BZip2State state = new BZip2State();
 
-   private static int getBits(int var0, BZip2$BZip2State var1) {
+   private static int getBits(int var0, BZip2State var1) {
       while(var1.bsLive < var0) {
          var1.bsBuff = var1.bsBuff << 8 | var1.stream[var1.next_in] & 255;
          var1.bsLive += 8;
@@ -20,7 +20,7 @@ public final class BZip2 {
       return var2;
    }
 
-   private static byte getUnsignedChar(BZip2$BZip2State var0) {
+   private static byte getUnsignedChar(BZip2State var0) {
       return (byte)getBits(8, var0);
    }
 
@@ -44,14 +44,14 @@ public final class BZip2 {
       }
    }
 
-   private static byte getBit(BZip2$BZip2State var0) {
+   private static byte getBit(BZip2State var0) {
       return (byte)getBits(1, var0);
    }
 
-   private static void decompress(BZip2$BZip2State var0) {
+   private static void decompress(BZip2State var0) {
       var0.anInt21 = 1;
-      if (BZip2$BZip2State.tt == null) {
-         BZip2$BZip2State.tt = new int[var0.anInt21 * 100000];
+      if (BZip2State.tt == null) {
+         BZip2State.tt = new int[var0.anInt21 * 100000];
       }
 
       boolean var1 = true;
@@ -286,7 +286,7 @@ public final class BZip2 {
                      }
 
                      var10002 = var0.unzftab[var0.aByteArray3[var2 & 255] & 255]++;
-                     BZip2$BZip2State.tt[var15] = var0.aByteArray3[var2 & 255] & 255;
+                     BZip2State.tt[var15] = var0.aByteArray3[var2 & 255] & 255;
                      ++var15;
                      if (var23 == 0) {
                         ++var16;
@@ -345,7 +345,7 @@ public final class BZip2 {
                      var10000 = var0.unzftab;
 
                      for(var10000[var2 & 255] += var28; var28 > 0; --var28) {
-                        BZip2$BZip2State.tt[var15] = var2 & 255;
+                        BZip2State.tt[var15] = var2 & 255;
                         ++var15;
                      }
                   }
@@ -365,16 +365,16 @@ public final class BZip2 {
                }
 
                for(var3 = 0; var3 < var15; ++var3) {
-                  var2 = (byte)(BZip2$BZip2State.tt[var3] & 255);
-                  var10000 = BZip2$BZip2State.tt;
+                  var2 = (byte)(BZip2State.tt[var3] & 255);
+                  var10000 = BZip2State.tt;
                   int var10001 = var0.anIntArray2[var2 & 255];
                   var10000[var10001] |= var3 << 8;
                   var10002 = var0.anIntArray2[var2 & 255]++;
                }
 
-               var0.tPos = BZip2$BZip2State.tt[var0.origPtr] >> 8;
+               var0.tPos = BZip2State.tt[var0.origPtr] >> 8;
                var0.c_nblock_used = 0;
-               var0.tPos = BZip2$BZip2State.tt[var0.tPos];
+               var0.tPos = BZip2State.tt[var0.tPos];
                var0.k0 = (byte)(var0.tPos & 255);
                var0.tPos >>= 8;
                ++var0.c_nblock_used;
@@ -394,7 +394,7 @@ public final class BZip2 {
       }
    }
 
-   private static void makeMaps(BZip2$BZip2State var0) {
+   private static void makeMaps(BZip2State var0) {
       var0.nInUse = 0;
 
       for(int var1 = 0; var1 < 256; ++var1) {
@@ -450,12 +450,12 @@ public final class BZip2 {
 
    }
 
-   private static void finish(BZip2$BZip2State var0) {
+   private static void finish(BZip2State var0) {
       byte var1 = var0.state_out_ch;
       int var2 = var0.state_out_len;
       int var3 = var0.c_nblock_used;
       int var4 = var0.k0;
-      int[] var5 = BZip2$BZip2State.tt;
+      int[] var5 = BZip2State.tt;
       int var6 = var0.tPos;
       byte[] var7 = var0.decompressed;
       int var8 = var0.next_out;
@@ -571,9 +571,57 @@ public final class BZip2 {
       var0.state_out_len = var2;
       var0.c_nblock_used = var3;
       var0.k0 = var4;
-      BZip2$BZip2State.tt = var5;
+      BZip2State.tt = var5;
       var0.tPos = var6;
       var0.next_out = var8;
       var0.avail_out = var9;
+   }
+   
+   static class BZip2State {
+      public static int[] tt;
+      public int anInt21;
+      public int nInUse;
+      public byte state_out_ch;
+      public int bsLive;
+      private final int BZ_MAX_ALPHA_SIZE = 258;
+      public int state_out_len;
+      public int c_nblock_used;
+      public byte[] stream;
+      public int bsBuff;
+      private final int BZ_MAX_CODE_LEN = 23;
+      public boolean[] inUse = new boolean[256];
+      public int k0;
+      public int next_in;
+      private final int anInt5 = 1;
+      public int tPos;
+      public byte[] decompressed;
+      public byte[] aByteArray3 = new byte[256];
+      private final int BZ_G_SIZE = 50;
+      public int next_out;
+      public int avail_out;
+      private final int anInt8 = 4;
+      public int save_nblock;
+      private final int BZ_MAX_SELECTORS = 18002;
+      public int[] unzftab = new int[256];
+      public int total_out_lo32;
+      public int avail_in;
+      public int[] anIntArray2 = new int[257];
+      private int[] anIntArray3 = new int[257];
+      public int total_in_lo32;
+      public int currBlockNo;
+      public boolean[] inUse16 = new boolean[16];
+      public int total_out_hi32;
+      public byte[] mtfa = new byte[4096];
+      public int total_in_hi32;
+      public int[] mtfbase = new int[16];
+      public byte[] selector = new byte[18002];
+      public byte[] selectorMtf = new byte[18002];
+      public byte[][] len = new byte[6][258];
+      public int[][] limit = new int[6][258];
+      public boolean blockRandomized;
+      public int[][] base = new int[6][258];
+      public int[][] perm = new int[6][258];
+      public int origPtr;
+      public int[] minLens = new int[6];
    }
 }

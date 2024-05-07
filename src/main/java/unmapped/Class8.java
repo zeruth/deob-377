@@ -1,6 +1,10 @@
 package unmapped;
 
+import jagex2.config.FloType;
+import jagex2.config.LocType;
+import jagex2.dash3d.World3D;
 import jagex2.dash3d.entity.Entity;
+import jagex2.graphics.Draw3D;
 import jagex2.graphics.Model;
 import jagex2.io.Packet;
 
@@ -129,7 +133,7 @@ public final class Class8 {
       }
    }
 
-   private void method21(Class23 var1, Class47 var2, int var3, int var4, int var5, byte var6, int var7, int var8, int var9) {
+   private void method21(World3D var1, Class47 var2, int var3, int var4, int var5, byte var6, int var7, int var8, int var9) {
       if (aBoolean15 && (this.aByteArrayArrayArray1[0][var5][var3] & 2) == 0) {
          if ((this.aByteArrayArrayArray1[var4][var5][var3] & 16) != 0) {
             return;
@@ -149,7 +153,7 @@ public final class Class8 {
       int var12 = this.anIntArrayArrayArray1[var4][var5 + 1][var3 + 1];
       int var13 = this.anIntArrayArrayArray1[var4][var5][var3 + 1];
       int var14 = var10 + var11 + var12 + var13 >> 2;
-      Class48 var15 = Class48.method523(var9);
+      LocType var15 = LocType.method523(var9);
       int var16 = var5 + (var3 << 7) + (var9 << 14) + 1073741824;
       if (var6 != 0) {
          this.aBoolean14 = !this.aBoolean14;
@@ -377,7 +381,7 @@ public final class Class8 {
                      var20 = 16;
                      var19 = var1.method216(var4, var5, var3);
                      if (var19 > 0) {
-                        var20 = Class48.method523(var19 >> 14 & 32767).anInt708;
+                        var20 = LocType.method523(var19 >> 14 & 32767).anInt708;
                      }
 
                      if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
@@ -480,7 +484,7 @@ public final class Class8 {
 
    }
 
-   public void method15(Class47[] var1, int var2, Class23 var3) {
+   public void method15(Class47[] var1, int var2, World3D var3) {
       int var4;
       int var5;
       int var6;
@@ -566,11 +570,11 @@ public final class Class8 {
             for(var12 = 0; var12 < this.anInt58; ++var12) {
                var13 = var11 + 5;
                int var10003;
-               Class16 var42;
+               FloType var42;
                if (var13 >= 0 && var13 < this.anInt57) {
                   var14 = this.aByteArrayArrayArray5[var4][var13][var12] & 255;
                   if (var14 > 0) {
-                     var42 = Class16.aClass16Array1[var14 - 1];
+                     var42 = FloType.aClass16Array1[var14 - 1];
                      var10000 = this.anIntArray14;
                      var10000[var12] += var42.anInt170;
                      var10000 = this.anIntArray15;
@@ -587,7 +591,7 @@ public final class Class8 {
                if (var14 >= 0 && var14 < this.anInt57) {
                   var15 = this.aByteArrayArrayArray5[var4][var14][var12] & 255;
                   if (var15 > 0) {
-                     var42 = Class16.aClass16Array1[var15 - 1];
+                     var42 = FloType.aClass16Array1[var15 - 1];
                      var10000 = this.anIntArray14;
                      var10000[var12] -= var42.anInt170;
                      var10000 = this.anIntArray15;
@@ -669,7 +673,7 @@ public final class Class8 {
                               var44 = false;
                            }
 
-                           if (var23 > 0 && !Class16.aClass16Array1[var23 - 1].aBoolean48) {
+                           if (var23 > 0 && !FloType.aClass16Array1[var23 - 1].aBoolean48) {
                               var44 = false;
                            }
 
@@ -681,7 +685,7 @@ public final class Class8 {
 
                         var34 = 0;
                         if (var32 != -1) {
-                           var34 = Class10_Sub1_Sub1_Sub4.anIntArray186[method19(var33, 96)];
+                           var34 = Draw3D.anIntArray186[method19(var33, 96)];
                         }
 
                         if (var23 == 0) {
@@ -689,20 +693,20 @@ public final class Class8 {
                         } else {
                            var35 = this.aByteArrayArrayArray3[var4][var11][var18] + 1;
                            byte var45 = this.aByteArrayArrayArray2[var4][var11][var18];
-                           Class16 var43 = Class16.aClass16Array1[var23 - 1];
+                           FloType var43 = FloType.aClass16Array1[var23 - 1];
                            int var38 = var43.anInt166;
                            int var39;
                            int var40;
                            if (var38 >= 0) {
-                              var40 = Class10_Sub1_Sub1_Sub4.method512(var38);
+                              var40 = Draw3D.method512(var38);
                               var39 = -1;
                            } else if (var43.anInt165 == 16711935) {
                               var39 = -2;
                               var38 = -1;
-                              var40 = Class10_Sub1_Sub1_Sub4.anIntArray186[this.method30(var43.anInt172, 96)];
+                              var40 = Draw3D.anIntArray186[this.method30(var43.anInt172, 96)];
                            } else {
                               var39 = this.method25(var43.anInt167, var43.anInt168, var43.anInt169);
-                              var40 = Class10_Sub1_Sub1_Sub4.anIntArray186[this.method30(var43.anInt172, 96)];
+                              var40 = Draw3D.anIntArray186[this.method30(var43.anInt172, 96)];
                            }
 
                            var3.method195(var4, var11, var18, var35, var45, var38, var24, var25, var26, var27, method19(var32, var28), method19(var32, var29), method19(var32, var30), method19(var32, var31), this.method30(var39, var28), this.method30(var39, var29), this.method30(var39, var30), this.method30(var39, var31), var34, var40);
@@ -786,7 +790,7 @@ public final class Class8 {
                      if (var13 >= 8) {
                         var15 = this.anIntArrayArrayArray1[var12][var8][var9] - 240;
                         var16 = this.anIntArrayArrayArray1[var11][var8][var9];
-                        Class23.method193(var8 * 128, var16, var8 * 128, var10 * 128 + 128, var21, var9 * 128, var15, 1);
+                        World3D.method193(var8 * 128, var16, var8 * 128, var10 * 128 + 128, var21, var9 * 128, var15, 1);
 
                         for(var17 = var11; var17 <= var12; ++var17) {
                            for(var18 = var9; var18 <= var10; ++var18) {
@@ -835,7 +839,7 @@ public final class Class8 {
                      if (var13 >= 8) {
                         var15 = this.anIntArrayArrayArray1[var12][var9][var7] - 240;
                         var16 = this.anIntArrayArrayArray1[var11][var9][var7];
-                        Class23.method193(var9 * 128, var16, var10 * 128 + 128, var7 * 128, var21, var7 * 128, var15, 2);
+                        World3D.method193(var9 * 128, var16, var10 * 128 + 128, var7 * 128, var21, var7 * 128, var15, 2);
 
                         for(var17 = var11; var17 <= var12; ++var17) {
                            for(var18 = var9; var18 <= var10; ++var18) {
@@ -882,7 +886,7 @@ public final class Class8 {
 
                      if ((var10 + 1 - var9) * (var12 + 1 - var11) >= 4) {
                         var13 = this.anIntArrayArrayArray1[var22][var9][var11];
-                        Class23.method193(var9 * 128, var13, var10 * 128 + 128, var12 * 128 + 128, var21, var11 * 128, var13, 4);
+                        World3D.method193(var9 * 128, var13, var10 * 128 + 128, var12 * 128 + 128, var21, var11 * 128, var13, 4);
 
                         for(var14 = var9; var14 <= var10; ++var14) {
                            for(var15 = var11; var15 <= var12; ++var15) {
@@ -983,7 +987,7 @@ public final class Class8 {
 
    }
 
-   public void method27(int var1, Class47[] var2, int var3, Class23 var4, byte[] var5) {
+   public void method27(int var1, Class47[] var2, int var3, World3D var4, byte[] var5) {
       Packet var6 = new Packet(var5);
       int var7 = -1;
 
@@ -1055,7 +1059,7 @@ public final class Class8 {
 
    }
 
-   public void method20(int var1, Class47[] var2, Class23 var3, byte[] var4, int var5, int var6, int var7, int var8, int var9, int var10) {
+   public void method20(int var1, Class47[] var2, World3D var3, byte[] var4, int var5, int var6, int var7, int var8, int var9, int var10) {
       Packet var11 = new Packet(var4);
       int var12 = -1;
 
@@ -1082,7 +1086,7 @@ public final class Class8 {
             int var20 = var19 >> 2;
             int var21 = var19 & 3;
             if (var18 == var10 && var17 >= var7 && var17 < var7 + 8 && var16 >= var9 && var16 < var9 + 8) {
-               Class48 var22 = Class48.method523(var12);
+               LocType var22 = LocType.method523(var12);
                int var23 = var8 + Class35.method393(var6, var22.anInt697, var21, var17 & 7, var22.anInt707, var16 & 7);
                int var24 = var5 + Class35.method394(var22.anInt707, var6, var17 & 7, var16 & 7, var22.anInt697, var21);
                if (var23 > 0 && var24 > 0 && var23 < 103 && var24 < 103) {
@@ -1164,7 +1168,7 @@ public final class Class8 {
 
          while(true) {
             int var12;
-            Class48 var15;
+            LocType var15;
             do {
                int var13;
                int var14;
@@ -1198,7 +1202,7 @@ public final class Class8 {
                   } while(var13 >= 103);
                } while(var14 >= 103);
 
-               var15 = Class48.method523(var5);
+               var15 = LocType.method523(var5);
             } while(var12 == 22 && aBoolean15 && !var15.aBoolean180 && !var15.aBoolean181);
 
             var3 &= var15.method528();
@@ -1220,7 +1224,7 @@ public final class Class8 {
    }
 
    public static boolean method18(int var0, byte var1, int var2) {
-      Class48 var3 = Class48.method523(var2);
+      LocType var3 = LocType.method523(var2);
       if (var1 != aByte5) {
          for(int var4 = 1; var4 > 0; ++var4) {
          }
@@ -1265,13 +1269,13 @@ public final class Class8 {
       return var4 >> 19 & 255;
    }
 
-   public static void method13(int var0, int var1, int var2, int var3, Class47 var4, int var5, int var6, int var7, Class23 var8, int[][][] var9) {
+   public static void method13(int var0, int var1, int var2, int var3, Class47 var4, int var5, int var6, int var7, World3D var8, int[][][] var9) {
       int var10 = var9[var1][var6][var3];
       int var11 = var9[var1][var6 + 1][var3];
       int var12 = var9[var1][var6 + 1][var3 + 1];
       int var13 = var9[var1][var6][var3 + 1];
       int var14 = var10 + var11 + var12 + var13 >> 2;
-      Class48 var15 = Class48.method523(var0);
+      LocType var15 = LocType.method523(var0);
       int var16 = var6 + (var3 << 7) + (var0 << 14) + 1073741824;
       if (!var15.aBoolean180) {
          var16 -= Integer.MIN_VALUE;
@@ -1402,7 +1406,7 @@ public final class Class8 {
                      var20 = 16;
                      var19 = var8.method216(var7, var6, var3);
                      if (var19 > 0) {
-                        var20 = Class48.method523(var19 >> 14 & 32767).anInt708;
+                        var20 = LocType.method523(var19 >> 14 & 32767).anInt708;
                      }
 
                      if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
@@ -1482,7 +1486,7 @@ public final class Class8 {
          }
 
          var2 += var3;
-         Class48 var4 = Class48.method523(var2);
+         LocType var4 = LocType.method523(var2);
          var4.method525(var0);
 
          while(true) {
@@ -1512,7 +1516,7 @@ public final class Class8 {
    }
 
    private static int method24(int var0, int var1, int var2, int var3) {
-      int var4 = 65536 - Class10_Sub1_Sub1_Sub4.anIntArray182[var2 * 1024 / var3] >> 1;
+      int var4 = 65536 - Draw3D.anIntArray182[var2 * 1024 / var3] >> 1;
       return (var0 * (65536 - var4) >> 16) + (var1 * var4 >> 16);
    }
 }

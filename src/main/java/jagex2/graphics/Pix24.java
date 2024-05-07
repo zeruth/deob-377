@@ -181,7 +181,7 @@ public final class Pix24 extends Draw2D {
 
    }
 
-   public void method78(int var1, int var2) {
+   public void draw(int var1, int var2) {
       var2 += this.cropX;
       var1 += this.cropY;
       int var3 = var2 + var1 * Draw2D.width2d;

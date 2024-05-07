@@ -4,17 +4,17 @@ import jagex2.config.IdkType;
 import jagex2.datastruct.LruCache;
 import jagex2.graphics.Model;
 import jagex2.io.Packet;
-import unmapped.Class15;
-import unmapped.Class17;
+import jagex2.config.SeqType;
+import jagex2.config.ObjType;
 import unmapped.Class22;
 import unmapped.Class26;
-import unmapped.Class28;
-import unmapped.Class38;
+import jagex2.config.SpotAnimType;
+import jagex2.config.NpcType;
 import unmapped.Client;
 
 public final class PlayerEntity extends PathingEntity {
    public static LruCache aClass34_9 = new LruCache(260);
-   public Class38 aClass38_2;
+   public NpcType aClass38_2;
    public boolean visible = false;
    private boolean aBoolean197 = false;
    private long aLong25;
@@ -48,9 +48,9 @@ public final class PlayerEntity extends PathingEntity {
       if (this.aClass38_2 != null) {
          int var1 = -1;
          if (super.anInt753 >= 0 && super.anInt756 == 0) {
-            var1 = Class15.aClass15Array1[super.anInt753].anIntArray47[super.anInt754];
+            var1 = SeqType.aClass15Array1[super.anInt753].anIntArray47[super.anInt754];
          } else if (super.anInt719 >= 0) {
-            var1 = Class15.aClass15Array1[super.anInt719].anIntArray47[super.anInt720];
+            var1 = SeqType.aClass15Array1[super.anInt719].anIntArray47[super.anInt720];
          }
 
          return this.aClass38_2.method405(var1, -1, (int[])null);
@@ -61,10 +61,10 @@ public final class PlayerEntity extends PathingEntity {
          int var5 = -1;
          int var6 = -1;
          if (super.anInt753 >= 0 && super.anInt756 == 0) {
-            Class15 var7 = Class15.aClass15Array1[super.anInt753];
+            SeqType var7 = SeqType.aClass15Array1[super.anInt753];
             var3 = var7.anIntArray47[super.anInt754];
             if (super.anInt719 >= 0 && super.anInt719 != super.anInt760) {
-               var4 = Class15.aClass15Array1[super.anInt719].anIntArray47[super.anInt720];
+               var4 = SeqType.aClass15Array1[super.anInt719].anIntArray47[super.anInt720];
             }
 
             if (var7.anInt155 >= 0) {
@@ -77,7 +77,7 @@ public final class PlayerEntity extends PathingEntity {
                var13 += (long)(var6 - this.appearances[3] << 16);
             }
          } else if (super.anInt719 >= 0) {
-            var3 = Class15.aClass15Array1[super.anInt719].anIntArray47[super.anInt720];
+            var3 = SeqType.aClass15Array1[super.anInt719].anIntArray47[super.anInt720];
          }
 
          Model var16 = (Model)aClass34_9.get(var13);
@@ -100,7 +100,7 @@ public final class PlayerEntity extends PathingEntity {
                   var10 = true;
                }
 
-               if (var9 >= 512 && !Class17.method104(var9 - 512).method108(this.anInt768)) {
+               if (var9 >= 512 && !ObjType.method104(var9 - 512).method108(this.anInt768)) {
                   var10 = true;
                }
             }
@@ -140,7 +140,7 @@ public final class PlayerEntity extends PathingEntity {
                }
 
                if (var11 >= 512) {
-                  var12 = Class17.method104(var11 - 512).method105(this.anInt768);
+                  var12 = ObjType.method104(var11 - 512).method105(this.anInt768);
                   if (var12 != null) {
                      var15[var8++] = var12;
                   }
@@ -170,7 +170,7 @@ public final class PlayerEntity extends PathingEntity {
             Model var17 = Model.aClass10_Sub1_Sub2_Sub4_1;
             var17.method273(Class22.method169(this.aBoolean199, var3) & Class22.method169(this.aBoolean199, var4), var16);
             if (var3 != -1 && var4 != -1) {
-               var17.method280(var4, var3, Class15.aClass15Array1[super.anInt753].anIntArray50);
+               var17.method280(var4, var3, SeqType.aClass15Array1[super.anInt753].anIntArray50);
             } else if (var3 != -1) {
                var17.method279(var3, (byte)6);
             }
@@ -197,7 +197,7 @@ public final class PlayerEntity extends PathingEntity {
                return var2;
             } else {
                if (super.anInt743 != -1 && super.anInt744 != -1) {
-                  Class28 var3 = Class28.aClass28Array1[super.anInt743];
+                  SpotAnimType var3 = SpotAnimType.aClass28Array1[super.anInt743];
                   Model var4 = var3.method352();
                   if (var4 != null) {
                      Model var5 = new Model(false, false, true, var4, Class22.method169(this.aBoolean199, super.anInt744));
@@ -223,7 +223,7 @@ public final class PlayerEntity extends PathingEntity {
 
                   if (Client.anInt1050 >= this.anInt771 && Client.anInt1050 < this.anInt772) {
                      Model var8 = this.aClass10_Sub1_Sub2_Sub4_2;
-                     var8.method284(this.anInt762 - super.anInt739, this.anInt764 - super.anInt740, this.anInt763 - this.anInt766);
+                     var8.method284(this.anInt762 - super.x, this.anInt764 - super.z, this.anInt763 - this.anInt766);
                      if (super.anInt717 == 512) {
                         var8.method282();
                         var8.method282();
@@ -248,7 +248,7 @@ public final class PlayerEntity extends PathingEntity {
                         var8.method282();
                      }
 
-                     var8.method284(super.anInt739 - this.anInt762, super.anInt740 - this.anInt764, this.anInt766 - this.anInt763);
+                     var8.method284(super.x - this.anInt762, super.z - this.anInt764, this.anInt766 - this.anInt763);
                   }
                }
 
@@ -282,7 +282,7 @@ public final class PlayerEntity extends PathingEntity {
                var1 = true;
             }
 
-            if (var3 >= 512 && !Class17.method104(var3 - 512).method103(this.anInt768)) {
+            if (var3 >= 512 && !ObjType.method104(var3 - 512).method103(this.anInt768)) {
                var1 = true;
             }
          }
@@ -305,7 +305,7 @@ public final class PlayerEntity extends PathingEntity {
                }
 
                if (var5 >= 512) {
-                  var6 = Class17.method104(var5 - 512).method111(this.anInt768);
+                  var6 = ObjType.method104(var5 - 512).method111(this.anInt768);
                   if (var6 != null) {
                      var7[var3++] = var6;
                   }
@@ -350,12 +350,12 @@ public final class PlayerEntity extends PathingEntity {
             var3 = var1.g1();
             this.appearances[var5] = (var2 << 8) + var3;
             if (var5 == 0 && this.appearances[0] == 65535) {
-               this.aClass38_2 = Class38.method407(var1.g2());
+               this.aClass38_2 = NpcType.method407(var1.g2());
                break;
             }
 
-            if (this.appearances[var5] >= 512 && this.appearances[var5] - 512 < Class17.anInt179) {
-               var4 = Class17.method104(this.appearances[var5] - 512).anInt176;
+            if (this.appearances[var5] >= 512 && this.appearances[var5] - 512 < ObjType.anInt179) {
+               var4 = ObjType.method104(this.appearances[var5] - 512).anInt176;
                if (var4 != 0) {
                   this.anInt773 = var4;
                }

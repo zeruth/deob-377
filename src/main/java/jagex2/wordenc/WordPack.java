@@ -1,14 +1,14 @@
-package unmapped;
+package jagex2.wordenc;
 
 import jagex2.io.Packet;
 
-public final class Class32 {
+public final class WordPack {
    private static int anInt484 = 20411;
    private static char[] aCharArray3 = new char[100];
    private static Packet aClass10_Sub1_Sub3_2 = new Packet(new byte[100]);
    private static char[] aCharArray4 = new char[]{' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w', 'c', 'y', 'f', 'g', 'p', 'b', 'v', 'k', 'x', 'j', 'q', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '!', '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '£', '$', '%', '"', '[', ']'};
 
-   public static void method372(String var0, Packet var1) {
+   public static void pack(String var0, Packet var1) {
       if (var0.length() > 80) {
          var0 = var0.substring(0, 80);
       }
@@ -54,13 +54,13 @@ public final class Class32 {
 
    public static String method373(String var0) {
       aClass10_Sub1_Sub3_2.pos = 0;
-      method372(var0, aClass10_Sub1_Sub3_2);
+      pack(var0, aClass10_Sub1_Sub3_2);
       int var1 = aClass10_Sub1_Sub3_2.pos;
       aClass10_Sub1_Sub3_2.pos = 0;
-      return method371(aClass10_Sub1_Sub3_2, var1);
+      return unpack(aClass10_Sub1_Sub3_2, var1);
    }
 
-   public static String method371(Packet var0, int var1) {
+   public static String unpack(Packet var0, int var1) {
       int var2 = 0;
       int var3 = -1;
 

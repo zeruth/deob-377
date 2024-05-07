@@ -1,5 +1,6 @@
 package unmapped;
 
+import jagex2.config.ObjType;
 import jagex2.dash3d.entity.Entity;
 import jagex2.graphics.Model;
 
@@ -13,7 +14,7 @@ public final class Class10_Sub1_Sub2_Sub1 extends Entity {
          this.anInt212 = -358;
       }
 
-      Class17 var2 = Class17.method104(this.anInt211);
+      ObjType var2 = ObjType.method104(this.anInt211);
       return var2.method112(this.anInt213);
    }
 }

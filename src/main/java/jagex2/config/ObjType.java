@@ -1,16 +1,17 @@
-package unmapped;
+package jagex2.config;
 
 import jagex2.datastruct.LruCache;
 import jagex2.graphics.Draw2D;
+import jagex2.graphics.Draw3D;
 import jagex2.graphics.Model;
 import jagex2.graphics.Pix24;
 import jagex2.io.JagFile;
 import jagex2.io.Packet;
 
-public final class Class17 {
+public final class ObjType {
    public static LruCache aClass34_3 = new LruCache(50);
    private static int anInt185;
-   private static Class17[] aClass17Array1;
+   private static ObjType[] aClass17Array1;
    public static boolean aBoolean49 = true;
    public static LruCache aClass34_4 = new LruCache(100);
    private static Packet aClass10_Sub1_Sub3_1;
@@ -61,7 +62,7 @@ public final class Class17 {
    private int anInt177;
    public int anInt176;
 
-   private Class17() {
+   private ObjType() {
    }
 
    public Model method112(int var1) {
@@ -353,7 +354,7 @@ public final class Class17 {
    }
 
    private void method107() {
-      Class17 var1 = method104(this.anInt182);
+      ObjType var1 = method104(this.anInt182);
       this.anInt193 = var1.anInt193;
       this.anInt200 = var1.anInt200;
       this.anInt192 = var1.anInt192;
@@ -363,7 +364,7 @@ public final class Class17 {
       this.anInt181 = var1.anInt181;
       this.anIntArray53 = var1.anIntArray53;
       this.anIntArray51 = var1.anIntArray51;
-      Class17 var2 = method104(this.anInt177);
+      ObjType var2 = method104(this.anInt177);
       this.aString7 = var2.aString7;
       this.aBoolean54 = var2.aBoolean54;
       this.anInt183 = var2.anInt183;
@@ -453,7 +454,7 @@ public final class Class17 {
       }
    }
 
-   public static Class17 method104(int var0) {
+   public static ObjType method104(int var0) {
       for(int var1 = 0; var1 < 10; ++var1) {
          if (aClass17Array1[var1].anInt196 == var0) {
             return aClass17Array1[var1];
@@ -461,7 +462,7 @@ public final class Class17 {
       }
 
       anInt185 = (anInt185 + 1) % 10;
-      Class17 var2 = aClass17Array1[anInt185];
+      ObjType var2 = aClass17Array1[anInt185];
       aClass10_Sub1_Sub3_1.pos = anIntArray52[var0];
       var2.anInt196 = var0;
       var2.method115();
@@ -495,7 +496,7 @@ public final class Class17 {
          }
       }
 
-      Class17 var4 = method104(var2);
+      ObjType var4 = method104(var2);
       if (var4.anIntArray54 == null) {
          var1 = -1;
       }
@@ -527,9 +528,9 @@ public final class Class17 {
          }
 
          var3 = new Pix24(32, 32);
-         int var7 = Class10_Sub1_Sub1_Sub4.anInt686;
-         int var8 = Class10_Sub1_Sub1_Sub4.anInt687;
-         int[] var9 = Class10_Sub1_Sub1_Sub4.anIntArray183;
+         int var7 = Draw3D.anInt686;
+         int var8 = Draw3D.anInt687;
+         int[] var9 = Draw3D.lineOffset;
          int[] var10 = Draw2D.data;
          int var11 = Draw2D.width2d;
          int var12 = Draw2D.height2d;
@@ -537,10 +538,10 @@ public final class Class17 {
          int var14 = Draw2D.right;
          int var15 = Draw2D.top;
          int var16 = Draw2D.bottom;
-         Class10_Sub1_Sub1_Sub4.aBoolean179 = false;
+         Draw3D.aBoolean179 = false;
          Draw2D.bind(32, 32, var3.pixels);
          Draw2D.fillRect(32, 0, 0, 32, 0);
-         Class10_Sub1_Sub1_Sub4.method507(568);
+         Draw3D.method507(568);
          int var17 = var4.anInt200;
          if (var0 == -1) {
             var17 = (int)((double)var17 * 1.5);
@@ -550,8 +551,8 @@ public final class Class17 {
             var17 = (int)((double)var17 * 1.04);
          }
 
-         int var18 = Class10_Sub1_Sub1_Sub4.anIntArray181[var4.anInt192] * var17 >> 16;
-         int var19 = Class10_Sub1_Sub1_Sub4.anIntArray182[var4.anInt192] * var17 >> 16;
+         int var18 = Draw3D.anIntArray181[var4.anInt192] * var17 >> 16;
+         int var19 = Draw3D.anIntArray182[var4.anInt192] * var17 >> 16;
          var22.method292(var4.anInt189, var4.anInt180, var4.anInt192, var4.anInt174, var18 + var22.anInt713 / 2 + var4.anInt181, var19 + var4.anInt181);
 
          int var20;
@@ -602,7 +603,7 @@ public final class Class17 {
             int var21 = var23.cropH;
             var23.cropW = 32;
             var23.cropH = 32;
-            var23.method78(0, 0);
+            var23.draw(0, 0);
             var23.cropW = var20;
             var23.cropH = var21;
          }
@@ -613,10 +614,10 @@ public final class Class17 {
 
          Draw2D.bind(var11, var12, var10);
          Draw2D.setBounds(var15, var13, var16, var14);
-         Class10_Sub1_Sub1_Sub4.anInt686 = var7;
-         Class10_Sub1_Sub1_Sub4.anInt687 = var8;
-         Class10_Sub1_Sub1_Sub4.anIntArray183 = var9;
-         Class10_Sub1_Sub1_Sub4.aBoolean179 = true;
+         Draw3D.anInt686 = var7;
+         Draw3D.anInt687 = var8;
+         Draw3D.lineOffset = var9;
+         Draw3D.aBoolean179 = true;
          if (var4.aBoolean52) {
             var3.cropW = 33;
          } else {
@@ -636,7 +637,7 @@ public final class Class17 {
       aClass10_Sub1_Sub3_1 = null;
    }
 
-   public static void method106(JagFile var0) {
+   public static void unpack(JagFile var0) {
       aClass10_Sub1_Sub3_1 = new Packet(var0.read("obj.dat", (byte[])null));
       Packet var1 = new Packet(var0.read("obj.idx", (byte[])null));
       anInt179 = var1.g2();
@@ -649,10 +650,10 @@ public final class Class17 {
          var2 += var1.g2();
       }
 
-      aClass17Array1 = new Class17[10];
+      aClass17Array1 = new ObjType[10];
 
       for(var3 = 0; var3 < 10; ++var3) {
-         aClass17Array1[var3] = new Class17();
+         aClass17Array1[var3] = new ObjType();
       }
 
    }

@@ -1,22 +1,22 @@
-package unmapped;
+package jagex2.config;
 
 import jagex2.datastruct.LruCache;
 import jagex2.graphics.Model;
 import jagex2.io.JagFile;
 import jagex2.io.Packet;
 
-public final class Class28 {
+public final class SpotAnimType {
    private static byte aByte26 = 6;
    public static LruCache aClass34_5 = new LruCache(30);
    private static boolean aBoolean117 = true;
-   public static Class28[] aClass28Array1;
+   public static SpotAnimType[] aClass28Array1;
    private static int anInt434;
    private int anInt433 = -214;
    private int anInt435;
    private int anInt437 = -1;
    private int anInt436;
    private int[] anIntArray152 = new int[6];
-   public Class15 aClass15_1;
+   public SeqType aClass15_1;
    private int[] anIntArray153 = new int[6];
    public int anInt438 = 128;
    public int anInt439 = 128;
@@ -24,7 +24,7 @@ public final class Class28 {
    public int anInt441;
    public int anInt442;
 
-   private Class28() {
+   private SpotAnimType() {
    }
 
    public Model method352() {
@@ -66,8 +66,8 @@ public final class Class28 {
                this.anInt436 = var2.g2();
             } else if (var4 == 2) {
                this.anInt437 = var2.g2();
-               if (Class15.aClass15Array1 != null) {
-                  this.aClass15_1 = Class15.aClass15Array1[this.anInt437];
+               if (SeqType.aClass15Array1 != null) {
+                  this.aClass15_1 = SeqType.aClass15Array1[this.anInt437];
                }
             } else if (var4 == 4) {
                this.anInt438 = var2.g2();
@@ -90,16 +90,16 @@ public final class Class28 {
       }
    }
 
-   public static void method350(JagFile var0) {
+   public static void unpack(JagFile var0) {
       Packet var1 = new Packet(var0.read("spotanim.dat", (byte[])null));
       anInt434 = var1.g2();
       if (aClass28Array1 == null) {
-         aClass28Array1 = new Class28[anInt434];
+         aClass28Array1 = new SpotAnimType[anInt434];
       }
 
       for(int var2 = 0; var2 < anInt434; ++var2) {
          if (aClass28Array1[var2] == null) {
-            aClass28Array1[var2] = new Class28();
+            aClass28Array1[var2] = new SpotAnimType();
          }
 
          aClass28Array1[var2].anInt435 = var2;

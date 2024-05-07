@@ -1,9 +1,9 @@
-package unmapped;
+package jagex2.wordenc;
 
 import jagex2.io.JagFile;
 import jagex2.io.Packet;
 
-public final class Class46 {
+public final class WordFilter {
    private static int anInt658 = 3;
    private static int anInt660 = -761;
    private static int anInt661 = -48545;
@@ -1141,7 +1141,7 @@ public final class Class46 {
       }
    }
 
-   public static void method442(JagFile var0) {
+   public static void unpack(JagFile var0) {
       Packet var1 = new Packet(var0.read("fragmentsenc.txt", (byte[])null));
       Packet var2 = new Packet(var0.read("badenc.txt", (byte[])null));
       Packet var3 = new Packet(var0.read("domainenc.txt", (byte[])null));

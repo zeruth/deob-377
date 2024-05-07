@@ -16,7 +16,7 @@ public final class Class47 {
       this.anInt669 = var3;
       this.anInt670 = var1;
       this.anIntArrayArray16 = new int[this.anInt669][this.anInt670];
-      this.method480();
+      this.reset();
    }
 
    private void method487(int var1, int var2, int var3) {
@@ -36,7 +36,7 @@ public final class Class47 {
       var10000[var4] |= 2097152;
    }
 
-   public void method480() {
+   public void reset() {
       for(int var1 = 0; var1 < this.anInt669; ++var1) {
          for(int var2 = 0; var2 < this.anInt670; ++var2) {
             if (var1 != 0 && var2 != 0 && var1 != this.anInt669 - 1 && var2 != this.anInt670 - 1) {
