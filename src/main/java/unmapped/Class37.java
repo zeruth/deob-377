@@ -1,6 +1,7 @@
 package unmapped;
 
 
+import jagex2.io.Packet;
 import sign.signlink;
 
 public final class Class37 {
@@ -103,20 +104,20 @@ public final class Class37 {
 
 	public void method399( Class30 arg0, Packet arg1) {
 		try {
-			int local4 = arg1.readByte();
+			int local4 = arg1.g1();
 			this.anIntArray163[0] = local4 >> 4;
 			this.anIntArray163[1] = local4 & 0xF;
 			if (local4 == 0) {
 				this.anIntArray164[0] = this.anIntArray164[1] = 0;
 			} else {
-				this.anIntArray164[0] = arg1.readShort();
-				this.anIntArray164[1] = arg1.readShort();
-				int local46 = arg1.readByte();
+				this.anIntArray164[0] = arg1.g2();
+				this.anIntArray164[1] = arg1.g2();
+				int local46 = arg1.g1();
 				int local52;
 				for ( int local48 = 0; local48 < 2; local48++) {
 					for (local52 = 0; local52 < this.anIntArray163[local48]; local52++) {
-						this.anIntArrayArrayArray5[local48][0][local52] = arg1.readShort();
-						this.anIntArrayArrayArray6[local48][0][local52] = arg1.readShort();
+						this.anIntArrayArrayArray5[local48][0][local52] = arg1.g2();
+						this.anIntArrayArrayArray6[local48][0][local52] = arg1.g2();
 					}
 				}
 				for (local52 = 0; local52 < 2; local52++) {
@@ -125,8 +126,8 @@ public final class Class37 {
 							this.anIntArrayArrayArray5[local52][1][local91] = this.anIntArrayArrayArray5[local52][0][local91];
 							this.anIntArrayArrayArray6[local52][1][local91] = this.anIntArrayArrayArray6[local52][0][local91];
 						} else {
-							this.anIntArrayArrayArray5[local52][1][local91] = arg1.readShort();
-							this.anIntArrayArrayArray6[local52][1][local91] = arg1.readShort();
+							this.anIntArrayArrayArray5[local52][1][local91] = arg1.g2();
+							this.anIntArrayArrayArray6[local52][1][local91] = arg1.g2();
 						}
 					}
 				}

@@ -18,7 +18,7 @@ import java.net.URL;
 
 public final class signlink implements Runnable {
 
-	private static final int clientversion = 377;
+	public static final int clientversion = 377;
 
 	public static int anInt1058;
 

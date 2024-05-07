@@ -1,8 +1,6 @@
 package jagex2.io;
 
 
-import unmapped.Packet;
-
 public final class JagFile {
 
 	private byte[] buffer;
@@ -29,8 +27,8 @@ public final class JagFile {
 
 	private void load(byte[] src) {
 		Packet data = new Packet(src);
-		int unpackedSize = data.readInt24();
-		int packedSize = data.readInt24();
+		int unpackedSize = data.g3();
+		int packedSize = data.g3();
 		if (packedSize == unpackedSize) {
 			this.buffer = src;
 			this.unpacked = false;
@@ -41,7 +39,7 @@ public final class JagFile {
 			data = new Packet(this.buffer);
 			this.unpacked = true;
 		}
-		this.fileCount = data.readShort();
+		this.fileCount = data.g2();
 		this.fileHash = new int[this.fileCount];
 		this.fileUnpackedSize = new int[this.fileCount];
 		this.filePackedSize = new int[this.fileCount];
@@ -49,9 +47,9 @@ public final class JagFile {
 
 		int pos = data.pos + this.fileCount * 10;
 		for (int i = 0; i < this.fileCount; i++) {
-			this.fileHash[i] = data.method316();
-			this.fileUnpackedSize[i] = data.readInt24();
-			this.filePackedSize[i] = data.readInt24();
+			this.fileHash[i] = data.g4();
+			this.fileUnpackedSize[i] = data.g3();
+			this.filePackedSize[i] = data.g3();
 			this.fileOffset[i] = pos;
 			pos += this.filePackedSize[i];
 		}

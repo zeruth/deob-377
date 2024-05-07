@@ -2,6 +2,7 @@ package unmapped;
 
 
 import jagex2.io.JagFile;
+import jagex2.io.Packet;
 import sign.signlink;
 
 public final class Class15 {
@@ -47,7 +48,7 @@ public final class Class15 {
 	public static void method96( JagFile arg0) {
 		try {
 			Packet local8 = new Packet(arg0.read("seq.dat", null));
-			anInt151 = local8.readShort();
+			anInt151 = local8.g2();
 			if (aClass15Array1 == null) {
 				aClass15Array1 = new Class15[anInt151];
 			}
@@ -94,7 +95,7 @@ public final class Class15 {
 			}
 			while (true) {
 				while (true) {
-					int local19 = arg1.readByte();
+					int local19 = arg1.g1();
 					if (local19 == 0) {
 						if (this.anInt152 == 0) {
 							this.anInt152 = 1;
@@ -124,45 +125,45 @@ public final class Class15 {
 					}
 					int local46;
 					if (local19 == 1) {
-						this.anInt152 = arg1.readByte();
+						this.anInt152 = arg1.g1();
 						this.anIntArray47 = new int[this.anInt152];
 						this.anIntArray48 = new int[this.anInt152];
 						this.anIntArray49 = new int[this.anInt152];
 						for (local46 = 0; local46 < this.anInt152; local46++) {
-							this.anIntArray47[local46] = arg1.readShort();
-							this.anIntArray48[local46] = arg1.readShort();
+							this.anIntArray47[local46] = arg1.g2();
+							this.anIntArray48[local46] = arg1.g2();
 							if (this.anIntArray48[local46] == 65535) {
 								this.anIntArray48[local46] = -1;
 							}
-							this.anIntArray49[local46] = arg1.readShort();
+							this.anIntArray49[local46] = arg1.g2();
 						}
 					} else if (local19 == 2) {
-						this.anInt153 = arg1.readShort();
+						this.anInt153 = arg1.g2();
 					} else if (local19 == 3) {
-						local46 = arg1.readByte();
+						local46 = arg1.g1();
 						this.anIntArray50 = new int[local46 + 1];
 						for ( int local107 = 0; local107 < local46; local107++) {
-							this.anIntArray50[local107] = arg1.readByte();
+							this.anIntArray50[local107] = arg1.g1();
 						}
 						this.anIntArray50[local46] = 9999999;
 					} else if (local19 == 4) {
 						this.aBoolean45 = true;
 					} else if (local19 == 5) {
-						this.anInt154 = arg1.readByte();
+						this.anInt154 = arg1.g1();
 					} else if (local19 == 6) {
-						this.anInt155 = arg1.readShort();
+						this.anInt155 = arg1.g2();
 					} else if (local19 == 7) {
-						this.anInt156 = arg1.readShort();
+						this.anInt156 = arg1.g2();
 					} else if (local19 == 8) {
-						this.anInt157 = arg1.readByte();
+						this.anInt157 = arg1.g1();
 					} else if (local19 == 9) {
-						this.anInt158 = arg1.readByte();
+						this.anInt158 = arg1.g1();
 					} else if (local19 == 10) {
-						this.anInt159 = arg1.readByte();
+						this.anInt159 = arg1.g1();
 					} else if (local19 == 11) {
-						this.anInt160 = arg1.readByte();
+						this.anInt160 = arg1.g1();
 					} else if (local19 == 12) {
-						this.anInt161 = arg1.method316();
+						this.anInt161 = arg1.g4();
 					} else {
 						System.out.println("Error unrecognised seq config code: " + local19);
 					}

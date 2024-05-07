@@ -1,14 +1,16 @@
-package unmapped;
+package jagex2.graphics;
 
 
-import jagex2.graphics.Draw2D;
+import jagex2.dash3d.entity.Entity;
+import jagex2.io.Packet;
 import sign.signlink;
+import unmapped.*;
 
-public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
+public final class Model extends Entity {
 
 	private static int anInt401;
 
-	private static Class27[] aClass27Array1;
+	private static Class27[] renderables;
 
 	private static Class33 aClass33_1;
 
@@ -26,7 +28,7 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 
 	public static int anInt419;
 
-	public static Class10_Sub1_Sub2_Sub4 aClass10_Sub1_Sub2_Sub4_1 = new Class10_Sub1_Sub2_Sub4(852);
+	public static Model aClass10_Sub1_Sub2_Sub4_1 = new Model(852);
 
 	private static int[] anIntArray109 = new int[2000];
 
@@ -164,7 +166,7 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 
 	public static void method267() {
 		try {
-			aClass27Array1 = null;
+			renderables = null;
 			aBooleanArray5 = null;
 			aBooleanArray6 = null;
 			anIntArray131 = null;
@@ -191,34 +193,34 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 	}
 
 	public static void method268( int arg0, Class33 arg1) {
-		aClass27Array1 = new Class27[arg0];
+		renderables = new Class27[arg0];
 		aClass33_1 = arg1;
 	}
 
 	public static void method269( byte[] arg0, int arg1) {
 		try {
 			if (arg0 == null) {
-				Class27 local15 = aClass27Array1[arg1] = new Class27();
+				Class27 local15 = renderables[arg1] = new Class27();
 				local15.anInt330 = 0;
 				local15.anInt331 = 0;
 				local15.anInt332 = 0;
 			} else {
 				Packet local31 = new Packet(arg0);
 				local31.pos = arg0.length - 18;
-				Class27 local45 = aClass27Array1[arg1] = new Class27();
+				Class27 local45 = renderables[arg1] = new Class27();
 				local45.aByteArray11 = arg0;
-				local45.anInt330 = local31.readShort();
-				local45.anInt331 = local31.readShort();
-				local45.anInt332 = local31.readByte();
-				int local63 = local31.readByte();
-				int local66 = local31.readByte();
-				int local69 = local31.readByte();
-				int local72 = local31.readByte();
-				int local75 = local31.readByte();
-				int local78 = local31.readShort();
-				int local81 = local31.readShort();
-				int local84 = local31.readShort();
-				int local87 = local31.readShort();
+				local45.anInt330 = local31.g2();
+				local45.anInt331 = local31.g2();
+				local45.anInt332 = local31.g1();
+				int local63 = local31.g1();
+				int local66 = local31.g1();
+				int local69 = local31.g1();
+				int local72 = local31.g1();
+				int local75 = local31.g1();
+				int local78 = local31.g2();
+				int local81 = local31.g2();
+				int local84 = local31.g2();
+				int local87 = local31.g2();
 				local45.anInt333 = 0;
 				int local97 = local45.anInt330 + 0;
 				local45.anInt339 = local97;
@@ -273,31 +275,31 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 
 	public static void method270( int arg0) {
 		try {
-			aClass27Array1[arg0] = null;
+			renderables[arg0] = null;
 		} catch ( RuntimeException local9) {
 			signlink.reporterror("15750, " + arg0 + ", " + 1 + ", " + local9.toString());
 			throw new RuntimeException();
 		}
 	}
 
-	public static Class10_Sub1_Sub2_Sub4 method271( int arg0) {
-		if (aClass27Array1 == null) {
+	public static Model createModel(int arg0) {
+		if (renderables == null) {
 			return null;
 		}
-		Class27 local7 = aClass27Array1[arg0];
+		Class27 local7 = renderables[arg0];
 		if (local7 == null) {
 			aClass33_1.method552(arg0);
 			return null;
 		} else {
-			return new Class10_Sub1_Sub2_Sub4(arg0, -478);
+			return new Model(arg0, -478);
 		}
 	}
 
 	public static boolean method272( int arg0) {
-		if (aClass27Array1 == null) {
+		if (renderables == null) {
 			return false;
 		}
-		Class27 local7 = aClass27Array1[arg0];
+		Class27 local7 = renderables[arg0];
 		if (local7 == null) {
 			aClass33_1.method552(arg0);
 			return false;
@@ -324,13 +326,13 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 		return (arg0 & 0xFF80) + arg1;
 	}
 
-	private Class10_Sub1_Sub2_Sub4( int arg0) {
+	private Model(int arg0) {
 	}
 
-	private Class10_Sub1_Sub2_Sub4( int arg0, int arg1) {
+	private Model(int arg0, int arg1) {
 		try {
 			anInt401++;
-			Class27 local32 = aClass27Array1[arg0];
+			Class27 local32 = renderables[arg0];
 			this.anInt402 = local32.anInt330;
 			this.anInt403 = local32.anInt331;
 			this.anInt405 = local32.anInt332;
@@ -379,18 +381,18 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 			int local232;
 			int local241;
 			for ( int local216 = 0; local216 < this.anInt402; local216++) {
-				local221 = local150.readByte();
+				local221 = local150.g1();
 				local223 = 0;
 				if ((local221 & 0x1) != 0) {
-					local223 = local161.method324();
+					local223 = local161.gsmart();
 				}
 				local232 = 0;
 				if ((local221 & 0x2) != 0) {
-					local232 = local172.method324();
+					local232 = local172.gsmart();
 				}
 				local241 = 0;
 				if ((local221 & 0x4) != 0) {
-					local241 = local193.method324();
+					local241 = local193.gsmart();
 				}
 				this.anIntArray113[local216] = local210 + local223;
 				this.anIntArray114[local216] = local212 + local232;
@@ -399,7 +401,7 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 				local212 = this.anIntArray114[local216];
 				local214 = this.anIntArray115[local216];
 				if (this.anIntArray129 != null) {
-					this.anIntArray129[local216] = local204.readByte();
+					this.anIntArray129[local216] = local204.g1();
 				}
 			}
 			local150.pos = local32.anInt340;
@@ -408,18 +410,18 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 			local193.pos = local32.anInt343;
 			local204.pos = local32.anInt344;
 			for (local221 = 0; local221 < this.anInt403; local221++) {
-				this.anIntArray125[local221] = local150.readShort();
+				this.anIntArray125[local221] = local150.g2();
 				if (this.anIntArray122 != null) {
-					this.anIntArray122[local221] = local161.readByte();
+					this.anIntArray122[local221] = local161.g1();
 				}
 				if (this.anIntArray123 != null) {
-					this.anIntArray123[local221] = local172.readByte();
+					this.anIntArray123[local221] = local172.g1();
 				}
 				if (this.anIntArray124 != null) {
-					this.anIntArray124[local221] = local193.readByte();
+					this.anIntArray124[local221] = local193.g1();
 				}
 				if (this.anIntArray130 != null) {
-					this.anIntArray130[local221] = local204.readByte();
+					this.anIntArray130[local221] = local204.g1();
 				}
 			}
 			local150.pos = local32.anInt338;
@@ -430,11 +432,11 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 			int local385 = 0;
 			int local392;
 			for ( int local387 = 0; local387 < this.anInt403; local387++) {
-				local392 = local161.readByte();
+				local392 = local161.g1();
 				if (local392 == 1) {
-					local223 = local150.method324() + local385;
-					local232 = local150.method324() + local223;
-					local241 = local150.method324() + local232;
+					local223 = local150.gsmart() + local385;
+					local232 = local150.gsmart() + local223;
+					local241 = local150.gsmart() + local232;
 					local385 = local241;
 					this.anIntArray116[local387] = local223;
 					this.anIntArray117[local387] = local232;
@@ -443,7 +445,7 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 				if (local392 == 2) {
 					local223 = local223;
 					local232 = local241;
-					local241 = local150.method324() + local385;
+					local241 = local150.gsmart() + local385;
 					local385 = local241;
 					this.anIntArray116[local387] = local223;
 					this.anIntArray117[local387] = local232;
@@ -452,7 +454,7 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 				if (local392 == 3) {
 					local223 = local241;
 					local232 = local232;
-					local241 = local150.method324() + local385;
+					local241 = local150.gsmart() + local385;
 					local385 = local241;
 					this.anIntArray116[local387] = local223;
 					this.anIntArray117[local387] = local232;
@@ -462,7 +464,7 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 					int local494 = local223;
 					local223 = local232;
 					local232 = local494;
-					local241 = local150.method324() + local385;
+					local241 = local150.gsmart() + local385;
 					local385 = local241;
 					this.anIntArray116[local387] = local223;
 					this.anIntArray117[local387] = local494;
@@ -471,9 +473,9 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 			}
 			local150.pos = local32.anInt345;
 			for (local392 = 0; local392 < this.anInt405; local392++) {
-				this.anIntArray126[local392] = local150.readShort();
-				this.anIntArray127[local392] = local150.readShort();
-				this.anIntArray128[local392] = local150.readShort();
+				this.anIntArray126[local392] = local150.g2();
+				this.anIntArray127[local392] = local150.g2();
+				this.anIntArray128[local392] = local150.g2();
 			}
 		} catch ( RuntimeException local558) {
 			signlink.reporterror("50904, " + arg0 + ", " + arg1 + ", " + local558.toString());
@@ -481,120 +483,116 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 		}
 	}
 
-	public Class10_Sub1_Sub2_Sub4( int arg0, Class10_Sub1_Sub2_Sub4[] arg1, byte arg2) {
-		try {
-			anInt401++;
-			boolean local30 = false;
-			boolean local32 = false;
-			boolean local34 = false;
-			boolean local36 = false;
-			this.anInt402 = 0;
-			this.anInt403 = 0;
-			this.anInt405 = 0;
-			this.anInt404 = -1;
-			for ( int local50 = 0; local50 < arg0; local50++) {
-				Class10_Sub1_Sub2_Sub4 local56 = arg1[local50];
-				if (local56 != null) {
-					this.anInt402 += local56.anInt402;
-					this.anInt403 += local56.anInt403;
-					this.anInt405 += local56.anInt405;
-					local30 |= local56.anIntArray122 != null;
-					if (local56.anIntArray123 == null) {
-						if (this.anInt404 == -1) {
-							this.anInt404 = local56.anInt404;
-						}
-						if (this.anInt404 != local56.anInt404) {
-							local32 = true;
-						}
-					} else {
+	public Model(int arg0, Model[] arg1) {
+
+		anInt401++;
+		boolean local30 = false;
+		boolean local32 = false;
+		boolean local34 = false;
+		boolean local36 = false;
+		this.anInt402 = 0;
+		this.anInt403 = 0;
+		this.anInt405 = 0;
+		this.anInt404 = -1;
+		for ( int local50 = 0; local50 < arg0; local50++) {
+			Model local56 = arg1[local50];
+			if (local56 != null) {
+				this.anInt402 += local56.anInt402;
+				this.anInt403 += local56.anInt403;
+				this.anInt405 += local56.anInt405;
+				local30 |= local56.anIntArray122 != null;
+				if (local56.anIntArray123 == null) {
+					if (this.anInt404 == -1) {
+						this.anInt404 = local56.anInt404;
+					}
+					if (this.anInt404 != local56.anInt404) {
 						local32 = true;
 					}
-					local34 |= local56.anIntArray124 != null;
-					local36 |= local56.anIntArray130 != null;
+				} else {
+					local32 = true;
 				}
+				local34 |= local56.anIntArray124 != null;
+				local36 |= local56.anIntArray130 != null;
 			}
-			this.anIntArray113 = new int[this.anInt402];
-			this.anIntArray114 = new int[this.anInt402];
-			this.anIntArray115 = new int[this.anInt402];
-			this.anIntArray129 = new int[this.anInt402];
-			this.anIntArray116 = new int[this.anInt403];
-			this.anIntArray117 = new int[this.anInt403];
-			this.anIntArray118 = new int[this.anInt403];
-			this.anIntArray126 = new int[this.anInt405];
-			this.anIntArray127 = new int[this.anInt405];
-			this.anIntArray128 = new int[this.anInt405];
-			if (local30) {
-				this.anIntArray122 = new int[this.anInt403];
-			}
-			if (local32) {
-				this.anIntArray123 = new int[this.anInt403];
-			}
-			if (local34) {
-				this.anIntArray124 = new int[this.anInt403];
-			}
-			if (local36) {
-				this.anIntArray130 = new int[this.anInt403];
-			}
-			this.anIntArray125 = new int[this.anInt403];
-			this.anInt402 = 0;
-			this.anInt403 = 0;
-			this.anInt405 = 0;
-			int local233 = 0;
-			for ( int local235 = 0; local235 < arg0; local235++) {
-				Class10_Sub1_Sub2_Sub4 local241 = arg1[local235];
-				if (local241 != null) {
-					int local265;
-					for ( int local245 = 0; local245 < local241.anInt403; local245++) {
-						if (local30) {
-							if (local241.anIntArray122 == null) {
-								this.anIntArray122[this.anInt403] = 0;
-							} else {
-								local265 = local241.anIntArray122[local245];
-								if ((local265 & 0x2) == 2) {
-									local265 += local233 << 2;
-								}
-								this.anIntArray122[this.anInt403] = local265;
+		}
+		this.anIntArray113 = new int[this.anInt402];
+		this.anIntArray114 = new int[this.anInt402];
+		this.anIntArray115 = new int[this.anInt402];
+		this.anIntArray129 = new int[this.anInt402];
+		this.anIntArray116 = new int[this.anInt403];
+		this.anIntArray117 = new int[this.anInt403];
+		this.anIntArray118 = new int[this.anInt403];
+		this.anIntArray126 = new int[this.anInt405];
+		this.anIntArray127 = new int[this.anInt405];
+		this.anIntArray128 = new int[this.anInt405];
+		if (local30) {
+			this.anIntArray122 = new int[this.anInt403];
+		}
+		if (local32) {
+			this.anIntArray123 = new int[this.anInt403];
+		}
+		if (local34) {
+			this.anIntArray124 = new int[this.anInt403];
+		}
+		if (local36) {
+			this.anIntArray130 = new int[this.anInt403];
+		}
+		this.anIntArray125 = new int[this.anInt403];
+		this.anInt402 = 0;
+		this.anInt403 = 0;
+		this.anInt405 = 0;
+		int local233 = 0;
+		for ( int local235 = 0; local235 < arg0; local235++) {
+			Model local241 = arg1[local235];
+			if (local241 != null) {
+				int local265;
+				for ( int local245 = 0; local245 < local241.anInt403; local245++) {
+					if (local30) {
+						if (local241.anIntArray122 == null) {
+							this.anIntArray122[this.anInt403] = 0;
+						} else {
+							local265 = local241.anIntArray122[local245];
+							if ((local265 & 0x2) == 2) {
+								local265 += local233 << 2;
 							}
+							this.anIntArray122[this.anInt403] = local265;
 						}
-						if (local32) {
-							if (local241.anIntArray123 == null) {
-								this.anIntArray123[this.anInt403] = local241.anInt404;
-							} else {
-								this.anIntArray123[this.anInt403] = local241.anIntArray123[local245];
-							}
-						}
-						if (local34) {
-							if (local241.anIntArray124 == null) {
-								this.anIntArray124[this.anInt403] = 0;
-							} else {
-								this.anIntArray124[this.anInt403] = local241.anIntArray124[local245];
-							}
-						}
-						if (local36 && local241.anIntArray130 != null) {
-							this.anIntArray130[this.anInt403] = local241.anIntArray130[local245];
-						}
-						this.anIntArray125[this.anInt403] = local241.anIntArray125[local245];
-						this.anIntArray116[this.anInt403] = this.method274(local241, local241.anIntArray116[local245]);
-						this.anIntArray117[this.anInt403] = this.method274(local241, local241.anIntArray117[local245]);
-						this.anIntArray118[this.anInt403] = this.method274(local241, local241.anIntArray118[local245]);
-						this.anInt403++;
 					}
-					for (local265 = 0; local265 < local241.anInt405; local265++) {
-						this.anIntArray126[this.anInt405] = this.method274(local241, local241.anIntArray126[local265]);
-						this.anIntArray127[this.anInt405] = this.method274(local241, local241.anIntArray127[local265]);
-						this.anIntArray128[this.anInt405] = this.method274(local241, local241.anIntArray128[local265]);
-						this.anInt405++;
+					if (local32) {
+						if (local241.anIntArray123 == null) {
+							this.anIntArray123[this.anInt403] = local241.anInt404;
+						} else {
+							this.anIntArray123[this.anInt403] = local241.anIntArray123[local245];
+						}
 					}
-					local233 += local241.anInt405;
+					if (local34) {
+						if (local241.anIntArray124 == null) {
+							this.anIntArray124[this.anInt403] = 0;
+						} else {
+							this.anIntArray124[this.anInt403] = local241.anIntArray124[local245];
+						}
+					}
+					if (local36 && local241.anIntArray130 != null) {
+						this.anIntArray130[this.anInt403] = local241.anIntArray130[local245];
+					}
+					this.anIntArray125[this.anInt403] = local241.anIntArray125[local245];
+					this.anIntArray116[this.anInt403] = this.method274(local241, local241.anIntArray116[local245]);
+					this.anIntArray117[this.anInt403] = this.method274(local241, local241.anIntArray117[local245]);
+					this.anIntArray118[this.anInt403] = this.method274(local241, local241.anIntArray118[local245]);
+					this.anInt403++;
 				}
+				for (local265 = 0; local265 < local241.anInt405; local265++) {
+					this.anIntArray126[this.anInt405] = this.method274(local241, local241.anIntArray126[local265]);
+					this.anIntArray127[this.anInt405] = this.method274(local241, local241.anIntArray127[local265]);
+					this.anIntArray128[this.anInt405] = this.method274(local241, local241.anIntArray128[local265]);
+					this.anInt405++;
+				}
+				local233 += local241.anInt405;
 			}
-		} catch ( RuntimeException local459) {
-			signlink.reporterror("83924, " + arg0 + ", " + arg1 + ", " + arg2 + ", " + local459.toString());
-			throw new RuntimeException();
 		}
 	}
 
-	public Class10_Sub1_Sub2_Sub4( int arg0, boolean arg1, int arg2, Class10_Sub1_Sub2_Sub4[] arg3) {
+	public Model(int arg0, boolean arg1, int arg2, Model[] arg3) {
 		try {
 			anInt401++;
 			boolean local30 = false;
@@ -606,7 +604,7 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 			this.anInt405 = 0;
 			this.anInt404 = -1;
 			for ( int local50 = 0; local50 < arg0; local50++) {
-				Class10_Sub1_Sub2_Sub4 local56 = arg3[local50];
+				Model local56 = arg3[local50];
 				if (local56 != null) {
 					this.anInt402 += local56.anInt402;
 					this.anInt403 += local56.anInt403;
@@ -655,7 +653,7 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 			this.anInt405 = 0;
 			int local237 = 0;
 			for ( int local239 = 0; local239 < arg0; local239++) {
-				Class10_Sub1_Sub2_Sub4 local245 = arg3[local239];
+				Model local245 = arg3[local239];
 				if (local245 != null) {
 					int local250 = this.anInt402;
 					for ( int local252 = 0; local252 < local245.anInt402; local252++) {
@@ -718,7 +716,7 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 		}
 	}
 
-	public Class10_Sub1_Sub2_Sub4( boolean arg0, boolean arg1, boolean arg2, Class10_Sub1_Sub2_Sub4 arg3, boolean arg4) {
+	public Model(boolean arg0, boolean arg1, boolean arg2, Model arg3, boolean arg4) {
 		try {
 			anInt401++;
 			this.anInt402 = arg3.anInt402;
@@ -778,7 +776,7 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 		}
 	}
 
-	public Class10_Sub1_Sub2_Sub4( boolean arg0, boolean arg1, int arg2, Class10_Sub1_Sub2_Sub4 arg3) {
+	public Model(boolean arg0, boolean arg1, int arg2, Model arg3) {
 		try {
 			anInt401++;
 			this.anInt402 = arg3.anInt402;
@@ -855,7 +853,7 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 		}
 	}
 
-	public void method273( boolean arg0, Class10_Sub1_Sub2_Sub4 arg1) {
+	public void method273( boolean arg0, Model arg1) {
 		try {
 			this.anInt402 = arg1.anInt402;
 			this.anInt403 = arg1.anInt403;
@@ -912,7 +910,7 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 		}
 	}
 
-	private int method274( Class10_Sub1_Sub2_Sub4 arg0, int arg1) {
+	private int method274(Model arg0, int arg1) {
 		int local3 = -1;
 		int local8 = arg0.anIntArray113[arg1];
 		int local13 = arg0.anIntArray114[arg1];
@@ -1342,7 +1340,7 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 		}
 	}
 
-	public void method285( int arg0, int arg1) {
+	public void recolor(int arg0, int arg1) {
 		for ( int local1 = 0; local1 < this.anInt403; local1++) {
 			if (this.anIntArray125[local1] == arg0) {
 				this.anIntArray125[local1] = arg1;

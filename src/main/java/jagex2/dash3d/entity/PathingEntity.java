@@ -1,9 +1,10 @@
-package unmapped;
+package jagex2.dash3d.entity;
 
 
 import sign.signlink;
+import unmapped.Class15;
 
-public abstract class Class10_Sub1_Sub2_Sub3 extends Class10_Sub1_Sub2 {
+public abstract class PathingEntity extends Entity {
 
 	public String aString13;
 
@@ -127,7 +128,7 @@ public abstract class Class10_Sub1_Sub2_Sub3 extends Class10_Sub1_Sub2 {
 		}
 	}
 
-	public boolean method539() {
+	public boolean isVisible() {
 		try {
 			return false;
 		} catch ( RuntimeException local8) {

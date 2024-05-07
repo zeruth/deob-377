@@ -1,9 +1,12 @@
 package unmapped;
 
 
+import jagex2.datastruct.LruCache;
 import jagex2.graphics.Draw2D;
+import jagex2.graphics.Model;
 import jagex2.graphics.Pix24;
 import jagex2.io.JagFile;
+import jagex2.io.Packet;
 import sign.signlink;
 
 public final class Class17 {
@@ -18,11 +21,11 @@ public final class Class17 {
 
 	private static Packet aClass10_Sub1_Sub3_1;
 
-	public static Class34 aClass34_3 = new Class34(50, -572);
+	public static LruCache aClass34_3 = new LruCache(50);
 
 	public static boolean aBoolean49 = true;
 
-	public static Class34 aClass34_4 = new Class34(100, -572);
+	public static LruCache aClass34_4 = new LruCache(100);
 
 	private static byte aByte13 = 6;
 
@@ -140,12 +143,12 @@ public final class Class17 {
 	public static void method106( JagFile arg0) {
 		aClass10_Sub1_Sub3_1 = new Packet(arg0.read("obj.dat", null));
 		Packet local19 = new Packet(arg0.read("obj.idx", null));
-		anInt179 = local19.readShort();
+		anInt179 = local19.g2();
 		anIntArray52 = new int[anInt179];
 		int local27 = 2;
 		for ( int local29 = 0; local29 < anInt179; local29++) {
 			anIntArray52[local29] = local27;
-			local27 += local19.readShort();
+			local27 += local19.g2();
 		}
 		aClass17Array1 = new Class17[10];
 		for ( int local49 = 0; local49 < 10; local49++) {
@@ -157,9 +160,9 @@ public final class Class17 {
 		try {
 			Pix24 local9;
 			if (arg0 == 0) {
-				local9 = (Pix24) aClass34_4.method387((long) arg2);
+				local9 = (Pix24) aClass34_4.get((long) arg2);
 				if (local9 != null && local9.cropH != arg1 && local9.cropH != -1) {
-					local9.method534();
+					local9.unlink();
 					local9 = null;
 				}
 				if (local9 != null) {
@@ -181,7 +184,7 @@ public final class Class17 {
 					local30 = method104(local40);
 				}
 			}
-			Class10_Sub1_Sub2_Sub4 local74 = local30.method112(1);
+			Model local74 = local30.method112(1);
 			if (local74 == null) {
 				return null;
 			}
@@ -268,7 +271,7 @@ public final class Class17 {
 				local80.cropH = local511;
 			}
 			if (arg0 == 0) {
-				aClass34_4.method388(local9, (long) arg2);
+				aClass34_4.put(local9, (long) arg2);
 			}
 			Draw2D.bind(local111, local113, local109);
 			Draw2D.setBounds(local119, local115, local121, local117);
@@ -317,10 +320,10 @@ public final class Class17 {
 				return true;
 			}
 			boolean local31 = true;
-			if (!Class10_Sub1_Sub2_Sub4.method272(local2)) {
+			if (!Model.method272(local2)) {
 				local31 = false;
 			}
-			if (local5 != -1 && !Class10_Sub1_Sub2_Sub4.method272(local5)) {
+			if (local5 != -1 && !Model.method272(local5)) {
 				local31 = false;
 			}
 			return local31;
@@ -330,7 +333,7 @@ public final class Class17 {
 		}
 	}
 
-	public Class10_Sub1_Sub2_Sub4 method105( int arg0) {
+	public Model method105(int arg0) {
 		try {
 			int local4 = this.anInt186;
 			int local7 = this.anInt175;
@@ -343,18 +346,18 @@ public final class Class17 {
 			if (local4 == -1) {
 				return null;
 			}
-			Class10_Sub1_Sub2_Sub4 local30 = Class10_Sub1_Sub2_Sub4.method271(local4);
+			Model local30 = Model.createModel(local4);
 			if (local7 != -1) {
-				Class10_Sub1_Sub2_Sub4 local46;
+				Model local46;
 				if (local10 == -1) {
-					local46 = Class10_Sub1_Sub2_Sub4.method271(local7);
-					Class10_Sub1_Sub2_Sub4[] local87 = new Class10_Sub1_Sub2_Sub4[] { local30, local46 };
-					local30 = new Class10_Sub1_Sub2_Sub4(2, local87, (byte) -89);
+					local46 = Model.createModel(local7);
+					Model[] local87 = new Model[] { local30, local46 };
+					local30 = new Model(2, local87);
 				} else {
-					local46 = Class10_Sub1_Sub2_Sub4.method271(local7);
-					Class10_Sub1_Sub2_Sub4 local49 = Class10_Sub1_Sub2_Sub4.method271(local10);
-					Class10_Sub1_Sub2_Sub4[] local64 = new Class10_Sub1_Sub2_Sub4[] { local30, local46, local49 };
-					local30 = new Class10_Sub1_Sub2_Sub4(3, local64, (byte) -89);
+					local46 = Model.createModel(local7);
+					Model local49 = Model.createModel(local10);
+					Model[] local64 = new Model[] { local30, local46, local49 };
+					local30 = new Model(3, local64);
 				}
 			}
 			if (arg0 == 0 && this.aByte14 != 0) {
@@ -365,7 +368,7 @@ public final class Class17 {
 			}
 			if (this.anIntArray53 != null) {
 				for ( int local124 = 0; local124 < this.anIntArray53.length; local124++) {
-					local30.method285(this.anIntArray53[local124], this.anIntArray51[local124]);
+					local30.recolor(this.anIntArray53[local124], this.anIntArray51[local124]);
 				}
 			}
 			return local30;
@@ -418,13 +421,13 @@ public final class Class17 {
 				return true;
 			}
 			boolean local37 = true;
-			if (!Class10_Sub1_Sub2_Sub4.method272(local12)) {
+			if (!Model.method272(local12)) {
 				local37 = false;
 			}
-			if (local15 != -1 && !Class10_Sub1_Sub2_Sub4.method272(local15)) {
+			if (local15 != -1 && !Model.method272(local15)) {
 				local37 = false;
 			}
-			if (local18 != -1 && !Class10_Sub1_Sub2_Sub4.method272(local18)) {
+			if (local18 != -1 && !Model.method272(local18)) {
 				local37 = false;
 			}
 			return local37;
@@ -434,7 +437,7 @@ public final class Class17 {
 		}
 	}
 
-	public Class10_Sub1_Sub2_Sub4 method109( int arg0, int arg1) {
+	public Model method109(int arg0, int arg1) {
 		try {
 			int local11;
 			if (this.anIntArray54 != null && arg1 > 1) {
@@ -448,7 +451,7 @@ public final class Class17 {
 					return method104(local9).method109(this.anInt184, 1);
 				}
 			}
-			Class10_Sub1_Sub2_Sub4 local47 = Class10_Sub1_Sub2_Sub4.method271(this.anInt193);
+			Model local47 = Model.createModel(this.anInt193);
 			while (arg0 >= 0) {
 				this.aBoolean50 = !this.aBoolean50;
 			}
@@ -457,7 +460,7 @@ public final class Class17 {
 			}
 			if (this.anIntArray53 != null) {
 				for (local11 = 0; local11 < this.anIntArray53.length; local11++) {
-					local47.method285(this.anIntArray53[local11], this.anIntArray51[local11]);
+					local47.recolor(this.anIntArray53[local11], this.anIntArray51[local11]);
 				}
 			}
 			return local47;
@@ -474,55 +477,55 @@ public final class Class17 {
 			}
 			while (true) {
 				while (true) {
-					int local15 = arg1.readByte();
+					int local15 = arg1.g1();
 					if (local15 == 0) {
 						return;
 					}
 					if (local15 == 1) {
-						this.anInt193 = arg1.readShort();
+						this.anInt193 = arg1.g2();
 					} else if (local15 == 2) {
-						this.aString7 = arg1.method318();
+						this.aString7 = arg1.gjstr();
 					} else if (local15 == 3) {
-						this.aByteArray8 = arg1.method319();
+						this.aByteArray8 = arg1.gstrbyte();
 					} else if (local15 == 4) {
-						this.anInt200 = arg1.readShort();
+						this.anInt200 = arg1.g2();
 					} else if (local15 == 5) {
-						this.anInt192 = arg1.readShort();
+						this.anInt192 = arg1.g2();
 					} else if (local15 == 6) {
-						this.anInt189 = arg1.readShort();
+						this.anInt189 = arg1.g2();
 					} else if (local15 == 7) {
-						this.anInt174 = arg1.readShort();
+						this.anInt174 = arg1.g2();
 						if (this.anInt174 > 32767) {
 							this.anInt174 -= 65536;
 						}
 					} else if (local15 == 8) {
-						this.anInt181 = arg1.readShort();
+						this.anInt181 = arg1.g2();
 						if (this.anInt181 > 32767) {
 							this.anInt181 -= 65536;
 						}
 					} else if (local15 == 10) {
-						this.anInt202 = arg1.readShort();
+						this.anInt202 = arg1.g2();
 					} else if (local15 == 11) {
 						this.aBoolean52 = true;
 					} else if (local15 == 12) {
-						this.anInt183 = arg1.method316();
+						this.anInt183 = arg1.g4();
 					} else if (local15 == 16) {
 						this.aBoolean54 = true;
 					} else if (local15 == 23) {
-						this.anInt186 = arg1.readShort();
-						this.aByte14 = arg1.method312();
+						this.anInt186 = arg1.g2();
+						this.aByte14 = arg1.g1b();
 					} else if (local15 == 24) {
-						this.anInt175 = arg1.readShort();
+						this.anInt175 = arg1.g2();
 					} else if (local15 == 25) {
-						this.anInt173 = arg1.readShort();
-						this.aByte12 = arg1.method312();
+						this.anInt173 = arg1.g2();
+						this.aByte12 = arg1.g1b();
 					} else if (local15 == 26) {
-						this.anInt188 = arg1.readShort();
+						this.anInt188 = arg1.g2();
 					} else if (local15 >= 30 && local15 < 35) {
 						if (this.aStringArray2 == null) {
 							this.aStringArray2 = new String[5];
 						}
-						this.aStringArray2[local15 - 30] = arg1.method318();
+						this.aStringArray2[local15 - 30] = arg1.gjstr();
 						if (this.aStringArray2[local15 - 30].equalsIgnoreCase("hidden")) {
 							this.aStringArray2[local15 - 30] = null;
 						}
@@ -530,52 +533,52 @@ public final class Class17 {
 						if (this.aStringArray3 == null) {
 							this.aStringArray3 = new String[5];
 						}
-						this.aStringArray3[local15 - 35] = arg1.method318();
+						this.aStringArray3[local15 - 35] = arg1.gjstr();
 					} else if (local15 == 40) {
-						int local257 = arg1.readByte();
+						int local257 = arg1.g1();
 						this.anIntArray53 = new int[local257];
 						this.anIntArray51 = new int[local257];
 						for ( int local267 = 0; local267 < local257; local267++) {
-							this.anIntArray53[local267] = arg1.readShort();
-							this.anIntArray51[local267] = arg1.readShort();
+							this.anIntArray53[local267] = arg1.g2();
+							this.anIntArray51[local267] = arg1.g2();
 						}
 					} else if (local15 == 78) {
-						this.anInt201 = arg1.readShort();
+						this.anInt201 = arg1.g2();
 					} else if (local15 == 79) {
-						this.anInt198 = arg1.readShort();
+						this.anInt198 = arg1.g2();
 					} else if (local15 == 90) {
-						this.anInt178 = arg1.readShort();
+						this.anInt178 = arg1.g2();
 					} else if (local15 == 91) {
-						this.anInt203 = arg1.readShort();
+						this.anInt203 = arg1.g2();
 					} else if (local15 == 92) {
-						this.anInt194 = arg1.readShort();
+						this.anInt194 = arg1.g2();
 					} else if (local15 == 93) {
-						this.anInt195 = arg1.readShort();
+						this.anInt195 = arg1.g2();
 					} else if (local15 == 95) {
-						this.anInt180 = arg1.readShort();
+						this.anInt180 = arg1.g2();
 					} else if (local15 == 97) {
-						this.anInt177 = arg1.readShort();
+						this.anInt177 = arg1.g2();
 					} else if (local15 == 98) {
-						this.anInt182 = arg1.readShort();
+						this.anInt182 = arg1.g2();
 					} else if (local15 >= 100 && local15 < 110) {
 						if (this.anIntArray54 == null) {
 							this.anIntArray54 = new int[10];
 							this.anIntArray55 = new int[10];
 						}
-						this.anIntArray54[local15 - 100] = arg1.readShort();
-						this.anIntArray55[local15 - 100] = arg1.readShort();
+						this.anIntArray54[local15 - 100] = arg1.g2();
+						this.anIntArray55[local15 - 100] = arg1.g2();
 					} else if (local15 == 110) {
-						this.anInt197 = arg1.readShort();
+						this.anInt197 = arg1.g2();
 					} else if (local15 == 111) {
-						this.anInt190 = arg1.readShort();
+						this.anInt190 = arg1.g2();
 					} else if (local15 == 112) {
-						this.anInt199 = arg1.readShort();
+						this.anInt199 = arg1.g2();
 					} else if (local15 == 113) {
-						this.anInt187 = arg1.method312();
+						this.anInt187 = arg1.g1b();
 					} else if (local15 == 114) {
-						this.anInt191 = arg1.method312() * 5;
+						this.anInt191 = arg1.g1b() * 5;
 					} else if (local15 == 115) {
-						this.anInt176 = arg1.readByte();
+						this.anInt176 = arg1.g1();
 					}
 				}
 			}
@@ -585,7 +588,7 @@ public final class Class17 {
 		}
 	}
 
-	public Class10_Sub1_Sub2_Sub4 method111( int arg0) {
+	public Model method111(int arg0) {
 		try {
 			int local12 = this.anInt178;
 			int local15 = this.anInt194;
@@ -596,15 +599,15 @@ public final class Class17 {
 			if (local12 == -1) {
 				return null;
 			}
-			Class10_Sub1_Sub2_Sub4 local32 = Class10_Sub1_Sub2_Sub4.method271(local12);
+			Model local32 = Model.createModel(local12);
 			if (local15 != -1) {
-				Class10_Sub1_Sub2_Sub4 local38 = Class10_Sub1_Sub2_Sub4.method271(local15);
-				Class10_Sub1_Sub2_Sub4[] local49 = new Class10_Sub1_Sub2_Sub4[] { local32, local38 };
-				local32 = new Class10_Sub1_Sub2_Sub4(2, local49, (byte) -89);
+				Model local38 = Model.createModel(local15);
+				Model[] local49 = new Model[] { local32, local38 };
+				local32 = new Model(2, local49);
 			}
 			if (this.anIntArray53 != null) {
 				for ( int local61 = 0; local61 < this.anIntArray53.length; local61++) {
-					local32.method285(this.anIntArray53[local61], this.anIntArray51[local61]);
+					local32.recolor(this.anIntArray53[local61], this.anIntArray51[local61]);
 				}
 			}
 			return local32;
@@ -614,7 +617,7 @@ public final class Class17 {
 		}
 	}
 
-	public Class10_Sub1_Sub2_Sub4 method112( int arg0) {
+	public Model method112(int arg0) {
 		int local11;
 		if (this.anIntArray54 != null && arg0 > 1) {
 			int local9 = -1;
@@ -627,11 +630,11 @@ public final class Class17 {
 				return method104(local9).method112(1);
 			}
 		}
-		Class10_Sub1_Sub2_Sub4 local48 = (Class10_Sub1_Sub2_Sub4) aClass34_3.method387((long) this.anInt196);
+		Model local48 = (Model) aClass34_3.get((long) this.anInt196);
 		if (local48 != null) {
 			return local48;
 		}
-		local48 = Class10_Sub1_Sub2_Sub4.method271(this.anInt193);
+		local48 = Model.createModel(this.anInt193);
 		if (local48 == null) {
 			return null;
 		}
@@ -640,12 +643,12 @@ public final class Class17 {
 		}
 		if (this.anIntArray53 != null) {
 			for (local11 = 0; local11 < this.anIntArray53.length; local11++) {
-				local48.method285(this.anIntArray53[local11], this.anIntArray51[local11]);
+				local48.recolor(this.anIntArray53[local11], this.anIntArray51[local11]);
 			}
 		}
 		local48.method288(this.anInt187 + 64, this.anInt191 + 768, -50, -10, -50, true);
 		local48.aBoolean106 = true;
-		aClass34_3.method388(local48, (long) this.anInt196);
+		aClass34_3.put(local48, (long) this.anInt196);
 		return local48;
 	}
 

@@ -1,15 +1,17 @@
 package unmapped;
 
 
+import jagex2.dash3d.entity.PathingEntity;
+import jagex2.graphics.Model;
 import sign.signlink;
 
-public final class Class10_Sub1_Sub2_Sub3_Sub1 extends Class10_Sub1_Sub2_Sub3 {
+public final class Class10_Sub1_Sub2_Sub3_Sub1 extends PathingEntity {
 
 	public Class38 aClass38_1;
 
 	private boolean aBoolean131 = true;
 
-	private Class10_Sub1_Sub2_Sub4 method386() {
+	private Model method386() {
 		try {
 			int local14;
 			if (super.anInt753 < 0 || super.anInt756 != 0) {
@@ -32,7 +34,7 @@ public final class Class10_Sub1_Sub2_Sub3_Sub1 extends Class10_Sub1_Sub2_Sub3 {
 	}
 
 	@Override
-	protected Class10_Sub1_Sub2_Sub4 method537( byte arg0) {
+	protected Model method537(byte arg0) {
 		try {
 			if (arg0 != 3) {
 				throw new NullPointerException();
@@ -41,17 +43,17 @@ public final class Class10_Sub1_Sub2_Sub3_Sub1 extends Class10_Sub1_Sub2_Sub3 {
 			if (this.aClass38_1 == null) {
 				return null;
 			}
-			Class10_Sub1_Sub2_Sub4 local19 = this.method386();
+			Model local19 = this.method386();
 			if (local19 == null) {
 				return null;
 			}
 			super.anInt723 = local19.anInt713;
 			if (super.anInt743 != -1 && super.anInt744 != -1) {
 				Class28 local40 = Class28.aClass28Array1[super.anInt743];
-				Class10_Sub1_Sub2_Sub4 local43 = local40.method352();
+				Model local43 = local40.method352();
 				if (local43 != null) {
 					int local52 = local40.aClass15_1.anIntArray47[super.anInt744];
-					Class10_Sub1_Sub2_Sub4 local64 = new Class10_Sub1_Sub2_Sub4(false, false, true, local43, Class22.method169(this.aBoolean131, local52));
+					Model local64 = new Model(false, false, true, local43, Class22.method169(this.aBoolean131, local52));
 					local64.method284(0, 0, -super.anInt747);
 					local64.method278();
 					local64.method279(local52, (byte) 6);
@@ -61,8 +63,8 @@ public final class Class10_Sub1_Sub2_Sub3_Sub1 extends Class10_Sub1_Sub2_Sub3 {
 						local64.method287(local40.anInt439, local40.anInt438, local40.anInt438);
 					}
 					local64.method288(local40.anInt441 + 64, local40.anInt442 + 850, -30, -50, -30, true);
-					Class10_Sub1_Sub2_Sub4[] local127 = new Class10_Sub1_Sub2_Sub4[] { local19, local64 };
-					local19 = new Class10_Sub1_Sub2_Sub4(2, true, 0, local127);
+					Model[] local127 = new Model[] { local19, local64 };
+					local19 = new Model(2, true, 0, local127);
 				}
 			}
 			if (this.aClass38_1.aByte31 == 1) {
@@ -76,7 +78,7 @@ public final class Class10_Sub1_Sub2_Sub3_Sub1 extends Class10_Sub1_Sub2_Sub3 {
 	}
 
 	@Override
-	public boolean method539() {
+	public boolean isVisible() {
 		try {
 			return this.aClass38_1 != null;
 		} catch ( RuntimeException local13) {

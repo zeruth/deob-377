@@ -1,7 +1,10 @@
 package unmapped;
 
 
+import jagex2.datastruct.LruCache;
+import jagex2.graphics.Model;
 import jagex2.io.JagFile;
+import jagex2.io.Packet;
 import sign.signlink;
 
 public final class Class48 {
@@ -20,11 +23,11 @@ public final class Class48 {
 
 	private static int anInt711;
 
-	public static Class34 aClass34_7 = new Class34(40, -572);
+	public static LruCache aClass34_7 = new LruCache(40);
 
-	private static Class10_Sub1_Sub2_Sub4[] aClass10_Sub1_Sub2_Sub4Array1 = new Class10_Sub1_Sub2_Sub4[4];
+	private static Model[] aClass10_Sub1_Sub2_Sub4Array1 = new Model[4];
 
-	public static Class34 aClass34_8 = new Class34(500, -572);
+	public static LruCache aClass34_8 = new LruCache(500);
 
 	private static byte aByte41 = 6;
 
@@ -130,12 +133,12 @@ public final class Class48 {
 	public static void method526( JagFile arg0) {
 		aClass10_Sub1_Sub3_5 = new Packet(arg0.read("loc.dat", null));
 		Packet local19 = new Packet(arg0.read("loc.idx", null));
-		anInt711 = local19.readShort();
+		anInt711 = local19.g2();
 		anIntArray187 = new int[anInt711];
 		int local27 = 2;
 		for ( int local29 = 0; local29 < anInt711; local29++) {
 			anIntArray187[local29] = local27;
-			local27 += local19.readShort();
+			local27 += local19.g2();
 		}
 		aClass48Array1 = new Class48[20];
 		for ( int local49 = 0; local49 < 20; local49++) {
@@ -192,19 +195,19 @@ public final class Class48 {
 		}
 	}
 
-	private Class10_Sub1_Sub2_Sub4 method527( int arg0, int arg1, int arg2) {
+	private Model method527(int arg0, int arg1, int arg2) {
 		try {
-			Class10_Sub1_Sub2_Sub4 local3 = null;
+			Model local3 = null;
 			long local26;
 			boolean local50;
 			int local56;
-			Class10_Sub1_Sub2_Sub4 local169;
+			Model local169;
 			if (this.anIntArray189 == null) {
 				if (arg2 != 10) {
 					return null;
 				}
 				local26 = (long) ((this.anInt696 << 6) + arg0) + ((long) (arg1 + 1) << 32);
-				Class10_Sub1_Sub2_Sub4 local31 = (Class10_Sub1_Sub2_Sub4) aClass34_7.method387(local26);
+				Model local31 = (Model) aClass34_7.get(local26);
 				if (local31 != null) {
 					return local31;
 				}
@@ -218,23 +221,23 @@ public final class Class48 {
 					if (local50) {
 						local62 += 65536;
 					}
-					local3 = (Class10_Sub1_Sub2_Sub4) aClass34_8.method387((long) local62);
+					local3 = (Model) aClass34_8.get((long) local62);
 					if (local3 == null) {
-						local3 = Class10_Sub1_Sub2_Sub4.method271(local62 & 0xFFFF);
+						local3 = Model.createModel(local62 & 0xFFFF);
 						if (local3 == null) {
 							return null;
 						}
 						if (local50) {
 							local3.method286();
 						}
-						aClass34_8.method388(local3, (long) local62);
+						aClass34_8.put(local3, (long) local62);
 					}
 					if (local54 > 1) {
 						aClass10_Sub1_Sub2_Sub4Array1[local56] = local3;
 					}
 				}
 				if (local54 > 1) {
-					local3 = new Class10_Sub1_Sub2_Sub4(local54, aClass10_Sub1_Sub2_Sub4Array1, (byte) -89);
+					local3 = new Model(local54, aClass10_Sub1_Sub2_Sub4Array1);
 				}
 			} else {
 				int local120 = -1;
@@ -248,7 +251,7 @@ public final class Class48 {
 					return null;
 				}
 				local26 = (long) ((this.anInt696 << 6) + (local120 << 3) + arg0) + ((long) (arg1 + 1) << 32);
-				local169 = (Class10_Sub1_Sub2_Sub4) aClass34_7.method387(local26);
+				local169 = (Model) aClass34_7.get(local26);
 				if (local169 != null) {
 					return local169;
 				}
@@ -257,16 +260,16 @@ public final class Class48 {
 				if (local188) {
 					local56 += 65536;
 				}
-				local3 = (Class10_Sub1_Sub2_Sub4) aClass34_8.method387((long) local56);
+				local3 = (Model) aClass34_8.get((long) local56);
 				if (local3 == null) {
-					local3 = Class10_Sub1_Sub2_Sub4.method271(local56 & 0xFFFF);
+					local3 = Model.createModel(local56 & 0xFFFF);
 					if (local3 == null) {
 						return null;
 					}
 					if (local188) {
 						local3.method286();
 					}
-					aClass34_8.method388(local3, (long) local56);
+					aClass34_8.put(local3, (long) local56);
 				}
 			}
 			boolean local236;
@@ -280,7 +283,7 @@ public final class Class48 {
 			} else {
 				local50 = true;
 			}
-			local169 = new Class10_Sub1_Sub2_Sub4(arg0 == 0 && arg1 == -1 && !local236 && !local50, false, this.anIntArray191 == null, local3, Class22.method169(this.aBoolean184, arg1));
+			local169 = new Model(arg0 == 0 && arg1 == -1 && !local236 && !local50, false, this.anIntArray191 == null, local3, Class22.method169(this.aBoolean184, arg1));
 			if (arg1 != -1) {
 				local169.method278();
 				local169.method279(arg1, (byte) 6);
@@ -292,7 +295,7 @@ public final class Class48 {
 			}
 			if (this.anIntArray191 != null) {
 				for (local56 = 0; local56 < this.anIntArray191.length; local56++) {
-					local169.method285(this.anIntArray191[local56], this.anIntArray190[local56]);
+					local169.recolor(this.anIntArray191[local56], this.anIntArray190[local56]);
 				}
 			}
 			if (local236) {
@@ -305,7 +308,7 @@ public final class Class48 {
 			if (this.anInt704 == 1) {
 				local169.anInt413 = local169.anInt713;
 			}
-			aClass34_7.method388(local169, local26);
+			aClass34_7.put(local169, local26);
 			return local169;
 		} catch ( RuntimeException local394) {
 			signlink.reporterror("99261, " + arg0 + ", " + arg1 + ", " + 0 + ", " + arg2 + ", " + local394.toString());
@@ -320,7 +323,7 @@ public final class Class48 {
 			}
 			boolean local8 = true;
 			for ( int local17 = 0; local17 < this.anIntArray188.length; local17++) {
-				local8 &= Class10_Sub1_Sub2_Sub4.method272(this.anIntArray188[local17] & 0xFFFF);
+				local8 &= Model.method272(this.anIntArray188[local17] & 0xFFFF);
 			}
 			return local8;
 		} catch ( RuntimeException local38) {
@@ -380,7 +383,7 @@ public final class Class48 {
 					int local38;
 					do {
 						while (true) {
-							int local13 = arg1.readByte();
+							int local13 = arg1.g1();
 							if (local13 == 0) {
 								if (local3 == -1) {
 									this.aBoolean180 = false;
@@ -402,36 +405,36 @@ public final class Class48 {
 								return;
 							}
 							if (local13 == 1) {
-								local21 = arg1.readByte();
+								local21 = arg1.g1();
 								break;
 							}
 							if (local13 == 2) {
-								this.aString12 = arg1.method318();
+								this.aString12 = arg1.gjstr();
 							} else if (local13 == 3) {
-								this.aByteArray17 = arg1.method319();
+								this.aByteArray17 = arg1.gstrbyte();
 							} else if (local13 == 5) {
-								local21 = arg1.readByte();
+								local21 = arg1.g1();
 								if (local21 > 0) {
 									if (this.anIntArray188 == null || aBoolean183) {
 										this.anIntArray189 = null;
 										this.anIntArray188 = new int[local21];
 										for (local38 = 0; local38 < local21; local38++) {
-											this.anIntArray188[local38] = arg1.readShort();
+											this.anIntArray188[local38] = arg1.g2();
 										}
 									} else {
 										arg1.pos += local21 * 2;
 									}
 								}
 							} else if (local13 == 14) {
-								this.anInt707 = arg1.readByte();
+								this.anInt707 = arg1.g1();
 							} else if (local13 == 15) {
-								this.anInt697 = arg1.readByte();
+								this.anInt697 = arg1.g1();
 							} else if (local13 == 17) {
 								this.aBoolean192 = false;
 							} else if (local13 == 18) {
 								this.aBoolean191 = false;
 							} else if (local13 == 19) {
-								local3 = arg1.readByte();
+								local3 = arg1.g1();
 								if (local3 == 1) {
 									this.aBoolean180 = true;
 								}
@@ -442,73 +445,73 @@ public final class Class48 {
 							} else if (local13 == 23) {
 								this.aBoolean187 = true;
 							} else if (local13 == 24) {
-								this.anInt709 = arg1.readShort();
+								this.anInt709 = arg1.g2();
 								if (this.anInt709 == 65535) {
 									this.anInt709 = -1;
 								}
 							} else if (local13 == 28) {
-								this.anInt708 = arg1.readByte();
+								this.anInt708 = arg1.g1();
 							} else if (local13 == 29) {
-								this.aByte38 = arg1.method312();
+								this.aByte38 = arg1.g1b();
 							} else if (local13 == 39) {
-								this.aByte39 = arg1.method312();
+								this.aByte39 = arg1.g1b();
 							} else if (local13 >= 30 && local13 < 39) {
 								if (this.aStringArray7 == null) {
 									this.aStringArray7 = new String[5];
 								}
-								this.aStringArray7[local13 - 30] = arg1.method318();
+								this.aStringArray7[local13 - 30] = arg1.gjstr();
 								if (this.aStringArray7[local13 - 30].equalsIgnoreCase("hidden")) {
 									this.aStringArray7[local13 - 30] = null;
 								}
 							} else if (local13 == 40) {
-								local21 = arg1.readByte();
+								local21 = arg1.g1();
 								this.anIntArray191 = new int[local21];
 								this.anIntArray190 = new int[local21];
 								for (local38 = 0; local38 < local21; local38++) {
-									this.anIntArray191[local38] = arg1.readShort();
-									this.anIntArray190[local38] = arg1.readShort();
+									this.anIntArray191[local38] = arg1.g2();
+									this.anIntArray190[local38] = arg1.g2();
 								}
 							} else if (local13 == 60) {
-								this.anInt710 = arg1.readShort();
+								this.anInt710 = arg1.g2();
 							} else if (local13 == 62) {
 								this.aBoolean188 = true;
 							} else if (local13 == 64) {
 								this.aBoolean190 = false;
 							} else if (local13 == 65) {
-								this.anInt700 = arg1.readShort();
+								this.anInt700 = arg1.g2();
 							} else if (local13 == 66) {
-								this.anInt691 = arg1.readShort();
+								this.anInt691 = arg1.g2();
 							} else if (local13 == 67) {
-								this.anInt706 = arg1.readShort();
+								this.anInt706 = arg1.g2();
 							} else if (local13 == 68) {
-								this.anInt705 = arg1.readShort();
+								this.anInt705 = arg1.g2();
 							} else if (local13 == 69) {
-								this.anInt693 = arg1.readByte();
+								this.anInt693 = arg1.g1();
 							} else if (local13 == 70) {
-								this.anInt692 = arg1.method314();
+								this.anInt692 = arg1.g2b();
 							} else if (local13 == 71) {
-								this.anInt702 = arg1.method314();
+								this.anInt702 = arg1.g2b();
 							} else if (local13 == 72) {
-								this.anInt694 = arg1.method314();
+								this.anInt694 = arg1.g2b();
 							} else if (local13 == 73) {
 								this.aBoolean181 = true;
 							} else if (local13 == 74) {
 								this.aBoolean186 = true;
 							} else if (local13 == 75) {
-								this.anInt704 = arg1.readByte();
+								this.anInt704 = arg1.g1();
 							} else if (local13 == 77) {
-								this.anInt699 = arg1.readShort();
+								this.anInt699 = arg1.g2();
 								if (this.anInt699 == 65535) {
 									this.anInt699 = -1;
 								}
-								this.anInt701 = arg1.readShort();
+								this.anInt701 = arg1.g2();
 								if (this.anInt701 == 65535) {
 									this.anInt701 = -1;
 								}
-								local21 = arg1.readByte();
+								local21 = arg1.g1();
 								this.anIntArray192 = new int[local21 + 1];
 								for (local38 = 0; local38 <= local21; local38++) {
-									this.anIntArray192[local38] = arg1.readShort();
+									this.anIntArray192[local38] = arg1.g2();
 									if (this.anIntArray192[local38] == 65535) {
 										this.anIntArray192[local38] = -1;
 									}
@@ -520,8 +523,8 @@ public final class Class48 {
 						this.anIntArray189 = new int[local21];
 						this.anIntArray188 = new int[local21];
 						for (local38 = 0; local38 < local21; local38++) {
-							this.anIntArray188[local38] = arg1.readShort();
-							this.anIntArray189[local38] = arg1.readByte();
+							this.anIntArray188[local38] = arg1.g2();
+							this.anIntArray189[local38] = arg1.g1();
 						}
 					} else {
 						arg1.pos += local21 * 3;
@@ -534,13 +537,13 @@ public final class Class48 {
 		}
 	}
 
-	public Class10_Sub1_Sub2_Sub4 method531( int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
-		Class10_Sub1_Sub2_Sub4 local6 = this.method527(arg1, arg6, arg0);
+	public Model method531(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
+		Model local6 = this.method527(arg1, arg6, arg0);
 		if (local6 == null) {
 			return null;
 		}
 		if (this.aBoolean182 || this.aBoolean189) {
-			local6 = new Class10_Sub1_Sub2_Sub4(this.aBoolean182, this.aBoolean189, 0, local6);
+			local6 = new Model(this.aBoolean182, this.aBoolean189, 0, local6);
 		}
 		if (this.aBoolean182) {
 			int local39 = (arg2 + arg3 + arg4 + arg5) / 4;
@@ -562,7 +565,7 @@ public final class Class48 {
 			if (this.anIntArray189 != null) {
 				for ( int local51 = 0; local51 < this.anIntArray189.length; local51++) {
 					if (this.anIntArray189[local51] == arg0) {
-						return Class10_Sub1_Sub2_Sub4.method272(this.anIntArray188[local51] & 0xFFFF);
+						return Model.method272(this.anIntArray188[local51] & 0xFFFF);
 					}
 				}
 				return true;
@@ -571,7 +574,7 @@ public final class Class48 {
 			} else if (arg0 == 10) {
 				boolean local27 = true;
 				for ( int local29 = 0; local29 < this.anIntArray188.length; local29++) {
-					local27 &= Class10_Sub1_Sub2_Sub4.method272(this.anIntArray188[local29] & 0xFFFF);
+					local27 &= Model.method272(this.anIntArray188[local29] & 0xFFFF);
 				}
 				return local27;
 			} else {

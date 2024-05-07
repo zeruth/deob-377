@@ -28,6 +28,7 @@ public class Launcher implements AppletStub {
 
     public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         frame.setSize(gameSize);
+        frame.setBackground(Color.BLACK);
         gamePanel.setSize(gameSize);
         gamePanel.setBackground(Color.BLACK);
         Applet client = (Applet) ClassLoader.getSystemClassLoader().loadClass("unmapped.Client").newInstance();

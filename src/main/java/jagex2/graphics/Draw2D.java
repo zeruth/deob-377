@@ -1,9 +1,9 @@
 package jagex2.graphics;
 
 
-import unmapped.Class10_Sub1;
+import jagex2.datastruct.Hashable;
 
-public class Draw2D extends Class10_Sub1 {
+public class Draw2D extends Hashable {
 
 	private static int anInt672;
 

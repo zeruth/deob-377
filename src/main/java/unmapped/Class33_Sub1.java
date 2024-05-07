@@ -9,7 +9,9 @@ import java.util.zip.CRC32;
 import java.util.zip.GZIPInputStream;
 
 
+import jagex2.datastruct.Stack;
 import jagex2.io.JagFile;
+import jagex2.io.Packet;
 import sign.signlink;
 
 public final class Class33_Sub1 extends Class33 implements Runnable {
@@ -98,7 +100,7 @@ public final class Class33_Sub1 extends Class33 implements Runnable {
 
 	private int anInt794 = 591;
 
-	private Class9 aClass9_2 = new Class9(true);
+	private Stack aClass9_2 = new Stack();
 
 	private byte aByte44 = 6;
 
@@ -142,7 +144,7 @@ public final class Class33_Sub1 extends Class33 implements Runnable {
 									this.aClass6_7.method3(this.aClass10_Sub1_Sub4_1);
 								}
 							} else {
-								this.aClass10_Sub1_Sub4_1.method534();
+								this.aClass10_Sub1_Sub4_1.unlink();
 							}
 							this.aClass10_Sub1_Sub4_1 = null;
 						} else {
@@ -184,7 +186,7 @@ public final class Class33_Sub1 extends Class33 implements Runnable {
 								this.aClass6_7.method3(this.aClass10_Sub1_Sub4_1);
 							}
 						} else {
-							this.aClass10_Sub1_Sub4_1.method534();
+							this.aClass10_Sub1_Sub4_1.unlink();
 						}
 					}
 					this.anInt792 = 0;
@@ -316,7 +318,7 @@ public final class Class33_Sub1 extends Class33 implements Runnable {
 		if (arg0 > this.anIntArrayArray21.length || arg1 < 0 || arg1 > this.anIntArrayArray21[arg0].length || this.anIntArrayArray21[arg0][arg1] == 0) {
 			return;
 		}
-		Class9 local27 = this.aClass9_2;
+		Stack local27 = this.aClass9_2;
 		synchronized (this.aClass9_2) {
 			Class10_Sub1_Sub4 local34;
 			for (local34 = (Class10_Sub1_Sub4) this.aClass9_2.method35(); local34 != null; local34 = (Class10_Sub1_Sub4) this.aClass9_2.method36()) {
@@ -345,9 +347,9 @@ public final class Class33_Sub1 extends Class33 implements Runnable {
 		if (local11 == null) {
 			return null;
 		}
-		Class9 local24 = this.aClass9_2;
+		Stack local24 = this.aClass9_2;
 		synchronized (this.aClass9_2) {
-			local11.method535();
+			local11.uncache();
 		}
 		if (local11.aByteArray13 == null) {
 			return local11;
@@ -439,7 +441,7 @@ public final class Class33_Sub1 extends Class33 implements Runnable {
 					this.anInt790 = 0;
 					this.aString15 = "";
 				}
-				if (this.aClient5.aBoolean244 && this.aSocket2 != null && this.anOutputStream2 != null && (this.anInt784 > 0 || this.aClient5.aClass24Array1[0] == null)) {
+				if (this.aClient5.ingame && this.aSocket2 != null && this.anOutputStream2 != null && (this.anInt784 > 0 || this.aClient5.aClass24Array1[0] == null)) {
 					this.anInt796++;
 					if (this.anInt796 > 500) {
 						this.anInt796 = 0;
@@ -508,7 +510,7 @@ public final class Class33_Sub1 extends Class33 implements Runnable {
 	}
 
 	public int method562() {
-		Class9 local2 = this.aClass9_2;
+		Stack local2 = this.aClass9_2;
 		synchronized (this.aClass9_2) {
 			return this.aClass9_2.method37();
 		}
@@ -539,7 +541,7 @@ public final class Class33_Sub1 extends Class33 implements Runnable {
 			this.anIntArrayArray21[local22] = new int[local36];
 			this.aByteArrayArray4[local22] = new byte[local36];
 			for (local56 = 0; local56 < local36; local56++) {
-				this.anIntArrayArray21[local22][local56] = local42.readShort();
+				this.anIntArrayArray21[local22][local56] = local42.g2();
 			}
 		}
 		String[] local93 = new String[] { "model_crc", "anim_crc", "midi_crc", "map_crc" };
@@ -550,7 +552,7 @@ public final class Class33_Sub1 extends Class33 implements Runnable {
 			Packet local115 = new Packet(local104);
 			this.anIntArrayArray20[local36] = new int[local56];
 			for ( int local123 = 0; local123 < local56; local123++) {
-				this.anIntArrayArray20[local36][local123] = local115.method316();
+				this.anIntArrayArray20[local36][local123] = local115.g4();
 			}
 		}
 		local104 = arg0.read("model_index", null);
@@ -571,24 +573,24 @@ public final class Class33_Sub1 extends Class33 implements Runnable {
 		this.anIntArray207 = new int[local56];
 		this.anIntArray204 = new int[local56];
 		for ( int local216 = 0; local216 < local56; local216++) {
-			this.anIntArray205[local216] = local193.readShort();
-			this.anIntArray206[local216] = local193.readShort();
-			this.anIntArray207[local216] = local193.readShort();
-			this.anIntArray204[local216] = local193.readByte();
+			this.anIntArray205[local216] = local193.g2();
+			this.anIntArray206[local216] = local193.g2();
+			this.anIntArray207[local216] = local193.g2();
+			this.anIntArray204[local216] = local193.g1();
 		}
 		local104 = arg0.read("anim_index", null);
 		local193 = new Packet(local104);
 		local56 = local104.length / 2;
 		this.anIntArray209 = new int[local56];
 		for ( int local268 = 0; local268 < local56; local268++) {
-			this.anIntArray209[local268] = local193.readShort();
+			this.anIntArray209[local268] = local193.g2();
 		}
 		local104 = arg0.read("midi_index", null);
 		local193 = new Packet(local104);
 		local56 = local104.length;
 		this.anIntArray208 = new int[local56];
 		for ( int local300 = 0; local300 < local56; local300++) {
-			this.anIntArray208[local300] = local193.readByte();
+			this.anIntArray208[local300] = local193.g1();
 		}
 		this.aClient5 = arg1;
 		this.aBoolean205 = true;
@@ -599,7 +601,7 @@ public final class Class33_Sub1 extends Class33 implements Runnable {
 		try {
 			Class6 local2 = this.aClass6_8;
 			synchronized (this.aClass6_8) {
-				this.aClass6_8.method10();
+				this.aClass6_8.clear();
 			}
 		} catch ( RuntimeException local26) {
 			signlink.reporterror("61235, " + -125 + ", " + local26.toString());
@@ -709,7 +711,7 @@ public final class Class33_Sub1 extends Class33 implements Runnable {
 							return;
 						}
 						this.aLong26 = local9;
-						this.aSocket2 = this.aClient5.method607(Client.portOffset + 43594);
+						this.aSocket2 = this.aClient5.openSocket(Client.portOffset + 43594);
 						this.anInputStream2 = this.aSocket2.getInputStream();
 						this.anOutputStream2 = this.aSocket2.getOutputStream();
 						this.anOutputStream2.write(15);
@@ -723,7 +725,7 @@ public final class Class33_Sub1 extends Class33 implements Runnable {
 					this.aByteArray20[2] = (byte) arg1.anInt487;
 					if (arg1.aBoolean125) {
 						this.aByteArray20[3] = 2;
-					} else if (this.aClient5.aBoolean244) {
+					} else if (this.aClient5.ingame) {
 						this.aByteArray20[3] = 0;
 					} else {
 						this.aByteArray20[3] = 1;
