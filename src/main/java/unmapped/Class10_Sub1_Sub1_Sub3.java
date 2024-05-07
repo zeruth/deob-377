@@ -40,35 +40,35 @@ public final class Class10_Sub1_Sub1_Sub3 extends Draw2D {
 	public Class10_Sub1_Sub1_Sub3(JagFile arg0, String arg1, int arg2) {
 		Packet local37 = new Packet(arg0.read(arg1 + ".dat", null));
 		Packet local46 = new Packet(arg0.read("index.dat", null));
-		local46.pos = local37.readShort();
-		this.anInt656 = local46.readShort();
-		this.anInt657 = local46.readShort();
-		int local61 = local46.readByte();
+		local46.pos = local37.g2();
+		this.anInt656 = local46.g2();
+		this.anInt657 = local46.g2();
+		int local61 = local46.g1();
 		this.anIntArray175 = new int[local61];
 		for ( int local67 = 0; local67 < local61 - 1; local67++) {
-			this.anIntArray175[local67 + 1] = local46.readInt24();
+			this.anIntArray175[local67 + 1] = local46.g3();
 		}
 		for ( int local85 = 0; local85 < arg2; local85++) {
 			local46.pos += 2;
-			local37.pos += local46.readShort() * local46.readShort();
+			local37.pos += local46.g2() * local46.g2();
 			local46.pos++;
 		}
-		this.anInt654 = local46.readByte();
-		this.anInt655 = local46.readByte();
-		this.anInt652 = local46.readShort();
-		this.anInt653 = local46.readShort();
-		int local132 = local46.readByte();
+		this.anInt654 = local46.g1();
+		this.anInt655 = local46.g1();
+		this.anInt652 = local46.g2();
+		this.anInt653 = local46.g2();
+		int local132 = local46.g1();
 		int local138 = this.anInt652 * this.anInt653;
 		this.aByteArray16 = new byte[local138];
 		int local146;
 		if (local132 == 0) {
 			for (local146 = 0; local146 < local138; local146++) {
-				this.aByteArray16[local146] = local37.method312();
+				this.aByteArray16[local146] = local37.g1b();
 			}
 		} else if (local132 == 1) {
 			for (local146 = 0; local146 < this.anInt652; local146++) {
 				for ( int local168 = 0; local168 < this.anInt653; local168++) {
-					this.aByteArray16[local146 + local168 * this.anInt652] = local37.method312();
+					this.aByteArray16[local146 + local168 * this.anInt652] = local37.g1b();
 				}
 			}
 		}

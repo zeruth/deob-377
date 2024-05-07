@@ -31,13 +31,13 @@ public final class Class30 {
 
 	public void method359( byte arg0, Packet arg1) {
 		try {
-			this.anInt477 = arg1.readByte();
+			this.anInt477 = arg1.g1();
 			if (arg0 != 6) {
 				throw new NullPointerException();
 			}
 			boolean local8 = false;
-			this.anInt475 = arg1.method316();
-			this.anInt476 = arg1.method316();
+			this.anInt475 = arg1.g4();
+			this.anInt476 = arg1.g4();
 			this.method360(arg1);
 		} catch ( RuntimeException local28) {
 			signlink.reporterror("33975, " + arg0 + ", " + arg1 + ", " + local28.toString());
@@ -47,12 +47,12 @@ public final class Class30 {
 
 	public void method360( Packet arg0) {
 		try {
-			this.anInt474 = arg0.readByte();
+			this.anInt474 = arg0.g1();
 			this.anIntArray155 = new int[this.anInt474];
 			this.anIntArray156 = new int[this.anInt474];
 			for ( int local18 = 0; local18 < this.anInt474; local18++) {
-				this.anIntArray155[local18] = arg0.readShort();
-				this.anIntArray156[local18] = arg0.readShort();
+				this.anIntArray155[local18] = arg0.g2();
+				this.anIntArray156[local18] = arg0.g2();
 			}
 		} catch ( RuntimeException local39) {
 			signlink.reporterror("28975, " + arg0 + ", " + 0 + ", " + local39.toString());

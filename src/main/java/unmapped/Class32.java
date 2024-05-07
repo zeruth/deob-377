@@ -19,7 +19,7 @@ public final class Class32 {
 			int local5 = -1;
 			int local18;
 			for ( int local7 = 0; local7 < arg1; local7++) {
-				int local12 = arg0.readByte();
+				int local12 = arg0.g1();
 				local18 = local12 >> 4 & 0xF;
 				if (local5 != -1) {
 					aCharArray3[local3++] = aCharArray4[(local5 << 4) + local18 - 195];
@@ -80,18 +80,18 @@ public final class Class32 {
 					if (local34 < 13) {
 						local24 = local34;
 					} else {
-						arg1.method301(local34);
+						arg1.p1(local34);
 					}
 				} else if (local34 < 13) {
-					arg1.method301((local24 << 4) + local34);
+					arg1.p1((local24 << 4) + local34);
 					local24 = -1;
 				} else {
-					arg1.method301((local24 << 4) + (local34 >> 4));
+					arg1.p1((local24 << 4) + (local34 >> 4));
 					local24 = local34 & 0xF;
 				}
 			}
 			if (local24 != -1) {
-				arg1.method301(local24 << 4);
+				arg1.p1(local24 << 4);
 			}
 		} catch ( RuntimeException local113) {
 			signlink.reporterror("76466, " + arg0 + ", " + 569 + ", " + arg1 + ", " + local113.toString());

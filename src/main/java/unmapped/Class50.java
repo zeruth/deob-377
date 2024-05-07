@@ -31,7 +31,7 @@ public final class Class50 {
 	public static void method574( JagFile arg0) {
 		try {
 			Packet local8 = new Packet(arg0.read("varbit.dat", null));
-			anInt799 = local8.readShort();
+			anInt799 = local8.g2();
 			if (aClass50Array1 == null) {
 				aClass50Array1 = new Class50[anInt799];
 			}
@@ -44,7 +44,7 @@ public final class Class50 {
 					Class44.aClass44Array1[aClass50Array1[local22].anInt800].aBoolean150 = true;
 				}
 			}
-			if (local8.pos != local8.aByteArray12.length) {
+			if (local8.pos != local8.data.length) {
 				System.out.println("varbit load mismatch");
 			}
 		} catch ( RuntimeException local69) {
@@ -59,22 +59,22 @@ public final class Class50 {
 	private void method575( int arg0, Packet arg1) {
 		try {
 			while (true) {
-				int local9 = arg1.readByte();
+				int local9 = arg1.g1();
 				if (local9 == 0) {
 					return;
 				}
 				if (local9 == 1) {
-					this.anInt800 = arg1.readShort();
-					this.anInt801 = arg1.readByte();
-					this.anInt802 = arg1.readByte();
+					this.anInt800 = arg1.g2();
+					this.anInt801 = arg1.g1();
+					this.anInt802 = arg1.g1();
 				} else if (local9 == 10) {
-					this.aString16 = arg1.method318();
+					this.aString16 = arg1.gjstr();
 				} else if (local9 == 2) {
 					this.aBoolean209 = true;
 				} else if (local9 == 3) {
-					this.anInt803 = arg1.method316();
+					this.anInt803 = arg1.g4();
 				} else if (local9 == 4) {
-					this.anInt804 = arg1.method316();
+					this.anInt804 = arg1.g4();
 				} else if (local9 == 5) {
 					this.aBoolean210 = false;
 				} else {

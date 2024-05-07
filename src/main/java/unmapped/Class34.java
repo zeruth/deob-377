@@ -1,6 +1,7 @@
 package unmapped;
 
 
+import jagex2.datastruct.Hashable;
 import sign.signlink;
 
 public final class Class34 {
@@ -11,7 +12,7 @@ public final class Class34 {
 
 	private int anInt539 = 256;
 
-	private Class10_Sub1 aClass10_Sub1_29 = new Class10_Sub1();
+	private Hashable aClass10_Sub1_29 = new Hashable();
 
 	private Class9 aClass9_1 = new Class9(true);
 
@@ -32,8 +33,8 @@ public final class Class34 {
 		}
 	}
 
-	public Class10_Sub1 method387( long arg0) {
-		Class10_Sub1 local5 = (Class10_Sub1) this.aClass20_1.method163(arg0);
+	public Hashable method387(long arg0) {
+		Hashable local5 = (Hashable) this.aClass20_1.method163(arg0);
 		if (local5 == null) {
 			this.anInt540++;
 		} else {
@@ -43,16 +44,16 @@ public final class Class34 {
 		return local5;
 	}
 
-	public void method388( Class10_Sub1 arg0, long arg1) {
+	public void method388(Hashable arg0, long arg1) {
 		try {
 			if (this.anInt543 == 0) {
-				Class10_Sub1 local14 = this.aClass9_1.method34();
-				local14.method534();
-				local14.method535();
+				Hashable local14 = this.aClass9_1.method34();
+				local14.unlink();
+				local14.uncache();
 				if (local14 == this.aClass10_Sub1_29) {
 					local14 = this.aClass9_1.method34();
-					local14.method534();
-					local14.method535();
+					local14.unlink();
+					local14.uncache();
 				}
 			} else {
 				this.anInt543--;
@@ -67,13 +68,13 @@ public final class Class34 {
 
 	public void method389() {
 		while (true) {
-			Class10_Sub1 local3 = this.aClass9_1.method34();
+			Hashable local3 = this.aClass9_1.method34();
 			if (local3 == null) {
 				this.anInt543 = this.anInt542;
 				return;
 			}
-			local3.method534();
-			local3.method535();
+			local3.unlink();
+			local3.uncache();
 		}
 	}
 }

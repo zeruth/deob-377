@@ -79,39 +79,39 @@ public final class Pix24 extends Draw2D {
 		Packet dat = new Packet(jag.read(name + ".dat", null));
 		Packet idx = new Packet(jag.read("index.dat", null));
 
-		idx.pos = dat.readShort();
-		this.cropW = idx.readShort();
-		this.cropH = idx.readShort();
-		int paletteCount = idx.readByte();
+		idx.pos = dat.g2();
+		this.cropW = idx.g2();
+		this.cropH = idx.g2();
+		int paletteCount = idx.g1();
 
 		int[] palette = new int[paletteCount];
 		for ( int i = 0; i < paletteCount - 1; i++) {
-			palette[i + 1] = idx.readInt24();
+			palette[i + 1] = idx.g3();
 			if (palette[i + 1] == 0) {
 				palette[i + 1] = 1;
 			}
 		}
 		for ( int i = 0; i < index; i++) {
 			idx.pos += 2;
-			dat.pos += idx.readShort() * idx.readShort();
+			dat.pos += idx.g2() * idx.g2();
 			idx.pos++;
 		}
-		this.cropX = idx.readByte();
-		this.cropY = idx.readByte();
-		this.width = idx.readShort();
-		this.height = idx.readShort();
-		int pixelOrder = idx.readByte();
+		this.cropX = idx.g1();
+		this.cropY = idx.g1();
+		this.width = idx.g2();
+		this.height = idx.g2();
+		int pixelOrder = idx.g1();
 		int len = this.width * this.height;
 		this.pixels = new int[len];
 
 		if (pixelOrder == 0) {
 			for (int i = 0; i < len; i++) {
-				this.pixels[i] = palette[dat.readByte()];
+				this.pixels[i] = palette[dat.g1()];
 			}
 		} else if (pixelOrder == 1) {
 			for (int x = 0; x < this.width; x++) {
 				for (int y = 0; y < this.height; y++) {
-					this.pixels[x + y * this.width] = palette[dat.readByte()];
+					this.pixels[x + y * this.width] = palette[dat.g1()];
 				}
 			}
 		}

@@ -130,12 +130,12 @@ public final class Class48 {
 	public static void method526( JagFile arg0) {
 		aClass10_Sub1_Sub3_5 = new Packet(arg0.read("loc.dat", null));
 		Packet local19 = new Packet(arg0.read("loc.idx", null));
-		anInt711 = local19.readShort();
+		anInt711 = local19.g2();
 		anIntArray187 = new int[anInt711];
 		int local27 = 2;
 		for ( int local29 = 0; local29 < anInt711; local29++) {
 			anIntArray187[local29] = local27;
-			local27 += local19.readShort();
+			local27 += local19.g2();
 		}
 		aClass48Array1 = new Class48[20];
 		for ( int local49 = 0; local49 < 20; local49++) {
@@ -380,7 +380,7 @@ public final class Class48 {
 					int local38;
 					do {
 						while (true) {
-							int local13 = arg1.readByte();
+							int local13 = arg1.g1();
 							if (local13 == 0) {
 								if (local3 == -1) {
 									this.aBoolean180 = false;
@@ -402,36 +402,36 @@ public final class Class48 {
 								return;
 							}
 							if (local13 == 1) {
-								local21 = arg1.readByte();
+								local21 = arg1.g1();
 								break;
 							}
 							if (local13 == 2) {
-								this.aString12 = arg1.method318();
+								this.aString12 = arg1.gjstr();
 							} else if (local13 == 3) {
-								this.aByteArray17 = arg1.method319();
+								this.aByteArray17 = arg1.gstrbyte();
 							} else if (local13 == 5) {
-								local21 = arg1.readByte();
+								local21 = arg1.g1();
 								if (local21 > 0) {
 									if (this.anIntArray188 == null || aBoolean183) {
 										this.anIntArray189 = null;
 										this.anIntArray188 = new int[local21];
 										for (local38 = 0; local38 < local21; local38++) {
-											this.anIntArray188[local38] = arg1.readShort();
+											this.anIntArray188[local38] = arg1.g2();
 										}
 									} else {
 										arg1.pos += local21 * 2;
 									}
 								}
 							} else if (local13 == 14) {
-								this.anInt707 = arg1.readByte();
+								this.anInt707 = arg1.g1();
 							} else if (local13 == 15) {
-								this.anInt697 = arg1.readByte();
+								this.anInt697 = arg1.g1();
 							} else if (local13 == 17) {
 								this.aBoolean192 = false;
 							} else if (local13 == 18) {
 								this.aBoolean191 = false;
 							} else if (local13 == 19) {
-								local3 = arg1.readByte();
+								local3 = arg1.g1();
 								if (local3 == 1) {
 									this.aBoolean180 = true;
 								}
@@ -442,73 +442,73 @@ public final class Class48 {
 							} else if (local13 == 23) {
 								this.aBoolean187 = true;
 							} else if (local13 == 24) {
-								this.anInt709 = arg1.readShort();
+								this.anInt709 = arg1.g2();
 								if (this.anInt709 == 65535) {
 									this.anInt709 = -1;
 								}
 							} else if (local13 == 28) {
-								this.anInt708 = arg1.readByte();
+								this.anInt708 = arg1.g1();
 							} else if (local13 == 29) {
-								this.aByte38 = arg1.method312();
+								this.aByte38 = arg1.g1b();
 							} else if (local13 == 39) {
-								this.aByte39 = arg1.method312();
+								this.aByte39 = arg1.g1b();
 							} else if (local13 >= 30 && local13 < 39) {
 								if (this.aStringArray7 == null) {
 									this.aStringArray7 = new String[5];
 								}
-								this.aStringArray7[local13 - 30] = arg1.method318();
+								this.aStringArray7[local13 - 30] = arg1.gjstr();
 								if (this.aStringArray7[local13 - 30].equalsIgnoreCase("hidden")) {
 									this.aStringArray7[local13 - 30] = null;
 								}
 							} else if (local13 == 40) {
-								local21 = arg1.readByte();
+								local21 = arg1.g1();
 								this.anIntArray191 = new int[local21];
 								this.anIntArray190 = new int[local21];
 								for (local38 = 0; local38 < local21; local38++) {
-									this.anIntArray191[local38] = arg1.readShort();
-									this.anIntArray190[local38] = arg1.readShort();
+									this.anIntArray191[local38] = arg1.g2();
+									this.anIntArray190[local38] = arg1.g2();
 								}
 							} else if (local13 == 60) {
-								this.anInt710 = arg1.readShort();
+								this.anInt710 = arg1.g2();
 							} else if (local13 == 62) {
 								this.aBoolean188 = true;
 							} else if (local13 == 64) {
 								this.aBoolean190 = false;
 							} else if (local13 == 65) {
-								this.anInt700 = arg1.readShort();
+								this.anInt700 = arg1.g2();
 							} else if (local13 == 66) {
-								this.anInt691 = arg1.readShort();
+								this.anInt691 = arg1.g2();
 							} else if (local13 == 67) {
-								this.anInt706 = arg1.readShort();
+								this.anInt706 = arg1.g2();
 							} else if (local13 == 68) {
-								this.anInt705 = arg1.readShort();
+								this.anInt705 = arg1.g2();
 							} else if (local13 == 69) {
-								this.anInt693 = arg1.readByte();
+								this.anInt693 = arg1.g1();
 							} else if (local13 == 70) {
-								this.anInt692 = arg1.method314();
+								this.anInt692 = arg1.g2b();
 							} else if (local13 == 71) {
-								this.anInt702 = arg1.method314();
+								this.anInt702 = arg1.g2b();
 							} else if (local13 == 72) {
-								this.anInt694 = arg1.method314();
+								this.anInt694 = arg1.g2b();
 							} else if (local13 == 73) {
 								this.aBoolean181 = true;
 							} else if (local13 == 74) {
 								this.aBoolean186 = true;
 							} else if (local13 == 75) {
-								this.anInt704 = arg1.readByte();
+								this.anInt704 = arg1.g1();
 							} else if (local13 == 77) {
-								this.anInt699 = arg1.readShort();
+								this.anInt699 = arg1.g2();
 								if (this.anInt699 == 65535) {
 									this.anInt699 = -1;
 								}
-								this.anInt701 = arg1.readShort();
+								this.anInt701 = arg1.g2();
 								if (this.anInt701 == 65535) {
 									this.anInt701 = -1;
 								}
-								local21 = arg1.readByte();
+								local21 = arg1.g1();
 								this.anIntArray192 = new int[local21 + 1];
 								for (local38 = 0; local38 <= local21; local38++) {
-									this.anIntArray192[local38] = arg1.readShort();
+									this.anIntArray192[local38] = arg1.g2();
 									if (this.anIntArray192[local38] == 65535) {
 										this.anIntArray192[local38] = -1;
 									}
@@ -520,8 +520,8 @@ public final class Class48 {
 						this.anIntArray189 = new int[local21];
 						this.anIntArray188 = new int[local21];
 						for (local38 = 0; local38 < local21; local38++) {
-							this.anIntArray188[local38] = arg1.readShort();
-							this.anIntArray189[local38] = arg1.readByte();
+							this.anIntArray188[local38] = arg1.g2();
+							this.anIntArray189[local38] = arg1.g1();
 						}
 					} else {
 						arg1.pos += local21 * 3;

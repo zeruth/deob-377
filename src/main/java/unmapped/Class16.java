@@ -41,7 +41,7 @@ public final class Class16 {
 	public static void method99( JagFile arg0) {
 		try {
 			Packet local12 = new Packet(arg0.read("flo.dat", null));
-			anInt164 = local12.readShort();
+			anInt164 = local12.g2();
 			if (aClass16Array1 == null) {
 				aClass16Array1 = new Class16[anInt164];
 			}
@@ -70,27 +70,27 @@ public final class Class16 {
 				}
 			}
 			while (true) {
-				local10 = arg1.readByte();
+				local10 = arg1.g1();
 				if (local10 == 0) {
 					return;
 				}
 				if (local10 == 1) {
-					this.anInt165 = arg1.readInt24();
+					this.anInt165 = arg1.g3();
 					this.method101(this.anInt165);
 				} else if (local10 == 2) {
-					this.anInt166 = arg1.readByte();
+					this.anInt166 = arg1.g1();
 				} else if (local10 == 3) {
 					this.aBoolean47 = true;
 				} else if (local10 == 5) {
 					this.aBoolean48 = false;
 				} else if (local10 == 6) {
-					this.aString6 = arg1.method318();
+					this.aString6 = arg1.gjstr();
 				} else if (local10 == 7) {
 					int local75 = this.anInt167;
 					int local78 = this.anInt168;
 					int local81 = this.anInt169;
 					int local84 = this.anInt170;
-					int local87 = arg1.readInt24();
+					int local87 = arg1.g3();
 					this.method101(local87);
 					this.anInt167 = local75;
 					this.anInt168 = local78;

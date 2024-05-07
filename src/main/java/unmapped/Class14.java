@@ -193,7 +193,7 @@ public final class Class14 {
 	public static Class14 method87( int arg0) {
 		if (aClass14Array1[arg0] == null) {
 			Packet local11 = new Packet(aByteArrayArray2[arg0]);
-			int local14 = local11.readShort();
+			int local14 = local11.g2();
 			aClass14Array1[arg0] = method90(local14, local11, arg0);
 		}
 		return aClass14Array1[arg0];
@@ -204,17 +204,17 @@ public final class Class14 {
 			Class14 local5 = new Class14();
 			local5.anInt111 = arg2;
 			local5.anInt128 = arg0;
-			local5.anInt120 = arg1.readByte();
-			local5.anInt150 = arg1.readByte();
-			local5.anInt124 = arg1.readShort();
-			local5.anInt123 = arg1.readShort();
-			local5.anInt121 = arg1.readShort();
-			local5.aByte9 = (byte) arg1.readByte();
-			local5.anInt132 = arg1.readByte();
+			local5.anInt120 = arg1.g1();
+			local5.anInt150 = arg1.g1();
+			local5.anInt124 = arg1.g2();
+			local5.anInt123 = arg1.g2();
+			local5.anInt121 = arg1.g2();
+			local5.aByte9 = (byte) arg1.g1();
+			local5.anInt132 = arg1.g1();
 			if (local5.anInt132 == 0) {
 				local5.anInt132 = -1;
 			} else {
-				local5.anInt132 = (local5.anInt132 - 1 << 8) + arg1.readByte();
+				local5.anInt132 = (local5.anInt132 - 1 << 8) + arg1.g1();
 			}
 			if (local5.anInt124 == 600) {
 				anInt127 = arg0;
@@ -225,64 +225,64 @@ public final class Class14 {
 			if (local5.anInt124 == 655) {
 				anInt142 = arg0;
 			}
-			int local89 = arg1.readByte();
+			int local89 = arg1.g1();
 			int local101;
 			if (local89 > 0) {
 				local5.anIntArray45 = new int[local89];
 				local5.anIntArray42 = new int[local89];
 				for (local101 = 0; local101 < local89; local101++) {
-					local5.anIntArray45[local101] = arg1.readByte();
-					local5.anIntArray42[local101] = arg1.readShort();
+					local5.anIntArray45[local101] = arg1.g1();
+					local5.anIntArray42[local101] = arg1.g2();
 				}
 			}
-			local101 = arg1.readByte();
+			local101 = arg1.g1();
 			int local130;
 			int local135;
 			if (local101 > 0) {
 				local5.anIntArrayArray5 = new int[local101][];
 				for (local130 = 0; local130 < local101; local130++) {
-					local135 = arg1.readShort();
+					local135 = arg1.g2();
 					local5.anIntArrayArray5[local130] = new int[local135];
 					for ( int local143 = 0; local143 < local135; local143++) {
-						local5.anIntArrayArray5[local130][local143] = arg1.readShort();
+						local5.anIntArrayArray5[local130][local143] = arg1.g2();
 					}
 				}
 			}
 			if (local5.anInt120 == 0) {
-				local5.anInt147 = arg1.readShort();
-				local5.aBoolean33 = arg1.readByte() == 1;
-				local130 = arg1.readShort();
+				local5.anInt147 = arg1.g2();
+				local5.aBoolean33 = arg1.g1() == 1;
+				local130 = arg1.g2();
 				local5.anIntArray43 = new int[local130];
 				local5.anIntArray41 = new int[local130];
 				local5.anIntArray46 = new int[local130];
 				for (local135 = 0; local135 < local130; local135++) {
-					local5.anIntArray43[local135] = arg1.readShort();
-					local5.anIntArray41[local135] = arg1.method314();
-					local5.anIntArray46[local135] = arg1.method314();
+					local5.anIntArray43[local135] = arg1.g2();
+					local5.anIntArray41[local135] = arg1.g2b();
+					local5.anIntArray46[local135] = arg1.g2b();
 				}
 			}
 			if (local5.anInt120 == 1) {
-				local5.anInt114 = arg1.readShort();
-				local5.aBoolean35 = arg1.readByte() == 1;
+				local5.anInt114 = arg1.g2();
+				local5.aBoolean35 = arg1.g1() == 1;
 			}
 			if (local5.anInt120 == 2) {
 				local5.anIntArray44 = new int[local5.anInt123 * local5.anInt121];
 				local5.anIntArray40 = new int[local5.anInt123 * local5.anInt121];
-				local5.aBoolean41 = arg1.readByte() == 1;
-				local5.aBoolean34 = arg1.readByte() == 1;
-				local5.aBoolean43 = arg1.readByte() == 1;
-				local5.aBoolean32 = arg1.readByte() == 1;
-				local5.anInt137 = arg1.readByte();
-				local5.anInt126 = arg1.readByte();
+				local5.aBoolean41 = arg1.g1() == 1;
+				local5.aBoolean34 = arg1.g1() == 1;
+				local5.aBoolean43 = arg1.g1() == 1;
+				local5.aBoolean32 = arg1.g1() == 1;
+				local5.anInt137 = arg1.g1();
+				local5.anInt126 = arg1.g1();
 				local5.anIntArray39 = new int[20];
 				local5.anIntArray38 = new int[20];
 				local5.aClass10_Sub1_Sub1_Sub1Array1 = new Pix24[20];
 				for (local130 = 0; local130 < 20; local130++) {
-					local135 = arg1.readByte();
+					local135 = arg1.g1();
 					if (local135 == 1) {
-						local5.anIntArray39[local130] = arg1.method314();
-						local5.anIntArray38[local130] = arg1.method314();
-						String local336 = arg1.method318();
+						local5.anIntArray39[local130] = arg1.g2b();
+						local5.anIntArray38[local130] = arg1.g2b();
+						String local336 = arg1.gjstr();
 						if (local336.length() > 0) {
 							int local343 = local336.lastIndexOf(",");
 							local5.aClass10_Sub1_Sub1_Sub1Array1[local130] = method86(Integer.parseInt(local336.substring(local343 + 1)), local336.substring(0, local343));
@@ -291,105 +291,105 @@ public final class Class14 {
 				}
 				local5.aStringArray1 = new String[5];
 				for (local135 = 0; local135 < 5; local135++) {
-					local5.aStringArray1[local135] = arg1.method318();
+					local5.aStringArray1[local135] = arg1.gjstr();
 					if (local5.aStringArray1[local135].length() == 0) {
 						local5.aStringArray1[local135] = null;
 					}
 				}
 			}
 			if (local5.anInt120 == 3) {
-				local5.aBoolean36 = arg1.readByte() == 1;
+				local5.aBoolean36 = arg1.g1() == 1;
 			}
 			if (local5.anInt120 == 4 || local5.anInt120 == 1) {
-				local5.aBoolean40 = arg1.readByte() == 1;
-				local130 = arg1.readByte();
+				local5.aBoolean40 = arg1.g1() == 1;
+				local130 = arg1.g1();
 				if (aClass10_Sub1_Sub1_Sub2Array1 != null) {
 					local5.aClass10_Sub1_Sub1_Sub2_1 = aClass10_Sub1_Sub1_Sub2Array1[local130];
 				}
-				local5.aBoolean37 = arg1.readByte() == 1;
+				local5.aBoolean37 = arg1.g1() == 1;
 			}
 			if (local5.anInt120 == 4) {
-				local5.aString2 = arg1.method318();
-				local5.aString3 = arg1.method318();
+				local5.aString2 = arg1.gjstr();
+				local5.aString3 = arg1.gjstr();
 			}
 			if (local5.anInt120 == 1 || local5.anInt120 == 3 || local5.anInt120 == 4) {
-				local5.anInt122 = arg1.method316();
+				local5.anInt122 = arg1.g4();
 			}
 			if (local5.anInt120 == 3 || local5.anInt120 == 4) {
-				local5.anInt135 = arg1.method316();
-				local5.anInt136 = arg1.method316();
-				local5.anInt115 = arg1.method316();
+				local5.anInt135 = arg1.g4();
+				local5.anInt136 = arg1.g4();
+				local5.anInt115 = arg1.g4();
 			}
 			if (local5.anInt120 == 5) {
-				String local496 = arg1.method318();
+				String local496 = arg1.gjstr();
 				if (local496.length() > 0) {
 					local135 = local496.lastIndexOf(",");
 					local5.aClass10_Sub1_Sub1_Sub1_1 = method86(Integer.parseInt(local496.substring(local135 + 1)), local496.substring(0, local135));
 				}
-				local496 = arg1.method318();
+				local496 = arg1.gjstr();
 				if (local496.length() > 0) {
 					local135 = local496.lastIndexOf(",");
 					local5.aClass10_Sub1_Sub1_Sub1_2 = method86(Integer.parseInt(local496.substring(local135 + 1)), local496.substring(0, local135));
 				}
 			}
 			if (local5.anInt120 == 6) {
-				int local548 = arg1.readByte();
+				int local548 = arg1.g1();
 				if (local548 != 0) {
 					local5.anInt145 = 1;
-					local5.anInt146 = (local548 - 1 << 8) + arg1.readByte();
+					local5.anInt146 = (local548 - 1 << 8) + arg1.g1();
 				}
-				local548 = arg1.readByte();
+				local548 = arg1.g1();
 				if (local548 != 0) {
 					local5.anInt138 = 1;
-					local5.anInt139 = (local548 - 1 << 8) + arg1.readByte();
+					local5.anInt139 = (local548 - 1 << 8) + arg1.g1();
 				}
-				local548 = arg1.readByte();
+				local548 = arg1.g1();
 				if (local548 == 0) {
 					local5.anInt148 = -1;
 				} else {
-					local5.anInt148 = (local548 - 1 << 8) + arg1.readByte();
+					local5.anInt148 = (local548 - 1 << 8) + arg1.g1();
 				}
-				local548 = arg1.readByte();
+				local548 = arg1.g1();
 				if (local548 == 0) {
 					local5.anInt149 = -1;
 				} else {
-					local5.anInt149 = (local548 - 1 << 8) + arg1.readByte();
+					local5.anInt149 = (local548 - 1 << 8) + arg1.g1();
 				}
-				local5.anInt129 = arg1.readShort();
-				local5.anInt130 = arg1.readShort();
-				local5.anInt131 = arg1.readShort();
+				local5.anInt129 = arg1.g2();
+				local5.anInt130 = arg1.g2();
+				local5.anInt131 = arg1.g2();
 			}
 			if (local5.anInt120 == 7) {
 				local5.anIntArray44 = new int[local5.anInt123 * local5.anInt121];
 				local5.anIntArray40 = new int[local5.anInt123 * local5.anInt121];
-				local5.aBoolean40 = arg1.readByte() == 1;
-				local130 = arg1.readByte();
+				local5.aBoolean40 = arg1.g1() == 1;
+				local130 = arg1.g1();
 				if (aClass10_Sub1_Sub1_Sub2Array1 != null) {
 					local5.aClass10_Sub1_Sub1_Sub2_1 = aClass10_Sub1_Sub1_Sub2Array1[local130];
 				}
-				local5.aBoolean37 = arg1.readByte() == 1;
-				local5.anInt122 = arg1.method316();
-				local5.anInt137 = arg1.method314();
-				local5.anInt126 = arg1.method314();
-				local5.aBoolean34 = arg1.readByte() == 1;
+				local5.aBoolean37 = arg1.g1() == 1;
+				local5.anInt122 = arg1.g4();
+				local5.anInt137 = arg1.g2b();
+				local5.anInt126 = arg1.g2b();
+				local5.aBoolean34 = arg1.g1() == 1;
 				local5.aStringArray1 = new String[5];
 				for (local135 = 0; local135 < 5; local135++) {
-					local5.aStringArray1[local135] = arg1.method318();
+					local5.aStringArray1[local135] = arg1.gjstr();
 					if (local5.aStringArray1[local135].length() == 0) {
 						local5.aStringArray1[local135] = null;
 					}
 				}
 			}
 			if (local5.anInt120 == 8) {
-				local5.aString2 = arg1.method318();
+				local5.aString2 = arg1.gjstr();
 			}
 			if (local5.anInt150 == 2 || local5.anInt120 == 2) {
-				local5.aString5 = arg1.method318();
-				local5.aString1 = arg1.method318();
-				local5.anInt113 = arg1.readShort();
+				local5.aString5 = arg1.gjstr();
+				local5.aString1 = arg1.gjstr();
+				local5.anInt113 = arg1.g2();
 			}
 			if (local5.anInt150 == 1 || local5.anInt150 == 4 || local5.anInt150 == 5 || local5.anInt150 == 6) {
-				local5.aString4 = arg1.method318();
+				local5.aString4 = arg1.gjstr();
 				if (local5.aString4.length() == 0) {
 					if (local5.anInt150 == 1) {
 						local5.aString4 = "Ok";
@@ -419,20 +419,20 @@ public final class Class14 {
 			aClass10_Sub1_Sub1_Sub2Array1 = arg0;
 			int local13 = -1;
 			Packet local22 = new Packet(arg1.read("data", null));
-			int local25 = local22.readShort();
+			int local25 = local22.g2();
 			aClass14Array1 = new Class14[local25];
 			aByteArrayArray2 = new byte[local25][];
-			while (local22.pos < local22.aByteArray12.length) {
-				int local36 = local22.readShort();
+			while (local22.pos < local22.data.length) {
+				int local36 = local22.g2();
 				if (local36 == 65535) {
-					local13 = local22.readShort();
-					local36 = local22.readShort();
+					local13 = local22.g2();
+					local36 = local22.g2();
 				}
 				int local48 = local22.pos;
 				Class14 local54 = method90(local13, local22, local36);
 				byte[] local67 = aByteArrayArray2[local54.anInt111] = new byte[local22.pos + 2 - local48];
 				for (int local69 = local48; local69 < local22.pos; local69++) {
-					local67[local69 + 2 - local48] = local22.aByteArray12[local69];
+					local67[local69 + 2 - local48] = local22.data[local69];
 				}
 				local67[0] = (byte) (local13 >> 8);
 				local67[1] = (byte) local13;
@@ -519,7 +519,7 @@ public final class Class14 {
 			local27 = Class38.method407(arg1).method402();
 		}
 		if (arg0 == 3) {
-			local27 = Client.aClass10_Sub1_Sub2_Sub3_Sub2_1.method543();
+			local27 = Client.localPlayer.method543();
 		}
 		if (arg0 == 4) {
 			local27 = local1.method109(this.anInt140, 50);

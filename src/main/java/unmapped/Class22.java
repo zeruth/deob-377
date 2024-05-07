@@ -39,10 +39,10 @@ public final class Class22 {
 		try {
 			Packet local7 = new Packet(arg0);
 			local7.pos = arg0.length - 8;
-			int local16 = local7.readShort();
-			int local19 = local7.readShort();
-			int local22 = local7.readShort();
-			int local28 = local7.readShort();
+			int local16 = local7.g2();
+			int local19 = local7.g2();
+			int local22 = local7.g2();
+			int local28 = local7.g2();
 			Packet local36 = new Packet(arg0);
 			local36.pos = 0;
 			int local45 = local16 + 0 + 2;
@@ -58,22 +58,22 @@ public final class Class22 {
 			Packet local90 = new Packet(arg0);
 			local90.pos = local84;
 			Class42 local99 = new Class42(local90, 0);
-			int local102 = local36.readShort();
+			int local102 = local36.g2();
 			int[] local105 = new int[500];
 			int[] local108 = new int[500];
 			int[] local111 = new int[500];
 			int[] local114 = new int[500];
 			for ( int local116 = 0; local116 < local102; local116++) {
-				int local121 = local36.readShort();
+				int local121 = local36.g2();
 				Class22 local129 = aClass22Array1[local121] = new Class22();
-				local129.anInt238 = local77.readByte();
+				local129.anInt238 = local77.g1();
 				local129.aClass42_1 = local99;
-				int local139 = local36.readByte();
+				int local139 = local36.g1();
 				int local141 = -1;
 				int local143 = 0;
 				int local150;
 				for ( int local145 = 0; local145 < local139; local145++) {
-					local150 = local51.readByte();
+					local150 = local51.g1();
 					if (local150 > 0) {
 						if (local99.anIntArray172[local145] != 0) {
 							for ( int local161 = local145 - 1; local161 > local141; local161--) {
@@ -95,17 +95,17 @@ public final class Class22 {
 						if ((local150 & 0x1) == 0) {
 							local108[local143] = local197;
 						} else {
-							local108[local143] = local64.method324();
+							local108[local143] = local64.gsmart();
 						}
 						if ((local150 & 0x2) == 0) {
 							local111[local143] = local197;
 						} else {
-							local111[local143] = local64.method324();
+							local111[local143] = local64.gsmart();
 						}
 						if ((local150 & 0x4) == 0) {
 							local114[local143] = local197;
 						} else {
-							local114[local143] = local64.method324();
+							local114[local143] = local64.gsmart();
 						}
 						local141 = local145;
 						local143++;

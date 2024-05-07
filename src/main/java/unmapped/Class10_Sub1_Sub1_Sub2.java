@@ -39,29 +39,29 @@ public final class Class10_Sub1_Sub1_Sub2 extends Draw2D {
 		try {
 			Packet local63 = new Packet(arg1.read(arg3 + ".dat", null));
 			Packet local72 = new Packet(arg1.read("index.dat", null));
-			local72.pos = local63.readShort() + 4;
-			int local95 = local72.readByte();
+			local72.pos = local63.g2() + 4;
+			int local95 = local72.g1();
 			if (local95 > 0) {
 				local72.pos += (local95 - 1) * 3;
 			}
 			for ( int local109 = 0; local109 < 256; local109++) {
-				this.anIntArray60[local109] = local72.readByte();
-				this.anIntArray61[local109] = local72.readByte();
-				int local133 = this.anIntArray58[local109] = local72.readShort();
-				int local141 = this.anIntArray59[local109] = local72.readShort();
-				int local144 = local72.readByte();
+				this.anIntArray60[local109] = local72.g1();
+				this.anIntArray61[local109] = local72.g1();
+				int local133 = this.anIntArray58[local109] = local72.g2();
+				int local141 = this.anIntArray59[local109] = local72.g2();
+				int local144 = local72.g1();
 				int local148 = local133 * local141;
 				this.aByteArrayArray3[local109] = new byte[local148];
 				int local158;
 				int local183;
 				if (local144 == 0) {
 					for (local158 = 0; local158 < local148; local158++) {
-						this.aByteArrayArray3[local109][local158] = local63.method312();
+						this.aByteArrayArray3[local109][local158] = local63.g1b();
 					}
 				} else if (local144 == 1) {
 					for (local158 = 0; local158 < local133; local158++) {
 						for (local183 = 0; local183 < local141; local183++) {
-							this.aByteArrayArray3[local109][local158 + local183 * local133] = local63.method312();
+							this.aByteArrayArray3[local109][local158 + local183 * local133] = local63.g1b();
 						}
 					}
 				}

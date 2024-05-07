@@ -31,7 +31,7 @@ public final class Class49 {
 	public static void method546( JagFile arg0) {
 		try {
 			Packet local8 = new Packet(arg0.read("idk.dat", null));
-			anInt781 = local8.readShort();
+			anInt781 = local8.g2();
 			if (aClass49Array1 == null) {
 				aClass49Array1 = new Class49[anInt781];
 			}
@@ -58,26 +58,26 @@ public final class Class49 {
 			boolean local6 = false;
 			while (true) {
 				while (true) {
-					int local15 = arg1.readByte();
+					int local15 = arg1.g1();
 					if (local15 == 0) {
 						return;
 					}
 					if (local15 == 1) {
-						this.anInt782 = arg1.readByte();
+						this.anInt782 = arg1.g1();
 					} else if (local15 == 2) {
-						int local33 = arg1.readByte();
+						int local33 = arg1.g1();
 						this.anIntArray200 = new int[local33];
 						for ( int local39 = 0; local39 < local33; local39++) {
-							this.anIntArray200[local39] = arg1.readShort();
+							this.anIntArray200[local39] = arg1.g2();
 						}
 					} else if (local15 == 3) {
 						this.aBoolean202 = true;
 					} else if (local15 >= 40 && local15 < 50) {
-						this.anIntArray201[local15 - 40] = arg1.readShort();
+						this.anIntArray201[local15 - 40] = arg1.g2();
 					} else if (local15 >= 50 && local15 < 60) {
-						this.anIntArray202[local15 - 50] = arg1.readShort();
+						this.anIntArray202[local15 - 50] = arg1.g2();
 					} else if (local15 >= 60 && local15 < 70) {
-						this.anIntArray203[local15 - 60] = arg1.readShort();
+						this.anIntArray203[local15 - 60] = arg1.g2();
 					} else {
 						System.out.println("Error unrecognised config code: " + local15);
 					}

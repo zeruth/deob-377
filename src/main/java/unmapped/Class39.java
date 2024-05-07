@@ -33,7 +33,7 @@ public final class Class39 {
 			aClass10_Sub1_Sub3_4 = new Packet(aByteArray15);
 			Class12.method41();
 			while (true) {
-				int local16 = arg0.readShort();
+				int local16 = arg0.g2();
 				if (local16 == 65535) {
 					return;
 				}
@@ -67,15 +67,15 @@ public final class Class39 {
 	private void method410( byte arg0, Packet arg1) {
 		try {
 			for ( int local1 = 0; local1 < 10; local1++) {
-				int local6 = arg1.readByte();
+				int local6 = arg1.g1();
 				if (local6 != 0) {
 					arg1.pos--;
 					this.aClass12Array1[local1] = new Class12();
 					this.aClass12Array1[local1].method44(aByte33, arg1);
 				}
 			}
-			this.anInt587 = arg1.readShort();
-			this.anInt588 = arg1.readShort();
+			this.anInt587 = arg1.g2();
+			this.anInt588 = arg1.g2();
 			if (arg0 == 6) {
 				boolean local45 = false;
 			} else {
@@ -121,19 +121,19 @@ public final class Class39 {
 		try {
 			int local3 = this.method413(arg0);
 			aClass10_Sub1_Sub3_4.pos = 0;
-			aClass10_Sub1_Sub3_4.method305(1380533830);
-			aClass10_Sub1_Sub3_4.method306(local3 + 36);
-			aClass10_Sub1_Sub3_4.method305(1463899717);
-			aClass10_Sub1_Sub3_4.method305(1718449184);
-			aClass10_Sub1_Sub3_4.method306(16);
+			aClass10_Sub1_Sub3_4.p4(1380533830);
+			aClass10_Sub1_Sub3_4.ip4(local3 + 36);
+			aClass10_Sub1_Sub3_4.p4(1463899717);
+			aClass10_Sub1_Sub3_4.p4(1718449184);
+			aClass10_Sub1_Sub3_4.ip4(16);
 			aClass10_Sub1_Sub3_4.method303(1);
 			aClass10_Sub1_Sub3_4.method303(1);
-			aClass10_Sub1_Sub3_4.method306(22050);
-			aClass10_Sub1_Sub3_4.method306(22050);
+			aClass10_Sub1_Sub3_4.ip4(22050);
+			aClass10_Sub1_Sub3_4.ip4(22050);
 			aClass10_Sub1_Sub3_4.method303(1);
 			aClass10_Sub1_Sub3_4.method303(8);
-			aClass10_Sub1_Sub3_4.method305(1684108385);
-			aClass10_Sub1_Sub3_4.method306(local3);
+			aClass10_Sub1_Sub3_4.p4(1684108385);
+			aClass10_Sub1_Sub3_4.ip4(local3);
 			aClass10_Sub1_Sub3_4.pos += local3;
 			return aClass10_Sub1_Sub3_4;
 		} catch ( RuntimeException local71) {

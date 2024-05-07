@@ -1,7 +1,9 @@
 package unmapped;
 
 
-public final class Class10_Sub1_Sub4 extends Class10_Sub1 {
+import jagex2.datastruct.Hashable;
+
+public final class Class10_Sub1_Sub4 extends Hashable {
 
 	public int anInt486;
 

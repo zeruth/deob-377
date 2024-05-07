@@ -272,7 +272,7 @@ public final class Class12 {
 			this.aClass30_1.method359(this.aByte7, arg1);
 			this.aClass30_2 = new Class30();
 			this.aClass30_2.method359(this.aByte7, arg1);
-			int local26 = arg1.readByte();
+			int local26 = arg1.g1();
 			if (local26 != 0) {
 				arg1.pos--;
 				this.aClass30_3 = new Class30();
@@ -280,7 +280,7 @@ public final class Class12 {
 				this.aClass30_4 = new Class30();
 				this.aClass30_4.method359(this.aByte7, arg1);
 			}
-			local26 = arg1.readByte();
+			local26 = arg1.g1();
 			int local64;
 			if (arg0 != 6) {
 				for (local64 = 1; local64 > 0; local64++) {
@@ -293,7 +293,7 @@ public final class Class12 {
 				this.aClass30_6 = new Class30();
 				this.aClass30_6.method359(this.aByte7, arg1);
 			}
-			local26 = arg1.readByte();
+			local26 = arg1.g1();
 			if (local26 != 0) {
 				arg1.pos--;
 				this.aClass30_7 = new Class30();
@@ -302,18 +302,18 @@ public final class Class12 {
 				this.aClass30_8.method359(this.aByte7, arg1);
 			}
 			for (local64 = 0; local64 < 10; local64++) {
-				int local145 = arg1.method325();
+				int local145 = arg1.gsmarts();
 				if (local145 == 0) {
 					break;
 				}
 				this.anIntArray22[local64] = local145;
-				this.anIntArray23[local64] = arg1.method324();
-				this.anIntArray24[local64] = arg1.method325();
+				this.anIntArray23[local64] = arg1.gsmart();
+				this.anIntArray24[local64] = arg1.gsmarts();
 			}
-			this.anInt70 = arg1.method325();
-			this.anInt71 = arg1.method325();
-			this.anInt72 = arg1.readShort();
-			this.anInt73 = arg1.readShort();
+			this.anInt70 = arg1.gsmarts();
+			this.anInt71 = arg1.gsmarts();
+			this.anInt72 = arg1.g2();
+			this.anInt73 = arg1.g2();
 			this.aClass37_1 = new Class37();
 			this.aClass30_9 = new Class30();
 			this.aClass37_1.method399(this.aClass30_9, arg1);

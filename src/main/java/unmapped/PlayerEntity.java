@@ -3,7 +3,7 @@ package unmapped;
 
 import sign.signlink;
 
-public final class Class10_Sub1_Sub2_Sub3_Sub2 extends Class10_Sub1_Sub2_Sub3 {
+public final class PlayerEntity extends Class10_Sub1_Sub2_Sub3 {
 
 	public static Class34 aClass34_9 = new Class34(260, -572);
 
@@ -333,23 +333,23 @@ public final class Class10_Sub1_Sub2_Sub3_Sub2 extends Class10_Sub1_Sub2_Sub3 {
 	public void method545( Packet arg0) {
 		try {
 			arg0.pos = 0;
-			this.anInt768 = arg0.readByte();
-			this.anInt769 = arg0.method312();
-			this.anInt765 = arg0.method312();
+			this.anInt768 = arg0.g1();
+			this.anInt769 = arg0.g1b();
+			this.anInt765 = arg0.g1b();
 			this.aClass38_2 = null;
 			this.anInt773 = 0;
 			int local29;
 			int local41;
 			int local88;
 			for ( int local24 = 0; local24 < 12; local24++) {
-				local29 = arg0.readByte();
+				local29 = arg0.g1();
 				if (local29 == 0) {
 					this.anIntArray198[local24] = 0;
 				} else {
-					local41 = arg0.readByte();
+					local41 = arg0.g1();
 					this.anIntArray198[local24] = (local29 << 8) + local41;
 					if (local24 == 0 && this.anIntArray198[0] == 65535) {
-						this.aClass38_2 = Class38.method407(arg0.readShort());
+						this.aClass38_2 = Class38.method407(arg0.g2());
 						break;
 					}
 					if (this.anIntArray198[local24] >= 512 && this.anIntArray198[local24] - 512 < Class17.anInt179) {
@@ -361,43 +361,43 @@ public final class Class10_Sub1_Sub2_Sub3_Sub2 extends Class10_Sub1_Sub2_Sub3 {
 				}
 			}
 			for (local29 = 0; local29 < 5; local29++) {
-				local41 = arg0.readByte();
+				local41 = arg0.g1();
 				if (local41 < 0 || local41 >= Client.anIntArrayArray24[local29].length) {
 					local41 = 0;
 				}
 				this.anIntArray199[local29] = local41;
 			}
-			super.anInt760 = arg0.readShort();
+			super.anInt760 = arg0.g2();
 			if (super.anInt760 == 65535) {
 				super.anInt760 = -1;
 			}
-			super.anInt761 = arg0.readShort();
+			super.anInt761 = arg0.g2();
 			if (super.anInt761 == 65535) {
 				super.anInt761 = -1;
 			}
-			super.anInt748 = arg0.readShort();
+			super.anInt748 = arg0.g2();
 			if (super.anInt748 == 65535) {
 				super.anInt748 = -1;
 			}
-			super.anInt749 = arg0.readShort();
+			super.anInt749 = arg0.g2();
 			if (super.anInt749 == 65535) {
 				super.anInt749 = -1;
 			}
-			super.anInt750 = arg0.readShort();
+			super.anInt750 = arg0.g2();
 			if (super.anInt750 == 65535) {
 				super.anInt750 = -1;
 			}
-			super.anInt751 = arg0.readShort();
+			super.anInt751 = arg0.g2();
 			if (super.anInt751 == 65535) {
 				super.anInt751 = -1;
 			}
-			super.anInt758 = arg0.readShort();
+			super.anInt758 = arg0.g2();
 			if (super.anInt758 == 65535) {
 				super.anInt758 = -1;
 			}
-			this.aString14 = Class26.method252(Class26.method249(arg0.method317()), (byte) 7);
-			this.anInt767 = arg0.readByte();
-			this.anInt770 = arg0.readShort();
+			this.aString14 = Class26.method252(Class26.method249(arg0.g8()), (byte) 7);
+			this.anInt767 = arg0.g1();
+			this.anInt770 = arg0.g2();
 			this.aBoolean198 = true;
 			this.aLong25 = 0L;
 			local41 = this.anIntArray198[5];

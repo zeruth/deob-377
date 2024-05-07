@@ -277,7 +277,7 @@ public final class Class8 {
 		try {
 			int local7 = -1;
 			while (true) {
-				int local10 = arg1.method325();
+				int local10 = arg1.gsmarts();
 				if (local10 == 0) {
 					return;
 				}
@@ -285,11 +285,11 @@ public final class Class8 {
 				Class48 local19 = Class48.method523(local7);
 				local19.method525(arg0);
 				while (true) {
-					int local26 = arg1.method325();
+					int local26 = arg1.gsmarts();
 					if (local26 == 0) {
 						break;
 					}
-					arg1.readByte();
+					arg1.g1();
 				}
 			}
 		} catch ( RuntimeException local37) {
@@ -356,7 +356,7 @@ public final class Class8 {
 			Packet local9 = new Packet(arg2);
 			int local18 = -1;
 			label53: while (true) {
-				int local21 = local9.method325();
+				int local21 = local9.gsmarts();
 				if (local21 == 0) {
 					return local3;
 				}
@@ -366,14 +366,14 @@ public final class Class8 {
 				while (true) {
 					int local36;
 					while (!local31) {
-						local36 = local9.method325();
+						local36 = local9.gsmarts();
 						if (local36 == 0) {
 							continue label53;
 						}
 						local29 += local36 - 1;
 						int local58 = local29 & 0x3F;
 						int local64 = local29 >> 6 & 0x3F;
-						int local69 = local9.readByte() >> 2;
+						int local69 = local9.g1() >> 2;
 						int local73 = local64 + arg0;
 						int local77 = local58 + arg1;
 						if (local73 > 0 && local77 > 0 && local73 < 103 && local77 < 103) {
@@ -384,11 +384,11 @@ public final class Class8 {
 							}
 						}
 					}
-					local36 = local9.method325();
+					local36 = local9.gsmarts();
 					if (local36 == 0) {
 						break;
 					}
-					local9.readByte();
+					local9.g1();
 				}
 			}
 		} catch ( RuntimeException local116) {
@@ -864,14 +864,14 @@ public final class Class8 {
 			Packet local7 = new Packet(arg3);
 			int local12 = -1;
 			while (true) {
-				int local15 = local7.method325();
+				int local15 = local7.gsmarts();
 				if (local15 == 0) {
 					return;
 				}
 				local12 += local15;
 				int local23 = 0;
 				while (true) {
-					int local26 = local7.method325();
+					int local26 = local7.gsmarts();
 					if (local26 == 0) {
 						break;
 					}
@@ -879,7 +879,7 @@ public final class Class8 {
 					int local38 = local23 & 0x3F;
 					int local44 = local23 >> 6 & 0x3F;
 					int local48 = local23 >> 12;
-					int local51 = local7.readByte();
+					int local51 = local7.g1();
 					int local55 = local51 >> 2;
 					int local59 = local51 & 0x3;
 					if (local48 == arg9 && local44 >= arg6 && local44 < arg6 + 8 && local38 >= arg8 && local38 < arg8 + 8) {
@@ -1256,14 +1256,14 @@ public final class Class8 {
 			Packet local10 = new Packet(arg4);
 			int local12 = -1;
 			while (true) {
-				int local15 = local10.method325();
+				int local15 = local10.gsmarts();
 				if (local15 == 0) {
 					return;
 				}
 				local12 += local15;
 				int local23 = 0;
 				while (true) {
-					int local26 = local10.method325();
+					int local26 = local10.gsmarts();
 					if (local26 == 0) {
 						break;
 					}
@@ -1271,7 +1271,7 @@ public final class Class8 {
 					int local38 = local23 & 0x3F;
 					int local44 = local23 >> 6 & 0x3F;
 					int local48 = local23 >> 12;
-					int local51 = local10.readByte();
+					int local51 = local10.g1();
 					int local55 = local51 >> 2;
 					int local59 = local51 & 0x3;
 					int local63 = local44 + arg2;
@@ -1349,7 +1349,7 @@ public final class Class8 {
 			if (arg4 >= 0 && arg4 < 104 && arg6 >= 0 && arg6 < 104) {
 				this.aByteArrayArrayArray1[arg5][arg4][arg6] = 0;
 				while (true) {
-					local34 = arg2.readByte();
+					local34 = arg2.g1();
 					if (local34 == 0) {
 						if (arg5 == 0) {
 							this.anIntArrayArrayArray1[0][arg4][arg6] = -method32(arg4 + arg0 + 932731, arg6 + 556238 + arg1) * 8;
@@ -1360,7 +1360,7 @@ public final class Class8 {
 						}
 					}
 					if (local34 == 1) {
-						int local88 = arg2.readByte();
+						int local88 = arg2.g1();
 						if (local88 == 1) {
 							local88 = 0;
 						}
@@ -1372,7 +1372,7 @@ public final class Class8 {
 						return;
 					}
 					if (local34 <= 49) {
-						this.aByteArrayArrayArray4[arg5][arg4][arg6] = arg2.method312();
+						this.aByteArrayArrayArray4[arg5][arg4][arg6] = arg2.g1b();
 						this.aByteArrayArrayArray3[arg5][arg4][arg6] = (byte) ((local34 - 2) / 4);
 						this.aByteArrayArrayArray2[arg5][arg4][arg6] = (byte) (local34 + arg3 - 2 & 0x3);
 					} else if (local34 <= 81) {
@@ -1383,16 +1383,16 @@ public final class Class8 {
 				}
 			} else {
 				while (true) {
-					local34 = arg2.readByte();
+					local34 = arg2.g1();
 					if (local34 == 0) {
 						return;
 					}
 					if (local34 == 1) {
-						arg2.readByte();
+						arg2.g1();
 						return;
 					}
 					if (local34 <= 49) {
-						arg2.readByte();
+						arg2.g1();
 					}
 				}
 			}

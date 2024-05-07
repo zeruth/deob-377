@@ -43,7 +43,7 @@ public final class Class28 {
 	public static void method350( JagFile arg0) {
 		try {
 			Packet local8 = new Packet(arg0.read("spotanim.dat", null));
-			anInt434 = local8.readShort();
+			anInt434 = local8.g2();
 			if (aClass28Array1 == null) {
 				aClass28Array1 = new Class28[anInt434];
 			}
@@ -72,31 +72,31 @@ public final class Class28 {
 			}
 			while (true) {
 				while (true) {
-					int local14 = arg1.readByte();
+					int local14 = arg1.g1();
 					if (local14 == 0) {
 						return;
 					}
 					if (local14 == 1) {
-						this.anInt436 = arg1.readShort();
+						this.anInt436 = arg1.g2();
 					} else if (local14 == 2) {
-						this.anInt437 = arg1.readShort();
+						this.anInt437 = arg1.g2();
 						if (Class15.aClass15Array1 != null) {
 							this.aClass15_1 = Class15.aClass15Array1[this.anInt437];
 						}
 					} else if (local14 == 4) {
-						this.anInt438 = arg1.readShort();
+						this.anInt438 = arg1.g2();
 					} else if (local14 == 5) {
-						this.anInt439 = arg1.readShort();
+						this.anInt439 = arg1.g2();
 					} else if (local14 == 6) {
-						this.anInt440 = arg1.readShort();
+						this.anInt440 = arg1.g2();
 					} else if (local14 == 7) {
-						this.anInt441 = arg1.readByte();
+						this.anInt441 = arg1.g1();
 					} else if (local14 == 8) {
-						this.anInt442 = arg1.readByte();
+						this.anInt442 = arg1.g1();
 					} else if (local14 >= 40 && local14 < 50) {
-						this.anIntArray152[local14 - 40] = arg1.readShort();
+						this.anIntArray152[local14 - 40] = arg1.g2();
 					} else if (local14 >= 50 && local14 < 60) {
-						this.anIntArray153[local14 - 50] = arg1.readShort();
+						this.anIntArray153[local14 - 50] = arg1.g2();
 					} else {
 						System.out.println("Error unrecognised spotanim config code: " + local14);
 					}

@@ -61,14 +61,14 @@ public final class Class46 {
 
 	private static void method444( Packet arg0) {
 		try {
-			int local4 = arg0.method316();
+			int local4 = arg0.g4();
 			aCharArrayArray3 = new char[local4][];
 			anIntArray177 = new int[local4];
 			for ( int local12 = 0; local12 < local4; local12++) {
-				anIntArray177[local12] = arg0.readByte();
-				char[] local23 = new char[arg0.readByte()];
+				anIntArray177[local12] = arg0.g1();
+				char[] local23 = new char[arg0.g1()];
 				for ( int local25 = 0; local25 < local23.length; local25++) {
-					local23[local25] = (char) arg0.readByte();
+					local23[local25] = (char) arg0.g1();
 				}
 				aCharArrayArray3[local12] = local23;
 			}
@@ -80,7 +80,7 @@ public final class Class46 {
 
 	private static void method445( Packet arg0) {
 		try {
-			int local5 = arg0.method316();
+			int local5 = arg0.g4();
 			aCharArrayArray1 = new char[local5][];
 			aByteArrayArrayArray7 = new byte[local5][][];
 			method448(arg0, aCharArrayArray1, aByteArrayArrayArray7);
@@ -92,7 +92,7 @@ public final class Class46 {
 
 	private static void method446( Packet arg0) {
 		try {
-			int local2 = arg0.method316();
+			int local2 = arg0.g4();
 			aCharArrayArray2 = new char[local2][];
 			method449(arg0, aCharArrayArray2);
 		} catch ( RuntimeException local16) {
@@ -103,9 +103,9 @@ public final class Class46 {
 
 	private static void method447( Packet arg0) {
 		try {
-			anIntArray176 = new int[arg0.method316()];
+			anIntArray176 = new int[arg0.g4()];
 			for ( int local9 = 0; local9 < anIntArray176.length; local9++) {
-				anIntArray176[local9] = arg0.readShort();
+				anIntArray176[local9] = arg0.g2();
 			}
 		} catch ( RuntimeException local23) {
 			signlink.reporterror("95365, " + arg0 + ", " + 21901 + ", " + local23.toString());
@@ -116,15 +116,15 @@ public final class Class46 {
 	private static void method448(Packet arg0, char[][] arg1, byte[][][] arg2) {
 		try {
 			for ( int local3 = 0; local3 < arg1.length; local3++) {
-				char[] local9 = new char[arg0.readByte()];
+				char[] local9 = new char[arg0.g1()];
 				for ( int local11 = 0; local11 < local9.length; local11++) {
-					local9[local11] = (char) arg0.readByte();
+					local9[local11] = (char) arg0.g1();
 				}
 				arg1[local3] = local9;
-				byte[][] local33 = new byte[arg0.readByte()][2];
+				byte[][] local33 = new byte[arg0.g1()][2];
 				for ( int local35 = 0; local35 < local33.length; local35++) {
-					local33[local35][0] = (byte) arg0.readByte();
-					local33[local35][1] = (byte) arg0.readByte();
+					local33[local35][0] = (byte) arg0.g1();
+					local33[local35][1] = (byte) arg0.g1();
 				}
 				if (local33.length > 0) {
 					arg2[local3] = local33;
@@ -139,9 +139,9 @@ public final class Class46 {
 	private static void method449(Packet arg0, char[][] arg1) {
 		try {
 			for ( int local8 = 0; local8 < arg1.length; local8++) {
-				char[] local14 = new char[arg0.readByte()];
+				char[] local14 = new char[arg0.g1()];
 				for ( int local16 = 0; local16 < local14.length; local16++) {
-					local14[local16] = (char) arg0.readByte();
+					local14[local16] = (char) arg0.g1();
 				}
 				arg1[local8] = local14;
 			}

@@ -1,7 +1,9 @@
 package unmapped;
 
 
-public final class Class10_Sub3 extends Class10 {
+import jagex2.datastruct.Linkable;
+
+public final class Class10_Sub3 extends Linkable {
 
 	public Class3 aClass3_1;
 

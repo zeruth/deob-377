@@ -1,9 +1,10 @@
 package unmapped;
 
 
+import jagex2.datastruct.Hashable;
 import sign.signlink;
 
-public class Class10_Sub1_Sub2 extends Class10_Sub1 {
+public class Class10_Sub1_Sub2 extends Hashable {
 
 	private static byte aByte42 = 3;
 

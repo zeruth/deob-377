@@ -207,18 +207,18 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 				local31.pos = arg0.length - 18;
 				Class27 local45 = aClass27Array1[arg1] = new Class27();
 				local45.aByteArray11 = arg0;
-				local45.anInt330 = local31.readShort();
-				local45.anInt331 = local31.readShort();
-				local45.anInt332 = local31.readByte();
-				int local63 = local31.readByte();
-				int local66 = local31.readByte();
-				int local69 = local31.readByte();
-				int local72 = local31.readByte();
-				int local75 = local31.readByte();
-				int local78 = local31.readShort();
-				int local81 = local31.readShort();
-				int local84 = local31.readShort();
-				int local87 = local31.readShort();
+				local45.anInt330 = local31.g2();
+				local45.anInt331 = local31.g2();
+				local45.anInt332 = local31.g1();
+				int local63 = local31.g1();
+				int local66 = local31.g1();
+				int local69 = local31.g1();
+				int local72 = local31.g1();
+				int local75 = local31.g1();
+				int local78 = local31.g2();
+				int local81 = local31.g2();
+				int local84 = local31.g2();
+				int local87 = local31.g2();
 				local45.anInt333 = 0;
 				int local97 = local45.anInt330 + 0;
 				local45.anInt339 = local97;
@@ -379,18 +379,18 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 			int local232;
 			int local241;
 			for ( int local216 = 0; local216 < this.anInt402; local216++) {
-				local221 = local150.readByte();
+				local221 = local150.g1();
 				local223 = 0;
 				if ((local221 & 0x1) != 0) {
-					local223 = local161.method324();
+					local223 = local161.gsmart();
 				}
 				local232 = 0;
 				if ((local221 & 0x2) != 0) {
-					local232 = local172.method324();
+					local232 = local172.gsmart();
 				}
 				local241 = 0;
 				if ((local221 & 0x4) != 0) {
-					local241 = local193.method324();
+					local241 = local193.gsmart();
 				}
 				this.anIntArray113[local216] = local210 + local223;
 				this.anIntArray114[local216] = local212 + local232;
@@ -399,7 +399,7 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 				local212 = this.anIntArray114[local216];
 				local214 = this.anIntArray115[local216];
 				if (this.anIntArray129 != null) {
-					this.anIntArray129[local216] = local204.readByte();
+					this.anIntArray129[local216] = local204.g1();
 				}
 			}
 			local150.pos = local32.anInt340;
@@ -408,18 +408,18 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 			local193.pos = local32.anInt343;
 			local204.pos = local32.anInt344;
 			for (local221 = 0; local221 < this.anInt403; local221++) {
-				this.anIntArray125[local221] = local150.readShort();
+				this.anIntArray125[local221] = local150.g2();
 				if (this.anIntArray122 != null) {
-					this.anIntArray122[local221] = local161.readByte();
+					this.anIntArray122[local221] = local161.g1();
 				}
 				if (this.anIntArray123 != null) {
-					this.anIntArray123[local221] = local172.readByte();
+					this.anIntArray123[local221] = local172.g1();
 				}
 				if (this.anIntArray124 != null) {
-					this.anIntArray124[local221] = local193.readByte();
+					this.anIntArray124[local221] = local193.g1();
 				}
 				if (this.anIntArray130 != null) {
-					this.anIntArray130[local221] = local204.readByte();
+					this.anIntArray130[local221] = local204.g1();
 				}
 			}
 			local150.pos = local32.anInt338;
@@ -430,11 +430,11 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 			int local385 = 0;
 			int local392;
 			for ( int local387 = 0; local387 < this.anInt403; local387++) {
-				local392 = local161.readByte();
+				local392 = local161.g1();
 				if (local392 == 1) {
-					local223 = local150.method324() + local385;
-					local232 = local150.method324() + local223;
-					local241 = local150.method324() + local232;
+					local223 = local150.gsmart() + local385;
+					local232 = local150.gsmart() + local223;
+					local241 = local150.gsmart() + local232;
 					local385 = local241;
 					this.anIntArray116[local387] = local223;
 					this.anIntArray117[local387] = local232;
@@ -443,7 +443,7 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 				if (local392 == 2) {
 					local223 = local223;
 					local232 = local241;
-					local241 = local150.method324() + local385;
+					local241 = local150.gsmart() + local385;
 					local385 = local241;
 					this.anIntArray116[local387] = local223;
 					this.anIntArray117[local387] = local232;
@@ -452,7 +452,7 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 				if (local392 == 3) {
 					local223 = local241;
 					local232 = local232;
-					local241 = local150.method324() + local385;
+					local241 = local150.gsmart() + local385;
 					local385 = local241;
 					this.anIntArray116[local387] = local223;
 					this.anIntArray117[local387] = local232;
@@ -462,7 +462,7 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 					int local494 = local223;
 					local223 = local232;
 					local232 = local494;
-					local241 = local150.method324() + local385;
+					local241 = local150.gsmart() + local385;
 					local385 = local241;
 					this.anIntArray116[local387] = local223;
 					this.anIntArray117[local387] = local494;
@@ -471,9 +471,9 @@ public final class Class10_Sub1_Sub2_Sub4 extends Class10_Sub1_Sub2 {
 			}
 			local150.pos = local32.anInt345;
 			for (local392 = 0; local392 < this.anInt405; local392++) {
-				this.anIntArray126[local392] = local150.readShort();
-				this.anIntArray127[local392] = local150.readShort();
-				this.anIntArray128[local392] = local150.readShort();
+				this.anIntArray126[local392] = local150.g2();
+				this.anIntArray127[local392] = local150.g2();
+				this.anIntArray128[local392] = local150.g2();
 			}
 		} catch ( RuntimeException local558) {
 			signlink.reporterror("50904, " + arg0 + ", " + arg1 + ", " + local558.toString());
